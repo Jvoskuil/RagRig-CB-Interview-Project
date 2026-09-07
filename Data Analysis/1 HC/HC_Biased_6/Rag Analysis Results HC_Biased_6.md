@@ -97,7 +97,7 @@ _ranker=rrf · t=0.04 · k=20 → 20 in context · 8192 ctx · emb 3.12s · gen 
         }
       ],
       "correction_or_counterevidence": "The PI later asked the participant to go back and pull Participant 12's full lab history and prior medications before finalizing the classification.",
-      "retrieved_corpus_support_available": true,
+      "retrieved_corpus_support_available": false,
       "corpus_support_note": "No retrieved scientific-paper passages were supplied in the RAG context; this finding relies on interview evidence and the reference-ontology definition.",
       "corpus_evidence": []
     },
@@ -140,7 +140,7 @@ _ranker=rrf · t=0.04 · k=20 → 20 in context · 8192 ctx · emb 3.12s · gen 
         }
       ],
       "correction_or_counterevidence": "The participant considered flagging the discrepancy as a deviation and seeking a second reviewer, but did not pursue those before the extra work; the case was ultimately flagged anyway.",
-      "retrieved_corpus_support_available": true,
+      "retrieved_corpus_support_available": false,
       "corpus_support_note": "No retrieved scientific-paper passages were supplied in the RAG context; this finding relies on interview evidence and the reference-ontology definition.",
       "corpus_evidence": []
     },
@@ -178,7 +178,7 @@ _ranker=rrf · t=0.04 · k=20 → 20 in context · 8192 ctx · emb 3.12s · gen 
         }
       ],
       "correction_or_counterevidence": "No explicit in-the-moment correction is described; the participant later recognized the influence of the loss frame when asked a counterfactual question.",
-      "retrieved_corpus_support_available": true,
+      "retrieved_corpus_support_available": false,
       "corpus_support_note": "No retrieved scientific-paper passages were supplied in the RAG context; this finding relies on interview evidence and the reference-ontology definition.",
       "corpus_evidence": []
     },
@@ -211,7 +211,7 @@ _ranker=rrf · t=0.04 · k=20 → 20 in context · 8192 ctx · emb 3.12s · gen 
         }
       ],
       "correction_or_counterevidence": "Later screening showed the referral met every inclusion criterion; the participant acknowledged the deprioritization was not based on the actual criteria.",
-      "retrieved_corpus_support_available": true,
+      "retrieved_corpus_support_available": false,
       "corpus_support_note": "No retrieved scientific-paper passages were supplied in the RAG context; this finding relies on interview evidence and the reference-ontology definition.",
       "corpus_evidence": []
     },
@@ -249,7 +249,7 @@ _ranker=rrf · t=0.04 · k=20 → 20 in context · 8192 ctx · emb 3.12s · gen 
         }
       ],
       "correction_or_counterevidence": "The monitor later questioned the lack of documented rationale for the method change.",
-      "retrieved_corpus_support_available": true,
+      "retrieved_corpus_support_available": false,
       "corpus_support_note": "No retrieved scientific-paper passages were supplied in the RAG context; this finding relies on interview evidence and the reference-ontology definition.",
       "corpus_evidence": []
     }
@@ -391,7 +391,7 @@ _ranker=rrf · t=0.04 · k=20 → 20 in context · 8192 ctx · emb 1.98s · gen 
         }
       ],
       "correction_or_counterevidence": "The PI asked the participant to go back and pull Participant 12's full lab history and prior meds before finalizing the classification.",
-      "retrieved_corpus_support_available": true,
+      "retrieved_corpus_support_available": false,
       "corpus_support_note": "No retrieved scientific-paper passages were supplied in the RAG context; this classification relies on the interview evidence and the reference ontology definition, without paper-level mechanism support.",
       "corpus_evidence": []
     },
@@ -424,7 +424,7 @@ _ranker=rrf · t=0.04 · k=20 → 20 in context · 8192 ctx · emb 1.98s · gen 
         }
       ],
       "correction_or_counterevidence": "The PI required full lab history and prior med review before the classification was finalized.",
-      "retrieved_corpus_support_available": true,
+      "retrieved_corpus_support_available": false,
       "corpus_support_note": "No retrieved scientific-paper passages were supplied in the RAG context; this classification relies on the interview evidence and the reference ontology definition, without paper-level mechanism support.",
       "corpus_evidence": []
     },
@@ -462,7 +462,7 @@ _ranker=rrf · t=0.04 · k=20 → 20 in context · 8192 ctx · emb 1.98s · gen 
         }
       ],
       "correction_or_counterevidence": "The discrepancy was ultimately unresolvable and was flagged after the additional effort; the extra time did not change the outcome.",
-      "retrieved_corpus_support_available": true,
+      "retrieved_corpus_support_available": false,
       "corpus_support_note": "No retrieved scientific-paper passages were supplied in the RAG context; this classification relies on the interview evidence and the reference ontology definition, without paper-level mechanism support.",
       "corpus_evidence": []
     },
@@ -500,7 +500,7 @@ _ranker=rrf · t=0.04 · k=20 → 20 in context · 8192 ctx · emb 1.98s · gen 
         }
       ],
       "correction_or_counterevidence": "No contemporaneous correction identified; the participant later reflected that a neutral framing would likely have led to a different decision.",
-      "retrieved_corpus_support_available": true,
+      "retrieved_corpus_support_available": false,
       "corpus_support_note": "No retrieved scientific-paper passages were supplied in the RAG context; this classification relies on the interview evidence and the reference ontology definition, without paper-level mechanism support.",
       "corpus_evidence": []
     },
@@ -538,7 +538,7 @@ _ranker=rrf · t=0.04 · k=20 → 20 in context · 8192 ctx · emb 1.98s · gen 
         }
       ],
       "correction_or_counterevidence": "Screening later showed he met every inclusion criterion; the participant acknowledged the initial deprioritization was not based on objective criteria.",
-      "retrieved_corpus_support_available": true,
+      "retrieved_corpus_support_available": false,
       "corpus_support_note": "No retrieved scientific-paper passages were supplied in the RAG context; this classification relies on the interview evidence and the reference ontology definition, without paper-level mechanism support.",
       "corpus_evidence": []
     },
@@ -576,7 +576,7 @@ _ranker=rrf · t=0.04 · k=20 → 20 in context · 8192 ctx · emb 1.98s · gen 
         }
       ],
       "correction_or_counterevidence": "The monitor subsequently asked for a documented rationale; the participant had no validation data or justification beyond other sites having switched.",
-      "retrieved_corpus_support_available": true,
+      "retrieved_corpus_support_available": false,
       "corpus_support_note": "No retrieved scientific-paper passages were supplied in the RAG context; this classification relies on the interview evidence and the reference ontology definition, without paper-level mechanism support.",
       "corpus_evidence": []
     }
@@ -685,7 +685,7 @@ _ranker=rrf · t=0.04 · k=20 → 20 in context · 8192 ctx · emb 1.98s · gen 
         }
       ],
       "correction_or_counterevidence": "The PI asked the participant to pull Participant 12's full lab history and prior medications before finalizing the causality category; the participant acknowledged this should have occurred up front.",
-      "retrieved_corpus_support_available": true,
+      "retrieved_corpus_support_available": false,
       "corpus_support_note": "No retrieved scientific corpus passages were provided in the analysis context; theoretical mechanism is described from general knowledge rather than from retrieved literature.",
       "corpus_evidence": []
     },
@@ -718,7 +718,7 @@ _ranker=rrf · t=0.04 · k=20 → 20 in context · 8192 ctx · emb 1.98s · gen 
         }
       ],
       "correction_or_counterevidence": "The discrepancy was ultimately not resolvable from available source documents; it was flagged as a deviation later, so the additional time did not change the outcome.",
-      "retrieved_corpus_support_available": true,
+      "retrieved_corpus_support_available": false,
       "corpus_support_note": "No retrieved scientific corpus passages were provided in the analysis context; theoretical mechanism is described from general knowledge rather than from retrieved literature.",
       "corpus_evidence": []
     },
@@ -756,7 +756,7 @@ _ranker=rrf · t=0.04 · k=20 → 20 in context · 8192 ctx · emb 1.98s · gen 
         }
       ],
       "correction_or_counterevidence": "The eventual outcome did not resolve; the case was flagged later. The participant's counterfactual statement suggests retrospective recognition of the framing effect.",
-      "retrieved_corpus_support_available": true,
+      "retrieved_corpus_support_available": false,
       "corpus_support_note": "No retrieved scientific corpus passages were provided in the analysis context; theoretical mechanism is described from general knowledge rather than from retrieved literature.",
       "corpus_evidence": []
     },
@@ -789,7 +789,7 @@ _ranker=rrf · t=0.04 · k=20 → 20 in context · 8192 ctx · emb 1.98s · gen 
         }
       ],
       "correction_or_counterevidence": "When later screened, the referral met every inclusion criterion, but the participant noted he got lucky that lock week did not cost enrollment.",
-      "retrieved_corpus_support_available": true,
+      "retrieved_corpus_support_available": false,
       "corpus_support_note": "No retrieved scientific corpus passages were provided in the analysis context; theoretical mechanism is described from general knowledge rather than from retrieved literature.",
       "corpus_evidence": []
     },
@@ -827,7 +827,7 @@ _ranker=rrf · t=0.04 · k=20 → 20 in context · 8192 ctx · emb 1.98s · gen 
         }
       ],
       "correction_or_counterevidence": "The monitor asked why the method was changed without documented rationale; the participant had no answer beyond social proof.",
-      "retrieved_corpus_support_available": true,
+      "retrieved_corpus_support_available": false,
       "corpus_support_note": "No retrieved scientific corpus passages were provided in the analysis context; theoretical mechanism is described from general knowledge rather than from retrieved literature.",
       "corpus_evidence": []
     }
