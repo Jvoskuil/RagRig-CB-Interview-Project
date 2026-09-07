@@ -1,0 +1,270 @@
+You are an expert occupational interviewer and realistic dialogue writer.
+
+Generate one simulated cognitive task analysis interview from the supplied generation specification. The interview will be given to an independent evaluator that must infer whether specified cognitive biases are present. Do not reveal the labels or your construction process.
+
+INPUT
+Generation specification:
+{{"scenario_id": "EI_Biased_3",
+  "domain_id": "EI",
+  "domain": "Education and instructional work",
+  "role": "Special Education Caseworker / IEP Coordinator",
+  "condition": "biased",
+  "generation_specification": {
+    "scenario_title_internal": "Interim Placement for a Mid-Year IEP Transfer",
+    "scenario_summary_internal": "An IEP Coordinator must process a mid-year transfer student arriving from an out-of-district specialized behavioral program, complete an interim placement within a mandatory 10-school-day compliance window, and draft present levels and services with incomplete records, a testing backlog, and a single vivid behavioral incident report from a paraprofessional, while balancing caseload pressure against individualized decision-making.",
+    "occupational_realism": {
+      "objective": "Determine a compliant interim IEP placement, present levels of performance, and service minutes for a transferring student within the statutory timeline, using the best available evidence.",
+      "setting": "Public elementary school special education department, mid-year transfer, 10-school-day interim placement mandate",
+      "constraints": [
+        "10-school-day statutory deadline for interim placement determination",
+        "Caseload of 42 active IEP students",
+        "School psychologist has a 3-week testing backlog",
+        "Incomplete transfer records arriving in stages from sending program",
+        "Parent expects a placement decision at the interim meeting",
+        "Principal wants minimal disruption to general education scheduling"
+      ],
+      "stakeholders": [
+        "IEP Coordinator (interviewee)",
+        "General education classroom teacher",
+        "Instructional paraprofessional",
+        "School psychologist",
+        "Parent/guardian",
+        "Sending program liaison",
+        "Building principal"
+      ],
+      "technical_terms_to_use": [
+        "interim placement",
+        "present levels of performance (PLOP)",
+        "functional behavior assessment (FBA)",
+        "behavior intervention plan (BIP)",
+        "least restrictive environment (LRE)",
+        "service minutes",
+        "related services",
+        "eligibility category",
+        "compliance timeline",
+        "reevaluation"
+      ],
+      "technical_terms_to_avoid": [
+        "group attribution error",
+        "present bias",
+        "horn effect",
+        "halo effect",
+        "stereotype",
+        "cognitive bias",
+        "heuristic"
+      ]
+    },
+    "timeline": [
+      {
+        "phase": 1,
+        "decision_point": true,
+        "facts_available_before_decision": [
+          "Transfer summary sheet identifies sending program as a specialized placement for students with significant emotional/behavioral disabilities",
+          "Prior IEP excerpt mentions an FBA/BIP written 18 months ago for aggression",
+          "Full cumulative file has not yet arrived from the sending program",
+          "Coordinator has prior familiarity with several other students who transferred from the same sending program"
+        ],
+        "new_information_after_decision": [
+          "Full records arrive later showing the BIP was successfully faded out and the student had 9 incident-free months before transfer"
+        ],
+        "alternatives": [
+          "Withhold any interim placement lean until the full individualized file arrives",
+          "Form an initial interim placement lean based on the general profile of students typically served by the sending program"
+        ],
+        "intended_action": "Coordinator leans toward recommending a more restrictive interim placement based on a general impression of the sending program's population, ahead of receiving the student's individualized data."
+      },
+      {
+        "phase": 2,
+        "decision_point": true,
+        "facts_available_before_decision": [
+          "Existing cognitive/academic testing is over 2 years old and due for reevaluation",
+          "School psychologist's earliest testing slot is 3 weeks out",
+          "Interim placement decision is due in 10 school days",
+          "Caseload workload is already at capacity"
+        ],
+        "new_information_after_decision": [
+          "Weeks later, the classroom teacher reports the accommodations do not match the student's current academic profile, and updated testing turns out to be necessary regardless"
+        ],
+        "alternatives": [
+          "Request expedited or temporary testing accommodations and build a short bridge plan while assessment is pending",
+          "Skip requesting new testing now, write the interim IEP entirely from old data and generic classroom accommodations, and defer full reassessment to the annual review months later"
+        ],
+        "intended_action": "Coordinator chooses the lower-effort immediate option, writing the interim plan from outdated data and pushing reassessment far into the future, discounting the near-term cost of delayed information."
+      },
+      {
+        "phase": 3,
+        "decision_point": true,
+        "facts_available_before_decision": [
+          "Paraprofessional reports one specific outburst during a classroom transition",
+          "Two separate teacher check-ins describe consistently positive peer interactions",
+          "Work samples show reading performance above grade level",
+          "Coordinator has only briefly observed the classroom in person"
+        ],
+        "new_information_after_decision": [
+          "Additional peer and teacher feedback collected afterward consistently shows strong academic engagement, at odds with the coordinator's broader write-up"
+        ],
+        "alternatives": [
+          "Weigh the single outburst alongside the broader academic and social evidence when drafting present levels",
+          "Let the one vivid negative incident generalize into the overall description of the student's academic engagement and social skills"
+        ],
+        "intended_action": "Coordinator drafts present levels that extend the behavioral concern from the single incident into an overall more negative characterization of the student's academic and social functioning."
+      },
+      {
+        "phase": 4,
+        "decision_point": true,
+        "facts_available_before_decision": [
+          "All records, testing history, and observation notes collected to date",
+          "Parent is present and expects a service-minutes decision at the interim meeting",
+          "Principal has flagged general-education scheduling constraints"
+        ],
+        "new_information_after_decision": [
+          "Parent requests a follow-up review in 6 weeks to confirm the service minutes are adequate"
+        ],
+        "alternatives": [
+          "Propose full inclusion with consultative behavior support",
+          "Propose partial pull-out for targeted skill instruction"
+        ],
+        "intended_action": "Coordinator finalizes service minutes and LRE recommendation using a documented rationale drawn from the assembled record, without introducing a new bias mechanism at this decision point."
+      }
+    ],
+    "probe_plan": {
+      "opening": [
+        "Can you describe your role and caseload at the time of this case?",
+        "What was the operational goal for this student's interim placement?"
+      ],
+      "timeline_reconstruction": [
+        "Walk me through what happened, in order, from the transfer notice to the interim meeting.",
+        "What information did you have at each stage, and what arrived later?"
+      ],
+      "decision_point_probes": [
+        "What cues stood out to you at this point in the case?",
+        "What information sources did you rely on, and which were unavailable?",
+        "What were you trying to accomplish with this particular decision?",
+        "What alternatives did you consider, and why did you choose the one you did?",
+        "What was the basis for that decision?",
+        "Had you handled a similar situation before, and did that shape your approach?",
+        "How much time pressure were you under at this point?",
+        "How confident were you in the information you had?",
+        "If a key fact had been different, would you have decided differently?"
+      ],
+      "closing_hypotheticals": [
+        "If the student had transferred from a different, less specialized program, would your interim lean have been the same?",
+        "If the psychologist had immediate testing availability, would you have made the same choice about reassessment?",
+        "If the paraprofessional's report hadn't come in, how might the present levels have read differently?",
+        "If the compliance timeline had been longer, what would you have done differently?"
+      ]
+    },
+    "occurrence_embedding_plan_internal": [
+      {
+        "instance_id": "gae_01",
+        "bias": "Group attribution error",
+        "decision_point": 1,
+        "mechanism": "Generalizing the assumed dispositional profile of students from a specific sending program onto this individual student before individualized records arrive",
+        "affected_reasoning_operation": "Initial placement inference from partial group-identifying information",
+        "evidence_available_at_time": [
+          "Transfer summary naming the sending program's population type",
+          "An 18-month-old FBA/BIP reference",
+          "Coordinator's prior experience with other transfers from the same program"
+        ],
+        "required_textual_manifestation": "Coordinator explicitly frames the initial placement lean in terms of what students from that program are generally like, rather than in terms of this student's individual, current data",
+        "plausible_nonbias_interpretation": "Using base-rate information from a known feeder program as a reasonable starting prior while awaiting individualized records",
+        "strength": "subtle",
+        "do_not_make_explicit": ["group attribution error", "stereotype", "bias"]
+      },
+      {
+        "instance_id": "pb_01",
+        "bias": "Present Bias",
+        "decision_point": 2,
+        "mechanism": "Choosing the lower-effort immediate path (skip requesting testing) over a modest present cost that would avoid a larger, foreseeable near-term cost (mismatched accommodations)",
+        "affected_reasoning_operation": "Trade-off between an immediate scheduling/paperwork cost and a foreseeable future information cost",
+        "evidence_available_at_time": [
+          "Outdated testing data known to be stale",
+          "3-week psychologist backlog",
+          "10-day compliance deadline",
+          "Existing caseload workload"
+        ],
+        "required_textual_manifestation": "Coordinator states a preference for the easier immediate option and explicitly defers the reassessment need to a distant future point despite acknowledging it will likely be needed sooner",
+        "plausible_nonbias_interpretation": "A legitimate short-term compliance necessity given a genuinely fixed statutory deadline and no faster testing option",
+        "strength": "subtle",
+        "do_not_make_explicit": ["present bias", "discounting", "bias"]
+      },
+      {
+        "instance_id": "he_01",
+        "bias": "Horn Effect",
+        "decision_point": 3,
+        "mechanism": "One vivid negative behavioral incident colors the overall characterization of unrelated academic and social attributes",
+        "affected_reasoning_operation": "Synthesis of mixed evidence into an overall present-levels characterization",
+        "evidence_available_at_time": [
+          "Single paraprofessional-reported outburst during a transition",
+          "Two teacher check-ins describing positive peer interactions",
+          "Work samples showing above-grade-level reading"
+        ],
+        "required_textual_manifestation": "Coordinator's description of the student's academic engagement and social skills becomes generally more negative immediately after recounting the outburst, without citing academic or social evidence that would justify the shift",
+        "plausible_nonbias_interpretation": "Reasonable caution about safety-relevant behavior temporarily taking priority in a present-levels narrative",
+        "strength": "moderate",
+        "do_not_make_explicit": ["horn effect", "halo effect", "bias"]
+      }
+    ],
+    "control_specification": {
+      "paired_scenario_id": null,
+      "features_to_match": [],
+      "features_to_remove_or_change": [],
+      "ambiguity_boundary": "Not applicable; condition is biased, not a control condition."
+    },
+    "counterfactual_specification": {
+      "causal_variable": "Not applicable in biased condition (no counterfactual requested)",
+      "original_state": null,
+      "counterfactual_state": null,
+      "variables_to_hold_constant": [],
+      "expected_causal_difference": null,
+      "causal_test_question": null
+    },
+    "generation_checks": [
+      "Exactly 4 decision points present, decision point 4 contains no intended bias instance",
+      "Exactly 1 Group attribution error instance placed at decision point 1",
+      "Exactly 1 Present Bias instance placed at decision point 2",
+      "Exactly 1 Horn Effect instance placed at decision point 3",
+      "No bias labels, definitions, or explanations appear in probes or narrative",
+      "Each instance has a distinct evidence trace and decision moment",
+      "Target word count 1,350 (range 1,215-1,485) achievable given 4 decision points, probe plan, and 3 embedded instances without repetitive exposition"
+    ]
+  }}}
+
+WRITING REQUIREMENTS
+1. Produce only the interview, with no preface, postscript, analysis, labels, answer key, bias names, or JSON.
+2. Use approximately 1,350 words, with an acceptable range of 1,215–1,485 words.
+3. Use exactly four decision points.
+4. Write a natural semi-structured CTA interview between an interviewer and a domain-credible participant. Include both questions and answers.
+5. Begin with a brief consent/role/context exchange, then obtain an incident account, reconstruct the timeline, revisit the four decision points, probe the participant's reasoning, and end with relevant hypotheticals.
+6. Make the participant's account coherent, specific, and occupationally plausible. Include concrete cues, information sources, goals, constraints, alternatives, time pressure, uncertainty, prior experience, and consequences.
+7. Make the target biases inferable from patterns of reasoning, not from vocabulary that names or defines them.
+8. Do not make every decision biased. Preserve natural variation, including justified reasoning and uncertainty.
+9. Do not equate an incorrect decision or bad outcome with a bias. Include enough context for alternative explanations to remain possible.
+10. Keep the number of decision points, actors, technical terms, and narrative complexity aligned with the specification.
+11. For multiple target biases, distribute them across the incident. Each bias must have a distinct manifestation, but interactions may occur naturally.
+12. For `vocabulary_control`, preserve the same occupational vocabulary and narrative complexity while writing decisions supported by balanced evidence and reasonable consideration of alternatives. Do not insert target-bias evidence.
+13. For `ambiguous_control`, include genuinely ambiguous reasoning that has plausible non-bias explanations, but do not intentionally instantiate a target bias. Do not use exaggerated contradiction or suspiciously artificial neutrality.
+14. For `counterfactual`, minimally alter the specified causal variable. Preserve all other material facts, wording patterns, and decision structure as far as possible. Make the changed variable causally relevant, not merely correlated with the outcome.
+15. Include at least one probe asking what information would have changed the decision and one probe asking what would have happened if a key feature had been different.
+16. Do not add facts that contradict the generation specification.
+17. Avoid stereotypes, protected-class generalizations, and gratuitous sensitive content.
+
+RECOMMENDED STRUCTURE
+- Opening and role context: 100–150 words.
+- Initial incident account: 250–350 words.
+- Timeline reconstruction: 150–200 words.
+- Four decision-point sections with probes: 550–650 words total.
+- Closing reflection and hypothetical: 150–250 words.
+
+DIALOGUE STYLE
+- Label turns as `Interviewer:` and `Participant:`.
+- Let answers vary in length and certainty.
+- Use natural repairs, qualifications, and references to evidence.
+- Avoid repeatedly asking the same generic question.
+- Do not explicitly state that the participant is biased, unbiased, rational, irrational, or subject to an experimental condition.
+
+FINAL SILENT CHECK
+Before outputting, verify word count, four decision points, domain realism, target-bias concealment, control fidelity, and causal minimality where applicable. If a target bias cannot be represented without becoming obvious or implausible, revise the incident rather than explaining the problem.
+
+OUTPUT
+Return only the interview text.

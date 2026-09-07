@@ -1,0 +1,571 @@
+{
+  "validator_version": "2.0",
+  "interview_id": "IS_Biased_6",
+  "condition": "biased",
+  "domain_assessment": {
+    "domain": "Retail-banking software architecture and portal-modernization delivery",
+    "role": "Software architect with end-to-end technical-direction responsibility",
+    "objective": "Deliver a more usable and scalable retail-banking self-service portal within a fixed six-month deadline tied to a regulatory reporting change.",
+    "incident_type": "Multi-stage modernization incident involving early budget estimation, usability-evidence interpretation, architecture selection and risk framing, security-mandated authentication redesign, and continuation amid delays and outages.",
+    "confidence": 0.99
+  },
+  "structure_audit": {
+    "estimated_word_count": 1790,
+    "within_target_range": true,
+    "decision_point_count": 4,
+    "decision_points": [
+      {
+        "id": 1,
+        "summary": "The architect adopted an early vendor rough-order-of-magnitude estimate as the working budget baseline before detailed internal technical scoping was available.",
+        "evidence_before": [
+          "Finance required a budget number within about one week.",
+          "A properly detailed internal engineering estimate would have required roughly two additional weeks.",
+          "The external vendor supplied the only concrete cost-and-timeline figure.",
+          "The vendor had relevant experience with similar front-end migrations."
+        ],
+        "evidence_after": [
+          "The internal estimate was approximately 40% higher.",
+          "Previously omitted data-migration edge cases contributed to the difference.",
+          "Finance and subsequent budget reviews continued to use the vendor figure as the reference baseline.",
+          "The participant framed the later estimate as an overrun rather than as a replacement baseline."
+        ],
+        "goals_constraints": [
+          "Provide finance with a usable budget input quickly.",
+          "Meet a non-negotiable regulatory deadline.",
+          "Avoid delaying budget approval while preserving planning accuracy."
+        ],
+        "alternatives": [
+          "Wait for the detailed internal estimate.",
+          "Provide a range with explicit caveats.",
+          "Use the vendor estimate as a temporary single-number baseline."
+        ],
+        "decision_basis": "The participant selected the single vendor figure because it was concrete, finance needed a number, and the vendor had performed superficially similar work.",
+        "time_pressure": "High: finance required a number within approximately one week.",
+        "uncertainty": "High: technical scope, especially data-migration edge cases, had not yet been fully estimated."
+      },
+      {
+        "id": 2,
+        "summary": "The architect interpreted mixed usability findings for a navigation model he designed and selectively emphasized evidence favorable to that design.",
+        "evidence_before": [
+          "Ten beta users tested the new navigation model.",
+          "Six participants had difficulty moving between dashboard and account sections.",
+          "Four participants completed tasks quickly and praised the layout.",
+          "The UX researcher identified navigation confusion as the top issue."
+        ],
+        "evidence_after": [
+          "The architect sought positive comments for inclusion in the stakeholder readout.",
+          "Negative cases were interpreted as unfamiliarity with a new pattern or an onboarding issue.",
+          "The architect acknowledged unequal scrutiny: mitigating explanations were sought for negative cases, but problems were not actively sought in positive cases.",
+          "A second cohort showed a similar confusion rate."
+        ],
+        "goals_constraints": [
+          "Assess whether the proposed navigation model was viable.",
+          "Prepare a stakeholder readout that represented usability-test findings.",
+          "Balance usability concerns against the value of a redesigned interaction model."
+        ],
+        "alternatives": [
+          "Treat the UX researcher's finding as evidence of a structural navigation problem.",
+          "Analyze positive and negative transcripts using comparable scrutiny.",
+          "Attribute the negative findings primarily to onboarding and transition effects."
+        ],
+        "decision_basis": "The participant's prior confidence in an authored design shaped selective retrieval and asymmetric interpretation of mixed evidence.",
+        "time_pressure": "Not explicitly stated; likely moderate due to an active six-month delivery schedule.",
+        "uncertainty": "Moderate: the first cohort's results were mixed, but the follow-up cohort materially reduced the plausibility that the findings were a one-off."
+      },
+      {
+        "id": 3,
+        "summary": "The architect recommended microservices partly because peer firms had adopted similar decompositions, then overweighted a salient executive-visible demo crash in subsequent risk framing.",
+        "evidence_before": [
+          "A monolith refactor was described as lower risk but less beneficial for scalability.",
+          "Microservices were a larger implementation lift.",
+          "Three peer financial firms presented favorable decomposition case studies.",
+          "The internal backend risk memo assessed the microservices path as moderate risk and manageable through phased rollout.",
+          "The pilot recorded a 92% transaction-completion rate during the relevant week.",
+          "One beta session crashed during a live demonstration for the executive sponsor."
+        ],
+        "evidence_after": [
+          "Peer adoption made the microservices option feel validated rather than experimental.",
+          "The demo incident dominated the executive-facing risk narrative.",
+          "The participant explicitly stated that the single incident received more emphasis than it statistically deserved.",
+          "Later log review identified a test-environment misconfiguration rather than the architecture as the cause."
+        ],
+        "goals_constraints": [
+          "Select an architecture that improved scalability without unmanageable implementation risk.",
+          "Provide leadership with an appropriate account of pilot risk.",
+          "Maintain confidence and governance support for a high-stakes modernization program."
+        ],
+        "alternatives": [
+          "Prioritize the internal risk memo and system-specific evidence over peer adoption.",
+          "Treat peer case studies as context rather than validation of local suitability.",
+          "Weight the single demo crash proportionately against the aggregate pilot metric.",
+          "Defer architecture-specific conclusions until root-cause analysis was complete."
+        ],
+        "decision_basis": "For architecture selection, peer adoption was used as social validation alongside the internal memo. For risk framing, an executive-visible negative event received disproportionate weight relative to aggregate pilot performance.",
+        "time_pressure": "Moderate: architecture selection occurred before execution, while executive risk communication followed a salient live incident.",
+        "uncertainty": "Moderate to high: peer cases may not have been directly comparable, and the incident cause was unknown when the initial risk framing was delivered."
+      },
+      {
+        "id": 4,
+        "summary": "Four months into delivery, the architect resisted a security-mandated identity-provider change primarily because of its imposed form and continued the migration partly because reverting completed work felt wasteful.",
+        "evidence_before": [
+          "Only two of five planned services had been cut over, both later than planned.",
+          "Integration bugs were slowing the migration.",
+          "Monitoring identified rising latency and two customer-facing outages associated with the new service mesh.",
+          "Security required a centralized identity provider in response to a compliance finding.",
+          "The team had already partially implemented its own authentication approach.",
+          "The project faced a fixed regulatory deadline."
+        ],
+        "evidence_after": [
+          "The architect drafted an alternative compliance design before conducting a full technical comparison of the mandated identity provider.",
+          "The participant reported no strong technical objection at that stage.",
+          "The participant stated that the directive's imposed nature and the desire to retain architectural control motivated the initial resistance.",
+          "The team continued rather than paused or reverted.",
+          "The participant acknowledged that sunk work was highly salient and that forward-looking stopping-versus-continuing costs were not weighed rigorously."
+        ],
+        "goals_constraints": [
+          "Address the compliance finding.",
+          "Protect system stability and customer experience.",
+          "Meet the regulatory deadline.",
+          "Avoid unnecessary rework while determining whether continued migration remained justified."
+        ],
+        "alternatives": [
+          "Conduct a technical comparison of the centralized identity provider before proposing an alternative.",
+          "Adopt the mandate if it performs adequately on technical and compliance grounds.",
+          "Pause the migration for a forward-looking cost-benefit reassessment.",
+          "Continue the migration because cutover and implementation work had already been completed.",
+          "Revert the two services if expected future costs and risks exceeded continuation benefits."
+        ],
+        "decision_basis": "Resistance to the authentication directive was initially driven by perceived loss of autonomy, while migration continuation was explicitly influenced by the desire not to waste work already completed.",
+        "time_pressure": "High: the regulatory deadline remained fixed, and customer-facing outages increased operational urgency.",
+        "uncertainty": "High: the comparative technical merits of the identity-provider options had not yet been assessed fully, and the future costs of continuing versus stopping the migration were not rigorously evaluated."
+      }
+    ]
+  },
+  "target_occurrence_audit": [
+    {
+      "instance_id": "anch_01",
+      "bias": "Anchoring Bias",
+      "requested_occurrences_for_bias": 1,
+      "status": "supported",
+      "decision_point": 1,
+      "supporting_quote": "“I used it. Submitted it as our working budget baseline since it was the only concrete number on the table and finance needed something.” Later: “Every budget check-in after that referenced it as the baseline, even once we knew it wasn't built on solid scoping.”",
+      "evidence_location": "Budget-estimation sequence: participant responses immediately after the interviewer asks what happened to the vendor figure, followed by the later discussion of the internal estimate and recurring budget check-ins.",
+      "mechanism": "An externally supplied early numeric estimate was adopted before detailed technical scoping and persisted as the comparison baseline after a more informed internal estimate became available. The later estimate was consequently framed as a 40% overrun instead of superseding an inadequate initial reference point.",
+      "strength": "moderate",
+      "confidence": 0.96,
+      "plausible_nonbias_explanation": "Using the only available estimate under a one-week finance deadline was initially reasonable. The bias-relevant evidence is not the initial use alone, but the continuing reference to that figure after its thin scoping basis and omitted scope had become known.",
+      "additional_evidence_needed": "None. The interview supplies the early external numeric source, pre-scoping timing, later corrective estimate, and evidence of persistent baseline use.",
+      "revision_needed": false,
+      "revision": {
+        "revision_type": "none",
+        "location": "Decision point 1, vendor-estimate and later internal-estimate exchange.",
+        "current_defect": "None material.",
+        "minimal_change_instruction": "No change required.",
+        "preserve": [
+          "The one-week finance deadline",
+          "The externally supplied vendor estimate",
+          "The later detailed internal estimate approximately 40% higher",
+          "The continued use of the vendor figure as the budget baseline"
+        ],
+        "avoid_creating": [
+          "Do not add unsupported claims that the vendor acted negligently or deceptively",
+          "Do not convert this episode into a generic planning-fallacy or optimism-bias account"
+        ],
+        "expected_post_revision_status": "supported"
+      }
+    },
+    {
+      "instance_id": "conf_01",
+      "bias": "Confirmation Bias",
+      "requested_occurrences_for_bias": 1,
+      "status": "supported",
+      "decision_point": 2,
+      "supporting_quote": "“I went back through the transcripts looking for more of the positive comments to include in the stakeholder readout.” Also: “I don't think I dug into the positive transcripts looking for problems the same way I dug into the negative ones looking for mitigating explanations. I was fairly confident in the navigation model going in.”",
+      "evidence_location": "Usability-testing sequence, especially the participant's explanation of the stakeholder readout and answer to the probe about equal scrutiny.",
+      "mechanism": "The architect selectively retrieved favorable comments and applied asymmetric scrutiny to mixed usability evidence: positive evidence for an authored design was highlighted, while majority negative findings were reframed as onboarding effects. The participant explicitly links this asymmetry to prior confidence in the design.",
+      "strength": "strong",
+      "confidence": 0.98,
+      "plausible_nonbias_explanation": "It can be appropriate to ensure that minority positive feedback appears in a balanced readout and to consider whether unfamiliarity contributes to usability issues. However, the admitted one-sided search for mitigating explanations and lack of parallel scrutiny of positive feedback support confirmation bias rather than balanced interpretation.",
+      "additional_evidence_needed": "None. The evidence identifies a concrete evidence-selection act, a prior belief, and asymmetric evaluation of contrary versus confirming material.",
+      "revision_needed": false,
+      "revision": {
+        "revision_type": "none",
+        "location": "Decision point 2, transcript-review and equal-scrutiny probe.",
+        "current_defect": "None material.",
+        "minimal_change_instruction": "No change required.",
+        "preserve": [
+          "The architect's authorship of the navigation model",
+          "The six-of-ten navigation-confusion finding",
+          "The four positive user experiences",
+          "The UX researcher's top-issue finding",
+          "The second cohort's similar confusion rate"
+        ],
+        "avoid_creating": [
+          "Do not add a statement that the architect knowingly concealed evidence",
+          "Do not transform the episode into a generic self-serving or reputational-defense account"
+        ],
+        "expected_post_revision_status": "supported"
+      }
+    },
+    {
+      "instance_id": "herd_01",
+      "bias": "Herding",
+      "requested_occurrences_for_bias": 1,
+      "status": "supported",
+      "decision_point": 3,
+      "supporting_quote": "“If three firms our size had gone that direction and it worked out, it felt like a validated path rather than something experimental.”",
+      "evidence_location": "Architecture-decision exchange, after the interviewer distinguishes the peer case studies from the internal backend risk memo.",
+      "mechanism": "Peer-organization adoption was used as social validation for the microservices recommendation, separate from the system-specific internal risk assessment. The reasoning moves from 'other similar firms adopted it' to 'it is validated,' without evidence that those firms' technical, regulatory, operating, or migration conditions were sufficiently comparable.",
+      "strength": "moderate",
+      "confidence": 0.84,
+      "plausible_nonbias_explanation": "Peer case studies can be legitimate external evidence in architecture assessment, particularly when organizations are similar in size and regulatory context. The text supports herding because the participant describes the pattern of adoption itself as making the option feel validated, rather than describing a comparison of transferable technical conditions or outcomes.",
+      "additional_evidence_needed": "No revision is required, though a stronger distinction would require evidence that the participant did not independently test the applicability of the peer cases. The existing wording is sufficient for the intended subtle manifestation.",
+      "revision_needed": false,
+      "revision": {
+        "revision_type": "none",
+        "location": "Decision point 3, monolith-refactor versus microservices recommendation.",
+        "current_defect": "No material defect; the instance is subtle but independently observable.",
+        "minimal_change_instruction": "No change required.",
+        "preserve": [
+          "The internal risk memo's separate moderate-risk assessment",
+          "The three peer-firm conference case studies",
+          "The distinction between scalability benefits and implementation lift",
+          "The separation from the demo-crash risk-framing episode"
+        ],
+        "avoid_creating": [
+          "Do not imply that peer adoption is inherently irrational",
+          "Do not add an unsupported claim that the peer firms were technically incomparable",
+          "Do not merge this evidence source with the demo-crash and pilot-metric evidence"
+        ],
+        "expected_post_revision_status": "supported"
+      }
+    },
+    {
+      "instance_id": "neg_01",
+      "bias": "Negativity Bias",
+      "requested_occurrences_for_bias": 1,
+      "status": "supported",
+      "decision_point": 3,
+      "supporting_quote": "“That incident got a lot of airtime — more, probably, than a single session out of a whole pilot week statistically deserved. The 92% success rate was in there, but the crash was what people remembered, and honestly what I emphasized too.”",
+      "evidence_location": "Demo-incident and executive risk-framing sequence.",
+      "mechanism": "A single salient, executive-visible negative event received disproportionate weight in risk communication relative to a positive aggregate pilot metric. The participant explicitly recognizes the statistical disproportion and reports emphasizing the incident nonetheless.",
+      "strength": "strong",
+      "confidence": 0.98,
+      "plausible_nonbias_explanation": "A visible crash during an executive demonstration could properly warrant urgent investigation or risk reporting. The account becomes bias-relevant because the incident was allowed to dominate the overall risk narrative before its cause was known, despite the participant's recognition that its weight exceeded what one session in a full pilot week warranted.",
+      "additional_evidence_needed": "None. The text supplies the negative event, the competing aggregate metric, the weighting behavior, and later evidence that the incident was caused by a test-environment misconfiguration.",
+      "revision_needed": false,
+      "revision": {
+        "revision_type": "none",
+        "location": "Decision point 3, live-demo crash and subsequent executive risk framing.",
+        "current_defect": "None material.",
+        "minimal_change_instruction": "No change required.",
+        "preserve": [
+          "The 92% pilot-week transaction-completion metric",
+          "The single executive-visible demo crash",
+          "The initial absence of a confirmed root cause",
+          "The later test-environment misconfiguration finding",
+          "The separation from peer-adoption reasoning"
+        ],
+        "avoid_creating": [
+          "Do not suggest that outages or crashes should be ignored",
+          "Do not restate the event as architecture failure after the later root-cause finding",
+          "Do not merge this with a general availability-bias label in the target map"
+        ],
+        "expected_post_revision_status": "supported"
+      }
+    },
+    {
+      "instance_id": "esc_01",
+      "bias": "Irrational Escalation",
+      "requested_occurrences_for_bias": 1,
+      "status": "supported",
+      "decision_point": 4,
+      "supporting_quote": "“We'd already cut over two services, and reverting those felt like it would waste months of work.” Also: “The sunk work was very present in my mind at that moment.”",
+      "evidence_location": "Four-month migration-continuation exchange, especially the response to the interviewer probe about whether continuing was weighed against stopping.",
+      "mechanism": "The continuation decision was partly justified by already completed cutover work and the perceived waste of reverting it, despite delayed delivery, integration problems, rising latency, and customer-facing outages. The participant admits that forward-looking continuation-versus-stopping costs were not assessed rigorously.",
+      "strength": "strong",
+      "confidence": 0.98,
+      "plausible_nonbias_explanation": "Continuing may still have been the substantively best choice because of the fixed regulatory deadline, partial cutover state, and costs of reversal. The bias is supported because the participant identifies sunk work as influential while acknowledging insufficient prospective cost-benefit reassessment; the text does not claim that continuation was necessarily wrong.",
+      "additional_evidence_needed": "None. The episode includes negative feedback, a continuation decision, explicit sunk-cost reasoning, and an acknowledged omission of rigorous forward-looking evaluation.",
+      "revision_needed": false,
+      "revision": {
+        "revision_type": "none",
+        "location": "Decision point 4, migration pause-versus-continuation discussion.",
+        "current_defect": "None material.",
+        "minimal_change_instruction": "No change required.",
+        "preserve": [
+          "The two completed service cutovers",
+          "The integration bugs, latency, and customer-facing outages",
+          "The fixed regulatory deadline",
+          "The distinction between continuation reasoning and the authentication-mandate response"
+        ],
+        "avoid_creating": [
+          "Do not characterize continuation as irrational solely because the project had problems",
+          "Do not remove the valid deadline constraint",
+          "Do not shift the rationale primarily to optimism, overconfidence, or fear of blame"
+        ],
+        "expected_post_revision_status": "supported"
+      }
+    },
+    {
+      "instance_id": "react_01",
+      "bias": "Reactance",
+      "requested_occurrences_for_bias": 1,
+      "status": "supported",
+      "decision_point": 4,
+      "supporting_quote": "“My first reaction, honestly, was frustration that it was being handed down as a directive rather than a conversation.” Also: “Not really a strong [technical concern] at that point — we hadn't done a full technical comparison yet. It was more that being told ‘do it this way’ rubbed me the wrong way.”",
+      "evidence_location": "Security-mandate exchange, including the probes about technical objections and the counterfactual contrast between a mandate and a suggestion.",
+      "mechanism": "The participant resisted the mandated centralized identity-provider approach and drafted an alternative primarily in response to the perceived restriction of autonomy and imposed directive form, not because of a developed technical objection. The participant further states that a suggestion would likely have elicited a more merits-based evaluation.",
+      "strength": "strong",
+      "confidence": 0.99,
+      "plausible_nonbias_explanation": "Resistance to a mandatory architecture change can be appropriate if the directive lacks technical justification or creates implementation risks. Here, however, the participant reports no strong technical objection and no completed comparison, while directly identifying the directive's imposed nature and desire for control as the drivers of the initial response.",
+      "additional_evidence_needed": "None. The interview directly establishes the autonomy threat, the resistance response, the lack of an independent technical objection at the relevant time, and the mandate-versus-suggestion contrast.",
+      "revision_needed": false,
+      "revision": {
+        "revision_type": "none",
+        "location": "Decision point 4, response to the centralized identity-provider mandate.",
+        "current_defect": "None material.",
+        "minimal_change_instruction": "No change required.",
+        "preserve": [
+          "The compliance finding behind the security mandate",
+          "The partially implemented internal authentication approach",
+          "The initial absence of a full technical comparison",
+          "The distinction from the migration-continuation decision"
+        ],
+        "avoid_creating": [
+          "Do not remove the possibility that a later technical comparison could identify genuine concerns",
+          "Do not convert the episode into generic resistance to change",
+          "Do not introduce an unsupported conflict-of-interest or territoriality allegation"
+        ],
+        "expected_post_revision_status": "supported"
+      }
+    }
+  ],
+  "bias_level_counts": [
+    {
+      "bias": "Anchoring Bias",
+      "requested_count": 1,
+      "supported_count": 1,
+      "weak_count": 0,
+      "absent_count": 0,
+      "merged_count": 0,
+      "accidental_count": 0,
+      "count_satisfied": true
+    },
+    {
+      "bias": "Confirmation Bias",
+      "requested_count": 1,
+      "supported_count": 1,
+      "weak_count": 0,
+      "absent_count": 0,
+      "merged_count": 0,
+      "accidental_count": 0,
+      "count_satisfied": true
+    },
+    {
+      "bias": "Herding",
+      "requested_count": 1,
+      "supported_count": 1,
+      "weak_count": 0,
+      "absent_count": 0,
+      "merged_count": 0,
+      "accidental_count": 0,
+      "count_satisfied": true
+    },
+    {
+      "bias": "Irrational Escalation",
+      "requested_count": 1,
+      "supported_count": 1,
+      "weak_count": 0,
+      "absent_count": 0,
+      "merged_count": 0,
+      "accidental_count": 0,
+      "count_satisfied": true
+    },
+    {
+      "bias": "Negativity Bias",
+      "requested_count": 1,
+      "supported_count": 1,
+      "weak_count": 0,
+      "absent_count": 0,
+      "merged_count": 0,
+      "accidental_count": 0,
+      "count_satisfied": true
+    },
+    {
+      "bias": "Reactance",
+      "requested_count": 1,
+      "supported_count": 1,
+      "weak_count": 0,
+      "absent_count": 0,
+      "merged_count": 0,
+      "accidental_count": 0,
+      "count_satisfied": true
+    }
+  ],
+  "additional_candidate_biases": [
+    {
+      "bias": "Availability Bias",
+      "decision_point": 3,
+      "supporting_quote": "“The crash was what people remembered, and honestly what I emphasized too when talking about where the risk actually sat.”",
+      "mechanism": "The executive-visible, vivid demo crash was especially memorable and disproportionately influenced subsequent risk framing.",
+      "confidence": 0.62,
+      "status": "candidate",
+      "plausible_nonbias_explanation": "The event's disproportionate weighting is already fully and more specifically captured as negativity bias. The text does not independently establish that ease of recall, rather than negative valence and executive salience, was the operative mechanism.",
+      "revision_recommendation": "none"
+    },
+    {
+      "bias": "Framing Effect",
+      "decision_point": 1,
+      "supporting_quote": "“I remember framing it as an overrun against the original number rather than as, you know, the number we probably should have started with.”",
+      "mechanism": "The same later internal estimate was presented as a deviation from an initial benchmark rather than as a corrected baseline, potentially shaping finance's interpretation of the project.",
+      "confidence": 0.59,
+      "status": "candidate",
+      "plausible_nonbias_explanation": "This framing is plausibly a downstream expression of the anchoring episode rather than a separate cognitive-bias occurrence. The text does not show an independently induced choice change by finance attributable to wording alone.",
+      "revision_recommendation": "none"
+    },
+    {
+      "bias": "Endowment Effect",
+      "decision_point": 4,
+      "supporting_quote": "“We'd already built out our own authentication approach and gotten it partway implemented.”",
+      "mechanism": "Prior investment in an internally developed approach may have increased its subjective value relative to the mandated alternative.",
+      "confidence": 0.34,
+      "status": "rejected",
+      "plausible_nonbias_explanation": "The participant's stated mechanism is primarily autonomy threat from a directive, and the prior work is also operationally relevant. There is insufficient evidence that ownership itself increased perceived technical value.",
+      "revision_recommendation": "none"
+    }
+  ],
+  "nonbias_cues": [
+    {
+      "cue": "Using the vendor's estimate initially because finance required a number within a week.",
+      "location": "Decision point 1, initial budget submission.",
+      "why_not_bias": "Under genuine time pressure, a rough external estimate can be an appropriate provisional planning input. Anchoring is supported only by its persistence after better scope information became available."
+    },
+    {
+      "cue": "Considering a range with caveats as an alternative budget presentation.",
+      "location": "Decision point 1, discussion of alternatives.",
+      "why_not_bias": "This demonstrates awareness of uncertainty and a viable alternative rather than biased reasoning."
+    },
+    {
+      "cue": "The UX researcher flagged navigation confusion as the top issue and a second cohort showed similar confusion.",
+      "location": "Decision point 2, usability-testing and follow-up-round sequence.",
+      "why_not_bias": "These are evidence observations, not bias manifestations. They are important because they provide disconfirming material against which the participant's selective processing can be evaluated."
+    },
+    {
+      "cue": "Consulting peer-company case studies during architecture selection.",
+      "location": "Decision point 3, architecture debate.",
+      "why_not_bias": "External benchmarking can be valid technical due diligence. It becomes herding here because adoption by peers is described as validation independent of demonstrated contextual transferability, not merely because peer examples were reviewed."
+    },
+    {
+      "cue": "The internal memo's assessment that phased microservices rollout was moderate risk and manageable.",
+      "location": "Decision point 3, architecture evidence.",
+      "why_not_bias": "This is a system-specific risk assessment and may be sound expert evidence. It should not be conflated with the peer-adoption mechanism."
+    },
+    {
+      "cue": "Treating a demo crash as a reason to investigate reliability risks.",
+      "location": "Decision point 3, immediately after the crash.",
+      "why_not_bias": "A customer-facing or executive-visible crash can legitimately trigger investigation. The supported bias concerns its disproportionate influence on the aggregate risk narrative, not the decision to investigate it."
+    },
+    {
+      "cue": "The security team's centralized identity-provider mandate following a compliance finding.",
+      "location": "Decision point 4, security-mandate context.",
+      "why_not_bias": "A mandatory compliance response is an organizational and regulatory constraint, not itself a cognitive bias."
+    },
+    {
+      "cue": "The fixed regulatory deadline and costs of reverting two services.",
+      "location": "Decision point 4, migration-continuation discussion.",
+      "why_not_bias": "Both are legitimate prospective considerations. Irrational escalation is supported because the participant explicitly privileged already incurred work without rigorous forward-looking comparison, not because continuation occurred under pressure."
+    }
+  ],
+  "causal_audit": {
+    "causal_claims": [
+      {
+        "claim": "The early vendor estimate influenced later budget framing and finance's treatment of the internal estimate as a 40% overrun.",
+        "support": "The participant states that subsequent budget check-ins continued to reference the vendor figure even after its weak basis was known and says finance might have pushed for a detailed estimate without that anchor.",
+        "assessment": "Moderately supported as a participant-level causal account. The timing and mechanism are coherent, but the interview does not independently establish finance's internal reasoning or rule out process-related budget-governance effects."
+      },
+      {
+        "claim": "Prior confidence in the architect's navigation model contributed to selective emphasis on positive usability comments and mitigating interpretations of negative findings.",
+        "support": "The participant explicitly reports being confident in the design beforehand and describes asymmetrical scrutiny of positive and negative transcripts.",
+        "assessment": "Strongly supported as a self-reported cognitive mechanism, although it remains retrospective self-report rather than independently observed behavior."
+      },
+      {
+        "claim": "Peer adoption contributed to comfort with the microservices recommendation.",
+        "support": "The participant says that three similarly sized firms taking that direction made it feel validated rather than experimental.",
+        "assessment": "Strongly supported as an influence on recommendation comfort, but the interview does not establish that peer adoption was determinative or that the final architecture decision would otherwise have changed."
+      },
+      {
+        "claim": "The executive-visible crash caused disproportionate negative risk framing.",
+        "support": "The participant states that the single incident dominated the narrative beyond what its statistical weight justified and that the 92% success metric would have carried more weight absent the crash.",
+        "assessment": "Strongly supported as a self-reported influence. The later root-cause finding also weakens an architecture-failure interpretation, though it does not by itself prove the earlier weighting was unreasonable."
+      },
+      {
+        "claim": "The imposed form of the security directive caused initial resistance to the centralized identity-provider approach.",
+        "support": "The participant reports no strong technical concern, identifies frustration with being told what to do, and says a suggestion would have prompted a more merits-based comparison.",
+        "assessment": "Strongly supported as a self-reported autonomy-threat mechanism."
+      },
+      {
+        "claim": "Sunk work contributed to the decision to continue the migration despite delays and outages.",
+        "support": "The participant states that reverting would waste months of work and acknowledges that sunk work was highly present while prospective costs were not rigorously weighed.",
+        "assessment": "Strongly supported as an influence, while the overall correctness of continuation remains indeterminate because valid deadline and reversal-cost considerations also existed."
+      }
+    ],
+    "correlation_causation_risks": [
+      {
+        "risk": "The 92% transaction-completion metric and the single crash are not necessarily commensurable measures of architectural risk.",
+        "implication": "A single crash may reveal a severe tail-risk failure that a weekly completion rate does not capture. The negativity-bias conclusion rests on the participant's admitted disproportionate weighting, not solely on comparing the two figures."
+      },
+      {
+        "risk": "The incident was later traced to a test-environment misconfiguration, but that later discovery does not prove the original executive concern was causally or procedurally unjustified at the time.",
+        "implication": "The interview appropriately supports a weighting bias in the initial narrative, but should not be read as proving that the crash had no legitimate risk-management relevance."
+      },
+      {
+        "risk": "Peer-company adoption may correlate with microservices suitability without causing the participant's architecture choice.",
+        "implication": "The interview supports peer adoption as a stated influence, not a complete causal explanation of the architecture recommendation."
+      },
+      {
+        "risk": "The finance response to the vendor estimate may have been governed by budget process norms, not only anchoring.",
+        "implication": "The causal account is strongest for the participant's framing and continued use of the number, and less certain for finance's independent cognition."
+      }
+    ],
+    "counterfactual_present": true,
+    "changed_variable": "Three separate retrospective probes vary one focal input at a time: presence of the early vendor anchor, executive visibility of the demo crash, and mandatory rather than suggestive framing of the security directive.",
+    "held_constant": [
+      "For the budget probe, the later detailed estimate and general project context are implicitly held constant while the early vendor number is removed.",
+      "For the demo probe, the 92% transaction-completion metric is held constant while executive-visible occurrence of the crash is removed.",
+      "For the mandate probe, the identity-provider substance and compliance context are implicitly held constant while the communication form changes from directive to suggestion."
+    ],
+    "causal_coherence": "moderate",
+    "explanation": "The three counterfactual probes are appropriately aligned with the anchoring, negativity, and reactance mechanisms and each changes a single psychologically relevant variable in the participant's retrospective account. They are not a formal paired-scenario design, and their evidentiary value is limited by hindsight and self-report. The interview does not use counterfactual probes for confirmation bias, herding, or irrational escalation, but this omission does not undermine the direct evidence for those episodes."
+  },
+  "quality_scores": {
+    "occupational_realism": 95,
+    "cta_fidelity": 91,
+    "bias_separability": 93,
+    "bias_subtlety": 84,
+    "control_fidelity": 100,
+    "counterfactual_fidelity": 88,
+    "narrative_coherence": 94,
+    "naturalness": 89,
+    "hidden_label_integrity": 96,
+    "overall_quality": 92
+  },
+  "revision_summary": {
+    "revision_required": false,
+    "supported_occurrence_total": 6,
+    "requested_occurrence_total": 6,
+    "missing_occurrence_total": 0,
+    "accidental_occurrence_total": 0,
+    "priority": "none",
+    "recommended_action": "accept",
+    "global_revision_constraints": [
+      "Retain the four-decision-point structure.",
+      "Retain the separation of the two co-located decision-point-3 episodes: peer-adoption justification must remain distinct from incident-versus-metric risk weighting.",
+      "Retain the separation of the two co-located decision-point-4 episodes: migration continuation must remain distinct from the response to the authentication directive.",
+      "Do not infer that the project outcome, technology choice, or continuation decision was necessarily objectively wrong; the supported claims concern reasoning mechanisms.",
+      "Do not add explicit bias labels or textbook-style admissions to the interview; the current evidence is behaviorally specific and sufficiently subtle."
+    ],
+    "revision_order": []
+  },
+  "failure_flags": []
+}

@@ -1,0 +1,413 @@
+{
+  "spec_version": "3.0",
+  "scenario_id": "NP_Biased_7",
+  "domain_id": "NP",
+  "domain": "Nuclear power and Process-control operations",
+  "role": "Process Control Operator (Chemical/Petrochemical Refinery)",
+  "condition": "biased",
+  "generation_specification": {
+    "scenario_title_internal": "Reactor Feed Heater Temperature Excursion During Night-to-Day Shift Handover",
+    "scenario_summary_internal": "A control-room operator at a petrochemical refinery's catalytic reforming unit must interpret a developing high-temperature/high-pressure excursion on the reactor feed heater train during a shift handover under production-throughput pressure. The operator must decide how to weigh a persistently noisy alarm history, a recent stable-trend handover report, a habitual startup sequence, a superficially similar past incident, and a vivid past major event, ultimately making a time-constrained corrective decision before a scheduled catalyst regeneration window closes.",
+    "occupational_realism": {
+      "objective": "Diagnose and correct an abnormal thermal/pressure trend on the reforming unit's feed heater and lead reactor before it threatens catalyst integrity or triggers an automatic unit trip, while minimizing unplanned production loss ahead of a scheduled regeneration outage.",
+      "setting": "Central control room of a catalytic reforming unit at a mid-size petrochemical refinery, day-to-night shift transition, DCS (distributed control system) console with trend screens, alarm annunciator panel, radio contact with outside field operators.",
+      "constraints": [
+        "Production target tied to a narrow regeneration outage window in 6 hours",
+        "Limited outside operator availability for field verification during shift change",
+        "Alarm system has a known history of nuisance/false alarms on this specific sensor loop",
+        "Time pressure to resolve the trend before board handover documentation is due",
+        "No direct real-time catalyst bed temperature profile, only proxy sensors"
+      ],
+      "stakeholders": [
+        "Incoming day-shift Process Control Operator (interviewee)",
+        "Outgoing night-shift operator",
+        "Field operator",
+        "Unit shift supervisor",
+        "Process engineer on call"
+      ],
+      "technical_terms_to_use": [
+        "reactor feed heater",
+        "catalytic reforming unit",
+        "DCS trend screen",
+        "high-temperature alarm setpoint",
+        "catalyst bed",
+        "compressor surge",
+        "regeneration window",
+        "annunciator panel",
+        "board operator log"
+      ],
+      "technical_terms_to_avail": [],
+      "technical_terms_to_avoid": [
+        "nuclear reactor",
+        "radiation",
+        "containment breach",
+        "core meltdown"
+      ]
+    },
+    "timeline": [
+      {
+        "phase": 1,
+        "decision_point": true,
+        "facts_available_before_decision": [
+          "High-temperature alarm activates on reactor feed heater outlet",
+          "Operator log shows this same alarm has triggered 11 times in the past month, all resolved as instrument drift",
+          "A slower, less visually prominent pressure-differential trend on an adjacent screen has begun a gradual rise over the last 2 hours"
+        ],
+        "new_information_after_decision": [
+          "Field operator later confirms outlet thermocouple reading is accurate, not drifting",
+          "Pressure-differential trend continues climbing after the alarm is acknowledged and silenced"
+        ],
+        "alternatives": [
+          "Acknowledge and silence alarm as likely nuisance based on history, continue monitoring",
+          "Dispatch field operator immediately to verify heater outlet temperature independently",
+          "Cross-check the pressure-differential trend alongside the alarm before deciding"
+        ],
+        "intended_action": "Operator acknowledges the alarm as probable nuisance, citing frequent past occurrences, and does not immediately cross-reference the pressure trend."
+      },
+      {
+        "phase": 2,
+        "decision_point": true,
+        "facts_available_before_decision": [
+          "Night-shift handover report describes 'stable, unremarkable' readings for the last 4 hours",
+          "Board operator log (older entries, several days back) shows a slow upward drift in feed heater duty that was flagged but not resolved",
+          "Production schedule calls for a feed rate increase to meet output target before the regeneration window"
+        ],
+        "new_information_after_decision": [
+          "Feed rate increase raises heater outlet temperature further",
+          "Field operator reports unusual heat shimmer near the heater firebox during walkdown"
+        ],
+        "alternatives": [
+          "Proceed with the standard feed-rate increase sequence used for routine handovers",
+          "Delay the increase and review the multi-day trend log before acting",
+          "Consult the process engineer before adjusting feed rate"
+        ],
+        "intended_action": "Operator executes the familiar step-by-step valve and setpoint sequence normally used for routine feed increases, weighting the recent stable handover report over the older drift trend, without pausing to reassess given the abnormal precursor."
+      },
+      {
+        "phase": 3,
+        "decision_point": true,
+        "facts_available_before_decision": [
+          "Combined alarm and shimmer observations now resemble the operator's memory of a compressor surge event handled successfully 18 months ago on a similar unit",
+          "A separate, more dramatic feed heater tube-rupture incident from about 2 years ago at this same refinery is well known and often discussed in shift briefings",
+          "Current instrumentation shows temperature and pressure trending abnormally but does not show the vibration signature that accompanied the earlier compressor surge"
+        ],
+        "new_information_after_decision": [
+          "Applying the surge-event checklist does not address the temperature excursion",
+          "Process engineer later notes the vibration signature characteristic of a true surge event was absent from current data"
+        ],
+        "alternatives": [
+          "Apply the diagnostic and response template from the prior compressor surge event",
+          "Treat the situation as a fresh case and gather heater-specific data before selecting a diagnostic path",
+          "Request an independent instrument check to compare against both remembered precedents"
+        ],
+        "intended_action": "Operator maps the response template from the previously experienced surge event onto the current case based on surface resemblance, and separately treats the vivid tube-rupture incident from two years ago as the more likely explanation because it comes readily to mind, without weighing how infrequent that scenario actually is relative to more mundane causes."
+      },
+      {
+        "phase": 4,
+        "decision_point": true,
+        "facts_available_before_decision": [
+          "Regeneration window closes in under 90 minutes",
+          "Temperature and pressure trends continue to climb but have not yet reached automatic trip setpoints",
+          "Process engineer is reachable but a full consultation would take 20-30 minutes",
+          "Board checklist offers a short list of standard corrective actions for heater excursions"
+        ],
+        "new_information_after_decision": [
+          "The selected corrective action stabilizes the immediate trend but does not fully resolve the underlying cause",
+          "A post-incident review later identifies an alternative corrective option that would have addressed the root cause more directly"
+        ],
+        "alternatives": [
+          "Select the first standard corrective action on the checklist that appears workable",
+          "Pause production and conduct a full diagnostic review before acting",
+          "Escalate immediately to the process engineer and wait for full guidance"
+        ],
+        "intended_action": "Operator, under time and cognitive load constraints, selects the first checklist action that appears sufficient to stabilize the trend rather than exhaustively evaluating all corrective alternatives."
+      }
+    ],
+    "probe_plan": {
+      "opening": [
+        "Can you walk me through what you were doing when the alarm first activated?",
+        "What was your initial read on the situation?"
+      ],
+      "timeline_reconstruction": [
+        "What happened right after you acknowledged the alarm?",
+        "Walk me through the shift handover conversation and what stood out to you.",
+        "What did you notice during the field walkdown report?",
+        "What happened as the regeneration window approached?"
+      ],
+      "decision_point_probes": [
+        "What information did you have available at that moment?",
+        "What alternatives did you consider, and why did you rule them out?",
+        "What made you settle on that particular course of action?",
+        "How did your past experience with similar situations factor into this decision?",
+        "How much time pressure did you feel, and how did that affect your choice?",
+        "How confident were you in your read of the situation at the time?"
+      ],
+      "closing_hypotheticals": [
+        "If the alarm history had been different, would you have responded the same way?",
+        "If you had had more time before the regeneration window, what would you have done differently?",
+        "Looking back, is there a moment where a different piece of information would have changed your decision?"
+      ]
+    },
+    "occurrence_embedding_plan_internal": [
+      {
+        "instance_id": "av_01",
+        "bias": "Availability Bias",
+        "decision_point": 1,
+        "mechanism": "Operator estimates the probability that the alarm is a false positive based on how easily instances of past nuisance alarms come to mind, rather than on current corroborating or contradicting evidence.",
+        "affected_reasoning_operation": "Probability estimation from recalled frequency",
+        "evidence_available_at_time": [
+          "Log showing 11 recent nuisance alarms from the same sensor",
+          "An unexamined adjacent pressure-differential trend"
+        ],
+        "required_textual_manifestation": "Operator explicitly cites the frequent recent alarm history as the primary reason for judging this alarm minor, without mentioning having checked the pressure trend at that moment.",
+        "plausible_nonbias_interpretation": "A reasonable operator might legitimately deprioritize a historically noisy alarm as an efficient use of limited attention.",
+        "strength": "subtle",
+        "do_not_make_explicit": ["availability heuristic", "base rate", "cognitive bias"]
+      },
+      {
+        "instance_id": "sal_01",
+        "bias": "Salience Bias",
+        "decision_point": 1,
+        "mechanism": "The visually and audibly prominent flashing/blaring alarm captures disproportionate attention, causing the operator to overlook the less visually striking but diagnostically relevant pressure-differential trend on an adjacent screen.",
+        "affected_reasoning_operation": "Attention allocation across simultaneous evidence sources",
+        "evidence_available_at_time": [
+          "Flashing high-temperature alarm on annunciator panel",
+          "Quietly rising pressure-differential trend on a separate trend screen"
+        ],
+        "required_textual_manifestation": "Operator describes focusing on the alarm panel and admits, when asked, not having looked at the pressure trend screen until later.",
+        "plausible_nonbias_interpretation": "Alarm panels are designed to draw attention first as part of standard operating procedure.",
+        "strength": "subtle",
+        "do_not_make_explicit": ["salience", "attention bias"]
+      },
+      {
+        "instance_id": "rec_01",
+        "bias": "Recency Bias",
+        "decision_point": 2,
+        "mechanism": "Operator gives disproportionate weight to the most recent handover report describing stable conditions over the last 4 hours, discounting the older multi-day drift trend documented earlier in the log.",
+        "affected_reasoning_operation": "Weighting of sequential evidence when forming a current-state judgment",
+        "evidence_available_at_time": [
+          "Night-shift handover report describing 4 hours of stable readings",
+          "Older log entries showing a multi-day upward drift in heater duty"
+        ],
+        "required_textual_manifestation": "Operator states that because the last few hours looked stable, they felt comfortable proceeding, without referencing the older drift entries as a counterweight.",
+        "plausible_nonbias_interpretation": "Recent data is often the most operationally relevant for immediate decisions.",
+        "strength": "subtle",
+        "do_not_make_explicit": ["recency effect", "cognitive bias"]
+      },
+      {
+        "instance_id": "hab_01",
+        "bias": "Habit Intrusion",
+        "decision_point": 2,
+        "mechanism": "Operator performs the familiar, highly practiced valve/setpoint sequence used routinely for feed-rate increases as an automatic behavioral pattern, without consciously adapting the steps to account for the abnormal precursor conditions present this time.",
+        "affected_reasoning_operation": "Execution of a well-rehearsed action sequence under conditions requiring deviation from the routine",
+        "evidence_available_at_time": [
+          "Standard feed-increase procedure performed dozens of times before",
+          "Abnormal precursor conditions (alarm history, drift trend) present but not integrated into the action plan"
+        ],
+        "required_textual_manifestation": "Operator describes going through the 'usual steps' for a feed increase and, when probed, acknowledges not consciously pausing to modify the sequence despite the unusual circumstances.",
+        "plausible_nonbias_interpretation": "Standardized procedures exist precisely to be followed consistently for efficiency and safety.",
+        "strength": "moderate",
+        "do_not_make_explicit": ["habit intrusion", "automaticity", "slip"]
+      },
+      {
+        "instance_id": "sim_01",
+        "bias": "Similarity Bias",
+        "decision_point": 3,
+        "mechanism": "Operator matches the current symptom pattern to a superficially similar prior compressor surge event and applies that event's diagnostic/response template, despite the absence of a key differentiating signal (vibration signature) that was present in the original case.",
+        "affected_reasoning_operation": "Pattern-matching for diagnostic categorization",
+        "evidence_available_at_time": [
+          "Memory of a prior compressor surge event with generally similar temperature/pressure behavior",
+          "Absence of the vibration signature that characterized that prior event"
+        ],
+        "required_textual_manifestation": "Operator explains choosing the surge-response approach because 'it looked like' the earlier event, without addressing the missing vibration signal as a distinguishing factor.",
+        "plausible_nonbias_interpretation": "Drawing on a structurally similar past case is a normal and often effective diagnostic heuristic.",
+        "strength": "subtle",
+        "do_not_make_explicit": ["similarity heuristic", "representativeness"]
+      },
+      {
+        "instance_id": "av_02",
+        "bias": "Availability Bias",
+        "decision_point": 3,
+        "mechanism": "Operator judges a rare, dramatic tube-rupture incident from about two years ago as the more likely explanation for the current excursion because it is vivid and frequently discussed, rather than because current evidence supports it over more mundane causes.",
+        "affected_reasoning_operation": "Likelihood judgment driven by vividness/memorability of a distinct recalled event, separate from the frequency-based recall in av_01",
+        "evidence_available_at_time": [
+          "Widely discussed, memorable tube-rupture incident from about two years prior",
+          "Current data lacking specific markers that would confirm that rare failure mode"
+        ],
+        "required_textual_manifestation": "Operator mentions the two-year-old incident unprompted as feeling like the likely cause 'because everyone still talks about it,' distinct from the earlier nuisance-alarm frequency reasoning in decision point 1.",
+        "plausible_nonbias_interpretation": "Considering a known catastrophic failure mode as a precaution is prudent risk awareness.",
+        "strength": "subtle",
+        "do_not_make_explicit": ["availability heuristic", "vividness effect"]
+      },
+      {
+        "instance_id": "br_01",
+        "bias": "Bounded Rationality",
+        "decision_point": 4,
+        "mechanism": "Facing time pressure and cognitive load from the closing regeneration window, the operator satisfices by selecting the first checklist action that appears adequate rather than exhaustively evaluating all available corrective alternatives.",
+        "affected_reasoning_operation": "Option generation and selection under constrained time and cognitive resources",
+        "evidence_available_at_time": [
+          "Closing regeneration window (under 90 minutes)",
+          "A short standard checklist of corrective actions",
+          "Availability of the process engineer for fuller consultation, at a time cost"
+        ],
+        "required_textual_manifestation": "Operator states choosing the first workable checklist option to save time, and acknowledges not comparing it against other listed alternatives before acting.",
+        "plausible_nonbias_interpretation": "Selecting a known, pre-approved corrective action quickly is a defensible response to genuine time constraints.",
+        "strength": "moderate",
+        "do_not_make_explicit": ["bounded rationality", "satisficing"]
+      }
+    ],
+    "control_specification": {
+      "paired_scenario_id": null,
+      "features_to_match": [],
+      "features_to_remove_or_change": [],
+      "ambiguity_boundary": "Not applicable; this is the biased-condition scenario with no paired control specified in this generation cycle."
+    },
+    "counterfactual_specification": {
+      "causal_variable": null,
+      "original_state": null,
+      "counterfactual_state": null,
+      "variables_to_hold_constant": [],
+      "expected_causal_difference": null,
+      "causal_test_question": null
+    },
+    "generation_checks": [
+      "Confirm exactly 4 decision points are present in the timeline",
+      "Confirm exactly 7 total bias instances are embedded: 2 Availability, 1 Recency, 1 Habit Intrusion, 1 Salience, 1 Similarity, 1 Bounded Rationality",
+      "Confirm av_01 and av_02 use distinct evidence sources (frequency-based nuisance-alarm recall vs. vividness-based recall of a distinct rare incident) and occur at different decision points",
+      "Confirm no bias label, definition, or psychological terminology appears in the public interview text",
+      "Confirm each decision point offers at least two plausible alternatives",
+      "Confirm probes cover cues, information sources, goals, alternatives, decision basis, prior experience, time pressure, uncertainty, and hypotheticals",
+      "Confirm final interview length falls within 1,215-1,485 words",
+      "Confirm consequences described do not mechanically confirm or refute bias presence",
+      "Confirm Habit Intrusion instance reflects an automatic, frequently-practiced behavioral pattern rather than a deliberate reasoning error, per mechanism_constraint"
+    ]
+  },
+  "hidden_validation_specification": {
+    "hidden_spec_version": "1.0",
+    "condition": "biased",
+    "exact_occurrence_manifest": [
+      { "bias": "Availability Bias", "occurrences": 2, "mechanism_constraint": null },
+      { "bias": "Recency Bias", "occurrences": 1, "mechanism_constraint": null },
+      { "bias": "Habit Intrusion", "occurrences": 1, "mechanism_constraint": "human performance often can be captured by familiar behavioral patterns that occur so frequently in their experiences." },
+      { "bias": "Salience Bias", "occurrences": 1, "mechanism_constraint": null },
+      { "bias": "Similarity Bias", "occurrences": 1, "mechanism_constraint": null },
+      { "bias": "Bounded Rationality", "occurrences": 1, "mechanism_constraint": null }
+    ],
+    "target_bias_names": [
+      "Availability Bias",
+      "Recency Bias",
+      "Habit Intrusion",
+      "Salience Bias",
+      "Similarity Bias",
+      "Bounded Rationality"
+    ],
+    "requested_occurrence_count_for_each_bias": [
+      { "bias": "Availability Bias", "requested_occurrences": 2 },
+      { "bias": "Recency Bias", "requested_occurrences": 1 },
+      { "bias": "Habit Intrusion", "requested_occurrences": 1 },
+      { "bias": "Salience Bias", "requested_occurrences": 1 },
+      { "bias": "Similarity Bias", "requested_occurrences": 1 },
+      { "bias": "Bounded Rationality", "requested_occurrences": 1 }
+    ],
+    "planned_instance_ids": [
+      { "instance_id": "av_01", "bias": "Availability Bias" },
+      { "instance_id": "av_02", "bias": "Availability Bias" },
+      { "instance_id": "rec_01", "bias": "Recency Bias" },
+      { "instance_id": "hab_01", "bias": "Habit Intrusion" },
+      { "instance_id": "sal_01", "bias": "Salience Bias" },
+      { "instance_id": "sim_01", "bias": "Similarity Bias" },
+      { "instance_id": "br_01", "bias": "Bounded Rationality" }
+    ],
+    "intended_decision_points": [
+      { "instance_id": "av_01", "bias": "Availability Bias", "decision_point": 1 },
+      { "instance_id": "sal_01", "bias": "Salience Bias", "decision_point": 1 },
+      { "instance_id": "rec_01", "bias": "Recency Bias", "decision_point": 2 },
+      { "instance_id": "hab_01", "bias": "Habit Intrusion", "decision_point": 2 },
+      { "instance_id": "sim_01", "bias": "Similarity Bias", "decision_point": 3 },
+      { "instance_id": "av_02", "bias": "Availability Bias", "decision_point": 3 },
+      { "instance_id": "br_01", "bias": "Bounded Rationality", "decision_point": 4 }
+    ],
+    "intended_mechanisms": [
+      {
+        "instance_id": "av_01",
+        "bias": "Availability Bias",
+        "mechanism": "Probability of alarm being false judged via ease of recalling frequent past nuisance-alarm occurrences",
+        "affected_reasoning_operation": "Probability estimation from recalled frequency",
+        "evidence_source": "Alarm log showing 11 recent nuisance alarms",
+        "distinctiveness_requirement": "Must be based on frequency-of-recall reasoning, distinct from av_02's vividness-of-recall reasoning"
+      },
+      {
+        "instance_id": "sal_01",
+        "bias": "Salience Bias",
+        "mechanism": "Visually/audibly prominent alarm draws attention away from a less prominent but relevant pressure-differential trend",
+        "affected_reasoning_operation": "Attention allocation across simultaneous evidence sources",
+        "evidence_source": "Annunciator panel alarm vs. adjacent trend screen",
+        "distinctiveness_requirement": "Must involve competing simultaneous evidence sources at the same decision point as av_01 but a different reasoning operation (attention allocation, not frequency-based probability judgment)"
+      },
+      {
+        "instance_id": "rec_01",
+        "bias": "Recency Bias",
+        "mechanism": "Overweighting the most recent handover report of stability over older documented drift trend",
+        "affected_reasoning_operation": "Weighting of sequential evidence in current-state judgment",
+        "evidence_source": "Night-shift handover report vs. multi-day log drift entries",
+        "distinctiveness_requirement": "Must center on temporal recency of information, not frequency or vividness"
+      },
+      {
+        "instance_id": "hab_01",
+        "bias": "Habit Intrusion",
+        "mechanism": "Automatic execution of a frequently-practiced feed-increase sequence without adapting to abnormal precursor conditions",
+        "affected_reasoning_operation": "Execution of a well-rehearsed action sequence under conditions requiring deviation",
+        "evidence_source": "Standard operating sequence performed routinely",
+        "distinctiveness_requirement": "Must manifest as an automatic behavioral pattern/slip, not a deliberate judgment error, per mechanism_constraint"
+      },
+      {
+        "instance_id": "sim_01",
+        "bias": "Similarity Bias",
+        "mechanism": "Diagnostic template from a superficially similar past compressor surge event applied despite a missing distinguishing signal",
+        "affected_reasoning_operation": "Pattern-matching for diagnostic categorization",
+        "evidence_source": "Memory of prior surge event vs. absence of vibration signature",
+        "distinctiveness_requirement": "Must involve template transfer based on surface resemblance, distinct from av_02's likelihood judgment based on memorability"
+      },
+      {
+        "instance_id": "av_02",
+        "bias": "Availability Bias",
+        "mechanism": "Likelihood of rare tube-rupture cause overestimated due to vividness/memorability of a widely discussed past incident",
+        "affected_reasoning_operation": "Likelihood judgment driven by vividness of recall",
+        "evidence_source": "Recollection of a two-year-old widely discussed incident",
+        "distinctiveness_requirement": "Must be based on vividness-of-recall reasoning, distinct from av_01's frequency-of-recall reasoning, and occur at a different decision point"
+      },
+      {
+        "instance_id": "br_01",
+        "bias": "Bounded Rationality",
+        "mechanism": "Satisficing selection of the first workable checklist action under time and cognitive load constraints rather than exhaustive alternative evaluation",
+        "affected_reasoning_operation": "Option generation and selection under constrained resources",
+        "evidence_source": "Standard corrective-action checklist under closing time window",
+        "distinctiveness_requirement": "Must reflect resource-constrained satisficing, not mere haste or a justified quick decision without evidence of skipped alternatives"
+      }
+    ],
+    "intended_strength": [
+      { "instance_id": "av_01", "bias": "Availability Bias", "strength": "subtle" },
+      { "instance_id": "sal_01", "bias": "Salience Bias", "strength": "subtle" },
+      { "instance_id": "rec_01", "bias": "Recency Bias", "strength": "subtle" },
+      { "instance_id": "hab_01", "bias": "Habit Intrusion", "strength": "moderate" },
+      { "instance_id": "sim_01", "bias": "Similarity Bias", "strength": "subtle" },
+      { "instance_id": "av_02", "bias": "Availability Bias", "strength": "subtle" },
+      { "instance_id": "br_01", "bias": "Bounded Rationality", "strength": "moderate" }
+    ],
+    "paired_scenario_id": null,
+    "counterfactual_variable": {
+      "name": null,
+      "original_state": null,
+      "changed_state": null,
+      "variables_to_hold_constant": []
+    },
+    "scenario_id": "NP_Biased_7",
+    "domain_id": "NP",
+    "total_requested_occurrences": 7,
+    "total_planned_occurrences": 7,
+    "allocation_rule_used": "Occurrences distributed across the 4 decision points by mechanism fit and narrative realism: decision point 1 hosts av_01 and sal_01 (distinct evidence sources: alarm-frequency log vs. competing trend screen); decision point 2 hosts rec_01 and hab_01 (distinct reasoning operations: temporal weighting vs. automatic action execution); decision point 3 hosts sim_01 and av_02 (distinct reasoning operations: pattern-matching template transfer vs. vividness-driven likelihood judgment, satisfying the same-bias distinctiveness rule for av_01/av_02 by using different evidence sources and different decision points); decision point 4 hosts br_01 alone under peak time pressure. No decision point exceeds two occurrences of any single bias.",
+    "control_zero_bias_requirement": false,
+    "variables_to_hold_constant": [],
+    "generation_warnings": []
+  }
+}

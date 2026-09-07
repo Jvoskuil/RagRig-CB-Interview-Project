@@ -1,0 +1,647 @@
+You are a controlled CTA interview editor. Revise the interview only where explicitly instructed by the validation report.
+
+Inputs:
+- Original interview: {{**Interviewer:** Thanks for making time for this. Just to confirm, this is a voluntary debrief for our internal learning review, not a disciplinary process — anything you share helps us understand decision-making under uncertainty, not to assign blame. Can you start by telling me your role and what you were responsible for during this incident?
+
+**Participant:** Sure. I'm the ground control specialist for the site — geotech engineer by training. I cover support design, monitoring interpretation, and sign-off on ground conditions for active headings. During this shift I was working from the surface office but on call for anything flagged at the 4200 development face and the adjacent bolted heading next to it.
+
+**Interviewer:** Good. Before we get into specifics, can you give me a general account of what happened, start to finish?
+
+**Participant:** It started with a call from the shift boss — minor rib spalling near the 4200 face, right after a blast, with a bit of dust puffing off the wall. Nobody was hurt, the crew actually paused on their own, which I give them credit for. Our extensometer near that face had been down for about two days — the bolting rig had knocked the cable loose — so I didn't have fresh convergence numbers for that specific spot. I authorized them to keep mucking with a visual check, because honestly this looked a lot like something we'd seen at the 3800 panel about six months back, where the cause turned out to be the operator undercutting too aggressively on the bottom of the round. Different crew this time, more experienced guy, so I wasn't as worried.
+
+A bit later the scaling crew called in with bigger slabs than first described, plus a hairline fracture pattern we hadn't logged before. We're roughly fifteen to twenty meters from a mapped fault splay there, though the exact position is fuzzy — exploration drilling only gives you so much. I ran our convergence model using the nearest working stations, which weren't right at the face, and it came back with a low displacement forecast. That gave me enough to let the round finish.
+
+After the round, spalling showed up in the adjacent bolted heading too. The shift boss asked if we should mesh and bolt before the next rotation, and the mine manager reminded me that would blow our weekly advance number. I held off. A couple hours later a crack opened along a bolt row in that heading. Technician wanted an immediate evacuation. I let a short monitored entry happen instead. Not long after, we had a larger fall in that section. No one was hurt — an unrelated alarm actually cleared people out just before it happened — but it could have gone differently.
+
+**Interviewer:** Let's reconstruct the timeline a bit more precisely. What exactly did you know at the moment of that first call?
+
+**Participant:** Just the spalling, the dust, no injuries, crew stopped on their own initiative. And that our monitoring near that face was blind because of the extensometer outage.
+
+**Interviewer:** And after the scaling crew's second report?
+
+**Participant:** That's when the picture got more complicated — bigger slabs, a fracture pattern, and the fault splay proximity became more relevant in my head.
+
+**Interviewer:** When did you first pull up the convergence model output, and what did you do with it?
+
+**Participant:** Right after that second report. I wanted something more than visual judgment before letting the round finish.
+
+**Interviewer:** Walk me through the gap between finishing the round and the evacuation call.
+
+**Participant:** Round finished, spalling in the adjacent heading came up, I deferred the support order, then the crack appeared maybe two hours later, and the technician pushed for evacuation almost immediately after that.
+
+**Interviewer:** Let's go through the first decision — authorizing continued mucking. What alternatives did you weigh?
+
+**Participant:** I could've stopped everything for a full inspection, or restricted a buffer zone and resequenced the round. I chose the visual-check option.
+
+**Interviewer:** What made the 3800 comparison feel relevant enough to lean on here?
+
+**Participant:** The symptoms looked similar — spalling right after a blast cycle. At 3800 we traced it to how the operator was undercutting. This operator's careful, doesn't rush the cut cycle, so my instinct was that we probably weren't looking at the same stress-driven problem, since the person handling the round wasn't prone to that kind of technique issue.
+
+**Interviewer:** Did the missing extensometer data factor into that judgment?
+
+**Participant:** It should have weighed more, I'll admit. I noted it, but I didn't treat the blind spot as equally important as the operator comparison in the moment.
+
+**Interviewer:** Second decision — using the convergence model output to justify finishing the round. How did you decide it applied here?
+
+**Participant:** That model's been solid for us — it called ground behavior accurately on a panel we ran last year. So when it came back low-displacement, I trusted that read.
+
+**Interviewer:** The technician mentioned a calibration concern. Can you describe that?
+
+**Participant:** She said the model was built on data from a different rock mass domain and might not transfer well this close to the fault splay. I heard her, but between the track record and the schedule pressure, I went with the output as it stood.
+
+**Interviewer:** Third decision — deferring the supplemental support order. What was the basis?
+
+**Participant:** The model's forecast was still sitting there as stable, and the spalling pattern in the adjacent heading read to me the same way as the face — technique-related, not a stress signal. Plus the manager had flagged the schedule impact.
+
+**Interviewer:** What would have changed that decision?
+
+**Participant:** Fresh convergence readings right at that heading, honestly. Or if the crack had shown up before I made the call instead of after.
+
+**Interviewer:** Fourth decision — allowing the brief entry after the crack appeared. What was your reasoning?
+
+**Participant:** The model hadn't been rerun with the crack data — there was nothing new to feed it — so I was still working off the earlier forecast. I read the crack as consistent with surface behavior we'd seen before, not something structural underneath. I let the entry happen as a short, monitored look rather than a full lockout.
+
+**Interviewer:** How much did time pressure factor into that specific call?
+
+**Participant:** A fair amount. The next crew was due within the hour, and stopping everything again would have meant a second schedule hit in one shift.
+
+**Interviewer:** Looking back, if the extensometer had been working the entire time, do you think your decisions would have gone differently?
+
+**Participant:** Probably, at least at the first and third points. Real numbers instead of an analogy might have shifted things earlier.
+
+**Interviewer:** And if the 3800 incident had never happened — no prior case to draw on — do you think you'd have read the spalling differently this time?
+
+**Participant:** That's a fair question. I might have leaned harder on the geological angle from the start instead of the operator angle, since I wouldn't have had that comparison sitting in my head.
+
+**Interviewer:** Last one — what would you do differently if a similar sequence came in again?
+
+**Participant:** Push harder to get monitoring restored before trusting any model output, and probably treat a new fracture pattern as its own signal rather than folding it into a story that already made sense to me.
+
+**Interviewer:** That's really helpful detail. Thanks for walking through it so openly.}}
+- Hidden generation specification: {{"hidden_validation_specification": {
+    "hidden_spec_version": "1.0",
+    "condition": "biased",
+    "exact_occurrence_manifest": [
+      {
+        "bias": "Attribution Bias",
+        "occurrences": 1,
+        "mechanism_constraint": "Must manifest as dispositional (operator-technique) causal attribution of current spalling, anchored to a prior analogous incident attribution, over situational (ground-stress) attribution, at decision point 1 only."
+      },
+      {
+        "bias": "Illusion of validity",
+        "occurrences": 1,
+        "mechanism_constraint": "Must manifest as overconfidence in the convergence model's forecast based on past track record, despite acknowledged domain mismatch, at decision point 2 only."
+      }
+    ],
+    "target_bias_names": ["Attribution Bias", "Illusion of validity"],
+    "requested_occurrence_count_for_each_bias": [
+      { "bias": "Attribution Bias", "requested_occurrences": 1 },
+      { "bias": "Illusion of validity", "requested_occurrences": 1 }
+    ],
+    "planned_instance_ids": [
+      { "instance_id": "attr_01", "bias": "Attribution Bias" },
+      { "instance_id": "iov_01", "bias": "Illusion of validity" }
+    ],
+    "intended_decision_points": [
+      { "instance_id": "attr_01", "bias": "Attribution Bias", "decision_point": 1 },
+      { "instance_id": "iov_01", "bias": "Illusion of validity", "decision_point": 2 }
+    ],
+    "intended_mechanisms": [
+      {
+        "instance_id": "attr_01",
+        "bias": "Attribution Bias",
+        "mechanism": "Dispositional (operator-error) causal attribution of ambiguous ground behavior, anchored to a prior analogous case the engineer personally attributed to operator error, over situational (geological) attribution",
+        "affected_reasoning_operation": "Causal attribution under incomplete evidence at the point of authorizing continued mucking",
+        "evidence_source": "Shift boss's spalling/dust report combined with the engineer's own prior 3800 incident report",
+        "distinctiveness_requirement": "Must be the only instance of dispositional-over-situational causal misattribution in the interview; must occur at decision point 1 and not be repeated in later decision points, probes, or the closing hypotheticals as a separate instance."
+      },
+      {
+        "instance_id": "iov_01",
+        "bias": "Illusion of validity",
+        "mechanism": "Confidence in a predictive model's output derived from its past track record and internal coherence, unadjusted for an acknowledged domain mismatch (different rock mass calibration) and sparse current data",
+        "affected_reasoning_operation": "Confidence calibration when interpreting the convergence model's forecast at decision point 2",
+        "evidence_source": "Convergence model output using non-adjacent station data, plus technician's verbal domain-mismatch caveat",
+        "distinctiveness_requirement": "Must be the only instance of unwarranted forecast confidence in the interview; occurs at decision point 2; later reliance on the same stale model output at decision points 3 and 4 must be narrated as a consequence of this single occurrence, not as additional independent instances."
+      }
+    ],
+    "intended_strength": [
+      { "instance_id": "attr_01", "bias": "Attribution Bias", "strength": "subtle" },
+      { "instance_id": "iov_01", "bias": "Illusion of validity", "strength": "moderate" }
+    ],
+    "paired_scenario_id": null,
+    "counterfactual_variable": {
+      "name": "Causal framing of the engineer's prior 3800 incident attribution (operator error vs. ground stress)",
+      "original_state": "Attributed to operator's aggressive undercutting technique",
+      "changed_state": "Attributed to unanticipated stress redistribution near a geological structure",
+      "variables_to_hold_constant": [
+        "Production schedule pressure",
+        "Extensometer outage near the 4200 face",
+        "Convergence model's domain mismatch",
+        "Sequence and content of the four decision points",
+        "Scaling crew and technician reports",
+        "Final roof fall outcome"
+      ]
+    },
+    "scenario_id": "MU_Biased_2",
+    "domain_id": "MU",
+    "total_requested_occurrences": 2,
+    "total_planned_occurrences": 2,
+    "allocation_rule_used": "One occurrence per named bias assigned to a distinct decision point (attribution bias at decision point 1, illusion of validity at decision point 2) based on mechanism fit: attribution bias fits the earliest causal-interpretation moment, illusion of validity fits the model-reliance moment; subsequent decision points (3 and 4) narrate downstream consequences of these same two instances without introducing new independent instances.",
+    "control_zero_bias_requirement": false,
+    "variables_to_hold_constant": [
+      "Production schedule pressure",
+      "Extensometer outage near the 4200 face",
+      "Convergence model's domain mismatch",
+      "Sequence and content of the four decision points",
+      "Scaling crew and technician reports",
+      "Final roof fall outcome"
+    ],
+    "generation_warnings": []
+  }}}
+- Validation report: {{{
+  "validator_version": "2.0",
+  "interview_id": "not_provided",
+  "condition": "biased",
+  "domain_assessment": {
+    "domain": "Underground mining ground-control and geotechnical risk management",
+    "role": "Ground control specialist / geotechnical engineer responsible for support design, monitoring interpretation, and ground-condition sign-off",
+    "objective": "Maintain safe development progress while deciding whether to continue mucking, complete the round, install supplemental support, or evacuate personnel in response to deteriorating ground conditions",
+    "incident_type": "Progressive rib and heading instability following blasting, culminating in a localized ground fall after degraded monitoring, ambiguous geological evidence, and deferred support or evacuation actions",
+    "confidence": 98
+  },
+  "structure_audit": {
+    "estimated_word_count": 1450,
+    "within_target_range": true,
+    "decision_point_count": 4,
+    "decision_points": [
+      {
+        "id": 1,
+        "summary": "Authorize continued mucking with a visual check after an initial report of minor rib spalling and dust puffing near the 4200 face.",
+        "evidence_before": [
+          "Minor rib spalling immediately after blasting",
+          "Dust puffing from the wall",
+          "No injuries",
+          "Crew had already paused",
+          "Extensometer near the face had been unavailable for approximately two days",
+          "Prior 3800-panel event attributed to aggressive undercutting"
+        ],
+        "evidence_after": [
+          "Larger slabs reported by the scaling crew",
+          "Previously unlogged hairline fracture pattern",
+          "Greater salience of proximity to a mapped fault splay"
+        ],
+        "goals_constraints": [
+          "Avoid unnecessary stoppage",
+          "Continue production activity",
+          "Make a ground-condition judgment despite unavailable local convergence data"
+        ],
+        "alternatives": [
+          "Stop work for a full inspection",
+          "Restrict a buffer zone and resequence the round",
+          "Continue mucking with a visual check"
+        ],
+        "decision_basis": "The participant weighted a comparison to the prior 3800 event and the current operator's perceived care more heavily than the lack of local monitoring data.",
+        "time_pressure": "Implicit production-continuity pressure, but no immediate explicit deadline is stated at this decision point.",
+        "uncertainty": "High: local monitoring was unavailable, the initial symptoms were ambiguous, and a potentially relevant geological structure was nearby but imprecisely located."
+      },
+      {
+        "id": 2,
+        "summary": "Use a low-displacement convergence-model forecast to permit completion of the round after the second report of larger slabs and a new fracture pattern.",
+        "evidence_before": [
+          "Bigger slabs than initially reported",
+          "New hairline fracture pattern",
+          "Approximate 15-20 metre proximity to a mapped fault splay",
+          "Convergence-model input from nearby rather than face-adjacent stations",
+          "No fresh local extensometer readings"
+        ],
+        "evidence_after": [
+          "Spalling subsequently appeared in the adjacent bolted heading",
+          "The technician's earlier caveat about domain mismatch remained unresolved"
+        ],
+        "goals_constraints": [
+          "Obtain an analytic basis beyond visual judgment",
+          "Complete the round",
+          "Manage uncertainty despite nonlocal model inputs and a possible geological-domain mismatch"
+        ],
+        "alternatives": [
+          "Suspend the round pending inspection and restored monitoring",
+          "Treat the model result as provisional because its calibration domain differed",
+          "Finish the round based on the low-displacement forecast"
+        ],
+        "decision_basis": "The participant relied on the model's prior successful track record despite the technician's warning that calibration from a different rock-mass domain might not transfer near the fault splay.",
+        "time_pressure": "Schedule pressure is explicitly acknowledged in the participant's account of why the model output was accepted as it stood.",
+        "uncertainty": "High: the model was fed non-adjacent station data, the relevant fault-splay position was uncertain, and the technician identified a domain-transfer concern."
+      },
+      {
+        "id": 3,
+        "summary": "Defer mesh-and-bolt supplemental support in the adjacent heading after spalling appears there.",
+        "evidence_before": [
+          "The round had finished",
+          "Spalling had appeared in the adjacent bolted heading",
+          "The shift boss asked whether mesh and bolts should be installed before the next rotation",
+          "The existing low-displacement forecast",
+          "The mine manager highlighted the adverse effect on the weekly advance target"
+        ],
+        "evidence_after": [
+          "A crack opened along a bolt row approximately two hours later",
+          "A technician recommended immediate evacuation"
+        ],
+        "goals_constraints": [
+          "Protect personnel and stabilize the heading",
+          "Avoid delay to weekly advance",
+          "Make a support decision without fresh convergence data at the affected heading"
+        ],
+        "alternatives": [
+          "Install mesh and bolts before the next rotation",
+          "Defer supplemental support",
+          "Restrict access pending new monitoring or geotechnical inspection"
+        ],
+        "decision_basis": "The participant cited the still-stable model forecast, interpreted the adjacent-heading spalling through the same technique-related frame used at the face, and considered schedule impact.",
+        "time_pressure": "Explicit production pressure: supplemental support would adversely affect the weekly advance number.",
+        "uncertainty": "High: instability had appeared in a second location, but current convergence readings at that heading were unavailable."
+      },
+      {
+        "id": 4,
+        "summary": "Permit a short monitored entry rather than order a full lockout after a crack opens along a bolt row and the technician recommends evacuation.",
+        "evidence_before": [
+          "A crack had opened along a bolt row",
+          "The technician recommended immediate evacuation",
+          "The model had not been rerun",
+          "The participant regarded the earlier model forecast as still applicable",
+          "The next crew was due within an hour"
+        ],
+        "evidence_after": [
+          "A larger fall occurred in the section",
+          "No one was injured because an unrelated alarm had cleared personnel before the fall"
+        ],
+        "goals_constraints": [
+          "Inspect changing ground conditions",
+          "Avoid a second schedule interruption in one shift",
+          "Manage immediate personnel-exposure risk"
+        ],
+        "alternatives": [
+          "Immediate evacuation and full lockout",
+          "Short monitored entry",
+          "Seek an updated geotechnical assessment before permitting entry"
+        ],
+        "decision_basis": "The participant treated the crack as consistent with prior surface behavior rather than a structural signal and carried forward the earlier forecast because it had not been rerun.",
+        "time_pressure": "Explicit and immediate: the next crew was due within an hour, and a second schedule impact was anticipated.",
+        "uncertainty": "Very high: a new crack had appeared, the technician recommended evacuation, and the participant had no updated model analysis or restored local monitoring."
+      }
+    ]
+  },
+  "target_occurrence_audit": [
+    {
+      "instance_id": "attr_01",
+      "bias": "Attribution Bias",
+      "requested_occurrences_for_bias": 1,
+      "status": "weak",
+      "decision_point": 1,
+      "supporting_quote": "“This operator's careful, doesn't rush the cut cycle, so my instinct was that we probably weren't looking at the same stress-driven problem, since the person handling the round wasn't prone to that kind of technique issue.”",
+      "evidence_location": "Decision-point-1 probe concerning why the 3800 comparison felt relevant, followed by the participant's statement that the monitoring blind spot was not weighted as heavily as the operator comparison.",
+      "mechanism": "The text supports an underweighting of situational uncertainty in favor of an operator-centered comparison to the 3800 event. However, it does not cleanly support the required dispositional causal attribution that the current spalling was caused by operator technique. The participant says the current operator was careful and was not prone to the technique issue in the prior event; that statement should reduce, rather than increase, the probability of an operator-technique explanation. The subsequent conclusion that this also meant the event was not “the same stress-driven problem” is causally ambiguous and internally inconsistent.",
+      "strength": "weak",
+      "confidence": 88,
+      "plausible_nonbias_explanation": "The participant may have been making a poorly articulated but potentially legitimate expert comparison: the observed blast-related spalling could have appeared superficially similar to a known operationally induced spall mechanism, while the current operator's work habits reduced concern about that particular mechanism. The text does not establish that the participant affirmatively attributed the current event to a dispositional operator cause.",
+      "additional_evidence_needed": "A minimally explicit causal statement that, at the first decision, the participant treated a current operator or crew practice as the more likely explanation for the spalling because the 3800 case had taught him to classify such symptoms as operator-caused, despite the unavailable local monitoring and unresolved geological possibility.",
+      "revision_needed": true,
+      "revision": {
+        "revision_type": "local_reasoning_revision",
+        "location": "Decision point 1, in the participant response immediately after the interviewer asks why the 3800 comparison felt relevant.",
+        "current_defect": "The current wording invokes an operator comparison but says the operator was careful and not prone to the prior technique issue. It therefore fails to establish the required present-tense dispositional attribution of the current spalling and introduces an incoherent inference from “not technique-related” to “not stress-driven.”",
+        "minimal_change_instruction": "Replace the causal inference, not the surrounding event facts, with a subtle statement that the participant initially categorized the current spalling as a localized operational/crew-technique effect because the 3800 incident had made that explanation cognitively available. For example, have the participant say that the prior event made him assume the crew had probably created a shallow, locally induced spall through the cut or cleanup sequence, even though he had no direct evidence of that in the current round; then retain that he consequently gave the monitoring outage less weight. Do not add an explicit bias label.",
+        "preserve": [
+          "The initial symptoms of spalling and dust after blasting",
+          "The extensometer outage",
+          "The prior 3800 event and its operator-undercutting attribution",
+          "The current operator's experience as contextual information",
+          "The decision to allow continued mucking with a visual check",
+          "The distinction between operator-centered and geological/stress explanations"
+        ],
+        "avoid_creating": [
+          "Do not repeat a new operator-technique explanation at decision points 3 or 4",
+          "Do not make the current operator demonstrably negligent or establish objective proof of operator error",
+          "Do not make the participant state a textbook attribution-bias explanation",
+          "Do not alter the later model-domain mismatch or schedule-pressure facts"
+        ],
+        "expected_post_revision_status": "supported"
+      }
+    },
+    {
+      "instance_id": "iov_01",
+      "bias": "Illusion of validity",
+      "requested_occurrences_for_bias": 1,
+      "status": "supported",
+      "decision_point": 2,
+      "supporting_quote": "“That model's been solid for us — it called ground behavior accurately on a panel we ran last year. So when it came back low-displacement, I trusted that read.” The technician “said the model was built on data from a different rock mass domain and might not transfer well this close to the fault splay. I heard her, but between the track record and the schedule pressure, I went with the output as it stood.”",
+      "evidence_location": "Decision-point-2 model-application probe and the immediately following probe regarding the technician's calibration concern.",
+      "mechanism": "This is a distinct confidence-calibration episode. The participant converts a favorable prior model track record into confidence in the current low-displacement forecast, while explicitly acknowledging material validity limits: non-adjacent station inputs, unavailable local monitoring, a different calibration domain, and proximity to a fault splay. The participant does not describe a compensating validity adjustment, sensitivity check, or decision threshold that reflects those limitations.",
+      "strength": "moderate",
+      "confidence": 96,
+      "plausible_nonbias_explanation": "A well-validated model can be a reasonable input to a ground-control decision. The occurrence is bias-consistent because the stated cross-domain caveat and sparse current data were known at the time, yet the participant treated the output as sufficiently decisive without describing an adjustment for those limitations.",
+      "additional_evidence_needed": "None for the requested decision-point-2 occurrence. The existing evidence is sufficient to distinguish overconfidence in the model's apparent validity from mere model use.",
+      "revision_needed": false,
+      "revision": {
+        "revision_type": "none",
+        "location": "Decision point 2, model-track-record and domain-mismatch exchange.",
+        "current_defect": "No repair is needed for the planned decision-point-2 occurrence.",
+        "minimal_change_instruction": "Retain the current model-track-record statement, the technician's domain-mismatch caveat, the non-adjacent data context, and the participant's decision to accept the forecast without an explicit adjustment.",
+        "preserve": [
+          "The model's prior success on a different panel",
+          "The different-rock-mass-domain calibration concern",
+          "The low-displacement output",
+          "The decision to finish the round",
+          "The moderate rather than overtly caricatured expression of confidence"
+        ],
+        "avoid_creating": [
+          "Do not add a second independent model-validation decision at decision points 3 or 4",
+          "Do not make the participant claim certainty or flawless model accuracy",
+          "Do not remove the technician's caveat, because it is necessary to establish unwarranted confidence calibration"
+        ],
+        "expected_post_revision_status": "supported"
+      }
+    }
+  ],
+  "bias_level_counts": [
+    {
+      "bias": "Attribution Bias",
+      "requested_count": 1,
+      "supported_count": 0,
+      "weak_count": 1,
+      "absent_count": 0,
+      "merged_count": 0,
+      "accidental_count": 2,
+      "count_satisfied": false
+    },
+    {
+      "bias": "Illusion of validity",
+      "requested_count": 1,
+      "supported_count": 1,
+      "weak_count": 0,
+      "absent_count": 0,
+      "merged_count": 0,
+      "accidental_count": 1,
+      "count_satisfied": true
+    }
+  ],
+  "additional_candidate_biases": [
+    {
+      "bias": "Anchoring / insufficient updating",
+      "decision_point": 3,
+      "supporting_quote": "“The model's forecast was still sitting there as stable, and the spalling pattern in the adjacent heading read to me the same way as the face.”",
+      "mechanism": "The participant appears to retain the initial low-risk interpretation despite a meaningful context change: instability has appeared in an adjacent heading after the round, which is potentially disconfirming evidence for a purely local benign explanation. This could be a separate failure to update from the original anchor rather than merely passive downstream reliance.",
+      "confidence": 78,
+      "status": "candidate",
+      "plausible_nonbias_explanation": "The participant may have considered the adjacent-heading spalling insufficiently diagnostic without fresh convergence readings; the interview does not establish what specific threshold would have required revision.",
+      "revision_recommendation": "remove_or_neutralize"
+    },
+    {
+      "bias": "Confirmation bias / selective assimilation of evidence",
+      "decision_point": 4,
+      "supporting_quote": "“I read the crack as consistent with surface behavior we'd seen before, not something structural underneath.”",
+      "mechanism": "A new crack along a bolt row and a technician's evacuation recommendation are interpreted as confirming the prior benign surface-behavior account rather than as evidence that could disconfirm it. The participant does not articulate a comparison of competing explanations or a reason why the crack lacks structural significance.",
+      "confidence": 83,
+      "status": "candidate",
+      "plausible_nonbias_explanation": "The crack could, in principle, have had a recognized nonstructural mechanism. The text is insufficient to determine whether the participant had concrete geological evidence for that interpretation.",
+      "revision_recommendation": "remove_or_neutralize"
+    },
+    {
+      "bias": "Automation bias / repeated model overreliance",
+      "decision_point": 4,
+      "supporting_quote": "“The model hadn't been rerun with the crack data — there was nothing new to feed it — so I was still working off the earlier forecast.”",
+      "mechanism": "The participant continues to rely on an earlier model forecast after a crack emerges, while treating the absence of a rerun as a reason not to revise. The crack itself is new decision-relevant evidence, even if it is not a direct numerical input to the model. This creates a plausible second, unintended model-reliance episode beyond the planned decision-point-2 confidence-calibration occurrence.",
+      "confidence": 90,
+      "status": "supported",
+      "plausible_nonbias_explanation": "If the model genuinely cannot incorporate crack observations and if a separate field-based reassessment occurred, continued reference to the model could be procedural rather than automated. No such independent reassessment is described.",
+      "revision_recommendation": "remove_or_neutralize"
+    },
+    {
+      "bias": "Outcome bias",
+      "decision_point": 4,
+      "supporting_quote": "No direct contemporaneous reasoning quote; the fall outcome is described only after the entry decision.",
+      "mechanism": "The narrative permits a reader to judge the entry decision as poor because a fall occurred, but the participant's quoted contemporaneous reasoning remains separately available. The text itself does not use the outcome as the participant's decision criterion.",
+      "confidence": 94,
+      "status": "rejected",
+      "plausible_nonbias_explanation": "The fall is incident context and a safety consequence, not evidence of an outcome-bias mechanism.",
+      "revision_recommendation": "none"
+    },
+    {
+      "bias": "Production-pressure distortion",
+      "decision_point": 3,
+      "supporting_quote": "“The mine manager reminded me that would blow our weekly advance number. I held off.”",
+      "mechanism": "Production pressure may have materially influenced a safety-related support decision, but pressure from a superior and organizational incentives are not, by themselves, a cognitive bias. A bias classification would require evidence of a specific distorted inference, such as systematically discounting risk because of a motivated conclusion.",
+      "confidence": 96,
+      "status": "rejected",
+      "plausible_nonbias_explanation": "This is an organizational constraint and potential safety-governance issue rather than a demonstrated individual cognitive bias.",
+      "revision_recommendation": "none"
+    }
+  ],
+  "nonbias_cues": [
+    {
+      "cue": "The extensometer outage and lack of fresh convergence readings",
+      "location": "Opening account; decision points 1 and 3; closing reflection",
+      "why_not_bias": "This is an information-quality limitation. It becomes relevant to bias only when the participant demonstrably misweights it relative to less diagnostic evidence; missing monitoring itself is not a cognitive bias."
+    },
+    {
+      "cue": "Use of a convergence model",
+      "location": "Decision point 2",
+      "why_not_bias": "Using a model is a normal expert decision aid. The supported illusion-of-validity occurrence arises from the participant's unadjusted confidence despite known domain and data limitations, not from model use alone."
+    },
+    {
+      "cue": "Schedule pressure and the mine manager's weekly-advance concern",
+      "location": "Decision points 2 through 4",
+      "why_not_bias": "Schedule pressure is an organizational and operational constraint. It can explain action selection or increase risk tolerance without establishing a specific cognitive-bias mechanism."
+    },
+    {
+      "cue": "The participant's speed of decision-making and limited time before the next crew",
+      "location": "Decision point 4",
+      "why_not_bias": "Time pressure can constrain information gathering but is not itself evidence of a bias. The relevant question is how evidence was interpreted under that pressure."
+    },
+    {
+      "cue": "The technician's disagreement and evacuation recommendation",
+      "location": "Decision points 2 and 4",
+      "why_not_bias": "Expert disagreement is not bias by itself. It becomes relevant only because the participant's handling of the technician's caveat and later warning reveals potential evidence discounting."
+    },
+    {
+      "cue": "The later ground fall",
+      "location": "Incident outcome after decision point 4",
+      "why_not_bias": "An unfavorable outcome does not prove that a prior decision was biased, irrational, or unsafe on the information then available. The interview contains independent contemporaneous evidence that must carry the bias assessment."
+    },
+    {
+      "cue": "The participant's retrospective admission that monitoring should have weighed more",
+      "location": "Decision-point-1 probe and closing reflection",
+      "why_not_bias": "This is retrospective learning and may be affected by hindsight, but it is not independently sufficient evidence of a contemporaneous bias occurrence."
+    }
+  ],
+  "causal_audit": {
+    "causal_claims": [
+      {
+        "claim": "The prior 3800 event was caused by aggressive operator undercutting.",
+        "support": "Participant report only: “the cause turned out to be the operator undercutting too aggressively.”",
+        "assessment": "Treated as a prior investigation conclusion rather than independently verified in the interview. It can serve as a remembered causal premise, but the interview does not establish its evidentiary basis."
+      },
+      {
+        "claim": "Current initial spalling was interpreted through an operator-centered rather than ground-stress explanation.",
+        "support": "Participant refers to the 3800 comparison, the current operator's care, and later states that without the prior case he might have leaned more heavily on the geological angle.",
+        "assessment": "Causally ambiguous. The participant's explicit statement that the current operator was not prone to the prior technique issue conflicts with a clear attribution of current spalling to operator technique."
+      },
+      {
+        "claim": "The low-displacement forecast justified finishing the round.",
+        "support": "Participant states that the forecast gave him enough to permit completion and later cites the model's prior track record.",
+        "assessment": "The model result is decision-relevant but its predictive applicability is weakened by non-adjacent inputs, missing local data, and the stated rock-mass-domain mismatch. The text does not establish that the model forecast causally indicated safety in the local fault-splay context."
+      },
+      {
+        "claim": "The later crack was nonstructural surface behavior rather than evidence of underlying instability.",
+        "support": "Participant characterization only.",
+        "assessment": "Unsupported within the interview. The subsequent fall is compatible with structural instability but does not retrospectively prove the crack's mechanism."
+      },
+      {
+        "claim": "Deferring support and allowing monitored entry caused the larger fall.",
+        "support": "Temporal sequence only.",
+        "assessment": "The interview establishes temporal succession, not causation. The fall may reflect pre-existing ground conditions, blast effects, geological structure, support adequacy, or other unobserved factors."
+      }
+    ],
+    "correlation_causation_risks": [
+      "The proximity of the fault splay is treated as relevant but does not, on its own, establish that the fault caused the spalling or fall.",
+      "The progression from spalling to cracking to fall may suggest escalation, but temporal progression alone does not identify the underlying failure mechanism.",
+      "The fact that the model had performed well on another panel does not establish its validity in a different rock-mass domain near a fault splay.",
+      "The favorable no-injury outcome resulted from an unrelated alarm, so it should not be used as evidence that the monitored-entry decision was safe.",
+      "The final fall outcome should not be used to infer that every earlier inference or decision was necessarily biased."
+    ],
+    "counterfactual_present": true,
+    "changed_variable": "The interview's explicit hypothetical removes the existence of the prior 3800 incident (“if the 3800 incident had never happened”), rather than changing only the causal framing of that prior incident from operator error to geological stress redistribution.",
+    "held_constant": [
+      "The participant informally preserves the current incident context while answering the hypothetical, but the interview does not explicitly restate or control production pressure.",
+      "The extensometer outage is not explicitly held constant in the counterfactual probe.",
+      "The convergence-model domain mismatch is not explicitly held constant in the counterfactual probe.",
+      "The sequence of the four decision points is not explicitly held constant in the counterfactual probe.",
+      "The scaling-crew and technician reports are not explicitly held constant in the counterfactual probe.",
+      "The final fall outcome is not explicitly held constant in the counterfactual probe."
+    ],
+    "causal_coherence": "weak",
+    "explanation": "The counterfactual is directionally useful because it elicits the participant's dependence on the prior case: without it, the participant says he might have weighted geology more heavily. However, it does not implement the hidden specification's single-variable intervention. Removing the prior incident changes several things simultaneously, including memory availability, experiential learning, perceived base rates, confidence, and causal framing. A faithful counterfactual would preserve the existence, timing, and salience of the 3800 incident while changing only its established cause from operator undercutting to stress redistribution near a geological structure."
+  },
+  "quality_scores": {
+    "occupational_realism": 91,
+    "cta_fidelity": 88,
+    "bias_separability": 56,
+    "bias_subtlety": 78,
+    "control_fidelity": 61,
+    "counterfactual_fidelity": 42,
+    "narrative_coherence": 73,
+    "naturalness": 86,
+    "hidden_label_integrity": 58,
+    "overall_quality": 69
+  },
+  "revision_summary": {
+    "revision_required": true,
+    "supported_occurrence_total": 1,
+    "requested_occurrence_total": 2,
+    "missing_occurrence_total": 1,
+    "accidental_occurrence_total": 3,
+    "priority": "high",
+    "recommended_action": "revise",
+    "global_revision_constraints": [
+      "Preserve the underground-mining setting, the participant's ground-control role, the incident chronology, the four-decision-point structure, and the production-pressure context.",
+      "Maintain exactly one independently identifiable Attribution Bias occurrence at decision point 1 and exactly one independently identifiable Illusion of Validity occurrence at decision point 2.",
+      "Do not use the eventual fall, lack of injuries, speed, disagreement, missing data, or schedule pressure as substitutes for a cognitive-bias mechanism.",
+      "At decision points 3 and 4, describe the participant's actions as operational downstream consequences of the earlier decisions without supplying new causal-attribution or renewed model-validity reasoning that qualifies as independent bias evidence.",
+      "Repair the counterfactual by changing only the attributed cause of the prior 3800 incident while keeping the prior incident itself present and salient."
+    ],
+    "revision_order": [
+      {
+        "affected_instance_id": "attr_01",
+        "decision_point": 1,
+        "status": "weak",
+        "evidence_currently_present": "The participant privileges the operator comparison over the monitoring blind spot, but simultaneously says the current operator is not prone to the prior technique issue.",
+        "precise_defect": "The account does not establish that current spalling was dispositionally attributed to operator technique; its causal logic is internally inconsistent.",
+        "recommended_revision_type": "local_reasoning_revision",
+        "minimal_change_instruction": "Make the participant's first-decision causal classification explicit but subtle: the remembered 3800 attribution should lead him to infer an unverified current crew/cut-sequence explanation for the local spalling and to discount the geological explanation and blind monitoring as a result. Retain uncertainty and do not insert a bias label.",
+        "must_remain_unchanged": [
+          "Decision point 1 remains authorization of continued mucking with a visual check",
+          "The extensometer remains unavailable",
+          "The 3800 event remains a prior operator-undercutting case",
+          "The fault-splay context emerges as part of later complication"
+        ],
+        "warning_against_creating_additional_unintended_occurrences": "Do not repeat the operator-technique causal framing as the stated basis for decisions 3 or 4.",
+        "expected_post_revision_status": "supported"
+      },
+      {
+        "affected_instance_id": "additional_candidate",
+        "decision_point": 3,
+        "status": "candidate",
+        "evidence_currently_present": "“The model's forecast was still sitting there as stable, and the spalling pattern in the adjacent heading read to me the same way as the face.”",
+        "precise_defect": "This wording creates a potentially independent anchoring/confirmation episode and repeats the operator-centered causal frame after new evidence appears in a separate heading.",
+        "recommended_revision_type": "remove_accidental_occurrence",
+        "minimal_change_instruction": "Retain the deferral of support and the mine-manager schedule pressure, but remove the fresh statement that the adjacent-heading spalling was interpreted as the same technique-related phenomenon. If a rationale is needed, frame the action as provisional continuation of the already-authorized plan pending a specified inspection or monitoring threshold, rather than a renewed causal interpretation.",
+        "must_remain_unchanged": [
+          "The adjacent-heading spalling",
+          "The support decision",
+          "The weekly-advance constraint",
+          "The absence of fresh local convergence readings",
+          "The later appearance of the crack"
+        ],
+        "warning_against_creating_additional_unintended_occurrences": "Do not replace this language with a new categorical benign-ground interpretation or a second explicit assertion that the model is reliable.",
+        "expected_post_revision_status": "supported"
+      },
+      {
+        "affected_instance_id": "additional_candidate",
+        "decision_point": 4,
+        "status": "supported",
+        "evidence_currently_present": "The participant says the new crack was merely surface behavior and that the earlier model forecast remained controlling because it was not rerun.",
+        "precise_defect": "This is a distinct post-crack reasoning episode with new evidence and a new decision. It defensibly reads as confirmation/anchoring and as a second model-overreliance or automation-bias occurrence, contrary to the one-occurrence allocation rule.",
+        "recommended_revision_type": "remove_accidental_occurrence",
+        "minimal_change_instruction": "Keep the monitored-entry decision and the explicit time constraint, but avoid having the participant treat the crack as affirmatively consistent with the earlier benign account or use the absence of a model rerun as substantive validation. Describe the entry as an operationally constrained inspection decision made under unresolved uncertainty, with the earlier decision context carried forward but without re-litigating the model's validity or the crack's cause.",
+        "must_remain_unchanged": [
+          "The crack along the bolt row",
+          "The technician's immediate-evacuation recommendation",
+          "The next crew's expected arrival within an hour",
+          "The short monitored-entry action",
+          "The later fall and unrelated alarm"
+        ],
+        "warning_against_creating_additional_unintended_occurrences": "Do not add a new heuristic, a new unsupported geological conclusion, or a fresh claim that the model forecast remains valid after the crack.",
+        "expected_post_revision_status": "supported"
+      },
+      {
+        "affected_instance_id": "counterfactual_probe",
+        "decision_point": 1,
+        "status": "weak",
+        "evidence_currently_present": "The interviewer asks what the participant would have done if the 3800 incident had never happened.",
+        "precise_defect": "The probe removes the prior case altogether rather than changing only its causal attribution. It therefore confounds causal framing with availability, experience, and case familiarity.",
+        "recommended_revision_type": "probe_revision",
+        "minimal_change_instruction": "Replace the absence-of-3800 hypothetical with a causal-framing counterfactual: ask how the participant's first decision would have differed if the 3800 event had occurred and been investigated at the same time, but the conclusion had been unanticipated stress redistribution near a geological structure rather than aggressive undercutting. Ask the participant to hold the current monitoring outage, schedule context, reports, and model limitations constant.",
+        "must_remain_unchanged": [
+          "The existence and salience of the prior 3800 incident",
+          "The present incident's evidence sequence",
+          "The production-pressure context",
+          "The monitoring outage",
+          "The model-domain mismatch",
+          "The four decision points"
+        ],
+        "warning_against_creating_additional_unintended_occurrences": "Do not ask a second hypothetical that changes the operator, the crew, the monitoring availability, or the final outcome; those changes would introduce further causal confounds.",
+        "expected_post_revision_status": "supported"
+      }
+    ]
+  },
+  "failure_flags": [
+    "The planned Attribution Bias mechanism is not cleanly expressed because the participant's statement about a careful operator contradicts a current operator-technique causal attribution.",
+    "The interview repeats operator-centered interpretation at decision point 3 and benign/nonstructural interpretation at decision point 4, creating likely unintended additional attribution, anchoring, or confirmation manifestations.",
+    "Decision point 4 contains an independently defensible second model-reliance episode after new crack evidence, undermining the requirement that later model reliance be merely a downstream consequence of the single decision-point-2 Illusion of Validity occurrence.",
+    "The explicit counterfactual changes the existence of the prior incident rather than only its causal framing, confounding the intended causal intervention.",
+    "Several causal statements remain unverified participant interpretations; the final fall should not be treated as proof that earlier judgments were biased or that any specific factor caused the failure."
+  ]
+}}}
+
+Rules:
+1. Apply only revisions with revision_needed = true.
+2. Preserve all supported occurrences exactly in mechanism and approximate location.
+3. Repair every requested occurrence marked weak, absent, merged, or misclassified according to its minimal_change_instruction.
+4. Remove or neutralize accidental occurrences when instructed.
+5. Do not add any occurrence not requested in the hidden specification.
+6. Do not name or define cognitive biases.
+7. Preserve the occupational setting, participant role, four-decision-point structure, dialogue format, approximate length, vocabulary level, causal variable, and counterfactual conditions.
+8. Do not make the target bias obvious through exaggerated or textbook-like language.
+9. If a requested occurrence is not plausible under the scenario, do not force it; return REVISION_BLOCKED with a concise explanation rather than fabricating behavior.
+10. Return only the revised interview text, unless revision is blocked.
+
+Before outputting, silently check the requested occurrence count, accidental occurrence risk, word count, and preservation constraints.

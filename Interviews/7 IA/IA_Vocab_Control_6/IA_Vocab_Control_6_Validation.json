@@ -1,0 +1,550 @@
+{
+  "validator_version": "2.0",
+  "interview_id": "IA_Vocab_Control_6",
+  "condition": "vocabulary_control",
+  "domain_assessment": {
+    "domain": "Cybersecurity threat intelligence and security-operations incident triage",
+    "role": "Threat intelligence analyst on a SOC team",
+    "objective": "Efficiently triage a potentially consequential alert cluster, determine an appropriately bounded attribution and hunt scope, and deliver a defensible containment handoff before shift end.",
+    "incident_type": "Potential targeted intrusion affecting a trading-support server, involving an outbound connection, a registry-key artifact associated with GreyFalcon, attribution-discordant infrastructure evidence, a possible HR-database access attempt, and vendor-provided IOCs.",
+    "confidence": 0.99
+  },
+  "structure_audit": {
+    "estimated_word_count": 1260,
+    "within_target_range": true,
+    "decision_point_count": 4,
+    "decision_points": [
+      {
+        "id": 1,
+        "summary": "Initial triage of a Low-severity EDR alert cluster and the decision to perform a short summary-field review while deferring a full raw-log pull.",
+        "evidence_before": [
+          "EDR auto-triage score of Low",
+          "History of frequent low-severity noise from the trading-support host",
+          "Two prior Low scores from the host had been benign",
+          "One remembered Low score had previously become a real incident",
+          "No reported business disruption",
+          "Three hours remained in the shift"
+        ],
+        "evidence_after": [
+          "Quick review of parent process, flagged child processes, and role-tag fields",
+          "No summary-field cue overrode the initial Low assessment",
+          "An outbound connection to an unfamiliar IP appeared approximately forty minutes later"
+        ],
+        "goals_constraints": [
+          "Cover the queue efficiently",
+          "Avoid missing material threats",
+          "Create a handoff that can withstand review",
+          "Avoid spending 15 to 20 minutes on an insufficiently justified raw-log pull",
+          "Work within remaining shift time"
+        ],
+        "alternatives": [
+          "Accept the Low score without review",
+          "Immediately conduct the full manual log pull",
+          "Escalate immediately to the IR lead",
+          "Conduct a limited summary review and revisit if new evidence emerges"
+        ],
+        "decision_basis": "The participant selected a proportionate intermediate check: the Low score and benign host history did not justify a full pull, but the participant expressly rejected uncritical reliance on the automated score and looked for disconfirming summary-level cues.",
+        "time_pressure": "Moderate: three hours remained, and a full pull would consume 15 to 20 minutes amid an active queue.",
+        "uncertainty": "The alert could have represented ordinary host-specific noise or an early-stage meaningful incident; the initial evidence was insufficient to resolve that distinction."
+      },
+      {
+        "id": 2,
+        "summary": "Attribution calibration after discovery of an unfamiliar outbound connection and a registry-key artifact associated with GreyFalcon.",
+        "evidence_before": [
+          "Outbound connection to an unfamiliar IP",
+          "Registry-key artifact matching a GreyFalcon campaign previously documented by the participant",
+          "C2 domain registration pattern inconsistent with GreyFalcon's usual infrastructure",
+          "Attempted connection to an HR benefits database, a target not previously associated with GreyFalcon in the participant's experience"
+        ],
+        "evidence_after": [
+          "Attribution assessed as moderate rather than high confidence",
+          "Both discordant cues were explicitly identified as issues for the hunt to test",
+          "The HR-targeting mismatch was retained as an open inconsistency rather than explained away"
+        ],
+        "goals_constraints": [
+          "Produce a useful attribution hypothesis without overstating certainty",
+          "Use previous campaign knowledge while avoiding overcommitment",
+          "Keep the hunt responsive to evidence that could disconfirm the actor hypothesis"
+        ],
+        "alternatives": [
+          "Assign GreyFalcon with high confidence based on the registry artifact",
+          "Reject GreyFalcon immediately because of the infrastructure and targeting mismatches",
+          "Use a calibrated moderate-confidence hypothesis and test the contradictory evidence"
+        ],
+        "decision_basis": "The participant treated the familiar registry-key artifact as meaningful but non-decisive, explicitly weighted two contradictory cues, and converted them into testable hunt questions.",
+        "time_pressure": "Moderate to high: the analyst was working during an overnight shift with a finite handoff deadline.",
+        "uncertainty": "The artifact supported a GreyFalcon hypothesis, but both infrastructure and target-selection evidence left material ambiguity about whether the actor attribution was correct."
+      },
+      {
+        "id": 3,
+        "summary": "Hunt-scope sequencing after receipt of a vendor bulletin containing five IOCs.",
+        "evidence_before": [
+          "Five vendor-supplied IOCs, including a rare C2 protocol signature and two file hashes",
+          "The vendor did not state a meaningful rank order for the IOCs",
+          "Trading-adjacent systems were sensitive to disruption and downtime"
+        ],
+        "evidence_after": [
+          "The two file hashes were selected for the first pass",
+          "The protocol signature was deferred to a second-pass expansion if needed",
+          "The participant stated that a reordered list would not have changed the initial selection"
+        ],
+        "goals_constraints": [
+          "Maximize diagnostic yield per unit of hunt effort",
+          "Limit false positives",
+          "Avoid unnecessary disruption to sensitive trading-adjacent systems",
+          "Maintain the ability to expand scope if the first pass did not resolve the issue"
+        ],
+        "alternatives": [
+          "Start with the first-listed IOC",
+          "Start with the visually or narratively salient protocol signature",
+          "Run all indicators simultaneously",
+          "Stage the hunt by specificity and expected false-positive risk"
+        ],
+        "decision_basis": "The participant prioritized file hashes because they were technically more specific and less prone to false positives, not because of their presentation order or their narrative salience.",
+        "time_pressure": "Moderate: the work occurred near the end of shift and had to balance technical coverage with operational sensitivity.",
+        "uncertainty": "The vendor bulletin established plausible scope signals, but it did not establish which indicators would be most informative in this environment."
+      },
+      {
+        "id": 4,
+        "summary": "Containment recommendation and evidence integration using a vendor bulletin, hedged internal notes, and local telemetry.",
+        "evidence_before": [
+          "A well-formatted and technically specific vendor bulletin",
+          "A colleague's more hedged internal notes",
+          "Local telemetry including timestamps and observed behavior",
+          "An unresolved attribution question",
+          "A partial match on an additional host from the scope sweep"
+        ],
+        "evidence_after": [
+          "Specific claims from both sources were checked against telemetry",
+          "Both sources were judged partially corroborated",
+          "The final recommendation combined corroborated technical steps from the bulletin with precautionary scope from internal notes",
+          "The handoff stated moderate confidence and explicitly flagged unresolved issues for the next shift"
+        ],
+        "goals_constraints": [
+          "Make a defensible containment recommendation",
+          "Avoid treating polished presentation as evidence",
+          "Preserve operational caution amid unresolved attribution and scope questions",
+          "Produce a transparent handoff for the incoming shift"
+        ],
+        "alternatives": [
+          "Adopt the vendor bulletin wholesale",
+          "Prefer the colleague's internal notes because they were locally generated",
+          "Choose one source on apparent credibility or presentation quality",
+          "Cross-check claims from both sources and use only corroborated elements"
+        ],
+        "decision_basis": "The participant used telemetry-based corroboration rather than source fluency or formatting to determine which elements of each source belonged in the recommendation.",
+        "time_pressure": "High: the containment write-up was prepared near the end of the shift.",
+        "uncertainty": "The evidence supported a precautionary recommendation but did not close the attribution question or fully resolve the additional-host partial match."
+      }
+    ]
+  },
+  "target_occurrence_audit": [
+    {
+      "instance_id": "zero_audit_confirmation_bias",
+      "bias": "Confimation Bias",
+      "requested_occurrences_for_bias": 0,
+      "status": "absent",
+      "decision_point": 2,
+      "supporting_quote": "“But I didn't want to treat it as decisive on its own, because two things cut against it: the C2 domain's registration profile didn't match GreyFalcon's usual infrastructure, and the target — an HR database — wasn't something GreyFalcon has gone after in anything I've tracked.”",
+      "evidence_location": "Attribution decision, participant response following the interviewer question about the basis for the attribution call.",
+      "mechanism": "No confirmation-bias mechanism is supported. The participant identifies evidence favorable to GreyFalcon, actively engages two discordant evidence streams, lowers confidence, and frames the mismatches as tests that could point away from the favored actor hypothesis.",
+      "strength": "absent",
+      "confidence": 0.98,
+      "plausible_nonbias_explanation": "The participant's reliance on a self-documented artifact reflects relevant expertise and memory retrieval, but the account does not show selective search, discounting of disconfirming evidence, or asymmetric evidence weighting.",
+      "additional_evidence_needed": "For confirmation bias to be supportable, the text would need to show the participant treating the registry artifact as dispositive while minimizing, excluding, or rationalizing away the contradictory infrastructure or targeting evidence. No such evidence should be added in this vocabulary-control condition.",
+      "revision_needed": false,
+      "revision": {
+        "revision_type": "none",
+        "location": "Decision point 2, attribution discussion.",
+        "current_defect": "None relative to the zero-occurrence requirement; the reasoning is explicitly balanced.",
+        "minimal_change_instruction": "Retain the explicit treatment of the domain-registration and HR-targeting mismatches as unresolved evidence capable of reducing or overturning the GreyFalcon attribution.",
+        "preserve": [
+          "Registry-key match",
+          "Moderate-confidence attribution",
+          "Both discordant evidence streams",
+          "Open-hypothesis framing"
+        ],
+        "avoid_creating": [
+          "Selective dismissal of the C2 infrastructure mismatch",
+          "Unsupported rationalization of the HR target mismatch",
+          "A high-confidence attribution based only on the familiar artifact"
+        ],
+        "expected_post_revision_status": "absent"
+      }
+    },
+    {
+      "instance_id": "zero_audit_complacency_bias",
+      "bias": "Complacency Bias",
+      "requested_occurrences_for_bias": 0,
+      "status": "absent",
+      "decision_point": 1,
+      "supporting_quote": "“But taking the score completely at face value without even glancing at the summary felt like too much trust in a score that's generated from a limited rule set. The five-minute look was a way to catch anything obviously wrong without committing the full review time.”",
+      "evidence_location": "Initial triage decision, participant explanation of the quick scan.",
+      "mechanism": "No complacency mechanism is supported. The participant does not simply defer because the alert is Low or because the host has generated past false positives; instead, the participant performs a bounded verification and establishes a condition for revisiting the alert.",
+      "strength": "absent",
+      "confidence": 0.97,
+      "plausible_nonbias_explanation": "Deferring a 15-to-20-minute raw-log pull after a short check is proportionate resource allocation under queue and time constraints, not complacency, because the decision is evidence-responsive and revisitable.",
+      "additional_evidence_needed": "A defensible complacency occurrence would require uncritical acceptance of the automated Low score or prior false-alarm history despite available, relevant warning cues. Such evidence would violate the control specification and should not be introduced.",
+      "revision_needed": false,
+      "revision": {
+        "revision_type": "none",
+        "location": "Decision point 1, initial Low-score triage and full-log-pull deferral.",
+        "current_defect": "None relative to the zero-occurrence requirement; the decision is proportionate and explicitly checked.",
+        "minimal_change_instruction": "Keep the limited summary review, the stated limitation of the automated rule set, and the explicit revisit trigger if new evidence arrives.",
+        "preserve": [
+          "Low auto-triage score",
+          "False-positive host history",
+          "Raw-log-pull time cost",
+          "Three-hour shift constraint",
+          "Later unfamiliar outbound connection"
+        ],
+        "avoid_creating": [
+          "Language implying that low-severity alerts from this host can safely be ignored",
+          "Deferral solely because the automated system labeled the alert Low",
+          "Removal of the quick verification step or revisit plan"
+        ],
+        "expected_post_revision_status": "absent"
+      }
+    },
+    {
+      "instance_id": "zero_audit_explanation_bias",
+      "bias": "Explanation bias",
+      "requested_occurrences_for_bias": 0,
+      "status": "absent",
+      "decision_point": 3,
+      "supporting_quote": "“I started with the two file hashes first, since they're more specific and carry a lower false-positive risk technically, and treated the protocol signature as a second pass to expand into if the first pass didn't resolve things.”",
+      "evidence_location": "Hunt-scope decision, participant explanation after the vendor bulletin was introduced.",
+      "mechanism": "No explanation-bias mechanism is supported. Scope sequencing rests on explicit diagnostic properties—specificity and false-positive risk—rather than on selecting the indicator that makes the incident story feel most coherent or explanatory.",
+      "strength": "absent",
+      "confidence": 0.96,
+      "plausible_nonbias_explanation": "The participant is making a technically justified staged-search decision under operational constraints; this is an evidential and efficiency-based prioritization.",
+      "additional_evidence_needed": "A supportable explanation-bias instance would require evidence that the participant preferred an IOC because it supplied a satisfying narrative explanation while disregarding comparative diagnostic value. This would be inappropriate to add to the control.",
+      "revision_needed": false,
+      "revision": {
+        "revision_type": "none",
+        "location": "Decision point 3, first-pass IOC selection.",
+        "current_defect": "None relative to the zero-occurrence requirement; comparative diagnostic reasoning is explicit.",
+        "minimal_change_instruction": "Preserve the direct comparison between hash specificity, protocol-signature breadth, false-positive risk, and staged hunt value.",
+        "preserve": [
+          "Five-IOC vendor bulletin",
+          "Two file hashes",
+          "Rare protocol signature",
+          "Staged hunt structure",
+          "Trading-adjacent operational sensitivity"
+        ],
+        "avoid_creating": [
+          "Preference for the indicator that best fits the GreyFalcon story",
+          "Unexplained selection of an IOC based on apparent narrative completeness",
+          "Removal of the technical diagnosticity rationale"
+        ],
+        "expected_post_revision_status": "absent"
+      }
+    },
+    {
+      "instance_id": "zero_audit_fluency_effects",
+      "bias": "Fluency effects",
+      "requested_occurrences_for_bias": 0,
+      "status": "absent",
+      "decision_point": 4,
+      "supporting_quote": "“I checked specific claims from both against the telemetry I had — did the timestamps line up, did the described behavior match what we actually saw — and both held up partially.”",
+      "evidence_location": "Containment recommendation decision, participant response comparing vendor bulletin and colleague notes.",
+      "mechanism": "No fluency-effect mechanism is supported. Although the participant notices that the vendor bulletin is well-formatted and specific, the account explicitly rejects presentation quality as the reason for selection and tests claims from both sources against local telemetry.",
+      "strength": "absent",
+      "confidence": 0.97,
+      "plausible_nonbias_explanation": "Mentioning that one source is well-formatted is not itself fluency bias. The participant treats it as a descriptive characteristic and relies on corroboration rather than readability, polish, or ease of processing.",
+      "additional_evidence_needed": "A fluency-effect occurrence would require the participant to treat the bulletin as more credible because it was polished, clear, familiar, or easy to process, without equivalent evidentiary cross-checking. Such a mechanism should not be introduced in this control.",
+      "revision_needed": false,
+      "revision": {
+        "revision_type": "none",
+        "location": "Decision point 4, comparison of vendor bulletin and internal notes.",
+        "current_defect": "None relative to the zero-occurrence requirement; the potential fluency cue is explicitly neutralized by claim-level verification.",
+        "minimal_change_instruction": "Retain the telemetry checks and the statement that the final blend reflects corroborated evidence rather than how convincingly either source read.",
+        "preserve": [
+          "Well-formatted vendor bulletin",
+          "Hedged colleague notes",
+          "Telemetry checks",
+          "Blended containment recommendation",
+          "Moderate-confidence handoff"
+        ],
+        "avoid_creating": [
+          "Source selection based on polish or specificity alone",
+          "A claim that the bulletin was trusted because it looked authoritative",
+          "Removal of the comparison with local telemetry"
+        ],
+        "expected_post_revision_status": "absent"
+      }
+    },
+    {
+      "instance_id": "zero_audit_mirror_imaging_bias",
+      "bias": "Mirror Imaging Bias",
+      "requested_occurrences_for_bias": 0,
+      "status": "absent",
+      "decision_point": 2,
+      "supporting_quote": "“It's possible there's a reason a GreyFalcon operator would go after HR data, but I didn't have evidence for that, so rather than guess at their motive I just left it as an open inconsistency.”",
+      "evidence_location": "Attribution decision, participant response concerning the HR-targeting mismatch.",
+      "mechanism": "No mirror-imaging mechanism is supported. The participant refuses to infer adversary intent by applying the analyst's own strategic logic, assumptions, incentives, or organizational preferences to the actor.",
+      "strength": "absent",
+      "confidence": 0.99,
+      "plausible_nonbias_explanation": "The participant's refusal to construct a motive explanation reflects appropriate uncertainty management and separation of observed behavior from unobserved adversary intent.",
+      "additional_evidence_needed": "A mirror-imaging occurrence would require the participant to resolve the mismatch through a statement such as what the analyst's own organization or a rational actor would do in the same strategic position. That would breach the control specification and should not be added.",
+      "revision_needed": false,
+      "revision": {
+        "revision_type": "none",
+        "location": "Decision point 2, HR-targeting mismatch discussion.",
+        "current_defect": "None relative to the zero-occurrence requirement; the participant preserves ambiguity rather than projecting motives.",
+        "minimal_change_instruction": "Maintain the refusal to speculate about GreyFalcon's motive and the framing of the HR access attempt as evidence that may ultimately disconfirm the attribution.",
+        "preserve": [
+          "HR benefits database access attempt",
+          "GreyFalcon's previously observed target profile",
+          "Open inconsistency",
+          "Need for additional evidence"
+        ],
+        "avoid_creating": [
+          "Attributing a motive based on what the analyst would consider strategically sensible",
+          "Assuming the adversary shares the analyst's priorities or cost-benefit logic",
+          "Retrofitting an unsupported explanation to preserve the attribution"
+        ],
+        "expected_post_revision_status": "absent"
+      }
+    },
+    {
+      "instance_id": "zero_audit_order_effects",
+      "bias": "Order effects",
+      "requested_occurrences_for_bias": 0,
+      "status": "absent",
+      "decision_point": 3,
+      "supporting_quote": "“It wasn't about which one stood out most on the page — it was about which ones would tell me the most per unit of hunt effort.”",
+      "evidence_location": "Hunt-scope decision, participant explanation of IOC prioritization; reinforced by the later list-reordering hypothetical.",
+      "mechanism": "No order-effect mechanism is supported. The participant reports an order-invariant selection criterion and later states that a different list order would not have changed the first-pass scope.",
+      "strength": "absent",
+      "confidence": 0.98,
+      "plausible_nonbias_explanation": "Selecting file hashes before a protocol signature can reflect their stated technical specificity and lower false-positive risk rather than their order in the bulletin.",
+      "additional_evidence_needed": "A supportable order-effect occurrence would require evidence that earlier-presented IOCs received greater attention, perceived importance, or priority merely because of presentation position. The interview instead provides direct counterevidence.",
+      "revision_needed": false,
+      "revision": {
+        "revision_type": "none",
+        "location": "Decision point 3 and the later IOC-order hypothetical.",
+        "current_defect": "None relative to the zero-occurrence requirement; the narrative explicitly distinguishes diagnosticity from list position.",
+        "minimal_change_instruction": "Retain the vendor's lack of stated ranking, the specificity rationale, and the answer that reordering would not alter first-pass prioritization.",
+        "preserve": [
+          "Five-IOC list",
+          "No vendor ranking",
+          "Hash-first sequencing",
+          "Protocol-signature second pass",
+          "Diagnosticity comparison"
+        ],
+        "avoid_creating": [
+          "A statement that the first-listed IOC naturally became the starting point",
+          "Unexplained correspondence between bulletin order and hunt order",
+          "Removal of the order-invariance probe response"
+        ],
+        "expected_post_revision_status": "absent"
+      }
+    }
+  ],
+  "bias_level_counts": [
+    {
+      "bias": "Confimation Bias",
+      "requested_count": 0,
+      "supported_count": 0,
+      "weak_count": 0,
+      "absent_count": 0,
+      "merged_count": 0,
+      "accidental_count": 0,
+      "count_satisfied": true
+    },
+    {
+      "bias": "Complacency Bias",
+      "requested_count": 0,
+      "supported_count": 0,
+      "weak_count": 0,
+      "absent_count": 0,
+      "merged_count": 0,
+      "accidental_count": 0,
+      "count_satisfied": true
+    },
+    {
+      "bias": "Explanation bias",
+      "requested_count": 0,
+      "supported_count": 0,
+      "weak_count": 0,
+      "absent_count": 0,
+      "merged_count": 0,
+      "accidental_count": 0,
+      "count_satisfied": true
+    },
+    {
+      "bias": "Fluency effects",
+      "requested_count": 0,
+      "supported_count": 0,
+      "weak_count": 0,
+      "absent_count": 0,
+      "merged_count": 0,
+      "accidental_count": 0,
+      "count_satisfied": true
+    },
+    {
+      "bias": "Mirror Imaging Bias",
+      "requested_count": 0,
+      "supported_count": 0,
+      "weak_count": 0,
+      "absent_count": 0,
+      "merged_count": 0,
+      "accidental_count": 0,
+      "count_satisfied": true
+    },
+    {
+      "bias": "Order effects",
+      "requested_count": 0,
+      "supported_count": 0,
+      "weak_count": 0,
+      "absent_count": 0,
+      "merged_count": 0,
+      "accidental_count": 0,
+      "count_satisfied": true
+    }
+  ],
+  "additional_candidate_biases": [
+    {
+      "bias": "Automation bias",
+      "decision_point": 1,
+      "supporting_quote": "“Nothing in that quick look overrode the Low score, so I deferred the full manual log pull.”",
+      "mechanism": "The automated Low score is a salient initial anchor and contributes to the decision to defer a full review.",
+      "confidence": 0.28,
+      "status": "rejected",
+      "plausible_nonbias_explanation": "The participant explicitly identifies the rule set as limited, conducts an independent summary review, considers the full-pull time cost, and creates a conditional revisit plan. The score is treated as one input, not as authoritative or determinative.",
+      "revision_recommendation": "none"
+    },
+    {
+      "bias": "Availability heuristic",
+      "decision_point": 1,
+      "supporting_quote": "“I'd seen similar low scores turn out benign twice before. But I also remembered one shift where a Low score turned into something real.”",
+      "mechanism": "Prior memorable examples are retrieved while interpreting the new Low-score alert.",
+      "confidence": 0.23,
+      "status": "rejected",
+      "plausible_nonbias_explanation": "The recalled cases are directly relevant host and alert-history evidence, and the participant neither treats them as frequency estimates nor permits either anecdote to settle the decision. The later summary check prevents a defensible availability-bias classification.",
+      "revision_recommendation": "none"
+    },
+    {
+      "bias": "Anchoring and insufficient adjustment",
+      "decision_point": 2,
+      "supporting_quote": "“The registry-key match was strong — I'd documented that artifact myself in an earlier report, so I trusted it as a data point.”",
+      "mechanism": "A familiar prior artifact could potentially anchor the initial GreyFalcon hypothesis.",
+      "confidence": 0.18,
+      "status": "rejected",
+      "plausible_nonbias_explanation": "The participant adjusts downward to moderate confidence, records two independent mismatches, leaves one mismatch unexplained, and requests an independent second analyst read. This is evidence of adjustment rather than insufficient adjustment.",
+      "revision_recommendation": "none"
+    },
+    {
+      "bias": "Source credibility heuristic",
+      "decision_point": 4,
+      "supporting_quote": "“The vendor bulletin was well-formatted and specific; the colleague's notes were hedged but, as far as I could tell, accurate.”",
+      "mechanism": "Surface features and source type could have created a credibility asymmetry between vendor material and internal notes.",
+      "confidence": 0.16,
+      "status": "rejected",
+      "plausible_nonbias_explanation": "The participant compares claim-level timestamps and behavior against telemetry and adopts only partially corroborated elements from each source. The source characteristics are acknowledged but not used as the operative decision rule.",
+      "revision_recommendation": "none"
+    }
+  ],
+  "nonbias_cues": [
+    {
+      "cue": "The participant recalls two benign Low-score alerts and one Low-score alert that became real.",
+      "location": "Initial narrative and decision point 1.",
+      "why_not_bias": "Relevant prior experience is not bias by itself. The participant explicitly avoids relying on pattern matching alone and independently inspects the available summary fields."
+    },
+    {
+      "cue": "The analyst defers the full raw-log pull after a five-minute scan.",
+      "location": "Decision point 1.",
+      "why_not_bias": "This is bounded resource allocation under queue and shift constraints. The participant explains the evidentiary threshold, performs a verification step, and establishes a revisit condition."
+    },
+    {
+      "cue": "The participant trusts a registry-key artifact previously documented personally.",
+      "location": "Decision point 2.",
+      "why_not_bias": "Personally acquired expertise and recognition memory are legitimate evidentiary inputs when they remain open to disconfirmation. The participant explicitly weighs incompatible infrastructure and targeting evidence."
+    },
+    {
+      "cue": "The participant does not explain why GreyFalcon might target HR data.",
+      "location": "Decision point 2.",
+      "why_not_bias": "Missing motive information and refusal to speculate are not mirror imaging or explanation failure. The analyst correctly retains an unsupported inference as unresolved."
+    },
+    {
+      "cue": "The participant starts with the two file hashes rather than the protocol signature.",
+      "location": "Decision point 3.",
+      "why_not_bias": "The stated basis is comparative diagnosticity and false-positive risk, which is a technically justified prioritization criterion rather than an order or narrative effect."
+    },
+    {
+      "cue": "The vendor bulletin is described as well-formatted and specific.",
+      "location": "Decision point 4.",
+      "why_not_bias": "A fluency cue is present in the environment, but the decision process neutralizes it through telemetry-based checks of claims from both sources."
+    },
+    {
+      "cue": "The final recommendation is only moderately confident and retains unresolved follow-up items.",
+      "location": "Decision point 4.",
+      "why_not_bias": "Calibrated uncertainty is not indecision or error. It appropriately reflects unresolved attribution and an additional-host partial match."
+    }
+  ],
+  "causal_audit": {
+    "causal_claims": [
+      {
+        "claim": "An immediate raw-log pull might have detected the outbound connection sooner and might have provided more runway before the vendor window closed.",
+        "location": "Closing hypothetical concerning immediate raw-log review.",
+        "assessment": "Appropriately tentative. The participant uses “might,” states that it is hard to know, and notes that the summary scan did not reveal information that would have changed the initial decision."
+      },
+      {
+        "claim": "Changing IOC list order would not change the participant's first-pass hunt scope.",
+        "location": "Closing hypothetical concerning IOC order.",
+        "assessment": "Causally coherent within the participant's stated decision rule because the selection criterion is technical specificity and false-positive risk rather than position. It remains self-report about a hypothetical, not independently verified behavior."
+      }
+    ],
+    "correlation_causation_risks": [
+      {
+        "risk": "The analyst's prior observations that similar Low-score alerts were benign could be mistaken for proof that the present alert was benign.",
+        "mitigation_in_text": "The participant does not make that causal leap; prior history informs triage but is followed by an independent summary review and conditional reassessment."
+      },
+      {
+        "risk": "The registry-key artifact could be overinterpreted as proof that GreyFalcon caused the incident.",
+        "mitigation_in_text": "The analyst treats it as one strong data point, assigns only moderate confidence, and retains discordant infrastructure and targeting observations as active tests."
+      }
+    ],
+    "counterfactual_present": true,
+    "changed_variable": "Two interviewer-imposed hypothetical changes are present: immediate full raw-log review instead of a summary scan, and a different presentation order for the vendor IOC list.",
+    "held_constant": [
+      "The underlying alert cluster and incident facts",
+      "The participant's stated technical assessment criteria",
+      "The shift context",
+      "The vendor bulletin contents, apart from the hypothetical reordering in the second probe"
+    ],
+    "causal_coherence": "moderate",
+    "explanation": "The interview includes counterfactual probes even though the hidden specification does not define a formal counterfactual variable. The raw-log hypothetical appropriately preserves uncertainty and avoids asserting that earlier review would certainly have changed the operational outcome. The IOC-order probe directly tests the asserted diagnosticity-based decision rule and receives an internally consistent answer. Neither hypothetical introduces a target-bias mechanism or contaminates the vocabulary-control condition."
+  },
+  "quality_scores": {
+    "occupational_realism": 9,
+    "cta_fidelity": 9,
+    "bias_separability": 9,
+    "bias_subtlety": 9,
+    "control_fidelity": 10,
+    "counterfactual_fidelity": 8,
+    "narrative_coherence": 9,
+    "naturalness": 8,
+    "hidden_label_integrity": 10,
+    "overall_quality": 9
+  },
+  "revision_summary": {
+    "revision_required": false,
+    "supported_occurrence_total": 0,
+    "requested_occurrence_total": 0,
+    "missing_occurrence_total": 0,
+    "accidental_occurrence_total": 0,
+    "priority": "none",
+    "recommended_action": "accept",
+    "global_revision_constraints": [
+      "Maintain the four-decision-point structure: triage, attribution, hunt scoping, and containment recommendation.",
+      "Maintain the existing domain vocabulary, incident facts, occupational setting, time constraints, and dialogue format.",
+      "Do not introduce target-bias mechanisms merely because the named vocabulary appears in the scenario.",
+      "Preserve the participant's explicit engagement with disconfirming attribution evidence, bounded verification of automated triage, diagnosticity-based IOC selection, telemetry-based source corroboration, and refusal to infer unsupported adversary motives.",
+      "If any stylistic revision is made, ensure it does not remove the statements that distinguish justified expertise and proportionate risk management from bias."
+    ],
+    "revision_order": []
+  },
+  "failure_flags": []
+}

@@ -1,0 +1,261 @@
+You are an expert occupational interviewer and realistic dialogue writer.
+
+Generate one simulated cognitive task analysis interview from the supplied generation specification. The interview will be given to an independent evaluator that must infer whether specified cognitive biases are present. Do not reveal the labels or your construction process.
+
+INPUT
+Generation specification:
+{{"scenario_id": "NP_Biased_1",
+  "domain_id": "NP",
+  "domain": "Nuclear power and Process-control operations",
+  "role": "Shift Supervisor / Control Room Supervisor (Nuclear)",
+  "condition": "biased",
+  "generation_specification": {
+    "scenario_title_internal": "Feedwater Pump Vibration Trend During Power Ascension at Shift Turnover",
+    "scenario_summary_internal": "During a post-refueling power ascension, the Control Room Supervisor (CRS) manages a developing feedwater pump vibration trend alongside a minor steam generator level control anomaly, while under time pressure from an approaching shift turnover and a management-driven ascension schedule. Cognitive load from tracking multiple concurrent, moderately abnormal parameters leads the CRS to select a familiar, procedurally 'good enough' response at one decision point rather than fully working through the available trend data and alternative hypotheses, illustrating bounded/imperfect rationality rather than a knowledge gap or willful risk-taking.",
+    "occupational_realism": {
+      "objective": "Safely complete a scheduled power ascension from 45% to 75% reactor power following a refueling outage while maintaining all technical specification limits and equipment operability.",
+      "setting": "Main control room of a pressurized water reactor unit, mid-shift during a multi-hour power ascension, approximately 45 minutes before scheduled shift turnover.",
+      "constraints": [
+        "Ascension schedule set by plant management with grid commitment pressure",
+        "Limited on-shift technical staff (one reactor engineer available by phone, not on-site)",
+        "Shift turnover approaching, requiring status consolidation and handoff",
+        "Technical specification action statements with defined time clocks",
+        "Concurrent minor anomalies competing for supervisory attention"
+      ],
+      "stakeholders": [
+        "Control Room Supervisor (interviewee)",
+        "Reactor Operator at the controls",
+        "Balance-of-Plant Operator",
+        "Shift Technical Advisor",
+        "Oncoming shift crew",
+        "System Engineer (feedwater), on-call",
+        "Plant Operations Manager"
+      ],
+      "technical_terms_to_use": [
+        "feedwater pump discharge pressure",
+        "vibration trend",
+        "technical specification action statement",
+        "steam generator narrow range level",
+        "power ascension rate",
+        "control room log",
+        "shift turnover brief",
+        "operability determination"
+      ],
+      "technical_terms_to_avoid": [
+        "bounded rationality",
+        "satisficing",
+        "cognitive bias",
+        "heuristic",
+        "imperfect rationality"
+      ]
+    },
+    "timeline": [
+      {
+        "phase": 1,
+        "decision_point": true,
+        "facts_available_before_decision": [
+          "Feedwater pump 1B discharge pressure showing a slow upward oscillation over the last 40 minutes",
+          "Vibration monitor reading within normal band but trending upward",
+          "No alarm has actuated; parameter is within technical specification limits"
+        ],
+        "new_information_after_decision": [
+          "Vibration continues a shallow upward trend over the next hour without alarming",
+          "Reactor Operator notes the trend during a routine log entry"
+        ],
+        "alternatives": [
+          "Log the trend and continue routine monitoring at current interval",
+          "Increase monitoring frequency and request an early vibration data pull from the plant computer",
+          "Contact the feedwater system engineer immediately for a preliminary assessment"
+        ],
+        "intended_action": "CRS directs increased monitoring frequency and logs the trend, deferring engineer contact pending further data."
+      },
+      {
+        "phase": 2,
+        "decision_point": true,
+        "facts_available_before_decision": [
+          "Steam generator 'B' narrow range level shows a brief, minor oscillation during a routine rod movement",
+          "Level control system compensates automatically within seconds",
+          "No technical specification limit approached"
+        ],
+        "new_information_after_decision": [
+          "Level stabilizes and no further oscillation occurs during the next two rod movements",
+          "Reactor Engineer, contacted by phone, states the oscillation is consistent with known control system response characteristics at this power level"
+        ],
+        "alternatives": [
+          "Treat the oscillation as expected control system behavior and continue ascension",
+          "Pause ascension briefly to review control system response with the on-call engineer before continuing",
+          "Request the Shift Technical Advisor perform an independent operability review before continuing"
+        ],
+        "intended_action": "CRS pauses briefly, confers with the on-call engineer by phone, and resumes ascension after receiving a verbal assessment."
+      },
+      {
+        "phase": 3,
+        "decision_point": true,
+        "facts_available_before_decision": [
+          "Feedwater pump 1B vibration has now crossed into the upper third of the normal operating band, continuing its earlier trend",
+          "Steam generator level control has remained stable since Phase 2",
+          "Shift turnover is 45 minutes away and the CRS is simultaneously drafting the turnover brief",
+          "Technical specification limit for the vibration parameter has not been reached; no alarm is active",
+          "The ascension schedule calls for continuing to the next power hold point within the hour"
+        ],
+        "new_information_after_decision": [
+          "Approximately 90 minutes later, vibration trend continues rising and the pump is placed on close monitoring per a separate technical specification action",
+          "Post-event review shows the vibration data pattern was distinguishable from prior similar events on the plant computer, had it been pulled and compared at Phase 3"
+        ],
+        "alternatives": [
+          "Apply the standard 'continue and monitor' checklist response used for prior minor vibration trends, without pulling comparative historical data",
+          "Pull and compare the current vibration signature against the plant computer's historical trend library before deciding whether to continue ascension",
+          "Hold the ascension at the current power level until the feedwater system engineer completes a documented review"
+        ],
+        "intended_action": "CRS applies the familiar checklist-based 'continue and monitor' response used successfully in past similar-looking events, without pulling the fuller comparative trend data, in order to keep pace with the ascension schedule and finish the turnover brief on time."
+      },
+      {
+        "phase": 4,
+        "decision_point": true,
+        "facts_available_before_decision": [
+          "Vibration trend has been logged as 'continue and monitor' status in the CRS's draft turnover notes",
+          "Oncoming CRS is arriving in 10 minutes",
+          "No new alarms or technical specification entries exist at this point"
+        ],
+        "new_information_after_decision": [
+          "Oncoming CRS asks a clarifying question about the vibration trend during turnover and requests the historical comparison be pulled that shift",
+          "Comparison later shows the trend pattern differed from prior benign cases in rate of rise"
+        ],
+        "alternatives": [
+          "Hand over the vibration trend as a routine monitoring item with minimal elaboration",
+          "Explicitly flag the trend as unresolved and request the oncoming crew prioritize a historical data comparison",
+          "Delay turnover briefly to complete the comparison personally before handing over"
+        ],
+        "intended_action": "CRS hands over the item as a routine monitoring note, briefly mentioning the trend without flagging it as needing a specific follow-up comparison."
+      }
+    ],
+    "probe_plan": {
+      "opening": [
+        "Can you walk me through what you were responsible for that shift and what the plan was for the power ascension?",
+        "What was your overall mental picture of plant status heading into the middle of the shift?"
+      ],
+      "timeline_reconstruction": [
+        "What happened first with the feedwater pump readings, and when did you first notice it?",
+        "Walk me through what happened with the steam generator level oscillation and how that unfolded.",
+        "What was going on around the time the vibration trend crossed into the upper part of its normal band?",
+        "What did the last part of the shift look like as you prepared the turnover?"
+      ],
+      "decision_point_probes": [
+        "At the point you decided to just increase monitoring rather than call the engineer right away, what informed that choice?",
+        "When you paused to call the on-call engineer about the level oscillation, what made you decide to check with him rather than continue on your own judgment?",
+        "When the vibration trend crossed into the upper third of the band while you were also drafting the turnover brief, what options did you consider, and what made you choose to continue with the standard monitoring response?",
+        "When you were writing the turnover note, what determined how much detail you included about the vibration trend?"
+      ],
+      "decision_basis": [
+        "What specifically made the 'continue and monitor' response feel like the right call at that moment?",
+        "Did you consider pulling the historical trend comparison data before continuing ascension? Why or why not?"
+      ],
+      "information_sources": [
+        "What data sources did you have available on the plant computer at that time?",
+        "Who did you talk to before making each of these calls, and what did they tell you?"
+      ],
+      "goals_and_alternatives": [
+        "What competing priorities were you juggling at that point in the shift?",
+        "Looking back, what other options were realistically available to you at that moment?"
+      ],
+      "time_pressure_and_uncertainty": [
+        "How much did the approaching shift turnover affect how you handled the vibration trend?",
+        "How confident were you in the vibration data at the time, and what would have increased that confidence?"
+      ],
+      "prior_experience": [
+        "Had you seen a similar vibration trend before, and how did that experience shape your response this time?"
+      ],
+      "closing_hypotheticals": [
+        "If you'd had another hour before turnover, would you have handled the vibration trend differently?",
+        "If the historical comparison data had been sitting right in front of you at that moment, do you think it would have changed your decision?",
+        "What would you tell a newer supervisor about handling a trending-but-not-yet-alarming parameter near shift turnover?"
+      ]
+    },
+    "occurrence_embedding_plan_internal": [
+      {
+        "instance_id": "ir_01",
+        "bias": "Imperfect Rationality",
+        "decision_point": 3,
+        "mechanism": "Under concurrent cognitive load (drafting turnover brief while tracking a slowly rising vibration trend, with an ascension schedule to maintain), the CRS selects a familiar, previously successful checklist response ('continue and monitor') without fully retrieving or integrating available comparative evidence (plant computer historical trend library), settling for a satisfactory rather than fully evaluated option.",
+        "affected_reasoning_operation": "Evidence integration and option evaluation prior to a continue/hold decision",
+        "evidence_available_at_time": [
+          "Vibration trend crossing into upper third of normal band",
+          "Plant computer historical trend library accessible but not consulted",
+          "Ascension schedule and turnover deadline creating competing demands",
+          "Prior similar-looking events resolved benignly using the same checklist response"
+        ],
+        "required_textual_manifestation": "CRS explicitly states they applied the standard/familiar monitoring response because it had worked before and time was limited, and did not pull or compare the historical vibration signature before continuing ascension, despite acknowledging in the interview that the comparison was accessible.",
+        "plausible_nonbias_interpretation": "A reasonable supervisor might legitimately deprioritize a non-alarming, within-limits parameter to meet real scheduling and staffing constraints; the response only counts as an instance because the interview must also show that full evaluation was feasible and consciously foregone rather than genuinely impossible.",
+        "strength": "moderate",
+        "do_not_make_explicit": [
+          "bounded rationality",
+          "satisficing",
+          "cognitive bias",
+          "imperfect rationality",
+          "heuristic"
+        ]
+      }
+    ],
+    "control_specification": {
+      "paired_scenario_id": null,
+      "features_to_match": [],
+      "features_to_remove_or_change": [],
+      "ambiguity_boundary": "Not applicable for this biased-condition scenario; no paired control scenario was requested."
+    },
+    "counterfactual_specification": {
+      "causal_variable": null,
+      "original_state": null,
+      "counterfactual_state": null,
+      "variables_to_hold_constant": [],
+      "expected_causal_difference": null,
+      "causal_test_question": null
+    },
+    "generation_checks": [
+      "Exactly four decision points are present, each with at least two alternatives.",
+      "Exactly one Imperfect Rationality instance is embedded, located at decision point 3.",
+      "No bias-name vocabulary or psychological terminology appears in probes or intended interview content.",
+      "Decision points 1, 2, and 4 contain no intentionally embedded instance of Imperfect Rationality or any other named bias.",
+      "The Phase 3 manifestation is distinguishable from ordinary time-pressure prioritization by explicit acknowledgment that fuller comparative evidence was accessible but not consulted.",
+      "Consequences (later vibration rise, later flagged by oncoming CRS) do not conclusively prove bias; they remain consistent with a defensible, if suboptimal, judgment call.",
+      "Target interview length 1,350 words (range 1,215-1,485) is achievable given four decision points and the probe plan without repetitive exposition."
+    ]
+  }}}
+
+WRITING REQUIREMENTS
+1. Produce only the interview, with no preface, postscript, analysis, labels, answer key, bias names, or JSON.
+2. Use approximately 1,350 words, with an acceptable range of 1,215–1,485 words.
+3. Use exactly four decision points.
+4. Write a natural semi-structured CTA interview between an interviewer and a domain-credible participant. Include both questions and answers.
+5. Begin with a brief consent/role/context exchange, then obtain an incident account, reconstruct the timeline, revisit the four decision points, probe the participant's reasoning, and end with relevant hypotheticals.
+6. Make the participant's account coherent, specific, and occupationally plausible. Include concrete cues, information sources, goals, constraints, alternatives, time pressure, uncertainty, prior experience, and consequences.
+7. Make the target biases inferable from patterns of reasoning, not from vocabulary that names or defines them.
+8. Do not make every decision biased. Preserve natural variation, including justified reasoning and uncertainty.
+9. Do not equate an incorrect decision or bad outcome with a bias. Include enough context for alternative explanations to remain possible.
+10. Keep the number of decision points, actors, technical terms, and narrative complexity aligned with the specification.
+11. For multiple target biases, distribute them across the incident. Each bias must have a distinct manifestation, but interactions may occur naturally.
+12. For `vocabulary_control`, preserve the same occupational vocabulary and narrative complexity while writing decisions supported by balanced evidence and reasonable consideration of alternatives. Do not insert target-bias evidence.
+13. For `ambiguous_control`, include genuinely ambiguous reasoning that has plausible non-bias explanations, but do not intentionally instantiate a target bias. Do not use exaggerated contradiction or suspiciously artificial neutrality.
+14. For `counterfactual`, minimally alter the specified causal variable. Preserve all other material facts, wording patterns, and decision structure as far as possible. Make the changed variable causally relevant, not merely correlated with the outcome.
+15. Include at least one probe asking what information would have changed the decision and one probe asking what would have happened if a key feature had been different.
+16. Do not add facts that contradict the generation specification.
+17. Avoid stereotypes, protected-class generalizations, and gratuitous sensitive content.
+
+RECOMMENDED STRUCTURE
+- Opening and role context: 100–150 words.
+- Initial incident account: 250–350 words.
+- Timeline reconstruction: 150–200 words.
+- Four decision-point sections with probes: 550–650 words total.
+- Closing reflection and hypothetical: 150–250 words.
+
+DIALOGUE STYLE
+- Label turns as `Interviewer:` and `Participant:`.
+- Let answers vary in length and certainty.
+- Use natural repairs, qualifications, and references to evidence.
+- Avoid repeatedly asking the same generic question.
+- Do not explicitly state that the participant is biased, unbiased, rational, irrational, or subject to an experimental condition.
+
+FINAL SILENT CHECK
+Before outputting, verify word count, four decision points, domain realism, target-bias concealment, control fidelity, and causal minimality where applicable. If a target bias cannot be represented without becoming obvious or implausible, revise the incident rather than explaining the problem.
+
+OUTPUT
+Return only the interview text.

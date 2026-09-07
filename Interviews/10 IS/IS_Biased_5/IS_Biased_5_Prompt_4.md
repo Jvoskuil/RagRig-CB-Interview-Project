@@ -1,0 +1,736 @@
+You are a controlled CTA interview editor. Revise the interview only where explicitly instructed by the validation report.
+
+Inputs:
+- Original interview: {{Interviewer: Thanks for making time for this. Before we start, I want to confirm this is being recorded for internal process review, and that's fine with you?
+
+Participant: Yeah, that's fine.
+
+Interviewer: Great. Can you tell me your role and roughly how long you've been in it?
+
+Participant: I'm the senior systems administrator for network infrastructure. I've owned our remote-access stack — VPN concentrator, firewall, related ACLs — for about six years now. Small team, just me and one other engineer.
+
+Interviewer: Perfect. I'd like you to walk me through a specific incident — the VPN concentrator vulnerability from earlier this year. Just give me the whole story first, then we'll go back through it in detail.
+
+Participant: Sure. So the vendor disclosed a critical remote-code-execution CVE in our concentrator's firmware — a 9.8 on the CVSS scale, about as bad as it gets. Same day, they released a patch. I applied it within a few hours, tested it, no issues. That part was straightforward. The bigger question was what to do longer-term. We'd actually scoped a full move to a cloud-based Zero Trust setup about eight months earlier, but it got shelved — budget cycle, other priorities. When this CVE hit, leadership asked whether we should revisit that. I ended up recommending we stay on the concentrator, patched and hardened, rather than restart the migration project right then.
+
+Interviewer: And that decision stuck for how long?
+
+Participant: About two weeks, until I actually did start engaging vendors — Vendor A, a cloud SASE/ZTNA platform, and Vendor B, an on-prem replacement appliance. I went back and forth, ended up shortlisting Vendor A. Then I did some informal outreach to peers at other firms our size, learned a lot of them had already gone with Vendor A. That helped me commit. Migration got approved, and we scheduled the cutover. Vendor recommended a two-week parallel run where old and new systems operate side by side. I compressed that to one week based on how previous cutovers had gone for me. We had some rough days afterward — a subset of users with hybrid authentication had intermittent access failures for several days before we sorted it out.
+
+Interviewer: Let's build the timeline in order. What happened right after you applied the patch?
+
+Participant: It installed clean, no service interruption, users never noticed. Two days later the vendor put out a follow-up advisory saying they were seeing exploitation attempts in the wild against systems that hadn't patched yet. That validated the urgency, but we were already covered.
+
+Interviewer: And the vendor evaluation — how did that actually unfold once proposals came in?
+
+Participant: Vendor A's deck opened with a stat — 98% of their enterprise migrations completed without a reported incident. Vendor B's numbers came through an analyst report, phrased differently: 2% of their on-prem deployments had a post-install incident in year one. Cost and timeline were basically a wash between the two. A follow-up technical call later clarified those were actually describing the same rate, just worded differently. But by then I'd already shortlisted A.
+
+Interviewer: What did the peer-forum conversation add?
+
+Participant: I posted in a regional admin group, and the response was pretty clear — five of six comparable firms in our sector had already gone with Vendor A's platform. Nobody shared much detail about their own environments, though. One of those five later told me, in a follow-up call, that they'd had to roll back some legacy application integrations after their rollout.
+
+Interviewer: Let's slow down on decision one — patch and stay versus migrate immediately versus take the concentrator offline. Walk me through your reasoning there.
+
+Participant: Taking it fully offline wasn't realistic — that's our only remote-access path for twelve hundred people, including trading desk staff. Between patching-and-staying versus fast-tracking a full migration, I leaned toward staying. We have six years of ACLs and firewall rules tuned exactly to how our network behaves — I know that system cold. Ripping it out mid-crisis felt like trading a known, contained problem for an unknown one. I'll admit, I was also thinking about that breach a peer firm had a couple years back — their whole incident started with an unpatched VPN box, and it got ugly, ransomware, the works. That was very much in my head when I was explaining to leadership why we needed to move fast on the patch specifically.
+
+Interviewer: What information did you have in front of you at that moment, versus what you were recalling from memory?
+
+Participant: In front of me: the CVSS score, the patch itself, and honestly not much detail yet on real-world exploitation — that came two days later. What I was recalling was that other firm's incident, which I remembered in a lot of detail because it got so much attention at the time. I used that story more than the actual advisory language when I was framing the urgency internally.
+
+Interviewer: Moving to the vendor decision — what specifically made Vendor A stand out?
+
+Participant: Honestly, that 98% figure just read better. "98% success" sounds a lot more solid than "2% incident rate," even though — yeah, in hindsight those are the same number. At the time I didn't sit down and do that conversion. I took the framing at face value and it colored how I read the rest of their materials.
+
+Interviewer: How much weight did the peer adoption numbers carry when you committed to Vendor A?
+
+Participant: A lot, probably more than I'd like to admit. Five out of six firms choosing the same platform felt like a strong signal on its own. I didn't push hard on whether any of them had our specific legacy app footprint — nonstandard authentication stuff we run for a couple of older line-of-business systems. I figured if that many peers were comfortable, the risk was manageable.
+
+Interviewer: And the parallel-run decision — why compress it to one week?
+
+Participant: We were down a person — my other engineer was out — and the vendor's two-week default felt like it assumed more hands than we had. I've done three cutovers before without any formal parallel-run phase at all and they went fine, so a compressed one-week window with the new platform felt reasonable to me based on that track record. Looking back, those earlier cutovers were on architecture I already knew well. This was a genuinely different authentication model, and I didn't really weigh that difference when I made the call.
+
+Interviewer: What would have changed your decision at that last step?
+
+Participant: If I'd mapped out specifically how the new authentication flow differed from what I'd handled before, rather than just leaning on "I've done this kind of thing before," I might have kept the full two weeks or pushed the date until we were fully staffed.
+
+Interviewer: Last few questions. If the peer forum hadn't mentioned adoption numbers at all, do you think you'd have approached the vendor decision differently?
+
+Participant: Probably. I think I'd have leaned more on the technical call that reconciled the two vendors' statistics, and maybe pushed harder for referenceable environments similar to ours before committing.
+
+Interviewer: And if staffing had been full during the cutover?
+
+Participant: I might still have compressed the timeline — that instinct came from my own history with cutovers, not just the staffing gap. But I probably would've caught the authentication mismatch sooner if I'd had a second set of eyes free to dig into it.
+
+Interviewer: Anything you'd want more information on, if you were facing this again?
+
+Participant: A cleaner side-by-side of vendor stats up front, normalized to the same format, so wording doesn't do the persuading. And probably a harder look at how similar peer environments actually were to ours before treating their choice as a green light.}}
+- Hidden generation specification: {{"hidden_validation_specification": {
+    "hidden_spec_version": "1.0",
+    "condition": "biased",
+    "exact_occurrence_manifest": [
+      {
+        "bias": "Status Quo Bias",
+        "occurrences": 1,
+        "mechanism_constraint": null
+      },
+      {
+        "bias": "Framing Bias",
+        "occurrences": 1,
+        "mechanism_constraint": null
+      },
+      {
+        "bias": "Bandwagon effect",
+        "occurrences": 1,
+        "mechanism_constraint": null
+      },
+      {
+        "bias": "Overconfidence Bias",
+        "occurrences": 1,
+        "mechanism_constraint": null
+      },
+      {
+        "bias": "Availability Bias",
+        "occurrences": 1,
+        "mechanism_constraint": null
+      }
+    ],
+    "target_bias_names": [
+      "Status Quo Bias",
+      "Framing Bias",
+      "Bandwagon effect",
+      "Overconfidence Bias",
+      "Availability Bias"
+    ],
+    "requested_occurrence_count_for_each_bias": [
+      { "bias": "Status Quo Bias", "requested_occurrences": 1 },
+      { "bias": "Framing Bias", "requested_occurrences": 1 },
+      { "bias": "Bandwagon effect", "requested_occurrences": 1 },
+      { "bias": "Overconfidence Bias", "requested_occurrences": 1 },
+      { "bias": "Availability Bias", "requested_occurrences": 1 }
+    ],
+    "planned_instance_ids": [
+      { "instance_id": "cb_01", "bias": "Status Quo Bias" },
+      { "instance_id": "cb_02", "bias": "Availability Bias" },
+      { "instance_id": "cb_03", "bias": "Framing Bias" },
+      { "instance_id": "cb_04", "bias": "Bandwagon effect" },
+      { "instance_id": "cb_05", "bias": "Overconfidence Bias" }
+    ],
+    "intended_decision_points": [
+      { "instance_id": "cb_01", "bias": "Status Quo Bias", "decision_point": 1 },
+      { "instance_id": "cb_02", "bias": "Availability Bias", "decision_point": 1 },
+      { "instance_id": "cb_03", "bias": "Framing Bias", "decision_point": 2 },
+      { "instance_id": "cb_04", "bias": "Bandwagon effect", "decision_point": 3 },
+      { "instance_id": "cb_05", "bias": "Overconfidence Bias", "decision_point": 4 }
+    ],
+    "intended_mechanisms": [
+      {
+        "instance_id": "cb_01",
+        "bias": "Status Quo Bias",
+        "mechanism": "Defaulting to retaining the familiar legacy VPN concentrator over an equally viable migration alternative, justified by familiarity rather than comparative analysis",
+        "affected_reasoning_operation": "Option evaluation / choice among alternatives",
+        "evidence_source": "Availability of an equally-costed migration option scoped 8 months prior, versus decision to retain legacy system",
+        "distinctiveness_requirement": "Distinguished from cb_02 by concerning the choice of architecture itself, not the probability estimate of harm"
+      },
+      {
+        "instance_id": "cb_02",
+        "bias": "Availability Bias",
+        "mechanism": "Overweighting a vivid, memorable peer-firm ransomware incident when estimating the likelihood/severity of the current CVE, rather than relying on the CVE's own technical exploitation evidence",
+        "affected_reasoning_operation": "Probability/risk estimation",
+        "evidence_source": "Recalled peer-firm breach narrative versus CVSS/technical advisory data",
+        "distinctiveness_requirement": "Distinguished from cb_01 by concerning risk-severity judgment, not the architectural choice; uses a different evidence source (recalled incident vs. institutional familiarity)"
+      },
+      {
+        "instance_id": "cb_03",
+        "bias": "Framing Bias",
+        "mechanism": "Vendor preference shifts based on whether a statistically equivalent figure is presented as a success rate versus an incident rate",
+        "affected_reasoning_operation": "Comparative evaluation of vendor evidence",
+        "evidence_source": "Vendor A '98% success' framing versus Vendor B '2% incident' framing of an equivalent statistic",
+        "distinctiveness_requirement": "Unique to Decision Point 2; no other instance involves numerically equivalent statistics presented in different valence"
+      },
+      {
+        "instance_id": "cb_04",
+        "bias": "Bandwagon effect",
+        "mechanism": "Treating peer-adoption volume as sufficient validation of vendor fit, substituting for independent compatibility verification",
+        "affected_reasoning_operation": "Evidence weighting / decision justification",
+        "evidence_source": "Peer forum report that 5 of 6 comparable firms adopted Vendor A, absent environment-specific compatibility data",
+        "distinctiveness_requirement": "Unique to Decision Point 3; concerns social-proof weighting rather than statistical framing or architectural inertia"
+      },
+      {
+        "instance_id": "cb_05",
+        "bias": "Overconfidence Bias",
+        "mechanism": "Overestimating personal capability to manage a materially different cutover based on unrelated past successes, leading to compression of a recommended safety margin under reduced staffing",
+        "affected_reasoning_operation": "Self-assessment of capability applied to risk-mitigation planning",
+        "evidence_source": "Three prior successful cutovers (different architecture) cited to justify shortening the vendor-recommended parallel-run period despite reduced staffing and a new authentication model",
+        "distinctiveness_requirement": "Unique to Decision Point 4; concerns self-assessed capability, not external social or vendor evidence"
+      }
+    ],
+    "intended_strength": [
+      { "instance_id": "cb_01", "bias": "Status Quo Bias", "strength": "subtle" },
+      { "instance_id": "cb_02", "bias": "Availability Bias", "strength": "subtle" },
+      { "instance_id": "cb_03", "bias": "Framing Bias", "strength": "moderate" },
+      { "instance_id": "cb_04", "bias": "Bandwagon effect", "strength": "subtle" },
+      { "instance_id": "cb_05", "bias": "Overconfidence Bias", "strength": "moderate" }
+    ],
+    "paired_scenario_id": null,
+    "counterfactual_variable": {
+      "name": "Public exploitation status of the CVE at the time of initial triage",
+      "original_state": "No confirmed in-the-wild exploitation reported at Decision Point 1; confirmation arrives two days later",
+      "changed_state": "Confirmed active in-the-wild exploitation against the firm's own IP range already reported at Decision Point 1",
+      "variables_to_hold_constant": [
+        "Vendor proposals and statistical framing",
+        "Peer-adoption pattern and forum content",
+        "Staffing levels and cutover timeline",
+        "All four decision points and their alternatives"
+      ]
+    },
+    "scenario_id": "IS_Biased_5",
+    "domain_id": "IS",
+    "total_requested_occurrences": 5,
+    "total_planned_occurrences": 5,
+    "allocation_rule_used": "Occurrences spread across 4 decision points per mechanism fit and narrative realism; Decision Point 1 hosts two distinct biases (Status Quo Bias and Availability Bias) using separate evidence sources and reasoning operations (architectural choice vs. probability estimation), consistent with allocation rules 1-4. No bias exceeds one instance per decision point, so the same-bias co-location cap (rule 3) is not triggered.",
+    "control_zero_bias_requirement": false,
+    "variables_to_hold_constant": [
+      "Vendor proposals and statistical framing",
+      "Peer-adoption pattern and forum content",
+      "Staffing levels and cutover timeline",
+      "All four decision points and their alternatives"
+    ],
+    "generation_warnings": []
+  }}}
+- Validation report: {{{
+  "validator_version": "2.0",
+  "interview_id": "IS_Biased_5_unlabeled",
+  "condition": "biased",
+  "domain_assessment": {
+    "domain": "Information systems and cybersecurity operations",
+    "role": "Senior systems administrator responsible for remote-access infrastructure, including a VPN concentrator, firewall, and access-control lists",
+    "objective": "Restore and maintain secure, reliable remote access for approximately 1,200 users while deciding whether to retain, replace, or migrate the remote-access architecture after disclosure of a critical vulnerability",
+    "incident_type": "Critical remote-code-execution vulnerability in a VPN concentrator, followed by architecture-selection and migration-planning decisions",
+    "confidence": 0.98
+  },
+  "structure_audit": {
+    "estimated_word_count": 1280,
+    "within_target_range": true,
+    "decision_point_count": 4,
+    "decision_points": [
+      {
+        "id": 1,
+        "summary": "After patching the critical VPN concentrator vulnerability, the participant decides to retain and harden the existing concentrator rather than take it offline or immediately restart a previously scoped cloud Zero Trust migration.",
+        "evidence_before": [
+          "The vendor disclosed a critical 9.8 CVSS remote-code-execution vulnerability and issued a same-day patch.",
+          "The patch installed cleanly, with no service interruption.",
+          "At the initial triage point, the participant had limited information about real-world exploitation; confirmation of in-the-wild attempts arrived two days later.",
+          "A cloud-based Zero Trust migration had been scoped eight months earlier but was shelved because of budget-cycle and priority constraints."
+        ],
+        "evidence_after": [
+          "The participant retained the patched and hardened concentrator for approximately two weeks before beginning vendor engagement.",
+          "The later vendor advisory reported exploitation attempts against unpatched systems.",
+          "The organization ultimately approved a migration after the vendor-selection process."
+        ],
+        "goals_constraints": [
+          "Maintain remote access for 1,200 employees, including trading-desk staff.",
+          "Avoid taking the firm's only remote-access path offline.",
+          "Contain a critical security exposure quickly.",
+          "Avoid introducing operational disruption during an incident response period."
+        ],
+        "alternatives": [
+          "Take the concentrator fully offline.",
+          "Patch and retain the existing concentrator temporarily.",
+          "Fast-track the previously scoped cloud Zero Trust migration."
+        ],
+        "decision_basis": "The participant emphasized the operational familiarity and accumulated configuration knowledge of the legacy system, characterizing an immediate migration as trading a known, contained problem for an unknown one. A vivid prior peer-firm ransomware incident also shaped the internal urgency framing for patching.",
+        "time_pressure": "High. The critical CVE was disclosed and patched on the same day, and leadership immediately asked whether to revisit the migration.",
+        "uncertainty": "High regarding real-world exploitation at the initial decision point and the operational risk of conducting a major architecture migration during an active security response."
+      },
+      {
+        "id": 2,
+        "summary": "The participant initially shortlists Vendor A after comparing Vendor A's positively framed 98% migration-success figure with Vendor B's negatively framed 2% post-install incident figure.",
+        "evidence_before": [
+          "Vendor A presented a claim that 98% of enterprise migrations completed without a reported incident.",
+          "Vendor B's analyst-report statistic stated that 2% of on-premises deployments had a post-install incident in year one.",
+          "Cost and timeline were described as broadly equivalent."
+        ],
+        "evidence_after": [
+          "A technical follow-up call clarified that the two statistics represented the same rate in different wording.",
+          "Vendor A had already been shortlisted before that clarification."
+        ],
+        "goals_constraints": [
+          "Select a viable replacement platform.",
+          "Compare vendor reliability and implementation risk.",
+          "Maintain comparable cost and implementation timing."
+        ],
+        "alternatives": [
+          "Shortlist Vendor A.",
+          "Shortlist Vendor B.",
+          "Defer shortlisting until the reported outcome metrics were normalized and technically reconciled."
+        ],
+        "decision_basis": "The participant reports that Vendor A's positively valenced presentation \"read better\" and colored interpretation of its other materials before the numerical equivalence was recognized.",
+        "time_pressure": "Moderate. The organization was revisiting a deferred migration following a critical vulnerability, but no explicit immediate procurement deadline is stated.",
+        "uncertainty": "Moderate. The two headline statistics were initially not presented in a normalized form, leaving ambiguity about whether they represented materially different performance."
+      },
+      {
+        "id": 3,
+        "summary": "The participant commits to Vendor A after learning that five of six ostensibly comparable peer firms had adopted that platform, despite limited evidence about whether their technical environments matched the firm's legacy authentication and application footprint.",
+        "evidence_before": [
+          "The participant had already shortlisted Vendor A.",
+          "Five of six comparable firms in a regional administrator group reportedly used Vendor A.",
+          "Peers provided little environmental detail.",
+          "The firm had nonstandard authentication arrangements and older line-of-business systems."
+        ],
+        "evidence_after": [
+          "One peer later disclosed that its organization had rolled back some legacy application integrations after rollout.",
+          "The migration was approved and scheduled."
+        ],
+        "goals_constraints": [
+          "Select a platform with credible implementation and compatibility prospects.",
+          "Reduce migration risk.",
+          "Obtain external evidence when direct internal experience with the proposed platform is limited."
+        ],
+        "alternatives": [
+          "Commit to Vendor A on the basis of peer adoption.",
+          "Obtain reference environments with comparable legacy-authentication and application conditions.",
+          "Conduct deeper independent compatibility verification before committing."
+        ],
+        "decision_basis": "Peer-adoption volume was treated as a strong signal by itself, while environment-specific similarity and the disclosed integration rollback risk received insufficient weight.",
+        "time_pressure": "Moderate. The vulnerability renewed leadership attention, but the text does not establish a forced immediate selection deadline.",
+        "uncertainty": "High regarding the comparability of peer environments and the compatibility of the firm's legacy applications with the new authentication model."
+      },
+      {
+        "id": 4,
+        "summary": "The participant shortens the vendor-recommended two-week parallel-run period to one week during migration planning, relying in part on prior successful cutovers despite reduced staffing and a materially different authentication architecture.",
+        "evidence_before": [
+          "The vendor recommended a two-week parallel run.",
+          "The participant's only other engineer was unavailable.",
+          "The participant had completed three earlier cutovers without a formal parallel-run phase.",
+          "The new platform used a genuinely different authentication model."
+        ],
+        "evidence_after": [
+          "A subset of users with hybrid authentication experienced intermittent access failures for several days after cutover.",
+          "The participant later recognized that earlier cutovers involved architecture already familiar to them and that the authentication difference had not been adequately weighted."
+        ],
+        "goals_constraints": [
+          "Complete the migration efficiently.",
+          "Limit overlap and operational burden while the team was understaffed.",
+          "Protect access continuity for users with hybrid authentication.",
+          "Provide adequate validation time for a new identity and authentication model."
+        ],
+        "alternatives": [
+          "Use the vendor-recommended two-week parallel run.",
+          "Compress the parallel run to one week.",
+          "Delay the cutover until staffing was restored and authentication differences were more fully mapped."
+        ],
+        "decision_basis": "The participant extrapolated from prior cutover success to a materially different technical environment and accepted a shorter safety margin despite understaffing.",
+        "time_pressure": "Moderate. Staffing limitations and the broader security-driven migration context created pressure, but the interview does not state that the cutover had to occur within one week.",
+        "uncertainty": "High regarding hybrid-authentication behavior, the consequences of the new authentication flow, and whether past cutover experience transferred to this architecture."
+      }
+    ]
+  },
+  "target_occurrence_audit": [
+    {
+      "instance_id": "cb_01",
+      "bias": "Status Quo Bias",
+      "requested_occurrences_for_bias": 1,
+      "status": "weak",
+      "decision_point": 1,
+      "supporting_quote": "“We have six years of ACLs and firewall rules tuned exactly to how our network behaves — I know that system cold. Ripping it out mid-crisis felt like trading a known, contained problem for an unknown one.”",
+      "evidence_location": "Decision Point 1, participant explanation of patch-and-stay versus immediate migration",
+      "mechanism": "The text shows that familiarity with the existing architecture influenced the option evaluation. However, it does not yet establish that retaining the status quo was selected primarily because it was the default or familiar option rather than because an immediate crisis-period migration presented legitimate, unassessed operational and continuity risks.",
+      "strength": "weak",
+      "confidence": 0.77,
+      "plausible_nonbias_explanation": "Deferring a major remote-access architecture replacement during a critical CVE response can be a justified risk-management decision, especially when the existing system was patched successfully, was the sole access path for 1,200 users, and the migration's operational readiness had not been established.",
+      "additional_evidence_needed": "Evidence that the participant treated the existing platform's familiarity as a deciding advantage even after recognizing that the patched system and an immediately available migration path were comparably viable on relevant operational and security criteria.",
+      "revision_needed": true,
+      "revision": {
+        "revision_type": "local_reasoning_revision",
+        "location": "Decision Point 1, immediately after the participant explains that the legacy ACLs and firewall rules were tuned to the network",
+        "current_defect": "The stated rationale is compatible with sound incident management: a fully patched, operational system may reasonably be safer in the short term than an unprepared emergency migration. The interview does not sufficiently separate familiarity-driven default preference from justified migration-risk assessment.",
+        "minimal_change_instruction": "Add one restrained sentence showing that the participant did not compare a ready-to-execute migration plan against the patched option on current transition controls, rollback readiness, or residual exposure, and instead gave the retained concentrator extra weight because it was the environment they personally knew best. Do not state the bias label or claim that the migration was objectively safer.",
+        "preserve": [
+          "The same-day patch and lack of service interruption",
+          "The concentrator as the only remote-access path",
+          "The two-week delay before vendor engagement",
+          "The availability-bias episode concerning the peer ransomware incident",
+          "The four-decision-point chronology"
+        ],
+        "avoid_creating": [
+          "A second availability-bias episode based on the peer breach",
+          "An unsupported claim that taking the concentrator offline or immediately migrating was operationally feasible",
+          "A generic anti-change attitude unrelated to the architectural choice"
+        ],
+        "expected_post_revision_status": "supported"
+      }
+    },
+    {
+      "instance_id": "cb_02",
+      "bias": "Availability Bias",
+      "requested_occurrences_for_bias": 1,
+      "status": "supported",
+      "decision_point": 1,
+      "supporting_quote": "“What I was recalling was that other firm's incident, which I remembered in a lot of detail because it got so much attention at the time. I used that story more than the actual advisory language when I was framing the urgency internally.”",
+      "evidence_location": "Decision Point 1, participant response distinguishing information in front of them from recalled information",
+      "mechanism": "A vivid and memorable peer-firm ransomware incident was retrieved readily and weighted more heavily than the current CVE's available advisory evidence when the participant communicated risk urgency. The occurrence concerns risk interpretation and evidence weighting, not the separate architecture-retention choice.",
+      "strength": "moderate",
+      "confidence": 0.93,
+      "plausible_nonbias_explanation": "The recalled incident may have been a relevant analog for communicating the seriousness of an unpatched remote-access vulnerability. However, the participant explicitly says that the memorable narrative was used more than the current advisory language while contemporaneous exploitation evidence was limited, which supports availability-based overweighting.",
+      "additional_evidence_needed": "None required for occurrence validation. More explicit comparison of the peer incident's technical similarity would strengthen causal precision but is not necessary.",
+      "revision_needed": false,
+      "revision": {
+        "revision_type": "none",
+        "location": "Decision Point 1, recalled peer-firm breach and internal urgency framing",
+        "current_defect": "No material defect. The interview identifies the recalled source, its memorability, and its disproportionate role in processing current risk information.",
+        "minimal_change_instruction": "No change required.",
+        "preserve": [
+          "The distinction between the peer incident and the current CVE advisory",
+          "The fact that confirmed exploitation information arrived two days later",
+          "The focus on urgency framing rather than a claim that patching itself was irrational"
+        ],
+        "avoid_creating": [
+          "A claim that the recalled breach proves the current system was already compromised",
+          "A second, separate availability episode elsewhere in the interview"
+        ],
+        "expected_post_revision_status": "supported"
+      }
+    },
+    {
+      "instance_id": "cb_03",
+      "bias": "Framing Bias",
+      "requested_occurrences_for_bias": 1,
+      "status": "supported",
+      "decision_point": 2,
+      "supporting_quote": "“‘98% success’ sounds a lot more solid than ‘2% incident rate,’ even though — yeah, in hindsight those are the same number. At the time I didn't sit down and do that conversion. I took the framing at face value and it colored how I read the rest of their materials.”",
+      "evidence_location": "Decision Point 2, direct probe on why Vendor A stood out",
+      "mechanism": "The participant's comparative preference changed because numerically equivalent information was expressed as a positive success rate rather than a negative incident rate. The participant explicitly identifies both the numerical equivalence and the valence-driven influence on broader evaluation.",
+      "strength": "strong",
+      "confidence": 0.99,
+      "plausible_nonbias_explanation": "There could have been real differences in the underlying populations, definitions, reporting methods, or time horizons. The interview nevertheless states that the technical call clarified that these were describing the same rate, making the participant's initial differential interpretation attributable to presentation format.",
+      "additional_evidence_needed": "None required.",
+      "revision_needed": false,
+      "revision": {
+        "revision_type": "none",
+        "location": "Decision Point 2, Vendor A 98% success statistic versus Vendor B 2% incident statistic",
+        "current_defect": "No material defect. The evidence directly demonstrates a preference shift tied to valenced presentation of an equivalent statistic.",
+        "minimal_change_instruction": "No change required.",
+        "preserve": [
+          "The equivalence of the stated rates",
+          "The fact that clarification occurred after Vendor A was shortlisted",
+          "Cost and timeline parity"
+        ],
+        "avoid_creating": [
+          "An additional anchoring or confirmation-bias episode based on post-shortlisting commitment",
+          "A claim that the vendors necessarily had identical performance beyond the specific metric described"
+        ],
+        "expected_post_revision_status": "supported"
+      }
+    },
+    {
+      "instance_id": "cb_04",
+      "bias": "Bandwagon effect",
+      "requested_occurrences_for_bias": 1,
+      "status": "supported",
+      "decision_point": 3,
+      "supporting_quote": "“Five out of six firms choosing the same platform felt like a strong signal on its own. I didn't push hard on whether any of them had our specific legacy app footprint... I figured if that many peers were comfortable, the risk was manageable.”",
+      "evidence_location": "Decision Point 3, direct probe on the weight of peer adoption numbers",
+      "mechanism": "The participant used peer-adoption volume as a sufficient or near-sufficient validation signal and substituted social proof for compatibility verification in an environment where the omitted technical differences were decision-relevant.",
+      "strength": "strong",
+      "confidence": 0.97,
+      "plausible_nonbias_explanation": "Peer adoption can be valid market intelligence and may reasonably inform vendor due diligence. The bias evidence lies not in consulting peers, but in the participant's admission that adoption volume carried substantial independent weight while environment-specific compatibility was not investigated.",
+      "additional_evidence_needed": "None required.",
+      "revision_needed": false,
+      "revision": {
+        "revision_type": "none",
+        "location": "Decision Point 3, regional administrator-group adoption discussion",
+        "current_defect": "No material defect. The participant explicitly describes relying on adoption prevalence while neglecting the material comparability question.",
+        "minimal_change_instruction": "No change required.",
+        "preserve": [
+          "The five-of-six adoption figure",
+          "The limited environmental detail from peers",
+          "The firm's nonstandard authentication and legacy application footprint",
+          "The later peer disclosure of an integration rollback"
+        ],
+        "avoid_creating": [
+          "A second framing-bias episode from how peer evidence is worded",
+          "A claim that peer use is never a legitimate source of evidence"
+        ],
+        "expected_post_revision_status": "supported"
+      }
+    },
+    {
+      "instance_id": "cb_05",
+      "bias": "Overconfidence Bias",
+      "requested_occurrences_for_bias": 1,
+      "status": "supported",
+      "decision_point": 4,
+      "supporting_quote": "“I've done three cutovers before without any formal parallel-run phase at all and they went fine, so a compressed one-week window with the new platform felt reasonable to me based on that track record.”",
+      "evidence_location": "Decision Point 4, participant explanation for compressing the vendor-recommended parallel run",
+      "mechanism": "The participant extrapolated from previous personal successes to a materially different authentication architecture and reduced the vendor-recommended safety margin despite reduced staffing. The later admission that the architectural difference was not weighed supplies the necessary transferability failure, rather than merely treating prior experience as inherently biased.",
+      "strength": "strong",
+      "confidence": 0.95,
+      "plausible_nonbias_explanation": "Prior cutover experience is relevant expertise, and staffing constraints created a practical reason to reduce the parallel-run period. The occurrence is supported because the participant relied on that experience without adequately assessing whether it transferred to the new authentication model or whether the staffing reduction warranted more caution.",
+      "additional_evidence_needed": "None required.",
+      "revision_needed": false,
+      "revision": {
+        "revision_type": "none",
+        "location": "Decision Point 4, compressed parallel-run rationale and subsequent reflection",
+        "current_defect": "No material defect. The text distinguishes relevant experience from unwarranted transfer of confidence to a different architecture.",
+        "minimal_change_instruction": "No change required.",
+        "preserve": [
+          "The vendor's two-week recommendation",
+          "The one-week decision",
+          "The absent engineer and staffing constraint",
+          "The different authentication model",
+          "The later hybrid-authentication failures without asserting they prove the bias"
+        ],
+        "avoid_creating": [
+          "Outcome bias by treating the later access failures as the sole proof of overconfidence",
+          "A second status-quo episode based on resistance to the new platform"
+        ],
+        "expected_post_revision_status": "supported"
+      }
+    }
+  ],
+  "bias_level_counts": [
+    {
+      "bias": "Status Quo Bias",
+      "requested_count": 1,
+      "supported_count": 0,
+      "weak_count": 1,
+      "absent_count": 0,
+      "merged_count": 0,
+      "accidental_count": 0,
+      "count_satisfied": false
+    },
+    {
+      "bias": "Framing Bias",
+      "requested_count": 1,
+      "supported_count": 1,
+      "weak_count": 0,
+      "absent_count": 0,
+      "merged_count": 0,
+      "accidental_count": 0,
+      "count_satisfied": true
+    },
+    {
+      "bias": "Bandwagon effect",
+      "requested_count": 1,
+      "supported_count": 1,
+      "weak_count": 0,
+      "absent_count": 0,
+      "merged_count": 0,
+      "accidental_count": 0,
+      "count_satisfied": true
+    },
+    {
+      "bias": "Overconfidence Bias",
+      "requested_count": 1,
+      "supported_count": 1,
+      "weak_count": 0,
+      "absent_count": 0,
+      "merged_count": 0,
+      "accidental_count": 0,
+      "count_satisfied": true
+    },
+    {
+      "bias": "Availability Bias",
+      "requested_count": 1,
+      "supported_count": 1,
+      "weak_count": 0,
+      "absent_count": 0,
+      "merged_count": 0,
+      "accidental_count": 0,
+      "count_satisfied": true
+    }
+  ],
+  "additional_candidate_biases": [
+    {
+      "bias": "Anchoring bias",
+      "decision_point": 2,
+      "supporting_quote": "“But by then I'd already shortlisted A.”",
+      "mechanism": "The initially encountered positively framed Vendor A statistic may have established an early evaluative anchor that persisted after the statistics were reconciled.",
+      "confidence": 0.43,
+      "status": "weak",
+      "plausible_nonbias_explanation": "The statement only establishes that Vendor A was shortlisted before clarification; it does not show that the participant continued to rely on the initial value after correction or resisted updating because of the initial impression.",
+      "revision_recommendation": "none"
+    },
+    {
+      "bias": "Confirmation bias",
+      "decision_point": 3,
+      "supporting_quote": "“One of those five later told me... that they'd had to roll back some legacy application integrations after their rollout.”",
+      "mechanism": "The participant may have discounted disconfirming peer evidence about legacy integration risk after favoring Vendor A.",
+      "confidence": 0.38,
+      "status": "weak",
+      "plausible_nonbias_explanation": "The interview does not describe what the participant did with that negative evidence, when it arrived relative to approval, or whether it was actually ignored. It may simply be a relevant fact learned after the decision.",
+      "revision_recommendation": "none"
+    },
+    {
+      "bias": "Hindsight bias",
+      "decision_point": 4,
+      "supporting_quote": "“Looking back, those earlier cutovers were on architecture I already knew well. This was a genuinely different authentication model.”",
+      "mechanism": "The participant retrospectively identifies a salient distinction after the hybrid-authentication failures.",
+      "confidence": 0.3,
+      "status": "rejected",
+      "plausible_nonbias_explanation": "This is ordinary retrospective learning and self-correction, not evidence that the participant claims the outcome had been predictable or obvious beforehand.",
+      "revision_recommendation": "none"
+    }
+  ],
+  "nonbias_cues": [
+    {
+      "cue": "Applying the critical CVE patch within hours",
+      "location": "Opening incident narrative and Decision Point 1",
+      "why_not_bias": "Prompt patching of a 9.8 remote-code-execution vulnerability is a proportionate security response. The later availability-bias occurrence concerns the relative weight of a vivid peer incident in urgency framing, not the fact of patching."
+    },
+    {
+      "cue": "Rejecting full shutdown of the VPN concentrator",
+      "location": "Decision Point 1",
+      "why_not_bias": "Taking offline the only remote-access path for 1,200 users, including trading-desk staff, carries a concrete continuity cost. The text provides a legitimate operational constraint independent of bias."
+    },
+    {
+      "cue": "Using six years of system knowledge in the initial architecture decision",
+      "location": "Decision Point 1",
+      "why_not_bias": "Deep familiarity with ACLs, firewall rules, and operational dependencies is relevant expertise. It becomes evidence of status quo bias only if the choice rests disproportionately on familiarity despite a comparably viable, assessed alternative; that extra evidentiary condition is currently incomplete."
+    },
+    {
+      "cue": "Consulting peers about Vendor A",
+      "location": "Decision Point 3",
+      "why_not_bias": "Peer reference checking is a normal and often useful diligence method. The supported bandwagon occurrence is the substitution of adoption prevalence for verification of environment-specific fit."
+    },
+    {
+      "cue": "Staffing shortage during the decision to shorten the parallel run",
+      "location": "Decision Point 4",
+      "why_not_bias": "Reduced staffing is an organizational constraint and may explain why a shorter parallel-run period was attractive. It does not independently show overconfidence."
+    },
+    {
+      "cue": "Several days of hybrid-authentication access failures after cutover",
+      "location": "Post-decision outcome at Decision Point 4",
+      "why_not_bias": "An unfavorable outcome does not establish a cognitive bias. The overconfidence classification rests on the ex ante transfer of confidence from noncomparable cutovers, not on the later failure alone."
+    },
+    {
+      "cue": "The vendor's two-week parallel-run recommendation",
+      "location": "Decision Point 4",
+      "why_not_bias": "A vendor default is not automatically the correct answer for every implementation. It becomes relevant here because the participant reduced that margin without adequately accounting for the different authentication model and reduced staffing."
+    }
+  ],
+  "causal_audit": {
+    "causal_claims": [
+      {
+        "claim": "The memorable peer-firm ransomware incident influenced how urgently the participant framed the current CVE internally.",
+        "support": "The participant explicitly states that the incident was remembered in detail and used more than the advisory language when framing urgency.",
+        "assessment": "Supported as a claim about the participant's reported reasoning process, not as evidence that the peer incident altered the current CVE's objective risk."
+      },
+      {
+        "claim": "Positive versus negative presentation of equivalent vendor statistics influenced the initial Vendor A shortlist.",
+        "support": "The participant states that the 98% success framing \"read better,\" was taken at face value, and colored evaluation before the numerical equivalence was clarified.",
+        "assessment": "Strongly supported as a self-reported psychological influence."
+      },
+      {
+        "claim": "Peer adoption volume contributed to commitment to Vendor A.",
+        "support": "The participant says five of six peers choosing Vendor A felt like a strong signal on its own and carried substantial weight.",
+        "assessment": "Supported as an influence on the participant's decision; it does not establish that peer adoption caused Vendor A to be technically suitable."
+      },
+      {
+        "claim": "Compressing the parallel run caused the later hybrid-authentication access failures.",
+        "support": "The narrative temporally connects a one-week parallel run with several days of intermittent hybrid-authentication failures.",
+        "assessment": "Only partially supported. The interview does not establish a technical causal chain, such as what testing would have occurred during a second week, whether it would have detected the mismatch, or whether the failures arose from the shortened run rather than an independent configuration or integration defect."
+      }
+    ],
+    "correlation_causation_risks": [
+      {
+        "risk": "Treating five of six peers' adoption of Vendor A as evidence that Vendor A will fit this firm's nonstandard authentication and legacy application environment.",
+        "why_it_matters": "Adoption prevalence may correlate with market acceptance but does not establish compatibility, implementation quality, or outcome suitability for a materially different environment."
+      },
+      {
+        "risk": "Treating the peer-firm ransomware incident as an estimate of the current CVE's probability or severity.",
+        "why_it_matters": "A vivid analogy does not establish equivalence of exploitability, exposure, controls, patch status, or current threat activity."
+      },
+      {
+        "risk": "Treating post-cutover access failures as proof that the one-week parallel run caused the problem.",
+        "why_it_matters": "The result is consistent with insufficient testing, but the interview lacks the technical evidence necessary to distinguish that explanation from configuration, integration, rollout, or identity-system defects."
+      }
+    ],
+    "counterfactual_present": false,
+    "changed_variable": "The hidden specification defines a counterfactual change in public exploitation status at initial triage: no confirmed in-the-wild exploitation versus confirmed exploitation against the firm's own IP range. This variable is not instantiated as an alternate condition within the interview itself.",
+    "held_constant": [
+      "Vendor proposals and statistical framing",
+      "Peer-adoption pattern and forum content",
+      "Staffing levels and cutover timeline",
+      "All four decision points and their alternatives"
+    ],
+    "causal_coherence": "moderate",
+    "explanation": "The supplied hidden counterfactual is conceptually well isolated: it changes exploitation information at Decision Point 1 while holding the downstream vendor, peer, staffing, and decision structure constant. However, the interview contains only the original condition, in which confirmation of exploitation attempts arrives two days after patching. It therefore cannot itself validate behavioral sensitivity to the proposed alternate state. Within the observed narrative, psychological influence claims are generally well grounded in self-report, while the operational claim linking shortened parallel running to later authentication failures should remain tentative rather than causal."
+  },
+  "quality_scores": {
+    "occupational_realism": 92,
+    "cta_fidelity": 88,
+    "bias_separability": 84,
+    "bias_subtlety": 86,
+    "control_fidelity": 100,
+    "counterfactual_fidelity": 74,
+    "narrative_coherence": 93,
+    "naturalness": 90,
+    "hidden_label_integrity": 82,
+    "overall_quality": 87
+  },
+  "revision_summary": {
+    "revision_required": true,
+    "supported_occurrence_total": 4,
+    "requested_occurrence_total": 5,
+    "missing_occurrence_total": 1,
+    "accidental_occurrence_total": 0,
+    "priority": "low",
+    "recommended_action": "revise",
+    "global_revision_constraints": [
+      "Retain the four existing decision points and their chronological order.",
+      "Do not use outcome information, including the later authentication failures, as proof of an earlier bias.",
+      "Keep availability bias distinct from status quo bias at Decision Point 1: the former must concern recalled breach information and risk framing, while the latter must concern architecture choice.",
+      "Do not convert peer consultation itself into an error; preserve the distinction between using peers as evidence and treating adoption volume as a substitute for compatibility assessment.",
+      "Preserve the stated counterfactual's single manipulated variable if a paired version is later generated: public exploitation status at initial triage."
+    ],
+    "revision_order": [
+      {
+        "instance_id": "cb_01",
+        "action": "Add a minimal, localized cue that familiar-system preference displaced a comparable assessment of the immediate migration option, while preserving legitimate continuity constraints."
+      },
+      {
+        "instance_id": "cb_02",
+        "action": "No change."
+      },
+      {
+        "instance_id": "cb_03",
+        "action": "No change."
+      },
+      {
+        "instance_id": "cb_04",
+        "action": "No change."
+      },
+      {
+        "instance_id": "cb_05",
+        "action": "No change."
+      }
+    ]
+  },
+  "failure_flags": [
+    {
+      "flag": "status_quo_bias_insufficiently_disambiguated",
+      "severity": "minor",
+      "detail": "The requested Status Quo Bias episode is plausible but currently overlaps with a defensible incident-management rationale. The interview needs one additional local cue showing familiarity-based default preference rather than only a justified avoidance of emergency migration risk."
+    },
+    {
+      "flag": "post_cutover_causal_claim_underidentified",
+      "severity": "minor",
+      "detail": "The narrative implies that shortening the parallel run contributed to hybrid-authentication failures, but it does not provide enough technical process evidence to establish causation. This does not invalidate the overconfidence occurrence, which is independently supported by the ex ante reasoning."
+    }
+  ]
+}}}
+
+Rules:
+1. Apply only revisions with revision_needed = true.
+2. Preserve all supported occurrences exactly in mechanism and approximate location.
+3. Repair every requested occurrence marked weak, absent, merged, or misclassified according to its minimal_change_instruction.
+4. Remove or neutralize accidental occurrences when instructed.
+5. Do not add any occurrence not requested in the hidden specification.
+6. Do not name or define cognitive biases.
+7. Preserve the occupational setting, participant role, four-decision-point structure, dialogue format, approximate length, vocabulary level, causal variable, and counterfactual conditions.
+8. Do not make the target bias obvious through exaggerated or textbook-like language.
+9. If a requested occurrence is not plausible under the scenario, do not force it; return REVISION_BLOCKED with a concise explanation rather than fabricating behavior.
+10. Return only the revised interview text, unless revision is blocked.
+
+Before outputting, silently check the requested occurrence count, accidental occurrence risk, word count, and preservation constraints.

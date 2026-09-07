@@ -1,0 +1,373 @@
+{
+  "validator_version": "2.0",
+  "interview_id": "RT_Biased_3",
+  "condition": "biased",
+  "domain_assessment": {
+    "domain": "Rail-yard operations and freight classification",
+    "role": "Night-shift yardmaster at a hump yard",
+    "objective": "Classify inbound cars safely and release an outbound customer train within its SLA connection window while managing equipment, staffing, and weather constraints.",
+    "incident_type": "Nonroutine, weather-disrupted yard shift involving a delayed inbound consist, reduced hump capacity, anomalous retarder behavior, a borderline hot-box detector alert, conflicting inspection reports, and a service-level deadline.",
+    "confidence": 0.99
+  },
+  "structure_audit": {
+    "estimated_word_count": 1285,
+    "within_target_range": true,
+    "decision_point_count": 4,
+    "decision_points": [
+      {
+        "id": 1,
+        "summary": "Retain the prior shift's 2200 ready-time target rather than fully recalculating after learning that the consist had 41 rather than 38 cars and that retarder cycling was slower on wet rail.",
+        "evidence_before": [
+          "Verbal handoff stated 38 cars and expected classification completion by 2200.",
+          "Inbound arrival was approximately 40 minutes late.",
+          "Actual count was 41 cars.",
+          "Observed retarder cycle time was slower than normal because of wet rail."
+        ],
+        "evidence_after": [
+          "The yard later ran approximately 55 minutes behind.",
+          "The participant states that they would push back harder on the initial estimate in a repeat shift."
+        ],
+        "goals_constraints": [
+          "Maintain a credible operational schedule.",
+          "Avoid confusion for the dispatcher and downstream operations.",
+          "Manage delayed arrivals and degraded hump throughput."
+        ],
+        "alternatives": [
+          "Recalculate completion time from the actual car count and observed cycle speed.",
+          "Ask the hump conductor for an independent pace estimate.",
+          "Continue using the prior estimate with only a minor informal adjustment."
+        ],
+        "decision_basis": "The participant retained the handed-off target because the prior yardmaster was experienced and because changing the target early was perceived as operationally disruptive.",
+        "time_pressure": "Moderate; the shift began under weather disruption and a delayed inbound arrival, but the later SLA deadline had not yet become acute.",
+        "uncertainty": "Moderate; actual workload and throughput were known to differ from the handoff assumptions, but the exact revised completion time had not been computed."
+      },
+      {
+        "id": 2,
+        "summary": "Pull the full eleven-car cut for inspection after a borderline hot-box detector reading on one car rather than isolate and manually inspect only the flagged car.",
+        "evidence_before": [
+          "The hot-box reading was elevated but within tolerance and was not a clear alarm.",
+          "The detector had a known history of wet-weather false positives.",
+          "A derailment involving an overheated bearing on a similar car had occurred at the yard three weeks earlier.",
+          "Standard procedure would have been to isolate only GATX 88213 for a manual check."
+        ],
+        "evidence_after": [
+          "Two carmen inspected the car, followed by a third inspection.",
+          "The full-cut intervention contributed to delay.",
+          "The third inspection found no defect."
+        ],
+        "goals_constraints": [
+          "Prevent a potentially severe safety incident.",
+          "Maintain classification flow and protect the outbound SLA window.",
+          "Act under uncertainty about sensor reliability in wet weather."
+        ],
+        "alternatives": [
+          "Isolate only GATX 88213 and conduct a manual inspection.",
+          "Pull the full eleven-car cut for inspection.",
+          "Treat the reading as a likely wet-weather false positive and continue classification subject to normal monitoring."
+        ],
+        "decision_basis": "The recalled derailment was given greater weight than the detector's known false-positive history and the borderline nature of the reading.",
+        "time_pressure": "Increasing; classification was already behind plan and the operational window was narrowing.",
+        "uncertainty": "High; the sensor indication was ambiguous, weather affected detector reliability, and the severity of a true bearing failure was substantial."
+      },
+      {
+        "id": 3,
+        "summary": "Request a third inspection and continue treating the car as suspect after one carman identified a hairline mark and another independently cleared the car.",
+        "evidence_before": [
+          "Carman A reported a hairline mark near the knuckle, unrelated to the bearing concern.",
+          "Carman B independently followed the same protocol and cleared the car.",
+          "The car had an old repair entry that was closed and unrelated to the current bearing concern.",
+          "The participant had already formed a suspicion that the car might be defective."
+        ],
+        "evidence_after": [
+          "A third inspection returned clean with no defect found.",
+          "The car was set out and the remaining train was dispatched.",
+          "The participant later recognized that Carman B's report should have received equal weight."
+        ],
+        "goals_constraints": [
+          "Resolve a possible safety concern.",
+          "Determine whether the car could remain in service.",
+          "Avoid unnecessary delay while the SLA window closed."
+        ],
+        "alternatives": [
+          "Accept Carman B's independent clearance.",
+          "Give both reports equal weight and resolve the discrepancy through a structured comparison.",
+          "Request a third inspection and retain the suspect designation."
+        ],
+        "decision_basis": "Evidence consistent with the existing defect hypothesis was treated as more persuasive than procedurally equivalent disconfirming evidence.",
+        "time_pressure": "High; the operation was about 55 minutes behind and the SLA window was approximately 40 minutes from closing.",
+        "uncertainty": "Moderate; the reports conflicted, but the underlying inspection protocol and independence of the second inspection were known."
+      },
+      {
+        "id": 4,
+        "summary": "Set out the unresolved car and dispatch the rest of the train after confirming that this would result in a partial rather than full SLA penalty.",
+        "evidence_before": [
+          "The third inspection was pending or the car remained unresolved at the point of dispatch decision.",
+          "Holding the full consist for one car would jeopardize the connection window.",
+          "The dispatcher confirmed that releasing the rest would incur only a partial penalty."
+        ],
+        "evidence_after": [
+          "The train departed with a partial penalty rather than a full penalty.",
+          "The final inspection found no defect on GATX 88213."
+        ],
+        "goals_constraints": [
+          "Protect service performance.",
+          "Avoid moving a car that had not been resolved.",
+          "Limit the financial and operational effect of the delay."
+        ],
+        "alternatives": [
+          "Hold the entire consist pending final resolution.",
+          "Set out GATX 88213 and release the remaining train."
+        ],
+        "decision_basis": "The participant made an explicit, dispatcher-confirmed safety-and-service trade-off: contain the unresolved car while preserving the rest of the outbound movement.",
+        "time_pressure": "Acute; the SLA connection window was closing.",
+        "uncertainty": "Low to moderate; the car's defect status remained uncertain, but the penalty consequences of each release option had been clarified."
+      }
+    ]
+  },
+  "target_occurrence_audit": [
+    {
+      "instance_id": "an_01",
+      "bias": "Anchoring Effect",
+      "requested_occurrences_for_bias": 1,
+      "status": "supported",
+      "decision_point": 1,
+      "supporting_quote": "Honestly, I kept 2200 as my working target. I nudged it a little in my head, but I didn't sit down and recalculate from the new numbers.",
+      "evidence_location": "Decision-point-1 probe on the ready-time estimate, participant response immediately after the interviewer identifies the 38-car/2200 handoff and the later 41-car/slower-cycle information.",
+      "mechanism": "The participant retained a handed-off numeric time estimate and made only a minor informal adjustment despite two decision-relevant changes to the estimation inputs: a larger actual consist and lower observed throughput. The explanation that three extra cars did not feel sufficient to abandon the plan further shows insufficient adjustment from the initial anchor rather than merely an uncomputed schedule.",
+      "strength": "moderate",
+      "confidence": 0.96,
+      "plausible_nonbias_explanation": "Deferring to a more experienced prior yardmaster can be rational if that person's estimates are demonstrably calibrated, and avoiding multiple schedule revisions can reduce coordination costs. However, the participant explicitly acknowledges not recalculating after direct evidence that both workload and processing rate differed from the estimate's assumptions.",
+      "additional_evidence_needed": "None for classification. A quantified recalculation would improve operational specificity but is not necessary to establish the cognitive mechanism.",
+      "revision_needed": false,
+      "revision": {
+        "revision_type": "none",
+        "location": "Decision point 1, ready-time estimate discussion.",
+        "current_defect": "No material defect; the original estimate, changed inputs, insufficient adjustment, and available alternatives are all observable.",
+        "minimal_change_instruction": "No revision required.",
+        "preserve": [
+          "The 38-car and 2200 handoff estimate.",
+          "The actual 41-car count and slower retarder cycle time.",
+          "The participant's admission that they carried the number forward without recalculating."
+        ],
+        "avoid_creating": [
+          "A second time-estimation or numerical-anchor episode at another decision point.",
+          "An explicit textbook use of the term anchoring."
+        ],
+        "expected_post_revision_status": "supported"
+      }
+    },
+    {
+      "instance_id": "av_01",
+      "bias": "Availability Bias",
+      "requested_occurrences_for_bias": 1,
+      "status": "supported",
+      "decision_point": 2,
+      "supporting_quote": "That one's the thing that comes to mind first when a hot-box alert comes in here, even though logically the wet-weather false positives happen a lot more often.",
+      "evidence_location": "Decision-point-2 probe on the hot-box alert, following discussion of the recent derailment and known wet-weather false-positive history.",
+      "mechanism": "A vivid, recent derailment memory was retrieved readily and explicitly given more weight than the more frequent detector false-positive pattern. This altered risk assessment of a borderline, in-tolerance alert and led to an intervention broader than standard procedure.",
+      "strength": "moderate",
+      "confidence": 0.98,
+      "plausible_nonbias_explanation": "A recent serious bearing-related derailment may rationally prompt heightened caution in a safety-critical rail environment, particularly if safety rules allow conservative escalation. The bias classification remains supported because the participant explicitly contrasts the salient event with the more common false-positive base rate and states that the former carried disproportionate weight.",
+      "additional_evidence_needed": "None for classification. The existing statement directly identifies differential weighting of a salient incident versus detector-history information.",
+      "revision_needed": false,
+      "revision": {
+        "revision_type": "none",
+        "location": "Decision point 2, hot-box alert discussion.",
+        "current_defect": "No material defect; the text identifies the recalled event, the base-rate comparator, the altered risk judgment, and the resulting action.",
+        "minimal_change_instruction": "No revision required.",
+        "preserve": [
+          "The reading's borderline and within-tolerance status.",
+          "The wet-weather false-positive history.",
+          "The recent derailment memory.",
+          "The distinction between standard single-car isolation and pulling the full cut."
+        ],
+        "avoid_creating": [
+          "Reusing the derailment as a reason for the third-inspection decision.",
+          "Adding language that implies the full-cut decision was required by policy rather than influenced by the recalled incident."
+        ],
+        "expected_post_revision_status": "supported"
+      }
+    },
+    {
+      "instance_id": "cb_01",
+      "bias": "Confirmation Bias",
+      "requested_occurrences_for_bias": 1,
+      "status": "supported",
+      "decision_point": 3,
+      "supporting_quote": "I think once I already suspected the car, the mark and the repair history just fit what I expected to find. Carman B's 'all clear' almost read to me like it needed double-checking, when really it should've carried equal weight.",
+      "evidence_location": "Decision-point-3 probe concerning the conflicting Carman A and Carman B reports.",
+      "mechanism": "After forming a defect hypothesis, the participant selectively elevated corroborating but weakly diagnostic information—the unrelated hairline mark and closed unrelated repair entry—while discounting Carman B's independent clearance despite equivalent protocol and timing. This is asymmetric evidence integration in favor of a pre-existing hypothesis.",
+      "strength": "moderate",
+      "confidence": 0.99,
+      "plausible_nonbias_explanation": "A third inspection can be justified where reports conflict and the possible consequence is a safety failure. That does not fully explain why the unrelated mark and closed repair history were treated as corroborative while an equally credible clearance was treated as requiring confirmation.",
+      "additional_evidence_needed": "None for classification. The participant explicitly identifies the prior suspicion, confirmatory fit, discounting of disconfirming evidence, and procedural equivalence of the clearance.",
+      "revision_needed": false,
+      "revision": {
+        "revision_type": "none",
+        "location": "Decision point 3, conflicting inspection-evidence discussion.",
+        "current_defect": "No material defect; the defect hypothesis, selectively favored evidence, discounted counterevidence, and acknowledgment of equal procedural credibility are explicit.",
+        "minimal_change_instruction": "No revision required.",
+        "preserve": [
+          "Carman A's unrelated hairline-mark finding.",
+          "Carman B's independent clearance under the same protocol.",
+          "The closed and unrelated repair-history entry.",
+          "The participant's acknowledgment that the clearance should have carried equal weight."
+        ],
+        "avoid_creating": [
+          "Making the old repair entry actually relevant to the bearing concern, which would weaken the asymmetric-evidence mechanism.",
+          "Reintroducing the prior derailment as the stated reason for rejecting Carman B's report.",
+          "Adding another conflicting-evidence episode elsewhere."
+        ],
+        "expected_post_revision_status": "supported"
+      }
+    }
+  ],
+  "bias_level_counts": [
+    {
+      "bias": "Anchoring Effect",
+      "requested_count": 1,
+      "supported_count": 1,
+      "weak_count": 0,
+      "absent_count": 0,
+      "merged_count": 0,
+      "accidental_count": 0,
+      "count_satisfied": true
+    },
+    {
+      "bias": "Availability Bias",
+      "requested_count": 1,
+      "supported_count": 1,
+      "weak_count": 0,
+      "absent_count": 0,
+      "merged_count": 0,
+      "accidental_count": 0,
+      "count_satisfied": true
+    },
+    {
+      "bias": "Confirmation Bias",
+      "requested_count": 1,
+      "supported_count": 1,
+      "weak_count": 0,
+      "absent_count": 0,
+      "merged_count": 0,
+      "accidental_count": 0,
+      "count_satisfied": true
+    }
+  ],
+  "additional_candidate_biases": [
+    {
+      "bias": "Primacy effect",
+      "decision_point": 3,
+      "supporting_quote": "If Carman B's report had come in first, before Carman A's, I might have closed it out right there. Order mattered more than it should have, probably.",
+      "mechanism": "The order in which otherwise comparable inspection reports arrived may have influenced their weight, with the first report shaping subsequent interpretation.",
+      "confidence": 0.72,
+      "status": "weak",
+      "plausible_nonbias_explanation": "The report-order statement may describe the temporal formation of the defect hypothesis rather than a separate primacy mechanism. It is best treated as a reinforcing cue within the supported confirmation-bias episode, not as a separately countable unintended occurrence.",
+      "revision_recommendation": "none"
+    },
+    {
+      "bias": "Authority bias",
+      "decision_point": 1,
+      "supporting_quote": "Part of it was trust — the relief yardmaster's been doing this longer than me, and his estimates are usually solid.",
+      "mechanism": "The participant may have retained the inherited estimate partly because it came from a more experienced colleague.",
+      "confidence": 0.45,
+      "status": "weak",
+      "plausible_nonbias_explanation": "Experience and a history of reliable estimates are valid credibility cues. The text does not show uncritical deference independent of the more directly supported numerical anchoring mechanism.",
+      "revision_recommendation": "none"
+    }
+  ],
+  "nonbias_cues": [
+    {
+      "cue": "The decision to set out the unresolved car and dispatch the rest of the train.",
+      "location": "Decision point 4.",
+      "why_not_bias": "The participant identified a concrete safety-preserving alternative, obtained dispatcher confirmation of the penalty consequences, and made a transparent partial-versus-full penalty trade-off. The outcome was favorable, but the classification rests on contemporaneous reasoning rather than outcome."
+    },
+    {
+      "cue": "Short staffing, one unavailable hump lead, wet rail, and delayed inbound arrival.",
+      "location": "Initial scenario description.",
+      "why_not_bias": "These are operational constraints and sources of workload, time pressure, and uncertainty. They do not by themselves indicate a biased cognitive mechanism."
+    },
+    {
+      "cue": "Requesting an additional inspection of a potentially defective railcar.",
+      "location": "Decision point 3.",
+      "why_not_bias": "Additional checking is not inherently bias. It becomes evidence of confirmation bias here only because the participant expressly gave hypothesis-consistent, unrelated evidence more weight than a procedurally equivalent independent clearance."
+    },
+    {
+      "cue": "The third inspection found no defect.",
+      "location": "Outcome discussion.",
+      "why_not_bias": "A clean result does not retrospectively prove that the earlier precaution was biased or wrong. The supported bias determination instead depends on the stated information-weighting process at the time of the decision."
+    },
+    {
+      "cue": "The participant's familiarity with post-incident debriefs.",
+      "location": "Opening exchange.",
+      "why_not_bias": "Prior debrief experience may affect comfort and recall, but the interview provides no evidence that it altered a specific judgment process."
+    }
+  ],
+  "causal_audit": {
+    "causal_claims": [
+      {
+        "claim": "The recent derailment memory influenced the participant's decision to pull the full eleven-car cut.",
+        "textual_basis": "The participant states that the derailment was the first thing that came to mind, outweighed known false-positive history, and that absent the derailment they would probably have isolated only the flagged car.",
+        "assessment": "Strongly supported as the participant's reported causal account of their own decision process, though not independently verified."
+      },
+      {
+        "claim": "The inherited 2200 estimate was insufficiently revised because the participant trusted the experienced relief yardmaster and did not want to create downstream confusion.",
+        "textual_basis": "The participant directly gives both reasons after acknowledging they did not recalculate from the new inputs.",
+        "assessment": "Moderately supported as a self-reported explanation; the relative contribution of trust, coordination concern, and numerical anchoring cannot be disentangled completely."
+      },
+      {
+        "claim": "Pre-existing suspicion caused asymmetric treatment of the two carmen's reports.",
+        "textual_basis": "The participant says that once they suspected the car, the mark and old repair history fit what they expected, while Carman B's clearance was treated as needing double-checking.",
+        "assessment": "Strongly supported as a contemporaneous cognitive-process explanation."
+      }
+    ],
+    "correlation_causation_risks": [
+      {
+        "risk": "The later clean third inspection and partial SLA penalty could invite hindsight-based claims that the full-cut intervention or third pass was objectively unnecessary.",
+        "mitigation_in_text": "The interview preserves contemporaneous uncertainty and safety stakes, and the participant does not claim that the clean outcome proves the earlier decision was irrational."
+      },
+      {
+        "risk": "The recent derailment may have reflected a genuine change in local hazard conditions rather than only memory salience.",
+        "mitigation_in_text": "The participant contrasts the salient incident with frequent wet-weather false positives and acknowledges that standard procedure would have called for a narrower intervention; however, no formal risk data are provided."
+      }
+    ],
+    "counterfactual_present": true,
+    "changed_variable": "Presence versus absence of the derailment three weeks earlier in the participant's available recent memory.",
+    "held_constant": [
+      "The borderline hot-box detector reading.",
+      "The wet-weather conditions and detector false-positive history.",
+      "The car, inspection context, staffing constraints, and outbound operational objective."
+    ],
+    "causal_coherence": "moderate",
+    "explanation": "The counterfactual is a single-variable retrospective probe: the interviewer removes the recent derailment, and the participant predicts a narrower isolation decision. It is coherent and directly tests the proposed availability mechanism. Its evidentiary force is limited because it is a self-report made after the event rather than an experimentally controlled comparison, but it does not introduce a second causal change."
+  },
+  "quality_scores": {
+    "occupational_realism": 92,
+    "cta_fidelity": 94,
+    "bias_separability": 91,
+    "bias_subtlety": 84,
+    "control_fidelity": 100,
+    "counterfactual_fidelity": 83,
+    "narrative_coherence": 95,
+    "naturalness": 90,
+    "hidden_label_integrity": 98,
+    "overall_quality": 92
+  },
+  "revision_summary": {
+    "revision_required": false,
+    "supported_occurrence_total": 3,
+    "requested_occurrence_total": 3,
+    "missing_occurrence_total": 0,
+    "accidental_occurrence_total": 0,
+    "priority": "none",
+    "recommended_action": "accept",
+    "global_revision_constraints": [
+      "Retain the four-decision-point structure.",
+      "Retain the separation between initial schedule estimation, sensor-risk assessment, conflicting-evidence integration, and final service-versus-containment trade-off.",
+      "Do not convert the participant's retrospective acknowledgments into explicit bias labels.",
+      "Do not treat the clean inspection result or partial-penalty outcome as proof that prior decisions were biased or erroneous."
+    ],
+    "revision_order": []
+  },
+  "failure_flags": []
+}

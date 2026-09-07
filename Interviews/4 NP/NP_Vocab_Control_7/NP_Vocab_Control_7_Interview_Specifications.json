@@ -1,0 +1,251 @@
+{
+  "spec_version": "3.0",
+  "scenario_id": "NP_Vocab_Control_7",
+  "domain_id": "NP",
+  "domain": "Nuclear power and Process-control operations",
+  "role": "Process Control Operator (Chemical/Petrochemical Refinery)",
+  "condition": "vocabulary_control",
+  "generation_specification": {
+    "scenario_title_internal": "Reactor Feed Heater Temperature Excursion During Night-to-Day Shift Handover (Vocabulary-Matched Control)",
+    "scenario_summary_internal": "A control-room operator at a petrochemical refinery's catalytic reforming unit encounters a developing high-temperature/high-pressure excursion on the reactor feed heater train during a shift handover under production-throughput pressure. The operator methodically cross-checks the alarm against corroborating trend data, weighs both recent and older log evidence, adapts the routine feed-increase procedure to the abnormal conditions, tests candidate diagnostic hypotheses against available discriminating signals, and selects a corrective action after comparing the available checklist options against the closing regeneration window. The scenario mirrors the paired biased scenario's setting, actors, constraints, and decision structure, but every decision is supported by balanced consideration of available evidence and alternatives.",
+    "occupational_realism": {
+      "objective": "Diagnose and correct an abnormal thermal/pressure trend on the reforming unit's feed heater and lead reactor before it threatens catalyst integrity or triggers an automatic unit trip, while minimizing unplanned production loss ahead of a scheduled regeneration outage.",
+      "setting": "Central control room of a catalytic reforming unit at a mid-size petrochemical refinery, day-to-night shift transition, DCS (distributed control system) console with trend screens, alarm annunciator panel, radio contact with outside field operators.",
+      "constraints": [
+        "Production target tied to a narrow regeneration outage window in 6 hours",
+        "Limited outside operator availability for field verification during shift change",
+        "Alarm system has a known history of nuisance/false alarms on this specific sensor loop",
+        "Time pressure to resolve the trend before board handover documentation is due",
+        "No direct real-time catalyst bed temperature profile, only proxy sensors"
+      ],
+      "stakeholders": [
+        "Incoming day-shift Process Control Operator (interviewee)",
+        "Outgoing night-shift operator",
+        "Field operator",
+        "Unit shift supervisor",
+        "Process engineer on call"
+      ],
+      "technical_terms_to_use": [
+        "reactor feed heater",
+        "catalytic reforming unit",
+        "DCS trend screen",
+        "high-temperature alarm setpoint",
+        "catalyst bed",
+        "compressor surge",
+        "regeneration window",
+        "annunciator panel",
+        "board operator log"
+      ],
+      "technical_terms_to_avail": [],
+      "technical_terms_to_avoid": [
+        "nuclear reactor",
+        "radiation",
+        "containment breach",
+        "core meltdown"
+      ]
+    },
+    "timeline": [
+      {
+        "phase": 1,
+        "decision_point": true,
+        "facts_available_before_decision": [
+          "High-temperature alarm activates on reactor feed heater outlet",
+          "Operator log shows this same alarm has triggered 11 times in the past month, all resolved as instrument drift",
+          "A slower, less visually prominent pressure-differential trend on an adjacent screen has begun a gradual rise over the last 2 hours"
+        ],
+        "new_information_after_decision": [
+          "Field operator confirms outlet thermocouple reading is accurate, not drifting",
+          "Pressure-differential trend is already noted as a corroborating factor when the alarm is addressed"
+        ],
+        "alternatives": [
+          "Acknowledge and silence alarm as likely nuisance based on history, continue monitoring",
+          "Dispatch field operator immediately to verify heater outlet temperature independently",
+          "Cross-check the pressure-differential trend alongside the alarm before deciding"
+        ],
+        "intended_action": "Operator pulls up the pressure-differential trend alongside the alarm before acknowledging, notes that the two together are less consistent with a pure nuisance trip than prior isolated occurrences, and dispatches the field operator to verify the thermocouple independently while continuing to monitor both trends."
+      },
+      {
+        "phase": 2,
+        "decision_point": true,
+        "facts_available_before_decision": [
+          "Night-shift handover report describes 'stable, unremarkable' readings for the last 4 hours",
+          "Board operator log (older entries, several days back) shows a slow upward drift in feed heater duty that was flagged but not resolved",
+          "Production schedule calls for a feed rate increase to meet output target before the regeneration window"
+        ],
+        "new_information_after_decision": [
+          "Feed rate increase proceeds at a reduced initial ramp with closer monitoring of outlet temperature",
+          "Field operator reports unusual heat shimmer near the heater firebox during walkdown"
+        ],
+        "alternatives": [
+          "Proceed with the standard feed-rate increase sequence used for routine handovers",
+          "Delay the increase and review the multi-day trend log before acting",
+          "Consult the process engineer before adjusting feed rate"
+        ],
+        "intended_action": "Operator reviews the older drift note against the current handover report, confirms with the night operator whether the drift had actually been corrected or simply stopped appearing in recent readings, and proceeds with a modified, closer-monitored version of the feed-increase sequence rather than the unmodified routine steps."
+      },
+      {
+        "phase": 3,
+        "decision_point": true,
+        "facts_available_before_decision": [
+          "Combined alarm and shimmer observations could resemble a compressor surge event handled 18 months ago on a similar unit",
+          "A separate, more dramatic feed heater tube-rupture incident from about 2 years ago at this same refinery is well known and often discussed in shift briefings",
+          "Current instrumentation shows temperature and pressure trending abnormally but does not show the vibration signature that accompanied the earlier compressor surge"
+        ],
+        "new_information_after_decision": [
+          "Heater-specific diagnostic data is gathered and does not match either historical precedent closely",
+          "Process engineer confirms that neither the surge vibration signature nor tube-rupture-specific markers are present"
+        ],
+        "alternatives": [
+          "Apply the diagnostic and response template from the prior compressor surge event",
+          "Treat the situation as a fresh case and gather heater-specific data before selecting a diagnostic path",
+          "Request an independent instrument check to compare against both remembered precedents"
+        ],
+        "intended_action": "Operator treats the current symptom pattern as a fresh case, checks explicitly for the compressor's vibration signature and the tube-rupture-specific markers before drawing any parallel, and requests an independent instrument check when neither historical signature is confirmed."
+      },
+      {
+        "phase": 4,
+        "decision_point": true,
+        "facts_available_before_decision": [
+          "Regeneration window closes in under 90 minutes",
+          "Temperature and pressure trends continue to climb but have not yet reached automatic trip setpoints",
+          "Process engineer is reachable but a full consultation would take 20-30 minutes",
+          "Board checklist offers a short list of standard corrective actions for heater excursions"
+        ],
+        "new_information_after_decision": [
+          "The selected corrective action, chosen after a brief comparison of the checklist options, stabilizes the trend and addresses more of the underlying condition than a first-available choice would have",
+          "Post-incident review confirms the comparison was reasonable given the time available"
+        ],
+        "alternatives": [
+          "Select the first standard corrective action on the checklist that appears workable",
+          "Pause production and conduct a full diagnostic review before acting",
+          "Escalate immediately to the process engineer and wait for full guidance"
+        ],
+        "intended_action": "Operator quickly compares the two or three most relevant checklist options against the available diagnostic data, selects the option best matched to the observed pattern rather than simply the first one listed, and briefs the process engineer concurrently by radio while implementing the action."
+      }
+    ],
+    "probe_plan": {
+      "opening": [
+        "Can you walk me through what you were doing when the alarm first activated?",
+        "What was your initial read on the situation?"
+      ],
+      "timeline_reconstruction": [
+        "What happened right after you addressed the alarm?",
+        "Walk me through the shift handover conversation and what stood out to you.",
+        "What did you notice during the field walkdown report?",
+        "What happened as the regeneration window approached?"
+      ],
+      "decision_point_probes": [
+        "What information did you have available at that moment?",
+        "What alternatives did you consider, and why did you rule them out?",
+        "What made you settle on that particular course of action?",
+        "How did your past experience with similar situations factor into this decision?",
+        "How much time pressure did you feel, and how did that affect your choice?",
+        "How confident were you in your read of the situation at the time?"
+      ],
+      "closing_hypotheticals": [
+        "If the alarm history had been different, would you have responded the same way?",
+        "If you had had more time before the regeneration window, what would you have done differently?",
+        "Looking back, is there a moment where a different piece of information would have changed your decision?"
+      ]
+    },
+    "occurrence_embedding_plan_internal": [],
+    "control_specification": {
+      "paired_scenario_id": "NP_Biased_7",
+      "features_to_match": [
+        "Domain vocabulary (reactor feed heater, catalytic reforming unit, DCS trend screen, annunciator panel, compressor surge, regeneration window, board operator log)",
+        "Setting: central control room, day-to-night shift handover, same stakeholders",
+        "Structure: exactly 4 decision points in the same chronological sequence and phase order",
+        "Difficulty: same operational complexity and moderate ambiguity of underlying cause",
+        "Actors: incoming operator, outgoing night operator, field operator, shift supervisor, process engineer",
+        "Emotional tone: measured, procedural, mild time pressure escalating across the incident",
+        "Same 6-hour regeneration-window constraint and same closing 90-minute final decision window",
+        "Same surface incident facts: alarm history, pressure-differential trend, handover report, older drift note, heat shimmer, compressor-surge and tube-rupture precedents, closing checklist decision"
+      ],
+      "features_to_remove_or_change": [
+        "Remove reliance on recalled alarm frequency alone as sufficient grounds for judgment; replace with active cross-checking of the pressure trend before acknowledging",
+        "Remove automatic, unmodified execution of the routine feed-increase sequence; replace with a deliberate, adapted response given the abnormal precursor conditions",
+        "Remove attention capture by the alarm's prominence alone; replace with explicit joint review of both the alarm and the quieter trend",
+        "Remove unweighted discounting of the older drift note due to its age; replace with an explicit check of whether the drift had actually resolved",
+        "Remove uncritical template transfer from the prior surge event; replace with an explicit check for the differentiating vibration signature before acting",
+        "Remove overweighting of the vivid tube-rupture precedent; replace with an evidence-based comparison against current diagnostic markers",
+        "Remove selection of the first workable checklist option without comparison; replace with a brief but real comparison of the top candidate options before choosing"
+      ],
+      "ambiguity_boundary": "The underlying cause of the excursion remains genuinely uncertain throughout the interview, and the final corrective action's completeness is not fully confirmed until after the interview period, but every decision shown is supported by an active, reasonably thorough evidence-weighing process rather than by a shortcut in reasoning."
+    },
+    "counterfactual_specification": {
+      "causal_variable": null,
+      "original_state": null,
+      "counterfactual_state": null,
+      "variables_to_hold_constant": [],
+      "expected_causal_difference": null,
+      "causal_test_question": null
+    },
+    "generation_checks": [
+      "Confirm exactly 4 decision points are present in the timeline, matching the paired scenario's phase structure",
+      "Confirm zero intended instances of Availability Bias, Recency Bias, Habit Intrusion, Salience Bias, Similarity Bias, and Bounded Rationality appear anywhere in the interview",
+      "Confirm domain vocabulary, setting, stakeholders, constraints, and emotional tone match the paired biased scenario",
+      "Confirm each decision point offers at least two plausible alternatives and shows evidence of balanced consideration",
+      "Confirm probes cover cues, information sources, goals, alternatives, decision basis, prior experience, time pressure, uncertainty, and hypotheticals",
+      "Confirm final interview length falls within 1,215-1,485 words",
+      "Confirm consequences described do not mechanically prove decisions were unbiased, preserving genuine uncertainty about root cause",
+      "Confirm no bias label, definition, or psychological terminology appears in the public interview text",
+      "Confirm the operator's reasoning at each decision point reflects active cross-checking, adaptation, or comparison rather than shortcut-driven judgment"
+    ]
+  },
+  "hidden_validation_specification": {
+    "hidden_spec_version": "1.0",
+    "condition": "vocabulary_control",
+    "exact_occurrence_manifest": [
+      { "bias": "Availability Bias", "occurrences": 0, "mechanism_constraint": null },
+      { "bias": "Recency Bias", "occurrences": 0, "mechanism_constraint": null },
+      { "bias": "Habit Intrusion", "occurrences": 0, "mechanism_constraint": null },
+      { "bias": "Salience Bias", "occurrences": 0, "mechanism_constraint": null },
+      { "bias": "Similarity Bias", "occurrences": 0, "mechanism_constraint": null },
+      { "bias": "Bounded Rationality", "occurrences": 0, "mechanism_constraint": null }
+    ],
+    "target_bias_names": [
+      "Availability Bias",
+      "Recency Bias",
+      "Habit Intrusion",
+      "Salience Bias",
+      "Similarity Bias",
+      "Bounded Rationality"
+    ],
+    "requested_occurrence_count_for_each_bias": [
+      { "bias": "Availability Bias", "requested_occurrences": 0 },
+      { "bias": "Recency Bias", "requested_occurrences": 0 },
+      { "bias": "Habit Intrusion", "requested_occurrences": 0 },
+      { "bias": "Salience Bias", "requested_occurrences": 0 },
+      { "bias": "Similarity Bias", "requested_occurrences": 0 },
+      { "bias": "Bounded Rationality", "requested_occurrences": 0 }
+    ],
+    "planned_instance_ids": [],
+    "intended_decision_points": [],
+    "intended_mechanisms": [],
+    "intended_strength": [],
+    "paired_scenario_id": "NP_Biased_7",
+    "counterfactual_variable": {
+      "name": null,
+      "original_state": null,
+      "changed_state": null,
+      "variables_to_hold_constant": []
+    },
+    "scenario_id": "NP_Vocab_Control_7",
+    "domain_id": "NP",
+    "total_requested_occurrences": 0,
+    "total_planned_occurrences": 0,
+    "allocation_rule_used": "No bias occurrences are planned or allocated; this is a vocabulary-matched zero-bias control paired to NP_Biased_7. All four decision points are constructed to mirror the paired scenario's structure, phase order, actors, constraints, and vocabulary, with each decision resolved through active, evidence-weighing reasoning rather than any shortcut mechanism associated with the six target biases.",
+    "control_zero_bias_requirement": true,
+    "variables_to_hold_constant": [
+      "Occupational setting (catalytic reforming unit control room)",
+      "Participant role and seniority",
+      "Four-decision-point chronological structure",
+      "Stakeholders (night operator, field operator, shift supervisor, process engineer)",
+      "Core constraints (6-hour regeneration window, alarm nuisance history, limited field-verification availability, proxy-sensor limitation)",
+      "Surface incident facts (alarm, pressure-differential trend, handover report, older drift note, heat shimmer, surge and tube-rupture precedents, closing checklist decision)",
+      "Emotional tone and escalating time pressure",
+      "Interview format, probe categories, and approximate word count"
+    ],
+    "generation_warnings": []
+  }
+}

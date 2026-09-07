@@ -1,0 +1,337 @@
+{
+  "validator_version": "2.0",
+  "interview_id": "IS_Biased_1",
+  "condition": "biased",
+  "domain_assessment": {
+    "domain": "B2B SaaS product management and onboarding optimization",
+    "role": "Product Manager responsible for onboarding at a B2B collaboration platform",
+    "objective": "Reduce account-setup abandonment and protect activation while producing a credible, time-bounded response for a Q3 board review without creating unacceptable engineering or enterprise-customer risk.",
+    "incident_type": "A sustained 32% increase in account-setup abandonment, initially observed through coarse funnel instrumentation and later concentrated provisionally around payment details for a newly introduced account cohort.",
+    "confidence": 0.99
+  },
+  "structure_audit": {
+    "estimated_word_count": 2075,
+    "within_target_range": false,
+    "decision_point_count": 4,
+    "decision_points": [
+      {
+        "id": 1,
+        "summary": "Choose an initial investigation approach: rapid internal analytics and heatmap review supplemented by a light competitor scan, rather than immediately commissioning user interviews.",
+        "evidence_before": [
+          "A 32% increase in account-setup abandonment over three weeks.",
+          "Stable top-of-funnel conditions, acquisition channels, and SSO usage.",
+          "Broad-stage dashboard data with insufficient sub-step detail.",
+          "A warning that payment-sub-step instrumentation was incomplete.",
+          "Research interviews would require approximately two weeks before useful sessions."
+        ],
+        "evidence_after": [
+          "Abandonment appeared strongest after payment details.",
+          "The affected cohort was approximately 140 users and therefore not statistically stable.",
+          "Heatmaps showed repeated payment-field edits but could not distinguish validation failure from voluntary abandonment."
+        ],
+        "goals_constraints": [
+          "Obtain a directional answer within days.",
+          "Work within five weeks of the board review.",
+          "Avoid consuming disproportionate design, engineering, QA, and release capacity.",
+          "Retain the option to use Research if internal evidence remained unclear."
+        ],
+        "alternatives": [
+          "Begin with formal customer interviews.",
+          "Conduct deeper funnel and heatmap analysis first.",
+          "Rely primarily on market research and competitor teardowns.",
+          "Run all research streams simultaneously."
+        ],
+        "decision_basis": "The participant explicitly chose speed and diagnostic granularity over qualitative depth, documented the trade-off, treated competitor information as contextual rather than diagnostic, and reserved provisional Research capacity.",
+        "time_pressure": "High: five weeks remained before the board review, with downstream design, engineering, QA, and release work still required.",
+        "uncertainty": "High: the initial funnel stage was overly broad, no fresh qualitative feedback existed, and payment instrumentation was incomplete."
+      },
+      {
+        "id": 2,
+        "summary": "Choose between a strategic AI-guided onboarding wizard, a targeted payment-detail fix, or a controlled comparison of both approaches.",
+        "evidence_before": [
+          "Internal evidence provisionally localized abandonment after payment details.",
+          "The relevant cohort consisted of roughly 140 users and was not statistically stable.",
+          "Payment instrumentation remained incomplete.",
+          "Three regularly encountered competitors had released guided setup experiences.",
+          "Peer PM Slack discussions and an industry newsletter made guided setup appear widely adopted.",
+          "Sales was hearing feature-parity questions from prospects."
+        ],
+        "evidence_after": [
+          "The participant authorized a broader AI-guided wizard.",
+          "The payment-detail fix was deferred to the broader redesign.",
+          "Later reviews continued to show payment-field friction because that code path had not changed.",
+          "The wizard did not produce a statistically significant activation-rate improvement after launch."
+        ],
+        "goals_constraints": [
+          "Choose a board-ready feature direction quickly.",
+          "Respond to perceived competitive and sales pressure.",
+          "Avoid spending time on a controlled test that might delay a visible strategic response.",
+          "Act despite weak and incomplete internal diagnostic evidence."
+        ],
+        "alternatives": [
+          "Build an AI-guided setup wizard.",
+          "Prioritize a narrow payment-detail fix.",
+          "Run a lightweight A/B comparison of payment simplification and limited guided setup before committing."
+        ],
+        "decision_basis": "The participant explicitly elevated rapid, visible competitor and peer adoption over the internally observed payment-friction signal. Adoption prevalence was interpreted as evidence that the category had already selected the direction, and the participant states that absent the external activity, they probably would have prioritized the payment-field experiment.",
+        "time_pressure": "High: the board review was approaching, and the participant believed a controlled comparison would not yield a board-ready feature direction fast enough.",
+        "uncertainty": "High: the internal signal was small-sample and incompletely instrumented; external adoption established category activity but did not establish that a wizard addressed CollabHub's observed payment-step mechanism."
+      },
+      {
+        "id": 3,
+        "summary": "Allocate engineering capacity either fully to the wizard, partially to both the wizard and payment fix, or to the enterprise bug-fix backlog.",
+        "evidence_before": [
+          "Engineering estimated three sprints for a usable wizard with account-configuration and SSO-routing integration.",
+          "The enterprise backlog included unresolved permission and notification defects.",
+          "Sales wanted the wizard available for active deal demonstrations.",
+          "Engineering warned that splitting work would slow both streams and complicate testing."
+        ],
+        "evidence_after": [
+          "Two enterprise tickets escalated during the reallocation period.",
+          "Neither escalation became a platform outage.",
+          "The wizard build remained on schedule."
+        ],
+        "goals_constraints": [
+          "Deliver a sufficiently complete product capability rather than a thin partial version.",
+          "Preserve a credible board-review narrative.",
+          "Manage enterprise defect risk.",
+          "Maintain enough capacity for production-severity triage."
+        ],
+        "alternatives": [
+          "Fully reassign two engineers to the wizard for three sprints.",
+          "Split engineering time between the wizard and a narrow payment-field fix.",
+          "Delay the wizard and prioritize enterprise backlog work."
+        ],
+        "decision_basis": "The participant accepted an explicit, bounded bug-risk trade-off because partial staffing was expected to compromise both initiatives. The engineering lead agreed to production-severity triage during the build.",
+        "time_pressure": "Moderate to high: the wizard needed to be built before the board review, while enterprise issues remained unresolved.",
+        "uncertainty": "Moderate: the trade-off involved forecasted delivery and defect-risk consequences rather than unknown alternatives."
+      },
+      {
+        "id": 4,
+        "summary": "Choose whether to release the wizard to all new signups, retain a 10% canary, or wait for additional regression testing and better payment instrumentation.",
+        "evidence_before": [
+          "QA had completed only partial regression testing.",
+          "The canary had insufficient traffic for conclusive activation-rate results.",
+          "Payment-field abandonment had not moved.",
+          "Edge-case coverage still had gaps.",
+          "The board meeting was four days away.",
+          "The engineering lead and QA manager were uncomfortable but considered risk manageable with monitoring and rollback."
+        ],
+        "evidence_after": [
+          "The full launch did not produce a statistically significant activation-rate change from the prior month.",
+          "Support continued to receive payment-step difficulty reports.",
+          "No major regression occurred.",
+          "The team subsequently prioritized payment-validation and instrumentation review."
+        ],
+        "goals_constraints": [
+          "Present a shipped response rather than only a plan at the board meeting.",
+          "Avoid an unmonitored or irreversible technical rollout.",
+          "Produce usable operational evidence quickly.",
+          "Preserve a rollback option."
+        ],
+        "alternatives": [
+          "Release to all new signups.",
+          "Maintain a 10% canary release.",
+          "Wait another week for additional regression testing and improved instrumentation."
+        ],
+        "decision_basis": "The participant made an acknowledged time-bounded risk decision after consulting Engineering and QA, using active monitoring and rollback as mitigations.",
+        "time_pressure": "Very high: the board meeting was four days away.",
+        "uncertainty": "Moderate to high: canary results were inconclusive, regression testing was partial, and edge-case coverage was incomplete."
+      }
+    ]
+  },
+  "target_occurrence_audit": [
+    {
+      "instance_id": "herd_01",
+      "bias": "Herding",
+      "requested_occurrences_for_bias": 1,
+      "status": "supported",
+      "decision_point": 2,
+      "supporting_quote": "“In the Slack discussions, it felt like every product team I recognized was moving toward guided setup. That made the wizard feel less like an experimental bet and more like the direction the category had already chosen.”",
+      "evidence_location": "Decision point 2, participant response to “How did you weigh those sources?”; reinforced by the subsequent counterfactual response that absent competitor releases and peer-PM discussion, the participant would probably have pushed for the payment-field experiment first.",
+      "mechanism": "The participant uses visible adoption by competitors and peer product teams as a primary evidentiary criterion for selecting the redesign approach. This social prevalence is treated as reducing the need for independent validation that the wizard addresses the locally observed payment-step problem. The participant explicitly gives external adoption more weight than usual and shifts from the internally indicated targeted experiment to a broader wizard commitment.",
+      "strength": "moderate",
+      "confidence": 0.96,
+      "plausible_nonbias_explanation": "Competitor behavior and sales feedback can be legitimate strategic inputs, especially where product parity and category expectations affect commercial outcomes. However, the text goes beyond ordinary competitive analysis: the participant characterizes widespread adoption as evidence that the category has already chosen the correct direction and confirms that this social signal materially displaced the otherwise preferred internal experiment.",
+      "additional_evidence_needed": "None for occurrence validation. The interview already supplies the decision, the comparative evidence weighting, the social-adoption mechanism, the neglected alternative, and a counterfactual showing that the external prevalence signal changed the choice.",
+      "revision_needed": false,
+      "revision": {
+        "revision_type": "none",
+        "location": "Decision point 2, from the competitor-activity discussion through the participant’s answer to the counterfactual probe.",
+        "current_defect": "No material defect. The episode is independently identifiable and distinct from the later staffing and launch decisions.",
+        "minimal_change_instruction": "Retain the existing evidence sequence, especially the participant’s statement that competitor and peer adoption made the wizard feel like an already selected category direction and the statement that they would otherwise have favored a payment-field experiment.",
+        "preserve": [
+          "The small and incompletely instrumented internal payment-friction cohort.",
+          "The distinction between competitor context at decision point 1 and primary evidence weighting at decision point 2.",
+          "The explicit counterfactual showing that external adoption changed the redesign choice.",
+          "The separate operational rationales at decision points 3 and 4."
+        ],
+        "avoid_creating": [
+          "Do not add comparable claims that external adoption justified the staffing decision or full launch decision.",
+          "Do not convert the participant’s behavior into explicit textbook language such as “I followed the herd.”",
+          "Do not add another social-proof-based redesign justification elsewhere in the interview."
+        ],
+        "expected_post_revision_status": "supported"
+      }
+    }
+  ],
+  "bias_level_counts": [
+    {
+      "bias": "Herding",
+      "requested_count": 1,
+      "supported_count": 1,
+      "weak_count": 0,
+      "absent_count": 0,
+      "merged_count": 0,
+      "accidental_count": 0,
+      "count_satisfied": true
+    }
+  ],
+  "additional_candidate_biases": [
+    {
+      "bias": "Availability bias",
+      "decision_point": 2,
+      "supporting_quote": "“In the Slack discussions, it felt like every product team I recognized was moving toward guided setup.”",
+      "mechanism": "Highly visible and memorable competitor launches, screenshots, peer Slack discussion, and newsletter coverage may have increased the subjective prevalence and decision weight of guided onboarding.",
+      "confidence": 0.46,
+      "status": "rejected",
+      "plausible_nonbias_explanation": "The text directly identifies adoption by peers and competitors as the operative justification. Any availability component is inseparable from, and less diagnostically specific than, the supported herding mechanism. It should not be counted as an additional bias occurrence."
+    },
+    {
+      "bias": "Action bias",
+      "decision_point": 4,
+      "supporting_quote": "“Waiting another week would have improved testing, but it would also leave us presenting a plan rather than a shipped response.”",
+      "mechanism": "The participant preferred a visible full release over a safer wait or limited canary under board-review pressure.",
+      "confidence": 0.34,
+      "status": "rejected",
+      "plausible_nonbias_explanation": "This is an explicit organizational and communication trade-off, not evidence that action was treated as inherently superior to inaction. The participant consulted technical owners, used monitoring and rollback mitigations, and acknowledged the safer alternative.",
+      "revision_recommendation": "none"
+    },
+    {
+      "bias": "Escalation of commitment",
+      "decision_point": 4,
+      "supporting_quote": "“We knew payment-field abandonment had not moved.”",
+      "mechanism": "A possible interpretation is that the participant persisted with broad rollout of the wizard after evidence showed that the immediate payment-friction signal remained unresolved.",
+      "confidence": 0.29,
+      "status": "rejected",
+      "plausible_nonbias_explanation": "The payment code path had not changed, so continued payment abandonment was expected rather than disconfirming evidence about the wizard’s technical operation. The launch decision was framed around board timing, rollout risk, and evidence collection, not defense of sunk cost or refusal to reconsider prior commitment.",
+      "revision_recommendation": "none"
+    }
+  ],
+  "nonbias_cues": [
+    {
+      "cue": "Selecting rapid analytics and heatmap review rather than immediately running customer interviews.",
+      "location": "Decision point 1.",
+      "why_not_bias": "The participant identifies the time/depth trade-off, explains the diagnostic value of analytics, does not treat competitor information as diagnosis at this stage, and reserves Research capacity if uncertainty persists. This is a documented, bounded prioritization decision under a real operational deadline."
+    },
+    {
+      "cue": "Discounting the payment-field signal because the affected cohort was approximately 140 users and instrumentation was incomplete.",
+      "location": "Decision point 2.",
+      "why_not_bias": "Small-sample instability and incomplete measurement are legitimate reasons to limit confidence in a root-cause conclusion. The problematic reasoning is not caution about the internal signal itself, but the use of external adoption prevalence as a substitute for independently determining whether the proposed wizard addressed the local problem."
+    },
+    {
+      "cue": "Reassigning engineers away from enterprise defects.",
+      "location": "Decision point 3.",
+      "why_not_bias": "The participant considers alternatives, articulates capacity and testing consequences, acknowledges bug risk, and maintains production-severity triage. The subsequent escalation of enterprise tickets does not retrospectively establish biased reasoning."
+    },
+    {
+      "cue": "Launching globally with partial regression testing shortly before the board review.",
+      "location": "Decision point 4.",
+      "why_not_bias": "The decision includes consultation with Engineering and QA, explicit awareness of residual technical risk, monitoring staffing, and a rollback path. A high-risk decision or an unfavorable product outcome alone is not cognitive bias."
+    },
+    {
+      "cue": "The absence of a statistically significant activation-rate improvement after launch.",
+      "location": "Post-launch consequences.",
+      "why_not_bias": "The outcome demonstrates that the wizard was not an immediate measured solution in the observed period; it does not itself demonstrate the cognitive mechanism behind the earlier redesign decision."
+    },
+    {
+      "cue": "The participant’s later statement that they would have run a controlled comparison with two extra weeks.",
+      "location": "Retrospective reflection after the final decision.",
+      "why_not_bias": "This is a counterfactual self-report about a changed time constraint. It may be vulnerable to hindsight in principle, but the text does not show selective reconstruction, certainty inflation, or a claim that the correct outcome had been obvious at the time."
+    }
+  ],
+  "causal_audit": {
+    "causal_claims": [
+      {
+        "claim": "Payment-detail friction may have been associated with the observed rise in account-setup abandonment.",
+        "support": "The funnel review localized elevated abandonment after payment details, and heatmaps showed repeated field edits.",
+        "assessment": "Appropriately tentative. The participant repeatedly notes the small cohort and incomplete instrumentation."
+      },
+      {
+        "claim": "Rapid competitor and peer adoption of guided onboarding indicated a category shift and justified prioritizing an AI-guided wizard.",
+        "support": "Three competitors had shipped guided setup, peer PMs discussed similar launches, and an industry newsletter described the pattern as common among leading flows.",
+        "assessment": "The evidence supports an inference about external adoption prevalence and possible category expectations, but it does not establish that a wizard caused, or would remedy, CollabHub’s payment-step abandonment."
+      },
+      {
+        "claim": "Competitor and peer activity caused the participant to choose the broader redesign rather than the targeted payment experiment.",
+        "support": "The participant says: “If you had not seen the competitor releases or the discussions among peer PMs, would you have chosen the same option?” and answers, “I probably would have pushed harder for the payment-field experiment first.”",
+        "assessment": "Supported as a self-reported causal account of the participant’s decision process, although it remains retrospective testimony rather than independently verified causal evidence."
+      },
+      {
+        "claim": "The wizard did not remove the immediate payment-friction signal.",
+        "support": "Payment abandonment remained unchanged, and the participant notes that the payment code path itself had not been changed.",
+        "assessment": "Coherent. Persistence of payment friction is expected when its code path remains unchanged; this finding should not be interpreted as a controlled causal test of the wizard’s efficacy for activation."
+      }
+    ],
+    "correlation_causation_risks": [
+      {
+        "risk": "Competitor adoption is treated as indirect evidence that guided onboarding is the correct response to the internal funnel issue.",
+        "why_it_matters": "Competitors may have acted for different segments, product architectures, commercial strategies, or onboarding problems. Adoption prevalence does not identify the cause of CollabHub’s payment-step abandonment."
+      },
+      {
+        "risk": "Sales feature-parity questions are combined with competitor releases to support a product-remediation decision.",
+        "why_it_matters": "The evidence may validly support a strategic parity concern, but it is not diagnostic evidence that the wizard will improve activation or resolve payment friction."
+      },
+      {
+        "risk": "The inconclusive canary and post-launch non-significant activation result could be overinterpreted.",
+        "why_it_matters": "Low canary traffic, incomplete edge-case coverage, unchanged payment code, and absence of a controlled comparison limit causal attribution in either direction."
+      }
+    ],
+    "counterfactual_present": true,
+    "changed_variable": "Presence versus absence of visible competitor releases and peer-PM/industry signaling around guided onboarding.",
+    "held_constant": [
+      "The internal payment-field signal.",
+      "The small approximately 140-user cohort.",
+      "Incomplete payment-sub-step instrumentation.",
+      "The board-review timing and available delivery window.",
+      "The available redesign alternatives."
+    ],
+    "causal_coherence": "moderate",
+    "explanation": "The interview contains two useful counterfactual probes. The first isolates external market-adoption information and elicits that its absence would likely have shifted the participant toward a payment-field experiment; this supports the herding mechanism. The later two-more-weeks probe changes the time available and plausibly explains why controlled testing and a longer canary would become feasible. Neither probe is a formal paired counterfactual design, and the hidden specification correctly contains no required counterfactual variable. The participant generally distinguishes observed association, uncertainty, and causal conclusion, although the redesign decision itself improperly lets social adoption substitute for local causal validation."
+  },
+  "quality_scores": {
+    "occupational_realism": 95,
+    "cta_fidelity": 93,
+    "bias_separability": 92,
+    "bias_subtlety": 90,
+    "control_fidelity": 100,
+    "counterfactual_fidelity": 96,
+    "narrative_coherence": 95,
+    "naturalness": 92,
+    "hidden_label_integrity": 96,
+    "overall_quality": 94
+  },
+  "revision_summary": {
+    "revision_required": false,
+    "supported_occurrence_total": 1,
+    "requested_occurrence_total": 1,
+    "missing_occurrence_total": 0,
+    "accidental_occurrence_total": 0,
+    "priority": "none",
+    "recommended_action": "accept",
+    "global_revision_constraints": [
+      "Treat the external-adoption reasoning at decision point 2 as one continuous herding occurrence, not as separate occurrences for competitor releases, Slack discussion, newsletter coverage, sales feedback, and the counterfactual response.",
+      "Do not infer bias from the unsuccessful immediate product outcome, the enterprise-ticket escalation, incomplete information, deadlines, or the participant’s use of mitigation measures.",
+      "Preserve the distinction between a legitimate strategic concern about market parity and the unsupported inference that external adoption establishes the right remedy for the locally observed payment-friction problem.",
+      "No target word-count range was included in the supplied hidden specification, so compliance with an external word-range requirement cannot be determined from the materials provided."
+    ],
+    "revision_order": []
+  },
+  "failure_flags": [
+    {
+      "flag": "word_range_unverifiable",
+      "severity": "informational",
+      "explanation": "The output schema requires a within_target_range value, but neither the hidden specification nor the task materials provide a target word-count range. The estimated count is therefore reported, while range compliance is marked false as not verifiable rather than as a substantive interview failure."
+    }
+  ]
+}

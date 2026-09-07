@@ -1,0 +1,289 @@
+{
+  "validator_version": "2.0",
+  "interview_id": "AV_Biased_1",
+  "condition": "biased",
+  "domain_assessment": {
+    "domain": "Commercial aviation maintenance reliability and corrective-action governance",
+    "role": "Maintenance Control reliability engineer",
+    "objective": "Determine the cause, operational restrictions, and appropriately scoped corrective action for recurring APU bleed-air valve faults while balancing reliability evidence, dispatch constraints, and the Reliability Control Board deadline",
+    "incident_type": "Recurring ground-detected APU bleed-air valve faults on two aircraft associated with a common vendor lot and suspected seal-material degradation",
+    "confidence": 0.99
+  },
+  "structure_audit": {
+    "estimated_word_count": 1285,
+    "within_target_range": true,
+    "decision_point_count": 4,
+    "decision_points": [
+      {
+        "id": 1,
+        "summary": "Open a focused review of tail 738 and monitor for comparable events rather than immediately classify the event pattern as fleet-wide.",
+        "evidence_before": [
+          "Tail 738 had a third APU bleed-air valve write-up within 45 flight days.",
+          "Two earlier write-ups had been closed as operational check normal without parts replacement.",
+          "Fleet-wide valve removal rate remained within the OEM's published MTBUR."
+        ],
+        "evidence_after": [
+          "Tail 712 logged a lower-severity similar complaint.",
+          "The two aircraft's valves shared the same batch lot number."
+        ],
+        "goals_constraints": [
+          "Detect a meaningful recurrent defect.",
+          "Avoid prematurely declaring a fleet-level reliability problem.",
+          "Create monitoring sensitivity for additional comparable events."
+        ],
+        "alternatives": [
+          "Treat the write-ups as normal operational noise.",
+          "Immediately characterize the pattern as a fleet-wide problem.",
+          "Conduct a focused review of the initially affected aircraft while monitoring the fleet."
+        ],
+        "decision_basis": "The recurrence was unusual for one aircraft, but fleet-level removal data did not yet justify a fleet-wide classification.",
+        "time_pressure": "No explicit acute deadline.",
+        "uncertainty": "Whether the events reflected an isolated aircraft issue, an intermittent defect, or a common component-lot problem."
+      },
+      {
+        "id": 2,
+        "summary": "Apply a one-leg MEL carryover restriction and start a formal lot-based root-cause investigation rather than ground both aircraft outright.",
+        "evidence_before": [
+          "A second aircraft had a similar complaint.",
+          "Line maintenance reported that the valve was difficult to bench-test and could have an intermittent fault.",
+          "The valves shared a common batch lot number.",
+          "Neither aircraft had experienced an in-flight consequence."
+        ],
+        "evidence_after": [
+          "Vendor documentation identified a seal-material change for the implicated lot.",
+          "In-house teardown found seal degradation consistent with that change."
+        ],
+        "goals_constraints": [
+          "Prevent repeated MEL carryover on the same defect.",
+          "Maintain operational availability when grounding is not yet evidence-supported.",
+          "Establish whether the lot was causally implicated."
+        ],
+        "alternatives": [
+          "Ground both aircraft.",
+          "Allow ordinary MEL carryover.",
+          "Impose a one-leg carryover limit and investigate the implicated lot."
+        ],
+        "decision_basis": "The common-lot signal and recurrent faults warranted a precautionary restriction and formal investigation, while the available evidence did not yet support outright grounding.",
+        "time_pressure": "Operational dispatch and MEL-management pressure.",
+        "uncertainty": "Whether the intermittent fault represented a broader safety or reliability exposure."
+      },
+      {
+        "id": 3,
+        "summary": "Commission an external metallurgical assay despite having already settled on the lot-based corrective action and despite knowing the assay would miss the RCB deadline.",
+        "evidence_before": [
+          "Vendor lot documentation and in-house teardown converged on seal-material degradation.",
+          "The participant had already decided internally that the corrective action would be a lot-bounded replacement.",
+          "The RCB deadline was ten days away.",
+          "The external laboratory turnaround was approximately three weeks."
+        ],
+        "evidence_after": [
+          "The RCB cycle was missed because the recommendation was submitted pending assay results.",
+          "The assay merely confirmed the same seal-material change already supported by the existing evidence."
+        ],
+        "goals_constraints": [
+          "Submit a defensible corrective-action package.",
+          "Meet the RCB cycle deadline.",
+          "Avoid delaying an already determined lot-based intervention."
+        ],
+        "alternatives": [
+          "Submit the lot-based corrective-action request on the original ten-day schedule using vendor documentation and teardown evidence.",
+          "Obtain an external assay before submitting, despite the schedule delay."
+        ],
+        "decision_basis": "The participant sought a third independent source so that the file would appear more thorough and reassuring, while explicitly stating that the result would not change the recommendation already reached.",
+        "time_pressure": "Ten-day RCB deadline versus approximately three-week assay turnaround.",
+        "uncertainty": "Whether an independent assay would provide greater confidence or package defensibility, rather than uncertainty relevant to the pending corrective-action decision."
+      },
+      {
+        "id": 4,
+        "summary": "Recommend replacement of valves from the implicated lot only rather than order a fleet-wide replacement or defer to the OEM's broader design review.",
+        "evidence_before": [
+          "The vendor and teardown evidence identified a lot-specific seal-material issue.",
+          "The affected serial ranges were identifiable.",
+          "The OEM representative proposed a separate, longer-term design review."
+        ],
+        "evidence_after": [
+          "The RCB approved the lot-based campaign.",
+          "Both affected tails had their valves replaced and no further events were reported.",
+          "The broader OEM design review remained a separate open study."
+        ],
+        "goals_constraints": [
+          "Correct the identified reliability issue.",
+          "Avoid unnecessary removal of serviceable valves.",
+          "Separate immediate corrective action from a longer-term design question."
+        ],
+        "alternatives": [
+          "Replace only valves from the implicated lot.",
+          "Replace every fleet valve.",
+          "Wait for the broader OEM design review."
+        ],
+        "decision_basis": "The evidence and traceability supported a lot-bounded response, while fleet-wide replacement was assessed as unnecessary cost and downtime without demonstrated incremental reliability benefit.",
+        "time_pressure": "The prior RCB-cycle delay had occurred, but no independent deadline is stated for this final scope decision.",
+        "uncertainty": "Whether the implicated lot also signaled a more general valve-design issue."
+      }
+    ]
+  },
+  "target_occurrence_audit": [
+    {
+      "instance_id": "ib_01",
+      "bias": "Information bias",
+      "requested_occurrences_for_bias": 1,
+      "status": "supported",
+      "decision_point": 3,
+      "supporting_quote": "“I'd basically landed on the lot-based replacement regardless of what came back — I wasn't holding the recommendation open pending that result.” ... “I think I just wanted a third, fully independent source in the file ... so the package read as more thorough when it went to the board.” ... “I think I was after the reassurance of having one more test in the folder more than anything that would've moved the decision itself.”",
+      "evidence_location": "Decision-point-3 exchange beginning with the participant's ten-day RCB deadline and continuing through the direct probe asking whether the assay could change the recommended corrective action.",
+      "mechanism": "The participant intentionally obtained additional independent information after deciding that the lot-based recommendation would be unchanged regardless of the result. The stated purpose was reassurance, perceived thoroughness, and file defensibility rather than resolving a decision-relevant uncertainty. The participant accepted a known schedule cost despite recognizing that the result would not move the pending corrective-action decision.",
+      "strength": "moderate",
+      "confidence": 0.96,
+      "plausible_nonbias_explanation": "Independent composition testing can sometimes be justified for safety governance, vendor accountability, or future follow-up. Here, however, the interview explicitly distinguishes those potential future uses from the pending recommendation: the participant had already committed to the lot-based campaign and states that the assay was not being used to keep that recommendation open.",
+      "additional_evidence_needed": "None for the requested occurrence. The interview provides a distinct evidence-selection act, explicit decision irrelevance, a stated noninstrumental motivation, and a concrete deadline cost.",
+      "revision_needed": false,
+      "revision": {
+        "revision_type": "none",
+        "location": "Decision point 3, external assay decision and follow-up probes.",
+        "current_defect": "None material. The participant's reasoning is independently observable and sufficiently distinguishes the assay from justified decision-relevant evidence gathering.",
+        "minimal_change_instruction": "No change required.",
+        "preserve": [
+          "The participant's explicit prior commitment to the lot-based recommendation.",
+          "The distinction between a future follow-up investigation and the already pending corrective-action submission.",
+          "The ten-day RCB deadline and three-week laboratory turnaround.",
+          "The single external-assay episode as the only information-bias occurrence."
+        ],
+        "avoid_creating": [
+          "A second information-bias episode by introducing another redundant test or confirmation request.",
+          "A confirmation-bias episode by having the participant dismiss or conceal a contradictory assay result.",
+          "A safety-process violation that would make the delay appear to be compelled by mandatory policy rather than discretionary reasoning."
+        ],
+        "expected_post_revision_status": "supported"
+      }
+    }
+  ],
+  "bias_level_counts": [
+    {
+      "bias": "Information bias",
+      "requested_count": 1,
+      "supported_count": 1,
+      "weak_count": 0,
+      "absent_count": 0,
+      "merged_count": 0,
+      "accidental_count": 0,
+      "count_satisfied": true
+    }
+  ],
+  "additional_candidate_biases": [
+    {
+      "bias": "Confirmation bias",
+      "decision_point": 3,
+      "supporting_quote": "“The vendor's lot documentation and our own teardown already lined up on the seal material as the cause.”",
+      "mechanism": "The assay could superficially appear to seek confirmatory evidence for a conclusion already reached.",
+      "confidence": 0.24,
+      "status": "rejected",
+      "plausible_nonbias_explanation": "The participant selected a fully independent laboratory rather than a congenial or vendor-controlled source. The participant also says a contradictory result would be flagged and trigger a separate follow-up investigation. There is no evidence of preferential exposure to confirming evidence, discounting disconfirmation, or selective interpretation.",
+      "revision_recommendation": "none"
+    },
+    {
+      "bias": "Hindsight bias",
+      "decision_point": 3,
+      "supporting_quote": "“Knowing that now, I probably should have just submitted on the original ten-day timeline.”",
+      "mechanism": "The retrospective knowledge that the assay added nothing could superficially be mistaken for judging the original decision solely through the outcome.",
+      "confidence": 0.17,
+      "status": "rejected",
+      "plausible_nonbias_explanation": "The participant describes what was known at the time, identifies the prospective decision-relevance question that should have been asked earlier, and does not portray the original outcome as inevitable. This is a calibrated process reflection rather than hindsight bias.",
+      "revision_recommendation": "none"
+    }
+  ],
+  "nonbias_cues": [
+    {
+      "cue": "Initially treating the recurrence as a tail-specific issue rather than declaring a fleet-wide problem",
+      "location": "Decision point 1",
+      "why_not_bias": "The participant integrates recurrence frequency with fleet-level MTBUR information and takes an intermediate monitoring action. This is proportionate evidence management under uncertainty, not normalcy bias or underreaction."
+    },
+    {
+      "cue": "Applying a one-leg MEL carryover restriction instead of grounding both aircraft",
+      "location": "Decision point 2",
+      "why_not_bias": "The restriction responds to recurrent defects and company policy while considering the absence of in-flight consequences. The decision reflects a stated risk-management tradeoff, not omission bias, risk-seeking, or a failure to act."
+    },
+    {
+      "cue": "Using vendor documentation in the causal assessment",
+      "location": "Root-cause investigation before decision point 3",
+      "why_not_bias": "The vendor documentation is traceable and is corroborated by physical teardown evidence. Reliance on a supplier record is not authority bias merely because the supplier supplied the information."
+    },
+    {
+      "cue": "Maintaining a lot-bounded corrective-action scope",
+      "location": "Decision point 4",
+      "why_not_bias": "The decision follows identifiable serial ranges and evidence attributed specifically to the lot. Avoiding replacement of apparently unaffected valves is justified proportionality, not anchoring or narrow framing."
+    },
+    {
+      "cue": "Reporting no further events after the affected valves were replaced",
+      "location": "Post-campaign outcome",
+      "why_not_bias": "The participant reports the outcome without using it as the original basis of the causal attribution or scope decision. The observation is limited follow-up evidence, not a separate reasoning bias."
+    }
+  ],
+  "causal_audit": {
+    "causal_claims": [
+      {
+        "claim": "The vendor lot's seal-material change caused the observed seal degradation and recurrent APU bleed-air valve complaints.",
+        "support": "Vendor lot documentation identified a material change; in-house teardown found degradation consistent with that change; the external assay later confirmed the same material change.",
+        "assessment": "Moderately supported. The evidence is convergent, traceable, and linked to a plausible physical mechanism, although the transcript does not provide comparative testing of unaffected lots, a failure-rate analysis by lot, or full exclusion of alternative contributors."
+      },
+      {
+        "claim": "A lot-bounded replacement campaign was the appropriate immediate corrective action.",
+        "support": "The implicated lot and serial range were identifiable, and the causal evidence was represented as lot-specific.",
+        "assessment": "Reasonably supported as an operational decision conditional on the lot-specific causal attribution. The evidence supports bounded action more directly than an indiscriminate fleet-wide campaign."
+      },
+      {
+        "claim": "Replacing the affected valves resolved the problem.",
+        "support": "No further events were reported on either affected tail after replacement.",
+        "assessment": "Weak outcome confirmation only. The transcript does not state follow-up duration, subsequent utilization, event baseline, or whether relevant confounders changed."
+      }
+    ],
+    "correlation_causation_risks": [
+      {
+        "risk": "A common batch lot alone is correlational evidence and does not establish that the lot caused the faults.",
+        "mitigation_present": "The interview adds vendor material-change records, physical teardown findings, and later independent composition confirmation."
+      },
+      {
+        "risk": "The absence of later events on two aircraft could be overinterpreted as decisive proof that replacement caused resolution.",
+        "mitigation_needed": "Specify follow-up exposure, number of replaced units, and comparison with comparable valves or historical event rates before treating the post-campaign observation as strong causal validation."
+      }
+    ],
+    "counterfactual_present": true,
+    "changed_variable": "The hypothetical assay result: it identifies a degradation mechanism different from the vendor's account.",
+    "held_constant": [
+      "The existing vendor documentation and in-house teardown evidence.",
+      "The same implicated vendor lot and serial-range population.",
+      "The already committed lot-based corrective-action recommendation.",
+      "The pending RCB submission context."
+    ],
+    "causal_coherence": "strong",
+    "explanation": "The counterfactual is coherent because it separates the pending action from later learning. A conflicting assay result would trigger a separate follow-up investigation after submission of the already committed lot-based campaign, rather than retroactively make the redundant assay decision-relevant to the pending recommendation. This preserves the information-bias mechanism while acknowledging that contradictory evidence could matter for subsequent decisions."
+  },
+  "quality_scores": {
+    "occupational_realism": 92,
+    "cta_fidelity": 91,
+    "bias_separability": 93,
+    "bias_subtlety": 87,
+    "control_fidelity": 100,
+    "counterfactual_fidelity": 89,
+    "narrative_coherence": 95,
+    "naturalness": 91,
+    "hidden_label_integrity": 95,
+    "overall_quality": 92
+  },
+  "revision_summary": {
+    "revision_required": false,
+    "supported_occurrence_total": 1,
+    "requested_occurrence_total": 1,
+    "missing_occurrence_total": 0,
+    "accidental_occurrence_total": 0,
+    "priority": "none",
+    "recommended_action": "accept",
+    "global_revision_constraints": [
+      "Maintain exactly four decision points.",
+      "Maintain the external assay as one single evidence-selection episode rather than counting its later discussion as another occurrence.",
+      "Do not introduce a policy requirement that would make the assay mandatory or otherwise fully justified.",
+      "Maintain the distinction between the pending lot-based corrective-action decision and any future follow-up prompted by a contradictory assay."
+    ],
+    "revision_order": []
+  },
+  "failure_flags": []
+}

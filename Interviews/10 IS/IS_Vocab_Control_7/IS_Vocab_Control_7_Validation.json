@@ -1,0 +1,576 @@
+{
+  "validator_version": "2.0",
+  "interview_id": "IS_Vocab_Control_7",
+  "condition": "vocabulary_control",
+  "domain_assessment": {
+    "domain": "Design-system vendor evaluation and accessibility-compliance implementation",
+    "role": "Design-systems lead for a platform organization managing three designers and two engineers",
+    "objective": "Determine whether and how to adopt LumenKit to help meet WCAG 2.2 AA requirements within a ten-week deadline while controlling implementation, licensing, rollout, and compliance risk",
+    "incident_type": "Vendor evaluation followed by partial remediation and a hybrid rollout decision after an accessibility audit identified failures in vendor-default tokens",
+    "confidence": 98
+  },
+  "structure_audit": {
+    "estimated_word_count": 1480,
+    "within_target_range": true,
+    "decision_point_count": 4,
+    "decision_points": [
+      {
+        "id": 1,
+        "summary": "Evaluate the vendor demonstration and determine the appropriate pilot scope.",
+        "evidence_before": [
+          "Legal required WCAG 2.2 AA compliance across two customer-facing squads within approximately ten weeks.",
+          "The internal component library had known contrast and focus-state debt.",
+          "LumenKit had competitor adoption and industry recognition.",
+          "The vendor demonstration showed strong motion, keyboard handling, and graceful-degradation behavior in an accordion component.",
+          "The vendor supplied a claim that the library had AA-compliant color defaults."
+        ],
+        "evidence_after": [
+          "The participant requested a contrast-ratio specification sheet rather than accepting the vendor claim.",
+          "The sheet covered only default, unthemed values and did not show behavior under the organization's planned theming layer.",
+          "The participant recognized that the actual implementation would always be themed."
+        ],
+        "goals_constraints": [
+          "Shorten remediation work without compromising accessibility compliance.",
+          "Work within a roughly ten-week deadline.",
+          "Avoid committing to a broad pilot without evidence about the relevant token categories."
+        ],
+        "alternatives": [
+          "Scope a broad pilot across the library.",
+          "Accept the vendor's AA-compliance claim at face value.",
+          "Run a narrow pilot focused on token categories directly tied to the compliance gap."
+        ],
+        "decision_basis": "The participant separated evidence about one demonstrated accordion component from evidence about color and elevation tokens, identified the missing themed-token evidence, and scoped the pilot narrowly to the categories relevant to the confirmed compliance gap.",
+        "time_pressure": "Substantial: approximately ten weeks remained to meet the compliance requirement, although the specific pilot decision was not described as an emergency decision.",
+        "uncertainty": "Material uncertainty remained about how the vendor's tokens would behave after application of the organization's own theming layer."
+      },
+      {
+        "id": 2,
+        "summary": "Select the licensing tier and set a rollout date based on actual requirements and squad calendars.",
+        "evidence_before": [
+          "Procurement required a recommendation within two weeks.",
+          "The available tiers were Basic, Team, and Enterprise, with different component coverage and support levels.",
+          "The narrow pilot identified the components and token categories currently needed.",
+          "The two squad leads had not yet committed engineering time and wanted pricing information first."
+        ],
+        "evidence_after": [
+          "The participant mapped confirmed needs against each tier's component list.",
+          "Team covered the confirmed needs and provided reasonable headroom for the second squad.",
+          "Enterprise included capabilities not then being used.",
+          "The two squads provided integration windows of three weeks and five weeks.",
+          "The participant selected the later five-week window rather than averaging the estimates or choosing an unsupported intermediate date."
+        ],
+        "goals_constraints": [
+          "Make a procurement recommendation within two weeks.",
+          "Cover the confirmed component requirements for both squads.",
+          "Avoid paying for unused Enterprise capabilities.",
+          "Set a feasible integration date that respected both squads' release calendars."
+        ],
+        "alternatives": [
+          "Basic.",
+          "Team.",
+          "Enterprise.",
+          "Select a rollout date between the two squad estimates.",
+          "Use the later realistic integration window."
+        ],
+        "decision_basis": "The participant compared requirements to tier coverage and selected Team because it covered confirmed needs, then used direct calendar commitments and selected the later squad window to avoid assuming that an intermediate date would work.",
+        "time_pressure": "Moderate to high: procurement required a recommendation within two weeks, and the broader compliance timeline was approximately ten weeks.",
+        "uncertainty": "The participant lacked a fixed integration date until the squad leads supplied their realistic windows; future adoption growth and the need for Enterprise remained uncertain."
+      },
+      {
+        "id": 3,
+        "summary": "Diagnose the audit discrepancy and decide whether to retain or revert affected components.",
+        "evidence_before": [
+          "The initial specification review and pilot had indicated that the tested defaults performed well.",
+          "The participant had warned stakeholders that full-scale testing was still pending.",
+          "Approximately seven weeks into the effort, an internal accessibility audit found failures in several LumenKit color and elevation tokens across three of five tested components.",
+          "Engineering effort had already been spent customizing some affected tokens."
+        ],
+        "evidence_after": [
+          "The participant requested an independent retest of LumenKit's out-of-box tokens with no internal theming.",
+          "The retest attributed the failures to the vendor's default token values rather than the organization's theming layer.",
+          "The participant reverted only the three affected components to already-remediated legacy tokens.",
+          "Components that tested clean remained in place."
+        ],
+        "goals_constraints": [
+          "Identify the source of the compliance failures.",
+          "Avoid guessing about whether the vendor or internal theming caused the discrepancy.",
+          "Restore compliance while limiting unnecessary migration and rework.",
+          "Provide an explanation suitable for the VP and compliance file."
+        ],
+        "alternatives": [
+          "Attribute the failures immediately to the internal theming layer.",
+          "Retain all LumenKit components despite the failed audit.",
+          "Revert the entire library to legacy components.",
+          "Independently isolate vendor defaults and revert only affected components."
+        ],
+        "decision_basis": "The participant sought an independent isolation test, updated the causal attribution based on that result, and used component-specific evidence to justify a partial rather than full reversion.",
+        "time_pressure": "High: the discrepancy arose approximately seven weeks into a ten-week compliance effort, leaving roughly three weeks before the deadline.",
+        "uncertainty": "The initial discrepancy left the cause uncertain; the participant treated vendor defaults and internal theming as competing causal explanations until the independent retest resolved the uncertainty."
+      },
+      {
+        "id": 4,
+        "summary": "Choose the final rollout model three weeks before the compliance deadline.",
+        "evidence_before": [
+          "The audit and independent retest identified failures in color and elevation tokens.",
+          "Layout and motion components had not been implicated by the retest and had tested clean.",
+          "The organization had already invested engineering effort in the LumenKit implementation.",
+          "The remaining options were full organization-wide expansion, a hybrid model, or full reversion to legacy."
+        ],
+        "evidence_after": [
+          "The participant documented the retest findings, expected migration effort, and compliance risk for each option.",
+          "The participant sent the analysis to the VP and counsel before finalizing the recommendation.",
+          "The hybrid model retained clean LumenKit motion and layout components while sourcing failing color and elevation tokens internally."
+        ],
+        "goals_constraints": [
+          "Meet the compliance deadline.",
+          "Avoid reintroducing the identified token-related compliance risk.",
+          "Preserve components supported by clean evidence.",
+          "Provide a documented and reviewable recommendation to senior stakeholders and counsel."
+        ],
+        "alternatives": [
+          "Expand LumenKit organization-wide, including the failed categories.",
+          "Adopt a hybrid model retaining clean LumenKit components and replacing failing token categories internally.",
+          "Revert the entire implementation to legacy components."
+        ],
+        "decision_basis": "The participant matched the scope of the response to the scope of the evidence: retain categories that tested clean, replace categories implicated by the retest, and avoid both unjustified expansion and unnecessary full reversion.",
+        "time_pressure": "High: the final decision occurred three weeks before the compliance deadline.",
+        "uncertainty": "The participant had specific evidence for color and elevation but not a basis for treating unaffected layout and motion components as equally risky."
+      }
+    ]
+  },
+  "target_occurrence_audit": [
+    {
+      "instance_id": "target_priming_effect_0",
+      "bias": "Priming effect",
+      "requested_occurrences_for_bias": 0,
+      "status": "absent",
+      "decision_point": 1,
+      "supporting_quote": "none",
+      "evidence_location": "No defensible occurrence in the interview.",
+      "mechanism": "No evidence that an earlier stimulus unconsciously activated an associated concept that altered a later judgment or response.",
+      "strength": "absent",
+      "confidence": 98,
+      "plausible_nonbias_explanation": "The references to competitor adoption and industry recognition are contextual vendor information, not evidence of an automatic semantic or behavioral priming effect.",
+      "additional_evidence_needed": "None, because the control specification requires zero occurrences.",
+      "revision_needed": false,
+      "revision": {
+        "revision_type": "none",
+        "location": "No revision required.",
+        "current_defect": "No occurrence is present.",
+        "minimal_change_instruction": "Make no change.",
+        "preserve": [
+          "The mention of competitor adoption and industry recognition as neutral contextual information.",
+          "The participant's evidence-based separation of the demo from token performance."
+        ],
+        "avoid_creating": [
+          "Do not add language showing that competitor use or recognition automatically made LumenKit seem safer, more credible, or preferable."
+        ],
+        "expected_post_revision_status": "absent"
+      }
+    },
+    {
+      "instance_id": "target_cognitive_dissonance_0",
+      "bias": "Cognitive Dissonance",
+      "requested_occurrences_for_bias": 0,
+      "status": "absent",
+      "decision_point": 3,
+      "supporting_quote": "none",
+      "evidence_location": "No defensible occurrence in the interview.",
+      "mechanism": "The participant does not show psychological discomfort followed by rationalization, selective reinterpretation, or attitude adjustment to preserve consistency with a prior commitment.",
+      "strength": "absent",
+      "confidence": 97,
+      "plausible_nonbias_explanation": "Acknowledging that engineering hours had already been spent and then reverting affected components demonstrates updating and loss acceptance rather than dissonance reduction.",
+      "additional_evidence_needed": "None, because the control specification requires zero occurrences.",
+      "revision_needed": false,
+      "revision": {
+        "revision_type": "none",
+        "location": "No revision required.",
+        "current_defect": "No occurrence is present.",
+        "minimal_change_instruction": "Make no change.",
+        "preserve": [
+          "The participant's willingness to revise the implementation after the retest.",
+          "The distinction between affected and unaffected components."
+        ],
+        "avoid_creating": [
+          "Do not add rationalization such as minimizing the failures to defend the prior vendor choice."
+        ],
+        "expected_post_revision_status": "absent"
+      }
+    },
+    {
+      "instance_id": "target_decoy_effect_0",
+      "bias": "Decoy effect",
+      "requested_occurrences_for_bias": 0,
+      "status": "absent",
+      "decision_point": 2,
+      "supporting_quote": "none",
+      "evidence_location": "No defensible occurrence in the interview.",
+      "mechanism": "Although three licensing tiers are present, the participant does not use an asymmetrically dominated option to shift preference toward another option.",
+      "strength": "absent",
+      "confidence": 98,
+      "plausible_nonbias_explanation": "Team is selected because it covers confirmed requirements and reasonable headroom; Enterprise is rejected because it includes unused capabilities, not because Basic functions as a comparison decoy.",
+      "additional_evidence_needed": "None, because the control specification requires zero occurrences.",
+      "revision_needed": false,
+      "revision": {
+        "revision_type": "none",
+        "location": "Licensing discussion, approximately the tier-comparison exchange.",
+        "current_defect": "No occurrence is present.",
+        "minimal_change_instruction": "Make no change.",
+        "preserve": [
+          "The three-tier licensing structure.",
+          "The requirement-to-tier mapping."
+        ],
+        "avoid_creating": [
+          "Do not make one tier intentionally unattractive in a way that steers the participant toward Team or Enterprise."
+        ],
+        "expected_post_revision_status": "absent"
+      }
+    },
+    {
+      "instance_id": "target_halo_effect_0",
+      "bias": "Halo effect",
+      "requested_occurrences_for_bias": 0,
+      "status": "absent",
+      "decision_point": 1,
+      "supporting_quote": "The demo was impressive, but impressive motion design on one component doesn't tell you much about contrast behavior on a different set of tokens, so I kept those separate in my head.",
+      "evidence_location": "Demo evaluation and follow-up question about broader commitment.",
+      "mechanism": "The interview explicitly blocks the halo mechanism by preventing positive impressions of motion design from spreading to unrelated judgments about contrast behavior.",
+      "strength": "absent",
+      "confidence": 99,
+      "plausible_nonbias_explanation": "The participant's positive assessment is domain-specific and is deliberately not generalized to untested token categories.",
+      "additional_evidence_needed": "None, because the control specification requires zero occurrences.",
+      "revision_needed": false,
+      "revision": {
+        "revision_type": "none",
+        "location": "Demo evaluation.",
+        "current_defect": "No occurrence is present; the text contains an explicit anti-halo control.",
+        "minimal_change_instruction": "Make no change.",
+        "preserve": [
+          "The explicit separation between motion-design quality and contrast evidence.",
+          "The narrow pilot decision."
+        ],
+        "avoid_creating": [
+          "Do not alter the response so that the impressive demo becomes evidence for the unrelated accessibility claim."
+        ],
+        "expected_post_revision_status": "absent"
+      }
+    },
+    {
+      "instance_id": "target_illusion_of_control_0",
+      "bias": "Illusion of control",
+      "requested_occurrences_for_bias": 0,
+      "status": "absent",
+      "decision_point": 3,
+      "supporting_quote": "I didn't want to guess at the cause.",
+      "evidence_location": "Response to the audit discrepancy and request for an independent retest.",
+      "mechanism": "The participant acknowledges causal uncertainty and seeks an external isolation test rather than claiming that personal oversight or theming control could determine the outcome.",
+      "strength": "absent",
+      "confidence": 98,
+      "plausible_nonbias_explanation": "Requesting a retest and limiting the reversion to affected components are ordinary evidence-based risk-management actions.",
+      "additional_evidence_needed": "None, because the control specification requires zero occurrences.",
+      "revision_needed": false,
+      "revision": {
+        "revision_type": "none",
+        "location": "Post-audit diagnosis.",
+        "current_defect": "No occurrence is present.",
+        "minimal_change_instruction": "Make no change.",
+        "preserve": [
+          "The independent retest.",
+          "The explicit refusal to guess at the cause."
+        ],
+        "avoid_creating": [
+          "Do not add claims that the participant could personally guarantee compliance through tighter control of the theming layer."
+        ],
+        "expected_post_revision_status": "absent"
+      }
+    },
+    {
+      "instance_id": "target_sunk_cost_bias_0",
+      "bias": "Sunk Cost Bias",
+      "requested_occurrences_for_bias": 0,
+      "status": "absent",
+      "decision_point": 3,
+      "supporting_quote": "We'd put some engineering hours into customizing those tokens already, but once the retest pointed at the vendor defaults specifically, I reverted just the three affected components.",
+      "evidence_location": "Decision following the independent retest.",
+      "mechanism": "Prior investment is acknowledged but does not determine continuation; the participant accepts the need to reverse affected work based on current compliance evidence.",
+      "strength": "absent",
+      "confidence": 99,
+      "plausible_nonbias_explanation": "This is evidence of resisting sunk-cost pressure, not succumbing to it.",
+      "additional_evidence_needed": "None, because the control specification requires zero occurrences.",
+      "revision_needed": false,
+      "revision": {
+        "revision_type": "none",
+        "location": "Partial reversion decision.",
+        "current_defect": "No occurrence is present; prior investment is explicitly discounted.",
+        "minimal_change_instruction": "Make no change.",
+        "preserve": [
+          "The mention of engineering hours as realistic operational context.",
+          "The evidence-based partial reversion."
+        ],
+        "avoid_creating": [
+          "Do not add reluctance to revert merely because customization work has already been completed."
+        ],
+        "expected_post_revision_status": "absent"
+      }
+    },
+    {
+      "instance_id": "target_status_quo_bias_0",
+      "bias": "Status Quo Bias",
+      "requested_occurrences_for_bias": 0,
+      "status": "absent",
+      "decision_point": 4,
+      "supporting_quote": "The hybrid matched what the evidence actually showed — keep what tested clean, source internally what didn't.",
+      "evidence_location": "Final rollout-model recommendation.",
+      "mechanism": "The participant does not prefer the existing legacy state merely because it is familiar; the recommendation preserves some new components and reverts others according to test results.",
+      "strength": "absent",
+      "confidence": 99,
+      "plausible_nonbias_explanation": "Retaining legacy tokens for failed categories is justified remediation, while retaining clean LumenKit components demonstrates that the status quo was not treated as inherently preferable.",
+      "additional_evidence_needed": "None, because the control specification requires zero occurrences.",
+      "revision_needed": false,
+      "revision": {
+        "revision_type": "none",
+        "location": "Final rollout-model decision.",
+        "current_defect": "No occurrence is present; the decision is selective and evidence-based rather than status-quo driven.",
+        "minimal_change_instruction": "Make no change.",
+        "preserve": [
+          "The hybrid recommendation.",
+          "The comparison of full expansion, hybrid adoption, and full legacy reversion."
+        ],
+        "avoid_creating": [
+          "Do not make familiarity with legacy components, organizational habit, or discomfort with change the reason for the partial reversion."
+        ],
+        "expected_post_revision_status": "absent"
+      }
+    }
+  ],
+  "bias_level_counts": [
+    {
+      "bias": "Priming effect",
+      "requested_count": 0,
+      "supported_count": 0,
+      "weak_count": 0,
+      "absent_count": 0,
+      "merged_count": 0,
+      "accidental_count": 0,
+      "count_satisfied": true
+    },
+    {
+      "bias": "Cognitive Dissonance",
+      "requested_count": 0,
+      "supported_count": 0,
+      "weak_count": 0,
+      "absent_count": 0,
+      "merged_count": 0,
+      "accidental_count": 0,
+      "count_satisfied": true
+    },
+    {
+      "bias": "Decoy effect",
+      "requested_count": 0,
+      "supported_count": 0,
+      "weak_count": 0,
+      "absent_count": 0,
+      "merged_count": 0,
+      "accidental_count": 0,
+      "count_satisfied": true
+    },
+    {
+      "bias": "Halo effect",
+      "requested_count": 0,
+      "supported_count": 0,
+      "weak_count": 0,
+      "absent_count": 0,
+      "merged_count": 0,
+      "accidental_count": 0,
+      "count_satisfied": true
+    },
+    {
+      "bias": "Illusion of control",
+      "requested_count": 0,
+      "supported_count": 0,
+      "weak_count": 0,
+      "absent_count": 0,
+      "merged_count": 0,
+      "accidental_count": 0,
+      "count_satisfied": true
+    },
+    {
+      "bias": "Sunk Cost Bias",
+      "requested_count": 0,
+      "supported_count": 0,
+      "weak_count": 0,
+      "absent_count": 0,
+      "merged_count": 0,
+      "accidental_count": 0,
+      "count_satisfied": true
+    },
+    {
+      "bias": "Status Quo Bias",
+      "requested_count": 0,
+      "supported_count": 0,
+      "weak_count": 0,
+      "absent_count": 0,
+      "merged_count": 0,
+      "accidental_count": 0,
+      "count_satisfied": true
+    }
+  ],
+  "additional_candidate_biases": [
+    {
+      "bias": "Anchoring effect",
+      "decision_point": 1,
+      "supporting_quote": "LumenKit came up because a couple of competitors use it and it's picked up some industry recognition.",
+      "mechanism": "The contextual reputation information could have served as an initial anchor for vendor evaluation, but the participant's subsequent reasoning does not show that the anchor constrained evidence weighting or the pilot decision.",
+      "confidence": 91,
+      "status": "rejected",
+      "plausible_nonbias_explanation": "Competitor adoption and recognition are ordinary background facts considered alongside direct technical evidence.",
+      "revision_recommendation": "none"
+    },
+    {
+      "bias": "Authority bias",
+      "decision_point": 1,
+      "supporting_quote": "They also said the library ships with AA-compliant color defaults. Rather than take that at face value, I asked for their contrast-ratio spec sheet.",
+      "mechanism": "The vendor's expert or authority-like claim could have influenced acceptance, but the participant explicitly sought verification instead.",
+      "confidence": 99,
+      "status": "rejected",
+      "plausible_nonbias_explanation": "The participant demonstrates source scrutiny rather than deference to the vendor.",
+      "revision_recommendation": "none"
+    },
+    {
+      "bias": "Confirmation bias",
+      "decision_point": 3,
+      "supporting_quote": "I wanted to know whether the failure was in our theming layer or in the vendor's own default tokens, so I requested an independent retest.",
+      "mechanism": "The participant had an opportunity to favor a preferred causal explanation but sought a test capable of distinguishing the competing explanations and updated after the result.",
+      "confidence": 98,
+      "status": "rejected",
+      "plausible_nonbias_explanation": "The behavior is consistent with hypothesis testing and causal isolation, not selective evidence search.",
+      "revision_recommendation": "none"
+    },
+    {
+      "bias": "Loss aversion",
+      "decision_point": 4,
+      "supporting_quote": "Full revert seemed like it would throw away components that had actually tested fine.",
+      "mechanism": "The wording references the loss of useful components, but the participant balances that concern against compliance risk and does not allow avoidance of loss to override evidence.",
+      "confidence": 94,
+      "status": "rejected",
+      "plausible_nonbias_explanation": "Preserving verified, compliant functionality while removing failed categories is proportionate risk management.",
+      "revision_recommendation": "none"
+    }
+  ],
+  "nonbias_cues": [
+    {
+      "cue": "The participant described the demo as genuinely well done and impressive.",
+      "location": "Demo discussion, approximately the first decision point.",
+      "why_not_bias": "Positive evaluation of demonstrated motion, keyboard handling, and graceful degradation is task-relevant. The participant explicitly prevented that evaluation from generalizing to unrelated token behavior."
+    },
+    {
+      "cue": "Competitors use LumenKit and it has industry recognition.",
+      "location": "Initial evaluation trigger.",
+      "why_not_bias": "These are contextual vendor-reputation cues. The text does not show that they displaced direct evidence or caused automatic preference."
+    },
+    {
+      "cue": "The participant selected the Team tier even though it was priced not far below Enterprise.",
+      "location": "Licensing discussion.",
+      "why_not_bias": "The selection was based on component coverage and headroom, not on a relative-price or comparison-induced preference."
+    },
+    {
+      "cue": "The participant chose the later five-week rollout window.",
+      "location": "Rollout-timeline discussion.",
+      "why_not_bias": "Selecting the later date after obtaining direct commitments from both squads is conservative scheduling and valid risk management, not necessarily bias."
+    },
+    {
+      "cue": "Engineering hours had already been spent customizing affected tokens.",
+      "location": "Post-audit decision.",
+      "why_not_bias": "Mentioning prior investment does not establish sunk-cost bias; the participant actually reverted affected components after receiving contrary evidence."
+    },
+    {
+      "cue": "The participant retained some LumenKit components and reverted others to legacy tokens.",
+      "location": "Post-audit and final rollout decisions.",
+      "why_not_bias": "The hybrid response follows component-specific evidence and does not show a blanket preference for either the incumbent or the new vendor."
+    },
+    {
+      "cue": "The participant said they would probably use the same retest approach even if the audit had arrived in week one.",
+      "location": "Counterfactual probe.",
+      "why_not_bias": "This is a stated process invariant with a plausible operational consequence—less customization work to unwind—not evidence of inflexibility or bias."
+    },
+    {
+      "cue": "The participant was not sure they would change much in retrospect.",
+      "location": "Closing reflection.",
+      "why_not_bias": "The participant identified one concrete improvement—making the pending-testing caveat more visible. The statement alone does not establish hindsight bias, defensiveness, or overconfidence."
+    }
+  ],
+  "causal_audit": {
+    "causal_claims": [
+      {
+        "claim": "The contrast failures originated in LumenKit's default token values rather than the internal theming layer.",
+        "basis": "Independent retest of out-of-box tokens with no internal theming applied.",
+        "assessment": "Supported as an operational causal attribution within the interview."
+      },
+      {
+        "claim": "The independent retest identified which components needed to change.",
+        "basis": "The retest isolated the vendor-default token failures and informed the component-specific reversion.",
+        "assessment": "Coherent and appropriately scoped to the tested components."
+      },
+      {
+        "claim": "A week-one audit would have resulted in less customization work to unwind.",
+        "basis": "The participant's counterfactual response.",
+        "assessment": "Plausible but not independently demonstrated; it is a projected operational consequence rather than a verified causal finding."
+      },
+      {
+        "claim": "Full expansion would reintroduce the exact risk identified by the audit.",
+        "basis": "The expansion option included the categories that had failed.",
+        "assessment": "Reasonably supported for those categories, provided the expansion would use the same or materially similar defaults."
+      },
+      {
+        "claim": "Full reversion would throw away components that had tested fine.",
+        "basis": "The retest and audit were specific to color and elevation rather than layout or motion.",
+        "assessment": "Supported as a consequence of the stated scope of the evidence, although clean test results do not prove that every untested behavior is risk-free."
+      }
+    ],
+    "correlation_causation_risks": [
+      "The interview treats the independent retest as sufficient to attribute the failures to vendor defaults; the design and scope of the retest are not described in enough detail to assess test validity or generalizability.",
+      "The statement that clean components were safe to retain should be interpreted as evidence-limited rather than proof of universal compliance.",
+      "The week-one counterfactual assumes that earlier timing would change only unwind effort and not stakeholder behavior, implementation scope, or testing conditions.",
+      "The phrase 'exact risk' could overstate causal certainty if the failed default tokens would have been modified before organization-wide expansion."
+    ],
+    "counterfactual_present": true,
+    "changed_variable": "The interview contains three separate hypothetical changes: audit timing changing from approximately week seven to week one; the presence or absence of the vendor contrast-ratio specification sheet; and the number of procurement tiers changing from three to two.",
+    "held_constant": [
+      "The participant's general evidence-seeking orientation is treated as constant in the timing probe.",
+      "The underlying vendor, compliance objective, and implementation context are implicitly held constant in the timing probe.",
+      "No single formal counterfactual specifies all held-constant variables across the three probes."
+    ],
+    "causal_coherence": "moderate",
+    "explanation": "The causal reasoning in the main incident is coherent: the participant identifies competing causal explanations, requests an isolation test, updates the attribution, and limits the remediation to affected categories. The interview also contains explicit counterfactual probes, but they are separate process hypotheticals rather than one controlled paired scenario with a single changed variable. This is acceptable for the zero-bias control but should not be treated as a rigorous causal experiment."
+  },
+  "quality_scores": {
+    "occupational_realism": 95,
+    "cta_fidelity": 93,
+    "bias_separability": 97,
+    "bias_subtlety": 94,
+    "control_fidelity": 98,
+    "counterfactual_fidelity": 74,
+    "narrative_coherence": 96,
+    "naturalness": 94,
+    "hidden_label_integrity": 100,
+    "overall_quality": 93
+  },
+  "revision_summary": {
+    "revision_required": false,
+    "supported_occurrence_total": 0,
+    "requested_occurrence_total": 0,
+    "missing_occurrence_total": 0,
+    "accidental_occurrence_total": 0,
+    "priority": "none",
+    "recommended_action": "accept",
+    "global_revision_constraints": [
+      "Maintain zero intended occurrences of Priming effect, Cognitive Dissonance, Decoy effect, Halo effect, Illusion of control, Sunk Cost Bias, and Status Quo Bias.",
+      "Preserve the four-phase chronology: demo and pilot scoping, licensing and timeline, post-audit continuation, and final rollout model.",
+      "Retain the participant's explicit evidence-seeking, causal isolation, willingness to reverse affected work, and component-specific hybrid recommendation.",
+      "Do not convert bias-adjacent contextual cues into actual mechanisms during any future editing.",
+      "Treat the three hypothetical probes as separate counterfactual questions rather than implying that they form one controlled causal comparison."
+    ],
+    "revision_order": []
+  },
+  "failure_flags": []
+}

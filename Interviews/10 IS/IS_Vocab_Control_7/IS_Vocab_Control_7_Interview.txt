@@ -1,0 +1,95 @@
+Interviewer: Thanks for making time for this. Just to set expectations, this is a cognitive task analysis interview — I'm interested in how you actually reasoned through the LumenKit evaluation, not whether the outcome was "right." Everything stays in the design systems research archive. Sound okay?
+
+Participant: Sure, happy to walk through it.
+
+Interviewer: Can you remind me of your role and what triggered this whole evaluation?
+
+Participant: I lead design systems for the platform org — three designers, two engineers under me. Legal flagged that we needed to hit WCAG 2.2 AA across two customer-facing squads within about ten weeks, and our internal component library had known contrast and focus-state debt. LumenKit came up because a couple of competitors use it and it's picked up some industry recognition.
+
+Interviewer: What was your goal going into the vendor demo?
+
+Participant: Mainly to see whether adopting something pre-built could shortcut months of remediation work, given the timeline.
+
+Interviewer: Walk me through what happened, in order.
+
+Participant: The solutions engineer ran about forty minutes, mostly on their accordion component — motion, keyboard handling, graceful degradation. Genuinely well done. They also said the library ships with AA-compliant color defaults. Rather than take that at face value, I asked for their contrast-ratio spec sheet on the core color and elevation tokens before deciding anything about pilot scope. When it came back, I noticed it only covered default, unthemed values — nothing about how those tokens would behave once we applied our own theming layer. That gap mattered, since our actual implementation would always be themed.
+
+Interviewer: What did that lead you to do?
+
+Participant: I scoped the pilot narrowly — just the token categories tied directly to our compliance gap, not the whole library — since the spec sheet couldn't tell me how the tokens would hold up once themed. We got a three-week sandbox limited to that smaller set. Both squad leads said they were interested but wanted pricing before committing engineering time.
+
+Interviewer: Did anything push you toward a broader commitment at that point?
+
+Participant: Not really. The demo was impressive, but impressive motion design on one component doesn't tell you much about contrast behavior on a different set of tokens, so I kept those separate in my head.
+
+Interviewer: Let's move to licensing. What did that look like?
+
+Participant: Procurement needed a recommendation in two weeks. Three tiers: Basic, five components, no support; Team, twelve components, limited support, priced not far below Enterprise; Enterprise, full library with dedicated support. I mapped what the narrow pilot actually needed against each tier's component list rather than just comparing the tiers to each other.
+
+Interviewer: What did that comparison show?
+
+Participant: Team actually covered our confirmed needs — the components we'd already scoped plus reasonable headroom for the second squad. Enterprise had things we weren't using yet. I recommended Team and flagged that we could revisit Enterprise later if adoption grew.
+
+Interviewer: And the rollout timeline?
+
+Participant: I hadn't set a date yet at that point. I asked both squad leads directly what their earliest realistic integration window was, given their existing release calendars, before committing to anything.
+
+Interviewer: What did they say?
+
+Participant: One could start in three weeks, the other in five. I set the rollout date to the later window rather than picking something in between and hoping it would work out.
+
+Interviewer: What information would have changed that recommendation, looking back?
+
+Participant: Honestly, not much — checking actual needs against the tier list and getting real calendar commitments from both squads is basically what I'd do again.
+
+Interviewer: Let's get to the audit. What came back?
+
+Participant: About seven weeks in, our internal accessibility audit found that several LumenKit color and elevation tokens failed contrast requirements in three of five tested components. I'd told the VP and both squad leads earlier that the defaults tested well in the initial spec review and pilot, but I'd also flagged at the time that full-scale testing was still pending.
+
+Interviewer: What was your first move on the discrepancy?
+
+Participant: I wanted to know whether the failure was in our theming layer or in the vendor's own default tokens, so I requested an independent retest of LumenKit's out-of-box tokens with no internal theming applied. I didn't want to guess at the cause.
+
+Interviewer: What did the retest show?
+
+Participant: It confirmed the failures originated in the vendor's default token values, not our theming. That was useful because it told us exactly which components needed to change.
+
+Interviewer: What did you decide to do with that?
+
+Participant: We'd put some engineering hours into customizing those tokens already, but once the retest pointed at the vendor defaults specifically, I reverted just the three affected components to our already-remediated legacy tokens and left the rest of the LumenKit components in place, since those had tested clean.
+
+Interviewer: Did the VP or squad leads react?
+
+Participant: The VP asked for a written explanation for the compliance file, which I could give directly from the retest data. Both squads were fine with the partial reversion once they saw which components were affected.
+
+Interviewer: That brings us to the final call. What were the options three weeks before the deadline?
+
+Participant: Expand LumenKit organization-wide, including the categories that had failed; adopt a hybrid — keep LumenKit's motion and layout components but source color and elevation tokens internally; or revert fully to legacy.
+
+Interviewer: How did you weigh those?
+
+Participant: The retest data was specific to color and elevation, not layout or motion, so a full revert seemed like it would throw away components that had actually tested fine. Full expansion seemed to reintroduce the exact risk we'd just found. The hybrid matched what the evidence actually showed — keep what tested clean, source internally what didn't.
+
+Interviewer: So what did you recommend?
+
+Participant: The hybrid. I documented the retest findings, the expected migration effort for each option, and the compliance risk if we expanded the failing categories anyway, and sent that to the VP and counsel before finalizing it.
+
+Interviewer: If the audit had come in during week one instead of week seven, would your approach to the retest have changed?
+
+Participant: Probably not the approach — I'd still want to isolate vendor tokens from theming before deciding anything. It might have just meant less customization work to unwind.
+
+Interviewer: If the vendor's demo hadn't included that contrast-ratio spec sheet at all, do you think your initial pilot scope would have looked different?
+
+Participant: I likely would have asked for one anyway before scoping anything broadly — a strong demo on one component isn't evidence about a different set of tokens.
+
+Interviewer: If procurement had only offered two tiers instead of three, would Team still have been your pick?
+
+Participant: Depends on what the two were, but I'd still have checked actual component needs against whatever was offered rather than picking based on how the options looked next to each other.
+
+Interviewer: Starting over today, what would you keep, and what would you change?
+
+Participant: I'd keep asking for direct evidence before scoping decisions and getting real commitments from the squads before setting dates. I'm not sure I'd change much — the one thing I'd tighten up is flagging the "pending full-scale testing" caveat more visibly in written updates, so it's not just something I remember saying.
+
+Interviewer: This has been really useful. Thanks for walking through the reasoning in this much detail.
+
+Participant: No problem — it's a good exercise to lay it out step by step like this.

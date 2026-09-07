@@ -1,0 +1,391 @@
+{
+  "validator_version": "2.0",
+  "interview_id": "IS_Biased_2",
+  "condition": "biased",
+  "domain_assessment": {
+    "domain": "Internal software-platform engineering and operational incident management",
+    "role": "Engineering team lead responsible for an internal customer-support analytics dashboard, platform stability, delivery, and leadership-demo readiness",
+    "objective": "Diagnose and reduce escalating dashboard latency while allocating scarce engineering capacity and preserving readiness for a leadership demo",
+    "incident_type": "Performance degradation incident involving excessive cache invalidation, database round-trips, a separate missing database index, and subsequent remediation decisions",
+    "confidence": 0.99
+  },
+  "structure_audit": {
+    "estimated_word_count": 1150,
+    "within_target_range": true,
+    "decision_point_count": 4,
+    "decision_points": [
+      {
+        "id": 1,
+        "summary": "Choose whether to run broad stack-wide instrumentation or profile the recently changed QuickCache subsystem first.",
+        "evidence_before": [
+          "Dashboard load times increased from roughly two seconds to six or seven seconds over about two weeks.",
+          "Support tickets were increasing.",
+          "QuickCache was the principal recent change in the relevant subsystem."
+        ],
+        "evidence_after": [
+          "Profiling found that QuickCache invalidation was creating excess database round-trips under high load.",
+          "Profiling also found an unrelated missing database index."
+        ],
+        "goals_constraints": [
+          "Restore acceptable dashboard performance.",
+          "Avoid spending a week on exhaustive profiling if a credible high-probability suspect could be tested first.",
+          "Respond to increasing support-ticket volume."
+        ],
+        "alternatives": [
+          "Run broad instrumentation across the full stack.",
+          "Profile QuickCache first and widen the investigation only if it appeared clean."
+        ],
+        "decision_basis": "Temporal proximity of the recent QuickCache change to the observed degradation, combined with a staged investigation plan rather than categorical exclusion of other causes.",
+        "time_pressure": "Moderate; support tickets were climbing, but the decision was not framed as an immediate hours-level emergency.",
+        "uncertainty": "Moderate; multiple potential contributors were plausible, and the participant explicitly retained a plan to widen the investigation."
+      },
+      {
+        "id": 2,
+        "summary": "Choose between another focused QuickCache patch and replacing QuickCache with a mature Redis-backed alternative.",
+        "evidence_before": [
+          "QuickCache had required about eight months of development and stabilization effort.",
+          "The system had already undergone three patch rounds before production readiness.",
+          "Priya believed a targeted invalidation patch could resolve the issue.",
+          "A mature Redis-backed option could plausibly replace QuickCache in about a sprint.",
+          "Profiling suggested that the invalidation architecture required rethinking rather than merely a local tweak."
+        ],
+        "evidence_after": [
+          "The additional patch produced only about a fifteen-percent improvement.",
+          "The improvement was insufficient for the demo deadline.",
+          "The additional sprint stretched the team."
+        ],
+        "goals_constraints": [
+          "Restore performance before the leadership demo.",
+          "Allocate limited team capacity.",
+          "Choose between continued internal remediation and replacement with an established external alternative."
+        ],
+        "alternatives": [
+          "Commit another sprint to a focused QuickCache patch.",
+          "Replace QuickCache with the Redis-backed alternative.",
+          "Conduct a parallel evaluation before committing fully to either route."
+        ],
+        "decision_basis": "The participant explicitly gave substantial weight to prior engineering investment, accumulated specialist knowledge, and leadership's positive symbolic investment in the in-house system, despite diagnostic evidence indicating a more fundamental architectural problem.",
+        "time_pressure": "Moderate to high; the demo deadline constrained the remediation window, though the decision still involved a full additional sprint.",
+        "uncertainty": "Moderate; Priya's optimistic assessment conflicted with profiling evidence that pointed toward structural rework."
+      },
+      {
+        "id": 3,
+        "summary": "Assign primary ownership of the urgent fix to Dev, who had deep system knowledge but was associated with a recent outage, or Marcus, who was steadier in presentation but had a pattern of missed deadlines.",
+        "evidence_before": [
+          "Dev had the deepest knowledge of QuickCache internals.",
+          "Dev had eighteen months of strong delivery.",
+          "Dev had been involved in a production outage three weeks earlier.",
+          "The outage was caused by a rushed deployment under pressure, and the postmortem indicated that it was handled well and fixed quickly.",
+          "Marcus had missed several deadlines over the prior year."
+        ],
+        "evidence_after": [
+          "The handoff was messy because Dev had context Marcus lacked.",
+          "The fix took longer than it likely would have with Dev leading."
+        ],
+        "goals_constraints": [
+          "Resolve remaining latency with only days left before the demo.",
+          "Minimize execution and operational risk.",
+          "Assign work to someone with sufficient system context."
+        ],
+        "alternatives": [
+          "Keep Dev as primary owner.",
+          "Assign Marcus as primary owner with Dev in a supporting role."
+        ],
+        "decision_basis": "The participant treated Dev's single recent and vivid outage as more decision-relevant than Dev's longer strong record and more salient than Marcus's repeated missed deadlines, even while acknowledging the imbalance.",
+        "time_pressure": "High; the participant describes the situation as having days rather than weeks remaining.",
+        "uncertainty": "Moderate; both candidates presented distinct risks, and the actual effect of the assignment could not be known in advance."
+      },
+      {
+        "id": 4,
+        "summary": "Choose whether to delay the leadership demo, proceed without fully disclosing remaining lag, or transparently report partial resolution and propose a monitored follow-up sprint.",
+        "evidence_before": [
+          "Latency had improved but was not fully resolved.",
+          "Three days remained before the demo.",
+          "The participant perceived political cost in delaying the demo.",
+          "The participant believed the partial fix represented real progress and that monitoring could detect residual problems."
+        ],
+        "evidence_after": [
+          "Leadership accepted the transparent status report and follow-up-sprint proposal."
+        ],
+        "goals_constraints": [
+          "Maintain leadership trust.",
+          "Avoid concealing remaining operational risk.",
+          "Preserve the demo where feasible."
+        ],
+        "alternatives": [
+          "Ask to delay the demo.",
+          "Proceed quietly and hope remaining lag was not noticed.",
+          "Report the resolved and unresolved issues transparently and propose a monitored follow-up sprint."
+        ],
+        "decision_basis": "An explicit comparison of political cost, technical benefit, partial operational improvement, monitoring capability, and transparency obligations.",
+        "time_pressure": "High; three days remained before the planned demo.",
+        "uncertainty": "Low to moderate; unresolved latency remained, but the participant had direct evidence of partial improvement and a monitoring proposal."
+      }
+    ]
+  },
+  "target_occurrence_audit": [
+    {
+      "instance_id": "ie_01",
+      "bias": "Irrational Escalation",
+      "requested_occurrences_for_bias": 1,
+      "status": "supported",
+      "decision_point": 2,
+      "supporting_quote": "We'd put so much into that system—Priya and Dev both have deep expertise in it, and honestly, leadership had held it up before as an example of us building smart in-house tooling instead of just buying everything. Ripping it out after all that felt like it would waste the specialized knowledge we'd built up.",
+      "evidence_location": "Decision point 2, participant response immediately following \"What did you decide?\" and the subsequent response to \"What information did you rely on most heavily for that call?\"",
+      "mechanism": "The participant commits another sprint to the existing system while explicitly weighting prior development time, prior patch cycles, accumulated specialist expertise, and prior organizational endorsement. This historical investment is treated as a reason to continue, even though the available profiling evidence indicates that the architecture needs rethinking and a mature substitute is feasible within approximately a sprint. The evidence therefore supports escalation driven materially by sunk inputs rather than a forward-looking comparison of expected future costs, risks, and benefits.",
+      "strength": "moderate",
+      "confidence": 0.95,
+      "plausible_nonbias_explanation": "Priya and Dev's specialized system knowledge could legitimately reduce the expected implementation risk of a targeted patch, and a mature replacement could entail migration or integration risks not fully described in the interview. However, the participant explicitly reports weighting prior sunk effort heavily despite contrary diagnostic evidence, which makes a purely forward-looking expertise explanation insufficient.",
+      "additional_evidence_needed": "None required for occurrence validation. A more complete forward-looking estimate of patch and replacement costs would improve causal interpretation but is not necessary to establish the present reasoning mechanism.",
+      "revision_needed": false,
+      "revision": {
+        "revision_type": "none",
+        "location": "Decision point 2, participant's patch-versus-replacement rationale and follow-up explanation of information weighting.",
+        "current_defect": "No material defect. The follow-up answer clarifies that profiling indicated structural rework while prior investment was still weighted heavily.",
+        "minimal_change_instruction": "Retain the current wording and do not add further statements that restate this same sunk-cost rationale elsewhere.",
+        "preserve": [
+          "The eight-month development history.",
+          "The three prior patch rounds.",
+          "The mature Redis-backed alternative.",
+          "The profiling finding that the architecture required rethinking.",
+          "The participant's explicit reference to accumulated effort and expertise."
+        ],
+        "avoid_creating": [
+          "A second separate escalation episode at decision point 1, 3, or 4.",
+          "An explicit textbook label such as \"sunk-cost fallacy\" or \"irrational escalation.\"",
+          "A stronger claim that the participant ignored all prospective considerations, which the present interview does not establish."
+        ],
+        "expected_post_revision_status": "supported"
+      }
+    },
+    {
+      "instance_id": "nb_01",
+      "bias": "Negativity Bias",
+      "requested_occurrences_for_bias": 1,
+      "status": "supported",
+      "decision_point": 3,
+      "supporting_quote": "I mean, I knew his track record was good overall. But that outage was the thing sitting right in front of me when I had to make the call. Marcus's slower pattern didn't have a moment like that attached to it, so it didn't feel as urgent, even though objectively his deadline record isn't great either.",
+      "evidence_location": "Decision point 3, participant's retrospective response to the question about weighing Dev's eighteen months of strong delivery against the recent outage.",
+      "mechanism": "A recent, concrete negative event involving Dev is given disproportionate decision weight relative to Dev's eighteen-month positive performance record, the mitigating evidence that the outage arose during a rushed deployment and was handled well, and Marcus's objectively poor but less vivid pattern of missed deadlines. The participant explicitly identifies the event's psychological immediacy rather than a comparative evidence-based risk analysis as the operative influence.",
+      "strength": "moderate",
+      "confidence": 0.96,
+      "plausible_nonbias_explanation": "A recent production outage may rationally warrant heightened scrutiny in a high-stakes and time-constrained assignment. Yet the postmortem evidence mitigates Dev-specific competence concerns, while Marcus's repeated deadline slippage is admitted to be objectively meaningful. The participant's statement that the outage \"was the thing sitting right in front of me\" supports disproportionate negative-event weighting rather than calibrated risk management alone.",
+      "additional_evidence_needed": "None required for occurrence validation. The evidence already identifies the comparative positive and negative information, the vividness/recency cue, and the resulting task-allocation decision.",
+      "revision_needed": false,
+      "revision": {
+        "revision_type": "none",
+        "location": "Decision point 3, task-assignment rationale and the follow-up reflection comparing Dev's record with Marcus's.",
+        "current_defect": "No material defect. The interview makes the uneven weighting observable without naming the bias.",
+        "minimal_change_instruction": "Retain the comparative performance evidence and the participant's acknowledgement that the recent outage dominated attention. Do not add another independent negative-event-driven personnel decision.",
+        "preserve": [
+          "Dev's deep QuickCache knowledge.",
+          "Dev's eighteen-month strong-delivery record.",
+          "The recency and concrete salience of the outage.",
+          "The mitigating postmortem detail.",
+          "Marcus's repeated but less vivid missed-deadline pattern.",
+          "The urgent demo context."
+        ],
+        "avoid_creating": [
+          "A second distinct negativity-bias occurrence through the later hypothetical about the outage occurring a year earlier.",
+          "An explicit label such as \"negativity bias.\"",
+          "A portrayal of Dev as categorically unsafe or incompetent, which would make the assignment more plausibly justified."
+        ],
+        "expected_post_revision_status": "supported"
+      }
+    }
+  ],
+  "bias_level_counts": [
+    {
+      "bias": "Irrational Escalation",
+      "requested_count": 1,
+      "supported_count": 1,
+      "weak_count": 0,
+      "absent_count": 0,
+      "merged_count": 0,
+      "accidental_count": 0,
+      "count_satisfied": true
+    },
+    {
+      "bias": "Negativity Bias",
+      "requested_count": 1,
+      "supported_count": 1,
+      "weak_count": 0,
+      "absent_count": 0,
+      "merged_count": 0,
+      "accidental_count": 0,
+      "count_satisfied": true
+    }
+  ],
+  "additional_candidate_biases": [
+    {
+      "bias": "Anchoring or recency-based causal attribution",
+      "decision_point": 1,
+      "supporting_quote": "Go straight at QuickCache since it was the most recent change and the timing lined up.",
+      "mechanism": "The most recent subsystem change could have served as an initial anchor or salient causal hypothesis for the investigation.",
+      "confidence": 0.3,
+      "status": "rejected",
+      "plausible_nonbias_explanation": "Recent system changes are a valid and efficient diagnostic lead in incident investigation. The participant did not terminate the inquiry, explicitly planned to widen the net if QuickCache appeared clean, and subsequent profiling confirmed that QuickCache was in fact contributing to latency.",
+      "revision_recommendation": "none"
+    },
+    {
+      "bias": "Status quo bias or endowment effect",
+      "decision_point": 2,
+      "supporting_quote": "Leadership had held it up before as an example of us building smart in-house tooling instead of just buying everything. Ripping it out after all that felt like it would waste the specialized knowledge we'd built up.",
+      "mechanism": "Preference for retaining an internally built and organizationally valued system may partly reflect resistance to switching away from the current state.",
+      "confidence": 0.46,
+      "status": "weak",
+      "plausible_nonbias_explanation": "The same evidence trace is more directly and sufficiently explained by irrational escalation through sunk effort and accumulated expertise. No separate evidence establishes that merely retaining the status quo, independent of historical investment, drove the decision.",
+      "revision_recommendation": "none"
+    },
+    {
+      "bias": "Availability or recency effect",
+      "decision_point": 3,
+      "supporting_quote": "That outage was the thing sitting right in front of me when I had to make the call.",
+      "mechanism": "The recent, memorable outage was easier to retrieve and more psychologically immediate than the distributed history of Dev's strong performance and Marcus's deadline slippage.",
+      "confidence": 0.69,
+      "status": "candidate",
+      "plausible_nonbias_explanation": "The incident's recency could rationally bear on present operational risk. In this interview, however, availability/recency is best treated as a contributing process within the supported negativity-bias episode, not as a separately counted accidental occurrence, because it uses the same decision, evidence trace, and weighting act.",
+      "revision_recommendation": "none"
+    },
+    {
+      "bias": "Outcome bias",
+      "decision_point": 3,
+      "supporting_quote": "Handoff was messy—Dev had context Marcus didn't, so there was friction getting him up to speed, and the fix took longer than it would have with Dev leading it outright.",
+      "mechanism": "A poor operational result might invite retrospective evaluation of the prior assignment as wrong solely because it produced delay.",
+      "confidence": 0.18,
+      "status": "rejected",
+      "plausible_nonbias_explanation": "The participant does not use the adverse outcome to define the original decision as unreasonable. The account identifies a concrete causal mechanism—loss of system context during handoff—and separately reports the pre-decision evidence and reasoning.",
+      "revision_recommendation": "none"
+    },
+    {
+      "bias": "Loss aversion",
+      "decision_point": 4,
+      "supporting_quote": "Delaying felt like it would cost more politically than it would gain technically.",
+      "mechanism": "The decision frames delay in terms of a political cost that could potentially be overweighted relative to technical benefit.",
+      "confidence": 0.25,
+      "status": "rejected",
+      "plausible_nonbias_explanation": "The participant considers actual organizational consequences, acknowledges genuine partial progress, rejects concealment, and proposes monitoring. The record supports an ordinary multi-criterion tradeoff rather than asymmetric loss weighting.",
+      "revision_recommendation": "none"
+    }
+  ],
+  "nonbias_cues": [
+    {
+      "cue": "Initial focus on QuickCache because it was the most recent subsystem change.",
+      "location": "Decision point 1.",
+      "why_not_bias": "This is a plausible hypothesis based on temporal proximity, not unsupported causal certainty. The participant uses a reversible staged diagnostic plan and the targeted profiling subsequently identifies a real QuickCache contribution."
+    },
+    {
+      "cue": "Pressure from increasing support tickets and the approaching leadership demo.",
+      "location": "Decision points 1 through 4.",
+      "why_not_bias": "Time pressure and organizational stakes can constrain decision processes, but they do not themselves establish distorted information processing."
+    },
+    {
+      "cue": "Reliance on Priya's assessment of the likely patch.",
+      "location": "Decision point 2.",
+      "why_not_bias": "Expert input is not inherently biased. It becomes relevant to the supported escalation occurrence only because the participant expressly weights prior investment and expertise against diagnostic evidence favoring structural rework."
+    },
+    {
+      "cue": "Dev's involvement in a recent production outage.",
+      "location": "Decision point 3.",
+      "why_not_bias": "A prior adverse operational event can be a valid personnel-risk signal. The supported negativity-bias classification depends on its disproportionate weight relative to Dev's strong history, mitigating postmortem evidence, and Marcus's adverse deadline record."
+    },
+    {
+      "cue": "The patch resulted in only fifteen-percent improvement and the Marcus handoff took longer.",
+      "location": "Post-decision outcome descriptions after decision points 2 and 3.",
+      "why_not_bias": "Unfavorable outcomes do not prove the original decisions were biased. The bias classifications rest on contemporaneous reasoning cues, not on the outcomes."
+    },
+    {
+      "cue": "Transparent status reporting rather than concealing remaining lag.",
+      "location": "Decision point 4.",
+      "why_not_bias": "The participant articulates a coherent tradeoff involving political cost, actual progress, monitoring, and transparency. No target-bias mechanism is evidenced."
+    }
+  ],
+  "causal_audit": {
+    "causal_claims": [
+      {
+        "claim": "QuickCache invalidation was contributing to latency by causing excess database round-trips under high load.",
+        "support": "The account attributes this finding to profiling, which is an appropriate diagnostic evidence source for the proposed mechanism.",
+        "assessment": "Reasonably supported within the interview, although the scope and methodology of profiling are not independently available."
+      },
+      {
+        "claim": "A missing index on a support table was a separate contributor requiring remediation.",
+        "support": "The claim is presented as a distinct profiling finding rather than inferred solely from coincidence.",
+        "assessment": "Reasonably supported within the account."
+      },
+      {
+        "claim": "The additional QuickCache patch produced about fifteen-percent improvement but did not meet the demo requirement.",
+        "support": "The account reports a quantified post-intervention performance result.",
+        "assessment": "Supported as a reported operational outcome; no baseline, measurement period, or confound analysis is provided."
+      },
+      {
+        "claim": "Assigning Marcus as primary owner caused friction and made the fix take longer than Dev-led ownership would have.",
+        "support": "The participant identifies a plausible mechanism: Dev had context Marcus lacked, producing handoff friction.",
+        "assessment": "Plausible but partly counterfactual. The narrative supports that the handoff added friction; it cannot establish with certainty the magnitude of delay or the outcome under Dev-led ownership."
+      },
+      {
+        "claim": "A structural-rework indication available earlier could have led to a parallel evaluation rather than another patch sprint.",
+        "support": "The participant states this as a conditional retrospective possibility.",
+        "assessment": "A coherent but tentative counterfactual; it is not asserted as certain."
+      },
+      {
+        "claim": "If Dev's outage had occurred a year earlier rather than three weeks earlier, Dev likely would have retained primary ownership.",
+        "support": "The participant explicitly identifies temporal distance from the negative event as the changed factor in the hypothetical.",
+        "assessment": "Coherent and directly diagnostic of recency/salience in the personnel decision, though it remains a self-report counterfactual."
+      }
+    ],
+    "correlation_causation_risks": [
+      {
+        "risk": "The initial temporal linkage between the recent QuickCache change and degradation could have been mistaken for causation.",
+        "mitigation_in_text": "Profiling subsequently identified a concrete invalidation-and-round-trip mechanism, reducing but not eliminating this risk."
+      },
+      {
+        "risk": "The conclusion that Marcus-led ownership took longer than Dev-led ownership is counterfactual and may be affected by deadline pressure, workload, issue complexity, or coordination conditions.",
+        "mitigation_in_text": "The interview supplies a specific handoff-context mechanism, but it does not isolate alternative causes."
+      },
+      {
+        "risk": "The fifteen-percent improvement cannot by itself establish that the patch was the sole causal source of improvement because the separate index fix and other concurrent work are mentioned.",
+        "mitigation_in_text": "The account distinguishes the two issues but does not provide a measurement design that separates their respective effects."
+      }
+    ],
+    "counterfactual_present": true,
+    "changed_variable": "Timing and availability of decision-relevant information: earlier visibility of structural-rework evidence in one probe, and temporal distance from Dev's outage in a separate probe.",
+    "held_constant": [
+      "The underlying QuickCache-versus-alternative decision context in the first hypothetical.",
+      "Dev's familiarity with QuickCache and broader delivery history in the second hypothetical.",
+      "Marcus's deadline history in the second hypothetical.",
+      "The operational need to resolve the incident."
+    ],
+    "causal_coherence": "moderate",
+    "explanation": "The interview contains two clearly framed counterfactual probes. Each changes one salient variable at a time and elicits a probabilistic rather than certain response. The first probe is useful for distinguishing the escalation episode from a fully informed forward-looking choice; the second is useful for demonstrating the role of recency and vivid negative information in the assignment decision. Causal certainty remains limited because both counterfactuals are retrospective self-reports and no controlled comparison is available."
+  },
+  "quality_scores": {
+    "occupational_realism": 9,
+    "cta_fidelity": 8,
+    "bias_separability": 9,
+    "bias_subtlety": 8,
+    "control_fidelity": 9,
+    "counterfactual_fidelity": 8,
+    "narrative_coherence": 9,
+    "naturalness": 8,
+    "hidden_label_integrity": 10,
+    "overall_quality": 8.6
+  },
+  "revision_summary": {
+    "revision_required": false,
+    "supported_occurrence_total": 2,
+    "requested_occurrence_total": 2,
+    "missing_occurrence_total": 0,
+    "accidental_occurrence_total": 0,
+    "priority": "none",
+    "recommended_action": "accept",
+    "global_revision_constraints": [
+      "Do not count the follow-up reflections at decision points 2 and 3 as additional bias occurrences; they are clarification probes for the same respective reasoning episodes.",
+      "Do not treat the decision-point-1 diagnostic shortcut as an accidental anchoring instance because the participant preserves a contingent plan to broaden the search and profiling validates the initial lead.",
+      "Do not treat the decision-point-4 transparency decision as a target-bias occurrence; the interview provides a plausible forward-looking tradeoff rather than distorted reasoning.",
+      "If the interview is edited for style, preserve the contrast between diagnostic evidence favoring structural rework and historical-investment reasoning at decision point 2.",
+      "If the interview is edited for style, preserve the comparison among Dev's recent outage, its mitigating context, Dev's longer strong record, and Marcus's less vivid repeated deadline slippage at decision point 3."
+    ],
+    "revision_order": []
+  },
+  "failure_flags": []
+}

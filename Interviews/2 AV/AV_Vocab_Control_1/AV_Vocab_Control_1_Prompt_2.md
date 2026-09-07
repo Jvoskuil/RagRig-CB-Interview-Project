@@ -1,0 +1,231 @@
+You are an expert occupational interviewer and realistic dialogue writer.
+
+Generate one simulated cognitive task analysis interview from the supplied generation specification. The interview will be given to an independent evaluator that must infer whether specified cognitive biases are present. Do not reveal the labels or your construction process.
+
+INPUT
+Generation specification:
+{{"scenario_id": "AV_Vocab_Control_1",
+  "domain_id": "AV",
+  "domain": "Aviation",
+  "role": "Aviation Maintenance Planner / Reliability Engineer",
+  "condition": "vocabulary_control",
+  "generation_specification": {
+    "scenario_title_internal": "Recurring APU Bleed Valve Fault: Fleet Reliability Escalation (Vocabulary-Matched Control)",
+    "scenario_summary_internal": "A reliability engineer at a regional airline's MCC investigates a third recurring write-up of an APU bleed air valve fault on the same tail number within 45 flight days, matching the paired scenario's setting, actors, terminology, and four-decision-point structure. Unlike the paired biased scenario, every decision-including the evidence-selection decision before the corrective-action recommendation-is supported by evidence that is genuinely decision-relevant at the time it is gathered. No instance of information bias, or any other named bias, is intentionally embedded.",
+    "occupational_realism": {
+      "objective": "Determine whether the recurring APU bleed valve fault represents an isolated maintenance issue or a fleet-wide airworthiness risk, and select a corrective action before the next scheduled Reliability Control Board (RCB) meeting.",
+      "setting": "Regional airline Maintenance Control Center (MCC), reviewing tail-number defect history, fleet reliability reports, and vendor teardown data under a 10-day deadline before the RCB meeting.",
+      "constraints": [
+        "10 calendar days until mandatory RCB submission deadline",
+        "Aircraft on revenue schedule; AOG grounding has direct revenue and crew-scheduling cost",
+        "Limited in-house metallurgical/vendor teardown capacity, requiring external lab scheduling with lead time",
+        "Regulatory reporting obligation if fault is classified as an unsafe condition (potential Airworthiness Directive trigger)",
+        "Fleet has 24 aircraft; only 3 have logged this specific bleed valve write-up"
+      ],
+      "stakeholders": [
+        "Reliability Control Board (RCB) chair",
+        "Line maintenance supervisor",
+        "OEM technical representative",
+        "Flight operations scheduling manager",
+        "Component vendor quality engineer"
+      ],
+      "technical_terms_to_use": [
+        "APU bleed air valve",
+        "repetitive write-up",
+        "MEL (Minimum Equipment List)",
+        "teardown analysis",
+        "Reliability Control Board",
+        "component removal rate",
+        "no-fault-found (NFF)",
+        "corrective action request",
+        "fleet campaign",
+        "interim operational restriction"
+      ],
+      "technical_terms_to_avoid": [
+        "information bias",
+        "cognitive bias",
+        "anchoring",
+        "confirmation bias",
+        "heuristic"
+      ]
+    },
+    "timeline": [
+      {
+        "phase": 1,
+        "decision_point": true,
+        "facts_available_before_decision": [
+          "Tail 738 has logged three bleed valve write-ups in 45 flight days",
+          "Two prior write-ups were closed as 'operational check normal' with no part replacement",
+          "Fleet-wide removal rate for this valve is within OEM-published MTBUR"
+        ],
+        "new_information_after_decision": [
+          "A second tail (712) logs a similar, lower-severity write-up two days later",
+          "Line maintenance reports the valve is difficult to bench-test, raising suspicion of an intermittent fault masked by ground testing"
+        ],
+        "alternatives": [
+          "Treat as isolated tail-specific issue; monitor via routine trend report",
+          "Escalate immediately to a two-aircraft focused reliability review",
+          "Request OEM service bulletin history before deciding severity classification"
+        ],
+        "intended_action": "Engineer opens a focused reliability review on tail 738 and flags tail 712 for monitoring, without yet declaring a fleet campaign."
+      },
+      {
+        "phase": 2,
+        "decision_point": true,
+        "facts_available_before_decision": [
+          "Focused review confirms both tails share the same valve batch lot number",
+          "MEL allows dispatch with the APU inoperative under defined conditions, but company policy discourages repeated MEL carryover",
+          "No safety event has occurred; both faults were caught on ground checks"
+        ],
+        "new_information_after_decision": [
+          "Vendor quality engineer confirms the batch lot had a documented seal-material change six months prior",
+          "Line maintenance requests clarity on how long the interim restriction will remain in effect, citing crew-scheduling friction"
+        ],
+        "alternatives": [
+          "Apply an interim operational restriction (no MEL carryover beyond one flight leg) pending root cause",
+          "Allow normal MEL dispatch to continue while root cause investigation proceeds in parallel",
+          "Ground both tails immediately pending full inspection"
+        ],
+        "intended_action": "Engineer applies the interim one-leg MEL restriction on both affected tails and opens a formal root-cause investigation referencing the seal-material lot change."
+      },
+      {
+        "phase": 3,
+        "decision_point": true,
+        "facts_available_before_decision": [
+          "Vendor-confirmed seal-material change is a documented candidate root cause consistent with both write-ups",
+          "In-house teardown of the removed valve from tail 738 shows seal degradation, but the degradation pattern is ambiguous between the reported material change and a second, previously logged supplier nonconformance affecting an overlapping serial range",
+          "External metallurgical lab could provide an independent composition assay distinguishing the two candidate causes, but has a 3-week lead time that would exceed the RCB deadline"
+        ],
+        "new_information_after_decision": [
+          "The RCB deadline passes with the corrective-action recommendation still pending lab results",
+          "The assay identifies the seal-material change as the operative cause and rules out the second nonconformance, which would have implied a wider serial range for replacement"
+        ],
+        "alternatives": [
+          "Proceed to a corrective-action recommendation using only the vendor lot documentation and ambiguous in-house teardown",
+          "Commission the external metallurgical assay before finalizing any recommendation, delaying the RCB submission past its deadline",
+          "Request a limited peer review of the existing teardown photos as a faster substitute"
+        ],
+        "intended_action": "Engineer commissions the external metallurgical assay before finalizing the recommendation because the in-house teardown cannot yet distinguish between two candidate causes that imply different replacement scopes, and the assay result is capable of changing which valves the corrective action covers."
+      },
+      {
+        "phase": 4,
+        "decision_point": true,
+        "facts_available_before_decision": [
+          "Confirmed root cause: seal-material change in a specific vendor lot, affecting a known, boundable set of valves",
+          "Corrective action request drafted by engineer names the affected lot and recommends valve replacement across that lot only",
+          "OEM technical representative suggests a broader design review of the valve seal specification as a longer-term option"
+        ],
+        "new_information_after_decision": [
+          "RCB approves the lot-based replacement campaign; no further in-service events occur on the affected tails after replacement",
+          "The broader OEM design review is deferred pending a separate long-term reliability study"
+        ],
+        "alternatives": [
+          "Recommend a bounded corrective action limited to the affected vendor lot",
+          "Recommend a full fleet-wide valve replacement regardless of lot",
+          "Recommend deferring any hardware change pending the OEM's broader design review"
+        ],
+        "intended_action": "Engineer submits a lot-bounded corrective action request to the RCB, which is approved and closes the investigation."
+      }
+    ],
+    "probe_plan": {
+      "opening": [
+        "Walk me through how this recurring bleed valve write-up first came to your attention.",
+        "What was your initial read on whether this was a single-aircraft issue or something bigger?"
+      ],
+      "timeline_reconstruction": [
+        "After the second tail showed a similar fault, what changed in how you were tracking this?",
+        "When did the vendor lot-number information come in, and how did that shift your view of the root cause?",
+        "Take me through the sequence between the ambiguous teardown finding and drafting your corrective action recommendation."
+      ],
+      "decision_point_probes": [
+        "At the point you opened the focused review, what alternatives did you weigh before deciding not to declare a full fleet campaign yet?",
+        "When you set the interim MEL restriction, what made a one-leg limit feel like the right balance versus grounding outright?",
+        "Once the teardown result came back ambiguous, what made you decide the external assay was necessary rather than proceeding on what you had?",
+        "Walk me through why you chose a lot-bounded replacement over a full fleet-wide swap or waiting for the OEM's design review."
+      ],
+      "goals_and_alternatives": [
+        "What competing goals were you balancing between schedule reliability and thoroughness of the investigation?",
+        "Were there alternative evidence sources you considered but didn't pursue at each stage?"
+      ],
+      "closing_hypotheticals": [
+        "If the teardown result hadn't been ambiguous, would you still have sent the valve out for an external assay?",
+        "If you'd had the assay results in hand before the RCB deadline, would your final recommendation have looked any different from what you actually submitted?",
+        "Looking back, what would you do differently if a similar recurring write-up showed up on another fleet type?"
+      ]
+    },
+    "occurrence_embedding_plan_internal": [],
+    "control_specification": {
+      "paired_scenario_id": "AV_Biased_1",
+      "features_to_match": [
+        "Domain vocabulary: APU bleed air valve, repetitive write-up, MEL, teardown analysis, RCB, component removal rate, NFF, corrective action request, fleet campaign, interim operational restriction",
+        "Setting: regional airline MCC, 10-day RCB deadline, 24-aircraft fleet, 3 affected tails",
+        "Actors: reliability engineer participant, line maintenance supervisor, OEM technical representative, vendor quality engineer, flight operations scheduling manager",
+        "Structure: identical four-decision-point sequence (triage/escalation, interim operational restriction, evidence-selection before corrective action, final corrective-action scope)",
+        "Difficulty and emotional tone: same time pressure, same measured/professional register, same absence of acute safety event",
+        "Decision count: exactly four"
+      ],
+      "features_to_remove_or_change": [
+        "The in-house teardown finding is written as genuinely ambiguous between two candidate causes with different replacement-scope implications, rather than already sufficient and merely confirmatory",
+        "The external assay is reframed as capable of changing the corrective action's scope (ruling in or out a second candidate nonconformance), so commissioning it is decision-relevant rather than merely reassurance-seeking",
+        "The participant's stated rationale for the assay cites an unresolved scope question rather than a desire for a third confirmatory source once the conclusion was already reached"
+      ],
+      "ambiguity_boundary": "Not applicable; this is a vocabulary_control condition with zero intended bias instances, not an ambiguous_control condition."
+    },
+    "counterfactual_specification": {
+      "causal_variable": null,
+      "original_state": null,
+      "counterfactual_state": null,
+      "variables_to_hold_constant": [],
+      "expected_causal_difference": null,
+      "causal_test_question": null
+    },
+    "generation_checks": [
+      "Confirm exactly four decision points are present, matching the paired scenario's structure.",
+      "Confirm zero intended instances of information bias, or any other named bias, appear anywhere in the interview.",
+      "Confirm the decision-point-3 evidence-selection act is written so the external assay is explicitly capable of changing the corrective action's scope, distinguishing it from the paired biased scenario's decision-irrelevant assay request.",
+      "Confirm domain vocabulary, actors, setting, time pressure, and emotional register match the paired scenario AV_Biased_1.",
+      "Confirm total word count falls between 1,215 and 1,485 words, target 1,350.",
+      "Confirm probes cover cues, information sources, goals, alternatives, decision basis, prior experience, time pressure, uncertainty, and hypothetical changes.",
+      "Confirm no accidental bias-like pattern (e.g., unjustified evidence-seeking, selective evidence weighting) is introduced at any decision point.",
+      "Confirm consequences (RCB approval, no further in-service events) do not themselves imply any bias judgment."
+    ]
+  }}}
+
+WRITING REQUIREMENTS
+1. Produce only the interview, with no preface, postscript, analysis, labels, answer key, bias names, or JSON.
+2. Use approximately 1,350 words, with an acceptable range of 1,215–1,485 words.
+3. Use exactly four decision points.
+4. Write a natural semi-structured CTA interview between an interviewer and a domain-credible participant. Include both questions and answers.
+5. Begin with a brief consent/role/context exchange, then obtain an incident account, reconstruct the timeline, revisit the four decision points, probe the participant's reasoning, and end with relevant hypotheticals.
+6. Make the participant's account coherent, specific, and occupationally plausible. Include concrete cues, information sources, goals, constraints, alternatives, time pressure, uncertainty, prior experience, and consequences.
+7. Make the target biases inferable from patterns of reasoning, not from vocabulary that names or defines them.
+8. Do not make every decision biased. Preserve natural variation, including justified reasoning and uncertainty.
+9. Do not equate an incorrect decision or bad outcome with a bias. Include enough context for alternative explanations to remain possible.
+10. Keep the number of decision points, actors, technical terms, and narrative complexity aligned with the specification.
+11. For multiple target biases, distribute them across the incident. Each bias must have a distinct manifestation, but interactions may occur naturally.
+12. For `vocabulary_control`, preserve the same occupational vocabulary and narrative complexity while writing decisions supported by balanced evidence and reasonable consideration of alternatives. Do not insert target-bias evidence.
+13. For `ambiguous_control`, include genuinely ambiguous reasoning that has plausible non-bias explanations, but do not intentionally instantiate a target bias. Do not use exaggerated contradiction or suspiciously artificial neutrality.
+14. For `counterfactual`, minimally alter the specified causal variable. Preserve all other material facts, wording patterns, and decision structure as far as possible. Make the changed variable causally relevant, not merely correlated with the outcome.
+15. Include at least one probe asking what information would have changed the decision and one probe asking what would have happened if a key feature had been different.
+16. Do not add facts that contradict the generation specification.
+17. Avoid stereotypes, protected-class generalizations, and gratuitous sensitive content.
+
+RECOMMENDED STRUCTURE
+- Opening and role context: 100–150 words.
+- Initial incident account: 250–350 words.
+- Timeline reconstruction: 150–200 words.
+- Four decision-point sections with probes: 550–650 words total.
+- Closing reflection and hypothetical: 150–250 words.
+
+DIALOGUE STYLE
+- Label turns as `Interviewer:` and `Participant:`.
+- Let answers vary in length and certainty.
+- Use natural repairs, qualifications, and references to evidence.
+- Avoid repeatedly asking the same generic question.
+- Do not explicitly state that the participant is biased, unbiased, rational, irrational, or subject to an experimental condition.
+
+FINAL SILENT CHECK
+Before outputting, verify word count, four decision points, domain realism, target-bias concealment, control fidelity, and causal minimality where applicable. If a target bias cannot be represented without becoming obvious or implausible, revise the incident rather than explaining the problem.
+
+OUTPUT
+Return only the interview text.

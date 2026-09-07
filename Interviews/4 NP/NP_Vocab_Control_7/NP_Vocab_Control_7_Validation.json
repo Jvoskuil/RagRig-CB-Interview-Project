@@ -1,0 +1,507 @@
+{
+  "validator_version": "2.0",
+  "interview_id": "NP_Vocab_Control_7",
+  "condition": "vocabulary_control",
+  "domain_assessment": {
+    "domain": "Refinery process operations and control-room decision-making",
+    "role": "Process control operator operating a catalytic reforming unit distributed control system",
+    "objective": "Maintain safe, stable heater and reactor operation while managing a feed-rate increase before a regeneration window",
+    "incident_type": "Escalating feed-heater thermal/process anomaly involving a high-temperature alarm, rising pressure differential, unresolved heater-duty drift, and observed heat shimmer",
+    "confidence": 0.98
+  },
+  "structure_audit": {
+    "estimated_word_count": 1660,
+    "within_target_range": true,
+    "decision_point_count": 4,
+    "decision_points": [
+      {
+        "id": 1,
+        "summary": "The operator decides whether to treat a recurring high-temperature alarm as nuisance instrumentation drift or investigate it as a possible real process condition.",
+        "evidence_before": [
+          "The high-temperature alarm had reportedly occurred about eleven times in the prior month and been logged as instrument drift.",
+          "A pressure-differential trend had been rising gradually for approximately two hours."
+        ],
+        "evidence_after": [
+          "The field operator confirmed that the outlet-temperature reading was accurate rather than an instrument fault."
+        ],
+        "goals_constraints": [
+          "Avoid dismissing a genuine thermal/process condition.",
+          "Avoid unnecessary disruption from another nuisance-alarm response.",
+          "Make an early decision during shift handover."
+        ],
+        "alternatives": [
+          "Silence the alarm and continue operating as on prior occasions.",
+          "Dispatch the field operator immediately without further review.",
+          "Review an independent trend and then dispatch field verification if warranted."
+        ],
+        "decision_basis": "The operator deliberately compared the current alarm with an independent, slowly rising pressure-differential trend and judged that the combination differed from prior isolated instrument-drift episodes.",
+        "time_pressure": "Low to moderate; the alarm required prompt attention but no immediate trip condition is described.",
+        "uncertainty": "Moderate; the operator lacked certainty that the alarm reflected a real process problem but sought independent verification."
+      },
+      {
+        "id": 2,
+        "summary": "The operator decides how to execute a requested feed-rate increase despite a real alarm, rising trend, and an unresolved historical heater-duty drift note.",
+        "evidence_before": [
+          "The night operator reported four recent hours of stable, unremarkable operation.",
+          "An older board-log note documented slow upward heater-duty drift that had not been formally closed.",
+          "The field verification had established that the high-temperature reading was real."
+        ],
+        "evidence_after": [
+          "Temperature rose during the feed increase.",
+          "The field operator subsequently reported visually distinct heat shimmer near the firebox."
+        ],
+        "goals_constraints": [
+          "Meet production's request to increase throughput before a regeneration window roughly six hours away.",
+          "Manage an unresolved technical concern without treating a routine increase as automatically safe.",
+          "Maintain close observation of outlet temperature."
+        ],
+        "alternatives": [
+          "Fully delay the increase for engineering review and deeper multi-day trend analysis.",
+          "Proceed with the standard feed-increase sequence.",
+          "Proceed with a slower, modified ramp and tighter monitoring."
+        ],
+        "decision_basis": "The operator gave weight to the unresolved drift note despite the recent stable period and selected a conservative intermediate action rather than either full delay or routine execution.",
+        "time_pressure": "Moderate; the regeneration window was approximately six hours away.",
+        "uncertainty": "Moderate to high; the root cause and current significance of the older drift were unknown."
+      },
+      {
+        "id": 3,
+        "summary": "After the heat-shimmer report, the operator decides whether to classify the developing condition as resembling a prior compressor-surge event or a prior tube-rupture event.",
+        "evidence_before": [
+          "The event pattern included an alarm, temperature climb, and heat shimmer.",
+          "A compressor-surge event from about eighteen months earlier came to mind.",
+          "A highly memorable tube-rupture incident from several years earlier also came to mind."
+        ],
+        "evidence_after": [
+          "The expected vibration signature of the surge event was absent.",
+          "Engineering review found that current data lacked the specific markers associated with the tube-rupture failure mode.",
+          "The operator obtained fresh heater-specific diagnostics and requested an independent instrument check."
+        ],
+        "goals_constraints": [
+          "Interpret an escalating condition accurately without prematurely assigning it to a familiar failure category.",
+          "Obtain diagnostic information that can discriminate among plausible mechanisms."
+        ],
+        "alternatives": [
+          "Treat the condition as compressor surge based on superficial resemblance.",
+          "Treat the condition as a tube-rupture precursor based on a memorable precedent.",
+          "Reject both incomplete matches and collect heater-specific evidence."
+        ],
+        "decision_basis": "The operator actively tested each precedent against discriminating signatures, found that neither matched adequately, and treated the event as a separate diagnostic case.",
+        "time_pressure": "Moderate and increasing; the regeneration window was approaching, but no immediate trip threshold had yet been reached.",
+        "uncertainty": "High; neither historical analogue explained the current data cleanly."
+      },
+      {
+        "id": 4,
+        "summary": "With less than ninety minutes before the regeneration window, the operator selects a corrective action from a checklist while temperatures and pressure continue to rise.",
+        "evidence_before": [
+          "Temperatures and pressure were continuing to climb but remained below trip setpoints.",
+          "A short checklist of standard corrective actions was available.",
+          "A full engineer consultation would take an estimated twenty to thirty minutes.",
+          "Fresh diagnostic data was available for comparison with checklist options."
+        ],
+        "evidence_after": [
+          "The selected action stabilized the trend.",
+          "Later review considered the comparison reasonable under the available time, although the full root cause took longer to establish."
+        ],
+        "goals_constraints": [
+          "Stabilize the process before the regeneration window closes.",
+          "Avoid reflexively selecting the first checklist action.",
+          "Retain engineering oversight despite limited time."
+        ],
+        "alternatives": [
+          "Pause for a full engineering consultation.",
+          "Select the first listed corrective action.",
+          "Compare the leading options against the diagnostics and implement the best-fitting one while briefing the engineer by radio."
+        ],
+        "decision_basis": "The operator compared the top two or three options against current diagnostic data, chose the best-fitting option, and used a real-time radio brief to preserve an additional error-checking channel.",
+        "time_pressure": "High; fewer than ninety minutes remained, while a full consultation could consume a material portion of the remaining time.",
+        "uncertainty": "Moderate; the action was selected under incomplete root-cause knowledge but against current diagnostic evidence."
+      }
+    ]
+  },
+  "target_occurrence_audit": [
+    {
+      "instance_id": "availability_bias_zero_control",
+      "bias": "Availability Bias",
+      "requested_occurrences_for_bias": 0,
+      "status": "absent",
+      "decision_point": null,
+      "supporting_quote": "“Both crossed my mind. But instead of just running with either, I checked specifically for the vibration signature ... wasn't present here at all.”",
+      "evidence_location": "Decision point 3, participant response to the question about the shimmer report",
+      "mechanism": "No availability-based substitution is supported. Although memorable prior incidents were retrieved, the participant did not use ease of recall as a basis for diagnosis; they sought discriminating evidence and rejected both incomplete matches.",
+      "strength": "absent",
+      "confidence": 0.98,
+      "plausible_nonbias_explanation": "Retrieval of relevant operational precedents is normal expert pattern recognition, especially when immediately followed by explicit diagnostic testing.",
+      "additional_evidence_needed": "Evidence that the operator adopted a diagnosis or action chiefly because a vivid or readily recalled incident came to mind, despite contrary or missing current-case evidence.",
+      "revision_needed": false,
+      "revision": {
+        "revision_type": "none",
+        "location": "Decision point 3",
+        "current_defect": "None for a zero-occurrence control.",
+        "minimal_change_instruction": "No change. Retain the explicit signature checks and rejection of unsupported historical analogues.",
+        "preserve": [
+          "The surge and tube-rupture references",
+          "The independent checks for discriminating markers",
+          "The decision to obtain fresh heater-specific diagnostics"
+        ],
+        "avoid_creating": [
+          "Any wording that makes the memorable tube-rupture incident the primary reason for action",
+          "Any untested adoption of the surge or tube-rupture interpretation"
+        ],
+        "expected_post_revision_status": "absent"
+      }
+    },
+    {
+      "instance_id": "recency_bias_zero_control",
+      "bias": "Recency Bias",
+      "requested_occurrences_for_bias": 0,
+      "status": "absent",
+      "decision_point": null,
+      "supporting_quote": "“Rather than just assume it had resolved itself because the recent hours looked clean, I asked him directly whether that drift had actually been corrected.”",
+      "evidence_location": "Decision point 2, handover discussion",
+      "mechanism": "No recency bias is supported. The participant recognizes that the last four stable hours could be misleading and investigates the older unresolved drift evidence rather than overweighting recent observations.",
+      "strength": "absent",
+      "confidence": 0.99,
+      "plausible_nonbias_explanation": "Recent trend stability is relevant operational evidence, but the participant appropriately treats it as insufficient to close an unresolved longer-term issue.",
+      "additional_evidence_needed": "Evidence that the participant dismissed the older drift solely because the most recent four hours looked stable, without checking whether the condition had been corrected.",
+      "revision_needed": false,
+      "revision": {
+        "revision_type": "none",
+        "location": "Decision point 2",
+        "current_defect": "None for a zero-occurrence control.",
+        "minimal_change_instruction": "No change. Preserve the contrast between the short-term stable trend and the unresolved multi-day log entry.",
+        "preserve": [
+          "The four-hour stable handover report",
+          "The older unclosed drift note",
+          "The direct verification question"
+        ],
+        "avoid_creating": [
+          "Language implying that recent stability proves the older drift resolved",
+          "Removal of the operator's challenge to the recent-data interpretation"
+        ],
+        "expected_post_revision_status": "absent"
+      }
+    },
+    {
+      "instance_id": "habit_intrusion_zero_control",
+      "bias": "Habit Intrusion",
+      "requested_occurrences_for_bias": 0,
+      "status": "absent",
+      "decision_point": null,
+      "supporting_quote": "“I pulled up the pressure-differential trend ... since that's a habit of mine with recurring alarms — you want to see if anything else is moving with it.”",
+      "evidence_location": "Decision point 1, initial incident account",
+      "mechanism": "The text describes a habitual practice, but not habit intrusion. The routine is context-appropriate, expands the evidence base, and is consciously explained rather than displacing situation-specific reasoning.",
+      "strength": "absent",
+      "confidence": 0.96,
+      "plausible_nonbias_explanation": "This is a skilled cross-checking routine or procedural heuristic that improves diagnosis under recurring-alarm conditions.",
+      "additional_evidence_needed": "Evidence that the operator followed an ingrained response despite recognizing that it was inappropriate for the current signals, or that the routine prevented consideration of relevant evidence.",
+      "revision_needed": false,
+      "revision": {
+        "revision_type": "none",
+        "location": "Decision point 1",
+        "current_defect": "The word “habit” could superficially cue habit intrusion, but the described behavior is explicitly evidence-seeking and adaptive.",
+        "minimal_change_instruction": "No substantive change is necessary. If terminology must be made maximally robust against superficial coding, replace “that's a habit of mine” with “that's my standard cross-check for recurring alarms.”",
+        "preserve": [
+          "The independent pressure-trend review",
+          "The sequence of review before field dispatch",
+          "The distinction between prior isolated alarms and the present combined signal"
+        ],
+        "avoid_creating": [
+          "A reflexive procedure-following account without evidence review",
+          "Wording that says the operator cross-checked merely because it was automatic"
+        ],
+        "expected_post_revision_status": "absent"
+      }
+    },
+    {
+      "instance_id": "salience_bias_zero_control",
+      "bias": "Salience Bias",
+      "requested_occurrences_for_bias": 0,
+      "status": "absent",
+      "decision_point": null,
+      "supporting_quote": "“That trend had been creeping upward for a couple hours, slower and less obvious than the alarm itself, but it was there. Seeing both together made me less comfortable calling it a pure nuisance trip.”",
+      "evidence_location": "Decision point 1, initial incident account",
+      "mechanism": "No salience-driven weighting is supported. The operator does not privilege the conspicuous annunciator alarm over the less salient, slowly changing pressure trend; instead, the decision turns on their conjunction.",
+      "strength": "absent",
+      "confidence": 0.98,
+      "plausible_nonbias_explanation": "The audible alarm appropriately attracts initial attention, while the operator corrects for that attentional pull by reviewing a less conspicuous independent indicator.",
+      "additional_evidence_needed": "Evidence that the operator treated the alarm as decisive because it was vivid, audible, or visually prominent while discounting the more diagnostic but less conspicuous process information.",
+      "revision_needed": false,
+      "revision": {
+        "revision_type": "none",
+        "location": "Decision point 1",
+        "current_defect": "None for a zero-occurrence control.",
+        "minimal_change_instruction": "No change. Retain the statement that the pressure trend was slower and less obvious, plus the account that both signals jointly informed the decision.",
+        "preserve": [
+          "The alarm's prominence",
+          "The slow pressure-differential trend",
+          "The integrated-evidence reasoning"
+        ],
+        "avoid_creating": [
+          "Language that treats the annunciator alone as proof of a real process event",
+          "Removal of the less-salient trend from the decision basis"
+        ],
+        "expected_post_revision_status": "absent"
+      }
+    },
+    {
+      "instance_id": "similarity_bias_zero_control",
+      "bias": "Similarity Bias",
+      "requested_occurrences_for_bias": 0,
+      "status": "absent",
+      "decision_point": null,
+      "supporting_quote": "“It didn't match either one cleanly.” “Treated it as its own case.”",
+      "evidence_location": "Decision point 3, participant responses following discussion of historical precedents",
+      "mechanism": "No similarity-based categorization error is supported. The participant notices superficial resemblance to two prior events but tests diagnostic features, identifies mismatch, and withholds classification.",
+      "strength": "absent",
+      "confidence": 0.99,
+      "plausible_nonbias_explanation": "Analogical comparison is appropriate expert reasoning when it is followed by feature-level discrimination and updating.",
+      "additional_evidence_needed": "Evidence that the participant selected a response because the current event looked like a prior event in broad outline, while failing to test or discounting meaningful mismatches.",
+      "revision_needed": false,
+      "revision": {
+        "revision_type": "none",
+        "location": "Decision point 3",
+        "current_defect": "None for a zero-occurrence control.",
+        "minimal_change_instruction": "No change. Preserve the negative vibration finding, engineering marker check, and explicit refusal to force the case into either historical category.",
+        "preserve": [
+          "The historical analogues",
+          "The checks for unique signatures",
+          "The fresh heater-specific diagnostics"
+        ],
+        "avoid_creating": [
+          "A conclusion that the event is surge or tube rupture merely because its pattern feels familiar",
+          "Unqualified language such as “it looked like the old event, so we treated it the same way”"
+        ],
+        "expected_post_revision_status": "absent"
+      }
+    },
+    {
+      "instance_id": "bounded_rationality_zero_control",
+      "bias": "Bounded Rationality",
+      "requested_occurrences_for_bias": 0,
+      "status": "absent",
+      "decision_point": null,
+      "supporting_quote": "“I compared the top two or three checklist options against what the diagnostic data was actually showing, picked the one that matched the pattern best, not just the first one listed, and briefed the engineer by radio.”",
+      "evidence_location": "Decision point 4, final corrective-action choice",
+      "mechanism": "The decision is resource-constrained, but no bias occurrence is established. The participant limits the option set under legitimate time pressure, compares the viable options against available diagnostics, and preserves engineering feedback. Constraint alone is not bounded-rationality bias.",
+      "strength": "absent",
+      "confidence": 0.95,
+      "plausible_nonbias_explanation": "This is adaptive satisficing or constrained optimization under a closing operational window, with evidence comparison and a compensating communication control.",
+      "additional_evidence_needed": "Evidence that cognitive or informational limits caused the operator to choose an arbitrary, familiar, first-listed, or insufficiently evaluated option despite feasible access to relevant diagnostics or consultation.",
+      "revision_needed": false,
+      "revision": {
+        "revision_type": "none",
+        "location": "Decision point 4",
+        "current_defect": "None for a zero-occurrence control. Time pressure and a short checklist could be superficially coded as bounded rationality if constraints are mistaken for a cognitive-bias mechanism.",
+        "minimal_change_instruction": "No change. Retain the explicit comparison of multiple options to diagnostics and the contemporaneous engineer radio brief.",
+        "preserve": [
+          "The under-ninety-minute constraint",
+          "The short corrective-action checklist",
+          "The data-based comparison of the top options",
+          "The real-time engineering check"
+        ],
+        "avoid_creating": [
+          "Selection of the first checklist item without comparison",
+          "Language that says there was no time to think or assess the data",
+          "Removal of the engineer feedback channel"
+        ],
+        "expected_post_revision_status": "absent"
+      }
+    }
+  ],
+  "bias_level_counts": [
+    {
+      "bias": "Availability Bias",
+      "requested_count": 0,
+      "supported_count": 0,
+      "weak_count": 0,
+      "absent_count": 0,
+      "merged_count": 0,
+      "accidental_count": 0,
+      "count_satisfied": true
+    },
+    {
+      "bias": "Recency Bias",
+      "requested_count": 0,
+      "supported_count": 0,
+      "weak_count": 0,
+      "absent_count": 0,
+      "merged_count": 0,
+      "accidental_count": 0,
+      "count_satisfied": true
+    },
+    {
+      "bias": "Habit Intrusion",
+      "requested_count": 0,
+      "supported_count": 0,
+      "weak_count": 0,
+      "absent_count": 0,
+      "merged_count": 0,
+      "accidental_count": 0,
+      "count_satisfied": true
+    },
+    {
+      "bias": "Salience Bias",
+      "requested_count": 0,
+      "supported_count": 0,
+      "weak_count": 0,
+      "absent_count": 0,
+      "merged_count": 0,
+      "accidental_count": 0,
+      "count_satisfied": true
+    },
+    {
+      "bias": "Similarity Bias",
+      "requested_count": 0,
+      "supported_count": 0,
+      "weak_count": 0,
+      "absent_count": 0,
+      "merged_count": 0,
+      "accidental_count": 0,
+      "count_satisfied": true
+    },
+    {
+      "bias": "Bounded Rationality",
+      "requested_count": 0,
+      "supported_count": 0,
+      "weak_count": 0,
+      "absent_count": 0,
+      "merged_count": 0,
+      "accidental_count": 0,
+      "count_satisfied": true
+    }
+  ],
+  "additional_candidate_biases": [
+    {
+      "bias": "Outcome Bias",
+      "decision_point": 4,
+      "supporting_quote": "“I don't think the outcome tells you definitively whether any single step was the right one — it worked out, but there was real uncertainty the whole way through.”",
+      "mechanism": "Rejected. The participant explicitly separates process quality from favorable outcome rather than evaluating the earlier decisions solely by whether the trend stabilized.",
+      "confidence": 0.99,
+      "status": "rejected",
+      "plausible_nonbias_explanation": "This is appropriate retrospective calibration and anti-hindsight reflection.",
+      "revision_recommendation": "none"
+    },
+    {
+      "bias": "Alarm fatigue / normalization of deviance",
+      "decision_point": 1,
+      "supporting_quote": "“That specific point has been noisy lately ... all logged as instrument drift.”",
+      "mechanism": "Rejected as an occurrence. Repeated nuisance alarms create a risk context for normalization, but the participant cross-checks an independent trend and sends field verification rather than dismissing the alarm.",
+      "confidence": 0.95,
+      "status": "rejected",
+      "plausible_nonbias_explanation": "The alarm history appropriately informs the initial differential diagnosis but is overridden by contradictory current evidence.",
+      "revision_recommendation": "none"
+    },
+    {
+      "bias": "Satisficing",
+      "decision_point": 4,
+      "supporting_quote": "“Full engineer consultation would've eaten twenty to thirty minutes I didn't have to spare.”",
+      "mechanism": "Rejected as a cognitive-bias occurrence. The operator limits review depth because of an operational deadline, but still compares multiple options to diagnostics and obtains a real-time engineer check.",
+      "confidence": 0.92,
+      "status": "rejected",
+      "plausible_nonbias_explanation": "This is justified time-constrained decision-making with compensatory safeguards, not evidence of prematurely accepting the first adequate option.",
+      "revision_recommendation": "none"
+    }
+  ],
+  "nonbias_cues": [
+    {
+      "cue": "The participant says reviewing the adjacent pressure-differential trend is “a habit of mine.”",
+      "location": "Decision point 1",
+      "why_not_bias": "A habit is not habit intrusion merely because it is routine. Here it is a context-relevant cross-check that broadens information search and leads to independent verification."
+    },
+    {
+      "cue": "The last four hours appeared stable and unremarkable.",
+      "location": "Decision point 2",
+      "why_not_bias": "Recent evidence is not recency bias when it is considered alongside older information. The participant explicitly challenges whether the unresolved older drift had actually been corrected."
+    },
+    {
+      "cue": "A past compressor surge and memorable tube-rupture incident came to mind.",
+      "location": "Decision point 3",
+      "why_not_bias": "Memory retrieval and analogical reasoning are not availability or similarity bias when the participant tests the analogues against distinguishing current-case evidence and rejects them when they do not fit."
+    },
+    {
+      "cue": "The alarm was audible and visually prominent, while the pressure trend was slower and less obvious.",
+      "location": "Decision point 1",
+      "why_not_bias": "The operator compensates for potential salience by deliberately checking the less conspicuous trend; the decision rests on combined evidence rather than the alarm's prominence."
+    },
+    {
+      "cue": "The operator did not obtain a full engineering consultation because of the closing regeneration window.",
+      "location": "Decision point 4",
+      "why_not_bias": "Time and resource constraints are operational facts, not bounded-rationality bias by themselves. The participant performs a focused comparison and maintains a radio feedback channel."
+    },
+    {
+      "cue": "The event ultimately stabilized after the selected corrective action.",
+      "location": "Decision point 4 and retrospective reflection",
+      "why_not_bias": "The participant explicitly states that the favorable outcome does not prove every earlier decision was correct, avoiding outcome-based retrospective evaluation."
+    }
+  ],
+  "causal_audit": {
+    "causal_claims": [
+      {
+        "claim": "The combination of a real high-temperature alarm and a rising independent pressure-differential trend caused the operator to reject a nuisance-alarm interpretation and request field verification.",
+        "support": "The participant describes both signals as making them “less comfortable calling it a pure nuisance trip,” followed by dispatch of the field operator.",
+        "assessment": "Moderate. This is a credible self-report of decision causation, but it does not establish the physical cause of the process condition."
+      },
+      {
+        "claim": "The unresolved multi-day drift note caused a conservative modification of the feed-rate increase.",
+        "support": "The participant states that the unconfirmed drift note was the specific reason for not executing the routine increase sequence unchanged.",
+        "assessment": "Strong for the participant's stated decision rationale; the account distinguishes the unresolved historical issue from the short-term stable trend."
+      },
+      {
+        "claim": "The absence of the prior surge vibration signature and tube-rupture markers caused the operator to reject those historical categories.",
+        "support": "The participant describes explicit discriminating checks and concludes that neither precedent matched cleanly.",
+        "assessment": "Strong as diagnostic reasoning, while still appropriately limited to rejecting incomplete matches rather than proving an alternative physical cause."
+      },
+      {
+        "claim": "Comparison of the leading corrective options against diagnostic data contributed to trend stabilization.",
+        "support": "The later review found the comparison reasonable and the trend stabilized afterward.",
+        "assessment": "Weak to moderate for physical causation. The interview establishes temporal sequence and a reasoned action selection, but not a controlled basis to attribute stabilization solely to that action."
+      }
+    ],
+    "correlation_causation_risks": [
+      {
+        "risk": "The statement that the selected checklist action stabilized the trend could invite over-attribution of the outcome to the option comparison.",
+        "mitigation_present": "The participant states that the underlying cause took longer to determine and that a favorable outcome does not establish whether every decision was right."
+      }
+    ],
+    "counterfactual_present": true,
+    "changed_variable": "Primarily alarm-history cleanliness: noisy recurring history versus a clean history. Secondary hypothetical variables are earlier confirmation of the multi-day drift's status and additional time before the regeneration window.",
+    "held_constant": [
+      "The immediate high-temperature alarm",
+      "The pressure-differential trend",
+      "The operator's role and operating context",
+      "The need to decide during the same event"
+    ],
+    "causal_coherence": "moderate",
+    "explanation": "The explicit clean-versus-noisy alarm-history counterfactual is coherent because it isolates the expected effect on hesitation before field dispatch: a clean history would make the operator move faster. The participant does not claim that cleaner history would change the underlying physical condition or prove a different operational outcome. The later hypotheticals appropriately address decision confidence and consultation depth, but they are separate information/time counterfactuals rather than a single unified experimental manipulation."
+  },
+  "quality_scores": {
+    "occupational_realism": 92,
+    "cta_fidelity": 96,
+    "bias_separability": 95,
+    "bias_subtlety": 94,
+    "control_fidelity": 97,
+    "counterfactual_fidelity": 89,
+    "narrative_coherence": 96,
+    "naturalness": 91,
+    "hidden_label_integrity": 98,
+    "overall_quality": 95
+  },
+  "revision_summary": {
+    "revision_required": false,
+    "supported_occurrence_total": 0,
+    "requested_occurrence_total": 0,
+    "missing_occurrence_total": 0,
+    "accidental_occurrence_total": 0,
+    "priority": "none",
+    "recommended_action": "accept",
+    "global_revision_constraints": [
+      "Do not add any target-bias occurrence; this is a zero-bias vocabulary control.",
+      "Preserve the four-decision chronology, escalating time pressure, historical-incident vocabulary, and explicit evidence-weighing mechanisms.",
+      "If editing for coding robustness, retain the operator's checks of disconfirming evidence and avoid replacing them with generic assurances of carefulness.",
+      "Do not treat real operational constraints, historical memory, procedural routine, or favorable outcome as bias evidence without a demonstrated shortcut mechanism."
+    ],
+    "revision_order": []
+  },
+  "failure_flags": []
+}

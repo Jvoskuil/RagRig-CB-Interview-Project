@@ -1,0 +1,341 @@
+You are an expert occupational interviewer and realistic dialogue writer.
+
+Generate one simulated cognitive task analysis interview from the supplied generation specification. The interview will be given to an independent evaluator that must infer whether specified cognitive biases are present. Do not reveal the labels or your construction process.
+
+INPUT
+Generation specification:
+{{"scenario_id": "HC_Biased_7",
+  "domain_id": "HC",
+  "domain": "Healthcare",
+  "role": "Social Worker (Hospital Discharge Planning)",
+  "condition": "biased",
+  "generation_specification": {
+    "scenario_title_internal": "The Friday Discharge: Mr. Hoffmann's Fall and the Empty Apartment",
+    "scenario_summary_internal": "A hospital social worker manages discharge planning for a 78-year-old man (Mr. Hoffmann) admitted after a fall at home, complicated by COPD and a recent history of ED visits. The social worker must decide, under time pressure before a Friday discharge deadline, whether the patient can safely return home with outpatient support or needs a short-term rehabilitation placement. The narrative follows four sequential decisions: initial mobility/risk assessment, discharge destination selection, review of readmission risk using chart history, and finalization of the discharge plan and follow-up scheduling. Interpersonal pressure from bed-management staff, an ambiguous family caregiving situation, and the worker's own prior caseload experience create fertile, realistic ground for subtle reasoning distortions without any need for dramatic negligence.",
+    "occupational_realism": {
+      "objective": "Determine a safe, timely discharge destination and follow-up plan for a fall-risk patient before a bed-management deadline.",
+      "setting": "Mid-size regional hospital, internal medicine ward, Thursday afternoon into Friday morning before a weekend discharge push.",
+      "constraints": [
+        "Bed management is requesting the room be freed by Friday noon.",
+        "Patient's daughter lives two hours away and can only visit twice a week.",
+        "Home care agency has limited weekend staffing.",
+        "Patient expresses strong preference to return home.",
+        "Short-term rehab bed availability is uncertain and requires insurance pre-authorization."
+      ],
+      "stakeholders": [
+        "Mr. Hoffmann (patient)",
+        "Patient's daughter (long-distance caregiver)",
+        "Attending physician",
+        "Bed management coordinator",
+        "Home care agency liaison",
+        "Physical therapist"
+      ],
+      "technical_terms_to_use": [
+        "discharge readiness",
+        "fall risk assessment",
+        "home safety evaluation",
+        "readmission risk",
+        "outpatient services referral",
+        "caregiver capacity",
+        "short-term rehabilitation placement",
+        "chart review",
+        "functional mobility score"
+      ],
+      "technical_terms_to_avoid": [
+        "anchoring bias",
+        "confirmation bias",
+        "overconfidence",
+        "availability heuristic",
+        "expectation bias",
+        "impact bias",
+        "omission bias",
+        "cognitive bias",
+        "heuristic"
+      ],
+      "timeline": [],
+      "probe_plan": {},
+      "occurrence_embedding_plan_internal": [],
+      "control_specification": {},
+      "counterfactual_specification": {},
+      "generation_checks": []
+    },
+    "timeline": [
+      {
+        "phase": 1,
+        "decision_point": true,
+        "facts_available_before_decision": [
+          "Referral note from the ED states patient 'ambulates independently with cane, lives alone.'",
+          "Physical therapist has not yet completed a formal functional mobility assessment.",
+          "Patient reports feeling 'fine, just tripped on a rug.'",
+          "Social worker has an initial 10-minute bedside conversation before the PT evaluation is scheduled."
+        ],
+        "new_information_after_decision": [
+          "PT evaluation later shows reduced grip strength and slower gait speed than the ED note implied.",
+          "Nursing notes mention two unwitnessed near-falls overnight."
+        ],
+        "alternatives": [
+          "Treat the ED note's mobility description as the baseline and proceed with planning around independent living.",
+          "Withhold judgment on mobility until the formal PT assessment is complete and gather additional observation."
+        ],
+        "intended_action": "Social worker forms an initial risk impression anchored to the ED referral note's mobility description and expresses confidence in her read of the patient's independence before PT data arrives."
+      },
+      {
+        "phase": 2,
+        "decision_point": true,
+        "facts_available_before_decision": [
+          "Daughter said in an early phone call she 'wants to help however she can' but did not commit to specific days.",
+          "Home care agency confirmed limited weekend visit slots.",
+          "Patient insists he wants to go home and has done so successfully after two prior admissions.",
+          "No documented home safety inspection has occurred this admission."
+        ],
+        "new_information_after_decision": [
+          "A follow-up call reveals the daughter can only visit twice weekly and works full time.",
+          "The home care agency liaison flags that weekend coverage cannot be guaranteed."
+        ],
+        "alternatives": [
+          "Plan for home discharge with outpatient services, treating the daughter's general willingness as sufficient caregiver support.",
+          "Pause the plan to explicitly verify caregiver availability and coverage gaps before committing to a destination."
+        ],
+        "intended_action": "Social worker selects home discharge as the working plan, interprets the daughter's vague willingness as confirming adequate caregiver coverage, and directs follow-up questions toward logistics of home discharge rather than toward whether it is appropriate."
+      },
+      {
+        "phase": 3,
+        "decision_point": true,
+        "facts_available_before_decision": [
+          "Chart shows two prior hospitalizations in the past year, both discharged home successfully.",
+          "A different patient with a similar profile was readmitted last month after a fall at home, a case the social worker personally handled and remembers vividly.",
+          "Current chart has no documented falls-at-home readmission for Mr. Hoffmann specifically.",
+          "A discharge risk-scoring tool is available but not yet consulted."
+        ],
+        "new_information_after_decision": [
+          "The full chart review later reveals Mr. Hoffmann's actual readmission history is low relative to his risk score.",
+          "The risk-scoring tool, once used, rates him as moderate rather than high risk."
+        ],
+        "alternatives": [
+          "Weight the recent, memorable readmission case heavily when judging Mr. Hoffmann's own readmission risk.",
+          "Rely primarily on Mr. Hoffmann's documented chart history and the risk-scoring tool rather than a recalled similar case."
+        ],
+        "intended_action": "Social worker's risk judgment is swayed by the vividness of a recently handled, similar-seeming readmission case, and she also omits actively running the standard discharge risk-scoring tool because the home-plan default already 'feels' settled."
+      },
+      {
+        "phase": 4,
+        "decision_point": true,
+        "facts_available_before_decision": [
+          "Short-term rehab bed is available pending one more day of insurance pre-authorization.",
+          "Patient has expressed distress at the idea of any delay or rehab placement.",
+          "Bed management is pressing for a same-day decision.",
+          "A one-day delay would allow completion of the home safety evaluation and caregiver confirmation."
+        ],
+        "new_information_after_decision": [
+          "The home safety evaluation, completed after discharge, identifies a loose stair rail and poor bathroom lighting.",
+          "The daughter later reports she felt unprepared for the level of support needed."
+        ],
+        "alternatives": [
+          "Finalize immediate home discharge to avoid the patient's anticipated distress from a one-day delay.",
+          "Accept a one-day delay to complete verification steps despite the patient's expressed frustration."
+        ],
+        "intended_action": "Social worker finalizes the home discharge plan same-day, weighting the patient's anticipated emotional reaction to a delay more heavily than the incremental value of completing verification steps."
+      }
+    ],
+    "probe_plan": {
+      "opening": [
+        "Can you walk me through how this case first came to your attention?",
+        "What was your overall objective for Mr. Hoffmann's discharge?"
+      ],
+      "timeline_reconstruction": [
+        "What happened right after you first read the referral note?",
+        "Walk me through your conversations with the daughter, in order.",
+        "When did the PT assessment and chart review happen relative to your planning decisions?",
+        "What was the sequence of events on the final day before discharge?"
+      ],
+      "decision_point_probes": [
+        "What specific information were you relying on when you formed your first impression of his mobility?",
+        "What made you feel confident in that initial read before PT weighed in?",
+        "What did the daughter's comment about wanting to help mean to you at the time?",
+        "Did you look for any information that might have contradicted the home-discharge plan?",
+        "What made the earlier readmission case come to mind here?",
+        "Did you run the standard risk-scoring tool before or after settling on a plan?",
+        "What weighed most heavily in your decision to finalize discharge that day rather than wait?",
+        "How did you weigh the patient's reaction to a delay against the outstanding verification steps?"
+      ],
+      "closing_hypotheticals": [
+        "If the PT assessment had come back before your first conversation with the patient, would anything have changed?",
+        "If you hadn't recently handled that similar readmission case, do you think your risk read would have been different?",
+        "Looking back, is there a point where slowing down might have changed the plan?",
+        "What would you do differently if a similar case came in tomorrow?"
+      ]
+    },
+    "occurrence_embedding_plan_internal": [
+      {
+        "instance_id": "ob_01",
+        "bias": "Overconfidence Bias",
+        "decision_point": 1,
+        "mechanism": "Social worker expresses high certainty in her independent read of the patient's mobility/risk status based on a brief bedside chat, before any formal assessment data exists, and states this confidence explicitly when asked about her basis.",
+        "affected_reasoning_operation": "Self-assessment of judgment accuracy under incomplete information",
+        "evidence_available_at_time": [
+          "ED referral note",
+          "Brief bedside conversation",
+          "No completed PT evaluation"
+        ],
+        "required_textual_manifestation": "A statement where she describes feeling sure of her read on his independence 'within a few minutes' of talking to him, ahead of any formal mobility testing.",
+        "plausible_nonbias_interpretation": "Experienced clinicians often form rapid, generally accurate first impressions; confidence alone is not proof of bias.",
+        "strength": "subtle",
+        "do_not_make_explicit": ["overconfidence", "bias", "heuristic"]
+      },
+      {
+        "instance_id": "an_01",
+        "bias": "Anchoring Bias",
+        "decision_point": 1,
+        "mechanism": "The ED referral note's phrase 'ambulates independently with cane' becomes the fixed reference point for all subsequent mobility judgments, even as new observational cues (overnight near-falls) emerge.",
+        "affected_reasoning_operation": "Initial estimate formation and insufficient adjustment from a starting value",
+        "evidence_available_at_time": [
+          "ED referral note wording",
+          "Overnight nursing near-fall notes (available same phase but received after initial framing)"
+        ],
+        "required_textual_manifestation": "She references the original note's wording when explaining her mobility read, and treats later contradicting nursing notes as a minor addendum rather than reason to revise the initial estimate.",
+        "plausible_nonbias_interpretation": "It is reasonable to weight an ED clinician's documented mobility assessment as a credible starting point.",
+        "strength": "subtle",
+        "do_not_make_explicit": ["anchoring", "bias", "reference point"]
+      },
+      {
+        "instance_id": "cb_01",
+        "bias": "Confirmation Bias",
+        "decision_point": 2,
+        "mechanism": "After tentatively settling on home discharge, the social worker's follow-up questions to the daughter and agency focus on logistics that support the plan (visit scheduling, service setup) rather than on testing whether caregiver support is actually sufficient.",
+        "affected_reasoning_operation": "Selective information-seeking after forming a working hypothesis",
+        "evidence_available_at_time": [
+          "Daughter's general statement of willingness to help",
+          "Two prior successful home discharges"
+        ],
+        "required_textual_manifestation": "A description of the questions she asked the daughter and agency, showing they were framed around 'when' and 'how' home support would work, not 'whether' it was adequate.",
+        "plausible_nonbias_interpretation": "Once a plan is provisionally chosen, operational questions are a normal next step in care coordination.",
+        "strength": "subtle",
+        "do_not_make_explicit": ["confirmation bias", "selective search"]
+      },
+      {
+        "instance_id": "eb_01",
+        "bias": "Expectation Bias",
+        "decision_point": 2,
+        "mechanism": "Because most families in her caseload experience end up providing adequate informal care, she interprets the daughter's ambiguous, noncommittal statement as confirming sufficient caregiver capacity, coloring how she records and recalls that conversation.",
+        "affected_reasoning_operation": "Interpretation of ambiguous verbal evidence based on a prior expectation about typical case outcomes",
+        "evidence_available_at_time": [
+          "Daughter's vague verbal commitment",
+          "General pattern from prior similar cases she has handled"
+        ],
+        "required_textual_manifestation": "A statement linking her interpretation of the daughter's words to 'usually how it goes with families' rather than to specifics the daughter actually said.",
+        "plausible_nonbias_interpretation": "Drawing on general caseload patterns to interpret ambiguous statements is a common, sometimes valid, professional shortcut.",
+        "strength": "subtle",
+        "do_not_make_explicit": ["expectation bias", "prior expectation"]
+      },
+      {
+        "instance_id": "av_01",
+        "bias": "Availability Bias",
+        "decision_point": 3,
+        "mechanism": "A recent, personally-handled readmission case with superficial similarity comes to mind vividly and disproportionately shapes her estimate of Mr. Hoffmann's own readmission risk, ahead of consulting his actual chart history.",
+        "affected_reasoning_operation": "Probability/risk estimation via ease of recall of a salient example",
+        "evidence_available_at_time": [
+          "Memory of last month's similar-seeming readmission case",
+          "Mr. Hoffmann's own chart (not yet reviewed in depth)"
+        ],
+        "required_textual_manifestation": "A statement where she explains her heightened concern for Mr. Hoffmann by referencing 'that other patient last month' before mentioning any of his own documented history.",
+        "plausible_nonbias_interpretation": "Pattern recognition from recent cases is a legitimate part of clinical judgment.",
+        "strength": "subtle",
+        "do_not_make_explicit": ["availability bias", "vividness", "recall"]
+      },
+      {
+        "instance_id": "om_01",
+        "bias": "Omission Bias",
+        "decision_point": 3,
+        "mechanism": "She skips actively running the standard discharge risk-scoring tool, treating the inaction of not using it as less consequential than the active step of ordering additional assessment, because the home-plan default already feels settled.",
+        "affected_reasoning_operation": "Weighing an act of omission (not consulting an available tool) versus an act of commission (actively reassessing)",
+        "evidence_available_at_time": [
+          "Availability of the standard risk-scoring tool",
+          "Working assumption that the home plan is already appropriate"
+        ],
+        "required_textual_manifestation": "A moment where she acknowledges the tool exists but explains she didn't feel it was necessary to run it at that point, treating the decision not to check as lower-stakes than actively second-guessing the plan.",
+        "plausible_nonbias_interpretation": "Time pressure can reasonably lead to deprioritizing a supplementary tool when a plan already seems supported by other evidence.",
+        "strength": "subtle",
+        "do_not_make_explicit": ["omission bias", "act versus omission"]
+      },
+      {
+        "instance_id": "ib_01",
+        "bias": "Impact Bias",
+        "decision_point": 4,
+        "mechanism": "She overestimates how distressing a one-day delay would be for the patient's emotional state, using this overestimate to justify finalizing discharge immediately rather than completing outstanding verification steps.",
+        "affected_reasoning_operation": "Affective forecasting about the intensity/duration of a stakeholder's emotional reaction to a hypothetical delay",
+        "evidence_available_at_time": [
+          "Patient's expressed frustration at the idea of delay",
+          "Availability of a one-day delay option to complete verification"
+        ],
+        "required_textual_manifestation": "A statement where she explains prioritizing same-day discharge specifically because she anticipated the delay would be very upsetting for him, more than the incremental safety value of the extra day.",
+        "plausible_nonbias_interpretation": "Patient-centered care legitimately weighs psychological wellbeing alongside logistics.",
+        "strength": "subtle",
+        "do_not_make_explicit": ["impact bias", "affective forecasting"]
+      }
+    ],
+    "control_specification": {
+      "paired_scenario_id": null,
+      "features_to_match": [],
+      "features_to_remove_or_change": [],
+      "ambiguity_boundary": "Not applicable; this is the biased condition, not a control."
+    },
+    "counterfactual_specification": {
+      "causal_variable": null,
+      "original_state": null,
+      "counterfactual_state": null,
+      "variables_to_hold_constant": [],
+      "expected_causal_difference": null,
+      "causal_test_question": null
+    },
+    "generation_checks": [
+      "Verify exactly 4 decision points are present, each with at least two alternatives.",
+      "Verify exactly 7 total bias instances are embedded, one per manifest entry.",
+      "Verify no bias terminology or explicit psychological labels appear in the interview text.",
+      "Verify each instance has independent, distinguishable evidentiary support (no duplicate reasoning across instances of same or different biases).",
+      "Verify decision point 1 contains exactly two distinct instances (Overconfidence, Anchoring) tied to different evidence sources (self-assessment confidence vs. referral-note wording).",
+      "Verify decision point 2 contains exactly two distinct instances (Confirmation, Expectation) tied to different reasoning operations (selective search vs. ambiguous interpretation).",
+      "Verify decision point 3 contains exactly two distinct instances (Availability, Omission) tied to different reasoning operations (recall-based estimation vs. act/omission weighting).",
+      "Verify decision point 4 contains exactly one instance (Impact Bias).",
+      "Verify total word count target of 1,350 (range 1,215-1,485) is achievable given probe density and timeline detail.",
+      "Verify consequences described (near-falls, low actual readmission history, home safety findings) do not conclusively prove bias, preserving plausible non-bias interpretations."
+    ]
+  }}}
+
+WRITING REQUIREMENTS
+1. Produce only the interview, with no preface, postscript, analysis, labels, answer key, bias names, or JSON.
+2. Use approximately 1,350 words, with an acceptable range of 1,215–1,485 words.
+3. Use exactly four decision points.
+4. Write a natural semi-structured CTA interview between an interviewer and a domain-credible participant. Include both questions and answers.
+5. Begin with a brief consent/role/context exchange, then obtain an incident account, reconstruct the timeline, revisit the four decision points, probe the participant's reasoning, and end with relevant hypotheticals.
+6. Make the participant's account coherent, specific, and occupationally plausible. Include concrete cues, information sources, goals, constraints, alternatives, time pressure, uncertainty, prior experience, and consequences.
+7. Make the target biases inferable from patterns of reasoning, not from vocabulary that names or defines them.
+8. Do not make every decision biased. Preserve natural variation, including justified reasoning and uncertainty.
+9. Do not equate an incorrect decision or bad outcome with a bias. Include enough context for alternative explanations to remain possible.
+10. Keep the number of decision points, actors, technical terms, and narrative complexity aligned with the specification.
+11. For multiple target biases, distribute them across the incident. Each bias must have a distinct manifestation, but interactions may occur naturally.
+12. For `vocabulary_control`, preserve the same occupational vocabulary and narrative complexity while writing decisions supported by balanced evidence and reasonable consideration of alternatives. Do not insert target-bias evidence.
+13. For `ambiguous_control`, include genuinely ambiguous reasoning that has plausible non-bias explanations, but do not intentionally instantiate a target bias. Do not use exaggerated contradiction or suspiciously artificial neutrality.
+14. For `counterfactual`, minimally alter the specified causal variable. Preserve all other material facts, wording patterns, and decision structure as far as possible. Make the changed variable causally relevant, not merely correlated with the outcome.
+15. Include at least one probe asking what information would have changed the decision and one probe asking what would have happened if a key feature had been different.
+16. Do not add facts that contradict the generation specification.
+17. Avoid stereotypes, protected-class generalizations, and gratuitous sensitive content.
+
+RECOMMENDED STRUCTURE
+- Opening and role context: 100–150 words.
+- Initial incident account: 250–350 words.
+- Timeline reconstruction: 150–200 words.
+- Four decision-point sections with probes: 550–650 words total.
+- Closing reflection and hypothetical: 150–250 words.
+
+DIALOGUE STYLE
+- Label turns as `Interviewer:` and `Participant:`.
+- Let answers vary in length and certainty.
+- Use natural repairs, qualifications, and references to evidence.
+- Avoid repeatedly asking the same generic question.
+- Do not explicitly state that the participant is biased, unbiased, rational, irrational, or subject to an experimental condition.
+
+FINAL SILENT CHECK
+Before outputting, verify word count, four decision points, domain realism, target-bias concealment, control fidelity, and causal minimality where applicable. If a target bias cannot be represented without becoming obvious or implausible, revise the incident rather than explaining the problem.
+
+OUTPUT
+Return only the interview text.

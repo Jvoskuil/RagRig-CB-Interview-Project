@@ -1,0 +1,282 @@
+You are an expert occupational interviewer and realistic dialogue writer.
+
+Generate one simulated cognitive task analysis interview from the supplied generation specification. The interview will be given to an independent evaluator that must infer whether specified cognitive biases are present. Do not reveal the labels or your construction process.
+
+INPUT
+Generation specification:
+{{"scenario_id": "IA_Biased_2",
+  "domain_id": "IA",
+  "domain": "Intelligence analysis and information-intensive analytic work",
+  "role": "Signals Intelligence (SIGINT) Analyst",
+  "condition": "biased",
+  "generation_specification": {
+    "scenario_title_internal": "Border Sector Convoy Chatter: Time-Pressured Buildup Assessment",
+    "scenario_summary_internal": "A SIGINT analyst at a regional fusion cell detects a surge in encrypted burst traffic and convoy-related chatter near a border logistics hub during a period of heightened regional tension. Working with a backlogged linguist team and a hard deadline for a fusion-cell briefing, the analyst must triage which intercepts to translate first, construct a working explanation of the activity from partial and ambiguous evidence, select which contextual reporting to fold in as corroboration, and finally commit to a confidence-graded assessment despite unresolved contradictions between competing accounts of the same traffic.",
+    "occupational_realism": {
+      "objective": "Produce a time-sensitive, confidence-graded SIGINT assessment on whether observed border-sector communications activity indicates a hostile logistics buildup or a routine unit rotation/exercise, in time for a same-day fusion-cell briefing.",
+      "setting": "Regional intelligence fusion cell, SIGINT analysis desk, during a 6-hour window before a scheduled briefing to the fusion cell lead; analyst has partial linguist support and access to open-source and imagery reporting for corroboration.",
+      "constraints": [
+        "Linguist team has an 8-hour translation backlog against a 6-hour deadline",
+        "Only fragmentary and partially garbled intercepts are available at the start",
+        "Fusion cell briefing time is fixed and cannot be moved",
+        "Competing demands from another sector's traffic surge draw on the same limited linguist hours",
+        "Assessment must be graded by confidence level per agency tradecraft standards"
+      ],
+      "stakeholders": [
+        "SIGINT analyst (interviewee)",
+        "Fusion cell lead awaiting briefing",
+        "Linguist/translation team",
+        "IMINT (imagery) analyst providing corroborating report",
+        "Open-source analysis desk"
+      ],
+      "technical_terms_to_use": [
+        "SIGINT",
+        "COMINT",
+        "traffic analysis",
+        "signal signature",
+        "burst traffic",
+        "fusion cell",
+        "order of battle (OOB)",
+        "collection requirement",
+        "linguist queue",
+        "BLUF",
+        "confidence level",
+        "all-source corroboration",
+        "IMINT",
+        "tasking"
+      ],
+      "technical_terms_to_avoid": [
+        "explanation bias",
+        "fluency effect",
+        "fluency heuristic",
+        "narrative fallacy",
+        "cognitive bias",
+        "processing ease",
+        "availability heuristic",
+        "confirmation bias"
+      ]
+    },
+    "timeline": [
+      {
+        "phase": 1,
+        "decision_point": true,
+        "facts_available_before_decision": [
+          "Automated alert flags a spike in encrypted burst traffic near Border Sector 7 logistics hub",
+          "A similar but smaller signal-volume increase is also flagged in Sector 4, unrelated geographically",
+          "Historical baseline shows Sector 7 traffic is normally quiet outside of scheduled rotations",
+          "Only 3 linguist-hours are available before the briefing deadline"
+        ],
+        "new_information_after_decision": [
+          "Partial translation of Sector 7 traffic reveals a mix of routine rotation terminology and several unclear or coded terms",
+          "Sector 4 traffic, deprioritized, later turns out to reference an unrelated training exercise"
+        ],
+        "alternatives": [
+          "Prioritize Sector 7 traffic for translation given the logistics hub's strategic relevance",
+          "Split linguist hours evenly between Sector 7 and Sector 4",
+          "Prioritize Sector 4 first since its signal pattern is less commonly seen and may indicate something novel"
+        ],
+        "intended_action": "Analyst prioritizes Sector 7 for immediate translation based on the hub's known strategic value and requests Sector 4 be queued for later review."
+      },
+      {
+        "phase": 2,
+        "decision_point": true,
+        "facts_available_before_decision": [
+          "Partial translations show convoy movement references, resupply terminology, and two coded phrases not in the standard glossary",
+          "Historical exercise calendar shows a plausible routine rotation window overlapping this period",
+          "No imagery corroboration has yet been reviewed",
+          "Briefing is due in under 3 hours"
+        ],
+        "new_information_after_decision": [
+          "A later-translated intercept contains maintenance-cycle terminology that partially cuts against the buildup narrative",
+          "A second coded phrase, initially read as ambiguous, is later found in a maintenance-schedule glossary unrelated to offensive posture"
+        ],
+        "alternatives": [
+          "Draft a working note framing the activity as an emerging logistics buildup preceding a change in posture",
+          "Draft a working note framing the activity as a routine rotation, pending further translation",
+          "Withhold any provisional framing until more intercepts are translated"
+        ],
+        "intended_action": "Analyst writes a detailed working note constructing a step-by-step account of how the convoy chatter and burst traffic fit a buildup preceding an offensive posture change, and treats the note's internal coherence as evidence that the account is likely correct."
+      },
+      {
+        "phase": 3,
+        "decision_point": true,
+        "facts_available_before_decision": [
+          "An open-source news digest, clearly written and well-formatted, forecasts regional tension consistent with a buildup",
+          "A dense, jargon-heavy IMINT report shows recent vehicle dispersal patterns at the hub that are ambiguous but directly relevant",
+          "Only one corroborating source can be fully reviewed and cited before the deadline",
+          "The IMINT analyst is unavailable for a quick clarifying call"
+        ],
+        "new_information_after_decision": [
+          "A follow-up read of the IMINT report after the briefing shows the vehicle dispersal pattern is equally consistent with a maintenance stand-down",
+          "The open-source digest is later found to rely on unrelated regional reporting with no sourcing tie to Sector 7"
+        ],
+        "alternatives": [
+          "Cite the open-source digest as the primary corroborating source because it is quick to read and clearly supports the working narrative",
+          "Cite the IMINT report as the primary corroborating source despite its density, since it is sensor-based and sector-specific",
+          "Cite both sources with equal weight and flag the interpretive ambiguity in the IMINT data"
+        ],
+        "intended_action": "Analyst selects the open-source digest as the primary corroborating citation because it reads clearly and reinforces the existing narrative, giving it more weight in the assessment than the harder-to-parse but more directly relevant IMINT report."
+      },
+      {
+        "phase": 4,
+        "decision_point": true,
+        "facts_available_before_decision": [
+          "Working narrative of a logistics buildup, partially corroborated by open-source reporting",
+          "Unresolved contradiction between maintenance-cycle terminology and buildup-consistent terminology in the same intercept set",
+          "Sector 4 traffic confirmed unrelated",
+          "Briefing must proceed in 20 minutes regardless of remaining ambiguity"
+        ],
+        "new_information_after_decision": [
+          "Fusion cell lead requests a follow-up collection tasking to resolve the contradiction",
+          "Two days later, additional translated traffic remains genuinely ambiguous, and the outcome does not clearly vindicate or refute the original assessment"
+        ],
+        "alternatives": [
+          "Brief with moderate confidence in a buildup assessment, noting the unresolved contradiction",
+          "Brief with low confidence and present both the buildup and rotation hypotheses as equally viable",
+          "Request a short extension to resolve the contradiction before briefing"
+        ],
+        "intended_action": "Analyst briefs with a moderate-confidence buildup assessment, explicitly noting the maintenance-terminology contradiction and requesting follow-up collection to resolve it."
+      }
+    ],
+    "probe_plan": {
+      "opening": [
+        "Walk me through what triggered your attention that day and what your objective was.",
+        "What was your role in the fusion cell's workflow for this incident?"
+      ],
+      "timeline_reconstruction": [
+        "What did you know at the very start, before any translation was complete?",
+        "What changed in your understanding after the first partial translations came in?",
+        "What did you learn after you selected your corroborating source, and did it change your view?",
+        "How did the picture look right before you walked into the briefing?"
+      ],
+      "decision_point_probes": [
+        "Why did you prioritize Sector 7 traffic over Sector 4 given the linguist hour constraint?",
+        "When you wrote the working note on the buildup narrative, what made you confident enough to frame it that way?",
+        "What made the open-source digest more useful to you at that moment than the IMINT report?",
+        "How did you decide on a moderate-confidence framing for the briefing rather than low or high confidence?"
+      ],
+      "goals_alternatives_basis": [
+        "What alternatives did you consider at each step, and why did you rule them out?",
+        "What was the deciding factor in each choice—time, evidence strength, or something else?"
+      ],
+      "prior_experience": [
+        "Have you handled similar convoy-chatter surges before? How did that shape your approach here?",
+        "Did past exercise-cycle patterns influence how you read this traffic?"
+      ],
+      "time_pressure_uncertainty": [
+        "How much did the deadline affect which sources you could fully review?",
+        "At what point did you feel most uncertain, and how did you handle that uncertainty in your write-up?"
+      ],
+      "closing_hypotheticals": [
+        "If you had had one more linguist-hour before the briefing, what would you have done differently?",
+        "If the IMINT report had been the only source available, how do you think your assessment would have changed?",
+        "Looking back, is there a point where you might revisit your reasoning?"
+      ]
+    },
+    "occurrence_embedding_plan_internal": [
+      {
+        "instance_id": "eb_01",
+        "bias": "Explanation bias",
+        "decision_point": 2,
+        "mechanism": "Constructing a detailed, internally coherent causal narrative (the buildup account) from partial evidence increases the analyst's own confidence in that narrative's correctness, independent of any actual increase in supporting evidence.",
+        "affected_reasoning_operation": "Hypothesis generation and confidence calibration from partial translated intercepts",
+        "evidence_available_at_time": [
+          "Partial translations with rotation terminology and two unclear coded phrases",
+          "Overlapping routine-exercise calendar window",
+          "No imagery corroboration reviewed yet"
+        ],
+        "required_textual_manifestation": "The analyst describes writing out a step-by-step buildup account and explicitly treats the act of having produced a coherent, detailed explanation as a reason for trusting it, rather than citing new corroborating evidence.",
+        "plausible_nonbias_interpretation": "The analyst could be applying reasonable pattern-matching to known indicators of buildup activity, a defensible tradecraft heuristic rather than a bias.",
+        "strength": "subtle",
+        "do_not_make_explicit": [
+          "explanation bias",
+          "coherence as evidence",
+          "narrative confidence"
+        ]
+      },
+      {
+        "instance_id": "fe_01",
+        "bias": "Fluency effects",
+        "decision_point": 3,
+        "mechanism": "The analyst favors the clearly written, easy-to-read open-source digest over the denser, harder-to-parse but more directly relevant IMINT report, treating ease of reading as a proxy for reliability or relevance.",
+        "affected_reasoning_operation": "Source selection and evidentiary weighting during corroboration under time constraint",
+        "evidence_available_at_time": [
+          "Well-formatted open-source digest supporting the buildup narrative",
+          "Dense, jargon-heavy IMINT report with ambiguous but sector-specific vehicle dispersal data",
+          "Time constraint permitting full review of only one source"
+        ],
+        "required_textual_manifestation": "The analyst explains choosing the open-source digest specifically because it was quicker and clearer to read and fit smoothly into the write-up, rather than because of its sourcing strength or direct relevance to the sector.",
+        "plausible_nonbias_interpretation": "Under genuine time pressure, choosing the faster-to-process source could be a reasonable efficiency trade-off rather than a bias.",
+        "strength": "subtle",
+        "do_not_make_explicit": [
+          "fluency effects",
+          "processing ease",
+          "readability as reliability"
+        ]
+      }
+    ],
+    "control_specification": {
+      "paired_scenario_id": null,
+      "features_to_match": [],
+      "features_to_remove_or_change": [],
+      "ambiguity_boundary": "Not applicable; condition is biased, not a control."
+    },
+    "counterfactual_specification": {
+      "causal_variable": null,
+      "original_state": null,
+      "counterfactual_state": null,
+      "variables_to_hold_constant": [],
+      "expected_causal_difference": null,
+      "causal_test_question": null
+    },
+    "generation_checks": [
+      "Confirm exactly 4 decision points are present and numbered in chronological order",
+      "Confirm decision point 2 contains exactly one explanation-bias manifestation and no repeated instance elsewhere",
+      "Confirm decision point 3 contains exactly one fluency-effects manifestation and no repeated instance elsewhere",
+      "Confirm decision points 1 and 4 contain no intentionally embedded instances of either named bias",
+      "Confirm no bias name, definition, or psychological label appears in the interview text",
+      "Confirm each decision point includes at least two plausible alternatives and pre/post-decision information",
+      "Confirm probes cover cues, sources, goals, alternatives, decision basis, prior experience, time pressure, uncertainty, and hypotheticals",
+      "Confirm total word count falls between 1215 and 1485 words, target 1350",
+      "Confirm consequences described (e.g., ambiguous follow-up traffic, contradiction unresolved) do not mechanically prove or disprove bias"
+    ]
+  }}}
+
+WRITING REQUIREMENTS
+1. Produce only the interview, with no preface, postscript, analysis, labels, answer key, bias names, or JSON.
+2. Use approximately 1,350 words, with an acceptable range of 1,215–1,485 words.
+3. Use exactly four decision points.
+4. Write a natural semi-structured CTA interview between an interviewer and a domain-credible participant. Include both questions and answers.
+5. Begin with a brief consent/role/context exchange, then obtain an incident account, reconstruct the timeline, revisit the four decision points, probe the participant's reasoning, and end with relevant hypotheticals.
+6. Make the participant's account coherent, specific, and occupationally plausible. Include concrete cues, information sources, goals, constraints, alternatives, time pressure, uncertainty, prior experience, and consequences.
+7. Make the target biases inferable from patterns of reasoning, not from vocabulary that names or defines them.
+8. Do not make every decision biased. Preserve natural variation, including justified reasoning and uncertainty.
+9. Do not equate an incorrect decision or bad outcome with a bias. Include enough context for alternative explanations to remain possible.
+10. Keep the number of decision points, actors, technical terms, and narrative complexity aligned with the specification.
+11. For multiple target biases, distribute them across the incident. Each bias must have a distinct manifestation, but interactions may occur naturally.
+12. For `vocabulary_control`, preserve the same occupational vocabulary and narrative complexity while writing decisions supported by balanced evidence and reasonable consideration of alternatives. Do not insert target-bias evidence.
+13. For `ambiguous_control`, include genuinely ambiguous reasoning that has plausible non-bias explanations, but do not intentionally instantiate a target bias. Do not use exaggerated contradiction or suspiciously artificial neutrality.
+14. For `counterfactual`, minimally alter the specified causal variable. Preserve all other material facts, wording patterns, and decision structure as far as possible. Make the changed variable causally relevant, not merely correlated with the outcome.
+15. Include at least one probe asking what information would have changed the decision and one probe asking what would have happened if a key feature had been different.
+16. Do not add facts that contradict the generation specification.
+17. Avoid stereotypes, protected-class generalizations, and gratuitous sensitive content.
+
+RECOMMENDED STRUCTURE
+- Opening and role context: 100–150 words.
+- Initial incident account: 250–350 words.
+- Timeline reconstruction: 150–200 words.
+- Four decision-point sections with probes: 550–650 words total.
+- Closing reflection and hypothetical: 150–250 words.
+
+DIALOGUE STYLE
+- Label turns as `Interviewer:` and `Participant:`.
+- Let answers vary in length and certainty.
+- Use natural repairs, qualifications, and references to evidence.
+- Avoid repeatedly asking the same generic question.
+- Do not explicitly state that the participant is biased, unbiased, rational, irrational, or subject to an experimental condition.
+
+FINAL SILENT CHECK
+Before outputting, verify word count, four decision points, domain realism, target-bias concealment, control fidelity, and causal minimality where applicable. If a target bias cannot be represented without becoming obvious or implausible, revise the incident rather than explaining the problem.
+
+OUTPUT
+Return only the interview text.

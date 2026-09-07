@@ -1,0 +1,525 @@
+{
+  "validator_version": "2.0",
+  "interview_id": "NP_Biased_7",
+  "condition": "biased",
+  "domain_assessment": {
+    "domain": "Refinery process operations and control-room decision-making",
+    "role": "Catalytic reforming-unit process control operator operating a distributed control system console",
+    "objective": "Maintain safe and stable heater and process conditions while meeting a planned pre-regeneration production target",
+    "incident_type": "Escalating feed-heater temperature excursion involving an initially discounted alarm, rising pressure differential, abnormal heat shimmer, and incomplete root-cause correction",
+    "confidence": 0.99
+  },
+  "structure_audit": {
+    "estimated_word_count": 1190,
+    "within_target_range": true,
+    "decision_point_count": 4,
+    "decision_points": [
+      {
+        "id": 1,
+        "summary": "At shift handover, the operator acknowledges a high-temperature alarm as likely nuisance instrumentation behavior and does not promptly inspect the concurrent rising pressure-differential trend.",
+        "evidence_before": [
+          "Red, audible feed-heater outlet-temperature alarm",
+          "Operator's readily retrieved memories of repeated recent nuisance trips",
+          "Unreviewed pressure-differential trend rising on another screen"
+        ],
+        "evidence_after": [
+          "Alarm is acknowledged and silenced",
+          "Pressure-differential trend is not reviewed until later",
+          "The incident subsequently appears more consequential after temperature escalation and the shimmer report"
+        ],
+        "goals_constraints": [
+          "Complete shift handover",
+          "Manage an intrusive alarm",
+          "Maintain control-room awareness"
+        ],
+        "alternatives": [
+          "Dispatch a field operator to independently verify the thermocouple",
+          "Open the pressure-differential trend alongside the alarm",
+          "Check the actual alarm record and compare prior nuisance trips with current conditions"
+        ],
+        "decision_basis": "The operator relied on a quickly retrieved internal pattern of prior nuisance alarms without checking the actual log, dates, or comparability of earlier cases, while attention was drawn to the more prominent annunciator.",
+        "time_pressure": "Low to moderate; handover was in progress, but no trip setpoint or immediate emergency is described.",
+        "uncertainty": "Moderate; the operator had an alarm, an unverified recalled history, and an unexamined potentially contradictory process trend."
+      },
+      {
+        "id": 2,
+        "summary": "The operator accepts a recent stable handover report, discounts an older unresolved heater-duty drift because it is several days old, and automatically executes the routine feed-increase sequence.",
+        "evidence_before": [
+          "Night-shift report that the unit had been stable for four hours",
+          "Immediate trend appearing consistent with recent stability",
+          "Older board-log note identifying an unresolved upward heater-duty drift",
+          "Earlier high-temperature alarm and unreviewed pressure-differential trend"
+        ],
+        "evidence_after": [
+          "Feed increase is completed using the routine sequence",
+          "Outlet temperature climbs more than expected",
+          "Field operator reports abnormal heat shimmer near the firebox"
+        ],
+        "goals_constraints": [
+          "Increase throughput before regeneration",
+          "Operate within a six-hour pre-outage window",
+          "Maintain expected production schedule"
+        ],
+        "alternatives": [
+          "Delay the feed increase",
+          "Review the multi-day process trend",
+          "Determine whether the older drift had actually stopped",
+          "Consult the process engineer before changing setpoints"
+        ],
+        "decision_basis": "The operator treated the last few clean hours as sufficient reason to dismiss an unresolved older drift without checking whether the condition had ended, then followed the familiar feed-increase sequence automatically.",
+        "time_pressure": "Moderate; the regeneration outage was approximately six hours away.",
+        "uncertainty": "Moderate to high; recent apparent stability conflicted with unresolved longer-horizon evidence and abnormal precursor information."
+      },
+      {
+        "id": 3,
+        "summary": "After a temperature increase and heat-shimmer report, the operator applies a diagnostic template from a superficially similar compressor-surge event and considers a memorable historical tube rupture disproportionately likely.",
+        "evidence_before": [
+          "High-temperature alarm",
+          "Unexpected outlet-temperature rise after the feed increase",
+          "Field report of heat shimmer near the firebox",
+          "Memory of a past compressor surge event",
+          "Memory of a dramatic, frequently discussed prior tube rupture"
+        ],
+        "evidence_after": [
+          "The operator does not immediately obtain fresh heater-specific data",
+          "The operator does not initially request an independent instrument check",
+          "Later engineering review identifies absent markers for both recalled failure modes"
+        ],
+        "goals_constraints": [
+          "Diagnose an emerging abnormal process condition",
+          "Choose a response path before further escalation"
+        ],
+        "alternatives": [
+          "Treat the event as a new heater-specific case",
+          "Pull fresh heater-specific process data before selecting a diagnosis",
+          "Request independent instrument verification",
+          "Compare current observations with discriminating markers from both historical cases"
+        ],
+        "decision_basis": "The operator relied on surface resemblance to a prior surge case and on the vividness of a heavily discussed tube-rupture event despite missing case-specific diagnostic markers.",
+        "time_pressure": "Moderate and increasing; the process is worsening, though trip setpoints have not yet been reached.",
+        "uncertainty": "High; several explanations remain plausible and essential distinguishing data are not initially checked."
+      },
+      {
+        "id": 4,
+        "summary": "With less than 90 minutes before regeneration and worsening trends, the operator selects the first checklist option that appears workable rather than comparing available alternatives or escalating fully.",
+        "evidence_before": [
+          "Under 90 minutes before regeneration",
+          "Temperature and pressure still rising",
+          "No trip setpoint yet reached",
+          "Standard heater-excursion checklist",
+          "Potential 20-to-30-minute process-engineer escalation discussion"
+        ],
+        "evidence_after": [
+          "Immediate process trend stabilizes",
+          "Later review identifies another checklist action that may have better addressed the underlying issue"
+        ],
+        "goals_constraints": [
+          "Stabilize the unit promptly",
+          "Avoid losing the regeneration window",
+          "Limit further operational escalation"
+        ],
+        "alternatives": [
+          "Compare all relevant checklist options",
+          "Escalate fully to the process engineer",
+          "Briefly consult the engineer before selecting an action",
+          "Choose an action optimized for root-cause resolution rather than immediate stabilization"
+        ],
+        "decision_basis": "The operator satisficed by selecting the first option that appeared capable of stabilizing the trend and explicitly did not compare the rest of the checklist.",
+        "time_pressure": "High; the available operating window was closing while indicators continued to worsen.",
+        "uncertainty": "Moderate; the immediate stabilization need was clear, but the root cause and best complete corrective action remained uncertain."
+      }
+    ]
+  },
+  "target_occurrence_audit": [
+    {
+      "instance_id": "av_01",
+      "bias": "Availability Bias",
+      "requested_occurrences_for_bias": 2,
+      "status": "supported",
+      "decision_point": 1,
+      "supporting_quote": "Those past calls came to mind pretty fast... I didn't pull the actual log to check the dates or whether those prior trips looked like this one — the pattern in my head felt strong enough on its own.",
+      "evidence_location": "Decision point 1, initial alarm account and later explanation of the alarm-acknowledgment decision.",
+      "mechanism": "The operator estimates the likelihood that the alarm is false from readily retrievable memories of recent nuisance episodes rather than checking the actual alarm record or assessing whether those earlier events were comparable to the current condition. The inference is driven by recalled frequency and accessibility.",
+      "strength": "moderate",
+      "confidence": 0.96,
+      "plausible_nonbias_explanation": "Past repeated false alarms are relevant operational evidence. The occurrence is nevertheless supported because the operator explicitly relies on remembered cases without verifying their number, dates, or comparability before treating the current event as routine.",
+      "additional_evidence_needed": "None required.",
+      "revision_needed": false,
+      "revision": {
+        "revision_type": "none",
+        "location": "Decision point 1, initial alarm-history explanation.",
+        "current_defect": "None material.",
+        "minimal_change_instruction": "No change needed.",
+        "preserve": [
+          "The distinction between recalled nuisance-event frequency and verified alarm-log evidence",
+          "The decision to acknowledge the alarm without independent verification",
+          "The separate salience mechanism involving the pressure-differential trend"
+        ],
+        "avoid_creating": [
+          "A second availability episode at decision point 1",
+          "An explicit textbook statement naming the bias",
+          "A claim that prior alarm experience is never legitimate evidence"
+        ],
+        "expected_post_revision_status": "supported"
+      }
+    },
+    {
+      "instance_id": "sal_01",
+      "bias": "Salience Bias",
+      "requested_occurrences_for_bias": 1,
+      "status": "supported",
+      "decision_point": 1,
+      "supporting_quote": "I was focused on the panel itself — it's the loudest thing in the room when it goes off. There was actually a pressure-differential trend creeping up on one of the other screens... no flashing, nothing urgent-looking.",
+      "evidence_location": "Decision point 1, response to whether the operator checked anything else after the alarm.",
+      "mechanism": "The red annunciator and audible tone receive disproportionate attention because of their perceptual prominence, while the quieter and less visually urgent pressure-differential trend is not inspected despite being potentially relevant.",
+      "strength": "moderate",
+      "confidence": 0.98,
+      "plausible_nonbias_explanation": "Immediate acknowledgment of an audible alarm may be procedurally appropriate. The bias occurrence is supported because the participant directly attributes delayed inspection of competing evidence to the alarm's perceptual prominence.",
+      "additional_evidence_needed": "None required.",
+      "revision_needed": false,
+      "revision": {
+        "revision_type": "none",
+        "location": "Decision point 1, alarm-versus-trend account.",
+        "current_defect": "None material.",
+        "minimal_change_instruction": "No change needed.",
+        "preserve": [
+          "The simultaneous competing evidence sources",
+          "The difference in visual and auditory prominence",
+          "The delayed review of the pressure-differential trend"
+        ],
+        "avoid_creating": [
+          "A new claim that the trend was unavailable",
+          "An accidental second attentional-bias episode later in the scenario"
+        ],
+        "expected_post_revision_status": "supported"
+      }
+    },
+    {
+      "instance_id": "rec_01",
+      "bias": "Recency Bias",
+      "requested_occurrences_for_bias": 1,
+      "status": "supported",
+      "decision_point": 2,
+      "supporting_quote": "I mostly wrote it off just because it was a few days old — didn't go back and check whether that drift had actually stopped or just wasn't showing up in the last four hours.",
+      "evidence_location": "Decision point 2, explanation for discounting the older board-log note.",
+      "mechanism": "The operator gives disproportionate weight to the most recent four-hour handover and clean immediate trend while discounting older unresolved evidence primarily because it is older, without checking whether the documented drift had actually ended.",
+      "strength": "strong",
+      "confidence": 0.98,
+      "plausible_nonbias_explanation": "Recent operational data can legitimately be more informative than older evidence. The occurrence is supported because the participant expressly says the older information was dismissed due to age despite its unresolved status and without verification of resolution.",
+      "additional_evidence_needed": "None required.",
+      "revision_needed": false,
+      "revision": {
+        "revision_type": "none",
+        "location": "Decision point 2, handover and board-log discussion.",
+        "current_defect": "None material.",
+        "minimal_change_instruction": "No change needed.",
+        "preserve": [
+          "The temporal contrast between the four-hour handover and several-day-old unresolved note",
+          "The failure to verify whether the older drift had stopped",
+          "The separate automatic-routine mechanism for habit intrusion"
+        ],
+        "avoid_creating": [
+          "Frequency-based or vividness-based language that would merge this occurrence with availability bias",
+          "A second recency episode at the final checklist decision"
+        ],
+        "expected_post_revision_status": "supported"
+      }
+    },
+    {
+      "instance_id": "hab_01",
+      "bias": "Habit Intrusion",
+      "requested_occurrences_for_bias": 1,
+      "status": "supported",
+      "decision_point": 2,
+      "supporting_quote": "If I'm honest, automatic. It's muscle memory at this point. I wasn't sitting there weighing pros and cons — I was just executing the steps I always execute for a feed bump.",
+      "evidence_location": "Decision point 2, response regarding whether the feed-increase decision was deliberate or automatic.",
+      "mechanism": "The operator performs a highly practiced feed-increase action sequence automatically despite alarm and drift conditions that called for a pause, reassessment, or deviation from the routine. The account reflects action-schema intrusion rather than a deliberate evaluative mistake.",
+      "strength": "strong",
+      "confidence": 0.99,
+      "plausible_nonbias_explanation": "Routine execution is ordinarily a legitimate method for reducing workload. Here, the participant explicitly reports automatic execution without considering whether abnormal precursor conditions required adaptation.",
+      "additional_evidence_needed": "None required.",
+      "revision_needed": false,
+      "revision": {
+        "revision_type": "none",
+        "location": "Decision point 2, feed-increase sequence explanation.",
+        "current_defect": "None material.",
+        "minimal_change_instruction": "No change needed.",
+        "preserve": [
+          "The repeated and automatic nature of the feed-increase sequence",
+          "The abnormal precursor conditions",
+          "The distinction from the recency-based current-state judgment"
+        ],
+        "avoid_creating": [
+          "A claim that all procedure use is biased",
+          "A duplicate habit-intrusion occurrence at the final checklist decision"
+        ],
+        "expected_post_revision_status": "supported"
+      }
+    },
+    {
+      "instance_id": "sim_01",
+      "bias": "Similarity Bias",
+      "requested_occurrences_for_bias": 1,
+      "status": "supported",
+      "decision_point": 3,
+      "supporting_quote": "It reminded me a lot of a compressor surge event I dealt with about a year and a half ago on a similar unit. Handled that one fine, so my instinct was to pull that same response template... we didn't have that [vibration signature] here at all.",
+      "evidence_location": "Decision point 3, diagnostic reasoning after the temperature increase and field report of heat shimmer.",
+      "mechanism": "The operator transfers a response template from a superficially similar compressor-surge event while failing initially to test a key distinguishing feature: the expected compressor-vibration signature is absent in the current case.",
+      "strength": "strong",
+      "confidence": 0.98,
+      "plausible_nonbias_explanation": "Analogical use of a prior incident is a legitimate diagnostic starting point. The bias is supported because the operator leaned into the template without checking the absent differentiating signal before choosing a diagnostic direction.",
+      "additional_evidence_needed": "None required.",
+      "revision_needed": false,
+      "revision": {
+        "revision_type": "none",
+        "location": "Decision point 3, compressor-surge comparison.",
+        "current_defect": "None material.",
+        "minimal_change_instruction": "No change needed.",
+        "preserve": [
+          "The prior compressor-surge precedent",
+          "The missing vibration signature",
+          "The distinction between surface-similarity template transfer and tube-rupture memorability"
+        ],
+        "avoid_creating": [
+          "A new causal claim that the earlier surge event caused the current event",
+          "A second similarity occurrence based on the tube-rupture memory"
+        ],
+        "expected_post_revision_status": "supported"
+      }
+    },
+    {
+      "instance_id": "av_02",
+      "bias": "Availability Bias",
+      "requested_occurrences_for_bias": 2,
+      "status": "supported",
+      "decision_point": 3,
+      "supporting_quote": "That one jumped to mind too, and honestly it felt like the more likely explanation just because it's the one people bring up in every shift briefing... It just felt present because it's such a memorable event.",
+      "evidence_location": "Decision point 3, account of the prior tube-rupture incident.",
+      "mechanism": "The operator inflates the likelihood of a tube rupture because a dramatic prior incident is memorable and repeatedly discussed, despite the later finding that none of the specific markers for that failure mode are present.",
+      "strength": "strong",
+      "confidence": 0.99,
+      "plausible_nonbias_explanation": "A severe historical tube rupture can properly warrant consideration as a safety-critical possibility. The occurrence is supported because the participant explicitly identifies memorability and repeated discussion, rather than current markers, as the source of perceived likelihood.",
+      "additional_evidence_needed": "None required.",
+      "revision_needed": false,
+      "revision": {
+        "revision_type": "none",
+        "location": "Decision point 3, tube-rupture comparison.",
+        "current_defect": "None material.",
+        "minimal_change_instruction": "No change needed.",
+        "preserve": [
+          "The dramatic and repeatedly discussed historical incident",
+          "The absence of current tube-rupture-specific markers",
+          "The contrast with av_01's recalled-frequency mechanism"
+        ],
+        "avoid_creating": [
+          "A second similarity-bias episode for the tube-rupture case",
+          "A claim that a remembered severe event should never be considered operationally"
+        ],
+        "expected_post_revision_status": "supported"
+      }
+    },
+    {
+      "instance_id": "br_01",
+      "bias": "Bounded Rationality",
+      "requested_occurrences_for_bias": 1,
+      "status": "supported",
+      "decision_point": 4,
+      "supporting_quote": "I went with the first checklist option that looked like it would stabilize things. Didn't run through the rest of the list comparing them — just needed something workable fast.",
+      "evidence_location": "Decision point 4, final checklist selection under the closing regeneration window.",
+      "mechanism": "The operator selects the first option that appears sufficient for immediate stabilization rather than comparing known available alternatives, explicitly satisficing under time and attention constraints.",
+      "strength": "strong",
+      "confidence": 0.98,
+      "plausible_nonbias_explanation": "A quick stabilization decision may be justified under worsening conditions. The occurrence is supported because the participant identifies both resource constraints and an explicit decision to forgo comparison of available checklist alternatives.",
+      "additional_evidence_needed": "None required.",
+      "revision_needed": false,
+      "revision": {
+        "revision_type": "none",
+        "location": "Decision point 4, final corrective-action selection.",
+        "current_defect": "None material.",
+        "minimal_change_instruction": "No change needed.",
+        "preserve": [
+          "The under-90-minute time constraint",
+          "The available checklist alternatives",
+          "The distinction between immediate stabilization and complete root-cause correction",
+          "The participant's statement that the first option was workable rather than certainly best"
+        ],
+        "avoid_creating": [
+          "A claim that every time-constrained decision is biased",
+          "A duplicate habit-intrusion occurrence based solely on use of a checklist"
+        ],
+        "expected_post_revision_status": "supported"
+      }
+    }
+  ],
+  "bias_level_counts": [
+    {
+      "bias": "Availability Bias",
+      "requested_count": 2,
+      "supported_count": 2,
+      "weak_count": 0,
+      "absent_count": 0,
+      "merged_count": 0,
+      "accidental_count": 0,
+      "count_satisfied": true
+    },
+    {
+      "bias": "Recency Bias",
+      "requested_count": 1,
+      "supported_count": 1,
+      "weak_count": 0,
+      "absent_count": 0,
+      "merged_count": 0,
+      "accidental_count": 0,
+      "count_satisfied": true
+    },
+    {
+      "bias": "Habit Intrusion",
+      "requested_count": 1,
+      "supported_count": 1,
+      "weak_count": 0,
+      "absent_count": 0,
+      "merged_count": 0,
+      "accidental_count": 0,
+      "count_satisfied": true
+    },
+    {
+      "bias": "Salience Bias",
+      "requested_count": 1,
+      "supported_count": 1,
+      "weak_count": 0,
+      "absent_count": 0,
+      "merged_count": 0,
+      "accidental_count": 0,
+      "count_satisfied": true
+    },
+    {
+      "bias": "Similarity Bias",
+      "requested_count": 1,
+      "supported_count": 1,
+      "weak_count": 0,
+      "absent_count": 0,
+      "merged_count": 0,
+      "accidental_count": 0,
+      "count_satisfied": true
+    },
+    {
+      "bias": "Bounded Rationality",
+      "requested_count": 1,
+      "supported_count": 1,
+      "weak_count": 0,
+      "absent_count": 0,
+      "merged_count": 0,
+      "accidental_count": 0,
+      "count_satisfied": true
+    }
+  ],
+  "additional_candidate_biases": [
+    {
+      "bias": "Premature closure",
+      "decision_point": 1,
+      "supporting_quote": "I could've dispatched the field guy right then to verify the thermocouple independently, or pulled up the pressure trend side by side before acknowledging. I didn't do either — the history just made it feel like a formality.",
+      "mechanism": "The participant may have accepted a nuisance-alarm explanation before seeking readily available corroborating or disconfirming evidence.",
+      "confidence": 0.59,
+      "status": "rejected",
+      "plausible_nonbias_explanation": "This is not independently separable from av_01 and sal_01. It is better treated as the behavioral consequence of recalled-frequency availability and salience-driven attention allocation, not as an additional bias occurrence.",
+      "revision_recommendation": "none"
+    },
+    {
+      "bias": "Overconfidence Bias",
+      "decision_point": 1,
+      "supporting_quote": "Pretty confident, honestly. Maybe overconfident looking back.",
+      "mechanism": "The participant retrospectively describes confidence in the nuisance-alarm judgment.",
+      "confidence": 0.37,
+      "status": "rejected",
+      "plausible_nonbias_explanation": "Retrospective admission of possible overconfidence does not establish miscalibrated confidence at the time. The interview does not provide a confidence estimate, an objectively warranted certainty benchmark, or evidence that confidence independently influenced the decision.",
+      "revision_recommendation": "none"
+    }
+  ],
+  "nonbias_cues": [
+    {
+      "cue": "The operator has six years of board experience and has executed the standard feed-increase sequence many times.",
+      "location": "Role introduction and decision point 2.",
+      "why_not_bias": "Experience and procedural familiarity are not biases. Habit intrusion is supported only because the participant reports automatic execution without adapting to abnormal precursor conditions."
+    },
+    {
+      "cue": "The process is under schedule pressure before a regeneration outage.",
+      "location": "Decision points 2 and 4.",
+      "why_not_bias": "Production timing and an approaching outage are organizational constraints. They become relevant to bounded rationality only because the operator explicitly chooses the first workable checklist action without comparing alternatives."
+    },
+    {
+      "cue": "The selected final checklist action stabilizes the immediate process trend.",
+      "location": "Decision point 4 outcome.",
+      "why_not_bias": "A favorable immediate result neither proves that the initial reasoning was sound nor establishes that it was biased. The bounded-rationality occurrence rests on the documented selection process, not the eventual outcome."
+    },
+    {
+      "cue": "The engineer later states that markers for tube rupture were absent.",
+      "location": "Decision point 3 retrospective probe.",
+      "why_not_bias": "Later engineering review is not itself proof of bias. It serves as evidence only because the participant says the memorable past event felt likely despite not checking for those differentiating markers at the time."
+    },
+    {
+      "cue": "The recent handover report and immediate trend indicate four hours of stability.",
+      "location": "Decision point 2.",
+      "why_not_bias": "Recent process data can be legitimately informative. Recency bias is supported here only because the unresolved older drift is explicitly dismissed because it is old, without verifying whether it was resolved."
+    }
+  ],
+  "causal_audit": {
+    "causal_claims": [
+      {
+        "claim": "Viewing the pressure-differential trend alongside the initial alarm would have reframed the incident earlier.",
+        "assessment": "Plausible retrospective causal claim about information timing and diagnosis. It is reasonably coherent but remains a participant counterfactual, not a demonstrated causal result."
+      },
+      {
+        "claim": "Another checklist action probably would have addressed the underlying issue more effectively.",
+        "assessment": "Appropriately hedged. The claim is supported as a later-review assessment but lacks the technical failure analysis needed to establish that the alternative would definitively have prevented or resolved the underlying condition."
+      },
+      {
+        "claim": "No prior nuisance-alarm history would have led the operator to inspect the pressure trend immediately.",
+        "assessment": "A useful participant-level counterfactual linking alarm-history beliefs to evidence selection. It is plausible and consistent with av_01 and sal_01, though it does not hold all other operational variables explicitly constant."
+      }
+    ],
+    "correlation_causation_risks": [
+      {
+        "risk": "The narrative may be read as showing that the operator's alarm acknowledgment caused the physical heater excursion.",
+        "explanation": "The interview supports a possible contribution through delayed investigation and feed increase, but it does not establish that the reasoning episode caused the underlying equipment or process failure."
+      },
+      {
+        "risk": "The later review's preferred corrective action may be interpreted as proof that the selected action was wrong.",
+        "explanation": "The text supports the narrower conclusion that the selected action stabilized the immediate condition but may have been less complete for root-cause treatment."
+      }
+    ],
+    "counterfactual_present": true,
+    "changed_variable": "The interview includes retrospective hypothetical changes to alarm-history context, earlier availability of the pressure-differential trend, and time available before regeneration.",
+    "held_constant": [],
+    "causal_coherence": "moderate",
+    "explanation": "The interview includes useful causal probes, particularly the hypothetical removal of prior nuisance-alarm history and the earlier presentation of the pressure-differential trend. However, it is not a formal paired counterfactual design: the interview does not explicitly hold process state, workload, handover content, and other decision conditions constant. This does not violate the hidden specification because no paired scenario or required counterfactual variable is specified."
+  },
+  "quality_scores": {
+    "occupational_realism": 92,
+    "cta_fidelity": 93,
+    "bias_separability": 91,
+    "bias_subtlety": 88,
+    "control_fidelity": 100,
+    "counterfactual_fidelity": 76,
+    "narrative_coherence": 93,
+    "naturalness": 89,
+    "hidden_label_integrity": 95,
+    "overall_quality": 92
+  },
+  "revision_summary": {
+    "revision_required": false,
+    "supported_occurrence_total": 7,
+    "requested_occurrence_total": 7,
+    "missing_occurrence_total": 0,
+    "accidental_occurrence_total": 0,
+    "priority": "none",
+    "recommended_action": "accept",
+    "global_revision_constraints": [
+      "No substantive revision is required.",
+      "If stylistic editing is performed, preserve the distinction between av_01's recalled-frequency mechanism and av_02's vividness-and-memorability mechanism.",
+      "Preserve the four-decision-point chronology and the separate reasoning operations within each paired decision point.",
+      "Do not turn retrospective self-awareness into explicit bias-label language or add further bias instances."
+    ],
+    "revision_order": []
+  },
+  "failure_flags": []
+}

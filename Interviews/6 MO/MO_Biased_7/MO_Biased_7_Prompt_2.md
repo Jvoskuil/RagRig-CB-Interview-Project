@@ -1,0 +1,332 @@
+You are an expert occupational interviewer and realistic dialogue writer.
+
+Generate one simulated cognitive task analysis interview from the supplied generation specification. The interview will be given to an independent evaluator that must infer whether specified cognitive biases are present. Do not reveal the labels or your construction process.
+
+INPUT
+Generation specification:
+{{"scenario_id": "MO_Biased_7",
+  "domain_id": "MO",
+  "domain": "Maritime Operations",
+  "role": "Dynamic Positioning Operator (Offshore Support Vessel)",
+  "condition": "biased",
+  "generation_specification": {
+    "scenario_title_internal": "Reference Drift During Cargo Transfer at North Sea Platform",
+    "scenario_summary_internal": "A DPO aboard a DP2-class offshore support vessel is conducting a scheduled cargo transfer alongside a fixed platform under a closing weather window. A reference-system discrepancy appears early in the approach, is resolved in a way that favors the DPO's initial mental model, and is never fully re-examined. As the transfer proceeds, a thruster caution and worsening wind trend compete with schedule pressure and sunk time already invested in the operation. A crane-boom fixation causes a late wind-shift cue to be under-weighted. Near the end of the job, the decision to finish the last lift versus suspend operations is framed around minutes remaining rather than proximity risk, and the vessel experiences a controlled but uncomfortably close approach toward the platform before operations are suspended. No collision or DP loss of position beyond safe limits occurs, so the incident is a near-miss learning event rather than a casualty, keeping outcome information ambiguous as evidence of bias.",
+    "occupational_realism": {
+      "objective": "Complete a scheduled cargo transfer of deck cargo and bulk material from the OSV to a fixed offshore platform under DP2 station-keeping, within a forecast weather window, without breaching safe approach distance or DP capability limits.",
+      "setting": "North Sea fixed platform, DP2-class offshore support vessel on standby/cargo-transfer duty, daylight, forecast deteriorating sea state (rising from 2.5m to 3.5m Hs) over a 4-hour window, cargo crane operations alongside the platform leg.",
+      "constraints": [
+        "Closing weather window before conditions exceed platform crane operating limits",
+        "Limited remaining vessel time on charter before transit to next location",
+        "DP2 redundancy requirement (loss of one reference system must not compromise position-keeping)",
+        "Crew fatigue from an extended shift",
+        "Communication lag between crane operator, platform OIM, and bridge team"
+      ],
+      "stakeholders": [
+        "Dynamic Positioning Operator (interviewee)",
+        "Master / DP2 co-operator",
+        "Platform Installation Manager (OIM)",
+        "Crane operator",
+        "Vessel superintendent (shore-based, schedule pressure)"
+      ],
+      "technical_terms_to_use": [
+        "DP2 redundancy concept",
+        "reference system (DGPS, HPR, laser/Fanbeam)",
+        "footprint plot",
+        "consequence analysis",
+        "thruster caution alarm",
+        "green/yellow/red DP status",
+        "safe working envelope",
+        "watch circle",
+        "weather window"
+      ],
+      "technical_terms_to_avoid": [
+        "confirmation bias",
+        "automation bias",
+        "inattentional blindness",
+        "hindsight bias",
+        "sunk cost",
+        "status quo bias",
+        "framing effect",
+        "any explicit bias or heuristic terminology"
+      ]
+    },
+    "timeline": [
+      {
+        "phase": 1,
+        "decision_point": true,
+        "facts_available_before_decision": [
+          "DGPS1 and HPR show a 1.8m position discrepancy during final approach",
+          "DGPS2 agrees closely with DGPS1",
+          "DP system auto-selected DGPS1/DGPS2 as the weighted reference pair, showing overall GREEN status",
+          "No maintenance flag currently logged against HPR"
+        ],
+        "new_information_after_decision": [
+          "HPR later shown to have a valid multipath-related offset consistent with proximity to the platform structure",
+          "The discrepancy trend continues but stays within the DP2 alert threshold at this stage"
+        ],
+        "alternatives": [
+          "Accept the DP system's auto-weighted reference pair and proceed with approach",
+          "Manually down-weight or flag HPR pending a deeper cross-check before closing distance"
+        ],
+        "intended_action": "DPO accepts the two agreeing GPS references as sufficient confirmation, treats the HPR reading as the outlier without further independent cross-check, and proceeds with the approach relying on the system's GREEN status."
+      },
+      {
+        "phase": 2,
+        "decision_point": true,
+        "facts_available_before_decision": [
+          "Approximately 55% of cargo has been transferred; two lifts remain",
+          "Thruster 3 shows a yellow caution for reduced power availability",
+          "DP consequence analysis still shows adequate capability with the caution active",
+          "Weather forecast confirms Hs will exceed platform crane limits within roughly 70 minutes"
+        ],
+        "new_information_after_decision": [
+          "Thruster 3 caution persists at a stable but unresolved severity through the remaining transfer",
+          "The vessel superintendent radios a reminder about the tight onward transit schedule"
+        ],
+        "alternatives": [
+          "Suspend the transfer, move to a safe standby distance, and reassess DP capability before continuing",
+          "Switch to a more conservative operating mode (e.g., reduce reference reliance, tighten watch circle) while continuing at reduced pace",
+          "Continue the transfer at the current pace and mode on the basis that DP2 capability is still nominally sufficient"
+        ],
+        "intended_action": "DPO continues cargo transfer in the existing DP Auto configuration at the existing pace, citing the completed portion of the job and the closing weather window, without adjusting mode or reassessing the operating plan in light of the new caution."
+      },
+      {
+        "phase": 3,
+        "decision_point": true,
+        "facts_available_before_decision": [
+          "DPO's attention is concentrated on the crane boom position display during the final lift",
+          "A new wind-shift alert changes the vessel's heading/footprint recommendation on the DP plot",
+          "The environmental sensor trend line has shifted for roughly 90 seconds prior to the lift's completion",
+          "No audible alarm accompanies the footprint plot change, only a visual indicator"
+        ],
+        "new_information_after_decision": [
+          "The wind shift is confirmed moments later by the Master, who notices the vessel's heel/attitude change",
+          "The footprint plot indicator had been visually available the entire time on a secondary screen"
+        ],
+        "alternatives": [
+          "Periodically scan the DP footprint and environmental displays independently of crane progress",
+          "Delegate footprint/environmental monitoring explicitly to the co-operator during the final lift",
+          "Remain focused primarily on the crane boom display until the lift is landed"
+        ],
+        "intended_action": "DPO remains focused on the crane boom display through the final lift and does not register the footprint plot change until prompted by the Master, despite the indicator being visible on a secondary screen."
+      },
+      {
+        "phase": 4,
+        "decision_point": true,
+        "facts_available_before_decision": [
+          "One final, smaller lift remains, estimated at 8-10 minutes",
+          "Wind and swell have increased since Phase 3, narrowing the safe working envelope",
+          "Thruster 3 caution and the earlier reference discrepancy are both still present but not escalated to red/alarm status",
+          "OIM asks whether the vessel can finish the last lift or should stand off"
+        ],
+        "new_information_after_decision": [
+          "The vessel's separation from the platform decreases more than expected during the final maneuvering, prompting an early suspension of the lift",
+          "Post-event review shows the combination of reduced thruster margin and reference offset had been narrowing the safe envelope for some time"
+        ],
+        "alternatives": [
+          "Suspend the final lift now and move to standby distance given the narrowing envelope",
+          "Complete the final lift on the basis that only a few minutes remain and equipment is still within nominal status"
+        ],
+        "intended_action": "DPO frames the decision to the OIM around the short remaining time needed to finish ('just a few more minutes') rather than around the shrinking safety margin, and elects to proceed with the final lift before conditions force an early suspension."
+      }
+    ],
+    "probe_plan": {
+      "opening": [
+        "Describe your role and responsibilities during this cargo transfer operation.",
+        "Walk me through what a routine transfer alongside this platform normally looks like."
+      ],
+      "timeline_reconstruction": [
+        "Take me through the operation from approach to the final lift, in the order things happened.",
+        "What were you monitoring at each stage, and how did that change as the job progressed?"
+      ],
+      "decision_point_probes": [
+        "At the point where the reference systems disagreed, what information did you use to decide which was correct?",
+        "What made you comfortable continuing the transfer once the thruster caution appeared?",
+        "What were you focused on during the final lift, and how did you become aware of the wind shift?",
+        "When the OIM asked about finishing the last lift, what factors did you weigh in your answer?",
+        "What alternatives did you consider at each of these points, and why did you rule them out?"
+      ],
+      "closing_hypotheticals": [
+        "If the HPR discrepancy had appeared without the GPS agreement, would your approach have differed?",
+        "Looking back, do you think there were earlier indications of the eventual close approach to the platform?",
+        "If you were advising a newer DPO facing a similar sequence, what would you tell them to watch for?",
+        "What, if anything, would you do differently if this situation arose again?"
+      ]
+    },
+    "occurrence_embedding_plan_internal": [
+      {
+        "instance_id": "cb_01",
+        "bias": "Confirmation Bias",
+        "decision_point": 1,
+        "mechanism": "DPO treats agreement between DGPS1 and DGPS2 as sufficient confirmation of position accuracy and interprets the conflicting HPR reading as the erroneous outlier without seeking disconfirming or independent cross-check evidence",
+        "affected_reasoning_operation": "evidence-selection and evidence-weighting during reference validation",
+        "evidence_available_at_time": [
+          "1.8m discrepancy between HPR and the DGPS pair",
+          "No prior maintenance flag on HPR",
+          "DP system GREEN status based on auto-selected weighting"
+        ],
+        "required_textual_manifestation": "DPO explains the decision by citing only the two agreeing sources and dismissing HPR without describing any independent verification step",
+        "plausible_nonbias_interpretation": "Two-out-of-three agreement is a legitimate operational heuristic under time pressure, so the choice could reflect ordinary reliance on majority-reference logic rather than biased evidence selection",
+        "strength": "subtle",
+        "do_not_make_explicit": ["confirmation bias", "cherry-picking", "selective evidence"]
+      },
+      {
+        "instance_id": "ab_01",
+        "bias": "Automation Bias",
+        "decision_point": 1,
+        "mechanism": "DPO defers to the DP system's automatically weighted reference selection and overall GREEN status as sufficient justification to proceed, without independently interpreting the raw discrepancy data",
+        "affected_reasoning_operation": "trust calibration between automated system output and independent manual judgment",
+        "evidence_available_at_time": [
+          "DP system auto-weighting output showing GREEN",
+          "Raw discrepancy data visible on the reference system page",
+          "DPO's own training on manual reference validation"
+        ],
+        "required_textual_manifestation": "DPO's stated justification centers on the system's status indicator itself rather than an independent manual assessment of the raw data",
+        "plausible_nonbias_interpretation": "Trusting a certified DP system's automated consequence analysis is standard practice and consistent with the vessel's approved operating procedures",
+        "strength": "subtle",
+        "do_not_make_explicit": ["automation bias", "over-reliance on automation"]
+      },
+      {
+        "instance_id": "hb_01",
+        "bias": "Hindsight Bias",
+        "decision_point": 1,
+        "mechanism": "When asked retrospectively about early warning signs, DPO overstates how foreseeable the reference discrepancy's significance was at the time, framing it as something that 'should have been obvious' despite it appearing marginal and within tolerance in the moment",
+        "affected_reasoning_operation": "retrospective probability/foreseeability judgment during closing reflection on the Phase 1 decision",
+        "evidence_available_at_time": [
+          "Contemporaneous discrepancy was within the DP2 alert threshold, not flagged as abnormal at the time",
+          "Later review confirmed the discrepancy was linked to platform-proximity multipath, learned only after the event"
+        ],
+        "required_textual_manifestation": "In response to a closing hypothetical, DPO states the discrepancy pattern was clearly indicative of trouble, in stronger terms than the contemporaneous alert status supports",
+        "plausible_nonbias_interpretation": "An experienced operator may legitimately recognize a pattern in hindsight that genuinely was subtly present, without this reflecting distorted memory of foreseeability",
+        "strength": "subtle",
+        "do_not_make_explicit": ["hindsight bias", "creeping determinism", "knew-it-all-along"]
+      },
+      {
+        "instance_id": "sc_01",
+        "bias": "Sunk cost bias",
+        "decision_point": 2,
+        "mechanism": "DPO's justification for continuing the transfer emphasizes the proportion of cargo already transferred and time already invested, rather than a forward-looking reassessment of current DP capability and risk given the new thruster caution",
+        "affected_reasoning_operation": "cost-weighting in the continue-versus-suspend decision",
+        "evidence_available_at_time": [
+          "~55% of cargo already transferred",
+          "Thruster 3 yellow caution newly active",
+          "Consequence analysis still nominally adequate"
+        ],
+        "required_textual_manifestation": "DPO explicitly references the completed portion of work or elapsed effort as a reason to continue, alongside or instead of a fresh capability assessment",
+        "plausible_nonbias_interpretation": "Completing a partially finished lift sequence can be operationally preferable to a partial suspend-and-resume cycle, independent of any sunk-cost reasoning",
+        "strength": "subtle",
+        "do_not_make_explicit": ["sunk cost", "escalation of commitment"]
+      },
+      {
+        "instance_id": "sq_01",
+        "bias": "Status Quo Bias",
+        "decision_point": 2,
+        "mechanism": "DPO retains the existing DP Auto configuration and pace after the thruster caution rather than actively considering a more conservative mode change, treating the current setup as the default that need not be revisited absent a red alarm",
+        "affected_reasoning_operation": "option-generation and default-preservation when a new caution condition arises",
+        "evidence_available_at_time": [
+          "Thruster 3 caution active but not escalated to red",
+          "Available mode/pace adjustment options were procedurally accessible",
+          "No requirement mandated staying in the current configuration"
+        ],
+        "required_textual_manifestation": "DPO's account shows no active comparison of mode-change alternatives; the current configuration is preserved by default rather than by a stated reason to prefer it",
+        "plausible_nonbias_interpretation": "Maintaining a stable, previously validated configuration during an active lift can be a deliberate stability-preserving choice rather than a default bias",
+        "strength": "subtle",
+        "do_not_make_explicit": ["status quo bias", "default preservation", "inertia"]
+      },
+      {
+        "instance_id": "sa_01",
+        "bias": "Selective Attention Bias or Inattentional Blindness",
+        "decision_point": 3,
+        "mechanism": "DPO's sustained visual and cognitive focus on the crane boom display during the final lift causes a visually-available footprint plot change (wind-shift indicator) to go unnoticed until an external party points it out",
+        "affected_reasoning_operation": "perceptual monitoring and attentional allocation across competing displays",
+        "evidence_available_at_time": [
+          "Footprint plot indicator change visible on secondary screen for ~90 seconds",
+          "No audible alarm accompanying the visual change",
+          "Crane boom display requiring continuous visual tracking during the lift"
+        ],
+        "required_textual_manifestation": "DPO states or implies they did not register the footprint change until the Master mentioned it, despite the indicator having been visible the whole time",
+        "plausible_nonbias_interpretation": "Reasonable task prioritization during an active lift can justify concentrated attention on the crane display as the higher-priority task in that moment",
+        "strength": "moderate",
+        "do_not_make_explicit": ["inattentional blindness", "selective attention", "tunnel vision"]
+      },
+      {
+        "instance_id": "fb_01",
+        "bias": "Framing Bias",
+        "decision_point": 4,
+        "mechanism": "The decision to proceed with the final lift is verbally and cognitively framed by the DPO around the small amount of time remaining ('just a few more minutes') rather than around the narrowing safety envelope, shaping the choice toward continuation",
+        "affected_reasoning_operation": "decision framing in the continue-versus-suspend judgment communicated to the OIM",
+        "evidence_available_at_time": [
+          "Estimated 8-10 minutes to complete final lift",
+          "Narrowing safe working envelope from combined thruster and reference conditions",
+          "OIM's direct question inviting either frame of response"
+        ],
+        "required_textual_manifestation": "DPO's stated rationale to the OIM foregrounds remaining time/completion rather than the margin/risk trend, even though both pieces of information were available",
+        "plausible_nonbias_interpretation": "Time-to-completion is a legitimate operational factor in a suspend/continue decision and can reasonably be mentioned without indicating biased framing",
+        "strength": "subtle",
+        "do_not_make_explicit": ["framing bias", "gain framing", "loss framing"]
+      }
+    ],
+    "control_specification": {
+      "paired_scenario_id": null,
+      "features_to_match": [],
+      "features_to_remove_or_change": [],
+      "ambiguity_boundary": "Not applicable for this biased-condition scenario; no paired control is specified in this request."
+    },
+    "counterfactual_specification": {
+      "causal_variable": "Not applicable - no counterfactual condition requested",
+      "original_state": "N/A",
+      "counterfactual_state": "N/A",
+      "variables_to_hold_constant": [],
+      "expected_causal_difference": "N/A",
+      "causal_test_question": "N/A"
+    },
+    "generation_checks": [
+      "Confirm exactly 4 decision points, each with at least two plausible alternatives",
+      "Confirm exactly 7 planned bias instances, one per manifest entry",
+      "Confirm no bias terminology, labels, or explanations appear in the public interview text",
+      "Confirm each instance has a distinct evidence trace and decision point per the internal embedding plan",
+      "Confirm final word count falls between 1,215 and 1,485 words",
+      "Confirm consequences described (near-approach, suspension) do not mechanically prove any decision was biased",
+      "Confirm probes cover cues, information sources, goals, alternatives, decision basis, prior experience, time pressure, uncertainty, and hypotheticals"
+    ]
+  }}}
+
+WRITING REQUIREMENTS
+1. Produce only the interview, with no preface, postscript, analysis, labels, answer key, bias names, or JSON.
+2. Use approximately 1,350 words, with an acceptable range of 1,215–1,485 words.
+3. Use exactly four decision points.
+4. Write a natural semi-structured CTA interview between an interviewer and a domain-credible participant. Include both questions and answers.
+5. Begin with a brief consent/role/context exchange, then obtain an incident account, reconstruct the timeline, revisit the four decision points, probe the participant's reasoning, and end with relevant hypotheticals.
+6. Make the participant's account coherent, specific, and occupationally plausible. Include concrete cues, information sources, goals, constraints, alternatives, time pressure, uncertainty, prior experience, and consequences.
+7. Make the target biases inferable from patterns of reasoning, not from vocabulary that names or defines them.
+8. Do not make every decision biased. Preserve natural variation, including justified reasoning and uncertainty.
+9. Do not equate an incorrect decision or bad outcome with a bias. Include enough context for alternative explanations to remain possible.
+10. Keep the number of decision points, actors, technical terms, and narrative complexity aligned with the specification.
+11. For multiple target biases, distribute them across the incident. Each bias must have a distinct manifestation, but interactions may occur naturally.
+12. For `vocabulary_control`, preserve the same occupational vocabulary and narrative complexity while writing decisions supported by balanced evidence and reasonable consideration of alternatives. Do not insert target-bias evidence.
+13. For `ambiguous_control`, include genuinely ambiguous reasoning that has plausible non-bias explanations, but do not intentionally instantiate a target bias. Do not use exaggerated contradiction or suspiciously artificial neutrality.
+14. For `counterfactual`, minimally alter the specified causal variable. Preserve all other material facts, wording patterns, and decision structure as far as possible. Make the changed variable causally relevant, not merely correlated with the outcome.
+15. Include at least one probe asking what information would have changed the decision and one probe asking what would have happened if a key feature had been different.
+16. Do not add facts that contradict the generation specification.
+17. Avoid stereotypes, protected-class generalizations, and gratuitous sensitive content.
+
+RECOMMENDED STRUCTURE
+- Opening and role context: 100–150 words.
+- Initial incident account: 250–350 words.
+- Timeline reconstruction: 150–200 words.
+- Four decision-point sections with probes: 550–650 words total.
+- Closing reflection and hypothetical: 150–250 words.
+
+DIALOGUE STYLE
+- Label turns as `Interviewer:` and `Participant:`.
+- Let answers vary in length and certainty.
+- Use natural repairs, qualifications, and references to evidence.
+- Avoid repeatedly asking the same generic question.
+- Do not explicitly state that the participant is biased, unbiased, rational, irrational, or subject to an experimental condition.
+
+FINAL SILENT CHECK
+Before outputting, verify word count, four decision points, domain realism, target-bias concealment, control fidelity, and causal minimality where applicable. If a target bias cannot be represented without becoming obvious or implausible, revise the incident rather than explaining the problem.
+
+OUTPUT
+Return only the interview text.

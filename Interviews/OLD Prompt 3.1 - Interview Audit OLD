@@ -1,0 +1,123 @@
+GPT 5.6 Thinking - Prompt 3.1 - Interview Audit OLD
+You are an independent benchmark auditor specializing in cognitive task analysis, naturalistic decision-making, cognitive-bias annotation, and causal reasoning.
+
+Audit the interview below. Do not assume that the interview generator followed instructions. Do not infer a bias merely because the outcome was bad, the participant was uncertain, the participant used experience, or the participant made a fast decision. Distinguish a cognitive bias from justified expertise, appropriate heuristics, missing information, organizational constraints, hindsight, ordinary error, and an unfavorable outcome.
+
+INTERVIEW TO AUDIT
+{{PASTE INTERVIEW HERE}}
+
+OPTIONAL BLINDING SETTINGS
+- Do not use any hidden target-bias list.
+- Do not use any generator annotations.
+- If a candidate bias cannot be supported from the text alone, mark it as unsupported or indeterminate.
+
+AUDIT TASKS
+1. Identify the occupational domain, participant role, operational objective, and incident type.
+2. Reconstruct the chronology and identify the four most important decision points. If there are not exactly four, report the discrepancy.
+3. For each decision point, extract:
+   - information available before the decision;
+   - information learned afterward;
+   - goals and constraints;
+   - alternatives that were available or considered;
+   - stated or inferable basis for the choice;
+   - evidence of uncertainty and time pressure.
+4. Identify every candidate cognitive bias supported by the interview. Use the supplied taxonomy if provided; otherwise use standard bias names cautiously and define each one operationally.
+5. For each candidate bias, provide:
+   - bias name;
+   - decision point and exact supporting quotation or short span;
+   - reasoning mechanism;
+   - strength: absent, weak, moderate, or strong;
+   - confidence from 0 to 100;
+   - strongest plausible non-bias explanation;
+   - what additional evidence would be needed to establish the bias more firmly.
+6. Identify apparent bias cues that should NOT be labeled as bias because they are adequately explained by expertise, valid evidence, policy, risk management, time pressure, or the information available at the time.
+7. Evaluate whether the interview contains an actual causal claim or only correlation. Note any outcome-based or hindsight-based reasoning.
+8. Assess whether a counterfactual test is present. If it is, identify the changed variable, what was held constant, and whether the stated causal consequence follows. If it is absent, say so.
+9. Evaluate benchmark quality: realism, coherence, naturalness, hidden-label integrity, bias separability, ambiguity, occupational vocabulary, and length.
+10. Estimate the word count and report whether it falls within 1,215–1,485 words.
+
+ANNOTATION PRINCIPLES
+- Require a mechanism, not a keyword.
+- Require evidence that the reasoning was distorted, selectively processed, or systematically miscalibrated relative to the information and alternatives reasonably available at the time.
+- Do not label a behavior solely because it resembles a bias in hindsight.
+- When multiple biases overlap, identify the dominant bias and list secondary candidates separately.
+- Penalize forced, theatrical, repetitive, or textbook-like manifestations.
+- Penalize a control interview if it contains a defensible instance of a named bias.
+- For ambiguous cases, preserve uncertainty rather than forcing a binary judgment.
+
+OUTPUT
+Return valid JSON only:
+{
+  "validator_version": "1.0",
+  "interview_id": "...",
+  "domain_assessment": {
+    "domain": "...",
+    "role": "...",
+    "objective": "...",
+    "incident_type": "...",
+    "confidence": 0
+  },
+  "structure_audit": {
+    "estimated_word_count": 0,
+    "within_target_range": true,
+    "decision_point_count": 0,
+    "decision_points": [
+      {
+        "id": 1,
+        "summary": "...",
+        "evidence_before": [],
+        "evidence_after": [],
+        "goals_constraints": [],
+        "alternatives": [],
+        "decision_basis": "...",
+        "time_pressure": "...",
+        "uncertainty": "..."
+      }
+    ]
+  },
+  "candidate_biases": [
+    {
+      "bias": "...",
+      "decision_point": 1,
+      "supporting_quote": "...",
+      "mechanism": "...",
+      "strength": "absent|weak|moderate|strong",
+      "confidence": 0,
+      "plausible_nonbias_explanation": "...",
+      "additional_evidence_needed": "..."
+    }
+  ],
+  "nonbias_cues": [
+    {
+      "cue": "...",
+      "location": "...",
+      "why_not_bias": "..."
+    }
+  ],
+  "causal_audit": {
+    "causal_claims": [],
+    "correlation_causation_risks": [],
+    "counterfactual_present": false,
+    "changed_variable": "...",
+    "held_constant": [],
+    "causal_coherence": "not_applicable|weak|moderate|strong",
+    "explanation": "..."
+  },
+  "quality_scores": {
+    "occupational_realism": 0,
+    "cta_fidelity": 0,
+    "bias_separability": 0,
+    "bias_subtlety": 0,
+    "control_fidelity": 0,
+    "counterfactual_fidelity": 0,
+    "narrative_coherence": 0,
+    "naturalness": 0,
+    "hidden_label_integrity": 0,
+    "overall_quality": 0
+  },
+  "failure_flags": [],
+  "recommended_action": "accept|revise|reject",
+  "revision_instructions": []
+}
+
+Use integer scores from 0 to 5 for quality fields, where 0 means unusable and 5 means excellent. Return JSON only.

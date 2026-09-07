@@ -1,0 +1,725 @@
+You are a controlled CTA interview editor. Revise the interview only where explicitly instructed by the validation report.
+
+Inputs:
+- Original interview: {{Interviewer: Thanks for making time for this. Just to confirm, this is a routine cognitive task analysis interview — I'm looking to understand how you actually reasoned through the feedwater heater trend during the ascension test, not to evaluate your performance. Everything stays de-identified for training and procedure review purposes. Sound okay?
+
+Participant: Yeah, that's fine. I figured this was coming after the work order got written up.
+
+Interviewer: Good, let's start broad. Can you walk me through what you were doing when you first noticed the temperature trend?
+
+Participant: Sure. We were about three hours into the ascension test, sitting around 90 percent power, working toward the dispatch commitment at end of shift. I was at the controls, doing my normal rounds on the trend recorders, and I caught that heater 1B outlet temperature had crept up about three degrees over maybe twenty minutes. Train 1A was steady, no issue there. No alarm, nothing outside our Tech Spec limit. My first thought honestly was, "here we go again" — we'd had a calibration deviation on that exact sensor last cycle, logged and closed out. So I figured that was probably it.
+
+Interviewer: What was going through your head at that point, in terms of goals and pressures?
+
+Participant: Main thing was getting to a hundred percent within the dispatch window — we had about two hours of slack at that point. I wasn't in a panic, but I was aware the schedule mattered. And with the calibration history sitting right there in my head, the drift didn't feel like something new. It felt like the same story playing out again.
+
+Interviewer: Let's reconstruct the timeline a bit before we get into the decisions themselves. After you first noticed the drift, what happened next?
+
+Participant: I logged it as consistent with the prior calibration pattern and kept going with the ascension sequence. About fifteen minutes later the trend was still creeping, still shallow, still inside limits. Then a bit after that — maybe forty minutes in total — a maintenance tech doing an unrelated walkdown radioed that the 1B heater shell felt warmer than usual on his infrared scanner. Shortly after that call, the trend recorder actually started flattening out as we approached the final ascension step.
+
+Interviewer: Okay, let's go through this decision by decision. First one: when you saw that initial drift, what alternatives did you actually consider?
+
+Participant: There were really two options. Either treat it as the same calibration issue from last cycle and just keep trending, or treat it as something new and call for an independent instrument check, maybe get I&C down there. I went with the first.
+
+Interviewer: What made you settle on that one?
+
+Participant: The pattern matched what we'd seen before — small, slow rise, no other train affected, no alarm. When something lines up that cleanly with a known cause, it's hard not to read it that way. I didn't really see a strong reason to go pull I&C off what they were doing for something that already had an explanation on file.
+
+Interviewer: Did you consider what it would take to rule that explanation out?
+
+Participant: Not really, no. I suppose I could've asked for a quick independent check on the sensor loop, but at the time it seemed like it would've been overkill given what I was looking at.
+
+Interviewer: Second decision point. The trend kept climbing slightly, and you had a discretionary hold point available where you could've briefed the STA before continuing. What went into that call?
+
+Participant: The STA was right there, actually, just hadn't said anything to him yet about it. I remember thinking it "felt manageable" — the number was moving, but slowly, and we still had margin to the limit and time in the schedule. I didn't sit down and work through the hold-point criteria formally, if I'm honest. It was more of a quick gut check — this looks like the same thing, we've got room, let's keep the momentum going and I'll mention it at the next shift briefing.
+
+Interviewer: Was the dispatch window part of that calculation?
+
+Participant: A little, yeah. Stopping to formally brief would've meant slowing the pace, and I didn't feel like the data demanded that yet.
+
+Interviewer: Right after that, the technician's infrared call came in. Walk me through how you weighed that against what you were seeing on the trend recorder.
+
+Participant: That's the one I've gone back and forth on since. His reading suggested localized heating, which is a bit different from what a simple sensor drift would look like. But my trend recorder was showing this nice smooth rise, exactly the shape I associated with the calibration issue. I had that graph in front of me continuously — I'd been watching it for almost an hour. His reading was a single handheld measurement, called in over the radio.
+
+Interviewer: How did you end up weighting the two?
+
+Participant: I leaned toward the trend data. Partly because it was the instrument I trust for that parameter, and partly because, honestly, he doesn't spend his day reading control room trends the way we do — his experience is more hands-on with the equipment itself, not with interpreting these signatures. I figured his reading was probably picking up ambient heat or an inconsistent scan angle, something like that. So I logged it as likely noise from the handheld device rather than something that changed my read on the situation.
+
+Interviewer: Did anything about that reasoning give you pause?
+
+Participant: A little, yeah. He's not wrong about heat exchangers — that's literally his specialty. But in the moment, my trend line just felt like the stronger evidence.
+
+Interviewer: Last decision point. As you approached the final step to a hundred percent, the trend had started flattening. What led you to proceed rather than hold?
+
+Participant: At that point I had the flattening trend, which fit with the calibration story settling back down, plus the history from last cycle. Time was getting tighter on the dispatch commitment too. I didn't loop back to the technician's earlier call at that point — my attention was on the ascension step itself and whether the number in front of me supported moving forward. Given what I was looking at right then, it seemed like enough to go.
+
+Interviewer: Did you consider requesting a hold for independent verification before that step?
+
+Participant: I thought about it briefly, but between the schedule and what the trend was showing, it didn't seem necessary at the time.
+
+Interviewer: How much uncertainty did you feel across all of this?
+
+Participant: Some, especially after the tech's call. But nothing that crossed into "this violates a limit" territory, so it stayed more like background noise than something driving the decisions.
+
+Interviewer: Let's close with a couple of hypotheticals. If that infrared call had come from another licensed operator instead of a maintenance tech, do you think you'd have weighed it differently?
+
+Participant: Probably, yeah. I think I'd have taken it more seriously right away rather than filing it as likely noise.
+
+Interviewer: And if the trend had kept climbing instead of flattening near the final step?
+
+Participant: Then I think I would've held and called the STA in properly. The flattening is honestly what let me feel okay proceeding.
+
+Interviewer: Last one — looking back, is there a point where, with the same information you had, you might've made a different call?
+
+Participant: Maybe the second one. I could've just briefed the STA early and let him weigh in, even without hard evidence something was wrong. It wouldn't have cost us much time, and it would've gotten another set of eyes on it before things went further.
+
+Interviewer: That's helpful, thank you. I think that covers everything I needed.
+}}
+- Hidden generation specification: {{"hidden_validation_specification": {
+    "hidden_spec_version": "1.0",
+    "condition": "biased",
+    "exact_occurrence_manifest": [
+      {
+        "bias": "Confirmation Bias",
+        "occurrences": 2,
+        "mechanism_constraint": "One instance at initial ambiguous-evidence interpretation (decision point 1); one instance at discounting new disconfirming field evidence (decision point 3). Must use distinct evidence sources."
+      },
+      {
+        "bias": "Imperfect Rationality",
+        "occurrences": 1,
+        "mechanism_constraint": "Expressed as a non-systematic, satisficing escalation decision at decision point 2, not as an outcome failure."
+      },
+      {
+        "bias": "Salience Bias",
+        "occurrences": 1,
+        "mechanism_constraint": "Expressed as overweighting the visually prominent trend recorder over a verbally reported field observation at decision point 3."
+      },
+      {
+        "bias": "Similarity Bias",
+        "occurrences": 1,
+        "mechanism_constraint": "Expressed as discounting a source based on dissimilar role/background rather than content, at decision point 3."
+      },
+      {
+        "bias": "Bounded Rationality",
+        "occurrences": 1,
+        "mechanism_constraint": "Expressed as an incomplete-information final integrative decision under time/cognitive constraints at decision point 4."
+      }
+    ],
+    "target_bias_names": [
+      "Confirmation Bias",
+      "Imperfect Rationality",
+      "Salience Bias",
+      "Similarity Bias",
+      "Bounded Rationality"
+    ],
+    "requested_occurrence_count_for_each_bias": [
+      { "bias": "Confirmation Bias", "requested_occurrences": 2 },
+      { "bias": "Imperfect Rationality", "requested_occurrences": 1 },
+      { "bias": "Salience Bias", "requested_occurrences": 1 },
+      { "bias": "Similarity Bias", "requested_occurrences": 1 },
+      { "bias": "Bounded Rationality", "requested_occurrences": 1 }
+    ],
+    "planned_instance_ids": [
+      { "instance_id": "cb_01", "bias": "Confirmation Bias" },
+      { "instance_id": "cb_02", "bias": "Confirmation Bias" },
+      { "instance_id": "ir_01", "bias": "Imperfect Rationality" },
+      { "instance_id": "sb_01", "bias": "Salience Bias" },
+      { "instance_id": "sim_01", "bias": "Similarity Bias" },
+      { "instance_id": "br_01", "bias": "Bounded Rationality" }
+    ],
+    "intended_decision_points": [
+      { "instance_id": "cb_01", "bias": "Confirmation Bias", "decision_point": 1 },
+      { "instance_id": "cb_02", "bias": "Confirmation Bias", "decision_point": 3 },
+      { "instance_id": "ir_01", "bias": "Imperfect Rationality", "decision_point": 2 },
+      { "instance_id": "sb_01", "bias": "Salience Bias", "decision_point": 3 },
+      { "instance_id": "sim_01", "bias": "Similarity Bias", "decision_point": 3 },
+      { "instance_id": "br_01", "bias": "Bounded Rationality", "decision_point": 4 }
+    ],
+    "intended_mechanisms": [
+      {
+        "instance_id": "cb_01",
+        "bias": "Confirmation Bias",
+        "mechanism": "Selective interpretation of ambiguous drift as matching a known prior-cycle belief, without seeking disconfirming checks",
+        "affected_reasoning_operation": "Initial hypothesis selection",
+        "evidence_source": "trend recorder drift plus prior-cycle calibration log",
+        "distinctiveness_requirement": "Occurs at initial evidence interpretation before any conflicting data exists; distinct from cb_02 which involves discounting new conflicting data"
+      },
+      {
+        "instance_id": "cb_02",
+        "bias": "Confirmation Bias",
+        "mechanism": "Reinterpreting new disconfirming field evidence (infrared reading) as noise to preserve the pre-existing calibration-drift belief",
+        "affected_reasoning_operation": "Belief updating in response to new conflicting evidence",
+        "evidence_source": "technician's infrared handheld reading",
+        "distinctiveness_requirement": "Occurs after new disconfirming evidence arrives, at a different decision point and evidence source than cb_01"
+      },
+      {
+        "instance_id": "ir_01",
+        "bias": "Imperfect Rationality",
+        "mechanism": "Non-exhaustive, satisficing weighing of escalation criteria under time and information constraints, rather than systematic evaluation",
+        "affected_reasoning_operation": "Escalation/deferral decision-making",
+        "evidence_source": "trend continuation, hold-point procedure, dispatch schedule",
+        "distinctiveness_requirement": "Distinct from bounded rationality instance (br_01) by focusing on the escalation judgment process itself rather than integration of multiple data sources at the final step"
+      },
+      {
+        "instance_id": "sb_01",
+        "bias": "Salience Bias",
+        "mechanism": "Overweighting the continuously visible trend graph relative to a verbally reported one-time field observation",
+        "affected_reasoning_operation": "Evidence source weighting",
+        "evidence_source": "trend recorder display versus radioed verbal report",
+        "distinctiveness_requirement": "Distinct from cb_02 by focusing on visual prominence/attention capture rather than belief-preservation motive"
+      },
+      {
+        "instance_id": "sim_01",
+        "bias": "Similarity Bias",
+        "mechanism": "Discounting technician's report based on dissimilarity of role/training rather than content of the observation",
+        "affected_reasoning_operation": "Source credibility assessment",
+        "evidence_source": "technician's background/role as stated in the report",
+        "distinctiveness_requirement": "Distinct from sb_01 and cb_02 by grounding the discounting in source identity/similarity rather than evidence format or belief consistency"
+      },
+      {
+        "instance_id": "br_01",
+        "bias": "Bounded Rationality",
+        "mechanism": "Using a limited subset of available information for the final go decision due to cognitive/time constraints, without revisiting unresolved uncertainty",
+        "affected_reasoning_operation": "Final integrative go/no-go judgment",
+        "evidence_source": "flattening trend, prior precedent, unresolved technician report",
+        "distinctiveness_requirement": "Distinct from ir_01 by occurring at the final integrative decision point and reflecting information-processing capacity limits rather than escalation-judgment style"
+      }
+    ],
+    "intended_strength": [
+      { "instance_id": "cb_01", "bias": "Confirmation Bias", "strength": "subtle" },
+      { "instance_id": "cb_02", "bias": "Confirmation Bias", "strength": "subtle" },
+      { "instance_id": "ir_01", "bias": "Imperfect Rationality", "strength": "subtle" },
+      { "instance_id": "sb_01", "bias": "Salience Bias", "strength": "subtle" },
+      { "instance_id": "sim_01", "bias": "Similarity Bias", "strength": "subtle" },
+      { "instance_id": "br_01", "bias": "Bounded Rationality", "strength": "subtle" }
+    ],
+    "paired_scenario_id": null,
+    "counterfactual_variable": {
+      "name": null,
+      "original_state": null,
+      "changed_state": null,
+      "variables_to_hold_constant": []
+    },
+    "scenario_id": "NP_Biased_6",
+    "domain_id": "NP",
+    "total_requested_occurrences": 6,
+    "total_planned_occurrences": 6,
+    "allocation_rule_used": "Occurrences distributed across 4 decision points by mechanism fit: decision point 1 received one confirmation-bias instance (initial interpretation); decision point 2 received the imperfect-rationality instance (escalation judgment); decision point 3 received three instances (second confirmation-bias occurrence, salience bias, similarity bias), each tied to a distinct evidence source or reasoning operation (belief-preservation vs. visual prominence vs. source-identity discounting) per the multi-occurrence-per-point rule; decision point 4 received the bounded-rationality instance (final integrative judgment). No bias exceeded two instances at a single decision point, and no two instances at the same decision point shared an evidence source or reasoning operation.",
+    "control_zero_bias_requirement": false,
+    "variables_to_hold_constant": [],
+    "generation_warnings": [
+      "Decision point 3 carries three distinct bias instances (cb_02, sb_01, sim_01) to satisfy mechanism-fit requirements, since the technician-report conflict is the most natural location for confirmation, salience, and similarity biases to jointly manifest through different evidence-processing routes; each instance is documented with a distinct evidence source and reasoning operation to preserve independent identifiability and avoid redundancy."
+    ]
+  }}}
+- Validation report: {{{
+  "validator_version": "2.0",
+  "interview_id": "NP_Biased_6",
+  "condition": "biased",
+  "domain_assessment": {
+    "domain": "Nuclear power plant operations during a power-ascension test",
+    "role": "Licensed control-room operator managing feedwater-heater monitoring and escalation decisions",
+    "objective": "Complete the ascension to 100 percent power within the dispatch window while maintaining safe, procedurally appropriate monitoring and escalation",
+    "incident_type": "Ambiguous upward temperature trend on feedwater heater 1B, followed by a potentially disconfirming field infrared observation",
+    "confidence": 0.98
+  },
+  "structure_audit": {
+    "estimated_word_count": 1325,
+    "within_target_range": true,
+    "decision_point_count": 4,
+    "decision_points": [
+      {
+        "id": 1,
+        "summary": "The participant interpreted the initial shallow heater 1B outlet-temperature increase as likely recurring sensor-calibration drift and continued the ascension sequence.",
+        "evidence_before": [
+          "Heater 1B outlet temperature increased by approximately three degrees over roughly 20 minutes",
+          "Train 1A was steady",
+          "No alarm was active",
+          "The reading remained within Technical Specification limits",
+          "A calibration deviation involving the same sensor had occurred and been closed out during the prior cycle"
+        ],
+        "evidence_after": [
+          "The trend continued to creep upward over the next approximately 15 minutes"
+        ],
+        "goals_constraints": [
+          "Reach 100 percent power within the dispatch commitment",
+          "Approximately two hours of schedule slack remained",
+          "Avoid unnecessarily diverting I&C resources"
+        ],
+        "alternatives": [
+          "Treat the trend as recurrence of the prior calibration issue and continue trending",
+          "Treat the trend as novel and request an independent instrument or sensor-loop check"
+        ],
+        "decision_basis": "The participant matched the slow, small rise and absence of alarms to the remembered prior calibration pattern and did not seek an independent disconfirming check.",
+        "time_pressure": "Moderate schedule awareness, but no immediate limit violation or urgent operational deadline.",
+        "uncertainty": "Initially low to moderate; the participant considered the prior calibration explanation sufficient."
+      },
+      {
+        "id": 2,
+        "summary": "With the trend still rising, the participant chose not to use an available discretionary hold point or brief the STA before continuing.",
+        "evidence_before": [
+          "The temperature trend was still increasing, though shallowly",
+          "A discretionary hold point was available",
+          "The STA was physically present",
+          "Margin to the limit and time in the schedule remained"
+        ],
+        "evidence_after": [
+          "A maintenance technician later reported unusually warm heater-shell conditions by infrared scan"
+        ],
+        "goals_constraints": [
+          "Maintain ascension momentum",
+          "Avoid slowing the test for a formal briefing",
+          "Meet the dispatch window"
+        ],
+        "alternatives": [
+          "Pause at the discretionary hold point and brief the STA",
+          "Continue and defer discussion until the next shift briefing"
+        ],
+        "decision_basis": "The participant made a quick, informal 'felt manageable' judgment rather than systematically working through the hold-point criteria.",
+        "time_pressure": "Moderate; stopping would slow the test but the participant still described available margin.",
+        "uncertainty": "Recognized but treated as manageable because the trend remained within limits and was consistent with the initial explanation."
+      },
+      {
+        "id": 3,
+        "summary": "After a maintenance technician reported localized heating from an infrared scan, the participant weighted the continuously displayed trend recorder more heavily and classified the technician's report as likely handheld-device noise.",
+        "evidence_before": [
+          "The technician reported that the 1B heater shell felt warmer than usual on an infrared scanner",
+          "Localized heating was acknowledged as differing from a simple sensor-drift pattern",
+          "The control-room trend showed a smooth temperature rise associated in memory with the prior calibration issue"
+        ],
+        "evidence_after": [
+          "The trend later began to flatten approaching the final ascension step"
+        ],
+        "goals_constraints": [
+          "Maintain a reliable interpretation of the anomalous trend",
+          "Avoid unnecessary escalation",
+          "Continue toward the dispatch commitment"
+        ],
+        "alternatives": [
+          "Treat the infrared observation as potentially disconfirming and seek corroboration or an independent check",
+          "Give greater weight to the trend recorder and log the infrared observation as likely noise"
+        ],
+        "decision_basis": "The participant emphasized the continuously visible, familiar trend display; discounted the field observation as possibly ambient heat or scan-angle variation; and partly discounted the technician because of role differences in interpreting control-room trends.",
+        "time_pressure": "Moderate, driven by the ongoing test and schedule, although no immediate forced-choice deadline is described.",
+        "uncertainty": "Explicitly increased after the technician's call, but the participant did not convert that uncertainty into a verification action."
+      },
+      {
+        "id": 4,
+        "summary": "When the trend flattened near the final step to 100 percent power, the participant proceeded without requesting a hold or revisiting the unresolved infrared observation.",
+        "evidence_before": [
+          "The temperature trend had begun flattening",
+          "The participant retained the prior-cycle calibration explanation",
+          "The earlier technician report remained unresolved",
+          "Time pressure toward the dispatch commitment had increased"
+        ],
+        "evidence_after": [
+          "The participant proceeded with the final ascension step"
+        ],
+        "goals_constraints": [
+          "Meet the dispatch commitment",
+          "Execute the final ascension step",
+          "Manage attention during a consequential operational transition"
+        ],
+        "alternatives": [
+          "Proceed based on the flattening trend and prior history",
+          "Request a hold and independent verification before proceeding"
+        ],
+        "decision_basis": "The participant relied on the flattening trend and prior precedent, while reporting that attention was focused on the ascension step rather than returning to the unresolved technician observation.",
+        "time_pressure": "Increasing, though not described as an emergency or a condition requiring immediate action.",
+        "uncertainty": "Present but deprioritized as background noise because no Technical Specification limit had been violated."
+      }
+    ]
+  },
+  "target_occurrence_audit": [
+    {
+      "instance_id": "cb_01",
+      "bias": "Confirmation Bias",
+      "requested_occurrences_for_bias": 2,
+      "status": "weak",
+      "decision_point": 1,
+      "supporting_quote": "“My first thought honestly was, ‘here we go again’ ... So I figured that was probably it.” ... “I didn't really see a strong reason to go pull I&C off what they were doing for something that already had an explanation on file.”",
+      "evidence_location": "Initial detection and first-decision discussion, before the technician's infrared report.",
+      "mechanism": "The participant prematurely treated a remembered prior calibration event as the leading explanation and did not seek an inexpensive disconfirming check.",
+      "strength": "weak",
+      "confidence": 0.74,
+      "plausible_nonbias_explanation": "The prior event involved the same sensor, the current pattern was reportedly similar, the other train was steady, no alarm was active, and limits were not approached. A provisional calibration-drift interpretation could therefore be an appropriate base-rate-informed operational judgment rather than selective confirmation.",
+      "additional_evidence_needed": "Evidence that the participant did not compare the current pattern against expected features of the prior calibration event, did not consider a known differentiating indicator, or applied less scrutiny to the calibration explanation than to alternatives.",
+      "revision_needed": true,
+      "revision": {
+        "revision_type": "probe_revision",
+        "location": "Decision point 1, immediately after the participant says that the known explanation made I&C involvement seem like overkill.",
+        "current_defect": "The participant's reliance on the prior calibration event is compatible with justified pattern recognition and normal resource prioritization; the text does not yet show selective testing of a favored hypothesis.",
+        "minimal_change_instruction": "Add one brief probe and answer establishing that the operator did not compare the current event with a readily available differentiating cue from the prior calibration event because the remembered label and overall shape already seemed sufficient. For example, elicit that he did not check whether the other signature expected in the previous sensor fault was present, because he was already treating the case as the same event.",
+        "preserve": [
+          "The same shallow trend, lack of alarm, steady 1A train, and prior calibration history",
+          "The two stated alternatives",
+          "The absence of conflicting field evidence at decision point 1",
+          "The subtle rather than explicit presentation of the mechanism"
+        ],
+        "avoid_creating": [
+          "A second confirmation-bias occurrence at decision point 1",
+          "An implication that normal use of maintenance history is inherently biased",
+          "New salience, source-credibility, or procedural-violation mechanisms"
+        ],
+        "expected_post_revision_status": "supported"
+      }
+    },
+    {
+      "instance_id": "ir_01",
+      "bias": "Imperfect Rationality",
+      "requested_occurrences_for_bias": 1,
+      "status": "supported",
+      "decision_point": 2,
+      "supporting_quote": "“I didn't sit down and work through the hold-point criteria formally, if I'm honest. It was more of a quick gut check — this looks like the same thing, we've got room, let's keep the momentum going.”",
+      "evidence_location": "Second-decision discussion concerning the discretionary hold point and possible STA briefing.",
+      "mechanism": "The participant used a non-exhaustive, satisficing escalation judgment rather than systematically evaluating the available hold-point criteria, uncertainty, schedule implications, and value of another reviewer.",
+      "strength": "moderate",
+      "confidence": 0.9,
+      "plausible_nonbias_explanation": "Experienced operators may appropriately use rapid recognition-based decisions when conditions are stable and procedural thresholds are not met. Here, however, the participant explicitly contrasts a quick gut check with a formal review and cites maintaining momentum, making the intended satisficing process observable.",
+      "additional_evidence_needed": "None.",
+      "revision_needed": false,
+      "revision": {
+        "revision_type": "none",
+        "location": "Decision point 2.",
+        "current_defect": "None material.",
+        "minimal_change_instruction": "No change required.",
+        "preserve": [
+          "The participant's explicit distinction between informal judgment and formal hold-point review",
+          "The available schedule margin",
+          "The STA's availability",
+          "The separation from the final integration decision at decision point 4"
+        ],
+        "avoid_creating": [
+          "An explicit assertion that the outcome proves irrationality",
+          "A stronger confirmation-bias cue that duplicates decision point 1"
+        ],
+        "expected_post_revision_status": "supported"
+      }
+    },
+    {
+      "instance_id": "cb_02",
+      "bias": "Confirmation Bias",
+      "requested_occurrences_for_bias": 2,
+      "status": "weak",
+      "decision_point": 3,
+      "supporting_quote": "“His reading suggested localized heating, which is a bit different from what a simple sensor drift would look like.” ... “So I logged it as likely noise from the handheld device rather than something that changed my read on the situation.”",
+      "evidence_location": "Third-decision discussion, after the maintenance technician's infrared observation.",
+      "mechanism": "The participant recognized that the infrared reading was potentially inconsistent with the calibration explanation but reinterpreted it as ambient heat, scan-angle variation, or device noise without a described attempt to test or corroborate either explanation.",
+      "strength": "weak",
+      "confidence": 0.78,
+      "plausible_nonbias_explanation": "A continuous control-room trend from an instrument designated for the parameter may reasonably receive more weight than a single radioed handheld reading with unknown scan angle, emissivity treatment, baseline comparison, or measurement conditions.",
+      "additional_evidence_needed": "Evidence of asymmetric scrutiny: for example, that the participant accepted the trend's fit to the prior story without examining its alternative explanations, while dismissing the field report before asking basic reliability or corroboration questions.",
+      "revision_needed": true,
+      "revision": {
+        "revision_type": "local_reasoning_revision",
+        "location": "Decision point 3, in the answer explaining why the technician's infrared reading was logged as likely noise.",
+        "current_defect": "The current dismissal can be justified by the greater reliability and continuity of a fixed trend instrument relative to a single handheld report. Belief-preserving updating is suggested but not independently established.",
+        "minimal_change_instruction": "Add one subtle sentence showing that the participant assigned possible measurement error to the infrared report without first asking for its baseline, repeat scan, or corroborating observation, while not subjecting the favored calibration interpretation to a comparable check. Keep the participant's stated technical reasons for preferring the trend display.",
+        "preserve": [
+          "The technician's localized-heating observation",
+          "The trend recorder as the participant's preferred evidence source",
+          "The separate visual-prominence cue intended for salience bias",
+          "The separate role-based source assessment intended for the similarity-bias instance"
+        ],
+        "avoid_creating": [
+          "A duplicate confirmation-bias event at the final go decision",
+          "A categorical or obviously irrational rejection of the technician",
+          "A new authority-bias or hostility-based mechanism"
+        ],
+        "expected_post_revision_status": "supported"
+      }
+    },
+    {
+      "instance_id": "sb_01",
+      "bias": "Salience Bias",
+      "requested_occurrences_for_bias": 1,
+      "status": "weak",
+      "decision_point": 3,
+      "supporting_quote": "“I had that graph in front of me continuously — I'd been watching it for almost an hour. His reading was a single handheld measurement, called in over the radio.”",
+      "evidence_location": "Third-decision evidence-weighting discussion.",
+      "mechanism": "The continuously visible graphical display appears to have captured attention and received greater evidentiary weight than a transient verbally reported field observation.",
+      "strength": "weak",
+      "confidence": 0.71,
+      "plausible_nonbias_explanation": "The display was also a continuous measurement from the normal instrument for the parameter, whereas the infrared observation was a one-time handheld reading. Those are legitimate epistemic differences, so the text does not clearly establish that visual prominence rather than evidentiary quality drove the weighting.",
+      "additional_evidence_needed": "A cue that the graph's continuous visual availability continued to dominate the participant's attention even after he recognized the infrared report as technically relevant and could not identify a concrete defect in it.",
+      "revision_needed": true,
+      "revision": {
+        "revision_type": "local_evidence_addition",
+        "location": "Decision point 3, immediately after the participant contrasts the visible graph with the radioed handheld observation.",
+        "current_defect": "Visibility and evidentiary quality are confounded. The graph may have been preferred because it was a higher-quality time series rather than because it was visually prominent.",
+        "minimal_change_instruction": "Add a brief attentional cue, not a bias label: establish that the participant kept returning to the graph because it was continuously displayed and that the radioed observation did not remain mentally present after the call, even though he acknowledged it could indicate genuine localized heating.",
+        "preserve": [
+          "The graph's legitimate role as the normal instrument for the parameter",
+          "The one-time verbal delivery of the infrared report",
+          "The participant's uncertainty after the call",
+          "The distinct confirmation-bias and source-identity mechanisms at the same decision point"
+        ],
+        "avoid_creating": [
+          "A claim that visual data are always inferior or biased",
+          "A second decision episode rather than a source-weighting explanation within decision point 3",
+          "A stronger final-decision bounded-rationality cue at this point"
+        ],
+        "expected_post_revision_status": "supported"
+      }
+    },
+    {
+      "instance_id": "sim_01",
+      "bias": "Similarity Bias",
+      "requested_occurrences_for_bias": 1,
+      "status": "weak",
+      "decision_point": 3,
+      "supporting_quote": "“He doesn't spend his day reading control room trends the way we do — his experience is more hands-on with the equipment itself, not with interpreting these signatures.” ... “If that infrared call had come from another licensed operator ... I'd have taken it more seriously right away.”",
+      "evidence_location": "Third-decision source-credibility discussion and closing hypothetical.",
+      "mechanism": "The participant reports weighting the same substantive observation differently depending on whether it came from a licensed operator versus a maintenance technician.",
+      "strength": "weak",
+      "confidence": 0.68,
+      "plausible_nonbias_explanation": "The participant's distinction could reflect role-relevant expertise: licensed operators may be more experienced in interpreting control-room trends, while the technician may have different expertise. The text also acknowledges that the technician specializes in heat exchangers, making a purely role-based dismissal less clear.",
+      "additional_evidence_needed": "Evidence that the operator discounted the technician because the technician was outside the operator's reference group or lacked shared control-room identity, rather than because the technician lacked a specifically relevant interpretive competency.",
+      "revision_needed": true,
+      "revision": {
+        "revision_type": "local_reasoning_revision",
+        "location": "Decision point 3, in the source-credibility explanation, with support from the final licensed-operator hypothetical.",
+        "current_defect": "The stated reason is partly domain-relevant expertise rather than dissimilarity-based discounting. The hypothetical demonstrates credential sensitivity, but not clearly similarity bias as defined by the manifest.",
+        "minimal_change_instruction": "Retain the technician's actual heat-exchanger expertise, but add a subtle contrast showing that the participant treated an operator's report as more inherently trustworthy because operators 'see the plant the way we see it' or share the control-room frame, despite the technician being the more directly relevant observer of shell heat. Do not make the technician incompetent.",
+        "preserve": [
+          "The technician's hands-on heat-exchanger specialization",
+          "The participant's stated familiarity with control-room trend interpretation",
+          "The licensed-operator hypothetical",
+          "The distinction from salience bias and confirmation bias"
+        ],
+        "avoid_creating": [
+          "An unsupported claim of formal hierarchy or prohibited discrimination",
+          "An authority-bias mechanism that replaces the requested similarity mechanism",
+          "A second source-identity discounting episode elsewhere in the interview"
+        ],
+        "expected_post_revision_status": "supported"
+      }
+    },
+    {
+      "instance_id": "br_01",
+      "bias": "Bounded Rationality",
+      "requested_occurrences_for_bias": 1,
+      "status": "supported",
+      "decision_point": 4,
+      "supporting_quote": "“I didn't loop back to the technician's earlier call at that point — my attention was on the ascension step itself and whether the number in front of me supported moving forward.”",
+      "evidence_location": "Final go/no-go decision before the step to 100 percent power.",
+      "mechanism": "Under increasing schedule pressure and cognitive demands of the final ascension step, the participant used a restricted information set—flattening trend and prior precedent—and did not reintegrate the unresolved infrared observation.",
+      "strength": "moderate",
+      "confidence": 0.88,
+      "plausible_nonbias_explanation": "The flattening trend might reasonably reduce concern, and an operator may appropriately prioritize immediate control actions during a final ascension step. Nonetheless, the participant explicitly identifies an unresolved relevant item and reports not revisiting it because attention was constrained.",
+      "additional_evidence_needed": "None.",
+      "revision_needed": false,
+      "revision": {
+        "revision_type": "none",
+        "location": "Decision point 4.",
+        "current_defect": "None material.",
+        "minimal_change_instruction": "No change required.",
+        "preserve": [
+          "The flattening trend",
+          "The unresolved technician report",
+          "The final-step attentional demand",
+          "The distinction from the earlier discretionary escalation judgment"
+        ],
+        "avoid_creating": [
+          "A claim that time pressure alone proves bias",
+          "A second confirmation-bias occurrence that is indistinguishable from cb_02"
+        ],
+        "expected_post_revision_status": "supported"
+      }
+    }
+  ],
+  "bias_level_counts": [
+    {
+      "bias": "Confirmation Bias",
+      "requested_count": 2,
+      "supported_count": 0,
+      "weak_count": 2,
+      "absent_count": 0,
+      "merged_count": 0,
+      "accidental_count": 0,
+      "count_satisfied": false
+    },
+    {
+      "bias": "Imperfect Rationality",
+      "requested_count": 1,
+      "supported_count": 1,
+      "weak_count": 0,
+      "absent_count": 0,
+      "merged_count": 0,
+      "accidental_count": 0,
+      "count_satisfied": true
+    },
+    {
+      "bias": "Salience Bias",
+      "requested_count": 1,
+      "supported_count": 0,
+      "weak_count": 1,
+      "absent_count": 0,
+      "merged_count": 0,
+      "accidental_count": 0,
+      "count_satisfied": false
+    },
+    {
+      "bias": "Similarity Bias",
+      "requested_count": 1,
+      "supported_count": 0,
+      "weak_count": 1,
+      "absent_count": 0,
+      "merged_count": 0,
+      "accidental_count": 0,
+      "count_satisfied": false
+    },
+    {
+      "bias": "Bounded Rationality",
+      "requested_count": 1,
+      "supported_count": 1,
+      "weak_count": 0,
+      "absent_count": 0,
+      "merged_count": 0,
+      "accidental_count": 0,
+      "count_satisfied": true
+    }
+  ],
+  "additional_candidate_biases": [
+    {
+      "bias": "Premature closure",
+      "decision_point": 1,
+      "supporting_quote": "“There were really two options.” ... “I didn't really see a strong reason to go pull I&C off what they were doing for something that already had an explanation on file.”",
+      "mechanism": "The participant may have settled on the prior calibration explanation before generating or testing a fuller set of fault hypotheses.",
+      "confidence": 0.62,
+      "status": "candidate",
+      "plausible_nonbias_explanation": "The interview may simply summarize the most operationally relevant alternatives, and the available evidence did not require a broad fault-tree analysis at that early stage.",
+      "revision_recommendation": "none"
+    },
+    {
+      "bias": "Plan-continuation bias",
+      "decision_point": 2,
+      "supporting_quote": "“Stopping to formally brief would've meant slowing the pace, and I didn't feel like the data demanded that yet.”",
+      "mechanism": "The desire to maintain ascension momentum and meet dispatch could have increased the threshold for interrupting the established plan.",
+      "confidence": 0.64,
+      "status": "weak",
+      "plausible_nonbias_explanation": "Maintaining the test schedule is a legitimate operational goal when data remain within limits and an escalation path is discretionary.",
+      "revision_recommendation": "remove_or_neutralize"
+    },
+    {
+      "bias": "Authority or credential bias",
+      "decision_point": 3,
+      "supporting_quote": "“If that infrared call had come from another licensed operator instead of a maintenance tech, ... I'd have taken it more seriously right away.”",
+      "mechanism": "The participant states that the source's licensed-operator status would alter the evidentiary weight assigned to the same observation.",
+      "confidence": 0.72,
+      "status": "candidate",
+      "plausible_nonbias_explanation": "Licensed operators may possess role-relevant expertise in operational interpretation, so deference to their reports is not inherently a cognitive bias.",
+      "revision_recommendation": "none"
+    }
+  ],
+  "nonbias_cues": [
+    {
+      "cue": "The reading remained inside Technical Specification limits and no alarm was active.",
+      "location": "Initial trend detection and later uncertainty discussion.",
+      "why_not_bias": "Operating within limits is relevant risk information. It may explain a lower urgency level, but it does not by itself establish underreaction, confirmation bias, or any other cognitive mechanism."
+    },
+    {
+      "cue": "The participant referred to a prior calibration deviation involving the same sensor.",
+      "location": "Decision point 1.",
+      "why_not_bias": "Use of relevant historical experience can be valid recognition-primed decision-making. It becomes confirmation bias only if the participant selectively privileges the prior explanation while avoiding appropriately available disconfirmation."
+    },
+    {
+      "cue": "The trend recorder was a continuous instrument while the infrared observation was a single handheld report.",
+      "location": "Decision point 3.",
+      "why_not_bias": "Continuous, designated instrumentation can legitimately have greater reliability than an uncorroborated handheld measurement. This difference prevents automatic labeling of the weighting as salience bias."
+    },
+    {
+      "cue": "The maintenance technician had different work responsibilities from the operator.",
+      "location": "Decision point 3.",
+      "why_not_bias": "Different roles can carry genuinely different kinds of relevant expertise. Role difference becomes a similarity-based bias only when source identity displaces content-specific competence without a defensible basis."
+    },
+    {
+      "cue": "The participant later said an early STA briefing would have brought another set of eyes to the issue.",
+      "location": "Final retrospective question.",
+      "why_not_bias": "This is retrospective learning and recognition of an available safeguard. It does not demonstrate that the initial decision was necessarily biased with the information and constraints present at the time."
+    }
+  ],
+  "causal_audit": {
+    "causal_claims": [
+      {
+        "claim": "The shallow, smooth rising trend was caused by recurring sensor-calibration drift.",
+        "support_level": "hypothesis only",
+        "issue": "The interview supplies pattern similarity and prior history, but no independent loop check, calibration test, or later diagnostic outcome establishes the cause."
+      },
+      {
+        "claim": "The technician's infrared observation was likely due to ambient heat or inconsistent scan angle.",
+        "support_level": "speculative alternative explanation",
+        "issue": "No scan conditions, repeat readings, emissivity method, baseline, or corroborating field observation are described."
+      },
+      {
+        "claim": "The flattening trend fit the calibration explanation settling back down.",
+        "support_level": "weak temporal-consistency claim",
+        "issue": "Flattening is compatible with the favored explanation but does not demonstrate that explanation caused the pattern or rule out transient equipment behavior."
+      }
+    ],
+    "correlation_causation_risks": [
+      "Similarity between the current trend and a prior calibration event is treated as support for a causal diagnosis without independent verification.",
+      "Temporal flattening is interpreted as diagnostic confirmation despite multiple plausible causes of a changing trend.",
+      "The technician's report is treated as likely measurement artifact without evidence about the measurement process."
+    ],
+    "counterfactual_present": false,
+    "changed_variable": "No formal counterfactual condition is present. The closing hypotheticals vary source identity and trend direction separately as reflective probes, rather than as a controlled causal comparison.",
+    "held_constant": [],
+    "causal_coherence": "moderate",
+    "explanation": "The interview appropriately elicits hypotheses, uncertainty, and later reflection, but it should not be read as proving either sensor drift or genuine localized heating. The two hypotheticals are useful diagnostic probes of source weighting and trend sensitivity, but they do not establish causal effects because other background assumptions are not explicitly held constant."
+  },
+  "quality_scores": {
+    "occupational_realism": 89,
+    "cta_fidelity": 91,
+    "bias_separability": 66,
+    "bias_subtlety": 84,
+    "control_fidelity": 100,
+    "counterfactual_fidelity": 100,
+    "narrative_coherence": 92,
+    "naturalness": 87,
+    "hidden_label_integrity": 72,
+    "overall_quality": 79
+  },
+  "revision_summary": {
+    "revision_required": true,
+    "supported_occurrence_total": 2,
+    "requested_occurrence_total": 6,
+    "missing_occurrence_total": 4,
+    "accidental_occurrence_total": 0,
+    "priority": "medium",
+    "recommended_action": "revise",
+    "global_revision_constraints": [
+      "Preserve the four-decision chronology, the same operator role, the power-ascension setting, and the initial absence of alarms or Technical Specification violations.",
+      "Do not treat a bad outcome, schedule pressure, experienced pattern recognition, or disagreement between roles as bias by itself.",
+      "Repair decision point 3 through distinct local cues: belief-preserving asymmetric scrutiny for cb_02, visual-attention dominance for sb_01, and in-group or shared-frame source discounting for sim_01.",
+      "Do not add a new escalation episode or change the factual status of the trend, technician report, or available hold point.",
+      "Maintain subtlety: the participant should describe information processing and choices, not name cognitive biases or overtly concede irrationality."
+    ],
+    "revision_order": [
+      "Repair cb_01 by eliciting selective non-testing of the prior calibration explanation while retaining the plausible operational basis for that hypothesis.",
+      "Repair cb_02 by making asymmetric scrutiny of the infrared evidence versus the calibration hypothesis observable.",
+      "Repair sb_01 by separating visual prominence from the graph's legitimate measurement-quality advantages.",
+      "Repair sim_01 by separating shared-role or in-group credibility from genuinely relevant expertise differences.",
+      "Review the decision point 3 revisions together to ensure each mechanism remains independently identifiable and does not collapse into one generic dismissal of the technician."
+    ]
+  },
+  "failure_flags": [
+    "The requested confirmation-bias instances are not yet clearly distinguishable from valid use of prior history at decision point 1 and valid reliability concerns about a one-time handheld report at decision point 3.",
+    "The intended salience-bias instance is confounded with legitimate differences between a continuously displayed instrument trend and a one-time verbally reported handheld observation.",
+    "The intended similarity-bias instance is confounded with potentially relevant differences in control-room trend-interpretation experience and may instead reflect credential or source-credibility weighting.",
+    "Decision point 3 contains three intended biases that are narratively coherent but currently insufficiently separable for strict occurrence validation."
+  ]
+}}}
+
+Rules:
+1. Apply only revisions with revision_needed = true.
+2. Preserve all supported occurrences exactly in mechanism and approximate location.
+3. Repair every requested occurrence marked weak, absent, merged, or misclassified according to its minimal_change_instruction.
+4. Remove or neutralize accidental occurrences when instructed.
+5. Do not add any occurrence not requested in the hidden specification.
+6. Do not name or define cognitive biases.
+7. Preserve the occupational setting, participant role, four-decision-point structure, dialogue format, approximate length, vocabulary level, causal variable, and counterfactual conditions.
+8. Do not make the target bias obvious through exaggerated or textbook-like language.
+9. If a requested occurrence is not plausible under the scenario, do not force it; return REVISION_BLOCKED with a concise explanation rather than fabricating behavior.
+10. Return only the revised interview text, unless revision is blocked.
+
+Before outputting, silently check the requested occurrence count, accidental occurrence risk, word count, and preservation constraints.

@@ -1,0 +1,315 @@
+You are an expert occupational interviewer and realistic dialogue writer.
+
+Generate one simulated cognitive task analysis interview from the supplied generation specification. The interview will be given to an independent evaluator that must infer whether specified cognitive biases are present. Do not reveal the labels or your construction process.
+
+INPUT
+Generation specification:
+{{"scenario_id": "RT_Biased_6",
+  "domain_id": "RT",
+  "domain": "Rail Transportation",
+  "role": "Locomotive Engineer / Train Driver",
+  "condition": "biased",
+  "generation_specification": {
+    "scenario_title_internal": "The Second Detector: A Hot-Box Alarm on the Overnight Manifest Run",
+    "scenario_summary_internal": "A locomotive engineer operating a loaded freight manifest train on an overnight run receives an intermittent hot-bearing (hot-box) detector alarm from a wayside defect detector. Weather is deteriorating (fog, light rain), the train is on a tight schedule to clear a single-track siding before an opposing train's meet window, and the engineer has a history of false alarms from that particular detector. Over the course of four decision points, the engineer must decide how to interpret the initial alarm, whether to maintain the operating plan, how to weigh a second confirming detector alarm further down the line, and when/whether to make an emergency stop for a hands-on inspection before a wheel or bearing failure could cause a derailment.",
+    "occupational_realism": {
+      "objective": "Move the loaded manifest train safely and on schedule to clear the single-track siding before the opposing train's meet window, while responding appropriately to wayside defect detector alerts indicating a possible hot bearing or overheated wheel.",
+      "setting": "Overnight freight operation on a single-track mainline with automated wayside hot-box/hot-wheel detectors spaced roughly 20-25 miles apart, deteriorating weather (fog and light rain), radio dispatch contact intermittent due to terrain.",
+      "constraints": [
+        "Single-track territory with a scheduled meet at a siding; a delay risks fouling the meet window and holding the opposing train.",
+        "Detector at milepost in question has a documented history of intermittent false alarms in wet weather.",
+        "Limited visibility from the cab due to fog and rain reduces the value of a rolling visual inspection.",
+        "Full emergency stop for a walking inspection requires roughly 20-30 minutes and radio coordination with the dispatcher.",
+        "Crew consists of the engineer and one conductor; only the conductor can perform the trackside walking inspection."
+      ],
+      "stakeholders": [
+        "Train dispatcher (rail traffic control)",
+        "Conductor (train crew)",
+        "Opposing train crew awaiting the meet",
+        "Mechanical/car department (bearing and wheel maintenance)",
+        "Railroad safety and compliance office"
+      ],
+      "technical_terms_to_use": [
+        "hot-box detector",
+        "wayside defect detector (WDD)",
+        "hot bearing/hot wheel alarm",
+        "restricted speed",
+        "train dispatcher / rail traffic control",
+        "meet point / siding",
+        "consist",
+        "axle count / car placement",
+        "emergency application",
+        "walking inspection"
+      ],
+      "technical_terms_to_avoid": [
+        "positive train control override codes",
+        "specific proprietary detector brand names",
+        "signal aspect terminology beyond basic stop/proceed/restricted"
+      ]
+    },
+    "timeline": [
+      {
+        "phase": 1,
+        "decision_point": true,
+        "facts_available_before_decision": [
+          "Automated radio message reports a hot bearing/hot wheel alarm on an unspecified axle as the train passes a wayside detector.",
+          "This particular detector has triggered at least two known false alarms in the past six months, both attributed to wet-weather sensor drift.",
+          "Current weather is light rain; conditions match the profile of prior false alarms.",
+          "The train is running roughly on time toward the meet window."
+        ],
+        "new_information_after_decision": [
+          "No visible smoke, sparks, or odor detected from the cab during the alarm segment.",
+          "The dispatcher acknowledges the alarm but has no additional detector history immediately on hand."
+        ],
+        "alternatives": [
+          "Treat the alarm as indeterminate, reduce speed, and request the dispatcher check the axle/car count and any maintenance flags before proceeding further.",
+          "Treat the alarm as a likely false positive given detector history and continue at authorized track speed without further verification.",
+          "Stop immediately and hold for a full walking inspection before proceeding at all."
+        ],
+        "intended_action": "The engineer classifies the alarm as almost certainly a false positive based on the detector's prior track record and continues at track speed without requesting axle-level confirmation from the dispatcher or car department."
+      },
+      {
+        "phase": 2,
+        "decision_point": true,
+        "facts_available_before_decision": [
+          "The train is now approaching the point where it must either accelerate to make the meet window on schedule or lose the slot and hold at a prior siding.",
+          "No further alarms have occurred since milepost of the first detector.",
+          "The engineer's normal practice on this run is to maintain the standard operating plan absent a confirmed defect."
+        ],
+        "new_information_after_decision": [
+          "The conductor mentions, in passing, having felt a slightly rougher ride on one section of track, but attributes it to known rail joint conditions.",
+          "The train clears the meet window with a few minutes to spare."
+        ],
+        "alternatives": [
+          "Deviate from the standard plan by ordering a brief speed reduction and a rolling visual check from the conductor's side window at the next favorable location, even without a new alarm.",
+          "Continue with the standing operating plan exactly as before, treating the absence of further alarms as sufficient reassurance.",
+          "Contact the car department directly to ask whether the specific axle/car has any open maintenance history before proceeding to the next detector."
+        ],
+        "intended_action": "The engineer defaults to the standing operating plan without modification, and separately elects to satisfy any residual concern by having the conductor perform only a quick rolling visual check of that one car at the next opportunity, rather than addressing the broader uncertainty about the axle's condition at speed."
+      },
+      {
+        "phase": 3,
+        "decision_point": true,
+        "facts_available_before_decision": [
+          "A second, independent wayside detector approximately 22 miles further down the line also flags a hot bearing/hot wheel alarm, this time specifying the same general car position as the first alarm.",
+          "Weather has worsened slightly; fog now limits visibility further.",
+          "The dispatcher radios that the railroad's on-time performance metrics for this corridor have been under scrutiny this month.",
+          "The engineer recalls that in over a decade of service, almost every hot-box alarm on this route from wet-weather-prone detectors turned out to be a false alarm."
+        ],
+        "new_information_after_decision": [
+          "The train proceeds for another 8 miles before the conductor reports smelling something acrid from the trailing end of the train.",
+          "An emergency radio call is made to the dispatcher requesting an unscheduled stop."
+        ],
+        "alternatives": [
+          "Treat the second alarm at the same car position as materially new evidence warranting an immediate stop and walking inspection, regardless of schedule pressure.",
+          "Continue to the next station stop, reasoning that two alarms from historically unreliable detectors do not yet outweigh a decade of mostly false positives on this line.",
+          "Request the dispatcher hold a following train and arrange for a mobile mechanical inspector to meet the train at the next crossing."
+        ],
+        "intended_action": "The engineer continues to the next station stop, treating the second alarm as consistent with his long-standing belief that this route's detectors are unreliable, and later attributes the delay in stopping to the dispatcher's schedule pressure and detector unreliability rather than to his own read of the second alarm."
+      },
+      {
+        "phase": 4,
+        "decision_point": true,
+        "facts_available_before_decision": [
+          "The conductor's report of an acrid smell is the most recent and most vivid piece of information available.",
+          "Two prior wayside detector alarms had already flagged the same general car position earlier in the trip.",
+          "The train is now past the meet window, so schedule pressure has eased somewhat.",
+          "An emergency stop at this point will require a full mechanical inspection before the train can resume."
+        ],
+        "new_information_after_decision": [
+          "The walking inspection finds an overheated wheel bearing on the flagged car, short of failure but requiring the car to be set out.",
+          "The car department confirms the bearing had been logged as a watch item at the previous terminal but the flag had not been relayed to the crew."
+        ],
+        "alternatives": [
+          "Order an immediate emergency stop based primarily on the smell just reported, treating it as the decisive signal.",
+          "Order an immediate stop based on the cumulative pattern of both detector alarms plus the smell, treating all three as equally weighted evidence.",
+          "Request a rolling reduction to restricted speed while continuing toward the next inspection point rather than stopping outright."
+        ],
+        "intended_action": "The engineer orders an emergency stop, and in the closing interview probes, explains the decision primarily by reference to the smell just reported, giving comparatively little weight in his account to the two earlier detector alarms that had occurred well before."
+      }
+    ],
+    "probe_plan": {
+      "opening": [
+        "Can you walk me through what you were doing and what the operating plan was at the start of this trip?",
+        "What was your role and what information sources did you normally rely on during a run like this?"
+      ],
+      "timeline_reconstruction": [
+        "What happened right after the first detector alarm sounded?",
+        "What did you do between the first and second detector alarms?",
+        "Walk me through what happened once the conductor reported the smell."
+      ],
+      "decision_point_probes": [
+        "At the point of the first alarm, what information did you have, and what did you do with it?",
+        "Why did you decide to keep to the standard plan after the first alarm rather than change anything?",
+        "When the second alarm came in at the same car position, how did that change or not change your thinking?",
+        "What ultimately made you decide to stop the train when you did?",
+        "Were there other options you considered at each of these points, and why did you rule them out?"
+      ],
+      "closing_hypotheticals": [
+        "If the second detector had not gone off, do you think you would have handled things differently?",
+        "Looking back, how much weight do you think each piece of information deserved in your decision to stop?",
+        "If schedule pressure had not been a factor, would your decisions have changed?",
+        "How did your past experience with this detector shape how you read the alarms this time?"
+      ]
+    },
+    "occurrence_embedding_plan_internal": [
+      {
+        "instance_id": "ur_01",
+        "bias": "Uncertainty Rejection Bias",
+        "decision_point": 1,
+        "mechanism": "Engineer resolves the ambiguous, intermittent nature of the first alarm by prematurely committing to a single confident classification (false positive) rather than tolerating the genuine uncertainty and seeking confirming information.",
+        "affected_reasoning_operation": "Interpretation of ambiguous sensor evidence",
+        "evidence_available_at_time": [
+          "Automated alarm with no axle-level detail",
+          "Detector's known history of false alarms in wet weather",
+          "No visible smoke/sparks from the cab"
+        ],
+        "required_textual_manifestation": "Engineer explicitly states he treated the alarm as 'almost certainly' a false positive rather than as unresolved, and did not request axle/car confirmation despite it being available from the dispatcher.",
+        "plausible_nonbias_interpretation": "A reasonable engineer could deprioritize an axle-confirmation request if operationally it would not have changed the immediate action and no visible symptoms were present.",
+        "strength": "subtle",
+        "do_not_make_explicit": ["uncertainty rejection", "ambiguity intolerance", "premature closure"]
+      },
+      {
+        "instance_id": "sq_01",
+        "bias": "Status quo bias",
+        "decision_point": 2,
+        "mechanism": "Engineer defaults to the pre-existing standard operating plan without modification, treating the absence of new alarms as sufficient reason to change nothing, even though the operative context (an unresolved earlier alarm) had shifted.",
+        "affected_reasoning_operation": "Selection among competing operating plans",
+        "evidence_available_at_time": [
+          "Unresolved first alarm",
+          "Conductor's comment about a rougher ride",
+          "Approaching meet window on the standing schedule"
+        ],
+        "required_textual_manifestation": "Engineer states he kept to 'the plan exactly as before' and treated deviation as something requiring a new alarm, rather than treating the unresolved first alarm as reason enough to adjust.",
+        "plausible_nonbias_interpretation": "Sticking to an established, previously safe plan is a legitimate default when no new confirming evidence has appeared.",
+        "strength": "subtle",
+        "do_not_make_explicit": ["default option", "status quo", "inertia"]
+      },
+      {
+        "instance_id": "zr_01",
+        "bias": "Zero-Risk Bias",
+        "decision_point": 2,
+        "mechanism": "Engineer chooses a narrow, fully-containable action (a quick rolling visual check of one car) that gives a feeling of eliminating a specific worry, while leaving the larger and more consequential residual risk (operating an unverified axle at full track speed) unaddressed.",
+        "affected_reasoning_operation": "Evaluation of risk-mitigation options",
+        "evidence_available_at_time": [
+          "Unresolved first alarm",
+          "Availability of a rolling visual check versus a full speed/inspection change",
+          "Time pressure from the meet window"
+        ],
+        "required_textual_manifestation": "Engineer describes satisfying his concern specifically through the small rolling visual check rather than addressing the broader speed/verification risk, framing the small action as resolving the issue.",
+        "plausible_nonbias_interpretation": "A rolling visual check is a normal, low-cost first step that many engineers would take given limited alternatives at speed.",
+        "strength": "moderate",
+        "do_not_make_explicit": ["zero risk", "risk elimination versus risk reduction"]
+      },
+      {
+        "instance_id": "cs_01",
+        "bias": "Conservatism Bias",
+        "decision_point": 3,
+        "mechanism": "Engineer underweights the new, more specific and confirming second detector alarm at the same car position, updating his belief only marginally from his strong prior (a decade of mostly false alarms) rather than shifting substantially toward the new evidence.",
+        "affected_reasoning_operation": "Belief updating in response to new confirming evidence",
+        "evidence_available_at_time": [
+          "Second independent detector alarm at the same car position",
+          "A decade of personal experience with mostly false alarms on this route",
+          "Worsening weather/visibility"
+        ],
+        "required_textual_manifestation": "Engineer explicitly compares the new alarm to his long history of false alarms and describes continuing largely unchanged in belief and action despite the second, more specific alarm.",
+        "plausible_nonbias_interpretation": "Placing substantial weight on a long, personally observed track record is a defensible use of experience-based judgment.",
+        "strength": "moderate",
+        "do_not_make_explicit": ["conservatism", "insufficient belief updating", "anchoring on prior"]
+      },
+      {
+        "instance_id": "ss_01",
+        "bias": "Self-serving Bias",
+        "decision_point": 3,
+        "mechanism": "When explaining why he did not stop sooner after the second alarm, the engineer attributes the delay to external factors (dispatcher schedule pressure, detector unreliability) rather than to his own interpretation of the evidence, protecting his own competence narrative.",
+        "affected_reasoning_operation": "Causal attribution for a suboptimal delay",
+        "evidence_available_at_time": [
+          "Dispatcher's comment about on-time performance scrutiny",
+          "Engineer's own decision not to stop after the second alarm",
+          "Detector's prior unreliability"
+        ],
+        "required_textual_manifestation": "In the decision-basis or hypothetical probe response, the engineer credits schedule pressure and detector unreliability for the delay, without acknowledging his own read of the second alarm as a contributing factor.",
+        "plausible_nonbias_interpretation": "Schedule pressure and known detector unreliability are genuine contextual factors that legitimately influenced the situation.",
+        "strength": "subtle",
+        "do_not_make_explicit": ["self-serving", "external attribution", "ego protection"]
+      },
+      {
+        "instance_id": "re_01",
+        "bias": "Recency effect",
+        "decision_point": 4,
+        "mechanism": "When asked what drove the final stop decision, the engineer's account gives outsized weight to the most recently received cue (the conductor's report of a smell) and comparatively little weight to the two earlier detector alarms that were temporally more distant, despite all three being relevant evidence.",
+        "affected_reasoning_operation": "Retrospective weighting of cues in explaining a decision",
+        "evidence_available_at_time": [
+          "Conductor's just-reported acrid smell",
+          "First detector alarm (temporally distant)",
+          "Second detector alarm (temporally distant)"
+        ],
+        "required_textual_manifestation": "In the closing probe about what 'ultimately made' him stop, the engineer's explanation centers on the smell and mentions the two earlier alarms only briefly or as background, not as co-equal drivers.",
+        "plausible_nonbias_interpretation": "A strong, unambiguous sensory cue like a smell is legitimately a more decisive trigger for an emergency stop than an earlier ambiguous automated alarm.",
+        "strength": "subtle",
+        "do_not_make_explicit": ["recency effect", "recency-weighted recall"]
+      }
+    ],
+    "control_specification": {
+      "paired_scenario_id": null,
+      "features_to_match": [],
+      "features_to_remove_or_change": [],
+      "ambiguity_boundary": "Not applicable to this biased-condition scenario."
+    },
+    "counterfactual_specification": {
+      "causal_variable": "Not applicable (no counterfactual condition requested for this scenario ID)",
+      "original_state": null,
+      "counterfactual_state": null,
+      "variables_to_hold_constant": [],
+      "expected_causal_difference": "Not applicable",
+      "causal_test_question": "Not applicable"
+    },
+    "generation_checks": [
+      "Confirm exactly 6 intended bias instances are embedded, one per manifest entry, with no duplicates or substitutions.",
+      "Confirm exactly 4 decision points, each with at least two plausible alternatives.",
+      "Confirm no decision point contains two instances of the same named bias.",
+      "Confirm each instance has a distinct evidence source or reasoning operation from any other instance of a different bias sharing its decision point.",
+      "Confirm bias labels, definitions, or explicit psychological terminology are absent from the public interview text.",
+      "Confirm total word count target of 1,350 words (acceptable range 1,215-1,485) is achievable given the timeline and probe density.",
+      "Confirm consequences described (bearing found overheated but not failed) do not mechanically prove or disprove bias, preserving interpretive ambiguity for validators."
+    ]
+  }}}
+
+WRITING REQUIREMENTS
+1. Produce only the interview, with no preface, postscript, analysis, labels, answer key, bias names, or JSON.
+2. Use approximately 1,350 words, with an acceptable range of 1,215–1,485 words.
+3. Use exactly four decision points.
+4. Write a natural semi-structured CTA interview between an interviewer and a domain-credible participant. Include both questions and answers.
+5. Begin with a brief consent/role/context exchange, then obtain an incident account, reconstruct the timeline, revisit the four decision points, probe the participant's reasoning, and end with relevant hypotheticals.
+6. Make the participant's account coherent, specific, and occupationally plausible. Include concrete cues, information sources, goals, constraints, alternatives, time pressure, uncertainty, prior experience, and consequences.
+7. Make the target biases inferable from patterns of reasoning, not from vocabulary that names or defines them.
+8. Do not make every decision biased. Preserve natural variation, including justified reasoning and uncertainty.
+9. Do not equate an incorrect decision or bad outcome with a bias. Include enough context for alternative explanations to remain possible.
+10. Keep the number of decision points, actors, technical terms, and narrative complexity aligned with the specification.
+11. For multiple target biases, distribute them across the incident. Each bias must have a distinct manifestation, but interactions may occur naturally.
+12. For `vocabulary_control`, preserve the same occupational vocabulary and narrative complexity while writing decisions supported by balanced evidence and reasonable consideration of alternatives. Do not insert target-bias evidence.
+13. For `ambiguous_control`, include genuinely ambiguous reasoning that has plausible non-bias explanations, but do not intentionally instantiate a target bias. Do not use exaggerated contradiction or suspiciously artificial neutrality.
+14. For `counterfactual`, minimally alter the specified causal variable. Preserve all other material facts, wording patterns, and decision structure as far as possible. Make the changed variable causally relevant, not merely correlated with the outcome.
+15. Include at least one probe asking what information would have changed the decision and one probe asking what would have happened if a key feature had been different.
+16. Do not add facts that contradict the generation specification.
+17. Avoid stereotypes, protected-class generalizations, and gratuitous sensitive content.
+
+RECOMMENDED STRUCTURE
+- Opening and role context: 100–150 words.
+- Initial incident account: 250–350 words.
+- Timeline reconstruction: 150–200 words.
+- Four decision-point sections with probes: 550–650 words total.
+- Closing reflection and hypothetical: 150–250 words.
+
+DIALOGUE STYLE
+- Label turns as `Interviewer:` and `Participant:`.
+- Let answers vary in length and certainty.
+- Use natural repairs, qualifications, and references to evidence.
+- Avoid repeatedly asking the same generic question.
+- Do not explicitly state that the participant is biased, unbiased, rational, irrational, or subject to an experimental condition.
+
+FINAL SILENT CHECK
+Before outputting, verify word count, four decision points, domain realism, target-bias concealment, control fidelity, and causal minimality where applicable. If a target bias cannot be represented without becoming obvious or implausible, revise the incident rather than explaining the problem.
+
+OUTPUT
+Return only the interview text.

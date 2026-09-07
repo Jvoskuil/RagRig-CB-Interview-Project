@@ -1,0 +1,240 @@
+You are an expert occupational interviewer and realistic dialogue writer.
+
+Generate one simulated cognitive task analysis interview from the supplied generation specification. The interview will be given to an independent evaluator that must infer whether specified cognitive biases are present. Do not reveal the labels or your construction process.
+
+INPUT
+Generation specification:
+{{"scenario_id": "RT_Biased_2",
+  "domain_id": "RT",
+  "domain": "Rail Transportation",
+  "role": "Rail Traffic Controller / Train Dispatcher",
+  "condition": "biased",
+  "generation_specification": {
+    "scenario_title_internal": "Borderline Hot-Box Alarm and Work-Zone Reroute on the Kestrel Subdivision",
+    "scenario_summary_internal": "A rail traffic controller manages a single-track corridor during an evening shift with a scheduled maintenance possession, a freight train that triggers a marginal wayside hot-box detector alert, a delayed passenger train needing to pass through an active work zone, and an ambiguous radio report of a possible trespasser near the work site. The controller must sequence four decisions under time pressure and incomplete information, balancing throughput, safety, and crew/possession constraints.",
+    "occupational_realism": {
+      "objective": "Maintain safe, on-time movement of freight and passenger traffic through a single-track corridor with an active maintenance possession, while responding appropriately to an equipment alarm and an ambiguous safety report.",
+      "setting": "Evening shift, regional rail traffic control center, single dispatcher covering a 40-mile subdivision with one active track maintenance window and mixed freight/passenger traffic.",
+      "constraints": [
+        "Only one main track available through the work zone during the possession window",
+        "Wayside hot-box detector gives a borderline (not clearly critical) temperature reading",
+        "Passenger train is already running 22 minutes late with downstream connection commitments",
+        "Track crew has a fixed possession end time before the next train movement is authorized",
+        "Radio coverage near the work site is intermittent, limiting real-time clarification"
+      ],
+      "stakeholders": [
+        "Rail traffic controller (interviewee)",
+        "Freight train crew (engineer and conductor)",
+        "Passenger train crew and dispatcher liaison",
+        "Track maintenance foreman and work crew",
+        "Regional operations manager (on-call)"
+      ],
+      "technical_terms_to_use": [
+        "hot-box detector",
+        "wayside defect detector",
+        "possession/track warrant",
+        "slow order",
+        "block signal territory",
+        "flag protection",
+        "train dispatcher authority",
+        "restricted speed"
+      ],
+      "technical_terms_to_avoid": [
+        "zero-risk bias",
+        "ambiguity aversion",
+        "cognitive bias",
+        "heuristic",
+        "known versus unknown probability"
+      ]
+    },
+    "timeline": [
+      {
+        "phase": 1,
+        "decision_point": true,
+        "facts_available_before_decision": [
+          "Wayside detector reports axle temperature slightly above baseline but below the automatic stop threshold",
+          "Freight train is 8 miles from the next detector location",
+          "No unusual noise or vibration reported by the crew"
+        ],
+        "new_information_after_decision": [
+          "Next detector reading shows temperature has stabilized, not increased further"
+        ],
+        "alternatives": [
+          "Instruct the freight train to proceed to the next detector at restricted speed for confirmation",
+          "Stop the train immediately for a hands-on inspection, holding up the single track"
+        ],
+        "intended_action": "Controller allows the freight train to proceed at reduced speed to the next detector rather than stopping it immediately, based on the reading being below the mandatory-stop threshold."
+      },
+      {
+        "phase": 2,
+        "decision_point": true,
+        "facts_available_before_decision": [
+          "Work zone occupies the single main track for another 35 minutes",
+          "Passenger train can either wait for a short window between crew tasks (minor, well-defined delay) or be rerouted onto a longer alternate line that avoids the work zone entirely",
+          "The short-window option requires standard flag protection already in place and used routinely at this site",
+          "The reroute adds 25 minutes and requires realigning two other train slots"
+        ],
+        "alternatives": [
+          "Hold passenger train for the brief flagged window through the work zone under standard protection",
+          "Reroute passenger train onto the longer alternate line to avoid the work zone entirely"
+        ],
+        "intended_action": "Controller chooses the longer reroute to eliminate any interaction with the work zone entirely, even though the flagged-window option carries only a small, well-managed residual risk and causes far less network disruption."
+      },
+      {
+        "phase": 3,
+        "decision_point": true,
+        "facts_available_before_decision": [
+          "Track foreman radios a brief, partially garbled report of a 'possible person near the right-of-way' close to the work site",
+          "No confirmation of exact location, number of people, or whether they left the area",
+          "A known, previously used protocol exists: reduce approaching trains to restricted speed through the general area for 10 minutes as a standard precaution",
+          "An alternative exists: request the foreman attempt a direct callback for a clearer picture before issuing any speed instruction, delaying the decision by several minutes"
+        ],
+        "alternatives": [
+          "Issue the standard restricted-speed instruction for the area immediately, treating the report as the known/routine trespasser protocol",
+          "Delay action and attempt to get a clarified, specific report from the foreman before deciding on any speed restriction"
+        ],
+        "intended_action": "Controller favors the familiar, well-defined restricted-speed protocol over waiting for clarification, even though the vague report could plausibly indicate something requiring a different response, because the ambiguous option feels harder to act on than the known routine."
+      },
+      {
+        "phase": 4,
+        "decision_point": true,
+        "facts_available_before_decision": [
+          "Track foreman requests a 12-minute possession extension to finish tamping work",
+          "Two trains are queued behind the work zone awaiting clearance",
+          "Denying the extension risks incomplete work needing a follow-up possession later in the week"
+        ],
+        "new_information_after_decision": [
+          "Extension is granted; both queued trains experience additional minor delay",
+          "Foreman completes work without further incident"
+        ],
+        "alternatives": [
+          "Grant the 12-minute extension and hold queued traffic",
+          "Deny the extension and require the crew to clear the track on schedule, deferring remaining work"
+        ],
+        "intended_action": "Controller grants the extension after weighing crew safety, work completeness, and downstream schedule impact."
+      }
+    ],
+    "probe_plan": {
+      "opening": [
+        "Walk me through what was happening on your board that evening before the detector alert came in.",
+        "What was your overall priority at the start of the shift?"
+      ],
+      "timeline_reconstruction": [
+        "What did you see or hear first, and what did you do immediately after?",
+        "What information came in after each decision that you didn't have beforehand?"
+      ],
+      "decision_point_probes": [
+        "What options did you consider at that point, and why did you rule the others out?",
+        "What specific piece of information tipped your decision one way or the other?",
+        "How much time pressure did you feel at that moment?",
+        "How confident were you in the information you had, and what was still unclear?",
+        "Had you handled a similar situation before, and did that shape your choice here?"
+      ],
+      "closing_hypotheticals": [
+        "If the detector reading had been just slightly higher, would your first decision have changed?",
+        "If the foreman's report had come through clearly instead of garbled, do you think you'd have responded differently?",
+        "Looking back, is there a point where you'd handle things differently with the same information you had at the time?"
+      ]
+    },
+    "occurrence_embedding_plan_internal": [
+      {
+        "instance_id": "zrb_01",
+        "bias": "Zero-Risk Bias",
+        "decision_point": 2,
+        "mechanism": "Controller disproportionately values eliminating a small, already well-controlled residual risk (brief flagged passage through the work zone) entirely, choosing a costly full reroute over a modest reduction of risk via standard, routinely effective flag protection.",
+        "affected_reasoning_operation": "Risk-cost tradeoff weighting during route selection",
+        "evidence_available_at_time": [
+          "Flag protection at the work zone is described as standard and already in place",
+          "The reroute imposes a much larger, quantifiable network cost (25 extra minutes, two realigned slots) than the residual risk it removes"
+        ],
+        "required_textual_manifestation": "Controller explicitly justifies the reroute by wanting to avoid the work zone 'completely' or 'entirely,' rather than comparing the magnitude of risk reduction to the delay cost, and does not weigh the flagged-window option's already-low residual risk against its much smaller disruption.",
+        "plausible_nonbias_interpretation": "A controller could reasonably prefer the reroute simply due to unfamiliarity with that specific work crew's flagging reliability, which would be a legitimate risk judgment rather than bias.",
+        "strength": "subtle",
+        "do_not_make_explicit": ["zero-risk", "risk elimination", "disproportionate", "bias"]
+      },
+      {
+        "instance_id": "ae_01",
+        "bias": "Ambiguity effect",
+        "decision_point": 3,
+        "mechanism": "Controller prefers the familiar, well-specified restricted-speed protocol (known probability/known procedure) over seeking clarification of the ambiguous trespasser report, even though the vague report could call for a different, better-fitted response; the preference is driven by the report's ambiguity itself rather than a comparison of expected outcomes.",
+        "affected_reasoning_operation": "Choice between two response options under differing degrees of information ambiguity",
+        "evidence_available_at_time": [
+          "The foreman's report is described as brief and partially garbled, with no confirmed location or number of people",
+          "A callback for clarification is available as an option but described as taking 'several minutes longer'"
+        ],
+        "required_textual_manifestation": "Controller states a preference for the standard protocol specifically because the alternative (waiting for clarification) feels uncertain or hard to act on, rather than because the standard protocol was independently judged to be the better response to this specific report.",
+        "plausible_nonbias_interpretation": "A controller could reasonably favor immediate restricted speed simply because safety protocol requires erring toward caution regardless of report clarity, which would be a justified default rather than an ambiguity-driven preference.",
+        "strength": "subtle",
+        "do_not_make_explicit": ["ambiguity effect", "known versus unknown probability", "aversion", "bias"]
+      }
+    ],
+    "control_specification": {
+      "paired_scenario_id": null,
+      "features_to_match": [],
+      "features_to_remove_or_change": [],
+      "ambiguity_boundary": "Not applicable; no paired control scenario was requested for this generation."
+    },
+    "counterfactual_specification": {
+      "causal_variable": "Clarity of the trespasser report received from the track foreman",
+      "original_state": "Report is brief, partially garbled, with no confirmed location or headcount",
+      "counterfactual_state": "Report is clear and specific, confirming a single person who has already left the right-of-way",
+      "variables_to_hold_constant": [
+        "Hot-box detector event and outcome",
+        "Work zone reroute decision and its network cost",
+        "Possession extension request and grant",
+        "Overall shift timing and traffic volume"
+      ],
+      "expected_causal_difference": "With a clear report, the controller would be expected to select a response proportionate to the confirmed, low-risk situation rather than defaulting to the standard restricted-speed protocol out of discomfort with ambiguity, isolating whether the choice was driven by report ambiguity versus genuine safety judgment.",
+      "causal_test_question": "Does the controller's response to the trespasser report change when the same underlying risk level is communicated with full clarity instead of ambiguity?"
+    },
+    "generation_checks": [
+      "Confirm exactly 4 decision points are present in the timeline",
+      "Confirm decision points 1 and 4 contain no intentionally embedded named-bias instances",
+      "Confirm zrb_01 appears only at decision point 2 and is not repeated in probes or hypotheticals",
+      "Confirm ae_01 appears only at decision point 3 and is not repeated in probes or hypotheticals",
+      "Confirm no bias terminology or psychological labels appear in interview text",
+      "Confirm each decision point offers at least two plausible alternatives",
+      "Confirm probes cover cues, sources, goals, alternatives, decision basis, prior experience, time pressure, uncertainty, and hypotheticals",
+      "Confirm final word count falls between 1215 and 1485 words",
+      "Confirm consequences described do not conclusively prove either decision was biased or correct"
+    ]
+  }}}
+
+WRITING REQUIREMENTS
+1. Produce only the interview, with no preface, postscript, analysis, labels, answer key, bias names, or JSON.
+2. Use approximately 1,350 words, with an acceptable range of 1,215–1,485 words.
+3. Use exactly four decision points.
+4. Write a natural semi-structured CTA interview between an interviewer and a domain-credible participant. Include both questions and answers.
+5. Begin with a brief consent/role/context exchange, then obtain an incident account, reconstruct the timeline, revisit the four decision points, probe the participant's reasoning, and end with relevant hypotheticals.
+6. Make the participant's account coherent, specific, and occupationally plausible. Include concrete cues, information sources, goals, constraints, alternatives, time pressure, uncertainty, prior experience, and consequences.
+7. Make the target biases inferable from patterns of reasoning, not from vocabulary that names or defines them.
+8. Do not make every decision biased. Preserve natural variation, including justified reasoning and uncertainty.
+9. Do not equate an incorrect decision or bad outcome with a bias. Include enough context for alternative explanations to remain possible.
+10. Keep the number of decision points, actors, technical terms, and narrative complexity aligned with the specification.
+11. For multiple target biases, distribute them across the incident. Each bias must have a distinct manifestation, but interactions may occur naturally.
+12. For `vocabulary_control`, preserve the same occupational vocabulary and narrative complexity while writing decisions supported by balanced evidence and reasonable consideration of alternatives. Do not insert target-bias evidence.
+13. For `ambiguous_control`, include genuinely ambiguous reasoning that has plausible non-bias explanations, but do not intentionally instantiate a target bias. Do not use exaggerated contradiction or suspiciously artificial neutrality.
+14. For `counterfactual`, minimally alter the specified causal variable. Preserve all other material facts, wording patterns, and decision structure as far as possible. Make the changed variable causally relevant, not merely correlated with the outcome.
+15. Include at least one probe asking what information would have changed the decision and one probe asking what would have happened if a key feature had been different.
+16. Do not add facts that contradict the generation specification.
+17. Avoid stereotypes, protected-class generalizations, and gratuitous sensitive content.
+
+RECOMMENDED STRUCTURE
+- Opening and role context: 100–150 words.
+- Initial incident account: 250–350 words.
+- Timeline reconstruction: 150–200 words.
+- Four decision-point sections with probes: 550–650 words total.
+- Closing reflection and hypothetical: 150–250 words.
+
+DIALOGUE STYLE
+- Label turns as `Interviewer:` and `Participant:`.
+- Let answers vary in length and certainty.
+- Use natural repairs, qualifications, and references to evidence.
+- Avoid repeatedly asking the same generic question.
+- Do not explicitly state that the participant is biased, unbiased, rational, irrational, or subject to an experimental condition.
+
+FINAL SILENT CHECK
+Before outputting, verify word count, four decision points, domain realism, target-bias concealment, control fidelity, and causal minimality where applicable. If a target bias cannot be represented without becoming obvious or implausible, revise the incident rather than explaining the problem.
+
+OUTPUT
+Return only the interview text.

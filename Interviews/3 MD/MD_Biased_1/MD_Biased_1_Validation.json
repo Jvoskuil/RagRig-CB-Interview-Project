@@ -1,0 +1,310 @@
+{
+  "validator_version": "2.0",
+  "interview_id": "MD_Biased_1",
+  "condition": "biased",
+  "domain_assessment": {
+    "domain": "Military intelligence analysis and operational decision support",
+    "role": "All-source analyst supporting a battalion S2, responsible for SIGACTS tracking and weekly INTSUM inputs",
+    "objective": "Assess the cause of an attack-tempo spike, recommend an operational response, evaluate whether the response worked, and forecast subsequent attack tempo for command resource-allocation decisions",
+    "incident_type": "A sharp, short-duration increase in reported attacks in District X followed by an intervention and subsequent return toward the prior baseline",
+    "confidence": 0.99
+  },
+  "structure_audit": {
+    "estimated_word_count": 1280,
+    "within_target_range": true,
+    "decision_point_count": 4,
+    "decision_points": [
+      {
+        "id": 1,
+        "summary": "Recommend a limited ISR and checkpoint pilot rather than a full cordon-and-search or no action after the week-five attack spike.",
+        "evidence_before": [
+          "District X had averaged roughly three attacks per week for about one month.",
+          "Week five produced eleven attacks, the highest count in the available district dataset.",
+          "HUMINT reported a festival, possible cache resupply, and a tribal dispute, none fully confirmed.",
+          "Only eight weeks of district data were available."
+        ],
+        "evidence_after": [
+          "S3 expanded the pilot into Operation Steady Watch beginning in week six.",
+          "Attack counts declined from eleven in week five to six, three, and four in weeks six through eight."
+        ],
+        "goals_constraints": [
+          "Provide command with a timely INTSUM recommendation.",
+          "Avoid a major posture change without solid targeting.",
+          "Act despite incomplete confirmation and limited historical data."
+        ],
+        "alternatives": [
+          "Full cordon-and-search",
+          "No immediate operational response",
+          "Limited checkpoint pilot and increased ISR"
+        ],
+        "decision_basis": "A reversible, limited response was chosen to balance command pressure to act against insufficient targeting confidence.",
+        "time_pressure": "Command was already asking for an answer for that week's INTSUM.",
+        "uncertainty": "High: multiple plausible local drivers were unconfirmed, and the district time series was short."
+      },
+      {
+        "id": 2,
+        "summary": "Attribute the post-intervention decline in attacks primarily to Operation Steady Watch.",
+        "evidence_before": [
+          "Steady Watch expanded to a full checkpoint posture in week six.",
+          "Attack counts fell from eleven in week five to six, then three and four.",
+          "The festival ended by week six.",
+          "The tribal dispute was mediated around the same time.",
+          "The reportedly resupplied cache was largely expended."
+        ],
+        "evidence_after": [
+          "The assessment was treated as a validated model for a recommendation in District Y.",
+          "The analyst forecast continued low tempo as evidence that Steady Watch was holding."
+        ],
+        "goals_constraints": [
+          "Give a causal read to the supervisor.",
+          "Provide a clear explanation that command could use in operational decision-making."
+        ],
+        "alternatives": [
+          "Treat the decline as jointly explained by checkpoints, regression toward baseline, and resolving transient factors",
+          "State that causal attribution is indeterminate with the available observational evidence",
+          "Attribute the decline primarily to Steady Watch"
+        ],
+        "decision_basis": "The analyst privileged temporal alignment with the highly visible posture change and treated concurrent alternative explanations as secondary.",
+        "time_pressure": "Moderate, in the context of continuing command demand for a usable narrative.",
+        "uncertainty": "High: no untreated counterfactual, only two post-implementation weeks at the time of the core causal judgment, and several concurrent changes."
+      },
+      {
+        "id": 3,
+        "summary": "Recommend extending Steady Watch to District Y based substantially on the perceived District X success.",
+        "evidence_before": [
+          "District Y spiked to nine attacks in week four and then eased to five or six without a posture change.",
+          "The District Y handler reported a different, still-unresolved driver.",
+          "The analyst regarded District X as a validated model."
+        ],
+        "evidence_after": [
+          "The recommendation anticipated a similarly sharp decline in District Y after rollout."
+        ],
+        "goals_constraints": [
+          "Respond quickly to the commander's question about extending the operation.",
+          "Make a resourcing recommendation under limited time."
+        ],
+        "alternatives": [
+          "Conduct a District Y-specific cause analysis before rollout",
+          "Roll out Steady Watch while explicitly treating its expected effect as uncertain",
+          "Recommend rollout based on the District X result"
+        ],
+        "decision_basis": "The analyst generalized from the recent District X inference despite stated evidence that District Y had a different active driver.",
+        "time_pressure": "Time was explicitly described as short.",
+        "uncertainty": "High: District Y differed materially from District X and had no completed causal assessment."
+      },
+      {
+        "id": 4,
+        "summary": "Forecast continued attack tempo of three to four attacks per week and frame it as Steady Watch holding.",
+        "evidence_before": [
+          "Only two weeks of post-implementation data were available at the forecast point.",
+          "The observed post-spike counts had returned near the historical baseline.",
+          "The analyst recognized that a wider range would better reflect the limited record."
+        ],
+        "evidence_after": [
+          "The forecast was presented for the commander's brief as a decisive operational expectation."
+        ],
+        "goals_constraints": [
+          "Prepare for a commander's brief in three days.",
+          "Meet a perceived preference for a decisive forecast rather than a hedge."
+        ],
+        "alternatives": [
+          "Provide a wider predictive range with an explicit attribution caveat",
+          "Present a point forecast of three to four attacks per week as Steady Watch holding"
+        ],
+        "decision_basis": "The analyst selected a narrow, intervention-centered forecast despite recognizing the short post-intervention observation window.",
+        "time_pressure": "The commander's brief was three days away.",
+        "uncertainty": "Moderate to high: the apparent trend rested on very limited post-intervention data and unresolved causal ambiguity."
+      }
+    ]
+  },
+  "target_occurrence_audit": [
+    {
+      "instance_id": "rtm_01",
+      "bias": "Failure to recognize regression to the mean",
+      "requested_occurrences_for_bias": 1,
+      "status": "supported",
+      "decision_point": 2,
+      "supporting_quote": "“I told them Steady Watch was working. The numbers backed it up — we went from eleven down to three and four within two weeks of putting checkpoints on the main routes.” “I didn't really sit down and ask how much of that drop would've happened on its own just because week five was such an extreme outlier to begin with.”",
+      "evidence_location": "Decision point 2, participant's causal read to the supervisor and follow-up response concerning the no-Steady-Watch trajectory.",
+      "mechanism": "The participant attributes the magnitude of a decline after an extreme week-five value primarily to Steady Watch, while explicitly failing to consider that an unusually high observation was statistically likely to move back toward the prior three-attacks-per-week baseline even without the intervention. The participant also underweights concurrent transient causes that resolved during the same period.",
+      "strength": "moderate",
+      "confidence": 0.98,
+      "plausible_nonbias_explanation": "Temporal alignment between the checkpoint expansion and the decline could be a legitimate preliminary operational signal. However, the participant's own admission that they did not assess the untreated trajectory after an extreme outlier, combined with the near-baseline pre-spike history and coincident resolving factors, makes simple justified expertise insufficient to explain the attribution.",
+      "additional_evidence_needed": "None for occurrence validation. A stronger causal assessment would require comparison data, a longer pre/post series, a matched untreated district, or an explicit model of expected reversion and concurrent local drivers.",
+      "revision_needed": false,
+      "revision": {
+        "revision_type": "none",
+        "location": "Decision point 2, immediately after the description of weeks six through eight and in the subsequent counterfactual probe.",
+        "current_defect": "No material defect. The reasoning episode is distinct, textually observable, and supplies the required evidence-processing mechanism.",
+        "minimal_change_instruction": "Preserve the existing causal-attribution exchange, including the analyst's initial intervention attribution and later acknowledgment that the week-five value was an extreme outlier likely to decline.",
+        "preserve": [
+          "The week-five spike of eleven against a prior baseline of about three",
+          "The timing of Steady Watch in week six",
+          "The festival ending, dispute mediation, and cache depletion as concurrent alternative explanations",
+          "The analyst's initial primary attribution to Steady Watch"
+        ],
+        "avoid_creating": [
+          "A second independent episode of ignoring outlier-driven reversion at decision points 1, 3, or 4",
+          "An explicit textbook use of the term regression to the mean",
+          "A definitive claim that Steady Watch had no effect"
+        ],
+        "expected_post_revision_status": "supported"
+      }
+    }
+  ],
+  "bias_level_counts": [
+    {
+      "bias": "Failure to recognize regression to the mean",
+      "requested_count": 1,
+      "supported_count": 1,
+      "weak_count": 0,
+      "absent_count": 0,
+      "merged_count": 0,
+      "accidental_count": 0,
+      "count_satisfied": true
+    }
+  ],
+  "additional_candidate_biases": [
+    {
+      "bias": "Confirmation bias / selective evidence weighting",
+      "decision_point": 2,
+      "supporting_quote": "“I flagged the other stuff — the festival ending, the dispute settling — but I treated those as secondary color, not the main driver.”",
+      "mechanism": "After favoring the checkpoint explanation, the analyst discounts contemporaneous evidence that could weaken that explanation. This is a candidate selective-weighting pattern, although it overlaps substantially with the same causal-attribution episode supporting regression-to-the-mean failure.",
+      "confidence": 0.71,
+      "status": "candidate",
+      "plausible_nonbias_explanation": "The analyst may have judged the posture change more operationally actionable or more reliably documented than HUMINT reporting; the text does not establish a systematic search for confirmatory evidence or suppression of disconfirming evidence.",
+      "revision_recommendation": "none"
+    },
+    {
+      "bias": "Hasty generalization / overgeneralization from one case",
+      "decision_point": 3,
+      "supporting_quote": "“District X felt like a validated model at that point — we'd just seen checkpoints turn a spike around.”",
+      "mechanism": "The participant transfers an inference from one causally ambiguous district to District Y despite an identified different and unresolved driver. The generalization treats one recent case as sufficiently diagnostic of another context.",
+      "confidence": 0.79,
+      "status": "supported",
+      "plausible_nonbias_explanation": "Time pressure can reasonably justify use of a provisional analogical recommendation, and the text does not show that the analyst ignored all District Y-specific evidence. Nevertheless, the unsupported assumption of similar causal structure is directly stated.",
+      "revision_recommendation": "none"
+    },
+    {
+      "bias": "Overprecision / overconfidence in forecasting",
+      "decision_point": 4,
+      "supporting_quote": "“I could have given a wider range and flagged that two weeks isn't much of a track record, but the trend line looked clean and the commander wanted something decisive for the brief, not a hedge.”",
+      "mechanism": "The analyst knowingly substitutes a narrow intervention-centered forecast for a range that reflects acknowledged evidence limitations.",
+      "confidence": 0.67,
+      "status": "candidate",
+      "plausible_nonbias_explanation": "This may be a communication and organizational-pressure choice rather than genuine overconfidence: the analyst explicitly recognizes uncertainty and the need for a wider range.",
+      "revision_recommendation": "none"
+    }
+  ],
+  "nonbias_cues": [
+    {
+      "cue": "Choosing a limited checkpoint pilot rather than a full cordon-and-search at decision point 1",
+      "location": "Participant explanation of the initial recommendation",
+      "why_not_bias": "The participant explicitly balances the need to act against thin confirmation, lack of solid targeting, and the risk of overcommitting resources. A reversible pilot is proportionate risk management under uncertainty, not evidence of bias."
+    },
+    {
+      "cue": "Time pressure and command demand for an answer",
+      "location": "Throughout the interview, especially decision points 1, 3, and 4",
+      "why_not_bias": "Time pressure is a situational constraint. It can increase the likelihood of biased processing but is not itself a cognitive bias or sufficient evidence for one."
+    },
+    {
+      "cue": "HUMINT reporting was incomplete or not fully confirmed",
+      "location": "Initial incident description and follow-up on concurrent factors",
+      "why_not_bias": "Incomplete intelligence is an evidentiary limitation. It does not establish that the participant irrationally ignored information unless the text shows how available evidence was improperly processed."
+    },
+    {
+      "cue": "The intervention was followed by lower attack counts",
+      "location": "Weeks six through eight",
+      "why_not_bias": "A favorable post-intervention outcome alone does not establish a bias. The supported bias arises from the analyst's stated causal processing of the extreme pre-intervention value and failure to assess the untreated trajectory."
+    },
+    {
+      "cue": "The analyst later acknowledges that the dispute resolution and extreme outlier should have received more weight",
+      "location": "Responses to the counterfactual probes near the end",
+      "why_not_bias": "This is reflective updating elicited during the interview, not a second bias occurrence. It provides diagnostic evidence about the earlier causal-attribution episode."
+    }
+  ],
+  "causal_audit": {
+    "causal_claims": [
+      {
+        "claim": "Steady Watch caused the decline from eleven attacks in week five to three or four attacks by weeks seven and eight.",
+        "evidence_used": [
+          "Temporal succession of checkpoint expansion and lower subsequent attack counts",
+          "Increased presence on main routes"
+        ],
+        "limitations": [
+          "The week-five count was an extreme deviation from the prior baseline of about three attacks per week.",
+          "The festival ended, the tribal dispute was mediated, and the cache was reportedly expended during the same period.",
+          "There is no untreated District X comparison, controlled variation in checkpoint posture, or sufficiently long post-implementation series.",
+          "The causal conclusion is based on an observational before-after comparison."
+        ]
+      },
+      {
+        "claim": "District X validates Steady Watch as a model likely to produce a similar sharp decline in District Y.",
+        "evidence_used": [
+          "The District X before-after pattern",
+          "The analyst's interpretation of that pattern as a successful intervention"
+        ],
+        "limitations": [
+          "The upstream District X causal inference is unresolved.",
+          "District Y had a different, still-unresolved driver.",
+          "District Y had already partially declined without a posture change."
+        ]
+      },
+      {
+        "claim": "A forecast of three to four attacks per week represents Steady Watch holding.",
+        "evidence_used": [
+          "Two post-implementation observations near the historic baseline"
+        ],
+        "limitations": [
+          "The forecast confounds prediction with attribution.",
+          "The limited post-intervention record cannot distinguish durable intervention effect from natural reversion or resolved transient drivers."
+        ]
+      }
+    ],
+    "correlation_causation_risks": [
+      "Post hoc attribution: the intervention preceded the decline, but several other causes changed concurrently.",
+      "Regression-to-the-mean risk: the inference compares an extreme attack week with subsequent less-extreme weeks.",
+      "Confounding by festival termination, dispute mediation, and apparent cache exhaustion.",
+      "External-validity risk: the District X inference is transferred to District Y despite different local conditions.",
+      "Forecast-attribution conflation: a near-baseline forecast is presented as evidence that a specific intervention is holding."
+    ],
+    "counterfactual_present": true,
+    "changed_variable": "The interview explicitly probes whether the tribal dispute would have remained active while attack counts still declined; it also probes whether District Y's spike would have faded without a posture change.",
+    "held_constant": [
+      "Steady Watch timing in District X",
+      "Observed post-week-five decline in District X for the tribal-dispute hypothetical",
+      "District X baseline and the magnitude of the week-five spike",
+      "District Y's absence of a posture change for the second hypothetical"
+    ],
+    "causal_coherence": "moderate",
+    "explanation": "The counterfactual probes are well targeted: they test whether a concurrent cause and an untreated decline would weaken the intervention-only story. They expose the missing no-intervention trajectory that underlies the supported regression-to-the-mean failure. However, the interview does not provide a formal paired counterfactual manipulation of all transient factors, and it cannot establish the actual causal effect of Steady Watch from the observed data."
+  },
+  "quality_scores": {
+    "occupational_realism": 92,
+    "cta_fidelity": 90,
+    "bias_separability": 84,
+    "bias_subtlety": 82,
+    "control_fidelity": 100,
+    "counterfactual_fidelity": 83,
+    "narrative_coherence": 93,
+    "naturalness": 90,
+    "hidden_label_integrity": 94,
+    "overall_quality": 90
+  },
+  "revision_summary": {
+    "revision_required": false,
+    "supported_occurrence_total": 1,
+    "requested_occurrence_total": 1,
+    "missing_occurrence_total": 0,
+    "accidental_occurrence_total": 0,
+    "priority": "none",
+    "recommended_action": "accept",
+    "global_revision_constraints": [
+      "Do not count the later reflective answers about outlier reversion as a second occurrence; they are probes clarifying the same decision-point-two reasoning episode.",
+      "Do not convert the additional District Y generalization or forecast-calibration cues into extra target occurrences unless the manifest is intentionally expanded.",
+      "Preserve the distinction between a reasonable initial limited pilot under uncertainty and the later unsupported causal attribution."
+    ],
+    "revision_order": []
+  },
+  "failure_flags": []
+}

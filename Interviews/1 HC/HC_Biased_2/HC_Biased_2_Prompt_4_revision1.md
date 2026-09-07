@@ -1,0 +1,521 @@
+Prompt 4 - Revision Prompt
+You are a controlled CTA interview editor. Revise the interview only where explicitly instructed by the
+validation report.
+
+Inputs:
+- Original interview: {{Interviewer: Thanks for making time for this. Before we start, I want to confirm you're okay with this being used for a internal case review on decision-making during admissions, and that I can ask follow-up questions as we go.
+
+Participant: Sure, that's fine. Happy to walk through it.
+
+Interviewer: Great. Can you tell me your role on the team during this admission?
+
+Participant: I was the attending on the general medicine service. I had a resident covering with me, and we picked up this patient on hospital day one after she came in for something unrelated and ended up with a new finding on her monitor.
+
+Interviewer: And what was your overall goal for her care during the stay?
+
+Participant: Mainly to get her diagnosis sorted out and make sure we sent her home with a safe, appropriate plan. She was 78, otherwise fairly independent, living with her daughter nearby.
+
+Interviewer: Can you walk me through what happened, from the diagnosis to discharge?
+
+Participant: She came in and the admission ECG showed she was in atrial fibrillation, which nobody had picked up before — persistent, not paroxysmal. That obviously changes the calculus for stroke prevention. Her CHA2DS2-VASc came out to 4, so her annual stroke risk if left untreated is meaningful. Her HAS-BLED was 2, which is moderate, not a red flag. Pharmacy checked and there were no interactions with the DOAC we'd typically use. But she'd had a fall about three weeks before admission — mechanical, tripped on a rug at home, no head strike, no fracture, fully worked up at the time. Still, when I saw "fall" in the history, that gave me pause about starting a blood thinner right away. I told the team we'd hold off and get a formal fall-risk assessment first before committing to anything.
+
+Then on day two, one of the nurses mentioned, sort of in passing, that a patient two rooms down had died the previous month from a major GI bleed while on anticoagulation. Understandably, that got around the unit, and my patient's daughter had heard a version of it too. She was in the room a lot and got increasingly anxious every time anticoagulation came up. Clinically nothing had changed — no bleeding, no neuro symptoms — but I ended up ordering a head CT partly to have something concrete to reassure her with, even though it wasn't really indicated. That pushed our timeline back a day.
+
+By day three the CT was normal, and physical therapy had cleared her fall risk as low with a walker. So on paper the numbers were now clearly in favor of starting treatment. I remember standing at the nurses' station with the resident and just picturing what it would be like if we started her on this drug and then she had a major bleed — the conversation with the daughter, explaining that decision, how that would sit with all of us. It felt like a heavier thing to carry than just not starting it. I told the resident we'd let the outpatient team pick it up after discharge.
+
+Then on day four, right before discharge, she got a small bruise at her IV site — completely unrelated, she wasn't even on anticoagulation yet — but when I saw it, it just reinforced that we'd made the right call waiting. We finalized the discharge summary without a firm start plan, just a note to follow up as an outpatient.
+
+Interviewer: Let's slow down and go through each of those moments. At the first point, right after diagnosis — what stood out to you most?
+
+Participant: Honestly, the fall. Clinically I knew the scores favored treatment, but a recent fall in an older patient just registers as a flag. I didn't want to be the one who started a blood thinner and then she fell again and bled into her head.
+
+Interviewer: What alternatives did you consider there?
+
+Participant: We could have started the DOAC immediately since the scores supported it, or started a lower empirical dose. I chose to wait for a formal PT evaluation instead, even though the fall itself had already been worked up and looked mechanical.
+
+Interviewer: What was the main basis for waiting rather than starting treatment that day?
+
+Participant: I suppose not wanting to be the direct cause of a bad outcome. Withholding felt like the more conservative option, even though I recognized the resident had pointed out the stroke risk reduction was the bigger number.
+
+Interviewer: At the second point, with the daughter's anxiety and the CT — what were you trying to accomplish?
+
+Participant: Mostly to de-escalate the family's fear so we could have a productive conversation. In hindsight, I could have just walked through her individual numbers with the daughter instead of ordering imaging that wasn't clinically indicated. But it felt like having a normal scan in hand would make the conversation easier.
+
+Interviewer: How much time pressure did you feel making that call?
+
+Participant: Some — we were already tight on discharge planning, and adding a CT meant another day. But I felt like skipping that step would leave the family conversation unresolved.
+
+Interviewer: Move to the third point — after the CT came back normal and fall risk was cleared. What was going through your mind there?
+
+Participant: That's the one I keep coming back to. The data at that point was pretty clean — low fall risk, normal imaging, scores favoring treatment. But I remember describing to the resident, almost involuntarily, this scenario of her bleeding on a drug I'd started, and how that would feel for a long time afterward, for the family and for me. It wasn't really about the probability anymore. I decided to leave it for the outpatient team.
+
+Interviewer: What alternatives were on the table then?
+
+Participant: Starting it right there before discharge, starting a lower dose with a firm two-week follow-up, or deferring entirely, which is what I did.
+
+Interviewer: Had you handled a similar case before that shaped this decision?
+
+Participant: Not directly with this patient, but the ward story about the other patient's bleed was fresh, and I think it colored how vividly I imagined the downside here.
+
+Interviewer: At the fourth point, the bruise at discharge — how did that factor in?
+
+Participant: It probably shouldn't have changed anything, since she wasn't even on the medication yet. But seeing a bruise right before we finalized the summary just felt like confirmation that waiting was reasonable. We sent her out with a follow-up appointment that ended up being three weeks out, later than the two-week window we'd wanted.
+
+Interviewer: If the fall-risk assessment had come back before your first decision instead of after, would you have decided differently?
+
+Participant: Probably, yes. If I'd had that clearance up front, I likely would have started treatment on day one instead of waiting.
+
+Interviewer: If the other patient's bleeding event had never come up on the ward, do you think this admission would have gone differently?
+
+Participant: It's hard to say for certain, but I think the family conversation would have been calmer, and maybe I wouldn't have gotten as fixated on the worst-case picture toward the end.
+
+Interviewer: Looking back, what would you tell a colleague facing a similar case?
+
+Participant: I'd say make sure the fall workup happens early, not as an afterthought, and try to separate the family's emotional reaction from the actual numbers in front of you. It's easy to let one vivid story anchor the whole decision, even when the data has already shifted.}}
+- Hidden generation specification: {{"hidden_spec_version": "1.0",
+    "condition": "biased",
+    "exact_occurrence_manifest": [
+      {
+        "bias": "Impact Bias",
+        "occurrences": 1,
+        "mechanism_constraint": "Must manifest as overestimation of the intensity/duration of imagined future emotional impact of a hypothetical bleeding event, not as a general fear statement."
+      },
+      {
+        "bias": "Omission Bias",
+        "occurrences": 1,
+        "mechanism_constraint": "Must manifest as explicit preference for inaction over action based on differential blame attribution, not as a generic caution statement."
+      }
+    ],
+    "target_bias_names": ["Impact Bias", "Omission Bias"],
+    "requested_occurrence_count_for_each_bias": [
+      {"bias": "Impact Bias", "requested_occurrences": 1},
+      {"bias": "Omission Bias", "requested_occurrences": 1}
+    ],
+    "planned_instance_ids": [
+      {"instance_id": "om_01", "bias": "Omission Bias"},
+      {"instance_id": "im_01", "bias": "Impact Bias"}
+    ],
+    "intended_decision_points": [
+      {"instance_id": "om_01", "bias": "Omission Bias", "decision_point": 1},
+      {"instance_id": "im_01", "bias": "Impact Bias", "decision_point": 3}
+    ],
+    "intended_mechanisms": [
+      {
+        "instance_id": "om_01",
+        "bias": "Omission Bias",
+        "mechanism": "Judging harm from action (prescribing anticoagulant) as more blameworthy than equivalent or greater harm from inaction (withholding), leading to deferral despite risk scores favoring treatment.",
+        "affected_reasoning_operation": "Risk-benefit weighting and treatment-initiation choice at diagnosis",
+        "evidence_source": "CHA2DS2-VASc/HAS-BLED scores and resident's risk comparison presented at decision point 1",
+        "distinctiveness_requirement": "Must be tied to the initial diagnosis-stage decision and framed around act-vs-omission blame, distinct from im_01's forward-looking emotional forecasting at decision point 3."
+      },
+      {
+        "instance_id": "im_01",
+        "bias": "Impact Bias",
+        "mechanism": "Overestimating the intensity and duration of imagined future emotional distress from a hypothetical bleeding event, causing this forecast to override updated quantitative risk data.",
+        "affected_reasoning_operation": "Final pre-discharge treatment decision and prediction of future emotional consequences",
+        "evidence_source": "Updated normal CT and fall-risk clarification plus recollection of the ward bleeding death, presented at decision point 3",
+        "distinctiveness_requirement": "Must be tied to the discharge-stage decision and framed around vivid imagined future emotional impact, distinct from om_01's initial act-vs-omission blame framing."
+      }
+    ],
+    "intended_strength": [
+      {"instance_id": "om_01", "bias": "Omission Bias", "strength": "subtle"},
+      {"instance_id": "im_01", "bias": "Impact Bias", "strength": "subtle"}
+    ],
+    "paired_scenario_id": null,
+    "counterfactual_variable": {
+      "name": null,
+      "original_state": null,
+      "changed_state": null,
+      "variables_to_hold_constant": []
+    },
+    "scenario_id": "HC_Biased_2",
+    "domain_id": "HC",
+    "total_requested_occurrences": 2,
+    "total_planned_occurrences": 2,
+    "allocation_rule_used": "Each bias assigned to a distinct decision point (Omission Bias at decision point 1, Impact Bias at decision point 3) selected for best mechanism fit and narrative realism; no decision point received more than one instance of any single bias; decision points 2 and 4 held neutral to avoid unintended bias concentration.",
+    "control_zero_bias_requirement": false,
+    "variables_to_hold_constant": [],
+    "generation_warnings": []}}
+- Validation report: {{{
+  "validator_version": "2.0",
+  "interview_id": "HC_Biased_2",
+  "condition": "biased",
+  "domain_assessment": {
+    "domain": "Hospital medicine / inpatient anticoagulation decision-making",
+    "role": "Attending physician on a general medicine service",
+    "objective": "Diagnose newly identified persistent atrial fibrillation and determine a safe, evidence-based discharge plan for stroke prevention.",
+    "incident_type": "Delayed initiation of anticoagulation despite a documented net-benefit case for treatment, followed by discharge without a firm initiation plan.",
+    "confidence": 0.99
+  },
+  "structure_audit": {
+    "estimated_word_count": 1460,
+    "within_target_range": true,
+    "decision_point_count": 4,
+    "decision_points": [
+      {
+        "id": 1,
+        "summary": "At diagnosis, the attending defers anticoagulation pending a formal fall-risk assessment.",
+        "evidence_before": [
+          "New persistent atrial fibrillation",
+          "CHA2DS2-VASc score of 4, indicating meaningful untreated stroke risk",
+          "HAS-BLED score of 2, characterized as moderate and not a red flag",
+          "No relevant DOAC interactions",
+          "Recent mechanical fall with no head strike, fracture, or unresolved injury"
+        ],
+        "evidence_after": [
+          "Formal physical-therapy assessment later cleared fall risk as low with a walker"
+        ],
+        "goals_constraints": [
+          "Avoid preventable stroke",
+          "Avoid anticoagulant-associated bleeding",
+          "Ensure safe discharge planning",
+          "Address uncertainty about recurrent falls"
+        ],
+        "alternatives": [
+          "Start a DOAC immediately",
+          "Start a lower empirical DOAC dose",
+          "Wait for formal PT fall-risk assessment"
+        ],
+        "decision_basis": "The attending explicitly prioritized avoiding personal responsibility for a bleed caused by initiating treatment, despite recognizing that the quantitative risk-benefit case favored treatment.",
+        "time_pressure": "Moderate; the decision occurred early in a hospitalization with later discharge-planning pressure.",
+        "uncertainty": "Limited but not absent: recurrent fall risk had not yet been formally assessed, although the documented prior fall appeared mechanical and resolved."
+      },
+      {
+        "id": 2,
+        "summary": "The attending orders a non-indicated head CT primarily to reduce the daughter's anxiety about anticoagulation.",
+        "evidence_before": [
+          "A ward story about another patient's anticoagulant-associated GI bleed",
+          "The patient's daughter had heard a version of that story",
+          "No bleeding symptoms or neurologic symptoms",
+          "No stated clinical indication for head imaging"
+        ],
+        "evidence_after": [
+          "Normal head CT",
+          "One-day delay in the discharge timeline"
+        ],
+        "goals_constraints": [
+          "De-escalate family anxiety",
+          "Facilitate a productive treatment discussion",
+          "Avoid unresolved conflict at discharge"
+        ],
+        "alternatives": [
+          "Explain the patient's individualized stroke and bleeding risks",
+          "Proceed with anticoagulation without imaging",
+          "Order imaging to provide reassurance"
+        ],
+        "decision_basis": "The attending selected a concrete but clinically unnecessary test because a normal result was expected to make the family conversation easier.",
+        "time_pressure": "Present; discharge planning was already tight and the CT added a day.",
+        "uncertainty": "Low clinical uncertainty about acute intracranial pathology; higher uncertainty about whether reassurance would resolve the family's concern."
+      },
+      {
+        "id": 3,
+        "summary": "After normal imaging and low fall-risk clearance, the attending still defers anticoagulation to the outpatient team.",
+        "evidence_before": [
+          "Normal head CT",
+          "PT clearance of low fall risk with a walker",
+          "CHA2DS2-VASc and HAS-BLED scores favoring treatment",
+          "Resident's explicit comparison that stroke-risk reduction was the larger consideration",
+          "Recent, vivid ward account of another patient's major bleed"
+        ],
+        "evidence_after": [
+          "No inpatient anticoagulation initiation",
+          "Outpatient deferral rather than a firm treatment start plan"
+        ],
+        "goals_constraints": [
+          "Avoid stroke",
+          "Avoid bleeding",
+          "Complete a safe discharge",
+          "Manage anticipated family and clinician distress if bleeding later occurred"
+        ],
+        "alternatives": [
+          "Start anticoagulation before discharge",
+          "Start a lower dose with a firm two-week follow-up",
+          "Defer entirely to outpatient care"
+        ],
+        "decision_basis": "The attending gave disproportionate weight to an imagined future bleeding scenario and the anticipated emotional burden of explaining it, rather than to the updated clinical evidence.",
+        "time_pressure": "Moderate to high because the decision occurred immediately before discharge.",
+        "uncertainty": "Low on the stated clinical data; unresolved uncertainty concerned future adverse events and anticipated emotional consequences."
+      },
+      {
+        "id": 4,
+        "summary": "An unrelated IV-site bruise is interpreted as confirmation that waiting was appropriate, and the discharge summary is finalized without a firm anticoagulation start plan.",
+        "evidence_before": [
+          "The patient was not yet on anticoagulation",
+          "The bruise was at the IV site and explicitly unrelated to anticoagulation",
+          "Treatment had already been deferred"
+        ],
+        "evidence_after": [
+          "Discharge without a firm initiation plan",
+          "Follow-up ultimately scheduled three weeks later rather than the intended two weeks"
+        ],
+        "goals_constraints": [
+          "Finalize discharge",
+          "Avoid immediate treatment-related harm",
+          "Maintain a defensible plan"
+        ],
+        "alternatives": [
+          "Treat the bruise as clinically irrelevant to anticoagulation",
+          "Reconsider and initiate treatment before discharge",
+          "Maintain deferral and document outpatient follow-up"
+        ],
+        "decision_basis": "The bruise was treated as confirmatory evidence for a decision already made, despite its acknowledged lack of causal relevance.",
+        "time_pressure": "High; this occurred immediately before finalizing discharge.",
+        "uncertainty": "Low concerning the bruise's relevance, because the participant explicitly recognized it was unrelated."
+      }
+    ]
+  },
+  "target_occurrence_audit": [
+    {
+      "instance_id": "om_01",
+      "bias": "Omission Bias",
+      "requested_occurrences_for_bias": 1,
+      "status": "supported",
+      "decision_point": 1,
+      "supporting_quote": "“I didn't want to be the one who started a blood thinner and then she fell again and bled into her head.” ... “Withholding felt like the more conservative option, even though I recognized the resident had pointed out the stroke risk reduction was the bigger number.”",
+      "evidence_location": "Decision-point-1 narrative and the follow-up answer on the main basis for waiting.",
+      "mechanism": "The participant distinguishes harm caused by prescribing from the greater quantified harm risk associated with withholding. The anticipated blameworthiness of being the clinician who initiated anticoagulation shifts treatment-initiation weighting toward inaction, despite the participant's stated recognition that treatment had the stronger net-risk-reduction case.",
+      "strength": "moderate",
+      "confidence": 0.94,
+      "plausible_nonbias_explanation": "Waiting for a formal fall-risk assessment could be legitimate risk management in an older patient with a recent fall. However, the participant states that the fall was already worked up and mechanical, acknowledges that the scores favored treatment, and explicitly frames the distinction around being the direct cause of a bleed. Those features make ordinary caution an incomplete explanation.",
+      "additional_evidence_needed": "None required for classification. The existing account sufficiently identifies action-versus-omission blame attribution at the diagnosis-stage decision.",
+      "revision_needed": false,
+      "revision": {
+        "revision_type": "none",
+        "location": "Decision point 1, participant's account of deferring treatment and follow-up answer regarding the basis for waiting.",
+        "current_defect": "No material defect; the mechanism is distinct, locally grounded, and tied to the intended treatment-initiation decision.",
+        "minimal_change_instruction": "Retain the current wording that contrasts being the direct cause of a bleed with withholding despite the greater stroke-risk-reduction estimate.",
+        "preserve": [
+          "The mechanical and previously evaluated nature of the fall",
+          "The stated CHA2DS2-VASc and HAS-BLED evidence",
+          "The resident's risk comparison",
+          "The distinction between decision point 1 and the later imagined emotional scenario at decision point 3"
+        ],
+        "avoid_creating": [
+          "A second omission-bias episode at discharge",
+          "Additional explicit blame language in decision points 2 or 4",
+          "A reframing that makes the initial delay solely justified by unresolved fall-risk uncertainty"
+        ],
+        "expected_post_revision_status": "supported"
+      }
+    },
+    {
+      "instance_id": "im_01",
+      "bias": "Impact Bias",
+      "requested_occurrences_for_bias": 1,
+      "status": "weak",
+      "decision_point": 3,
+      "supporting_quote": "“I remember describing to the resident, almost involuntarily, this scenario of her bleeding on a drug I'd started, and how that would feel for a long time afterward, for the family and for me. It wasn't really about the probability anymore.”",
+      "evidence_location": "Decision-point-3 follow-up answer after the normal CT and low fall-risk assessment.",
+      "mechanism": "The participant prospectively imagines distress from a hypothetical bleed and allows that forecast to override updated quantitative evidence. The phrase “for a long time afterward” provides some duration language, but the text does not establish that the participant believed the predicted emotional effect would be unusually intense or persistent relative to a realistic expectation, nor does it clearly distinguish affective forecasting from availability-driven salience of the recent ward story.",
+      "strength": "weak",
+      "confidence": 0.72,
+      "plausible_nonbias_explanation": "The clinician may be reasonably anticipating the emotional, relational, and professional consequences of a severe bleeding event. The fresh ward story can also support availability bias or probability overweighting rather than impact bias specifically.",
+      "additional_evidence_needed": "A subtle indication that the imagined emotional aftermath is expected to be disproportionately consuming or enduring, not merely serious or unpleasant, and that this anticipated affective burden—not bleeding probability alone—drives the final choice.",
+      "revision_needed": true,
+      "revision": {
+        "revision_type": "local_reasoning_revision",
+        "location": "Decision point 3, the participant's answer beginning “That's the one I keep coming back to,” after acknowledgment that the data favored treatment.",
+        "current_defect": "The text shows vivid anticipated distress, but it does not sufficiently demonstrate overestimation of the intensity or duration of that future emotional impact. The adjacent reference to the ward bleed also leaves availability as an equally plausible primary mechanism.",
+        "minimal_change_instruction": "Add one restrained first-person cue after “how that would feel for a long time afterward” indicating that the participant expected the event to remain emotionally consuming or difficult to put aside well beyond the immediate aftermath, and that this anticipated burden made deferral feel preferable even after recognizing that the likelihood was lower than the untreated stroke risk. Do not name impact bias or state that the forecast was irrational.",
+        "preserve": [
+          "The normal CT and low-fall-risk clarification",
+          "The quantitative evidence favoring treatment",
+          "The outpatient-deferral decision",
+          "The ward bleeding story as contextual salience",
+          "The omission-bias mechanism at decision point 1"
+        ],
+        "avoid_creating": [
+          "A second act-versus-omission blame statement at decision point 3",
+          "An explicit assertion that a bleed is more probable than stroke",
+          "A new availability-bias occurrence stronger than the intended impact-bias mechanism",
+          "A post-outcome claim that proves the forecast inaccurate"
+        ],
+        "expected_post_revision_status": "supported"
+      }
+    }
+  ],
+  "bias_level_counts": [
+    {
+      "bias": "Impact Bias",
+      "requested_count": 1,
+      "supported_count": 0,
+      "weak_count": 1,
+      "absent_count": 0,
+      "merged_count": 0,
+      "accidental_count": 0,
+      "count_satisfied": false
+    },
+    {
+      "bias": "Omission Bias",
+      "requested_count": 1,
+      "supported_count": 1,
+      "weak_count": 0,
+      "absent_count": 0,
+      "merged_count": 0,
+      "accidental_count": 0,
+      "count_satisfied": true
+    }
+  ],
+  "additional_candidate_biases": [
+    {
+      "bias": "Availability Bias",
+      "decision_point": 3,
+      "supporting_quote": "“The ward story about the other patient's bleed was fresh, and I think it colored how vividly I imagined the downside here.”",
+      "mechanism": "A recent, vivid, socially transmitted example of a major bleed becomes highly retrievable and appears to amplify the perceived salience of a similar adverse outcome for this patient, despite different patient-specific evidence.",
+      "confidence": 0.86,
+      "status": "supported",
+      "plausible_nonbias_explanation": "The story may simply have prompted a legitimate discussion of anticoagulant bleeding risk. However, the participant explicitly says it colored the vividness of the downside after the individual clinical evidence favored treatment.",
+      "revision_recommendation": "remove_or_neutralize"
+    },
+    {
+      "bias": "Confirmation Bias",
+      "decision_point": 4,
+      "supporting_quote": "“Seeing a bruise right before we finalized the summary just felt like confirmation that waiting was reasonable.”",
+      "mechanism": "The participant treats an acknowledged irrelevant observation as confirmatory support for an existing deferral decision rather than evaluating its evidentiary relevance.",
+      "confidence": 0.95,
+      "status": "supported",
+      "plausible_nonbias_explanation": "An IV-site bruise can be clinically relevant in some contexts, but the participant explicitly states that the patient was not anticoagulated and that the bruise was unrelated, eliminating a reasonable patient-specific evidentiary basis.",
+      "revision_recommendation": "remove_or_neutralize"
+    },
+    {
+      "bias": "Affect Heuristic",
+      "decision_point": 2,
+      "supporting_quote": "“It felt like having a normal scan in hand would make the conversation easier.”",
+      "mechanism": "Family anxiety and the emotional need for reassurance appear to motivate selection of a test that the participant acknowledges was not clinically indicated.",
+      "confidence": 0.57,
+      "status": "weak",
+      "plausible_nonbias_explanation": "This may reflect communication management, perceived shared-decision-making needs, defensive practice, or organizational discharge constraints rather than an affect-based cognitive shortcut.",
+      "revision_recommendation": "none"
+    }
+  ],
+  "nonbias_cues": [
+    {
+      "cue": "The initial decision to obtain a formal PT fall-risk assessment.",
+      "location": "Decision point 1.",
+      "why_not_bias": "A recent fall in an older patient can create legitimate uncertainty relevant to anticoagulation. It becomes omission bias here only because the participant separately states that the fall was mechanical, the quantitative evidence favored treatment, and personal causation/blame for treatment harm drove deferral."
+    },
+    {
+      "cue": "Use of CHA2DS2-VASc and HAS-BLED scores.",
+      "location": "Initial clinical assessment and decision points 1 and 3.",
+      "why_not_bias": "Use of validated clinical risk information is evidence-based reasoning, not a bias cue. The relevant issue is how the participant weighs that evidence relative to emotionally salient anticipated harms."
+    },
+    {
+      "cue": "Ordering a head CT to facilitate a difficult family discussion.",
+      "location": "Decision point 2.",
+      "why_not_bias": "The choice is clinically non-indicated according to the participant, but non-indicated testing alone does not establish a cognitive bias. It may arise from communication pressure, defensive practice, or a mistaken but understandable belief that reassurance requires testing."
+    },
+    {
+      "cue": "A three-week outpatient follow-up rather than the preferred two-week follow-up.",
+      "location": "Discharge outcome after decision point 4.",
+      "why_not_bias": "This is an operational delay and unfavorable care-process outcome. It does not itself reveal a specific reasoning mechanism."
+    },
+    {
+      "cue": "The patient's daughter being anxious after hearing about another patient's death.",
+      "location": "Decision point 2 and contextual lead-in to decision point 3.",
+      "why_not_bias": "Family anxiety is an environmental and interpersonal influence. It should not itself be labeled as a clinician cognitive bias without evidence of how the clinician processed it."
+    }
+  ],
+  "causal_audit": {
+    "causal_claims": [
+      {
+        "claim": "The recent mechanical fall led the attending to defer anticoagulation pending formal fall-risk assessment.",
+        "support": "The participant directly links seeing “fall” in the history to pausing anticoagulation and ordering PT assessment.",
+        "assessment": "Moderately supported as a self-reported causal account, though the fall also supplied a plausible clinical risk-management rationale."
+      },
+      {
+        "claim": "The ward story about another patient's bleed increased family anxiety and colored the attending's imagination of a bleeding outcome.",
+        "support": "The participant reports that the story spread through the unit, the daughter became more anxious, and the story “colored” the vividness of the later downside scenario.",
+        "assessment": "Moderately supported. The story is temporally and narratively linked, but its independent causal effect cannot be separated from the participant's preexisting concern about falls and bleeding."
+      },
+      {
+        "claim": "The unrelated IV-site bruise reinforced the decision to defer treatment.",
+        "support": "The participant explicitly says it “felt like confirmation” that waiting was reasonable.",
+        "assessment": "Strongly supported as a causal claim about subjective decision reinforcement, but not as medically valid evidence about anticoagulant risk."
+      }
+    ],
+    "correlation_causation_risks": [
+      {
+        "risk": "The interview presents the ward bleed story as a causal contributor to deferral, but it is a single anecdotal exposure co-occurring with family anxiety, discharge pressure, and preexisting fall concerns.",
+        "implication": "Do not infer that the story alone caused the treatment decision."
+      },
+      {
+        "risk": "The normal CT and low-fall-risk clearance precede continued deferral, but their temporal sequence does not establish that they failed to influence the decision; the participant reports that anticipated emotional consequences overrode them.",
+        "implication": "The causal interpretation rests on self-report of weighting, not on outcome sequence alone."
+      }
+    ],
+    "counterfactual_present": true,
+    "changed_variable": "The interview includes two informal counterfactual probes: timing of fall-risk clearance and whether the ward bleeding event was discussed. These are not a formal paired-scenario counterfactual because the hidden specification supplies no designated counterfactual variable or controlled comparison.",
+    "held_constant": [],
+    "causal_coherence": "moderate",
+    "explanation": "The participant supplies plausible self-reported counterfactual responses: early fall-risk clearance would likely have changed the day-one decision, and absence of the ward story might have reduced fixation on the worst-case scenario. However, neither hypothetical holds other causal influences constant, and the responses are retrospective and hedged. They are useful process probes, not clean causal identification."
+  },
+  "quality_scores": {
+    "occupational_realism": 88,
+    "cta_fidelity": 86,
+    "bias_separability": 66,
+    "bias_subtlety": 82,
+    "control_fidelity": 100,
+    "counterfactual_fidelity": 72,
+    "narrative_coherence": 91,
+    "naturalness": 87,
+    "hidden_label_integrity": 84,
+    "overall_quality": 78
+  },
+  "revision_summary": {
+    "revision_required": true,
+    "supported_occurrence_total": 1,
+    "requested_occurrence_total": 2,
+    "missing_occurrence_total": 1,
+    "accidental_occurrence_total": 2,
+    "priority": "high",
+    "recommended_action": "revise",
+    "global_revision_constraints": [
+      "Preserve the four-decision-point chronology and the attending physician's role.",
+      "Keep omission bias confined to the initial treatment-initiation decision and impact bias confined to the post-clearance discharge-stage decision.",
+      "Do not replace patient-specific clinical uncertainty with obviously irrational behavior.",
+      "Maintain the explicit clinical facts that the fall was mechanical, PT later assessed low fall risk, CT was normal, and quantified stroke-prevention evidence favored treatment.",
+      "Neutralize the unrelated-bruising confirmation episode unless confirmation bias is intentionally added to the manifest.",
+      "Reduce or reframe the ward-story wording if availability bias is not intended as an additional candidate occurrence."
+    ],
+    "revision_order": [
+      {
+        "step": 1,
+        "affected_instance_id": "im_01",
+        "action": "Add a minimal affective-forecasting cue at decision point 3 establishing disproportionate anticipated intensity or persistence of emotional distress, while retaining the distinction from action-versus-omission blame."
+      },
+      {
+        "step": 2,
+        "affected_instance_id": "additional_candidate",
+        "action": "At decision point 4, remove the interpretation of the unrelated IV-site bruise as confirmation; retain the discharge decision and delayed outpatient follow-up without using the bruise as evidentiary support."
+      },
+      {
+        "step": 3,
+        "affected_instance_id": "additional_candidate",
+        "action": "If strict two-bias fidelity is required, soften the assertion that the ward story colored the participant's thinking, or retain it only as family context rather than as a clinician's personally retrievable basis for risk weighting."
+      }
+    ]
+  },
+  "failure_flags": [
+    "Requested Impact Bias occurrence is weak because anticipated emotional impact is present but overestimation of its intensity or duration is not independently established.",
+    "The interview contains a supported accidental Availability Bias candidate at decision point 3.",
+    "The interview contains a supported accidental Confirmation Bias occurrence at decision point 4.",
+    "The allocation rule that decision points 2 and 4 remain neutral is not satisfied, because decision point 4 contains a clear irrelevant-confirmation mechanism."
+  ]
+}}}
+
+Rules:
+1. Apply only revisions with revision_needed = true.
+2. Preserve all supported occurrences exactly in mechanism and approximate location.
+3. Repair every requested occurrence marked weak, absent, merged, or misclassified according to its
+   minimal_change_instruction.
+4. Remove or neutralize accidental occurrences when instructed.
+5. Do not add any occurrence not requested in the hidden specification.
+6. Do not name or define cognitive biases.
+7. Preserve the occupational setting, participant role, four-decision-point structure, dialogue format,
+   approximate length, vocabulary level, causal variable, and counterfactual conditions.
+8. Do not make the target bias obvious through exaggerated or textbook-like language.
+9. If a requested occurrence is not plausible under the scenario, do not force it; return
+   REVISION_BLOCKED with a concise explanation rather than fabricating behavior.
+10. Return only the revised interview text, unless revision is blocked.
+
+Before outputting, silently check the requested occurrence count, accidental occurrence risk, word count, and preservation constraints.

@@ -1,0 +1,316 @@
+You are an expert occupational interviewer and realistic dialogue writer.
+
+Generate one simulated cognitive task analysis interview from the supplied generation specification. The interview will be given to an independent evaluator that must infer whether specified cognitive biases are present. Do not reveal the labels or your construction process.
+
+INPUT
+Generation specification:
+{{"scenario_id": "MO_Biased_4",
+  "domain_id": "MO",
+  "domain": "Maritime Operations",
+  "role": "Ship Master / Vessel Captain",
+  "condition": "biased",
+  "generation_specification": {
+    "scenario_title_internal": "Tidal Gate at Rotterdam: The Kestrel Bay Passage",
+    "scenario_summary_internal": "Master of the bulk carrier MV Kestrel Bay must thread a narrow tidal window into Port of Rotterdam via a channel affected by a newly surveyed shoal, deteriorating visibility, a developing main-engine cooling anomaly, and charter-penalty schedule pressure. Four sequential decisions (route retention, attention allocation in the narrow channel, response to an engine alarm, and post-incident reconstruction) are engineered to independently elicit Status Quo Bias, Selective Attention/Inattentional Blindness, Overconfidence Bias, and Hindsight Bias respectively, without ever naming or explaining these constructs in the interview text.",
+    "occupational_realism": {
+      "objective": "Bring the vessel safely alongside Berth 7, Port of Rotterdam, within a closing tidal window, while managing a perishable cargo penalty clause, deteriorating weather, and an emergent propulsion concern.",
+      "setting": "Approach and inbound transit of the Maasgeul/Nieuwe Waterweg approach channel toward Rotterdam, dusk into night, patchy fog and a developing squall, moderate vessel traffic including fishing activity near the fairway edge.",
+      "constraints": [
+        "Tidal window at the lock/berth closes in approximately 3 hours from the first decision point",
+        "Charter party penalty clause for missed berthing slot",
+        "Perishable/time-sensitive bulk cargo aboard",
+        "Reduced visibility from patchy fog and squall activity",
+        "Limited tug and pilot boarding slots if the ETA slips",
+        "Main engine cooling water temperature trending upward",
+        "Company standing orders emphasizing schedule adherence when 'safely practicable'"
+      ],
+      "stakeholders": [
+        "Ship Master (interviewee)",
+        "Chief Officer / Officer of the Watch",
+        "Chief Engineer",
+        "VTS Rotterdam",
+        "Harbor Pilot",
+        "Company Operations / Charterer representative"
+      ],
+      "technical_terms_to_use": [
+        "passage plan",
+        "ECDIS",
+        "NAVTEX",
+        "under keel clearance (UKC)",
+        "squat effect",
+        "ARPA/radar plot",
+        "tidal gate",
+        "VTS traffic report",
+        "AIS contact",
+        "sea speed / half power",
+        "datum tide",
+        "fairway/traffic separation scheme"
+      ],
+      "technical_terms_to_avoid": [
+        "hindsight bias",
+        "overconfidence bias",
+        "status quo bias",
+        "selective attention",
+        "inattentional blindness",
+        "cognitive bias",
+        "heuristic",
+        "anchoring",
+        "confirmation bias"
+      ]
+    },
+    "timeline": [
+      {
+        "phase": 1,
+        "decision_point": true,
+        "facts_available_before_decision": [
+          "Original passage plan via the primary channel was filed and approved before departure",
+          "A NAVTEX update received en route reports a newly surveyed shoal patch with reduced depth near the filed route",
+          "Alternate deeper channel adds approximately 40 minutes transit time",
+          "Tidal window at the destination lock is already tight"
+        ],
+        "new_information_after_decision": [
+          "Chief Officer flags that under-keel clearance margin near the shoal will be tighter than usual at the current datum tide",
+          "Squat effect at planned speed further reduces effective clearance"
+        ],
+        "alternatives": [
+          "Retain the originally filed passage plan through the shoal-affected channel",
+          "Amend the route to the alternate deeper channel per the NAVTEX update",
+          "Reduce speed and request an updated survey/VTS confirmation before deciding"
+        ],
+        "intended_action": "Master retains the original filed plan, reasoning that re-filing and coordinating a route change would cost time and that the shoal warning is 'probably a minor revision,' without independently re-evaluating the new depth data against current tide and draft."
+      },
+      {
+        "phase": 2,
+        "decision_point": true,
+        "facts_available_before_decision": [
+          "Vessel is entering the narrow approach channel in patchy fog",
+          "ECDIS prominently displays a countdown to the tidal gate closure",
+          "Radar/ARPA shows multiple returns including a cluster of small fishing vessels near the fairway edge",
+          "OOW reports one ambiguous, slow-moving contact near the deep-water route"
+        ],
+        "new_information_after_decision": [
+          "VTS later transmits a traffic advisory naming the same contact as a drifting fishing vessel without engine power",
+          "The contact's closest point of approach narrows faster than initially plotted"
+        ],
+        "alternatives": [
+          "Keep attention on the tidal-gate countdown and cargo/berth logistics while trusting the OOW to call all contacts",
+          "Actively cross-check ARPA plots and personally query the ambiguous contact",
+          "Slow further and request a dedicated VTS traffic update on fishing activity in the fairway"
+        ],
+        "intended_action": "Master remains focused on the tide-gate timing and berth coordination, instructs the OOW to 'just watch the deep water,' and does not personally query or re-plot the ambiguous slow contact until VTS calls it out."
+      },
+      {
+        "phase": 3,
+        "decision_point": true,
+        "facts_available_before_decision": [
+          "Chief Engineer reports a rise in main engine cooling water temperature above normal range",
+          "Chief Engineer recommends reducing to half power for roughly 20 minutes to inspect the cooling system",
+          "Master has encountered similar temperature alarms multiple times over a 15-year career without resulting incident",
+          "Reducing power now risks missing the tidal gate"
+        ],
+        "new_information_after_decision": [
+          "Temperature continues to climb over the next 30 minutes",
+          "Chief Engineer repeats the recommendation with more urgency, noting the trend is not consistent with prior sensor-lag episodes"
+        ],
+        "alternatives": [
+          "Reduce speed/power per the Chief Engineer's recommendation",
+          "Maintain full sea speed, treating the reading as likely sensor lag based on past experience",
+          "Reduce power moderately as a compromise while continuing toward the gate"
+        ],
+        "intended_action": "Master maintains full sea speed, telling the Chief Engineer 'I've seen this before, it's just a sensor lag,' relying on personal track record rather than requesting fresh diagnostic data before continuing."
+      },
+      {
+        "phase": 4,
+        "decision_point": true,
+        "facts_available_before_decision": [
+          "VTS issues a late warning about the drifting fishing vessel now close to the fairway centerline",
+          "Under-keel clearance near the shoal is now marginal given tide, squat, and draft",
+          "Engine temperature remains elevated but has not triggered a shutdown",
+          "Master must decide on late avoiding action and whether to abort the tidal-gate attempt"
+        ],
+        "new_information_after_decision": [
+          "Vessel takes late avoiding action, passes the fishing vessel with a reduced but adequate margin, and clears the shoal with a narrow UKC margin",
+          "Vessel makes the berth slightly behind schedule but without grounding, collision, or engine failure",
+          "Post-arrival debrief and this interview reconstruct the earlier decisions"
+        ],
+        "alternatives": [
+          "Take immediate large-scale avoiding action and abort the tidal-gate attempt, anchoring to reassess",
+          "Take a smaller late course/speed adjustment to clear the contact and shoal while preserving the tidal gate",
+          "Request pilot/tug assistance immediately and slow to minimum safe speed"
+        ],
+        "intended_action": "Master takes the smaller late adjustment, clears both hazards narrowly, and reaches berth slightly late; during the debrief interview, when asked to explain the original route decision, the master characterizes the shoal warning as having been 'completely clear at the time,' asserting the correct choice was obvious rather than acknowledging the genuine ambiguity that existed before the outcome was known."
+      }
+    ],
+    "probe_plan": {
+      "opening": [
+        "Describe your role and responsibilities on this voyage leg.",
+        "Walk me through what you knew about the passage before you received the NAVTEX update."
+      ],
+      "timeline_reconstruction": [
+        "Take me through the sequence of events from receiving the NAVTEX update to arriving at berth.",
+        "What information sources were you drawing on at each stage — ECDIS, radar, VTS, engine room reports?",
+        "What were you and your officers focused on as you entered the narrow channel?"
+      ],
+      "decision_point_probes": [
+        "What alternatives did you consider when the NAVTEX update came in, and why did you choose the one you did?",
+        "What cues were you attending to during the channel transit, and what, if anything, might you have missed?",
+        "When the Chief Engineer flagged the temperature rise, what made you confident in your assessment?",
+        "When VTS called the traffic advisory, what options did you weigh before acting?"
+      ],
+      "closing_hypotheticals": [
+        "If the NAVTEX update had arrived an hour earlier, would your route decision have changed?",
+        "Looking back, how clear were the warning signs about the shoal at the time you made the routing decision?",
+        "What would you do differently if you faced the same engine-temperature situation again?",
+        "How much of your confidence in the engine reading came from this specific voyage versus your overall experience?"
+      ]
+    },
+    "occurrence_embedding_plan_internal": [
+      {
+        "instance_id": "cb_04",
+        "bias": "Status Quo Bias",
+        "decision_point": 1,
+        "mechanism": "Master defaults to the previously filed and approved passage plan despite new depth information, treating the cost of changing the plan as more salient than the cost of re-evaluating it",
+        "affected_reasoning_operation": "Route re-evaluation under new information",
+        "evidence_available_at_time": [
+          "NAVTEX shoal update",
+          "Filed/approved passage plan",
+          "Tight tidal window"
+        ],
+        "required_textual_manifestation": "Master explicitly cites the existing filed plan and the hassle of re-coordination as reasons to not re-evaluate, rather than assessing the new depth data on its own merits",
+        "plausible_nonbias_interpretation": "A reasonable master might rationally judge the extra 40-minute alternate route not worth the schedule cost if the shoal margin still appears adequate under a genuine (if brief) risk assessment",
+        "strength": "subtle",
+        "do_not_make_explicit": [
+          "status quo bias",
+          "default effect",
+          "switching cost"
+        ]
+      },
+      {
+        "instance_id": "cb_02",
+        "bias": "Selective Attention Bias or Inattentional Blindness",
+        "decision_point": 2,
+        "mechanism": "Master's attention is captured by the salient tidal-gate countdown and berth logistics, causing an ambiguous but relevant radar/AIS contact to go unqueried until an external party (VTS) flags it",
+        "affected_reasoning_operation": "Real-time cue selection and evidence sampling from radar/ARPA and OOW reports",
+        "evidence_available_at_time": [
+          "ECDIS tidal-gate countdown display",
+          "ARPA plot showing multiple returns including one ambiguous slow contact",
+          "OOW's initial mention of the ambiguous contact"
+        ],
+        "required_textual_manifestation": "Master describes directing focus toward timing/logistics and instructing the OOW to 'watch the deep water' without personally cross-checking the ambiguous contact until VTS calls it",
+        "plausible_nonbias_interpretation": "Delegating contact-tracking to the OOW while the master manages overall passage timing is a normal division of bridge labor, not inherently a lapse",
+        "strength": "moderate",
+        "do_not_make_explicit": [
+          "inattentional blindness",
+          "selective attention",
+          "tunnel vision"
+        ]
+      },
+      {
+        "instance_id": "cb_03",
+        "bias": "Overconfidence Bias",
+        "decision_point": 3,
+        "mechanism": "Master weights personal experience with prior sensor-lag episodes more heavily than the Chief Engineer's current, specific recommendation and trend data, maintaining speed without seeking fresh verification",
+        "affected_reasoning_operation": "Risk assessment and calibration of confidence in own judgment versus specialist input",
+        "evidence_available_at_time": [
+          "Chief Engineer's report of rising cooling water temperature",
+          "Chief Engineer's explicit recommendation to reduce power",
+          "Master's 15-year history of similar alarms resolving as sensor lag"
+        ],
+        "required_textual_manifestation": "Master states confidence based on personal track record ('I've seen this before') and declines the recommended power reduction without requesting updated diagnostics",
+        "plausible_nonbias_interpretation": "An experienced master may have legitimate domain expertise that makes a measured deviation from a junior recommendation reasonable, especially under schedule constraints",
+        "strength": "moderate",
+        "do_not_make_explicit": [
+          "overconfidence bias",
+          "expertise bias",
+          "miscalibration"
+        ]
+      },
+      {
+        "instance_id": "cb_01",
+        "bias": "Hindsight Bias",
+        "decision_point": 4,
+        "mechanism": "In reconstructing the decision-1 routing choice after the outcome (a narrow but safe passage) is known, master retrospectively asserts the shoal warning was obviously decisive, understating the genuine ambiguity present at the time of the original decision",
+        "affected_reasoning_operation": "Retrospective causal attribution and memory reconstruction of a prior decision, elicited via closing probe",
+        "evidence_available_at_time": [
+          "Known safe outcome of the voyage",
+          "Master's own account of decision point 1",
+          "Interviewer probe about clarity of warning signs at the time"
+        ],
+        "required_textual_manifestation": "Master states the shoal warning was 'completely clear' or the correct route 'obvious' at the time, in a way that is inconsistent with the genuine uncertainty described earlier in the same interview",
+        "plausible_nonbias_interpretation": "A master might reasonably conclude, on sober reflection with full information, that the alternate route was the better choice without this reflecting a distortion of what was knowable beforehand",
+        "strength": "subtle",
+        "do_not_make_explicit": [
+          "hindsight bias",
+          "creeping determinism",
+          "outcome bias"
+        ]
+      }
+    ],
+    "control_specification": {
+      "paired_scenario_id": null,
+      "features_to_match": [],
+      "features_to_remove_or_change": [],
+      "ambiguity_boundary": "Not applicable in this run: condition is 'biased' with no paired control requested."
+    },
+    "counterfactual_specification": {
+      "causal_variable": "Timing of the NAVTEX shoal update relative to route commitment (auto-selected as the most decision-relevant single causal lever in this scenario)",
+      "original_state": "NAVTEX update arrives after the passage plan is already filed and underway, when re-routing carries a visible schedule cost",
+      "counterfactual_state": "NAVTEX update arrives before departure, when re-routing carries no schedule cost",
+      "variables_to_hold_constant": [
+        "Vessel type and cargo",
+        "Weather and visibility conditions",
+        "Engine cooling anomaly and its timing",
+        "Tidal window constraint",
+        "Crew composition and stated experience level"
+      ],
+      "expected_causal_difference": "Earlier warning timing removes the switching-cost pressure that supports the Status Quo Bias instance at decision point 1, allowing a test of whether the master's route choice changes when commitment cost is absent",
+      "causal_test_question": "Does the master choose the alternate deeper channel when the same depth information arrives before any commitment cost exists, versus retaining the original plan when it arrives after commitment?"
+    },
+    "generation_checks": [
+      "Exactly four decision points are present and each maps to exactly one intended bias instance",
+      "No bias name, definition, or psychological explanation appears in probe wording or intended actions",
+      "Each instance has a distinct evidence trace and reasoning operation from the other three",
+      "Plausible non-bias explanations exist for every planned instance",
+      "Narrative supports the 1,215–1,485 word target without repetitive exposition across four phases and four probe categories",
+      "No unrequested bias (e.g., confirmation bias, sunk cost) is intentionally embedded"
+    ]
+  }}}
+
+WRITING REQUIREMENTS
+1. Produce only the interview, with no preface, postscript, analysis, labels, answer key, bias names, or JSON.
+2. Use approximately 1,350 words, with an acceptable range of 1,215–1,485 words.
+3. Use exactly four decision points.
+4. Write a natural semi-structured CTA interview between an interviewer and a domain-credible participant. Include both questions and answers.
+5. Begin with a brief consent/role/context exchange, then obtain an incident account, reconstruct the timeline, revisit the four decision points, probe the participant's reasoning, and end with relevant hypotheticals.
+6. Make the participant's account coherent, specific, and occupationally plausible. Include concrete cues, information sources, goals, constraints, alternatives, time pressure, uncertainty, prior experience, and consequences.
+7. Make the target biases inferable from patterns of reasoning, not from vocabulary that names or defines them.
+8. Do not make every decision biased. Preserve natural variation, including justified reasoning and uncertainty.
+9. Do not equate an incorrect decision or bad outcome with a bias. Include enough context for alternative explanations to remain possible.
+10. Keep the number of decision points, actors, technical terms, and narrative complexity aligned with the specification.
+11. For multiple target biases, distribute them across the incident. Each bias must have a distinct manifestation, but interactions may occur naturally.
+12. For `vocabulary_control`, preserve the same occupational vocabulary and narrative complexity while writing decisions supported by balanced evidence and reasonable consideration of alternatives. Do not insert target-bias evidence.
+13. For `ambiguous_control`, include genuinely ambiguous reasoning that has plausible non-bias explanations, but do not intentionally instantiate a target bias. Do not use exaggerated contradiction or suspiciously artificial neutrality.
+14. For `counterfactual`, minimally alter the specified causal variable. Preserve all other material facts, wording patterns, and decision structure as far as possible. Make the changed variable causally relevant, not merely correlated with the outcome.
+15. Include at least one probe asking what information would have changed the decision and one probe asking what would have happened if a key feature had been different.
+16. Do not add facts that contradict the generation specification.
+17. Avoid stereotypes, protected-class generalizations, and gratuitous sensitive content.
+
+RECOMMENDED STRUCTURE
+- Opening and role context: 100–150 words.
+- Initial incident account: 250–350 words.
+- Timeline reconstruction: 150–200 words.
+- Four decision-point sections with probes: 550–650 words total.
+- Closing reflection and hypothetical: 150–250 words.
+
+DIALOGUE STYLE
+- Label turns as `Interviewer:` and `Participant:`.
+- Let answers vary in length and certainty.
+- Use natural repairs, qualifications, and references to evidence.
+- Avoid repeatedly asking the same generic question.
+- Do not explicitly state that the participant is biased, unbiased, rational, irrational, or subject to an experimental condition.
+
+FINAL SILENT CHECK
+Before outputting, verify word count, four decision points, domain realism, target-bias concealment, control fidelity, and causal minimality where applicable. If a target bias cannot be represented without becoming obvious or implausible, revise the incident rather than explaining the problem.
+
+OUTPUT
+Return only the interview text.
