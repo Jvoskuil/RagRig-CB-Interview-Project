@@ -597,7 +597,7 @@ Participant: I probably would've stuck with what we had. It's passed every audit
         }
       ],
       "correction_or_counterevidence": "The PI asked the participant to pull Participant 12's full lab history and prior medications before finalizing the causality category; the participant acknowledged this should have occurred up front.",
-      "retrieved_corpus_support_available": true,
+      "retrieved_corpus_support_available": false,
       "corpus_support_note": "No retrieved scientific corpus passages were provided in the analysis context; theoretical mechanism is described from general knowledge rather than from retrieved literature.",
       "corpus_evidence": []
     },
@@ -630,7 +630,7 @@ Participant: I probably would've stuck with what we had. It's passed every audit
         }
       ],
       "correction_or_counterevidence": "The discrepancy was ultimately not resolvable from available source documents; it was flagged as a deviation later, so the additional time did not change the outcome.",
-      "retrieved_corpus_support_available": true,
+      "retrieved_corpus_support_available": false,
       "corpus_support_note": "No retrieved scientific corpus passages were provided in the analysis context; theoretical mechanism is described from general knowledge rather than from retrieved literature.",
       "corpus_evidence": []
     },
@@ -668,7 +668,7 @@ Participant: I probably would've stuck with what we had. It's passed every audit
         }
       ],
       "correction_or_counterevidence": "The eventual outcome did not resolve; the case was flagged later. The participant's counterfactual statement suggests retrospective recognition of the framing effect.",
-      "retrieved_corpus_support_available": true,
+      "retrieved_corpus_support_available": false,
       "corpus_support_note": "No retrieved scientific corpus passages were provided in the analysis context; theoretical mechanism is described from general knowledge rather than from retrieved literature.",
       "corpus_evidence": []
     },
@@ -701,7 +701,7 @@ Participant: I probably would've stuck with what we had. It's passed every audit
         }
       ],
       "correction_or_counterevidence": "When later screened, the referral met every inclusion criterion, but the participant noted he got lucky that lock week did not cost enrollment.",
-      "retrieved_corpus_support_available": true,
+      "retrieved_corpus_support_available": false,
       "corpus_support_note": "No retrieved scientific corpus passages were provided in the analysis context; theoretical mechanism is described from general knowledge rather than from retrieved literature.",
       "corpus_evidence": []
     },
@@ -739,7 +739,7 @@ Participant: I probably would've stuck with what we had. It's passed every audit
         }
       ],
       "correction_or_counterevidence": "The monitor asked why the method was changed without documented rationale; the participant had no answer beyond social proof.",
-      "retrieved_corpus_support_available": true,
+      "retrieved_corpus_support_available": false,
       "corpus_support_note": "No retrieved scientific corpus passages were provided in the analysis context; theoretical mechanism is described from general knowledge rather than from retrieved literature.",
       "corpus_evidence": []
     }
