@@ -1,0 +1,68 @@
+# Ranker comparison: the default hybrid RRF ranker vs. pure cosine ranking
+# (WeightedFusionRanker alpha = 1.0), on the ragrig default chat backend
+# (Ollama, qwen3.5:9b), varying the context budget (4096 and 8192 tokens).
+# Corpus = the embedded HTML fixture book, default pipeline (full parser
+# registry + MarkdownChunker).
+
+corpus_dirs = ["papers=/mnt/c/Users/Joost/Documents/papers"]
+
+queries = [
+    "Interviewer: Thanks for making time for this. Just to confirm, this is a routine debrief for our exercise-design case-study library — I'll be asking about a specific project you led, how the decisions actually unfolded, not whether they were 'right' in hindsight. Everything stays de-identified. Sound okay? Participant: Sure, happy to walk through it. This is the Riverbend Rising full-scale exercise, right? That one's still pretty fresh for me. Interviewer: Exactly. Can you start by describing the assignment and what success would've looked like? Participant: I was handed the FSE build in early spring — simulate a levee failure and flash-flood evacuation, get it HSEEP-compliant, and use it to validate EOC escalation procedures before the seasonal flood window opened. Success meant a full exercise day, a usable Controller-Evaluator handbook, and an AAR that actually told the Director something new about our capability gaps. Interviewer: Give me the incident account — how did the project actually go, start to finish? Participant: We'd run something similar back in 2019 — smaller footprint, two of us on it, and we mostly reused an existing scenario shell. That one took about six weeks start to finish. This time I was solo, and the scope was bigger: a brand-new levee-failure module built off updated Army Corps dam-break modeling, plus coordination across the regional EOC, the school district, and municipal police and fire. Deadline was fixed at ten weeks because of the flood-risk calendar. I scoped the build assuming it'd track pretty close to the 2019 timeline — figured I knew the process well enough to move fast. About four weeks in, I was still building the custom hydrology module and waiting on sign-off from three different agencies, and a status check showed we'd already slipped two weeks. From there it became a scramble — severity calibration with the advisory committee, a fight over which training injects we could actually finish, and a last push on the handbook right up against the deadline. Interviewer: Let's reconstruct that chronologically. What did you know at each stage, and what changed as you learned more? Participant: At kickoff I had the 2019 numbers in my head and the new Corps data in hand, but I hadn't yet mapped out how much longer three-agency coordination would take versus one shell reused solo. Once the schedule slipped, I knew severity calibration and the advisory committee conversation were coming up next, and I could already tell we wouldn't have time to fully build every kind of training material — so the inject decision became a resource fight. By the time I got to the handbook, the clock was the dominant fact. Interviewer: Let's slow down on the first real decision — scoping the build timeline. Walk me through it. Participant: Right, so going in, I looked at the 2019 project — six weeks, two staff, reused shell — and treated that as roughly the baseline. I adjusted a little for the new module, but not by much. I remember telling the Director I could deliver in the same general window even though I was down to one person and building the hydrology piece essentially from scratch. Interviewer: What made you confident the compressed schedule would hold? Participant: Honestly, mostly that I'd done a version of this before and it worked out then. I didn't build in a formal contingency buffer — I considered it, there was an option to pad the schedule for the new module, but I went with compressing the new content into the existing window instead. Interviewer: What information would have changed that estimate? Participant: If I'd actually broken out hours for three-agency sign-off separately instead of folding it into 'coordination,' I probably would've padded the schedule more. I didn't do that breakdown until after the slip showed up. Interviewer: Still in that same phase — you also had a choice about which scenario format to build from. What drove that? Participant: Yeah, there was a newer modular design format some of the stakeholders floated, supposedly better suited to multi-agency exercises. But I went with the legacy template again — third cycle running it. It's the one I know, I can build it fast, and honestly it's just more comfortable to work in. Interviewer: Did you compare how the two formats actually performed for training outcomes? Participant: Not formally, no. I didn't have data in front of me showing the modular format trains better or worse. It was more that I know exactly where everything goes in the old structure. Interviewer: Let's move to the severity decision. What was on the table? Participant: The updated Corps modeling was pointing to a higher catastrophic dam-failure risk than we'd planned around before. But the advisory committee kept coming back to the fact that we haven't seen flooding at that severity locally in over forty years. There was real pressure to keep the scenario grounded in something the community would find plausible. Interviewer: How did you weigh the modeling against that history? Participant: I ended up scaling the peak severity down toward the more familiar flood level. The forty-year point came up a lot in that conversation, and it did shape my thinking — if nobody's seen anything like the catastrophic case, it felt like we were designing for something abstract rather than something the EOC would actually face. Interviewer: Around that same time, you were part of an AAR review for a peer's exercise. What happened there? Participant: Right, a planner in another county got flagged for an unrealistically mild scenario — didn't stress escalation procedures at all. In that discussion I was pretty clear it looked like a planning gap on their end. I wasn't especially worried about the same thing happening with my build, even though I was mid-decision on my own severity call at that exact time. Interviewer: Did you apply the same scrutiny to your own severity choice that you applied to theirs? Participant: Not in that moment, no. I was more focused on what they'd missed than on double-checking my own reasoning against the same standard. Interviewer: Third decision point — the training injects. What were the options? Participant: We only had production time to fully build one category. Option one was photo and video clips of levee overtopping — dramatic, but slow to produce. Option two was the data packages — stream gauge readouts, GIS flow-rate shapefiles — less visually interesting but more specific for EOC modeling decisions. Interviewer: Which did you prioritize, and why? Participant: I put most of the remaining time into the photo and video injects. Past surveys showed people remember those vividly — I figured that made them the more effective training tool. Interviewer: Did you weigh how well each format supported the actual operational decisions evaluators would need to make? Participant: Less than I probably should have, in retrospect. The reasoning at the time was really centered on impact and recall, not on whether the flow-rate specifics would be there when people needed them. Interviewer: Last decision point — the Controller-Evaluator handbook. What went into that? Participant: I've been doing this fifteen years, and I've used the same shorthand and scoring conventions across a lot of exercises. Time was short, so I kept the handbook concise — standard terminology, no glossary. Interviewer: Was there any indication a glossary might be needed? Participant: There'd been informal feedback in past AARs asking for clearer explanations for evaluators outside core EM, yeah. But the terms felt pretty standard to me, so I didn't prioritize adding that layer given how little time was left. Interviewer: Looking back across all four decisions — if you'd had two more weeks, what would you have done differently? Participant: Probably built in a real contingency buffer up front instead of assuming the old timeline would hold, and maybe split production time more evenly between the visual and data injects. Interviewer: And if a different planner had taken over halfway through? Participant: They might have pushed harder on the severity call, given the modeling was pretty clear. And they might not have carried the same assumptions I had about what 'obvious' means in the handbook, since they wouldn't have fifteen years of the same habits behind them. Interviewer: Anything you'd flag as uncertain even now? Participant: Whether the milder scenario actually undercut the escalation testing, or whether it was just a rough exercise day for other reasons — I genuinely don't know. Same with the handbook; the scoring inconsistencies could've come from a dozen things, not just the shorthand. Interviewer: That's a good place to stop. Thanks for the detail."
+]
+
+[[agents]]
+label = "Gemini Prompt 8192"
+[agents.chat]
+provider = "deepseek"            # "ollama" | "deepseek"
+#model = "qwen2.5:1.5b"         # ignored for deepseek
+context_tokens = 8192          # context budget for retrieved chunks
+deepseek_model = "deepseek-v4-pro"   # deepseek only
+#deepseek_api_key = DEEPSEEK_API_KEY # deepseek only (or DEEPSEEK_API_KEY env)
+# context_size_mode = "Auto"          # "Auto" | "Forced"
+system_prompt_path = "prompt_gemini.md"    # custom system prompt ({context} placeholder)
+# request_timeout_secs = 300          # per-request timeout, None = no timeout
+[agents.chat.params]                # generation overrides (all optional)
+# temperature = 0.7
+# top_p = 0.9
+# max_tokens = 1024
+seed = 42
+
+[[agents]]
+label = "Sonar Prompt 8192"
+[agents.chat]
+provider = "deepseek"            # "ollama" | "deepseek"
+#model = "qwen2.5:1.5b"         # ignored for deepseek
+context_tokens = 8192          # context budget for retrieved chunks
+deepseek_model = "deepseek-v4-pro"   # deepseek only
+#deepseek_api_key = DEEPSEEK_API_KEY # deepseek only (or DEEPSEEK_API_KEY env)
+# context_size_mode = "Auto"          # "Auto" | "Forced"
+system_prompt_path = "prompt_sonar.md"    # custom system prompt ({context} placeholder)
+# request_timeout_secs = 300          # per-request timeout, None = no timeout
+ [agents.chat.params]                # generation overrides (all optional)
+# temperature = 0.7
+# top_p = 0.9
+# max_tokens = 1024
+ seed = 42
+
+[[agents]]
+label = "Sonnet Prompt 8192"
+[agents.chat]
+provider = "deepseek"            # "ollama" | "deepseek"
+#model = "qwen2.5:1.5b"         # ignored for deepseek
+context_tokens = 8192          # context budget for retrieved chunks
+deepseek_model = "deepseek-v4-pro"   # deepseek only
+#deepseek_api_key = DEEPSEEK_API_KEY # deepseek only (or DEEPSEEK_API_KEY env)
+# context_size_mode = "Auto"          # "Auto" | "Forced"
+system_prompt_path = "prompt_sonnet.md"    # custom system prompt ({context} placeholder)
+# request_timeout_secs = 300          # per-request timeout, None = no timeout
+[agents.chat.params]                # generation overrides (all optional)
+# temperature = 0.7
+# top_p = 0.9
+# max_tokens = 1024
+seed = 42
+
+
+# ---Embed testing ---
+[embed]
+#top_k = 0
+top_k = 50

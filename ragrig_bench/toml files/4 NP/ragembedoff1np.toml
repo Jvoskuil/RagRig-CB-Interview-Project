@@ -1,0 +1,67 @@
+# Ranker comparison: the default hybrid RRF ranker vs. pure cosine ranking
+# (WeightedFusionRanker alpha = 1.0), on the ragrig default chat backend
+# (Ollama, qwen3.5:9b), varying the context budget (4096 and 8192 tokens).
+# Corpus = the embedded HTML fixture book, default pipeline (full parser
+# registry + MarkdownChunker).
+
+corpus_dirs = ["papers=/mnt/c/Users/Joost/Documents/papers"]
+
+queries = [
+    "Interviewer: Thanks for making time for this. Just to confirm, this is a voluntary debrief for our operational learning file, not a disciplinary review — anything you share helps us understand decision-making under real shift conditions. Can you start by telling me your role that shift and what the overall plan was? Participant: Sure. I was the Control Room Supervisor on dayshift. We were about five days past a refueling outage, doing a scheduled ascension from 45 percent up to a 75 percent hold point. Standard stuff — controlled rod withdrawals, watching turbine and secondary parameters track along with it. Management wanted us at the hold point by end of shift because of a grid commitment, so there was a real schedule to keep, but nothing that should've forced anyone's hand. Interviewer: What was your general sense of plant status as the shift moved into the middle stretch? Participant: Pretty routine, honestly. Ascensions like this usually throw a couple of small things at you — nothing alarming, just things worth tracking. That's basically what happened. Interviewer: Walk me through the incident as it unfolded. Participant: About two hours in, the reactor operator flagged that feedwater pump 1B's discharge pressure had a slow upward oscillation going on — vibration monitor was ticking up too, still well within the normal band, no alarm. I had him log it and bump up the monitoring interval rather than pulling in the system engineer right away, since there was nothing abnormal enough to justify an operability call yet. About forty minutes later, during a rod withdrawal, we got a brief blip in steam generator B's narrow range level — auto control caught it in seconds. Small thing, but two developing items at once gets your attention. I called our on-call reactor engineer, walked him through it, and he said it looked consistent with known control response at that power level. Level stayed stable after that. Then, closer to the end of the shift — turnover was maybe forty-five minutes out and I was drafting the brief — the pump vibration had crept up again, now sitting in the upper third of its normal band. Still no tech spec limit reached, no alarm. But it had been trending the same direction for a while now, and I was juggling the turnover paperwork, the ascension schedule, and this pump at the same time. I told the crew to keep it on the standard continue-and-monitor watch we use for that kind of trend and we carried on toward the next hold point. About ninety minutes after I left, I heard they ended up putting the pump on a formal close-monitoring action under a tech spec statement — the trend kept climbing. When I handed over, I'd mentioned the vibration item but didn't flag it as something the oncoming crew needed to dig into specifically. Interviewer: Let's go back through that in order. First, the pump reading forty minutes in — what informed the choice to just log it and increase monitoring instead of contacting the engineer immediately? Participant: At that point there wasn't much to react to — it was within the band, no trend history yet to speak of. Calling the engineer for every early wobble would just create noise. Tightening the monitoring interval was the appropriate first move; if it kept climbing, that's when you escalate. Interviewer: And the steam generator level blip — what made you decide to check with the on-call engineer rather than rely on your own read of it? Participant: The auto control handled it fine, so operationally it wasn't urgent. But two things trending at once during an ascension makes you want a second opinion, especially on something with a control-system explanation I wanted verified rather than assumed. That's just good practice at that stage — get an independent read before you write it off. Interviewer: Now the point where the vibration crossed into the upper third of the band, forty-five minutes before turnover, while you were writing the brief. What options did you weigh, and what pushed you toward the standard monitoring response? Participant: Honestly, that's the one I've turned over the most since. I had three things going — the pump, the turnover brief, and the schedule to the next hold point. The continue-and-monitor approach is what we've used for trends like this in the past, and it's worked. So that's the direction I went. Pulling the historical vibration comparison off the plant computer was something I could have done — the data was sitting right there — but between the paperwork and the ascension clock, it didn't feel necessary at the time. It wasn't that I decided the comparison wouldn't be useful, I just didn't work it into what I was doing in that window. Interviewer: Did you consider holding the ascension at that point until the engineer completed a documented review? Participant: I thought about it briefly, but the trend hadn't broken any limit and the checklist response has covered similar-looking situations before without issue. So I went with what I knew rather than stopping to build out a fuller comparison right then. Interviewer: How much do you think the approaching turnover shaped that choice? Participant: Some, for sure. When you're consolidating a brief and tracking an ascension schedule at the same time, you lean on what's familiar rather than starting from scratch on every item. In hindsight, the rate of rise on that trend was a bit different from the earlier cases I was drawing on, but I didn't do the side-by-side at the time to notice that. Interviewer: Last decision point — writing the turnover note itself. What determined how much detail you included on the vibration trend? Participant: I mentioned it as an ongoing watch item, consistent with how I'd been treating it all shift. I didn't specifically ask the oncoming crew to pull the historical comparison — it was already framed as monitor-and-continue in my head, so that's how it went into the notes. Interviewer: The oncoming supervisor apparently asked about it directly and requested that comparison be done. What do you make of that? Participant: Fair question on their part — fresh eyes on a trend that's been running a while will do that. The comparison afterward showed the rate of climb didn't quite match the earlier benign cases. That's useful information; I just hadn't had it in front of me during my shift. Interviewer: If you'd had another hour before turnover, would you have handled the vibration trend differently? Participant: Probably would've pulled the historical comparison myself rather than leaving it for the next crew. An hour changes what feels worth doing versus what feels like it can wait. Interviewer: If that comparison data had been sitting in front of you at the moment the trend crossed into the upper third of the band, do you think it would have changed your decision? Participant: Possibly. If it had shown the rate of rise was outside what we'd seen before, I'd have leaned toward holding rather than continuing. But at the time I was working off what had worked previously, not off that specific comparison. Interviewer: What would you tell a newer supervisor about handling a trending-but-not-alarming parameter close to turnover? Participant: That the workload right before turnover can quietly narrow what you actually look at. The item that ends up mattering most isn't always the one making noise — sometimes it's the one you've already decided you understand."
+]
+
+[[agents]]
+label = "Gemini Prompt 8192"
+[agents.chat]
+provider = "deepseek"            # "ollama" | "deepseek"
+#model = "qwen2.5:1.5b"         # ignored for deepseek
+context_tokens = 8192          # context budget for retrieved chunks
+deepseek_model = "deepseek-v4-pro"   # deepseek only
+# deepseek_api_key = DEEPSEEK_API_KEY # deepseek only (or DEEPSEEK_API_KEY env)
+# context_size_mode = "Auto"          # "Auto" | "Forced"
+system_prompt_path = "prompt_gemini.md"    # custom system prompt ({context} placeholder)
+# request_timeout_secs = 300          # per-request timeout, None = no timeout
+[agents.chat.params]                # generation overrides (all optional)
+# temperature = 0.7
+# top_p = 0.9
+# max_tokens = 1024
+seed = 42
+
+[[agents]]
+label = "Sonar Prompt 8192"
+[agents.chat]
+provider = "deepseek"            # "ollama" | "deepseek"
+#model = "qwen2.5:1.5b"         # ignored for deepseek
+context_tokens = 8192          # context budget for retrieved chunks
+deepseek_model = "deepseek-v4-pro"   # deepseek only
+# deepseek_api_key = DEEPSEEK_API_KEY # deepseek only (or DEEPSEEK_API_KEY env)
+# context_size_mode = "Auto"          # "Auto" | "Forced"
+system_prompt_path = "prompt_sonar.md"    # custom system prompt ({context} placeholder)
+# request_timeout_secs = 300          # per-request timeout, None = no timeout
+[agents.chat.params]                # generation overrides (all optional)
+# temperature = 0.7
+# top_p = 0.9
+# max_tokens = 1024
+seed = 42
+
+[[agents]]
+label = "Sonnet Prompt 8192"
+[agents.chat]
+provider = "deepseek"            # "ollama" | "deepseek"
+#model = "qwen2.5:1.5b"         # ignored for deepseek
+context_tokens = 8192          # context budget for retrieved chunks
+deepseek_model = "deepseek-v4-pro"   # deepseek only
+# deepseek_api_key = DEEPSEEK_API_KEY # deepseek only (or DEEPSEEK_API_KEY env)
+# context_size_mode = "Auto"          # "Auto" | "Forced"
+system_prompt_path = "prompt_sonnet.md"    # custom system prompt ({context} placeholder)
+# request_timeout_secs = 300          # per-request timeout, None = no timeout
+[agents.chat.params]                # generation overrides (all optional)
+# temperature = 0.7
+# top_p = 0.9
+# max_tokens = 1024
+seed = 42
+
+# ---Embed testing ---
+[embed]
+top_k = 0
+#top_k = 50

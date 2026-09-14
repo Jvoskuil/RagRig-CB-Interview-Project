@@ -1,0 +1,1017 @@
+{
+  "evaluation_metadata": {
+    "task": "ontology_free_rag_cognitive_bias_benchmark_evaluation",
+    "benchmark_run_metadata": {
+      "benchmark_run_id": "AV_Vocab_Control_1_Sonar_on",
+      "interview_id": "AV_Vocab_Control_1",
+      "system_prompt_id": "Sonar",
+      "system_prompt_generator": "Prompt 1_2",
+      "rag_model_id": "v1.0.0",
+      "corpus_condition": "on",
+      "retrieval_configuration_id": "k=50",
+      "decoding_configuration_id": "null",
+      "temperature": 1,
+      "replicate_id": "null",
+      "segment_map_id": "null"
+    },
+    "scenario_id": "AV_Vocab_Control_1",
+    "domain_id": "AV",
+    "condition": "vocabulary_control",
+    "segment_map_status": "prevalidated_provided",
+    "rag_output_parse_status": "valid_json",
+    "rag_schema_assessment": "materially_nonconformant"
+  },
+  "input_validation": {
+    "rag_output_schema_violations": [
+      {
+        "violation_type": "fabricated_or_invalid_quote",
+        "details": "Both candidate records contain quotations about CTPA, pleuritic pain, Dr. B, a charge nurse, and a prior patient that do not appear anywhere in the supplied aviation interview."
+      },
+      {
+        "violation_type": "unsupported_attribution_and_localization",
+        "details": "Both candidates are attributed to speakers or decision episodes absent from the raw interview and cannot be localized to any eligible reasoning segment."
+      }
+    ],
+    "rag_summary_count_consistency": {
+      "status": "consistent",
+      "details": "The identified_bias_summary and identified_occurrences arrays are empty, consistent with no identified findings and no_supported_biases_found=true. The two candidate records are separately represented and do not create an identified-occurrence count inconsistency."
+    },
+    "evaluation_limitations": [
+      "The supplied frozen segment map is authoritative and contains zero positive ground-truth segments.",
+      "The candidate evidence is fabricated relative to the supplied interview, so candidate-level localization and mechanism adjudication are limited to unsupported-prediction classifications.",
+      "No retrieved chunks or retrieval logs were supplied, so corpus fidelity cannot be scored."
+    ]
+  },
+  "evaluation_segment_map": {
+    "segment_mapping_version": "1.0",
+    "segments": [
+      {
+        "segment_id": "seg_001",
+        "speaker": "Participant",
+        "segment_type": "reasoning",
+        "raw_interview_anchor": "I'm a reliability engineer in Maintenance Control. Part of my job is tracking repetitive write-ups across the fleet and deciding when something needs a formal corrective action versus routine monitoring.",
+        "eligible_reasoning_segment": true,
+        "ground_truth_bias_present": false,
+        "ground_truth_instance_ids": [],
+        "ground_truth_rationale": "Role-based decision criteria are stated without a hidden bias mechanism."
+      },
+      {
+        "segment_id": "seg_002",
+        "speaker": "Participant",
+        "segment_type": "reasoning",
+        "raw_interview_anchor": "Three in that short a window is unusual, though our fleet-wide removal rate for that valve was still inside the OEM's published MTBUR, so nothing yet told me this was a fleet problem. It looked like it could just be a stubborn individual aircraft.",
+        "eligible_reasoning_segment": true,
+        "ground_truth_bias_present": false,
+        "ground_truth_instance_ids": [],
+        "ground_truth_rationale": "The participant weighs local recurrence against fleet-wide reliability data without an intended distortion."
+      },
+      {
+        "segment_id": "seg_003",
+        "speaker": "Participant",
+        "segment_type": "reasoning",
+        "raw_interview_anchor": "I opened a focused review on 738 and put a flag on it so I'd get pinged if anything similar turned up elsewhere.",
+        "eligible_reasoning_segment": true,
+        "ground_truth_bias_present": false,
+        "ground_truth_instance_ids": [],
+        "ground_truth_rationale": "The monitoring action is proportionate to the evidence and preserves escalation if new evidence appears."
+      },
+      {
+        "segment_id": "seg_004",
+        "speaker": "Participant",
+        "segment_type": "reasoning",
+        "raw_interview_anchor": "Line maintenance told me the valve is genuinely hard to bench-test, which raised the possibility of an intermittent fault that ground checks weren't catching.",
+        "eligible_reasoning_segment": true,
+        "ground_truth_bias_present": false,
+        "ground_truth_instance_ids": [],
+        "ground_truth_rationale": "A reported test limitation leads to a plausible alternative explanation, not a hidden bias."
+      },
+      {
+        "segment_id": "seg_005",
+        "speaker": "Participant",
+        "segment_type": "reasoning",
+        "raw_interview_anchor": "I pulled the two tails' component histories together and found they shared the same valve batch lot number. That was the first real thread.",
+        "eligible_reasoning_segment": true,
+        "ground_truth_bias_present": false,
+        "ground_truth_instance_ids": [],
+        "ground_truth_rationale": "The participant actively seeks cross-case evidence and identifies a traceable common factor."
+      },
+      {
+        "segment_id": "seg_006",
+        "speaker": "Participant",
+        "segment_type": "reasoning",
+        "raw_interview_anchor": "Company policy discourages repeated MEL carryover on the same defect ... doing it leg after leg on the same fault is a flag in itself.",
+        "eligible_reasoning_segment": true,
+        "ground_truth_bias_present": false,
+        "ground_truth_instance_ids": [],
+        "ground_truth_rationale": "Policy and repeated-defect risk are used as relevant decision inputs."
+      },
+      {
+        "segment_id": "seg_007",
+        "speaker": "Participant",
+        "segment_type": "reasoning",
+        "raw_interview_anchor": "Grounding both outright felt like more than the evidence supported at that point, so I set a one-leg maximum MEL carryover on both tails and opened a formal root-cause investigation tied to the lot number.",
+        "eligible_reasoning_segment": true,
+        "ground_truth_bias_present": false,
+        "ground_truth_instance_ids": [],
+        "ground_truth_rationale": "The participant chooses an interim restriction calibrated to available evidence and opens an investigation."
+      },
+      {
+        "segment_id": "seg_008",
+        "speaker": "Participant",
+        "segment_type": "reasoning",
+        "raw_interview_anchor": "The vendor quality engineer confirmed the lot had a documented seal-material change about six months earlier — that's a traceable, real candidate cause.",
+        "eligible_reasoning_segment": true,
+        "ground_truth_bias_present": false,
+        "ground_truth_instance_ids": [],
+        "ground_truth_rationale": "Documented vendor evidence is treated as a candidate cause, not as conclusive proof."
+      },
+      {
+        "segment_id": "seg_009",
+        "speaker": "Participant",
+        "segment_type": "reasoning",
+        "raw_interview_anchor": "The degradation pattern wasn't clean. It was consistent with the seal-material change, but it also overlapped with a separate supplier nonconformance ... and that nonconformance would have implied a wider set of affected valves than just this lot.",
+        "eligible_reasoning_segment": true,
+        "ground_truth_bias_present": false,
+        "ground_truth_instance_ids": [],
+        "ground_truth_rationale": "Ambiguous evidence is explicitly recognized as supporting two live causal explanations."
+      },
+      {
+        "segment_id": "seg_010",
+        "speaker": "Participant",
+        "segment_type": "reasoning",
+        "raw_interview_anchor": "If I went with just the vendor documentation and the ambiguous teardown, I'd be guessing at which of the two explanations was actually driving the failures — and that guess would directly change how many valves I'd be asking to replace.",
+        "eligible_reasoning_segment": true,
+        "ground_truth_bias_present": false,
+        "ground_truth_instance_ids": [],
+        "ground_truth_rationale": "The participant identifies unresolved uncertainty and its direct consequence for corrective-action scope."
+      },
+      {
+        "segment_id": "seg_011",
+        "speaker": "Participant",
+        "segment_type": "reasoning",
+        "raw_interview_anchor": "An external metallurgical lab could run a composition assay that would distinguish the two, but their turnaround was about three weeks, which meant blowing through the RCB deadline before I'd have an answer.",
+        "eligible_reasoning_segment": true,
+        "ground_truth_bias_present": false,
+        "ground_truth_instance_ids": [],
+        "ground_truth_rationale": "The participant weighs a decision-relevant evidence source against a known timing cost."
+      },
+      {
+        "segment_id": "seg_012",
+        "speaker": "Participant",
+        "segment_type": "reasoning",
+        "raw_interview_anchor": "I sent it out. I genuinely didn't know which cause was correct, and the two answers led to different-sized corrective actions. Submitting on the original timeline would have meant picking one interpretation without being able to defend it ... I'd rather take the deadline hit than write a scope I couldn't justify.",
+        "eligible_reasoning_segment": true,
+        "ground_truth_bias_present": false,
+        "ground_truth_instance_ids": [],
+        "ground_truth_rationale": "The assay is commissioned because unresolved evidence could change the recommendation, despite the deadline cost."
+      },
+      {
+        "segment_id": "seg_013",
+        "speaker": "Participant",
+        "segment_type": "reasoning",
+        "raw_interview_anchor": "If it had come back pointing at the broader nonconformance instead of the seal-material change, I'd have had to widen the replacement scope ... That's a materially different corrective action request, so the result wasn't just confirmatory.",
+        "eligible_reasoning_segment": true,
+        "ground_truth_bias_present": false,
+        "ground_truth_instance_ids": [],
+        "ground_truth_rationale": "The participant explicitly states how the test result could alter the action."
+      },
+      {
+        "segment_id": "seg_014",
+        "speaker": "Participant",
+        "segment_type": "reasoning",
+        "raw_interview_anchor": "It slipped to submit-pending-lab-results. When the assay came back, it identified the seal-material change as the actual cause and ruled out the other nonconformance. So the lot-bounded scope held up, but I didn't know that going in.",
+        "eligible_reasoning_segment": true,
+        "ground_truth_bias_present": false,
+        "ground_truth_instance_ids": [],
+        "ground_truth_rationale": "The participant distinguishes subsequent confirmation from information available before the decision."
+      },
+      {
+        "segment_id": "seg_015",
+        "speaker": "Participant",
+        "segment_type": "reasoning",
+        "raw_interview_anchor": "What I had in hand was a specific, bounded problem: one vendor lot, identifiable serial ranges, and now a cause that was no longer ambiguous. I wrote the corrective action request to replace valves from that lot specifically — not a fleet-wide swap, and not deferring to wait on the OEM's broader review.",
+        "eligible_reasoning_segment": true,
+        "ground_truth_bias_present": false,
+        "ground_truth_instance_ids": [],
+        "ground_truth_rationale": "The final recommendation follows confirmed, bounded evidence while separating the longer-term design review."
+      },
+      {
+        "segment_id": "seg_016",
+        "speaker": "Participant",
+        "segment_type": "reasoning",
+        "raw_interview_anchor": "Because a fleet-wide replacement would pull serviceable, unaffected valves for no reliability benefit — that's cost and downtime without a justified reason. Once the assay confirmed the mechanism, the evidence supported exactly that lot.",
+        "eligible_reasoning_segment": true,
+        "ground_truth_bias_present": false,
+        "ground_truth_instance_ids": [],
+        "ground_truth_rationale": "The participant explains why the scope is limited to the evidence-supported lot."
+      },
+      {
+        "segment_id": "seg_017",
+        "speaker": "Participant",
+        "segment_type": "reasoning",
+        "raw_interview_anchor": "I don't think I'd change the decision to get the assay — the ambiguity was real, and guessing wrong on scope would have been worse than being late. But I might push harder next time to get the lab to prioritize a case like this, or find out earlier whether a faster partial test could resolve just the scope question.",
+        "eligible_reasoning_segment": true,
+        "ground_truth_bias_present": false,
+        "ground_truth_instance_ids": [],
+        "ground_truth_rationale": "The retrospective improvement concerns process speed, while affirming a decision-relevant evidence choice."
+      }
+    ]
+  },
+  "segment_level_adjudications": [
+    {
+      "segment_id": "seg_001",
+      "ground_truth_status": "negative",
+      "ground_truth_instance_ids": [],
+      "rag_identified_occurrence_ids": [],
+      "rag_candidate_ids_counted_at_fourth_threshold": [],
+      "rag_detected_bias_in_segment_by_threshold": {
+        "high_only": false,
+        "high_and_moderate": false,
+        "all_identified_confidence_levels": false,
+        "all_confidence_and_candidates": false
+      },
+      "sdt_outcome_by_threshold": {
+        "high_only": "correct_rejection",
+        "high_and_moderate": "correct_rejection",
+        "all_identified_confidence_levels": "correct_rejection",
+        "all_confidence_and_candidates": "correct_rejection"
+      },
+      "localization_basis": "No RAG finding localizes to this segment. Both candidate quotes are absent from the interview and unsupported.",
+      "adjudication_note": "Negative ground-truth segment with no qualifying detection."
+    },
+    {
+      "segment_id": "seg_002",
+      "ground_truth_status": "negative",
+      "ground_truth_instance_ids": [],
+      "rag_identified_occurrence_ids": [],
+      "rag_candidate_ids_counted_at_fourth_threshold": [],
+      "rag_detected_bias_in_segment_by_threshold": {
+        "high_only": false,
+        "high_and_moderate": false,
+        "all_identified_confidence_levels": false,
+        "all_confidence_and_candidates": false
+      },
+      "sdt_outcome_by_threshold": {
+        "high_only": "correct_rejection",
+        "high_and_moderate": "correct_rejection",
+        "all_identified_confidence_levels": "correct_rejection",
+        "all_confidence_and_candidates": "correct_rejection"
+      },
+      "localization_basis": "No RAG finding localizes to this segment. Both candidate quotes are absent from the interview and unsupported.",
+      "adjudication_note": "Negative ground-truth segment with no qualifying detection."
+    },
+    {
+      "segment_id": "seg_003",
+      "ground_truth_status": "negative",
+      "ground_truth_instance_ids": [],
+      "rag_identified_occurrence_ids": [],
+      "rag_candidate_ids_counted_at_fourth_threshold": [],
+      "rag_detected_bias_in_segment_by_threshold": {
+        "high_only": false,
+        "high_and_moderate": false,
+        "all_identified_confidence_levels": false,
+        "all_confidence_and_candidates": false
+      },
+      "sdt_outcome_by_threshold": {
+        "high_only": "correct_rejection",
+        "high_and_moderate": "correct_rejection",
+        "all_identified_confidence_levels": "correct_rejection",
+        "all_confidence_and_candidates": "correct_rejection"
+      },
+      "localization_basis": "No RAG finding localizes to this segment. Both candidate quotes are absent from the interview and unsupported.",
+      "adjudication_note": "Negative ground-truth segment with no qualifying detection."
+    },
+    {
+      "segment_id": "seg_004",
+      "ground_truth_status": "negative",
+      "ground_truth_instance_ids": [],
+      "rag_identified_occurrence_ids": [],
+      "rag_candidate_ids_counted_at_fourth_threshold": [],
+      "rag_detected_bias_in_segment_by_threshold": {
+        "high_only": false,
+        "high_and_moderate": false,
+        "all_identified_confidence_levels": false,
+        "all_confidence_and_candidates": false
+      },
+      "sdt_outcome_by_threshold": {
+        "high_only": "correct_rejection",
+        "high_and_moderate": "correct_rejection",
+        "all_identified_confidence_levels": "correct_rejection",
+        "all_confidence_and_candidates": "correct_rejection"
+      },
+      "localization_basis": "No RAG finding localizes to this segment. Both candidate quotes are absent from the interview and unsupported.",
+      "adjudication_note": "Negative ground-truth segment with no qualifying detection."
+    },
+    {
+      "segment_id": "seg_005",
+      "ground_truth_status": "negative",
+      "ground_truth_instance_ids": [],
+      "rag_identified_occurrence_ids": [],
+      "rag_candidate_ids_counted_at_fourth_threshold": [],
+      "rag_detected_bias_in_segment_by_threshold": {
+        "high_only": false,
+        "high_and_moderate": false,
+        "all_identified_confidence_levels": false,
+        "all_confidence_and_candidates": false
+      },
+      "sdt_outcome_by_threshold": {
+        "high_only": "correct_rejection",
+        "high_and_moderate": "correct_rejection",
+        "all_identified_confidence_levels": "correct_rejection",
+        "all_confidence_and_candidates": "correct_rejection"
+      },
+      "localization_basis": "No RAG finding localizes to this segment. Both candidate quotes are absent from the interview and unsupported.",
+      "adjudication_note": "Negative ground-truth segment with no qualifying detection."
+    },
+    {
+      "segment_id": "seg_006",
+      "ground_truth_status": "negative",
+      "ground_truth_instance_ids": [],
+      "rag_identified_occurrence_ids": [],
+      "rag_candidate_ids_counted_at_fourth_threshold": [],
+      "rag_detected_bias_in_segment_by_threshold": {
+        "high_only": false,
+        "high_and_moderate": false,
+        "all_identified_confidence_levels": false,
+        "all_confidence_and_candidates": false
+      },
+      "sdt_outcome_by_threshold": {
+        "high_only": "correct_rejection",
+        "high_and_moderate": "correct_rejection",
+        "all_identified_confidence_levels": "correct_rejection",
+        "all_confidence_and_candidates": "correct_rejection"
+      },
+      "localization_basis": "No RAG finding localizes to this segment. Both candidate quotes are absent from the interview and unsupported.",
+      "adjudication_note": "Negative ground-truth segment with no qualifying detection."
+    },
+    {
+      "segment_id": "seg_007",
+      "ground_truth_status": "negative",
+      "ground_truth_instance_ids": [],
+      "rag_identified_occurrence_ids": [],
+      "rag_candidate_ids_counted_at_fourth_threshold": [],
+      "rag_detected_bias_in_segment_by_threshold": {
+        "high_only": false,
+        "high_and_moderate": false,
+        "all_identified_confidence_levels": false,
+        "all_confidence_and_candidates": false
+      },
+      "sdt_outcome_by_threshold": {
+        "high_only": "correct_rejection",
+        "high_and_moderate": "correct_rejection",
+        "all_identified_confidence_levels": "correct_rejection",
+        "all_confidence_and_candidates": "correct_rejection"
+      },
+      "localization_basis": "No RAG finding localizes to this segment. Both candidate quotes are absent from the interview and unsupported.",
+      "adjudication_note": "Negative ground-truth segment with no qualifying detection."
+    },
+    {
+      "segment_id": "seg_008",
+      "ground_truth_status": "negative",
+      "ground_truth_instance_ids": [],
+      "rag_identified_occurrence_ids": [],
+      "rag_candidate_ids_counted_at_fourth_threshold": [],
+      "rag_detected_bias_in_segment_by_threshold": {
+        "high_only": false,
+        "high_and_moderate": false,
+        "all_identified_confidence_levels": false,
+        "all_confidence_and_candidates": false
+      },
+      "sdt_outcome_by_threshold": {
+        "high_only": "correct_rejection",
+        "high_and_moderate": "correct_rejection",
+        "all_identified_confidence_levels": "correct_rejection",
+        "all_confidence_and_candidates": "correct_rejection"
+      },
+      "localization_basis": "No RAG finding localizes to this segment. Both candidate quotes are absent from the interview and unsupported.",
+      "adjudication_note": "Negative ground-truth segment with no qualifying detection."
+    },
+    {
+      "segment_id": "seg_009",
+      "ground_truth_status": "negative",
+      "ground_truth_instance_ids": [],
+      "rag_identified_occurrence_ids": [],
+      "rag_candidate_ids_counted_at_fourth_threshold": [],
+      "rag_detected_bias_in_segment_by_threshold": {
+        "high_only": false,
+        "high_and_moderate": false,
+        "all_identified_confidence_levels": false,
+        "all_confidence_and_candidates": false
+      },
+      "sdt_outcome_by_threshold": {
+        "high_only": "correct_rejection",
+        "high_and_moderate": "correct_rejection",
+        "all_identified_confidence_levels": "correct_rejection",
+        "all_confidence_and_candidates": "correct_rejection"
+      },
+      "localization_basis": "No RAG finding localizes to this segment. Both candidate quotes are absent from the interview and unsupported.",
+      "adjudication_note": "Negative ground-truth segment with no qualifying detection."
+    },
+    {
+      "segment_id": "seg_010",
+      "ground_truth_status": "negative",
+      "ground_truth_instance_ids": [],
+      "rag_identified_occurrence_ids": [],
+      "rag_candidate_ids_counted_at_fourth_threshold": [],
+      "rag_detected_bias_in_segment_by_threshold": {
+        "high_only": false,
+        "high_and_moderate": false,
+        "all_identified_confidence_levels": false,
+        "all_confidence_and_candidates": false
+      },
+      "sdt_outcome_by_threshold": {
+        "high_only": "correct_rejection",
+        "high_and_moderate": "correct_rejection",
+        "all_identified_confidence_levels": "correct_rejection",
+        "all_confidence_and_candidates": "correct_rejection"
+      },
+      "localization_basis": "No RAG finding localizes to this segment. Both candidate quotes are absent from the interview and unsupported.",
+      "adjudication_note": "Negative ground-truth segment with no qualifying detection."
+    },
+    {
+      "segment_id": "seg_011",
+      "ground_truth_status": "negative",
+      "ground_truth_instance_ids": [],
+      "rag_identified_occurrence_ids": [],
+      "rag_candidate_ids_counted_at_fourth_threshold": [],
+      "rag_detected_bias_in_segment_by_threshold": {
+        "high_only": false,
+        "high_and_moderate": false,
+        "all_identified_confidence_levels": false,
+        "all_confidence_and_candidates": false
+      },
+      "sdt_outcome_by_threshold": {
+        "high_only": "correct_rejection",
+        "high_and_moderate": "correct_rejection",
+        "all_identified_confidence_levels": "correct_rejection",
+        "all_confidence_and_candidates": "correct_rejection"
+      },
+      "localization_basis": "No RAG finding localizes to this segment. Both candidate quotes are absent from the interview and unsupported.",
+      "adjudication_note": "Negative ground-truth segment with no qualifying detection."
+    },
+    {
+      "segment_id": "seg_012",
+      "ground_truth_status": "negative",
+      "ground_truth_instance_ids": [],
+      "rag_identified_occurrence_ids": [],
+      "rag_candidate_ids_counted_at_fourth_threshold": [],
+      "rag_detected_bias_in_segment_by_threshold": {
+        "high_only": false,
+        "high_and_moderate": false,
+        "all_identified_confidence_levels": false,
+        "all_confidence_and_candidates": false
+      },
+      "sdt_outcome_by_threshold": {
+        "high_only": "correct_rejection",
+        "high_and_moderate": "correct_rejection",
+        "all_identified_confidence_levels": "correct_rejection",
+        "all_confidence_and_candidates": "correct_rejection"
+      },
+      "localization_basis": "No RAG finding localizes to this segment. Both candidate quotes are absent from the interview and unsupported.",
+      "adjudication_note": "Negative ground-truth segment with no qualifying detection."
+    },
+    {
+      "segment_id": "seg_013",
+      "ground_truth_status": "negative",
+      "ground_truth_instance_ids": [],
+      "rag_identified_occurrence_ids": [],
+      "rag_candidate_ids_counted_at_fourth_threshold": [],
+      "rag_detected_bias_in_segment_by_threshold": {
+        "high_only": false,
+        "high_and_moderate": false,
+        "all_identified_confidence_levels": false,
+        "all_confidence_and_candidates": false
+      },
+      "sdt_outcome_by_threshold": {
+        "high_only": "correct_rejection",
+        "high_and_moderate": "correct_rejection",
+        "all_identified_confidence_levels": "correct_rejection",
+        "all_confidence_and_candidates": "correct_rejection"
+      },
+      "localization_basis": "No RAG finding localizes to this segment. Both candidate quotes are absent from the interview and unsupported.",
+      "adjudication_note": "Negative ground-truth segment with no qualifying detection."
+    },
+    {
+      "segment_id": "seg_014",
+      "ground_truth_status": "negative",
+      "ground_truth_instance_ids": [],
+      "rag_identified_occurrence_ids": [],
+      "rag_candidate_ids_counted_at_fourth_threshold": [],
+      "rag_detected_bias_in_segment_by_threshold": {
+        "high_only": false,
+        "high_and_moderate": false,
+        "all_identified_confidence_levels": false,
+        "all_confidence_and_candidates": false
+      },
+      "sdt_outcome_by_threshold": {
+        "high_only": "correct_rejection",
+        "high_and_moderate": "correct_rejection",
+        "all_identified_confidence_levels": "correct_rejection",
+        "all_confidence_and_candidates": "correct_rejection"
+      },
+      "localization_basis": "No RAG finding localizes to this segment. Both candidate quotes are absent from the interview and unsupported.",
+      "adjudication_note": "Negative ground-truth segment with no qualifying detection."
+    },
+    {
+      "segment_id": "seg_015",
+      "ground_truth_status": "negative",
+      "ground_truth_instance_ids": [],
+      "rag_identified_occurrence_ids": [],
+      "rag_candidate_ids_counted_at_fourth_threshold": [],
+      "rag_detected_bias_in_segment_by_threshold": {
+        "high_only": false,
+        "high_and_moderate": false,
+        "all_identified_confidence_levels": false,
+        "all_confidence_and_candidates": false
+      },
+      "sdt_outcome_by_threshold": {
+        "high_only": "correct_rejection",
+        "high_and_moderate": "correct_rejection",
+        "all_identified_confidence_levels": "correct_rejection",
+        "all_confidence_and_candidates": "correct_rejection"
+      },
+      "localization_basis": "No RAG finding localizes to this segment. Both candidate quotes are absent from the interview and unsupported.",
+      "adjudication_note": "Negative ground-truth segment with no qualifying detection."
+    },
+    {
+      "segment_id": "seg_016",
+      "ground_truth_status": "negative",
+      "ground_truth_instance_ids": [],
+      "rag_identified_occurrence_ids": [],
+      "rag_candidate_ids_counted_at_fourth_threshold": [],
+      "rag_detected_bias_in_segment_by_threshold": {
+        "high_only": false,
+        "high_and_moderate": false,
+        "all_identified_confidence_levels": false,
+        "all_confidence_and_candidates": false
+      },
+      "sdt_outcome_by_threshold": {
+        "high_only": "correct_rejection",
+        "high_and_moderate": "correct_rejection",
+        "all_identified_confidence_levels": "correct_rejection",
+        "all_confidence_and_candidates": "correct_rejection"
+      },
+      "localization_basis": "No RAG finding localizes to this segment. Both candidate quotes are absent from the interview and unsupported.",
+      "adjudication_note": "Negative ground-truth segment with no qualifying detection."
+    },
+    {
+      "segment_id": "seg_017",
+      "ground_truth_status": "negative",
+      "ground_truth_instance_ids": [],
+      "rag_identified_occurrence_ids": [],
+      "rag_candidate_ids_counted_at_fourth_threshold": [],
+      "rag_detected_bias_in_segment_by_threshold": {
+        "high_only": false,
+        "high_and_moderate": false,
+        "all_identified_confidence_levels": false,
+        "all_confidence_and_candidates": false
+      },
+      "sdt_outcome_by_threshold": {
+        "high_only": "correct_rejection",
+        "high_and_moderate": "correct_rejection",
+        "all_identified_confidence_levels": "correct_rejection",
+        "all_confidence_and_candidates": "correct_rejection"
+      },
+      "localization_basis": "No RAG finding localizes to this segment. Both candidate quotes are absent from the interview and unsupported.",
+      "adjudication_note": "Negative ground-truth segment with no qualifying detection."
+    }
+  ],
+  "instance_level_adjudications": [],
+  "unmatched_rag_predictions": [
+    {
+      "rag_occurrence_id": "cand_001",
+      "rag_finding_type": "candidate",
+      "rag_predicted_bias_label": "outcome bias",
+      "rag_confidence": "candidate",
+      "localized_segment_id": null,
+      "best_related_hidden_instance_id": null,
+      "label_equivalence_result": "different_construct",
+      "mechanism_overlap": "no_mechanism_overlap",
+      "strict_classification": "unsupported_prediction",
+      "mechanism_first_classification": "unsupported_prediction",
+      "counted_at_thresholds": [
+        "all_confidence_and_candidates"
+      ],
+      "why_not_an_exact_strict_match": "The proposed outcome-bias mechanism concerns a charge nurse allegedly judging a prior clinical decision by its outcome, but that episode and quotation are absent from the aviation interview. The prediction is therefore fabricated or unsupported and cannot match the hidden zero-occurrence Information bias target."
+    },
+    {
+      "rag_occurrence_id": "cand_002",
+      "rag_finding_type": "candidate",
+      "rag_predicted_bias_label": "affect heuristic",
+      "rag_confidence": "candidate",
+      "localized_segment_id": null,
+      "best_related_hidden_instance_id": null,
+      "label_equivalence_result": "different_construct",
+      "mechanism_overlap": "no_mechanism_overlap",
+      "strict_classification": "unsupported_prediction",
+      "mechanism_first_classification": "unsupported_prediction",
+      "counted_at_thresholds": [
+        "all_confidence_and_candidates"
+      ],
+      "why_not_an_exact_strict_match": "The proposed affect-heuristic mechanism concerns an alleged admission-versus-discharge decision after a negative PE workup, but that episode and quotation are absent from the aviation interview. The prediction is therefore fabricated or unsupported and cannot match the hidden zero-occurrence Information bias target."
+    }
+  ],
+  "candidate_analysis": {
+    "candidate_count": 2,
+    "candidates": [
+      {
+        "candidate_id": "cand_001",
+        "proposed_bias_label": "outcome bias",
+        "localized_segment_id": null,
+        "best_related_hidden_instance_id": null,
+        "quote_validity": "invalid",
+        "would_match_if_promoted_strict": false,
+        "would_match_if_promoted_mechanism_first": false,
+        "counted_as_detection_at_fourth_threshold": false,
+        "fourth_threshold_outcome": "false_positive",
+        "candidate_assessment": "unsupported_speculation",
+        "details": "The quoted clinical scenario is not present in the supplied interview. The candidate is counted as an unsupported false positive at the candidate-inclusive instance threshold but creates no segment-level detection because it cannot localize to an eligible segment."
+      },
+      {
+        "candidate_id": "cand_002",
+        "proposed_bias_label": "affect heuristic",
+        "localized_segment_id": null,
+        "best_related_hidden_instance_id": null,
+        "quote_validity": "invalid",
+        "would_match_if_promoted_strict": false,
+        "would_match_if_promoted_mechanism_first": false,
+        "counted_as_detection_at_fourth_threshold": false,
+        "fourth_threshold_outcome": "false_positive",
+        "candidate_assessment": "unsupported_speculation",
+        "details": "The quoted clinical scenario is not present in the supplied interview. The candidate is counted as an unsupported false positive at the candidate-inclusive instance threshold but creates no segment-level detection because it cannot localize to an eligible segment."
+      }
+    ]
+  },
+  "signal_detection_summary": {
+    "evaluation_unit": "eligible_reasoning_segment",
+    "high_only": {
+      "positive_segments": 0,
+      "negative_segments": 17,
+      "hits": 0,
+      "misses": 0,
+      "false_alarms": 0,
+      "correct_rejections": 17,
+      "hit_rate": null,
+      "false_alarm_rate": 0.0000,
+      "accuracy": 1.0000,
+      "precision": null,
+      "recall": null,
+      "f1": null,
+      "detection_interpretation": "No identified findings qualify at the high threshold; all 17 negative segments are correctly rejected."
+    },
+    "high_and_moderate": {
+      "positive_segments": 0,
+      "negative_segments": 17,
+      "hits": 0,
+      "misses": 0,
+      "false_alarms": 0,
+      "correct_rejections": 17,
+      "hit_rate": null,
+      "false_alarm_rate": 0.0000,
+      "accuracy": 1.0000,
+      "precision": null,
+      "recall": null,
+      "f1": null,
+      "detection_interpretation": "No identified findings qualify at the high-or-moderate threshold; all 17 negative segments are correctly rejected."
+    },
+    "all_identified_confidence_levels": {
+      "positive_segments": 0,
+      "negative_segments": 17,
+      "hits": 0,
+      "misses": 0,
+      "false_alarms": 0,
+      "correct_rejections": 17,
+      "hit_rate": null,
+      "false_alarm_rate": 0.0000,
+      "accuracy": 1.0000,
+      "precision": null,
+      "recall": null,
+      "f1": null,
+      "detection_interpretation": "There are no identified occurrences at any confidence level; all 17 negative segments are correctly rejected."
+    },
+    "all_confidence_and_candidates": {
+      "positive_segments": 0,
+      "negative_segments": 17,
+      "hits": 0,
+      "misses": 0,
+      "false_alarms": 0,
+      "correct_rejections": 17,
+      "hit_rate": null,
+      "false_alarm_rate": 0.0000,
+      "accuracy": 1.0000,
+      "precision": null,
+      "recall": null,
+      "f1": null,
+      "detection_interpretation": "The two candidates are invalid and cannot localize to eligible segments, so segment detection remains perfect abstention with 17 correct rejections."
+    }
+  },
+  "strict_instance_level_metrics": {
+    "high_only": {
+      "true_positives": 0,
+      "false_negatives": 0,
+      "false_positives": 0,
+      "precision": null,
+      "recall": null,
+      "f1": null,
+      "exact_occurrence_match_rate": null,
+      "occurrence_count_match_rate": 1.0000
+    },
+    "high_and_moderate": {
+      "true_positives": 0,
+      "false_negatives": 0,
+      "false_positives": 0,
+      "precision": null,
+      "recall": null,
+      "f1": null,
+      "exact_occurrence_match_rate": null,
+      "occurrence_count_match_rate": 1.0000
+    },
+    "all_identified_confidence_levels": {
+      "true_positives": 0,
+      "false_negatives": 0,
+      "false_positives": 0,
+      "precision": null,
+      "recall": null,
+      "f1": null,
+      "exact_occurrence_match_rate": null,
+      "occurrence_count_match_rate": 1.0000
+    },
+    "all_confidence_and_candidates": {
+      "true_positives": 0,
+      "false_negatives": 0,
+      "false_positives": 2,
+      "precision": 0.0000,
+      "recall": null,
+      "f1": 0.0000,
+      "exact_occurrence_match_rate": null,
+      "occurrence_count_match_rate": 1.0000
+    }
+  },
+  "mechanism_first_instance_level_metrics": {
+    "high_only": {
+      "true_positives": 0,
+      "false_negatives": 0,
+      "false_positives": 0,
+      "precision": null,
+      "recall": null,
+      "f1": null,
+      "exact_occurrence_match_rate": null,
+      "occurrence_count_match_rate": 1.0000
+    },
+    "high_and_moderate": {
+      "true_positives": 0,
+      "false_negatives": 0,
+      "false_positives": 0,
+      "precision": null,
+      "recall": null,
+      "f1": null,
+      "exact_occurrence_match_rate": null,
+      "occurrence_count_match_rate": 1.0000
+    },
+    "all_identified_confidence_levels": {
+      "true_positives": 0,
+      "false_negatives": 0,
+      "false_positives": 0,
+      "precision": null,
+      "recall": null,
+      "f1": null,
+      "exact_occurrence_match_rate": null,
+      "occurrence_count_match_rate": 1.0000
+    },
+    "all_confidence_and_candidates": {
+      "true_positives": 0,
+      "false_negatives": 0,
+      "false_positives": 2,
+      "precision": 0.0000,
+      "recall": null,
+      "f1": 0.0000,
+      "exact_occurrence_match_rate": null,
+      "occurrence_count_match_rate": 1.0000
+    }
+  },
+  "target_bias_performance": [
+    {
+      "hidden_target_bias_label": "Information bias",
+      "hidden_requested_occurrences": 0,
+      "strict_true_positives_by_threshold": {
+        "high_only": 0,
+        "high_and_moderate": 0,
+        "all_identified_confidence_levels": 0,
+        "all_confidence_and_candidates": 0
+      },
+      "mechanism_first_true_positives_by_threshold": {
+        "high_only": 0,
+        "high_and_moderate": 0,
+        "all_identified_confidence_levels": 0,
+        "all_confidence_and_candidates": 0
+      },
+      "count_match_status_at_all_confidence_and_candidates": "exact_match"
+    }
+  ],
+  "rag_label_false_positive_inventory": [
+    {
+      "rag_predicted_bias_label": "outcome bias",
+      "finding_type": "candidate",
+      "alternative_labels": [
+        "outcome effect"
+      ],
+      "occurrence_count": 1,
+      "best_related_hidden_target_bias_label": null,
+      "label_relation": "different_construct",
+      "mechanism_overlap_summary": "The candidate describes judging a clinical decision by a prior patient's outcome, while the hidden target has zero intended instances and the supplied interview contains no such episode.",
+      "primary_error_types": [
+        "unsupported_prediction",
+        "fabricated_or_invalid_quote",
+        "different_construct_label"
+      ]
+    },
+    {
+      "rag_predicted_bias_label": "affect heuristic",
+      "finding_type": "candidate",
+      "alternative_labels": [
+        "availability heuristic"
+      ],
+      "occurrence_count": 1,
+      "best_related_hidden_target_bias_label": null,
+      "label_relation": "different_construct",
+      "mechanism_overlap_summary": "The candidate describes affectively salient clinical events influencing disposition, while the hidden target has zero intended instances and the supplied interview contains no such episode.",
+      "primary_error_types": [
+        "unsupported_prediction",
+        "fabricated_or_invalid_quote",
+        "different_construct_label"
+      ]
+    }
+  ],
+  "diagnostic_error_summary": {
+    "correct_location_wrong_bias_label_count": 0,
+    "correct_label_wrong_location_count": 0,
+    "correct_label_location_wrong_mechanism_count": 0,
+    "mechanism_detected_label_unresolved_count": 0,
+    "partial_mechanism_match_count": 0,
+    "duplicate_prediction_count": 0,
+    "unsupported_prediction_count": 2,
+    "fabricated_or_invalid_quote_count": 2,
+    "approved_alias_or_equivalence_count": 0,
+    "near_neighbor_label_count": 0,
+    "different_construct_label_count": 2,
+    "candidate_count": 2,
+    "candidate_useful_abstention_count": 0,
+    "candidate_near_miss_count": 0,
+    "candidates_promoted_to_true_positive_at_fourth_threshold_count": 0
+  },
+  "corpus_support_audit": {
+    "primary_corpus_fidelity_score_available": false,
+    "rag_occurrences_claiming_retrieved_support": 0,
+    "rag_occurrences_with_no_claimed_retrieved_support": 2,
+    "rag_occurrences_with_unverifiable_or_internally_inconsistent_citation_metadata": 0,
+    "assessment_note": "The RAG output explicitly reports retrieved_corpus_support_used=false and supplies no citation metadata. Neither candidate claims retrieved support; however, both contain fabricated interview evidence unrelated to the supplied transcript."
+  },
+  "comparison_ready_summary": {
+    "primary_recommended_comparison_threshold": "high_and_moderate",
+    "segment_detection": {
+      "high_only": {
+        "hits": 0,
+        "misses": 0,
+        "false_alarms": 0,
+        "correct_rejections": 17,
+        "hit_rate": null,
+        "false_alarm_rate": 0.0000,
+        "f1": null
+      },
+      "high_and_moderate": {
+        "hits": 0,
+        "misses": 0,
+        "false_alarms": 0,
+        "correct_rejections": 17,
+        "hit_rate": null,
+        "false_alarm_rate": 0.0000,
+        "f1": null
+      },
+      "all_identified_confidence_levels": {
+        "hits": 0,
+        "misses": 0,
+        "false_alarms": 0,
+        "correct_rejections": 17,
+        "hit_rate": null,
+        "false_alarm_rate": 0.0000,
+        "f1": null
+      },
+      "all_confidence_and_candidates": {
+        "hits": 0,
+        "misses": 0,
+        "false_alarms": 0,
+        "correct_rejections": 17,
+        "hit_rate": null,
+        "false_alarm_rate": 0.0000,
+        "f1": null
+      }
+    },
+    "strict_instance_identification": {
+      "high_only": {
+        "true_positives": 0,
+        "false_negatives": 0,
+        "false_positives": 0,
+        "precision": null,
+        "recall": null,
+        "f1": null
+      },
+      "high_and_moderate": {
+        "true_positives": 0,
+        "false_negatives": 0,
+        "false_positives": 0,
+        "precision": null,
+        "recall": null,
+        "f1": null
+      },
+      "all_identified_confidence_levels": {
+        "true_positives": 0,
+        "false_negatives": 0,
+        "false_positives": 0,
+        "precision": null,
+        "recall": null,
+        "f1": null
+      },
+      "all_confidence_and_candidates": {
+        "true_positives": 0,
+        "false_negatives": 0,
+        "false_positives": 2,
+        "precision": 0.0000,
+        "recall": null,
+        "f1": 0.0000
+      }
+    },
+    "mechanism_first_identification": {
+      "high_only": {
+        "true_positives": 0,
+        "false_negatives": 0,
+        "false_positives": 0,
+        "precision": null,
+        "recall": null,
+        "f1": null
+      },
+      "high_and_moderate": {
+        "true_positives": 0,
+        "false_negatives": 0,
+        "false_positives": 0,
+        "precision": null,
+        "recall": null,
+        "f1": null
+      },
+      "all_identified_confidence_levels": {
+        "true_positives": 0,
+        "false_negatives": 0,
+        "false_positives": 0,
+        "precision": null,
+        "recall": null,
+        "f1": null
+      },
+      "all_confidence_and_candidates": {
+        "true_positives": 0,
+        "false_negatives": 0,
+        "false_positives": 2,
+        "precision": 0.0000,
+        "recall": null,
+        "f1": 0.0000
+      }
+    },
+    "taxonomy_gap": {
+      "high_only": {
+        "mechanism_first_f1_minus_strict_f1": 0.0000
+      },
+      "high_and_moderate": {
+        "mechanism_first_f1_minus_strict_f1": 0.0000
+      },
+      "all_identified_confidence_levels": {
+        "mechanism_first_f1_minus_strict_f1": 0.0000
+      },
+      "all_confidence_and_candidates": {
+        "mechanism_first_f1_minus_strict_f1": 0.0000
+      }
+    },
+    "confidence_tradeoff": {
+      "increment_from_high_to_high_and_moderate": "No change: no identified findings are present at either threshold.",
+      "increment_from_high_and_moderate_to_all_confidence": "No change: no low-confidence identified findings are present.",
+      "increment_from_all_confidence_to_all_confidence_and_candidates": "Segment metrics remain unchanged because candidates cannot localize, but strict and mechanism-first instance-level false positives increase from 0 to 2 due to the two fabricated candidates."
+    }
+  },
+  "overall_evaluation_summary": {
+    "hidden_total_planned_occurrences": 0,
+    "rag_total_identified_occurrences": 0,
+    "rag_total_candidate_biases": 2,
+    "segment_level_primary_result": "Perfect zero-bias abstention at all thresholds: 17 correct rejections, no hits, misses, or segment false alarms.",
+    "strict_label_plus_mechanism_result": "Exact zero-occurrence count is met through identified findings, but the candidate-inclusive threshold contains two unsupported false-positive predictions.",
+    "mechanism_first_result": "Same as strict scoring: no hidden instances are detected, and both fabricated candidate records are unsupported false positives at the candidate-inclusive threshold.",
+    "candidate_tier_value_assessment": "No value. Both candidates are unrelated to the supplied interview, use fabricated quotations, cannot be localized, and do not represent useful abstentions or near misses.",
+    "main_failure_modes": [
+      "Fabricated quotations and clinical episodes unrelated to the aviation interview.",
+      "Unsupported speaker attribution and decision-episode localization.",
+      "Candidate speculation introduces two instance-level false positives at the fourth threshold."
+    ],
+    "main_strengths": [
+      "No identified bias occurrences were asserted.",
+      "The main identified-occurrence output correctly abstained on the zero-bias interview.",
+      "The analysis metadata disclosed that retrieved corpus support was not used."
+    ],
+    "benchmark_interpretation": "This is a zero-bias run with perfect segment-level rejection and no identified-instance errors through the first three thresholds. Candidate inclusion exposes two unsupported, fabricated predictions, reducing candidate-inclusive instance precision and F1 to 0 while leaving segment metrics unchanged because the candidates cannot be localized."
+  }
+}

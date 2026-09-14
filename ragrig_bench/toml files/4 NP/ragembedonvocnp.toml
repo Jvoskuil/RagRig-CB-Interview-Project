@@ -1,0 +1,67 @@
+# Ranker comparison: the default hybrid RRF ranker vs. pure cosine ranking
+# (WeightedFusionRanker alpha = 1.0), on the ragrig default chat backend
+# (Ollama, qwen3.5:9b), varying the context budget (4096 and 8192 tokens).
+# Corpus = the embedded HTML fixture book, default pipeline (full parser
+# registry + MarkdownChunker).
+
+corpus_dirs = ["papers=/mnt/c/Users/Joost/Documents/papers"]
+
+queries = [
+    "Interviewer: Thanks for sitting down with me. This is for our operations learning file, not a disciplinary review — nothing here goes in your personnel record. Can you tell me your role and background? Participant: Sure. I'm a process control operator on the catalytic reforming unit, six years on this board, eleven at the refinery overall. I run the DCS console — feed rates, heater duty, reactor temps, that side of things. Interviewer: Good. Let's start broad — walk me through the incident from the beginning. Participant: It kicked off right at shift handover, early morning. I'd just settled in when the high-temperature alarm came up on the feed heater outlet. Annunciator lit up, tone sounded. That specific point has been noisy lately — I want to say it tripped something like eleven times over the past month, all logged as instrument drift. But before I acknowledged it, I pulled up the pressure-differential trend on the adjacent screen too, since that's a habit of mine with recurring alarms — you want to see if anything else is moving with it. That trend had been creeping upward for a couple hours, slower and less obvious than the alarm itself, but it was there. Seeing both together made me less comfortable calling it a pure nuisance trip like the others had been, so I got the field operator moving to verify the thermocouple directly rather than just silencing it and continuing on. Interviewer: What did the field check turn up? Participant: Confirmed the outlet reading was accurate — not an instrument fault. So now I've got a real alarm and a real trend, and I flagged both for closer attention going into handover. Interviewer: Walk me through the handover conversation. Participant: Night operator said things had been 'stable, unremarkable' for his last four hours, which matched what I was seeing on the immediate trend. But there was an older note in the board log, a few days back, about a slow upward drift in heater duty that had been flagged and never formally closed out. Rather than just assume it had resolved itself because the recent hours looked clean, I asked him directly whether that drift had actually been corrected or just stopped showing up in the short-term data. He wasn't sure — said it hadn't come up again, but nobody had gone back and verified the root cause. Interviewer: How did that affect what you did next? Participant: Production wanted the feed rate bumped to bank throughput before our regeneration window, about six hours out at that point. Given the alarm, the trend, and the unresolved drift note, I didn't just run the standard increase sequence the way I normally would. I ramped it more conservatively than usual and kept a closer eye on outlet temperature through the whole move, rather than treating it as routine. Interviewer: What happened after that? Participant: Temperature climbed some, as expected with any increase, but then the field operator called in from a walkdown and mentioned heat shimmer near the firebox — visually distinct, not something he'd normally flag. That raised the stakes. Interviewer: Let's go back and unpack the first decision — cross-checking the pressure trend before acknowledging. What information did you actually have at that point? Participant: The alarm, the recent trip history, and that pressure trend, which I made a point of looking at before doing anything else. Interviewer: What alternatives did you weigh? Participant: I could've just silenced it like the last eleven times — would've been the fast option. Or dispatched the field guy without checking the trend first. I did a version of both, but in a specific order: checked the trend, saw it didn't look like the earlier isolated trips, then sent the field operator to verify independently rather than assuming it was drift again. Interviewer: How confident were you in that read at the time? Participant: Moderately. I wasn't certain something was wrong, but the combination was enough that I didn't want to treat it as routine. Interviewer: Moving to the feed increase decision — what alternatives were on the table? Participant: Full delay and a deep dive into the multi-day trend log, looping in the engineer before touching setpoints, or proceeding as planned. I landed somewhere in the middle — proceeded, but modified, with tighter monitoring, specifically because the drift note hadn't been confirmed resolved. Interviewer: Was that a deliberate call, or did you default to the usual procedure? Participant: Deliberate. I actually thought about skipping the modification since the last four hours looked fine, but the unresolved log entry bothered me enough that I didn't want to run it exactly like every other routine bump. Interviewer: Let's move to the third phase, after the shimmer report. What was going through your mind? Participant: The pattern — alarm, temperature climb, shimmer — had some resemblance to a compressor surge event I'd handled about a year and a half ago on a similar unit. There's also a tube-rupture incident from a couple years back that people still bring up in briefings, more dramatic, shut the unit down for weeks. Both crossed my mind. But instead of just running with either, I checked specifically for the vibration signature that had shown up in the surge event — wasn't present here at all. And I asked the engineer whether the current data showed any of the specific markers tied to the tube-rupture failure mode. It didn't match either one cleanly. Interviewer: What did you do given that neither precedent matched? Participant: Treated it as its own case. Pulled fresh heater-specific diagnostic data and requested an independent instrument check rather than forcing it into either historical bucket. Interviewer: Final decision — regeneration window closing in. Participant: Under ninety minutes left. Temps and pressure still climbing, not at trip setpoints yet. I had a short checklist of standard corrective actions. Full engineer consultation would've eaten twenty to thirty minutes I didn't have to spare, but I also didn't want to just grab the first option on the list. Interviewer: How did you choose? Participant: I compared the top two or three checklist options against what the diagnostic data was actually showing, picked the one that matched the pattern best, not just the first one listed, and briefed the engineer by radio while I implemented it so he could flag anything I'd missed in real time. Interviewer: What was the outcome? Participant: Stabilized the trend. Later review said the comparison held up reasonably well given the time we had, though the full underlying cause took longer to pin down completely. Interviewer: If the alarm's history had been clean instead of noisy, would you have handled that first moment differently? Participant: Probably would've moved even faster to dispatch the field operator — less hesitation about whether it was worth the disruption. The noisy history didn't stop me from checking, but it's fair to say it added a beat of consideration before I did. Interviewer: What single piece of information, if you'd had it sooner, would have changed the most? Participant: Confirmation on whether that multi-day drift had genuinely resolved. I was operating on an unanswered question there, and if I'd known definitively either way, the feed-increase decision would've been more clear-cut. Interviewer: And with more time before the regeneration window? Participant: I'd have gotten the full engineer consultation rather than the quick radio brief. The comparison I did was reasonable, but a full conversation would've added confidence. Interviewer: Anything else stand out looking back? Participant: Just that none of these calls were obvious in the moment. Each one had a real alternative I seriously considered, and I don't think the outcome tells you definitively whether any single step was the right one — it worked out, but there was real uncertainty the whole way through. Interviewer: That's a good place to stop. Thanks for walking through it in this much detail."
+]
+
+[[agents]]
+label = "Gemini Prompt 8192"
+[agents.chat]
+provider = "deepseek"            # "ollama" | "deepseek"
+#model = "qwen2.5:1.5b"         # ignored for deepseek
+context_tokens = 8192          # context budget for retrieved chunks
+deepseek_model = "deepseek-v4-pro"   # deepseek only
+# deepseek_api_key = DEEPSEEK_API_KEY # deepseek only (or DEEPSEEK_API_KEY env)
+# context_size_mode = "Auto"          # "Auto" | "Forced"
+system_prompt_path = "prompt_gemini.md"    # custom system prompt ({context} placeholder)
+# request_timeout_secs = 300          # per-request timeout, None = no timeout
+[agents.chat.params]                # generation overrides (all optional)
+# temperature = 0.7
+# top_p = 0.9
+# max_tokens = 1024
+seed = 42
+
+[[agents]]
+label = "Sonar Prompt 8192"
+[agents.chat]
+provider = "deepseek"            # "ollama" | "deepseek"
+#model = "qwen2.5:1.5b"         # ignored for deepseek
+context_tokens = 8192          # context budget for retrieved chunks
+deepseek_model = "deepseek-v4-pro"   # deepseek only
+# deepseek_api_key = DEEPSEEK_API_KEY # deepseek only (or DEEPSEEK_API_KEY env)
+# context_size_mode = "Auto"          # "Auto" | "Forced"
+system_prompt_path = "prompt_sonar.md"    # custom system prompt ({context} placeholder)
+# request_timeout_secs = 300          # per-request timeout, None = no timeout
+[agents.chat.params]                # generation overrides (all optional)
+# temperature = 0.7
+# top_p = 0.9
+# max_tokens = 1024
+seed = 42
+
+[[agents]]
+label = "Sonnet Prompt 8192"
+[agents.chat]
+provider = "deepseek"            # "ollama" | "deepseek"
+#model = "qwen2.5:1.5b"         # ignored for deepseek
+context_tokens = 8192          # context budget for retrieved chunks
+deepseek_model = "deepseek-v4-pro"   # deepseek only
+# deepseek_api_key = DEEPSEEK_API_KEY # deepseek only (or DEEPSEEK_API_KEY env)
+# context_size_mode = "Auto"          # "Auto" | "Forced"
+system_prompt_path = "prompt_sonnet.md"    # custom system prompt ({context} placeholder)
+# request_timeout_secs = 300          # per-request timeout, None = no timeout
+[agents.chat.params]                # generation overrides (all optional)
+# temperature = 0.7
+# top_p = 0.9
+# max_tokens = 1024
+seed = 42
+
+# ---Embed testing ---
+[embed]
+#top_k = 0
+top_k = 50

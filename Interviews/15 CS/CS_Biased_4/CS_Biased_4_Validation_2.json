@@ -1,0 +1,463 @@
+{
+  "validator_version": "2.0",
+  "interview_id": "CS_Biased_4",
+  "condition": "biased",
+  "domain_assessment": {
+    "domain": "Cybersecurity incident response and digital forensics",
+    "role": "Solo overnight on-call DFIR analyst",
+    "objective": "Triage, scope, contain, preserve evidence for, and remediate a suspected compromise affecting a finance file server before quarter-end close",
+    "incident_type": "A suspected ransomware-precursor event that contains evidence more consistent with possible data exfiltration and lateral movement",
+    "confidence": 0.98
+  },
+  "structure_audit": {
+    "estimated_word_count": 1345,
+    "within_target_range": true,
+    "decision_point_count": 4,
+    "decision_points": [
+      {
+        "id": 1,
+        "summary": "The analyst categorizes the anomaly as ransomware-precursor activity instead of prioritizing a competing possible data-exfiltration interpretation.",
+        "evidence_before": [
+          "An off-hours process spawned a staging directory on the finance file server.",
+          "The analyst had recently closed six apparently similar incidents, all classified as ransomware precursors.",
+          "A quieter log line showed an authenticated session copying files in small batches to an external cloud-storage endpoint.",
+          "There was no ransom note, encryption, mass renaming, or known ransomware-C2 association."
+        ],
+        "evidence_after": [
+          "The transferred files were later identified as finance close spreadsheets rather than the file types associated with the recent ransomware precursors.",
+          "The endpoint had no ransomware-C2 history in threat intelligence.",
+          "The participant states that the batch-copy signal would have stood out more absent the recent run of ransomware cases."
+        ],
+        "goals_constraints": [
+          "Classify the alert quickly for triage and playbook selection.",
+          "Operate alone overnight with limited immediate access to senior support.",
+          "Address a potentially sensitive finance-server incident during a quarter-end close period.",
+          "Make sense of incomplete and mixed technical indicators."
+        ],
+        "alternatives": [
+          "Classify as ransomware-precursor activity.",
+          "Classify as suspected data exfiltration.",
+          "Retain both ransomware and exfiltration as active provisional hypotheses pending additional evidence."
+        ],
+        "decision_basis": "The analyst selected the category that most resembled six recently handled cases. The batch-copy signal was acknowledged but given lower salience because it was slower, quieter, and did not resemble the immediately available recent pattern.",
+        "time_pressure": "High: the decision occurred around 1 a.m. during a solo overnight response before quarter-end close.",
+        "uncertainty": "Moderate to high: the staging-directory behavior was concerning, but the incident lacked classic ransomware artifacts and contained a competing exfiltration signal."
+      },
+      {
+        "id": 2,
+        "summary": "The analyst retains an initial scope of three endpoints after a later EDR sweep indicates authentication artifacts on nine additional hosts.",
+        "evidence_before": [
+          "The initial SIEM correlation window indicated three endpoints.",
+          "The analyst had communicated \"3 hosts, contained\" to the finance director.",
+          "A later EDR sweep reported lower-confidence authentication artifacts touching nine more hosts."
+        ],
+        "evidence_after": [
+          "A later, fuller sweep confirmed lateral movement on seven of the nine additional hosts.",
+          "The participant says an extra 20 minutes before the director's requested update would probably have led to an increased scope estimate."
+        ],
+        "goals_constraints": [
+          "Provide a concrete update to the finance director before the 6 a.m. close deadline.",
+          "Avoid unnecessary panic or disruptive action in a quarter-end finance environment.",
+          "Maintain a defensible incident scope under lower-confidence telemetry.",
+          "Balance speed against the risk of overreacting to unconfirmed artifacts."
+        ],
+        "alternatives": [
+          "Maintain the three-host scope.",
+          "Expand the provisional scope to include the nine additional hosts.",
+          "Report the scope as uncertain or provide a range while further validation proceeds."
+        ],
+        "decision_basis": "The initial three-host figure remained the reference point. Although the analyst acknowledged lower-confidence expansion evidence, they stayed close to the original estimate partly because revising an already communicated number seemed likely to cause premature alarm.",
+        "time_pressure": "High: an executive stakeholder required an update ahead of a fixed 6 a.m. deadline.",
+        "uncertainty": "Moderate: the new signal was explicitly lower confidence, but it pointed toward a substantially larger possible scope."
+      },
+      {
+        "id": 3,
+        "summary": "The analyst uses a self-built PowerShell containment script instead of the lead-recommended EDR one-click network-isolation feature.",
+        "evidence_before": [
+          "The analyst built and maintained the PowerShell isolation and log-collection script over two years.",
+          "The analyst knew the script's behavior, logs, prior failures, and prior fixes.",
+          "The EDR isolation feature had been deployed for about three months and the analyst had used it only twice.",
+          "The lead advised that EDR isolation would be faster and less error-prone, especially at the expanding host count.",
+          "The analyst acknowledged that the lead's host-count point was fair and had no evidence that the script would perform better at that scale."
+        ],
+        "evidence_after": [
+          "The analyst used EDR isolation only on a couple of hosts after the lead repeated the recommendation.",
+          "Containment using the script took approximately 90 minutes longer than the EDR route probably would have.",
+          "The analyst later acknowledges that the script was designed for one or two hosts, not a scope of that size."
+        ],
+        "goals_constraints": [
+          "Contain a potentially expanding compromise.",
+          "Preserve useful collection logs.",
+          "Choose a reliable containment method under active-incident time pressure.",
+          "Handle a host count exceeding the self-built tool's intended operating scale."
+        ],
+        "alternatives": [
+          "Use the self-built script across the affected hosts.",
+          "Use EDR one-click isolation across the affected hosts.",
+          "Use EDR isolation for containment while retaining the script for collection or validation.",
+          "Switch to EDR after initial script-based containment."
+        ],
+        "decision_basis": "The analyst initially cites familiarity with the script, but then explicitly states that ownership and personal investment led them to give it extra benefit of the doubt despite having no scale-specific evidence that it would outperform EDR: \"it's mine, I built it, I've kept it running this long, and it felt like it deserved the first shot.\"",
+        "time_pressure": "High: containment proceeded during an active overnight incident with a potentially increasing host scope.",
+        "uncertainty": "Moderate: the EDR feature was newer and less familiar to the analyst, while the script's performance at the expanded host count was uncertain."
+      },
+      {
+        "id": 4,
+        "summary": "The analyst follows the two remediation actions displayed in the category playbook and does not independently pursue broader escalation, forensic preservation, or notification assessment.",
+        "evidence_before": [
+          "The displayed playbook actions were credential reset and endpoint reimaging.",
+          "The playbook did not show forensic imaging of the staging directory or legal-notification assessment.",
+          "The analyst knew that an external IR-retainer escalation path could provide a broader set of options, but it was outside the displayed playbook workflow."
+        ],
+        "evidence_after": [
+          "Compliance later asked whether a forensic image of the staging directory had been preserved before reimaging.",
+          "The answer affected whether the incident could require reporting as a data exposure.",
+          "The participant recognizes that visible forensic-preservation options may have changed the remediation consideration set."
+        ],
+        "goals_constraints": [
+          "Remediate promptly.",
+          "Follow the active incident playbook.",
+          "Avoid destructive action that could impair evidence preservation.",
+          "Consider possible legal, compliance, and reporting implications."
+        ],
+        "alternatives": [
+          "Reset affected credentials and reimage endpoints only.",
+          "Preserve a forensic image of the staging directory before reimaging.",
+          "Escalate to the external IR retainer for broader incident-response options.",
+          "Assess the cloud-storage endpoint and reporting requirements before irreversible remediation."
+        ],
+        "decision_basis": "The visible two-action playbook became the operative decision set. The participant knew a broader escalation path existed but did not search beyond the presented options because the category flow directed them to the two displayed actions.",
+        "time_pressure": "Moderate to high: remediation followed overnight triage and containment in a quarter-end finance-server context.",
+        "uncertainty": "Moderate: the incident's true category and the legal significance of possible external data transfer remained unresolved."
+      }
+    ]
+  },
+  "target_occurrence_audit": [
+    {
+      "instance_id": "cb_01",
+      "bias": "Availability Frequency",
+      "requested_occurrences_for_bias": 1,
+      "status": "supported",
+      "decision_point": 1,
+      "supporting_quote": "I'd closed six tickets in the past three weeks that all started exactly like this ... every one of those turned out to be ransomware-precursor activity ... At 1 a.m. I went with the category that matched what I'd just spent three weeks fighting.",
+      "evidence_location": "DP1, the initial incident-description turn and the participant's account of how the staging-directory and batch-copy signals were weighed",
+      "mechanism": "Six recently encountered ransomware-precursor cases made that category highly retrievable and subjectively compelling. The analyst therefore selected it over a competing possible-exfiltration category, while the batch-copy evidence was treated as secondary because it did not match the recent, salient pattern.",
+      "strength": "moderate",
+      "confidence": 0.95,
+      "plausible_nonbias_explanation": "A staging directory and off-hours process could be a genuinely useful ransomware-precursor signature. However, the participant explicitly identifies recent case frequency, rather than a comparative assessment of the two evidence streams, as the reason the ransomware category became the \"obvious bucket.\"",
+      "additional_evidence_needed": "None. The interview identifies the recalled category, the competing category, the category-selection decision, and the recall-frequency mechanism.",
+      "revision_needed": false,
+      "revision": {
+        "revision_type": "none",
+        "location": "DP1, the participant turns beginning \"Honestly, my first reaction was\" and \"I opened the ticket under the ransomware-precursor category.\"",
+        "current_defect": "No material defect. The occurrence is distinct from later scope, tool, and remediation decisions.",
+        "minimal_change_instruction": "Retain the existing evidence. Do not add an explicit cognitive-bias label or make the participant claim certainty that the exfiltration interpretation was correct at the time.",
+        "preserve": [
+          "The six recent ransomware-precursor incidents.",
+          "The quieter batch-copy signal and its alternative diagnostic implication.",
+          "The absence of obvious ransomware artifacts.",
+          "The participant's restrained retrospective recognition that recent cases overshadowed the batch-copy evidence."
+        ],
+        "avoid_creating": [
+          "A second availability-frequency occurrence during the later scoping decision.",
+          "An additional confirmation-bias episode based on new selective evidence seeking.",
+          "A claim that ordinary pattern recognition is always biased."
+        ],
+        "expected_post_revision_status": "supported"
+      }
+    },
+    {
+      "instance_id": "cb_02",
+      "bias": "Adjustment and anchoring",
+      "requested_occurrences_for_bias": 1,
+      "status": "supported",
+      "decision_point": 2,
+      "supporting_quote": "I'd already told the director \"3 hosts, contained,\" and adjusting that number upward with only 40 minutes of new low-confidence data felt like it'd cause more panic than it was worth ... So I stuck close to the original number.",
+      "evidence_location": "DP2, the participant's explanation for treating the later nine-host EDR signal as noise rather than as scope expansion",
+      "mechanism": "The initial three-endpoint scope became the operative reference point. The analyst received later evidence pointing toward a materially larger scope but stayed close to the original estimate rather than proportionately revising it or communicating a broader provisional range.",
+      "strength": "moderate",
+      "confidence": 0.89,
+      "plausible_nonbias_explanation": "The later EDR artifacts were lower confidence, making cautious validation potentially reasonable. Nonetheless, the participant directly links retention of the earlier estimate to having already communicated it and to reluctance to revise it publicly, while later evidence confirmed lateral movement on seven of the nine additional hosts.",
+      "additional_evidence_needed": "None. The transcript contains an initial numerical estimate, materially discrepant subsequent information, a decision to remain near the original estimate, and a stated reason for insufficient adjustment.",
+      "revision_needed": false,
+      "revision": {
+        "revision_type": "none",
+        "location": "DP2, the turns describing the three-host scope, the nine additional hosts, the director update, and the subsequent explanation for retaining the original number.",
+        "current_defect": "No material defect. Stakeholder pressure and lower-confidence evidence are legitimate contributing conditions but do not eliminate the anchoring mechanism.",
+        "minimal_change_instruction": "Retain the numerical sequence and maintain the lower-confidence qualification on the second EDR sweep.",
+        "preserve": [
+          "The initial estimate of three endpoints.",
+          "The later indication involving nine additional hosts.",
+          "The finance director's request for an update.",
+          "The later confirmation of lateral movement on seven of the nine hosts.",
+          "The distinction between numerical scope revision and DP1 incident categorization."
+        ],
+        "avoid_creating": [
+          "An unsupported claim that every cautious response to lower-confidence telemetry is anchoring.",
+          "A separate, stronger commitment-consistency episode that would obscure the intended anchoring mechanism.",
+          "A second adjustment-and-anchoring occurrence elsewhere in the interview."
+        ],
+        "expected_post_revision_status": "supported"
+      }
+    },
+    {
+      "instance_id": "cb_03",
+      "bias": "Endowment",
+      "requested_occurrences_for_bias": 1,
+      "status": "supported",
+      "decision_point": 3,
+      "supporting_quote": "My lead's point about the host count was fair, and I didn't really have anything showing my script would hold up better at that scale — I just wanted to give it the benefit of the doubt because it's mine, I built it, I've kept it running this long, and it felt like it deserved the first shot before I'd fall back on the platform's version.",
+      "evidence_location": "DP3, the participant's response to the question about sticking with the self-built script rather than the lead-recommended EDR isolation feature",
+      "mechanism": "The analyst explicitly gives additional value and priority to the self-built script because it is personally owned, authored, and maintained, despite acknowledging that the lead's scale-based recommendation is fair and that no comparative evidence favors the script at the relevant host count. This ownership-based overvaluation drives the containment-method decision.",
+      "strength": "strong",
+      "confidence": 0.97,
+      "plausible_nonbias_explanation": "The analyst's familiarity with the script's logging and failure modes remains a legitimate reason to consider it. However, the participant separately concedes that there was no evidence it would perform better at this scale and explicitly identifies ownership and personal investment as the reason for giving it the first attempt. That evidence distinguishes endowment from justified expertise alone.",
+      "additional_evidence_needed": "None. The current text directly establishes ownership, comparative lack of performance evidence, a competing method supported by the lead, and ownership-driven preference in the tool-selection decision.",
+      "revision_needed": false,
+      "revision": {
+        "revision_type": "none",
+        "location": "DP3, the middle of the participant's explanation beginning \"My lead's point about the host count was fair.\"",
+        "current_defect": "No occurrence-validity defect. The mechanism is unusually explicit relative to the intended \"subtle\" strength, but it remains behaviorally coherent and independently identifiable.",
+        "minimal_change_instruction": "Retain the current ownership-based reasoning unless strict subtlety is a higher priority than maximum observability. If strict subtlety is required, shorten the ownership clause without removing the admission that personal authorship supplied extra confidence despite the absence of scale-specific comparative evidence.",
+        "preserve": [
+          "The self-built script's two-year history.",
+          "The analyst's genuine knowledge of the script's behavior and failure modes.",
+          "The EDR feature's recent deployment and limited use by the analyst.",
+          "The lead's recommendation based on speed, error reduction, and host count.",
+          "The analyst's admission that the script lacked demonstrated advantage at the larger scale.",
+          "The approximately 90-minute containment delay."
+        ],
+        "avoid_creating": [
+          "A second independently countable endowment episode in the later refusal to switch tools.",
+          "A claim that the EDR feature was necessarily superior under all circumstances.",
+          "A textbook statement naming the endowment effect.",
+          "Eliminating all legitimate uncertainty around a newly deployed EDR feature."
+        ],
+        "expected_post_revision_status": "supported"
+      }
+    },
+    {
+      "instance_id": "cb_04",
+      "bias": "Exposure to limited alternatives",
+      "requested_occurrences_for_bias": 1,
+      "status": "supported",
+      "decision_point": 4,
+      "supporting_quote": "There's an escalation path to our external IR retainer that could've given a broader set of options, but it's not built into the playbook flow, you have to go looking for it separately. I didn't go down that road. I just worked through the two actions on the screen since that's what the category pointed me to.",
+      "evidence_location": "DP4, the participant's answer to whether alternatives outside the displayed remediation actions were considered",
+      "mechanism": "The two visible playbook actions constrained the alternatives the analyst generated and pursued. Although a broader escalation route was known, its absence from the immediate interface meant that it was not searched, and associated preservation and notification alternatives were omitted.",
+      "strength": "moderate",
+      "confidence": 0.92,
+      "plausible_nonbias_explanation": "The playbook may represent a legitimate organizational workflow, and the analyst may have faced time, authority, or information constraints. The occurrence is nonetheless supported because the analyst knew a broader option path existed and explicitly chose not to pursue it because the visible category flow presented only two actions.",
+      "additional_evidence_needed": "None. The evidence identifies the restricted presented set, a known wider set outside the workflow, the decision not to search for it, and the omitted remediation consideration.",
+      "revision_needed": false,
+      "revision": {
+        "revision_type": "none",
+        "location": "DP4, the participant turns explaining the two-action playbook, the external IR-retainer escalation path, and the later compliance question.",
+        "current_defect": "No material defect. This occurrence is distinct from DP3 because it concerns the generation and search for remediation alternatives, not attachment to a containment tool.",
+        "minimal_change_instruction": "Retain the contrast between the two visible actions and the known but separately accessed escalation path.",
+        "preserve": [
+          "The displayed credential-reset and endpoint-reimaging actions.",
+          "The external IR-retainer escalation path.",
+          "The omitted forensic-preservation and notification-assessment considerations.",
+          "The later compliance prompt concerning evidence preservation before reimaging.",
+          "The separation between remediation-option generation and containment-method selection."
+        ],
+        "avoid_creating": [
+          "A second limited-alternatives occurrence at DP1 or DP3.",
+          "An unsupported implication that the analyst was unable to escalate.",
+          "A categorical claim that the playbook was necessarily wrong rather than incomplete for this incident."
+        ],
+        "expected_post_revision_status": "supported"
+      }
+    }
+  ],
+  "bias_level_counts": [
+    {
+      "bias": "Availability Frequency",
+      "requested_count": 1,
+      "supported_count": 1,
+      "weak_count": 0,
+      "absent_count": 0,
+      "merged_count": 0,
+      "accidental_count": 0,
+      "count_satisfied": true
+    },
+    {
+      "bias": "Adjustment and anchoring",
+      "requested_count": 1,
+      "supported_count": 1,
+      "weak_count": 0,
+      "absent_count": 0,
+      "merged_count": 0,
+      "accidental_count": 0,
+      "count_satisfied": true
+    },
+    {
+      "bias": "Endowment",
+      "requested_count": 1,
+      "supported_count": 1,
+      "weak_count": 0,
+      "absent_count": 0,
+      "merged_count": 0,
+      "accidental_count": 0,
+      "count_satisfied": true
+    },
+    {
+      "bias": "Exposure to limited alternatives",
+      "requested_count": 1,
+      "supported_count": 1,
+      "weak_count": 0,
+      "absent_count": 0,
+      "merged_count": 0,
+      "accidental_count": 0,
+      "count_satisfied": true
+    }
+  ],
+  "additional_candidate_biases": [
+    {
+      "bias": "Status quo bias / ambiguity aversion",
+      "decision_point": 3,
+      "supporting_quote": "Not really in the moment — I was mid-process and switching tools halfway through felt like it'd create more inconsistency in the logs than just finishing what I started.",
+      "mechanism": "The analyst retains an ongoing familiar process rather than switching to an alternative after new information about the script's poor scale fit and observed delay.",
+      "confidence": 0.67,
+      "status": "weak",
+      "plausible_nonbias_explanation": "Maintaining a consistent isolation and collection process can be legitimate incident-response practice, especially where switching could create evidence gaps, inconsistent logs, or new operational errors. The transcript does not establish that the anticipated inconsistency was unfounded.",
+      "revision_recommendation": "none"
+    },
+    {
+      "bias": "Commitment-consistency or escalation of commitment",
+      "decision_point": 2,
+      "supporting_quote": "I'd already told the director \"3 hosts, contained,\" and adjusting that number upward ... felt like it'd cause more panic than it was worth.",
+      "mechanism": "The participant may resist revising a public prior commitment after receiving contrary evidence, partly to avoid the consequences of changing a communicated position.",
+      "confidence": 0.65,
+      "status": "weak",
+      "plausible_nonbias_explanation": "The later artifacts were lower confidence, so waiting for confirmation may reflect legitimate calibration and responsible stakeholder communication rather than a commitment-driven distortion.",
+      "revision_recommendation": "none"
+    },
+    {
+      "bias": "Confirmation bias",
+      "decision_point": 1,
+      "supporting_quote": "The batch-copy line registered, but it felt secondary — slower, quieter, didn't match the urgency of what I'd been dealing with recently.",
+      "mechanism": "After the ransomware pattern becomes salient, potentially diagnostic alternative-hypothesis evidence receives reduced weight.",
+      "confidence": 0.55,
+      "status": "weak",
+      "plausible_nonbias_explanation": "The evidence is more parsimoniously explained by the validated availability-frequency occurrence. The transcript does not show independent confirmatory evidence seeking, selective search, or deliberate rejection of disconfirming information.",
+      "revision_recommendation": "none"
+    }
+  ],
+  "nonbias_cues": [
+    {
+      "cue": "Absence of a ransom note, encryption, and mass renaming",
+      "location": "DP1, initial incident description",
+      "why_not_bias": "These are ordinary diagnostic facts relevant to differentiating early ransomware activity from other incident types. Their absence does not itself establish biased reasoning."
+    },
+    {
+      "cue": "The lower-confidence rating on the EDR artifacts touching nine additional hosts",
+      "location": "DP2, second EDR sweep",
+      "why_not_bias": "It can be appropriate to discount lower-confidence telemetry while seeking validation. It supports anchoring only in combination with the participant's explicit reliance on the original communicated three-host figure."
+    },
+    {
+      "cue": "Pressure from the finance director and the 6 a.m. close deadline",
+      "location": "DP2",
+      "why_not_bias": "Time pressure and stakeholder communication demands are organizational constraints. They may shape the conditions in which bias occurs but are not themselves evidence of bias."
+    },
+    {
+      "cue": "The analyst's detailed knowledge of the self-built script's behavior, logging, failures, and fixes",
+      "location": "DP3",
+      "why_not_bias": "Tool-specific expertise can be a valid operational consideration. The Endowment occurrence is supported not by familiarity alone, but by the separate admission that personal ownership supplied extra preference despite no evidence of superior large-scale performance."
+    },
+    {
+      "cue": "The approximately 90-minute containment delay",
+      "location": "DP3, retrospective outcome statement",
+      "why_not_bias": "A slower operational outcome does not prove a cognitive bias. It is relevant only because the transcript separately documents an ownership-driven reason for choosing the slower method."
+    },
+    {
+      "cue": "The incomplete playbook design",
+      "location": "DP4",
+      "why_not_bias": "An incomplete interface or organizational workflow is not automatically a participant-level cognitive bias. The relevant reasoning evidence is the analyst's decision not to seek a known broader option path because it was outside the displayed flow."
+    },
+    {
+      "cue": "Retrospective statements such as \"in hindsight,\" \"probably,\" and \"I'd like to think\"",
+      "location": "Across the interview, especially the closing counterfactual probes",
+      "why_not_bias": "Retrospective reflection may be vulnerable to hindsight bias, but the interview does not establish that the participant reconstructs earlier beliefs as having been more predictable, certain, or obvious than they actually were."
+    }
+  ],
+  "causal_audit": {
+    "causal_claims": [
+      {
+        "claim": "Recent repeated ransomware-precursor cases caused the analyst to choose the ransomware category over possible exfiltration.",
+        "support_level": "moderate",
+        "basis": "The participant directly attributes the category selection to six recent cases and states that the batch-copy evidence would likely have stood out more absent that recent case history.",
+        "limitation": "The transcript does not independently establish the diagnostic base rate or relative predictive value of staging-directory behavior versus batch copying."
+      },
+      {
+        "claim": "The initial three-host estimate caused insufficient revision after later EDR evidence.",
+        "support_level": "moderate",
+        "basis": "The participant explicitly states that the prior communication of \"3 hosts, contained\" contributed to retaining the original scope.",
+        "limitation": "The new EDR evidence was lower confidence, so valid uncertainty calibration and stakeholder-risk management remain partial alternative explanations."
+      },
+      {
+        "claim": "Ownership of the self-built script caused its selection despite the lead's recommendation and lack of evidence that it would perform better at scale.",
+        "support_level": "strong",
+        "basis": "The participant concedes the lead's host-count point, acknowledges no showing of superior script performance, and directly says that the script was given a first attempt because it was personally built, maintained, and felt deserving of that preference.",
+        "limitation": "The interview does not independently test whether EDR would in fact have been faster in this precise environment, though that uncertainty does not undermine the ownership-driven selection mechanism."
+      },
+      {
+        "claim": "The restricted playbook option set contributed to the failure to consider forensic preservation and broader escalation before reimaging.",
+        "support_level": "moderate",
+        "basis": "The participant knew the external-retainer path existed but reports not pursuing it because it required leaving the displayed two-action workflow.",
+        "limitation": "The transcript does not establish whether escalation would have been timely, authorized, available, or certain to recommend forensic preservation."
+      }
+    ],
+    "correlation_causation_risks": [
+      {
+        "risk": "Later confirmation that seven of nine additional hosts were touched should not be treated as conclusive proof that anchoring, rather than reasonable caution toward lower-confidence data, caused the original scope decision.",
+        "reason": "Outcome information establishes that the initial scope was incomplete but does not alone isolate the prior reasoning mechanism."
+      },
+      {
+        "risk": "The approximately 90-minute delay should not be treated as proof that the EDR feature would certainly have worked faster without tradeoffs.",
+        "reason": "The counterfactual performance comparison is retrospective and lacks system logs, success rates, host-specific execution data, and evidence-preservation comparisons."
+      },
+      {
+        "risk": "The compliance question should not be treated as proof that the external IR retainer would have eliminated reporting exposure.",
+        "reason": "The retainer is a broader option path, not demonstrated evidence of a particular recommendation or a guaranteed alternative outcome."
+      }
+    ],
+    "counterfactual_present": true,
+    "changed_variable": "The interview includes multiple informal retrospective counterfactuals: recent ransomware-case frequency, tool familiarity, number of visible remediation options, and 20 additional minutes before the finance-director update.",
+    "held_constant": [],
+    "causal_coherence": "moderate",
+    "explanation": "The counterfactual probes usefully elicit the participant's causal account of each decision point, especially the availability-frequency mechanism and tool preference. They are not controlled counterfactual tests: each answer is hedged, background variables are not explicitly held constant, and the scenario contains several interacting operational constraints. The interview therefore supports mechanism-level causal interpretation but not strong causal-effect estimation."
+  },
+  "quality_scores": {
+    "occupational_realism": 92,
+    "cta_fidelity": 88,
+    "bias_separability": 87,
+    "bias_subtlety": 72,
+    "control_fidelity": 0,
+    "counterfactual_fidelity": 59,
+    "narrative_coherence": 92,
+    "naturalness": 85,
+    "hidden_label_integrity": 84,
+    "overall_quality": 87
+  },
+  "revision_summary": {
+    "revision_required": false,
+    "supported_occurrence_total": 4,
+    "requested_occurrence_total": 4,
+    "missing_occurrence_total": 0,
+    "accidental_occurrence_total": 0,
+    "priority": "none",
+    "recommended_action": "accept",
+    "global_revision_constraints": [
+      "Maintain one distinct requested occurrence at each of the four existing decision points.",
+      "Retain the distinction between availability-driven categorization, anchored scope revision, ownership-driven tool preference, and constrained remediation-option generation.",
+      "Do not treat unfavorable outcomes, time pressure, unfamiliarity, or incomplete playbooks as bias without retaining their associated reasoning evidence.",
+      "Do not add explicit cognitive-bias terminology to participant speech.",
+      "The later refusal to switch tools should remain a practical log-consistency concern unless a separate intended status-quo or escalation-of-commitment occurrence is added to a future manifest.",
+      "If subtlety is prioritized in a future revision, reduce the directness of the DP3 ownership admission while preserving the critical distinction between ownership and justified operational familiarity."
+    ],
+    "revision_order": []
+  },
+  "failure_flags": []
+}

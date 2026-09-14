@@ -1,0 +1,785 @@
+{
+  "evaluation_metadata": {
+    "task": "ontology_free_rag_cognitive_bias_benchmark_evaluation",
+    "benchmark_run_metadata": {
+      "benchmark_run_id": "MO_Counterfactual_2_Gemini_on",
+      "interview_id": "MO_Counterfactual_2",
+      "system_prompt_id": "Gemini",
+      "system_prompt_generator": "Prompt 1_2",
+      "rag_model_id": "v1.0.0",
+      "corpus_condition": "on",
+      "retrieval_configuration_id": "k=50",
+      "decoding_configuration_id": null,
+      "temperature": 1,
+      "replicate_id": null,
+      "segment_map_id": null
+    },
+    "scenario_id": "MO_Counterfactual_2",
+    "domain_id": "MO",
+    "condition": "counterfactual",
+    "segment_map_status": "generated_not_prevalidated",
+    "rag_output_parse_status": "valid_json",
+    "rag_schema_assessment": "conformant"
+  },
+  "input_validation": {
+    "rag_output_schema_violations": [],
+    "rag_summary_count_consistency": {
+      "status": "consistent",
+      "details": "The identified summary lists one automation-complacency and one availability-heuristic occurrence, matching the two identified_occurrences; candidate_biases contains one plan-continuation candidate and no_supported_biases_found is false."
+    },
+    "evaluation_limitations": [
+      "No retrieved chunks or retrieval logs were supplied for independent corpus-fidelity verification, so corpus support claims are recorded but not scored.",
+      "The interview is a retrospective self-report; objective system data and other crew testimony were not available for corroboration."
+    ]
+  },
+  "evaluation_segment_map": {
+    "segment_mapping_version": "1.0",
+    "segments": [
+      {
+        "segment_id": "seg_001",
+        "speaker": "Participant",
+        "segment_type": "monitoring_strategy",
+        "raw_interview_anchor": "checking the plot, doing a visual sweep every few minutes since I know some of these wooden hulls don't paint well on radar",
+        "eligible_reasoning_segment": true,
+        "ground_truth_bias_present": false,
+        "ground_truth_instance_ids": [],
+        "ground_truth_rationale": "Independent visual cross-checking is a sensible monitoring strategy and is not an intentionally biased instance."
+      },
+      {
+        "segment_id": "seg_002",
+        "speaker": "Participant",
+        "segment_type": "initial_prioritization",
+        "raw_interview_anchor": "It was converging, but slowly, and ARPA still wasn't holding a firm track ... I logged it as one to watch rather than urgent.",
+        "eligible_reasoning_segment": true,
+        "ground_truth_bias_present": false,
+        "ground_truth_instance_ids": [],
+        "ground_truth_rationale": "This is the initial low-urgency assessment before the hidden Automation Bias decision point; the specification assigns no planned bias here."
+      },
+      {
+        "segment_id": "seg_003",
+        "speaker": "Participant",
+        "segment_type": "attention_allocation",
+        "raw_interview_anchor": "I split it — mostly trusting the target list but adding visual checks specifically because I've been caught before by small wooden hulls not showing up well.",
+        "eligible_reasoning_segment": true,
+        "ground_truth_bias_present": false,
+        "ground_truth_instance_ids": [],
+        "ground_truth_rationale": "The response describes a mixed ARPA and visual monitoring plan at Decision Point 1, which is explicitly non-biased in the hidden specification."
+      },
+      {
+        "segment_id": "seg_004",
+        "speaker": "Participant",
+        "segment_type": "evidence_weighting_and_escalation",
+        "raw_interview_anchor": "The lookout said the boat seemed to be zigzagging ... But ARPA's overall ranking still had nothing above the alarm threshold ... I decided to keep monitoring rather than take early avoiding action, mainly because the system wasn't telling me anything was critical yet.",
+        "eligible_reasoning_segment": true,
+        "ground_truth_bias_present": true,
+        "ground_truth_instance_ids": [
+          "ab_01"
+        ],
+        "ground_truth_rationale": "The decision defers to ARPA's aggregate ranking and non-alarm state despite the conflicting lookout report, delaying independent plotting or avoidance."
+      },
+      {
+        "segment_id": "seg_005",
+        "speaker": "Participant",
+        "segment_type": "risk_estimation_and_attention_allocation",
+        "raw_interview_anchor": "this loose cluster showed up right at the spot where I'd had my own close call, and my first thought was, 'this feels exactly like that night' ... I started orienting my planning toward the cluster",
+        "eligible_reasoning_segment": true,
+        "ground_truth_bias_present": true,
+        "ground_truth_instance_ids": [
+          "av_01"
+        ],
+        "ground_truth_rationale": "The vivid recalled personal near-miss drives the estimated danger and attention allocation despite the cluster's weaker plotted risk relative to the bulk carrier."
+      },
+      {
+        "segment_id": "seg_006",
+        "speaker": "Participant",
+        "segment_type": "comparative_attention_correction",
+        "raw_interview_anchor": "The bulk carrier actually had the tightening CPA on the numbers ... for a bit my attention was more on the cluster ... later ... realized that was the one needing the firmer action.",
+        "eligible_reasoning_segment": true,
+        "ground_truth_bias_present": false,
+        "ground_truth_instance_ids": [],
+        "ground_truth_rationale": "This is a later recognition and correction within the same episode; the hidden instance is mapped to the earlier salience-driven judgment in seg_005."
+      },
+      {
+        "segment_id": "seg_007",
+        "speaker": "Participant",
+        "segment_type": "communication_and_resource_recommendation",
+        "raw_interview_anchor": "I recommended posting an extra lookout for the rest of the transit ... based on what we'd actually observed that watch, not tied to any one incident.",
+        "eligible_reasoning_segment": true,
+        "ground_truth_bias_present": false,
+        "ground_truth_instance_ids": [],
+        "ground_truth_rationale": "The post-watch recommendation is an evidence-based precaution and Decision Point 4 contains no planned bias instance."
+      }
+    ]
+  },
+  "segment_level_adjudications": [
+    {
+      "segment_id": "seg_001",
+      "ground_truth_status": "negative",
+      "ground_truth_instance_ids": [],
+      "rag_identified_occurrence_ids": [],
+      "rag_candidate_ids_counted_at_fourth_threshold": [],
+      "rag_detected_bias_in_segment_by_threshold": {
+        "high_only": false,
+        "high_and_moderate": false,
+        "all_identified_confidence_levels": false,
+        "all_confidence_and_candidates": false
+      },
+      "sdt_outcome_by_threshold": {
+        "high_only": "correct_rejection",
+        "high_and_moderate": "correct_rejection",
+        "all_identified_confidence_levels": "correct_rejection",
+        "all_confidence_and_candidates": "correct_rejection"
+      },
+      "localization_basis": "No qualifying RAG finding localizes to this eligible reasoning segment.",
+      "adjudication_note": "Negative segment with no qualifying finding; correct rejection."
+    },
+    {
+      "segment_id": "seg_002",
+      "ground_truth_status": "negative",
+      "ground_truth_instance_ids": [],
+      "rag_identified_occurrence_ids": [],
+      "rag_candidate_ids_counted_at_fourth_threshold": [],
+      "rag_detected_bias_in_segment_by_threshold": {
+        "high_only": false,
+        "high_and_moderate": false,
+        "all_identified_confidence_levels": false,
+        "all_confidence_and_candidates": false
+      },
+      "sdt_outcome_by_threshold": {
+        "high_only": "correct_rejection",
+        "high_and_moderate": "correct_rejection",
+        "all_identified_confidence_levels": "correct_rejection",
+        "all_confidence_and_candidates": "correct_rejection"
+      },
+      "localization_basis": "No qualifying RAG finding localizes to this eligible reasoning segment.",
+      "adjudication_note": "Negative segment with no qualifying finding; correct rejection."
+    },
+    {
+      "segment_id": "seg_003",
+      "ground_truth_status": "negative",
+      "ground_truth_instance_ids": [],
+      "rag_identified_occurrence_ids": [],
+      "rag_candidate_ids_counted_at_fourth_threshold": [],
+      "rag_detected_bias_in_segment_by_threshold": {
+        "high_only": false,
+        "high_and_moderate": false,
+        "all_identified_confidence_levels": false,
+        "all_confidence_and_candidates": false
+      },
+      "sdt_outcome_by_threshold": {
+        "high_only": "correct_rejection",
+        "high_and_moderate": "correct_rejection",
+        "all_identified_confidence_levels": "correct_rejection",
+        "all_confidence_and_candidates": "correct_rejection"
+      },
+      "localization_basis": "No qualifying RAG finding localizes to this eligible reasoning segment.",
+      "adjudication_note": "Negative segment with no qualifying finding; correct rejection."
+    },
+    {
+      "segment_id": "seg_004",
+      "ground_truth_status": "positive",
+      "ground_truth_instance_ids": [
+        "ab_01"
+      ],
+      "rag_identified_occurrence_ids": [
+        "obs_001"
+      ],
+      "rag_candidate_ids_counted_at_fourth_threshold": [
+        "cand_001"
+      ],
+      "rag_detected_bias_in_segment_by_threshold": {
+        "high_only": false,
+        "high_and_moderate": true,
+        "all_identified_confidence_levels": true,
+        "all_confidence_and_candidates": true
+      },
+      "sdt_outcome_by_threshold": {
+        "high_only": "miss",
+        "high_and_moderate": "hit",
+        "all_identified_confidence_levels": "hit",
+        "all_confidence_and_candidates": "hit"
+      },
+      "localization_basis": "The mapped RAG evidence quote directly overlaps this positive segment.",
+      "adjudication_note": "The identified moderate occurrence is excluded at high_only and included at the three broader thresholds; the candidate is a duplicate at the fourth threshold."
+    },
+    {
+      "segment_id": "seg_005",
+      "ground_truth_status": "positive",
+      "ground_truth_instance_ids": [
+        "av_01"
+      ],
+      "rag_identified_occurrence_ids": [
+        "obs_002"
+      ],
+      "rag_candidate_ids_counted_at_fourth_threshold": [],
+      "rag_detected_bias_in_segment_by_threshold": {
+        "high_only": false,
+        "high_and_moderate": true,
+        "all_identified_confidence_levels": true,
+        "all_confidence_and_candidates": true
+      },
+      "sdt_outcome_by_threshold": {
+        "high_only": "miss",
+        "high_and_moderate": "hit",
+        "all_identified_confidence_levels": "hit",
+        "all_confidence_and_candidates": "hit"
+      },
+      "localization_basis": "The mapped RAG evidence quote directly overlaps this positive segment.",
+      "adjudication_note": "The identified moderate occurrence is excluded at high_only and included at the three broader thresholds."
+    },
+    {
+      "segment_id": "seg_006",
+      "ground_truth_status": "negative",
+      "ground_truth_instance_ids": [],
+      "rag_identified_occurrence_ids": [],
+      "rag_candidate_ids_counted_at_fourth_threshold": [],
+      "rag_detected_bias_in_segment_by_threshold": {
+        "high_only": false,
+        "high_and_moderate": false,
+        "all_identified_confidence_levels": false,
+        "all_confidence_and_candidates": false
+      },
+      "sdt_outcome_by_threshold": {
+        "high_only": "correct_rejection",
+        "high_and_moderate": "correct_rejection",
+        "all_identified_confidence_levels": "correct_rejection",
+        "all_confidence_and_candidates": "correct_rejection"
+      },
+      "localization_basis": "No qualifying RAG finding localizes to this eligible reasoning segment.",
+      "adjudication_note": "Negative segment with no qualifying finding; correct rejection."
+    },
+    {
+      "segment_id": "seg_007",
+      "ground_truth_status": "negative",
+      "ground_truth_instance_ids": [],
+      "rag_identified_occurrence_ids": [],
+      "rag_candidate_ids_counted_at_fourth_threshold": [],
+      "rag_detected_bias_in_segment_by_threshold": {
+        "high_only": false,
+        "high_and_moderate": false,
+        "all_identified_confidence_levels": false,
+        "all_confidence_and_candidates": false
+      },
+      "sdt_outcome_by_threshold": {
+        "high_only": "correct_rejection",
+        "high_and_moderate": "correct_rejection",
+        "all_identified_confidence_levels": "correct_rejection",
+        "all_confidence_and_candidates": "correct_rejection"
+      },
+      "localization_basis": "No qualifying RAG finding localizes to this eligible reasoning segment.",
+      "adjudication_note": "Negative segment with no qualifying finding; correct rejection."
+    }
+  ],
+  "instance_level_adjudications": [
+    {
+      "hidden_instance_id": "ab_01",
+      "hidden_target_bias_label": "Automation Bias",
+      "hidden_decision_or_episode": "Decision point 2: fishing boat closes to 2nm without ARPA elevation",
+      "hidden_mechanism": "OOW defers to ARPA's aggregate risk ranking (based on well-tracked large targets) as the basis for inaction on a weakly-tracked, erratically-moving small craft, despite an independent lookout report suggesting elevated risk.",
+      "matched_finding_by_threshold": {
+        "high_only": {
+          "matched_id": null,
+          "matched_type": "none"
+        },
+        "high_and_moderate": {
+          "matched_id": "obs_001",
+          "matched_type": "identified"
+        },
+        "all_identified_confidence_levels": {
+          "matched_id": "obs_001",
+          "matched_type": "identified"
+        },
+        "all_confidence_and_candidates": {
+          "matched_id": "obs_001",
+          "matched_type": "identified"
+        }
+      },
+      "rag_predicted_bias_label": "automation complacency",
+      "rag_confidence": "moderate",
+      "label_equivalence_result": "near_neighbor_label",
+      "localization_match_type": "exact_quote_match",
+      "mechanism_overlap": "full_mechanism_match",
+      "strict_scorecard_outcome_by_threshold": {
+        "high_only": "false_negative",
+        "high_and_moderate": "false_negative",
+        "all_identified_confidence_levels": "false_negative",
+        "all_confidence_and_candidates": "false_negative"
+      },
+      "mechanism_first_scorecard_outcome_by_threshold": {
+        "high_only": "false_negative",
+        "high_and_moderate": "true_positive",
+        "all_identified_confidence_levels": "true_positive",
+        "all_confidence_and_candidates": "true_positive"
+      },
+      "secondary_diagnostic_outcome": "correct_location_wrong_bias_label",
+      "label_equivalence_explanation": "Automation complacency is a related established construct, but it is not an approved alternate label for Automation Bias under the benchmark rule; the primary label therefore remains a near-neighbor despite the alternative_labels field also naming automation bias.",
+      "mechanism_overlap_explanation": "The occurrence fully captures ARPA non-escalation overriding the lookout's conflicting report and delaying manual plotting or maneuvering.",
+      "evidence_fidelity_assessment": "The quoted Participant passages are verbatim and directly support the ARPA-gating mechanism; the primary quote overlaps seg_004. The occurrence claims retrieved corpus support, but no retrieval logs or source chunks were supplied for verification."
+    },
+    {
+      "hidden_instance_id": "av_01",
+      "hidden_target_bias_label": "Availability Bias",
+      "hidden_decision_or_episode": "Decision point 3: fishing cluster near waypoint with concurrent tightening bulk-carrier CPA",
+      "hidden_mechanism": "OOW's estimate of the fishing cluster's danger is driven by the vividness and personal salience of the officer's own remembered near-miss at the same waypoint, rather than by the current plotted spacing/closing-rate data, leading to a temporary misallocation of attention away from the bulk carrier, whose CPA data indicated the more pressing risk.",
+      "matched_finding_by_threshold": {
+        "high_only": {
+          "matched_id": null,
+          "matched_type": "none"
+        },
+        "high_and_moderate": {
+          "matched_id": "obs_002",
+          "matched_type": "identified"
+        },
+        "all_identified_confidence_levels": {
+          "matched_id": "obs_002",
+          "matched_type": "identified"
+        },
+        "all_confidence_and_candidates": {
+          "matched_id": "obs_002",
+          "matched_type": "identified"
+        }
+      },
+      "rag_predicted_bias_label": "availability heuristic",
+      "rag_confidence": "moderate",
+      "label_equivalence_result": "established_alias_or_equivalent",
+      "localization_match_type": "exact_quote_match",
+      "mechanism_overlap": "full_mechanism_match",
+      "strict_scorecard_outcome_by_threshold": {
+        "high_only": "false_negative",
+        "high_and_moderate": "true_positive",
+        "all_identified_confidence_levels": "true_positive",
+        "all_confidence_and_candidates": "true_positive"
+      },
+      "mechanism_first_scorecard_outcome_by_threshold": {
+        "high_only": "false_negative",
+        "high_and_moderate": "true_positive",
+        "all_identified_confidence_levels": "true_positive",
+        "all_confidence_and_candidates": "true_positive"
+      },
+      "secondary_diagnostic_outcome": "approved_alias_match",
+      "label_equivalence_explanation": "Availability heuristic is an established scholarly equivalent for Availability Bias, and the finding states the same vivid-recall-driven probability and attention distortion.",
+      "mechanism_overlap_explanation": "The occurrence captures the vivid personal near-miss, weaker current cluster kinematics, and delayed attention to the tighter bulk-carrier CPA.",
+      "evidence_fidelity_assessment": "The quoted Participant passages are verbatim and directly support the vivid-personal-memory mechanism; the primary quote overlaps seg_005 and no retrieved support is claimed."
+    }
+  ],
+  "unmatched_rag_predictions": [
+    {
+      "rag_occurrence_id": "cand_001",
+      "rag_finding_type": "candidate",
+      "rag_predicted_bias_label": "plan continuation bias",
+      "rag_confidence": "candidate",
+      "localized_segment_id": "seg_004",
+      "best_related_hidden_instance_id": "ab_01",
+      "label_equivalence_result": "near_neighbor_label",
+      "mechanism_overlap": "partial_mechanism_overlap",
+      "strict_classification": "duplicate_prediction",
+      "mechanism_first_classification": "duplicate_prediction",
+      "counted_at_thresholds": [
+        "all_confidence_and_candidates"
+      ],
+      "why_not_an_exact_strict_match": "The candidate quote is valid and localizes to seg_004, but plan continuation bias is a near-neighbor rather than an approved equivalent of Automation Bias, its mechanism does not identify ARPA-driven evidence weighting as the cause, and the hidden instance is already claimed by identified occurrence obs_001."
+    }
+  ],
+  "candidate_analysis": {
+    "candidate_count": 1,
+    "candidates": [
+      {
+        "candidate_id": "cand_001",
+        "proposed_bias_label": "plan continuation bias",
+        "localized_segment_id": "seg_004",
+        "best_related_hidden_instance_id": "ab_01",
+        "quote_validity": "valid",
+        "would_match_if_promoted_strict": false,
+        "would_match_if_promoted_mechanism_first": false,
+        "counted_as_detection_at_fourth_threshold": true,
+        "fourth_threshold_outcome": "duplicate_prediction",
+        "candidate_assessment": "candidate_near_miss",
+        "details": "The candidate is validly localized to the Automation Bias episode and plausibly describes persistence with monitoring, but the transcript attributes the decision more directly to ARPA's non-escalation; it is a near-miss and a duplicate once obs_001 has claimed the hidden instance."
+      }
+    ]
+  },
+  "signal_detection_summary": {
+    "high_only": {
+      "positive_segments": 2,
+      "negative_segments": 5,
+      "hits": 0,
+      "misses": 2,
+      "false_alarms": 0,
+      "correct_rejections": 5,
+      "hit_rate": 0,
+      "false_alarm_rate": 0,
+      "accuracy": 0.7143,
+      "precision": null,
+      "recall": 0,
+      "f1": 0,
+      "detection_interpretation": "Both hidden positive segments are missed at high_only because both identified occurrences are moderate; all five negative segments are correctly rejected."
+    },
+    "high_and_moderate": {
+      "positive_segments": 2,
+      "negative_segments": 5,
+      "hits": 2,
+      "misses": 0,
+      "false_alarms": 0,
+      "correct_rejections": 5,
+      "hit_rate": 1,
+      "false_alarm_rate": 0,
+      "accuracy": 1,
+      "precision": 1,
+      "recall": 1,
+      "f1": 1,
+      "detection_interpretation": "Both hidden positive segments are detected by the moderate identified findings, with all five negative segments correctly rejected."
+    },
+    "all_identified_confidence_levels": {
+      "positive_segments": 2,
+      "negative_segments": 5,
+      "hits": 2,
+      "misses": 0,
+      "false_alarms": 0,
+      "correct_rejections": 5,
+      "hit_rate": 1,
+      "false_alarm_rate": 0,
+      "accuracy": 1,
+      "precision": 1,
+      "recall": 1,
+      "f1": 1,
+      "detection_interpretation": "Both hidden positive segments are detected by the moderate identified findings, with all five negative segments correctly rejected."
+    },
+    "all_confidence_and_candidates": {
+      "positive_segments": 2,
+      "negative_segments": 5,
+      "hits": 2,
+      "misses": 0,
+      "false_alarms": 0,
+      "correct_rejections": 5,
+      "hit_rate": 1,
+      "false_alarm_rate": 0,
+      "accuracy": 1,
+      "precision": 1,
+      "recall": 1,
+      "f1": 1,
+      "detection_interpretation": "Both hidden positive segments remain detected; the plan-continuation candidate duplicates the positive automation episode and adds no segment-level false alarm."
+    }
+  },
+  "strict_instance_level_metrics": {
+    "high_only": {
+      "true_positives": 0,
+      "false_negatives": 2,
+      "false_positives": 0,
+      "precision": null,
+      "recall": 0,
+      "f1": 0,
+      "exact_occurrence_match_rate": 0,
+      "occurrence_count_match_rate": 0
+    },
+    "high_and_moderate": {
+      "true_positives": 1,
+      "false_negatives": 1,
+      "false_positives": 1,
+      "precision": 0.5,
+      "recall": 0.5,
+      "f1": 0.5,
+      "exact_occurrence_match_rate": 0.5,
+      "occurrence_count_match_rate": 0.5
+    },
+    "all_identified_confidence_levels": {
+      "true_positives": 1,
+      "false_negatives": 1,
+      "false_positives": 1,
+      "precision": 0.5,
+      "recall": 0.5,
+      "f1": 0.5,
+      "exact_occurrence_match_rate": 0.5,
+      "occurrence_count_match_rate": 0.5
+    },
+    "all_confidence_and_candidates": {
+      "true_positives": 1,
+      "false_negatives": 1,
+      "false_positives": 2,
+      "precision": 0.3333,
+      "recall": 0.5,
+      "f1": 0.4,
+      "exact_occurrence_match_rate": 0.5,
+      "occurrence_count_match_rate": 0.5
+    }
+  },
+  "mechanism_first_instance_level_metrics": {
+    "high_only": {
+      "true_positives": 0,
+      "false_negatives": 2,
+      "false_positives": 0,
+      "precision": null,
+      "recall": 0,
+      "f1": 0,
+      "exact_occurrence_match_rate": 0,
+      "occurrence_count_match_rate": 0
+    },
+    "high_and_moderate": {
+      "true_positives": 2,
+      "false_negatives": 0,
+      "false_positives": 0,
+      "precision": 1,
+      "recall": 1,
+      "f1": 1,
+      "exact_occurrence_match_rate": 1,
+      "occurrence_count_match_rate": 1
+    },
+    "all_identified_confidence_levels": {
+      "true_positives": 2,
+      "false_negatives": 0,
+      "false_positives": 0,
+      "precision": 1,
+      "recall": 1,
+      "f1": 1,
+      "exact_occurrence_match_rate": 1,
+      "occurrence_count_match_rate": 1
+    },
+    "all_confidence_and_candidates": {
+      "true_positives": 2,
+      "false_negatives": 0,
+      "false_positives": 1,
+      "precision": 0.6667,
+      "recall": 1,
+      "f1": 0.8,
+      "exact_occurrence_match_rate": 1,
+      "occurrence_count_match_rate": 1
+    }
+  },
+  "target_bias_performance": [
+    {
+      "hidden_target_bias_label": "Automation Bias",
+      "hidden_requested_occurrences": 1,
+      "strict_true_positives_by_threshold": {
+        "high_only": 0,
+        "high_and_moderate": 0,
+        "all_identified_confidence_levels": 0,
+        "all_confidence_and_candidates": 0
+      },
+      "mechanism_first_true_positives_by_threshold": {
+        "high_only": 0,
+        "high_and_moderate": 1,
+        "all_identified_confidence_levels": 1,
+        "all_confidence_and_candidates": 1
+      },
+      "count_match_status_at_all_confidence_and_candidates": "underdetected"
+    },
+    {
+      "hidden_target_bias_label": "Availability Bias",
+      "hidden_requested_occurrences": 1,
+      "strict_true_positives_by_threshold": {
+        "high_only": 0,
+        "high_and_moderate": 1,
+        "all_identified_confidence_levels": 1,
+        "all_confidence_and_candidates": 1
+      },
+      "mechanism_first_true_positives_by_threshold": {
+        "high_only": 0,
+        "high_and_moderate": 1,
+        "all_identified_confidence_levels": 1,
+        "all_confidence_and_candidates": 1
+      },
+      "count_match_status_at_all_confidence_and_candidates": "exact_match"
+    }
+  ],
+  "rag_label_false_positive_inventory": [
+    {
+      "rag_predicted_bias_label": "automation complacency",
+      "finding_type": "identified",
+      "alternative_labels": [
+        "automation bias",
+        "automation-induced complacency"
+      ],
+      "occurrence_count": 1,
+      "best_related_hidden_target_bias_label": "Automation Bias",
+      "label_relation": "near_neighbor",
+      "mechanism_overlap_summary": "Correct episode and full ARPA-deference mechanism, but automation complacency is a related construct rather than an approved equivalent of Automation Bias.",
+      "primary_error_types": [
+        "correct_location_wrong_bias_label"
+      ]
+    },
+    {
+      "rag_predicted_bias_label": "plan continuation bias",
+      "finding_type": "candidate",
+      "alternative_labels": [
+        "plan continuation error"
+      ],
+      "occurrence_count": 1,
+      "best_related_hidden_target_bias_label": "Automation Bias",
+      "label_relation": "near_neighbor",
+      "mechanism_overlap_summary": "The candidate is co-located with the automation episode and captures delayed action, but it does not establish the automation-specific evidence-weighting mechanism and duplicates obs_001.",
+      "primary_error_types": [
+        "duplicate_prediction"
+      ]
+    }
+  ],
+  "diagnostic_error_summary": {
+    "correct_location_wrong_bias_label_count": 1,
+    "correct_label_wrong_location_count": 0,
+    "correct_label_location_wrong_mechanism_count": 0,
+    "mechanism_detected_label_unresolved_count": 0,
+    "partial_mechanism_match_count": 0,
+    "duplicate_prediction_count": 1,
+    "unsupported_prediction_count": 0,
+    "fabricated_or_invalid_quote_count": 0,
+    "approved_alias_or_equivalence_count": 1,
+    "near_neighbor_label_count": 2,
+    "different_construct_label_count": 0,
+    "candidate_count": 1,
+    "candidate_useful_abstention_count": 0,
+    "candidate_near_miss_count": 1,
+    "candidates_promoted_to_true_positive_at_fourth_threshold_count": 0
+  },
+  "corpus_support_audit": {
+    "primary_corpus_fidelity_score_available": false,
+    "rag_occurrences_claiming_retrieved_support": 1,
+    "rag_occurrences_with_no_claimed_retrieved_support": 1,
+    "rag_occurrences_with_unverifiable_or_internally_inconsistent_citation_metadata": 0,
+    "assessment_note": "obs_001 claims retrieved support and supplies source metadata, while obs_002 explicitly reports no direct availability-heuristic passage. No retrieved chunks or logs were supplied, so corpus fidelity is unavailable and the citation claim is not independently verifiable."
+  },
+  "comparison_ready_summary": {
+    "primary_recommended_comparison_threshold": "high_and_moderate",
+    "segment_detection": {
+      "high_only": {
+        "hits": 0,
+        "misses": 2,
+        "false_alarms": 0,
+        "correct_rejections": 5,
+        "hit_rate": 0,
+        "false_alarm_rate": 0,
+        "f1": 0
+      },
+      "high_and_moderate": {
+        "hits": 2,
+        "misses": 0,
+        "false_alarms": 0,
+        "correct_rejections": 5,
+        "hit_rate": 1,
+        "false_alarm_rate": 0,
+        "f1": 1
+      },
+      "all_identified_confidence_levels": {
+        "hits": 2,
+        "misses": 0,
+        "false_alarms": 0,
+        "correct_rejections": 5,
+        "hit_rate": 1,
+        "false_alarm_rate": 0,
+        "f1": 1
+      },
+      "all_confidence_and_candidates": {
+        "hits": 2,
+        "misses": 0,
+        "false_alarms": 0,
+        "correct_rejections": 5,
+        "hit_rate": 1,
+        "false_alarm_rate": 0,
+        "f1": 1
+      }
+    },
+    "strict_instance_identification": {
+      "high_only": {
+        "true_positives": 0,
+        "false_negatives": 2,
+        "false_positives": 0,
+        "precision": null,
+        "recall": 0,
+        "f1": 0
+      },
+      "high_and_moderate": {
+        "true_positives": 1,
+        "false_negatives": 1,
+        "false_positives": 1,
+        "precision": 0.5,
+        "recall": 0.5,
+        "f1": 0.5
+      },
+      "all_identified_confidence_levels": {
+        "true_positives": 1,
+        "false_negatives": 1,
+        "false_positives": 1,
+        "precision": 0.5,
+        "recall": 0.5,
+        "f1": 0.5
+      },
+      "all_confidence_and_candidates": {
+        "true_positives": 1,
+        "false_negatives": 1,
+        "false_positives": 2,
+        "precision": 0.3333,
+        "recall": 0.5,
+        "f1": 0.4
+      }
+    },
+    "mechanism_first_identification": {
+      "high_only": {
+        "true_positives": 0,
+        "false_negatives": 2,
+        "false_positives": 0,
+        "precision": null,
+        "recall": 0,
+        "f1": 0
+      },
+      "high_and_moderate": {
+        "true_positives": 2,
+        "false_negatives": 0,
+        "false_positives": 0,
+        "precision": 1,
+        "recall": 1,
+        "f1": 1
+      },
+      "all_identified_confidence_levels": {
+        "true_positives": 2,
+        "false_negatives": 0,
+        "false_positives": 0,
+        "precision": 1,
+        "recall": 1,
+        "f1": 1
+      },
+      "all_confidence_and_candidates": {
+        "true_positives": 2,
+        "false_negatives": 0,
+        "false_positives": 1,
+        "precision": 0.6667,
+        "recall": 1,
+        "f1": 0.8
+      }
+    },
+    "taxonomy_gap": {
+      "high_only": {
+        "mechanism_first_f1_minus_strict_f1": 0
+      },
+      "high_and_moderate": {
+        "mechanism_first_f1_minus_strict_f1": 0.5
+      },
+      "all_identified_confidence_levels": {
+        "mechanism_first_f1_minus_strict_f1": 0.5
+      },
+      "all_confidence_and_candidates": {
+        "mechanism_first_f1_minus_strict_f1": 0.4
+      }
+    },
+    "confidence_tradeoff": {
+      "increment_from_high_to_high_and_moderate": "Including the two moderate identified occurrences changes segment detection from two misses to two hits; strict identification gains one true positive but retains one taxonomy false positive, while mechanism-first reaches two true positives.",
+      "increment_from_high_and_moderate_to_all_confidence": "No change; both identified occurrences are moderate and already included.",
+      "increment_from_all_confidence_to_all_confidence_and_candidates": "Segment detection and true-positive counts stay unchanged; the plan-continuation candidate is a duplicate and adds one strict and one mechanism-first false positive."
+    }
+  },
+  "overall_evaluation_summary": {
+    "hidden_total_planned_occurrences": 2,
+    "rag_total_identified_occurrences": 2,
+    "rag_total_candidate_biases": 1,
+    "segment_level_primary_result": "At the recommended high_and_moderate threshold, both positive segments are detected and all five negative segments are correctly rejected.",
+    "strict_label_plus_mechanism_result": "The availability-heuristic occurrence is an approved equivalent with a full mechanism, while automation complacency is a correct-location near-neighbor label; strict identification therefore has one true positive, one false negative, and one false positive at the recommended threshold.",
+    "mechanism_first_result": "Both identified occurrences have full mechanisms and valid localization, yielding two mechanism-first true positives at the recommended threshold; the candidate adds no new hit and is a duplicate at the fourth threshold.",
+    "candidate_tier_value_assessment": "The plan-continuation candidate is a useful near-miss signal for the same automation episode but cannot be promoted because it lacks the automation-specific mechanism and duplicates obs_001.",
+    "main_failure_modes": [
+      "Automation Bias was labeled automation complacency, producing a strict taxonomy error despite full mechanism and localization.",
+      "The candidate tier repeats the automation episode as plan continuation bias and becomes a duplicate false positive when counted."
+    ],
+    "main_strengths": [
+      "Both planted mechanisms are localized to the correct decision episodes with verbatim Participant evidence.",
+      "The automation-related finding captures ARPA non-escalation overriding conflicting lookout evidence.",
+      "The availability finding captures vivid personal-memory recall overriding current plotted risk and delaying attention to the tighter CPA."
+    ],
+    "benchmark_interpretation": "This Gemini k=50 run detects both intended maritime bias mechanisms at moderate confidence. Segment detection is perfect once moderate findings are included, but strict label scoring separates the near-neighbor automation-complacency label from the hidden Automation Bias target; the candidate-inclusive tier adds a duplicate rather than a new detection."
+  }
+}

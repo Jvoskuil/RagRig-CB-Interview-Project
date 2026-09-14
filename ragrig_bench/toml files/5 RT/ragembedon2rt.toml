@@ -1,0 +1,68 @@
+# Ranker comparison: the default hybrid RRF ranker vs. pure cosine ranking
+# (WeightedFusionRanker alpha = 1.0), on the ragrig default chat backend
+# (Ollama, qwen3.5:9b), varying the context budget (4096 and 8192 tokens).
+# Corpus = the embedded HTML fixture book, default pipeline (full parser
+# registry + MarkdownChunker).
+
+corpus_dirs = ["papers=/mnt/c/Users/Joost/Documents/papers"]
+
+queries = [
+    "Interviewer: Thanks for making time for this. Just to confirm, this is a voluntary debrief for training purposes — we're reviewing your decision-making during the Kestrel Subdivision shift, not evaluating your performance. Is that alright with you? Participant: Sure, no problem. I've done a few of these before. Interviewer: Great. Can you start by telling me your role and what the board looked like that evening? Participant: I was the sole dispatcher covering the Kestrel Sub, about 40 miles of single track for most of it. We had a maintenance possession scheduled from 6:40 to roughly 7:30 for tamping work near milepost 214, plus a mixed traffic evening — a manifest freight headed east and an intercity passenger train that was already running about 22 minutes behind schedule with a connection downstream. My main priority was keeping things moving safely through that one possession window without letting the passenger delay balloon further. Interviewer: Walk me through how the incident actually unfolded. Participant: About twenty minutes into my shift, the wayside hot-box detector near milepost 198 flagged the freight train — an axle bearing reading slightly above baseline, but well under the threshold that triggers an automatic stop. No abnormal noise reported by the crew, nothing visual. Not long after that, I started working the sequencing problem for the passenger train getting through the work zone at 214. Then, while I was juggling that, the foreman on-site radioed in something about a possible person near the right-of-way — the transmission was choppy, in and out, so I didn't get a clean picture of where exactly or how many. And near the tail end of the possession, the foreman asked for a 12-minute extension to finish the tamping work properly. Interviewer: So four distinct things landed on you in a fairly short window. Participant: Pretty much back to back, yeah. That's a normal night on that line, honestly — it's just a matter of which order you deal with them and what you're willing to let sit for a minute. Interviewer: Let's reconstruct the order. What came first, and what did you do right after? Participant: The hot-box alert came first. I checked the reading against the threshold table — it was elevated, but not near the automatic-stop number. The next detector was about 8 miles up the line. I authorized the crew to proceed at restricted speed to that next detector rather than stopping cold on the single track, since stopping there would've blocked everything behind it, including the passenger train's approach to the work zone. When the next reading came back, the temperature had actually stabilized rather than climbed, so that resolved fairly cleanly. Interviewer: What was going through your mind when you made that call? Participant: The number was below the mandatory stop point, so procedurally I had room to make that judgment. Stopping a train on that single track for a hands-on inspection is a big deal — it doesn't just hold up that train, it backs up the whole corridor behind it. Given no other symptoms from the crew, restricted speed to the next detector felt like the appropriate middle ground. I've made calls like that before and they've resolved fine most of the time. Interviewer: How confident were you at that moment? Participant: Reasonably. Not certain — you're never fully certain with a bearing reading — but confident enough given the threshold and the lack of other symptoms. Interviewer: Let's move to the passenger train and the work zone. What were your options there? Participant: Two real options. One, hold the passenger train for a short window — maybe four or five minutes — while the crew paused work, and let it through under standard flag protection, which is the setup they use routinely at that site. Two, reroute it entirely onto the alternate line, which avoids the work zone altogether but adds about 25 minutes and forces me to realign two other train slots later in the evening. Interviewer: Which did you choose, and why? Participant: I sent it around on the alternate line. I just didn't want that train anywhere near an active work zone that evening — I wanted it completely clear of that whole area rather than threading it through on a flag. Even though the flagging setup there is the standard one they use all the time, I'd rather eat the schedule hit than have any interaction with the work zone at all. Interviewer: Was there something specific about that flag protection that made you distrust it? Participant: Not really anything specific to that crew — it's the same setup used all over the subdivision. I think I just weighed it as, if I reroute, that risk is off the table entirely, full stop. The delay is a known, manageable cost. I didn't sit there and compare exactly how much risk the flagged window actually removes versus how much schedule damage the reroute causes — it was more that avoiding the zone altogether felt like the safer place to land. Interviewer: Did the 25-minute cost and the two realigned slots factor into that comparison? Participant: They were in the back of my mind, but honestly, once I decided I wanted the train out of that zone entirely, the size of the delay became secondary. It's not that I ignored it, I just didn't weigh it against how small the actual exposure through a flagged window normally is. Interviewer: Let's go to the trespasser report. What did you actually hear? Participant: It was garbled — 'possible person near the right-of-way,' something like that, no confirmed location, no headcount, and I couldn't tell if they'd already moved off or not. Reception near that stretch is spotty. Interviewer: What were your options at that point? Participant: Realistically both options started with getting a precaution in place right away — you don't leave a train unprotected on a report like that no matter which way you go next. So it was really a question of which precaution. I could issue the standard subdivision-wide restriction — ten minutes of restricted speed through the whole general area — which is the routine call for reports like this. Or I could put a shorter restriction on just the immediate approach while the foreman tried a callback, and then either lift it early or extend it once I actually knew what we were dealing with. Interviewer: Which did you go with? Participant: I went with the full ten-minute restriction across the whole area. It's the protocol I know — fixed length, fixed scope, everyone on the radio understands exactly what it means and when it ends. The tailored version might've actually cost the queued trains less time if the callback had come back clean, but I couldn't tell you up front how long that would run or how far the restriction would need to extend, so it felt like the harder thing to commit to in the moment. Interviewer: Did you weigh what the report might actually mean — say, that it could be nothing, or could be something more serious than the standard protocol addresses — against the tailored option? Participant: Not really as a probability question, no. It wasn't that I sat down and worked out how likely it was to be nothing versus something worse. It was more that the fixed protocol had a shape I could describe to everyone right away, and the tailored version was open-ended until the callback came through, so I defaulted to the one with the known edges. Interviewer: Last decision — the possession extension. Participant: The foreman asked for 12 more minutes to finish the tamping properly. I had two trains queued behind the work zone at that point. I granted it. Denying it risked leaving the work incomplete, which usually means scheduling a whole new possession later in the week — more disruption overall. The queued trains absorbed a modest additional delay, but the crew finished clean. Interviewer: How did you land on that one? Participant: That was more of a straightforward cost comparison — a short, bounded extension now versus a bigger disruption later. Fairly routine call. Interviewer: If the detector reading had been just a bit higher, would your first decision have changed? Participant: Yes, definitely — if it had been near the stop threshold I'd have held the train for a physical inspection, no question. Interviewer: And if the foreman's report had come through clearly instead of garbled — say, confirmed as one person who'd already left the area? Participant: If I'd had that, I probably would've gone with the tailored, shorter restriction from the start instead of the full ten-minute call. Knowing the person was already clear would've given me something definite to scope the response around, instead of having to lean on the fixed protocol just because it was the one thing I could describe with certainty in the moment. Interviewer: Looking back, is there anything you'd handle differently with the same information you had at the time? Participant: Maybe on the reroute — I might spend a bit more time actually comparing what the flagged window really costs in risk versus what the full reroute costs in delay, rather than just leaning toward whichever option felt more completely clear of the zone. But overall, given what I knew in the moment, I'd probably make the same calls again."
+]
+
+[[agents]]
+label = "Gemini Prompt 8192"
+[agents.chat]
+provider = "deepseek"            # "ollama" | "deepseek"
+#model = "qwen2.5:1.5b"         # ignored for deepseek
+context_tokens = 8192          # context budget for retrieved chunks
+deepseek_model = "deepseek-v4-pro"   # deepseek only
+#deepseek_api_key = DEEPSEEK_API_KEY # deepseek only (or DEEPSEEK_API_KEY env)
+# context_size_mode = "Auto"          # "Auto" | "Forced"
+system_prompt_path = "prompt_gemini.md"    # custom system prompt ({context} placeholder)
+# request_timeout_secs = 300          # per-request timeout, None = no timeout
+[agents.chat.params]                # generation overrides (all optional)
+# temperature = 0.7
+# top_p = 0.9
+# max_tokens = 1024
+seed = 42
+
+[[agents]]
+label = "Sonar Prompt 8192"
+[agents.chat]
+provider = "deepseek"            # "ollama" | "deepseek"
+#model = "qwen2.5:1.5b"         # ignored for deepseek
+context_tokens = 8192          # context budget for retrieved chunks
+deepseek_model = "deepseek-v4-pro"   # deepseek only
+#deepseek_api_key = DEEPSEEK_API_KEY # deepseek only (or DEEPSEEK_API_KEY env)
+# context_size_mode = "Auto"          # "Auto" | "Forced"
+system_prompt_path = "prompt_sonar.md"    # custom system prompt ({context} placeholder)
+# request_timeout_secs = 300          # per-request timeout, None = no timeout
+ [agents.chat.params]                # generation overrides (all optional)
+# temperature = 0.7
+# top_p = 0.9
+# max_tokens = 1024
+ seed = 42
+
+[[agents]]
+label = "Sonnet Prompt 8192"
+[agents.chat]
+provider = "deepseek"            # "ollama" | "deepseek"
+#model = "qwen2.5:1.5b"         # ignored for deepseek
+context_tokens = 8192          # context budget for retrieved chunks
+deepseek_model = "deepseek-v4-pro"   # deepseek only
+#deepseek_api_key = DEEPSEEK_API_KEY # deepseek only (or DEEPSEEK_API_KEY env)
+# context_size_mode = "Auto"          # "Auto" | "Forced"
+system_prompt_path = "prompt_sonnet.md"    # custom system prompt ({context} placeholder)
+# request_timeout_secs = 300          # per-request timeout, None = no timeout
+[agents.chat.params]                # generation overrides (all optional)
+# temperature = 0.7
+# top_p = 0.9
+# max_tokens = 1024
+seed = 42
+
+
+# ---Embed testing ---
+[embed]
+#top_k = 0
+top_k = 50

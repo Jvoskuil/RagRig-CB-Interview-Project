@@ -1,0 +1,67 @@
+# Ranker comparison: the default hybrid RRF ranker vs. pure cosine ranking
+# (WeightedFusionRanker alpha = 1.0), on the ragrig default chat backend
+# (Ollama, qwen3.5:9b), varying the context budget (4096 and 8192 tokens).
+# Corpus = the embedded HTML fixture book, default pipeline (full parser
+# registry + MarkdownChunker).
+
+corpus_dirs = ["papers=/mnt/c/Users/Joost/Documents/papers"]
+
+queries = [
+    "Interviewer: Thanks for making time. This is a voluntary session for internal research on how IA reviews get worked, not a disciplinary matter. You can decline any question. Good with that? Participant: Sure, that's fine. Interviewer: Can you tell me your role and experience with complaint reviews? Participant: Internal Affairs investigator, about five years. I handle use-of-force complaints mostly, some policy violations. Interviewer: Walk me through the case. Participant: Traffic stop on Cedar Street, expired registration, ended with a takedown. The driver, Mr. Alvarez, alleges excessive force by Officer Marquez, came away with a wrist fracture. Marquez's report says Alvarez became resistant and pulled his arm away, necessitating the takedown. His partner, Officer Chen, corroborates that. Marquez has nine years in, two prior complaints, both closed unfounded. Alvarez has two prior arrests, one for resisting. Interviewer: What was your initial read on credibility before you'd seen any footage? Participant: Genuinely unresolved. Two competing accounts, both plausible on their face, and I didn't have enough yet to prefer one. Interviewer: What did you do first when you opened the file? Participant: Requested background on both sides—Alvarez's arrest history and Marquez's disciplinary and training file. Alvarez's record came back within a day, since it's just a records-system pull. Marquez's full file took almost a week because it required a request through the union rep and a records custodian. So for several days I had a fuller picture of one side than the other, which I noted explicitly in my log as a limitation, not a conclusion. Interviewer: Did that timing gap affect how you approached the rest of the review? Participant: I tried not to let it. I flagged it as an open item—'complainant background received, officer background pending'—so anyone reading the file later would know the record was uneven at that point, not that I'd already decided anything based on it. Dispatch audio later confirmed it was a routine stop, not flagged high-risk. Medical report confirmed the fracture but didn't tell me which account caused it. Interviewer: Let's go to the footage. Participant: Eighteen minutes, with a forty-second gap right after initial contact—his camera didn't reactivate cleanly. Early part is calm, verbal exchange, some de-escalation language from Marquez. Final ninety seconds: Alvarez pulls his arm back, Marquez takes him down. Interviewer: How did you weigh the earlier footage against that final sequence? Participant: Honestly, I couldn't fully resolve it on the first pass. The takedown is obviously central since that's where the injury happened, but the gap sits right before the point where things start escalating, and I don't know what's in it. I logged both segments as carrying weight and noted the gap as a limiting factor on any proportionality conclusion I might draw. I didn't want to lock in a read before the consultant weighed in. Interviewer: What came out of the consultant review? Participant: A slowed-frame audio pass caught Marquez raising his voice and stepping closer about three minutes before the takedown. The consultant said it's relevant context but not dispositive on its own—doesn't resolve whether the final force was proportionate, just adds texture. Interviewer: How did that sit with you? Participant: It complicated things more than it clarified them, if I'm honest. It's the kind of detail that could support either read, depending on what else you believe about the encounter. Interviewer: Tell me about the case conference. Participant: Day six. Me, the sergeant, two peer investigators. The sergeant supervised Marquez for three years, said something like 'he's generally solid, but I wasn't in the car, so take that for what it's worth.' One of the other investigators raised the forty-second gap, said it needed to be addressed before we went further. Interviewer: How did the room handle that? Participant: We actually sat with it. There wasn't a quick consensus—two of us thought the gap was potentially significant given the timing relative to the escalation audio, one thought Chen's corroboration and the visible resisting motion carried it regardless. We didn't resolve that disagreement in the room. I logged the dissenting view by name in the case file and noted the preliminary summary as tentative pending the gap issue. Interviewer: Did the sergeant's history with Marquez shape the discussion? Participant: It was mentioned, and it's fair to say it's not nothing—people listen when a three-year supervisor speaks. But he qualified it himself, and the discussion kept coming back to what was and wasn't on the tape rather than settling on his character read. I can't say for certain it had zero influence, but I also can't point to a moment where it overrode the evidentiary discussion. Interviewer: What happened with the eyewitness on day ten? Participant: A civilian witness we'd had trouble reaching finally called back. She said Marquez was 'aggressive from the start,' which cuts against how I'd been characterizing the early footage. That came two days after I'd sent the Deputy Chief a preliminary note—explicitly marked tentative, pending the gap and the consultant review. Interviewer: How did you weigh her statement against what you already had? Participant: We ran a supplemental check—she had an unobstructed view but was about thirty-five feet out, evening light. I weighed that against the footage on its own terms: is a thirty-five-foot, unobstructed view enough to outweigh eighteen minutes of direct recording? I didn't think it fully was, but I also didn't think it was nothing, especially given the earlier escalation audio the consultant had flagged. I ended up revising the briefing language to reflect that the finding remained more open than the initial note suggested, rather than either adopting her account outright or setting it aside. Interviewer: Did the fact that you'd already briefed command shape how you handled her statement? Participant: Command asked whether the preliminary note still held, and I told them it needed updating. It wasn't comfortable revising something I'd already sent up, but the distance and lighting were the actual basis for how much weight I gave her account—not really about protecting what I'd said earlier. I'd rather have gotten it right than tidy. Interviewer: What's the part of this case you're least confident about? Participant: The forty-second gap, still. I don't know what happened in it, and I don't know how much that should move the needle either way. Interviewer: If the eyewitness statement had come in on day two instead of day ten, would your review have gone differently? Participant: Possibly. I'd have had it earlier alongside the footage instead of layering it onto a note I'd already sent, though I think I'd have weighed it the same way on the merits—distance and view, not timing. Interviewer: If you'd been the only reviewer, without the case conference, same finding? Participant: Hard to say. I might have sat with the gap even longer alone. The conference didn't rush me toward a view, but group discussion does move differently than solo review. Interviewer: Anything you'd sequence differently next time? Participant: I'd push to get officer background files moving faster at intake, so that gap doesn't sit open as long. Otherwise, I think the uncertainty here was mostly the case itself, not how I worked it. Interviewer: Appreciate you walking through it."
+]
+
+[[agents]]
+label = "Gemini Prompt 8192"
+[agents.chat]
+provider = "deepseek"            # "ollama" | "deepseek"
+#model = "qwen2.5:1.5b"         # ignored for deepseek
+context_tokens = 8192          # context budget for retrieved chunks
+deepseek_model = "deepseek-v4-pro"   # deepseek only
+#deepseek_api_key = DEEPSEEK_API_KEY # deepseek only (or DEEPSEEK_API_KEY env)
+# context_size_mode = "Auto"          # "Auto" | "Forced"
+system_prompt_path = "prompt_gemini.md"    # custom system prompt ({context} placeholder)
+# request_timeout_secs = 300          # per-request timeout, None = no timeout
+[agents.chat.params]                # generation overrides (all optional)
+# temperature = 0.7
+# top_p = 0.9
+# max_tokens = 1024
+seed = 42
+
+[[agents]]
+label = "Sonar Prompt 8192"
+[agents.chat]
+provider = "deepseek"            # "ollama" | "deepseek"
+#model = "qwen2.5:1.5b"         # ignored for deepseek
+context_tokens = 8192          # context budget for retrieved chunks
+deepseek_model = "deepseek-v4-pro"   # deepseek only
+#deepseek_api_key = DEEPSEEK_API_KEY # deepseek only (or DEEPSEEK_API_KEY env)
+# context_size_mode = "Auto"          # "Auto" | "Forced"
+system_prompt_path = "prompt_sonar.md"    # custom system prompt ({context} placeholder)
+# request_timeout_secs = 300          # per-request timeout, None = no timeout
+ [agents.chat.params]                # generation overrides (all optional)
+# temperature = 0.7
+# top_p = 0.9
+# max_tokens = 1024
+ seed = 42
+
+[[agents]]
+label = "Sonnet Prompt 8192"
+[agents.chat]
+provider = "deepseek"            # "ollama" | "deepseek"
+#model = "qwen2.5:1.5b"         # ignored for deepseek
+context_tokens = 8192          # context budget for retrieved chunks
+deepseek_model = "deepseek-v4-pro"   # deepseek only
+#deepseek_api_key = DEEPSEEK_API_KEY # deepseek only (or DEEPSEEK_API_KEY env)
+# context_size_mode = "Auto"          # "Auto" | "Forced"
+system_prompt_path = "prompt_sonnet.md"    # custom system prompt ({context} placeholder)
+# request_timeout_secs = 300          # per-request timeout, None = no timeout
+[agents.chat.params]                # generation overrides (all optional)
+# temperature = 0.7
+# top_p = 0.9
+# max_tokens = 1024
+seed = 42
+
+# ---Embed testing ---
+[embed]
+top_k = 0
+#top_k = 50

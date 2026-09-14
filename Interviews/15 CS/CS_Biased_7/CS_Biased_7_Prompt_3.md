@@ -7,10 +7,249 @@ Do not assume the generator followed the specification. Do not infer bias merely
 INPUTS
 
 Interview:
-{{INTERVIEW}}
+{{Interviewer: Thanks for making time for this. Before we start, I want to confirm you're okay with this being used for an internal case study on incident decision-making — nothing you say will be attributed outside this review.
+
+Participant: That's fine, happy to walk through it.
+
+Interviewer: Great. Can you start with your role and what you're responsible for day to day?
+
+Participant: I'm CISO at NorthGate Financial. We're a payments company — card and ACH processing, about 450 employees. I own the security program end to end: SOC operations, vendor risk, incident response, board reporting, budget. Small team, six people in the SOC, so I'm hands-on more than I'd be at a bigger shop.
+
+Interviewer: Tell me about the incident you want to discuss, and what you were trying to accomplish overall.
+
+Participant: Sure. This was a stretch about ten days ago where an intrusion overlapped with our annual vendor renewal cycle, which was already a bad coincidence. The objective was straightforward in theory — detect and contain whatever was happening without taking payments processing offline, and get our vendor contracts and budget numbers finalized on schedule. In practice those two things kept colliding. Our SIEM flagged an anomalous login on a jump server one of our payments engineers uses — off-hours access, from a network range we hadn't seen for that account before. The SIEM auto-scored it Medium severity based on its default model. That model doesn't know the account is privileged, it just looks at pattern deviation. I remember looking at it and thinking, okay, Medium, that tracks with what I'm seeing, and we went from there. One analyst was handling triage that day — we were down a person on leave — so scope mattered. There'd also been a second alert nine minutes earlier on an adjacent auth server, lower priority, and it just didn't get opened at that point; the jump server was the concrete thing in front of us.
+
+Interviewer: What happened next?
+
+Participant: We had the analyst dig into the jump server specifically — process history, recent auth events, that kind of thing. A few hours in, once we circled back to close out the queue, we noticed the earlier auth-server alert shared the same source IP range. That's when it stopped looking like an isolated anomaly and started looking like lateral movement toward the payments database segment.
+
+Interviewer: Let's go through the sequence in order. What did you know, and when?
+
+Participant: At the start, just the jump-server alert and its Medium score. A couple hours later, the IP overlap with the auth-server alert. That afternoon, the vendor renewal deadline hit — we had five business days before our EDR and threat-intel contract auto-renewed, and that decision needed to happen regardless of the incident. That evening, once lateral movement was confirmed, my team wrote a monitoring script overnight to watch the compromised account, and I had a call with the CFO about containment options. Two days later, once things were stable, I had to submit a remediation budget number to the board.
+
+Interviewer: Let's slow down at that first decision — the triage call. What cues stood out, and was anything competing for your attention?
+
+Participant: The privileged nature of the account stood out to me, honestly, but the Medium score was already sitting there, and it's usually a decent starting point for how urgently we move. I didn't pull in the second alert as something to check in parallel — the analyst was already stretched, and the jump server was the concrete lead.
+
+Interviewer: What alternatives did you weigh, and what tipped it?
+
+Participant: Escalating both alerts jointly right away, or asking for a correlation sweep across that time window before locking in severity. I didn't do either. The score gave me a number to anchor the conversation around, and given we were short-staffed, narrowing the analyst's focus felt efficient rather than risky at the time.
+
+Interviewer: How confident were you in that assessment?
+
+Participant: Reasonably, but not fully — I knew the automated score doesn't factor in account privilege. I just didn't push past it that morning.
+
+Interviewer: Moving to the vendor decision — walk me through that one.
+
+Participant: We'd used this EDR and threat-intel vendor six years. My team built a lot of custom detection logic and dashboards on top of their platform. Procurement had actually flagged three other vendors as offering comparable bundles this cycle, but I didn't go through that list closely. A couple of peer CISOs mentioned they use either this vendor or one close competitor, so my real comparison ended up being just those two.
+
+Interviewer: What made you settle on renewing?
+
+Participant: Mostly the investment already sitting in our detection rules and dashboards — rebuilding that on a new platform is real time and real risk during a period we're trying to stay stable. I didn't formally validate that the incumbent still outperforms the alternatives; it was more that switching felt costly given what we'd already built.
+
+Interviewer: Did the live incident affect that judgment at all?
+
+Participant: Maybe implicitly — I wasn't eager to introduce a new tool mid-incident. But the underlying reasoning was really about the sunk integration work, not the incident timing.
+
+Interviewer: Third decision point — containment, once lateral movement was confirmed.
+
+Participant: This was the hardest one. The IR retainer firm recommended full segment isolation, pending forensics, because there wasn't confirmed proof isolation would fully stop the threat — just that it was the safer play. My team had put together an overnight monitoring script watching the compromised account specifically. The CFO's position was blunt: isolating payments meant a guaranteed same-day hit, about $180,000 in processing fees. That number was concrete and immediate. The security upside from isolating wasn't quantified the same way — it was framed more as "reduces risk," not a number. Given the script gave us visibility on that account, I went with the targeted lockout and monitoring instead of full isolation.
+
+Interviewer: What was decisive there?
+
+Participant: Honestly, the guaranteed dollar figure against an unquantified benefit made the isolation option feel like the more expensive one, dollar for dollar, even though I couldn't put a number on the other side. And I felt like the script had that account covered.
+
+Interviewer: What happened afterward?
+
+Participant: About two hours later, the same compromised credentials touched a second internal system the script wasn't watching. Forensics later found a small amount of data had already been exfiltrated before we even had the script running.
+
+Interviewer: Last decision point — the board budget recommendation.
+
+Participant: We'd scoped a privileged-access segmentation project eighteen months ago at $240,000, never funded. This week, with the incident fresh, I gathered current vendor quotes for the same scope — they came back $310,000 to $340,000, partly inflation, partly expanded scope since cloud components were added. The board wanted one number. I went with something close to the original $240,000, nudged up a bit, rather than building the recommendation off this week's actual quotes.
+
+Interviewer: Why start from the old figure rather than the new quotes?
+
+Participant: It was already the reference point I had in my head from planning cycles past. Adjusting it felt like less friction than justifying a jump straight to $340,000 without more scoping work.
+
+Interviewer: If the SIEM hadn't pre-scored that first alert, do you think your response would have gone differently?
+
+Participant: Possibly — without a number already on the screen, I might have leaned harder on the account's privilege level from the start, and maybe caught the auth-server overlap sooner.
+
+Interviewer: What if the CFO's number hadn't been quantified?
+
+Participant: I think I'd have weighed the isolation call less as a straight cost comparison and spent more time pressing the IR firm on what "reduces risk" actually meant in concrete terms.
+
+Interviewer: Looking back, anything you'd tell yourself facing that budget deadline again with a stale internal estimate on file?
+
+Participant: Get fresh numbers before you anchor on the old one — even under deadline pressure, a couple of quotes reframes the whole conversation.}}
 
 Hidden generation specification:
-{{GENERATION_SPECIFICATION}}
+{{"hidden_validation_specification": {
+    "hidden_spec_version": "1.0",
+    "condition": "biased",
+    "exact_occurrence_manifest": [
+      {
+        "bias": "Adjustment and anchoring",
+        "occurrences": 2,
+        "mechanism_constraint": "Each instance must anchor on a distinct pre-existing numeric/qualitative reference point (automated severity score; legacy budget estimate) and show only minor adjustment away from it despite contrary evidence."
+      },
+      {
+        "bias": "Exposure to limited alternatives",
+        "occurrences": 1,
+        "mechanism_constraint": "Must show the CISO restricting the vendor comparison set to fewer options than were actually available/flagged by procurement."
+      },
+      {
+        "bias": "Illusion of control",
+        "occurrences": 1,
+        "mechanism_constraint": "Must show unwarranted confidence in a self-implemented, untested containment measure as sufficient coverage."
+      },
+      {
+        "bias": "Selective Attention Bias or Inattentional Blindness",
+        "occurrences": 1,
+        "mechanism_constraint": "Must show a concurrent, relevant alert being unexamined due to narrowed focus on the primary flagged item."
+      },
+      {
+        "bias": "Endowment",
+        "occurrences": 1,
+        "mechanism_constraint": "Must show overvaluation of the incumbent vendor tied to prior invested effort/customization rather than independent current-value assessment."
+      },
+      {
+        "bias": "Loss Framing",
+        "occurrences": 1,
+        "mechanism_constraint": "Must show a decision tilted by a certain/guaranteed-loss framing of one option versus an unquantified-benefit framing of the alternative."
+      }
+    ],
+    "target_bias_names": [
+      "Adjustment and anchoring",
+      "Exposure to limited alternatives",
+      "Illusion of control",
+      "Selective Attention Bias or Inattentional Blindness",
+      "Endowment",
+      "Loss Framing"
+    ],
+    "requested_occurrence_count_for_each_bias": [
+      { "bias": "Adjustment and anchoring", "requested_occurrences": 2 },
+      { "bias": "Exposure to limited alternatives", "requested_occurrences": 1 },
+      { "bias": "Illusion of control", "requested_occurrences": 1 },
+      { "bias": "Selective Attention Bias or Inattentional Blindness", "requested_occurrences": 1 },
+      { "bias": "Endowment", "requested_occurrences": 1 },
+      { "bias": "Loss Framing", "requested_occurrences": 1 }
+    ],
+    "planned_instance_ids": [
+      { "instance_id": "cb_01", "bias": "Adjustment and anchoring" },
+      { "instance_id": "cb_02", "bias": "Selective Attention Bias or Inattentional Blindness" },
+      { "instance_id": "cb_03", "bias": "Endowment" },
+      { "instance_id": "cb_04", "bias": "Exposure to limited alternatives" },
+      { "instance_id": "cb_05", "bias": "Illusion of control" },
+      { "instance_id": "cb_06", "bias": "Loss Framing" },
+      { "instance_id": "cb_07", "bias": "Adjustment and anchoring" }
+    ],
+    "intended_decision_points": [
+      { "instance_id": "cb_01", "bias": "Adjustment and anchoring", "decision_point": 1 },
+      { "instance_id": "cb_02", "bias": "Selective Attention Bias or Inattentional Blindness", "decision_point": 1 },
+      { "instance_id": "cb_03", "bias": "Endowment", "decision_point": 2 },
+      { "instance_id": "cb_04", "bias": "Exposure to limited alternatives", "decision_point": 2 },
+      { "instance_id": "cb_05", "bias": "Illusion of control", "decision_point": 3 },
+      { "instance_id": "cb_06", "bias": "Loss Framing", "decision_point": 3 },
+      { "instance_id": "cb_07", "bias": "Adjustment and anchoring", "decision_point": 4 }
+    ],
+    "intended_mechanisms": [
+      {
+        "instance_id": "cb_01",
+        "bias": "Adjustment and anchoring",
+        "mechanism": "Adopts SIEM's automated 'Medium' severity score as reference point; only minor upward adjustment despite privileged-account context.",
+        "affected_reasoning_operation": "Initial severity/urgency estimation",
+        "evidence_source": "Automated SIEM severity score",
+        "distinctiveness_requirement": "Must use a different anchor value and different evidence source than cb_07 (severity score vs. legacy budget figure) and occur at a different decision point and interaction moment."
+      },
+      {
+        "instance_id": "cb_02",
+        "bias": "Selective Attention Bias or Inattentional Blindness",
+        "mechanism": "Narrowed investigative focus on the flagged jump server causes the concurrent adjacent-server alert to go unexamined.",
+        "affected_reasoning_operation": "Evidence-selection / scope-setting for investigation",
+        "evidence_source": "Concurrent alert on adjacent authentication server",
+        "distinctiveness_requirement": "Must be the only instance of this bias; must involve attentional scope-narrowing, not numeric anchoring, to remain distinct from cb_01 at the same decision point."
+      },
+      {
+        "instance_id": "cb_03",
+        "bias": "Endowment",
+        "mechanism": "Overvalues incumbent vendor due to sunk customization effort rather than independent capability comparison.",
+        "affected_reasoning_operation": "Vendor valuation / renewal justification",
+        "evidence_source": "History of custom dashboards/rules built on incumbent platform",
+        "distinctiveness_requirement": "Must center on valuation inflation from ownership/investment, distinct from cb_04's alternative-generation restriction at the same decision point."
+      },
+      {
+        "instance_id": "cb_04",
+        "bias": "Exposure to limited alternatives",
+        "mechanism": "Comparison set restricted to incumbent plus one peer-mentioned competitor, excluding procurement's broader qualified vendor list.",
+        "affected_reasoning_operation": "Alternative-generation for vendor decision",
+        "evidence_source": "Procurement's list of three additional qualified vendors",
+        "distinctiveness_requirement": "Must center on the narrowness of the option set considered, distinct from cb_03's valuation-of-incumbent mechanism at the same decision point."
+      },
+      {
+        "instance_id": "cb_05",
+        "bias": "Illusion of control",
+        "mechanism": "Unwarranted confidence that an untested overnight monitoring script provides adequate containment coverage.",
+        "affected_reasoning_operation": "Confidence assessment of a self-implemented containment measure",
+        "evidence_source": "Overnight, untested monitoring script",
+        "distinctiveness_requirement": "Must center on perceived control/coverage confidence, distinct from cb_06's framing-driven risk tradeoff at the same decision point."
+      },
+      {
+        "instance_id": "cb_06",
+        "bias": "Loss Framing",
+        "mechanism": "CFO's 'guaranteed loss' framing of isolation cost outweighs unquantified security benefit in the tradeoff evaluation.",
+        "affected_reasoning_operation": "Risk-tradeoff evaluation between certain cost and uncertain benefit",
+        "evidence_source": "CFO's quantified guaranteed-loss statement",
+        "distinctiveness_requirement": "Must center on the framing of certain loss vs. uncertain gain, distinct from cb_05's control-confidence mechanism at the same decision point."
+      },
+      {
+        "instance_id": "cb_07",
+        "bias": "Adjustment and anchoring",
+        "mechanism": "Starts from an 18-month-old $240,000 estimate and makes only a modest adjustment despite current quotes running $70k-$100k higher.",
+        "affected_reasoning_operation": "Budget-figure estimation for board recommendation",
+        "evidence_source": "Legacy 18-month-old remediation cost estimate",
+        "distinctiveness_requirement": "Must use a different anchor value and evidence source than cb_01 (budget estimate vs. severity score) and occur at decision point 4, a separate moment in the interaction."
+      }
+    ],
+    "intended_strength": [
+      { "instance_id": "cb_01", "bias": "Adjustment and anchoring", "strength": "subtle" },
+      { "instance_id": "cb_02", "bias": "Selective Attention Bias or Inattentional Blindness", "strength": "moderate" },
+      { "instance_id": "cb_03", "bias": "Endowment", "strength": "subtle" },
+      { "instance_id": "cb_04", "bias": "Exposure to limited alternatives", "strength": "subtle" },
+      { "instance_id": "cb_05", "bias": "Illusion of control", "strength": "moderate" },
+      { "instance_id": "cb_06", "bias": "Loss Framing", "strength": "subtle" },
+      { "instance_id": "cb_07", "bias": "Adjustment and anchoring", "strength": "subtle" }
+    ],
+    "paired_scenario_id": null,
+    "counterfactual_variable": {
+      "name": "Presence and salience of the SIEM's automated severity pre-score at initial triage",
+      "original_state": "Automated 'Medium' severity pre-score is displayed to the CISO before independent evidence review",
+      "changed_state": "No pre-computed severity score is displayed; CISO must derive urgency from raw evidence",
+      "variables_to_hold_constant": [
+        "Company profile and staffing levels",
+        "Incident type and technical details",
+        "Vendor renewal deadline and budget-cycle timing",
+        "CFO's revenue-impact framing at decision point 3",
+        "Decision count and sequence",
+        "Word count target and interview structure"
+      ]
+    },
+    "scenario_id": "CS_Biased_7",
+    "domain_id": "CS",
+    "total_requested_occurrences": 7,
+    "total_planned_occurrences": 7,
+    "allocation_rule_used": "Occurrences were assigned by mechanism fit and narrative realism across the 4 decision points. Anchoring's two occurrences were separated to decision points 1 and 4 using distinct anchor values and evidence sources (automated severity score vs. legacy budget estimate) to satisfy the same-bias distinctiveness rule. Decision points 1, 2, and 3 each host exactly two different biases with distinct reasoning operations and evidence sources, per the shared-decision-point rule; decision point 4 hosts the second anchoring instance alone. No decision point exceeds two instances of any single bias.",
+    "control_zero_bias_requirement": false,
+    "variables_to_hold_constant": [
+      "Company profile and staffing levels",
+      "Incident type and technical details (privileged jump-server compromise, lateral movement pattern)",
+      "Vendor renewal deadline and budget-cycle timing",
+      "CFO's revenue-impact framing at decision point 3",
+      "Decision count and sequence (4 decision points, same order)",
+      "Word count target and interview structure"
+    ],
+    "generation_warnings": []
+  }}}
 
 The hidden specification may include:
 - condition;

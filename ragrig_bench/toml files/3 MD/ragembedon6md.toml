@@ -1,0 +1,67 @@
+# Ranker comparison: the default hybrid RRF ranker vs. pure cosine ranking
+# (WeightedFusionRanker alpha = 1.0), on the ragrig default chat backend
+# (Ollama, qwen3.5:9b), varying the context budget (4096 and 8192 tokens).
+# Corpus = the embedded HTML fixture book, default pipeline (full parser
+# registry + MarkdownChunker).
+
+corpus_dirs = ["papers=/mnt/c/Users/Joost/Documents/papers"]
+
+queries = [
+    "Interviewer: Thanks for sitting down with me. As discussed, this is a routine after-action cognitive task analysis, not an investigation — I want to understand how you processed information during the Ridge Road sortie, not evaluate whether calls were right or wrong. You okay to proceed on that basis? Participant: Yeah, that's fine. Happy to walk through it. Interviewer: Can you start with your role that night and what the mission objective was? Participant: I was the sensor operator on an MQ-9 orbit, tail end of an eight-hour shift. Objective was continuous coverage of Ridge Road, a known resupply corridor near the border, plus a secondary NAI about a klick east. We were watching for vehicle movement, personnel patterns, anything that fit a logistics or cache profile. Weather was rough — haze rolling in and out, so EO was in and out and I was leaning on IR a lot more than usual. Interviewer: Give me the incident account in your own words — what happened, roughly in order. Participant: Around 0140 a pickup with a tarped bed stopped at the culvert crossing on Ridge Road. That crossing's not random to me — we'd found a weapons cache linked to a truck at that exact spot about two weeks earlier. So when I saw it stop there, that history was right at the front of my mind. IR showed one warm engine block, no visible weapons, no personnel grouping yet. Truck sat for about six minutes, then left without anybody unloading anything I could see. Nothing more happened at the culvert for the rest of the sortie. About twenty minutes later the haze got bad enough I switched fully to IR, and I picked up three individuals moving toward a compound maybe 400 meters from the truck stop, carrying long objects — could've been rifles, could've been tools or pipe, IR doesn't give you that resolution. Commander wanted an initial read inside two minutes, so I called it. Later, a wider-angle pass showed what looked like farm equipment near a field close to the compound, and nobody moved back toward the truck or culvert after that. Then the MIC pulled sortie logs showing that four of the last five nights with vehicle activity near Ridge Road, we'd seen an indirect-fire spike the next day. Commander asked point-blank whether tonight predicted an attack tomorrow. Toward the end, fuel was getting close to bingo, maybe twenty minutes of coverage left, compound had been quiet for about forty minutes, and JTAC wanted a final confidence call on whether to prioritize the compound for a strike package. Interviewer: Let's rebuild that timeline a bit more precisely. What came first — the sensor cue or the historical context? Participant: Sensor cue first, always. I saw the truck stop, and within maybe ten seconds I was already thinking about the cache incident. It's the same physical location, so that connection was immediate. Interviewer: And the order of the other three calls — vehicle sighting, log review, final recommendation? Participant: Right, in that sequence. Vehicle sighting happened, I gave the weapons read on the personnel, then the MIC did the log pull maybe forty minutes later, and the final compound recommendation came right near bingo fuel, so that was the last call of the night. Interviewer: Let's go through each of those four moments. Starting with the truck at the culvert — what specifically drove your assessment? Participant: Honestly, the location did most of the work. I told the MIC to pull the old cache report so we could line it up against tonight. The current picture on its own — one truck, six minutes, nothing offloaded — wasn't much. But given it was the same crossing, I treated it as a probable resupply touch and wanted that comparison front and center before I'd even really processed the fresh footage. Interviewer: What alternatives did you weigh at that point? Participant: I could've just logged it as routine traffic, or held the camera longer before deciding anything. I considered holding longer, but the location match made me want to get the historical data moving right away rather than just sitting on it. Interviewer: Moving to the three individuals with long objects — walk me through that call. Participant: Two-minute window from the commander, haze had killed my EO, so I'm working IR-only with soft resolution on the objects. What came to mind was a sortie a few months back — a group of three, similar setup, turned into an ambush. That one's stuck with me pretty vividly. So I called the objects as probable weapons and recommended escalating surveillance. Interviewer: Did you consider the tool or irrigation-pipe possibility before that call? Participant: Briefly, yeah, but the ambush sortie was the one that jumped to mind fastest, and with the clock running I went with that read. Looking back on it, most of the times we've had people carrying long objects out that stretch of road, it's turned out to be farm tools or irrigation pipe — that's actually the more common thing we log on routine passes. But none of those ordinary cases came to mind for me in the moment; the ambush sortie was just the one that surfaced fastest, so that's what shaped the call. Interviewer: Third decision point — the log pattern and the commander's question about predicting tomorrow's attack. Participant: The MIC showed me four of the last five nights lining up — vehicle activity, then fire the next day. That's a pretty strong hit rate from where I sat, and this was the fifth night in a row I'd personally logged it happening. I told the commander I thought it was a reliable indicator. Interviewer: How did you review the log data itself — did you look at nights that didn't fit the pattern? Participant: I mostly had the MIC bring up the nights that matched what I already remembered seeing. I didn't specifically go looking for nights with activity but no fire afterward, or fire without activity beforehand. Wasn't really the focus at the time. Interviewer: And the fact that it was an unusually high streak — four of five — did that factor into how confident you were it would hold? Participant: If anything it made me more confident. Five nights running with that connection felt like a real pattern taking shape, not a fluke. I told the commander I expected it to hold again the next day. Interviewer: Last decision point — the final call on the compound with fuel running low. Participant: JTAC wanted a confidence level for prioritizing it. Compound had been quiet forty minutes, and that wide pass earlier suggested farm tools, not weapons. But I've flown over two hundred sorties in that sector and I've got a solid track record calling cache sites correctly. I gave it high confidence for prioritization based on that experience, plus everything else from the night stacked together. Interviewer: What's the single piece of evidence that mattered most in that final call? Participant: My own track record, honestly. I trusted my read of the pattern over the whole night more than any one frame of video. Interviewer: What actually happened afterward, at each of these points? Participant: The truck never came back, no cache activity there rest of the shift. Follow-up daytime sortie two days later found nothing at the compound — no cache, no weapons. Turned out the truck and the personnel belonged to a local farming family with an irrigation dispute on that field. And there was no fire event the next day despite the streak. Interviewer: If the fuel clock and the commander's two-minute request hadn't been there, would you have handled the objects call differently? Participant: Maybe. I might have pushed for another angle before committing to a read. Time pressure definitely pushed me toward the fastest match I had in memory. Interviewer: Hypothetically — if that culvert had no history with you, no prior cache, would your first read of the truck have been the same? Participant: Probably would've logged it as routine and moved on. The history at that spot is what pulled my attention that hard. Interviewer: If you had no memory of that earlier ambush sortie, would you have described the long objects the same way? Participant: Probably would've called it ambiguous and asked for another pass rather than committing to weapons. Interviewer: And if this had been your very first night ever watching this stretch of road, would you have called the vehicle-activity pattern predictive? Participant: No, I don't think five data points would've meant much to me without having personally watched it build over those nights. Interviewer: Last one — looking back, what single piece of evidence, weighted differently, would have changed your final recommendation on the compound? Participant: The wide-angle pass showing farm tools. If I'd let that carry more weight against my own track record, I probably would've recommended holding off rather than prioritizing it. Interviewer: This has been really useful. Thanks for the detail. Participant: No problem."
+]
+
+[[agents]]
+label = "Gemini Prompt 8192"
+[agents.chat]
+provider = "deepseek"            # "ollama" | "deepseek"
+#model = "qwen2.5:1.5b"         # ignored for deepseek
+context_tokens = 8192          # context budget for retrieved chunks
+deepseek_model = "deepseek-v4-pro"   # deepseek only
+# deepseek_api_key = DEEPSEEK_API_KEY # deepseek only (or DEEPSEEK_API_KEY env)
+# context_size_mode = "Auto"          # "Auto" | "Forced"
+system_prompt_path = "prompt_gemini.md"    # custom system prompt ({context} placeholder)
+# request_timeout_secs = 300          # per-request timeout, None = no timeout
+[agents.chat.params]                # generation overrides (all optional)
+# temperature = 0.7
+# top_p = 0.9
+# max_tokens = 1024
+seed = 42
+
+[[agents]]
+label = "Sonar Prompt 8192"
+[agents.chat]
+provider = "deepseek"            # "ollama" | "deepseek"
+#model = "qwen2.5:1.5b"         # ignored for deepseek
+context_tokens = 8192          # context budget for retrieved chunks
+deepseek_model = "deepseek-v4-pro"   # deepseek only
+# deepseek_api_key = DEEPSEEK_API_KEY # deepseek only (or DEEPSEEK_API_KEY env)
+# context_size_mode = "Auto"          # "Auto" | "Forced"
+system_prompt_path = "prompt_sonar.md"    # custom system prompt ({context} placeholder)
+# request_timeout_secs = 300          # per-request timeout, None = no timeout
+[agents.chat.params]                # generation overrides (all optional)
+# temperature = 0.7
+# top_p = 0.9
+# max_tokens = 1024
+seed = 42
+
+[[agents]]
+label = "Sonnet Prompt 8192"
+[agents.chat]
+provider = "deepseek"            # "ollama" | "deepseek"
+#model = "qwen2.5:1.5b"         # ignored for deepseek
+context_tokens = 8192          # context budget for retrieved chunks
+deepseek_model = "deepseek-v4-pro"   # deepseek only
+# deepseek_api_key = DEEPSEEK_API_KEY # deepseek only (or DEEPSEEK_API_KEY env)
+# context_size_mode = "Auto"          # "Auto" | "Forced"
+system_prompt_path = "prompt_sonnet.md"    # custom system prompt ({context} placeholder)
+# request_timeout_secs = 300          # per-request timeout, None = no timeout
+[agents.chat.params]                # generation overrides (all optional)
+# temperature = 0.7
+# top_p = 0.9
+# max_tokens = 1024
+seed = 42
+
+# ---Embed testing ---
+[embed]
+#top_k = 0
+top_k = 50

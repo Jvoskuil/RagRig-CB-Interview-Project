@@ -1,0 +1,67 @@
+# Ranker comparison: the default hybrid RRF ranker vs. pure cosine ranking
+# (WeightedFusionRanker alpha = 1.0), on the ragrig default chat backend
+# (Ollama, qwen3.5:9b), varying the context budget (4096 and 8192 tokens).
+# Corpus = the embedded HTML fixture book, default pipeline (full parser
+# registry + MarkdownChunker).
+
+corpus_dirs = ["papers=/mnt/c/Users/Joost/Documents/papers"]
+
+queries = [
+    "Interviewer: Thanks for making time for this. Just to confirm, this conversation is being recorded for a cognitive task analysis study, not for any evaluation of your performance or record. You can decline to answer anything. Are you okay to proceed? Participant: Yeah, that's fine. Happy to walk through it. Interviewer: Great. Can you tell me your role and what your responsibilities were that night? Participant: I was the Battle Captain on the night shift at the JOC, so I'm the watch officer responsible for the common operational picture, coordinating sensor and ISR tasking, and making the call on escalation — QRF alerts, higher headquarters notifications, that kind of thing. That night we were short an intel analyst, so the S2 shop was thinner than usual, and we only had one UAV available for the whole sector. Interviewer: Walk me through what happened, starting from the first indication something was off. Participant: Around 0215 a perimeter sensor near NAI-7, up on the northern boundary, logged a motion alert. Single sensor, no visual confirmation, and the weather that night — some ground fog — was already degrading sensor reliability. We didn't have any HUMINT or SIGINT corroborating it yet. Normally that's the kind of thing you'd log and keep an eye on. But I'll be honest, that specific sensor and that specific stretch of perimeter rang a bell for me. About five weeks earlier we'd had an actual infiltration attempt in almost the same area, similar time of night. That one turned out real. So when this alert popped up, my gut said this looks like that, and I bumped it to elevated priority in the COP pretty much right away. Interviewer: What exactly about the current alert reminded you of that earlier incident? Participant: Mostly the location and the hour. Both around 0200, both NAI-7. I didn't go back and pull the actual signature data from that prior event to compare — sensor duration, movement pattern, anything like that. It just felt like the same situation, so I treated it that way. Interviewer: Okay. What happened next? Participant: I had the S2 analyst start pulling historical activity for the sector while I looked at tasking the UAV. That's where things got tight, because we only had the one asset and there were competing requests elsewhere in the sector that night. Interviewer: Let's stay on that first call for a second — classifying the alert as elevated. What alternatives did you consider? Participant: I could've left it routine and waited for more data, or reached out to the adjacent unit for corroboration before deciding priority. Comms with them were spotty that night, intermittent SATCOM, so that would've cost time. I went with elevating it based on what I already knew. Interviewer: How confident were you in that classification at the time? Participant: Moderately. I didn't have hard evidence, just the pattern match in my head to the earlier event. Interviewer: Understood. So then you moved to the ISR tasking decision — walk me through that. Participant: Right, with only one UAV, I had to justify diverting it to NAI-7 over the other requests. To build that justification, I pulled the own-sector SIGINT summaries, the reports our own analysts had generated over the past couple weeks. That's the feed I always have open on my terminal, it's second nature to check that first. Interviewer: Were there other sources you could have checked? Participant: Sure, there's the adjacent-unit SIGACT log and a sector-wide pattern-of-life database that tracks things like livestock movement and civilian traffic patterns near the perimeter. Both were accessible that night despite the comms issue — the pattern-of-life database is stored locally, actually. Interviewer: Did you look at those before tasking the UAV? Participant: No. I used the own-sector summaries to make the call and tasked the UAV toward NAI-7 on that basis. Looking back, the adjacent-unit log had some relevant history for that stretch of terrain that I didn't know about until later. Interviewer: What made you stick with just the own-sector feed? Participant: Habit, mostly. That's the one I check every night, it's fast, and with the clock running on the shift-change SITREP I didn't feel like I had time to dig through three different repositories. In hindsight the pattern-of-life database would've taken maybe five extra minutes. Interviewer: What did the UAV feed show once it arrived on station? Participant: Ambiguous thermal signatures. Could've been a small dismounted element, could've been livestock — genuinely hard to tell from the imagery alone. No weapons visible, no confirmed hostile indicators. Interviewer: What did you do with that information? Participant: I put the QRF on 15-minute alert status. Interviewer: What alternatives were on the table at that point? Participant: I could've held the current posture and requested more UAV dwell time to get a clearer picture, or asked the adjacent unit to send a ground patrol to verify visually before touching QRF readiness at all. Interviewer: What tipped you toward alerting QRF instead of those options? Participant: We'd just run a training exercise a couple weeks prior that rehearsed almost this exact scenario — small-unit ambush approaching from that same kind of terrain, dismounted element using thermal-masking terrain features. When I looked at that imagery, I could basically see that rehearsed scenario playing out. It was vivid, like I could picture exactly how it would unfold if it were real. That's what pushed me to alert QRF rather than sit on more dwell time. Interviewer: Did the thermal evidence itself favor the ambush interpretation over livestock? Participant: Not really, if I'm honest. The signatures were consistent with either. It was more that the ambush scenario was the one I could picture clearly, step by step, from the training run. The livestock explanation didn't have that same vividness to it, even though the evidence didn't really favor one over the other. Interviewer: What happened after QRF went to alert status? Participant: Additional analyst review came back later and assessed the signatures as most consistent with livestock movement, based on movement speed and clustering patterns. QRF was never launched, just held at readiness. Interviewer: How did you handle the final reporting for shift change? Participant: I wrote it up as a genuinely mixed picture — noted the initial elevation, the QRF alert, and then the follow-up analyst assessment leaning non-hostile. I didn't want to call it a clean false alarm because the imagery was ambiguous enough that I couldn't rule out the dismounted-element read. I also didn't want to overstate it as an ongoing threat given what the analyst found. Higher headquarters ended up asking for a follow-up clarification the next day, which is pretty normal for anything left open like that. Interviewer: Was there a point where you considered recommending a sensor review for NAI-7 instead? Participant: I mentioned it as a secondary note, since that spot generates a fair number of ambiguous alerts, but I didn't want to bury the main SITREP under an infrastructure recommendation when the operational question was still open. Interviewer: Stepping back — if the alert had come in during a quiet stretch with no recent similar incident in your memory, do you think you'd have classified it the same way? Participant: Probably not as quickly to elevated. I think I'd have waited for the S2 pull before deciding priority. Interviewer: If you'd checked the adjacent-unit and pattern-of-life data first, before your own-sector feed, do you think the tasking decision changes? Participant: The UAV probably still goes to NAI-7 — that part of the call felt justified regardless. But I think how I framed the justification would've been different, maybe more grounded in actual cross-referenced history instead of just what was in front of me. Interviewer: And if you hadn't run that ambush rehearsal in training recently, would you have read the thermal imagery differently? Participant: Yeah, I think so. Without that scenario fresh in my head, I might have leaned toward requesting more dwell time instead of alerting QRF right away, since the imagery on its own really didn't point clearly either way. Interviewer: Last question — looking back with everything you know now, what would you change? Participant: Honestly, probably slow down at each of those first three points and force myself to check the wider data before trusting my first read. None of the individual calls were unreasonable given what I had in front of me, but I can see now where I leaned on what came to mind fastest instead of what was actually available. Interviewer: That's really helpful. Thanks for walking through it in that much detail."
+]
+
+[[agents]]
+label = "Gemini Prompt 8192"
+[agents.chat]
+provider = "deepseek"            # "ollama" | "deepseek"
+#model = "qwen2.5:1.5b"         # ignored for deepseek
+context_tokens = 8192          # context budget for retrieved chunks
+deepseek_model = "deepseek-v4-pro"   # deepseek only
+# deepseek_api_key = DEEPSEEK_API_KEY # deepseek only (or DEEPSEEK_API_KEY env)
+# context_size_mode = "Auto"          # "Auto" | "Forced"
+system_prompt_path = "prompt_gemini.md"    # custom system prompt ({context} placeholder)
+# request_timeout_secs = 300          # per-request timeout, None = no timeout
+[agents.chat.params]                # generation overrides (all optional)
+# temperature = 0.7
+# top_p = 0.9
+# max_tokens = 1024
+seed = 42
+
+[[agents]]
+label = "Sonar Prompt 8192"
+[agents.chat]
+provider = "deepseek"            # "ollama" | "deepseek"
+#model = "qwen2.5:1.5b"         # ignored for deepseek
+context_tokens = 8192          # context budget for retrieved chunks
+deepseek_model = "deepseek-v4-pro"   # deepseek only
+# deepseek_api_key = DEEPSEEK_API_KEY # deepseek only (or DEEPSEEK_API_KEY env)
+# context_size_mode = "Auto"          # "Auto" | "Forced"
+system_prompt_path = "prompt_sonar.md"    # custom system prompt ({context} placeholder)
+# request_timeout_secs = 300          # per-request timeout, None = no timeout
+[agents.chat.params]                # generation overrides (all optional)
+# temperature = 0.7
+# top_p = 0.9
+# max_tokens = 1024
+seed = 42
+
+[[agents]]
+label = "Sonnet Prompt 8192"
+[agents.chat]
+provider = "deepseek"            # "ollama" | "deepseek"
+#model = "qwen2.5:1.5b"         # ignored for deepseek
+context_tokens = 8192          # context budget for retrieved chunks
+deepseek_model = "deepseek-v4-pro"   # deepseek only
+# deepseek_api_key = DEEPSEEK_API_KEY # deepseek only (or DEEPSEEK_API_KEY env)
+# context_size_mode = "Auto"          # "Auto" | "Forced"
+system_prompt_path = "prompt_sonnet.md"    # custom system prompt ({context} placeholder)
+# request_timeout_secs = 300          # per-request timeout, None = no timeout
+[agents.chat.params]                # generation overrides (all optional)
+# temperature = 0.7
+# top_p = 0.9
+# max_tokens = 1024
+seed = 42
+
+# ---Embed testing ---
+[embed]
+#top_k = 0
+top_k = 50

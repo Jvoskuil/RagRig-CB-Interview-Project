@@ -1,0 +1,68 @@
+# Ranker comparison: the default hybrid RRF ranker vs. pure cosine ranking
+# (WeightedFusionRanker alpha = 1.0), on the ragrig default chat backend
+# (Ollama, qwen3.5:9b), varying the context budget (4096 and 8192 tokens).
+# Corpus = the embedded HTML fixture book, default pipeline (full parser
+# registry + MarkdownChunker).
+
+corpus_dirs = ["papers=/mnt/c/Users/Joost/Documents/papers"]
+
+queries = [
+    "Interviewer: Thanks for making time for this. Just to confirm, this conversation is being recorded for a workplace research project on how teachers make placement decisions, and you can decline to answer anything or stop at any point. Sound okay? Participant: Yes, that's fine. Interviewer: Great. Can you tell me a bit about your role and how long you've been teaching math here? Participant: I've taught high school math for eleven years, the last six here. I mostly teach Algebra II and Geometry, and I'm usually the one who handles course placement questions when a student transfers in mid-year, since I know the sequencing best. Interviewer: And walk me through, generally, what happens when a transfer student shows up without a complete academic record? Participant: It varies. Sometimes the transcript is solid and we just slot them in. Other times, like this case, the transcript alone doesn't tell us enough, so we pull in a diagnostic test, maybe an observation, and go from there. The counselor coordinates logistics, but the placement call is mine, with my chair signing off. Interviewer: Let's talk through the specific incident you had in mind. Can you give me the full account, start to finish? Participant: Sure. A junior transferred in from out of state in early October. His transcript listed a 'B+' in 'Algebra II Honors,' but the school wasn't one I recognized, and the counselor couldn't verify their grading scale or how rigorous that course actually was. We had about a week before the schedule locked, so I didn't have much runway. My first instinct was just to trust the transcript and drop him into Algebra II, but the ambiguity bothered me — I didn't want to either shortchange him with an easier class or set him up to fail in one that assumed skills he didn't have. So I asked my chair if we could hold off a few days and get a diagnostic test done, plus sit him in on one of my classes to see how he handled a formative assessment live. She agreed. Interviewer: What happened next? Participant: The diagnostic came back at the 72nd percentile against grade-level norms, which is solid. I also had his transcript GPA, which I converted to our 100-point scale as best I could — that conversion is always a little shaky since I don't actually know how their department curved things. Then I sat him in on a quiz during my third-period class, and he got a 78. On top of that, I had him fill out a short self-assessment where he rated his own algebra confidence, and he put himself at an 8 out of 10. So by the deadline I had four numbers in front of me. Interviewer: How did you get from four numbers to a decision? Participant: I converted everything to the same 100-point scale and averaged the four together. That gave me a composite right around 79, which cleared our department's cutoff of 75 for Algebra II placement, so I placed him there and my chair signed off on the figure. Interviewer: Let's reconstruct the order things arrived in a bit more precisely. What came first? Participant: The transcript came with his enrollment paperwork on day one. The diagnostic was scheduled for day three. The classroom observation happened day four, same day as the self-assessment survey, since I had him do both during that visit. I finalized everything by day five to make the deadline. Interviewer: When each new piece came in, what did you do with it? Participant: Mostly just logged it and waited until I had all four before doing anything with the numbers. I didn't want to prejudge based on one piece — that's actually why I asked for more data in the first place instead of just going with the transcript alone. Interviewer: Going back to that first decision — holding off versus placing him immediately based on the transcript. What tipped you toward waiting? Participant: The uncertainty around the prior school's rigor. A 'B+' from a school I don't know isn't the same as a 'B+' here. I've been burned before trusting an out-of-state label at face value, so I wanted more direct evidence before locking him in. Interviewer: Once you had the diagnostic, transcript conversion, quiz grade, and self-report, which of those did you consider most important? Participant: Honestly, I looked at them as four inputs into one number rather than ranking them. The goal was to get a composite score I could defend to my chair, something that wasn't just my gut feeling. Interviewer: Did you consider treating any of them differently, given they came from pretty different sources? Participant: I thought about it briefly, but averaging felt like the fairest way to combine them without me injecting extra subjectivity into which one mattered more. If I started picking and choosing weights, that's its own kind of judgment call, and I wanted the number to feel more objective than that. Interviewer: Had you handled a composite score like this before? Participant: A couple times, yes, and I've generally just averaged the available measures. It's quick, and it's easy to explain to a parent or administrator. Interviewer: How much time pressure were you under at that point? Participant: A fair amount — we were basically at the deadline day. I didn't have room to request another data point even if I'd wanted to. Interviewer: How confident were you that all four numbers deserved equal footing in that calculation? Participant: I didn't really stop to weigh that question at the time. I was focused on getting to a number that cleared or didn't clear the cutoff. Interviewer: Moving to the third point — a few weeks in, he scored 55 on his first unit test, below the class median. What went through your mind? Participant: That was concerning, but not alarming yet. His homework completion was strong and he still reported feeling confident. I've seen transfer students hit a rough patch adjusting to a new teacher's style and pacing before leveling out, so I didn't want to overreact to one test. Interviewer: What alternatives did you weigh? Participant: Move him down to standard track right away, or keep him in Algebra II with extra support and watch the trend. I chose the second option and set up twice-weekly tutoring. Interviewer: What made you favor waiting over reassigning him immediately? Participant: One test isn't the whole picture, and reassigning mid-quarter has real costs — transcript continuity, disruption, his own confidence. I wanted more evidence before making that call. Interviewer: And the fourth point — end of quarter, he had a C-, with an upward trend the last three weeks. His parent asked in writing that he stay in Algebra II. What was your reasoning there? Participant: The recent trend mattered a lot to me — it suggested the tutoring was working and he was catching up. The counselor also flagged that switching tracks mid-year could complicate his transcript. Combined with the parent's request, keeping him in with continued support seemed like the right call. Interviewer: Looking back, is there anything you'd have wanted to know earlier that might have changed the placement decision? Participant: Probably a second observation period. One 50-minute sit-in is a pretty thin slice of evidence, and I'd have liked a bit more before finalizing that composite number. Interviewer: If the self-report survey had shown low confidence instead of high, do you think your composite score — and the placement — would have come out differently? Participant: Yes, actually, since it was one of four numbers going into a straight average, a lower self-rating would have pulled the total down and possibly under the cutoff. Interviewer: If only the diagnostic test had been available, without the other three measures, do you think you'd have placed him the same way? Participant: Probably, since 72nd percentile alone is a reasonably strong signal. But I wouldn't have felt as comfortable relying on just one number for something this consequential. Interviewer: Anything you'd do differently next time you face a similar composite decision? Participant: I think I'd slow down and think harder about how the pieces relate to each other before just averaging them, especially when they're not really measuring the same thing with the same precision. At the time, though, it felt like the practical way to turn four different pieces of paper into one decision."
+]
+
+[[agents]]
+label = "Gemini Prompt 8192"
+[agents.chat]
+provider = "deepseek"            # "ollama" | "deepseek"
+#model = "qwen2.5:1.5b"         # ignored for deepseek
+context_tokens = 8192          # context budget for retrieved chunks
+deepseek_model = "deepseek-v4-pro"   # deepseek only
+#deepseek_api_key = DEEPSEEK_API_KEY # deepseek only (or DEEPSEEK_API_KEY env)
+# context_size_mode = "Auto"          # "Auto" | "Forced"
+system_prompt_path = "prompt_gemini.md"    # custom system prompt ({context} placeholder)
+# request_timeout_secs = 300          # per-request timeout, None = no timeout
+[agents.chat.params]                # generation overrides (all optional)
+# temperature = 0.7
+# top_p = 0.9
+# max_tokens = 1024
+seed = 42
+
+[[agents]]
+label = "Sonar Prompt 8192"
+[agents.chat]
+provider = "deepseek"            # "ollama" | "deepseek"
+#model = "qwen2.5:1.5b"         # ignored for deepseek
+context_tokens = 8192          # context budget for retrieved chunks
+deepseek_model = "deepseek-v4-pro"   # deepseek only
+#deepseek_api_key = DEEPSEEK_API_KEY # deepseek only (or DEEPSEEK_API_KEY env)
+# context_size_mode = "Auto"          # "Auto" | "Forced"
+system_prompt_path = "prompt_sonar.md"    # custom system prompt ({context} placeholder)
+# request_timeout_secs = 300          # per-request timeout, None = no timeout
+ [agents.chat.params]                # generation overrides (all optional)
+# temperature = 0.7
+# top_p = 0.9
+# max_tokens = 1024
+ seed = 42
+
+[[agents]]
+label = "Sonnet Prompt 8192"
+[agents.chat]
+provider = "deepseek"            # "ollama" | "deepseek"
+#model = "qwen2.5:1.5b"         # ignored for deepseek
+context_tokens = 8192          # context budget for retrieved chunks
+deepseek_model = "deepseek-v4-pro"   # deepseek only
+#deepseek_api_key = DEEPSEEK_API_KEY # deepseek only (or DEEPSEEK_API_KEY env)
+# context_size_mode = "Auto"          # "Auto" | "Forced"
+system_prompt_path = "prompt_sonnet.md"    # custom system prompt ({context} placeholder)
+# request_timeout_secs = 300          # per-request timeout, None = no timeout
+[agents.chat.params]                # generation overrides (all optional)
+# temperature = 0.7
+# top_p = 0.9
+# max_tokens = 1024
+seed = 42
+
+
+# ---Embed testing ---
+[embed]
+#top_k = 0
+top_k = 50

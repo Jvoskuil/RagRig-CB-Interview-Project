@@ -1,0 +1,68 @@
+# Ranker comparison: the default hybrid RRF ranker vs. pure cosine ranking
+# (WeightedFusionRanker alpha = 1.0), on the ragrig default chat backend
+# (Ollama, qwen3.5:9b), varying the context budget (4096 and 8192 tokens).
+# Corpus = the embedded HTML fixture book, default pipeline (full parser
+# registry + MarkdownChunker).
+
+corpus_dirs = ["papers=/mnt/c/Users/Joost/Documents/papers"]
+
+queries = [
+    "Interviewer: Thanks for making time for this. Just to confirm, this is for our case-review research file — I'll be asking you to walk me through your decision-making on the Riverside apartment case, and it's fine to say 'I don't remember' if something's unclear. Sound okay? Participant: Yeah, that's fine. It's not a case I've forgotten much about anyway. Interviewer: Good. Can you start with your role and how you came into the case? Participant: I was lead detective, second-in on scene after patrol secured it. My partner and I caught it together — we split the canvass and the paperwork most of the time. It was a apartment homicide, young woman, found by a coworker who came by when she didn't show up for a shift. Interviewer: Walk me through what you found when you got there. Participant: No forced entry, door was locked from inside, deadbolt engaged. That narrows things fast — either she let someone in, or it's someone with access. We pulled her phone and found a breakup with her ex about three weeks prior, some heated texts. He'd also had a prior domestic disturbance call at that same address, maybe eight months back, neighbor called it in. Scene itself was contained mostly to the bedroom — no real struggle elsewhere in the apartment. So between the lock, the ex's history, and the texts, that's where my head went first. Interviewer: What was the objective at that point? Participant: Build a working theory fast enough to direct the canvass and get ahead of any warrant we'd need, but not so fast we lock ourselves in before the scene work comes back. We had the usual clock — 72 hours or so before witness memory gets soft and, frankly, before a suspect who's alarmed has time to leave the area. Interviewer: Let's reconstruct the timeline. What came in, and when? Participant: Day one, scene work and the ex's history surface. Day one evening, we get a partial alibi from his coworker, but there's a two-hour gap in it. Same day, a passerby mentions a man loitering near the rear entrance — unconfirmed, no real description yet. Day two morning, unit briefing. Swabs go to the lab. Day three, lab comes back negative for the ex's DNA at the scene, and a second witness closes his alibi gap. Same day, we finally sit down properly with the rear-entrance witness and get a much better description — turns out to match a guy with a burglary record in that block. Day four, we're drafting the referral for the DA liaison. Interviewer: Let's go decision by decision. First one — naming the ex as the primary theory on day one. What alternatives did you weigh? Participant: We could've held off naming anybody until forensics and the full canvass were in, or we could've treated the rear-entrance sighting as equally weighted from the start. I chose to name him primary and put resources there — the domestic call history plus the locked door plus the breakup timing, that's a real pattern you see in these cases. I wasn't ignoring the loitering report, it just wasn't developed yet. It was one line from a passerby. Interviewer: What made that pattern feel decisive enough to commit resources rather than split them? Participant: Experience, mostly. I've had cases where the ex is exactly who you think it is, and cases where it's a stranger. At that stage you don't have enough to split evenly, so you go where the strongest documented history points. That felt like the responsible use of limited manpower on day one. Interviewer: Second decision point — the unit briefing on day two. Participant: My partner laid out the domestic-call history to the lieutenant and the rest of the group, made the case for the ex pretty strongly. One of the junior guys mentioned the rear-entrance sighting was worth a proper follow-up, but it didn't really get picked up in the room — people nodded and moved on to warrant logistics for the ex. By the end of that briefing the case log had the ex documented as primary suspect, and nobody was formally tasked with running down the loitering lead. Interviewer: How did you feel about that outcome walking out of the room? Participant: Comfortable, honestly. Everyone was reading from the same page, which after a chaotic scene day felt like progress. My partner's read matched mine, the lieutenant didn't push back, so we had a direction the whole unit could move on together. I didn't specifically assign someone to chase the rear-entrance thing — it felt like it could wait until we had bandwidth, and right then the room's energy was behind the ex. Interviewer: Did anyone actually set the rear-entrance lead side by side with the ex-partner theory before the room moved on, or did it just get dropped once things felt settled? Participant: No, nobody laid them out next to each other. Once my partner and the lieutenant were on the same page, going back to relitigate the junior guy's point felt like it would've slowed us down for no clear reason — like reopening something the room had already moved past. It wasn't that I thought it was wrong, exactly, just that pushing on it right then would've read as second-guessing a direction everybody had already settled into. Interviewer: Was there a moment where you considered pausing to verify the sighting before locking that direction in? Participant: Not really, no. It would have meant pulling someone off the warrant work, and with everyone already aligned, it didn't seem like the priority use of the next shift. Interviewer: Third decision point — day three, the lab result and the alibi correction come back. Participant: That was a harder morning. DNA didn't match him, and the coworker's second witness basically closed the two-hour gap we'd been counting on. Normally that's the kind of thing that makes you step back. But we'd also just gotten the better description on the rear-entrance guy, and rather than shift the whole frame onto him immediately, I treated the DNA gap as something forensics might still explain — maybe he wore gloves, maybe the negative result reflects a partial or degraded sample rather than absence. I kept him as primary and logged the new description as a secondary, unresolved lead pending more digging. Interviewer: What was the basis for treating the DNA result as an exception rather than as evidence pointing away from him? Participant: The domestic-call history and the locked door were still sitting there unexplained if it wasn't him. A negative swab doesn't automatically clear someone — it happens on cases that still hold up later. I didn't want to throw out the whole frame on one lab result without understanding why it came back that way. Interviewer: Fourth decision point — drafting the referral memo for the DA liaison. Participant: By day four we had two live threads: the ex, thinner now but with the original history behind him, and the burglary-record guy, whose description was fresh and detailed, still had that first flat line report backing it. When I wrote the summary for the DA liaison, the newest statement — the detailed one — got the most space and came across as the strongest piece in the file, more than the early scene notes or the original canvass statements, which were older and thinner on detail by comparison. Interviewer: What made the newer statement carry more weight in the writing itself, as opposed to the older material? Participant: It was just more vivid — clearer physical description, more specific timing. The older notes were accurate but sparse, so when I was putting the narrative together, the recent statement was what stood out and read strongest on the page. Honestly, it was also just the last substantial thing that had come in before I sat down to write, so it was what was fresh in my head — I hadn't gone back and weighed it against the earlier canvass material for corroboration, it just carried into the draft on its own. The DA liaison ended up asking for supplemental work before filing on either of them. Interviewer: Had you seen a case before where an early theory didn't hold up the way you expected? Participant: Sure, more than once. It usually teaches you to keep digging on alternatives even when the main line looks solid. I'd say I tried to do that here by keeping the second lead open rather than dropping it outright. Interviewer: If the rear-entrance sighting had come in fully detailed on day one instead of day three, how do you think the briefing would have gone differently? Participant: Probably would've split our attention from the start, maybe even changed who got named primary at that meeting. Coming in early and vague versus coming in late and sharp made a real difference in how much room it got. Interviewer: Looking back, is there a point you'd want to redo? Participant: Maybe assigning someone concretely to the rear-entrance lead right at the briefing instead of letting it just get mentioned and dropped. That's probably the one moment where a small procedural change could've shifted the whole pace of the case. Interviewer: Anything else you'd want on the record about how the case moved through those four points? Participant: Just that none of it felt reckless in the moment. Every step had something behind it. It's only looking at it end to end now that I can see where things could've gone differently. Interviewer: That's a good place to stop. Thanks for walking through it in this much detail."
+]
+
+[[agents]]
+label = "Gemini Prompt 8192"
+[agents.chat]
+provider = "deepseek"            # "ollama" | "deepseek"
+#model = "qwen2.5:1.5b"         # ignored for deepseek
+context_tokens = 8192          # context budget for retrieved chunks
+deepseek_model = "deepseek-v4-pro"   # deepseek only
+#deepseek_api_key = DEEPSEEK_API_KEY # deepseek only (or DEEPSEEK_API_KEY env)
+# context_size_mode = "Auto"          # "Auto" | "Forced"
+system_prompt_path = "prompt_gemini.md"    # custom system prompt ({context} placeholder)
+# request_timeout_secs = 300          # per-request timeout, None = no timeout
+[agents.chat.params]                # generation overrides (all optional)
+# temperature = 0.7
+# top_p = 0.9
+# max_tokens = 1024
+seed = 42
+
+[[agents]]
+label = "Sonar Prompt 8192"
+[agents.chat]
+provider = "deepseek"            # "ollama" | "deepseek"
+#model = "qwen2.5:1.5b"         # ignored for deepseek
+context_tokens = 8192          # context budget for retrieved chunks
+deepseek_model = "deepseek-v4-pro"   # deepseek only
+#deepseek_api_key = DEEPSEEK_API_KEY # deepseek only (or DEEPSEEK_API_KEY env)
+# context_size_mode = "Auto"          # "Auto" | "Forced"
+system_prompt_path = "prompt_sonar.md"    # custom system prompt ({context} placeholder)
+# request_timeout_secs = 300          # per-request timeout, None = no timeout
+ [agents.chat.params]                # generation overrides (all optional)
+# temperature = 0.7
+# top_p = 0.9
+# max_tokens = 1024
+ seed = 42
+
+[[agents]]
+label = "Sonnet Prompt 8192"
+[agents.chat]
+provider = "deepseek"            # "ollama" | "deepseek"
+#model = "qwen2.5:1.5b"         # ignored for deepseek
+context_tokens = 8192          # context budget for retrieved chunks
+deepseek_model = "deepseek-v4-pro"   # deepseek only
+#deepseek_api_key = DEEPSEEK_API_KEY # deepseek only (or DEEPSEEK_API_KEY env)
+# context_size_mode = "Auto"          # "Auto" | "Forced"
+system_prompt_path = "prompt_sonnet.md"    # custom system prompt ({context} placeholder)
+# request_timeout_secs = 300          # per-request timeout, None = no timeout
+[agents.chat.params]                # generation overrides (all optional)
+# temperature = 0.7
+# top_p = 0.9
+# max_tokens = 1024
+seed = 42
+
+
+# ---Embed testing ---
+[embed]
+#top_k = 0
+top_k = 50

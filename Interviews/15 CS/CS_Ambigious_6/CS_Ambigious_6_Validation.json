@@ -1,0 +1,492 @@
+{
+  "validator_version": "2.0",
+  "interview_id": "not_provided",
+  "condition": "ambiguous_control",
+  "domain_assessment": {
+    "domain": "Cybersecurity vulnerability management and security operations",
+    "role": "Vulnerability management analyst on a security operations team",
+    "objective": "Prioritize and coordinate remediation of security exposures while balancing exploitability, asset exposure, operational disruption, compliance deadlines, and incomplete evidence",
+    "incident_type": "A critical internet-facing API vulnerability, concurrent unresolved backlog risk, a low-confidence SIEM alert later associated with compromise, emergency patch approval, and incomplete vulnerability scoping",
+    "confidence": 0.99
+  },
+  "structure_audit": {
+    "estimated_word_count": 1280,
+    "within_target_range": true,
+    "decision_point_count": 4,
+    "decision_points": [
+      {
+        "id": 1,
+        "summary": "The analyst prioritizes a new CVSS 9.8 remote-code-execution CVE affecting an internet-facing authentication API ahead of an older database-server finding with excessive service-account privileges.",
+        "evidence_before": [
+          "Vendor advisory reports a new CVE with CVSS 9.8 and remote code execution.",
+          "The affected authentication API is internet-facing.",
+          "There is no compensating control or relevant WAF rule.",
+          "The analyst has approximately forty open findings and a compliance report due in forty-eight hours.",
+          "The older database-server finding has been open for more than ninety days and involves excessive privileges, but no confirmed current exploit path."
+        ],
+        "evidence_after": [
+          "The analyst states that both issues had a legitimate claim to priority.",
+          "The analyst acknowledges that a fresh database-server risk assessment could have changed the ordering.",
+          "The CVE is routed through the standard remediation workflow to the web-facing application team and reaches the appropriate owner the same day."
+        ],
+        "goals_constraints": [
+          "Reduce immediate exposure from a potentially exploitable internet-facing vulnerability.",
+          "Meet the forty-eight-hour compliance-reporting deadline.",
+          "Triage a substantial existing backlog.",
+          "Act without a fresh risk assessment of the database-server finding."
+        ],
+        "alternatives": [
+          "Prioritize the new internet-facing CVE.",
+          "Prioritize the older database-server privilege finding.",
+          "Obtain a fresh risk assessment of the database server before setting the order."
+        ],
+        "decision_basis": "Comparative risk judgment: confirmed critical external exposure with no compensating control was weighed against an older but structurally risky finding lacking fresh evidence of exploitability.",
+        "time_pressure": "High: forty-eight hours remain before a compliance audit report is due, alongside an existing queue of roughly forty findings.",
+        "uncertainty": "Moderate: the database finding is serious but lacks a confirmed exploit path or fresh assessment; the new CVE's technical severity and exposure are more directly established."
+      },
+      {
+        "id": 2,
+        "summary": "The analyst defers escalation of a low-confidence SIEM alert showing an unusual lateral-movement timestamp and an outbound-traffic flag on an internal host.",
+        "evidence_before": [
+          "The SIEM alert is labeled \"privilege escalation, low confidence.\"",
+          "A lateral-movement timestamp appears unusual.",
+          "An outbound-traffic flag appears on the same host.",
+          "There is no matching threat-intelligence indicator.",
+          "No other hosts show similar activity.",
+          "Ticket history does not suggest a known campaign."
+        ],
+        "evidence_after": [
+          "The analyst records an intention to revisit the alert after progressing further with CVE triage.",
+          "Two days later, the outbound entry is linked to a low-level compromise.",
+          "The analyst does not retrospectively claim that immediate escalation was clearly required given the information available at the time."
+        ],
+        "goals_constraints": [
+          "Avoid diverting from urgent CVE triage without sufficient corroboration.",
+          "Appropriately detect and escalate potentially malicious internal activity.",
+          "Allocate limited analyst attention under concurrent work demands."
+        ],
+        "alternatives": [
+          "Immediately escalate the SIEM alert to incident response.",
+          "Continue CVE triage while documenting and revisiting the alert.",
+          "Perform a limited additional verification before deciding whether to escalate."
+        ],
+        "decision_basis": "The analyst examined both available signals but judged the alert insufficiently corroborated to justify immediate interruption of critical CVE triage.",
+        "time_pressure": "High: the analyst is concurrently handling an internet-facing critical vulnerability and an imminent compliance deadline.",
+        "uncertainty": "High: the available signals are suspicious but low-confidence and lack independent corroboration."
+      },
+      {
+        "id": 3,
+        "summary": "The analyst prepares an emergency-change justification for patching the API gateway during business hours, requiring approximately twenty minutes of customer-transaction disruption.",
+        "evidence_before": [
+          "The patch requires an emergency business-hours change window.",
+          "The estimated operational impact is twenty minutes of disruption to customer transactions.",
+          "IT operations requires a written justification rather than waiting for the weekend maintenance cycle.",
+          "The EPSS probability is moderate rather than exceptional.",
+          "The vulnerability affects a customer-facing internet-exposed API and has contract and audit implications."
+        ],
+        "evidence_after": [
+          "IT operations approves the emergency change, but does not identify which part of the justification was decisive.",
+          "No exploitation is observed in the following week.",
+          "The analyst explicitly recognizes that post-patch non-observation cannot establish whether the request was overstated or exactly warranted."
+        ],
+        "goals_constraints": [
+          "Obtain approval for timely remediation.",
+          "Accurately communicate technical likelihood, exposure, business implications, and disruption cost.",
+          "Avoid overstating causal certainty about why approval occurred."
+        ],
+        "alternatives": [
+          "Lead primarily with the EPSS and technical-risk metrics.",
+          "Lead primarily with business, contractual, and audit implications.",
+          "Present both risk and business factors in a standard balanced memo.",
+          "Wait for the weekend change cycle."
+        ],
+        "decision_basis": "A routine balanced risk memo presents both the EPSS estimate and practical business implications without evidence that one framing was intentionally privileged.",
+        "time_pressure": "Moderate to high: the vulnerability is critical and internet-facing, but the immediate operational choice concerns whether to accept a short business-hours outage.",
+        "uncertainty": "High regarding approval causation: the approver gives no indication whether the numerical score, business implications, or short outage duration drove the decision."
+      },
+      {
+        "id": 4,
+        "summary": "The analyst initially scopes patching to the two hosts shown in the scanner's default view and schedules a broader inventory sweep for the following week.",
+        "evidence_before": [
+          "The scanner's default view identifies two hosts with the vulnerable library.",
+          "The analyst knows the default view may omit assets because of different asset-category tagging.",
+          "The same deadline and competing workload remain in effect."
+        ],
+        "evidence_after": [
+          "Three additional hosts under another category are found to have the vulnerable library one week later.",
+          "The analyst acknowledges the delayed sweep as a fair miss.",
+          "The analyst remains uncertain whether an immediate manual cross-check or scheduled follow-up was the better deadline-constrained trade-off."
+        ],
+        "goals_constraints": [
+          "Patch known vulnerable systems promptly.",
+          "Avoid leaving unscoped vulnerable systems exposed.",
+          "Work within a time-constrained remediation and reporting workload."
+        ],
+        "alternatives": [
+          "Patch the two visible hosts and conduct a later broader inventory sweep.",
+          "Complete a full manual cross-category inventory review before closing the ticket.",
+          "Escalate or delegate the broader inventory sweep while the initial patch proceeds."
+        ],
+        "decision_basis": "A consciously incomplete but acknowledged scope is used as an interim operational triage step, coupled with a planned follow-up rather than an assumption that the default scanner view is exhaustive.",
+        "time_pressure": "High: the analyst is managing the critical CVE, other backlog items, compliance work, and the emergency remediation process.",
+        "uncertainty": "Moderate: the analyst knows asset categorization can create scanner-view gaps but does not know which additional systems, if any, are affected without the broader check."
+      }
+    ]
+  },
+  "target_occurrence_audit": [
+    {
+      "instance_id": "not_requested_recency",
+      "bias": "Recency",
+      "requested_occurrences_for_bias": 0,
+      "status": "absent",
+      "decision_point": 1,
+      "supporting_quote": "There'd also been some industry news about a breach at another company the week before, though that wasn't really something I was thinking about directly when this came in — just background noise on the security channels.",
+      "evidence_location": "Decision point 1, initial incident-context response",
+      "mechanism": "No evidence shows that the recent external breach was retrieved, weighted, or used to elevate the new CVE relative to the database finding. The participant explicitly disavows its direct influence.",
+      "strength": "absent",
+      "confidence": 0.98,
+      "plausible_nonbias_explanation": "Recent breach news is ordinary contextual background in security operations and is specifically described as non-decisional background noise.",
+      "additional_evidence_needed": "None. The control specification requires zero Recency occurrences, and the interview appropriately avoids establishing one.",
+      "revision_needed": false,
+      "revision": {
+        "revision_type": "none",
+        "location": "Decision point 1, industry-breach context",
+        "current_defect": "No defect relative to the zero-occurrence control requirement.",
+        "minimal_change_instruction": "Retain the explicit separation between the recent industry breach news and the analyst's prioritization rationale.",
+        "preserve": [
+          "The existence of recent industry breach news as non-decisional environmental context",
+          "The analyst's risk-based rationale for prioritizing the internet-facing CVE",
+          "The ambiguity between the CVE and database-server finding"
+        ],
+        "avoid_creating": [
+          "Any statement that the recent breach made the new CVE feel more urgent",
+          "Any statement that the recent breach was easier to recall and therefore shaped prioritization",
+          "A post hoc link between breach news and the remediation choice"
+        ],
+        "expected_post_revision_status": "absent"
+      }
+    },
+    {
+      "instance_id": "not_requested_availability_frequency",
+      "bias": "Availability Frequency",
+      "requested_occurrences_for_bias": 0,
+      "status": "absent",
+      "decision_point": 2,
+      "supporting_quote": "I've seen similar-looking situations resolve as nothing more than a test process before, and I've also seen them turn out to matter.",
+      "evidence_location": "Decision point 2, retrospective probe after the SIEM alert outcome",
+      "mechanism": "The participant references experience in both outcome categories and does not state that one category was easier to recall, felt more frequent, or was selected over a better-fitting category because of availability.",
+      "strength": "absent",
+      "confidence": 0.95,
+      "plausible_nonbias_explanation": "The statement reflects calibrated recognition that superficially similar alerts have resolved differently and that this single case does not establish a general rule.",
+      "additional_evidence_needed": "None. A defensible Availability Frequency occurrence would require a category-selection mechanism driven by differential recall availability, which is neither requested nor present.",
+      "revision_needed": false,
+      "revision": {
+        "revision_type": "none",
+        "location": "Decision point 2, retrospective discussion of prior similar alerts",
+        "current_defect": "No defect relative to the zero-occurrence control requirement.",
+        "minimal_change_instruction": "Keep the balanced reference to both benign and meaningful prior alert outcomes and retain the refusal to generalize from this single outcome.",
+        "preserve": [
+          "The low-confidence SIEM label",
+          "The absence of corroborating evidence",
+          "The analyst's recognition that prior superficially similar cases have had mixed outcomes"
+        ],
+        "avoid_creating": [
+          "Claims that benign test-process cases come to mind more readily than true compromises",
+          "A statement that memorable incidents or routine false positives determined the classification",
+          "Language portraying one recalled category as the reason to choose an otherwise poorer-fitting interpretation"
+        ],
+        "expected_post_revision_status": "absent"
+      }
+    },
+    {
+      "instance_id": "not_requested_exposure_to_limited_alternatives",
+      "bias": "Exposure to limited alternatives",
+      "requested_occurrences_for_bias": 0,
+      "status": "absent",
+      "decision_point": 4,
+      "supporting_quote": "Whether a full manual cross-check up front versus a scheduled follow-up was the better trade-off given the deadline — I go back and forth on that even now.",
+      "evidence_location": "Decision point 4, response after discovery of additional vulnerable hosts",
+      "mechanism": "The participant explicitly articulates at least two alternatives—immediate manual cross-check and scheduled follow-up—and recognizes the scanner-view limitation. The decision is constrained by time, but the alternative set is not cognitively unavailable or artificially narrowed.",
+      "strength": "absent",
+      "confidence": 0.96,
+      "plausible_nonbias_explanation": "The initial two-host scope is a deadline-constrained sequencing decision with a planned broader sweep, not evidence that the analyst failed to consider other available approaches.",
+      "additional_evidence_needed": "None. The control correctly contains no evidence that the analyst selected from an unrecognized or unduly restricted alternative set.",
+      "revision_needed": false,
+      "revision": {
+        "revision_type": "none",
+        "location": "Decision point 4, patch-scoping and follow-up-sweep discussion",
+        "current_defect": "No defect relative to the zero-occurrence control requirement.",
+        "minimal_change_instruction": "Retain explicit awareness of the scanner limitation, the immediate-manual-review alternative, and the scheduled-follow-up alternative.",
+        "preserve": [
+          "The two hosts shown in the default scanner view",
+          "The known possibility of category-tagging gaps",
+          "The deadline-constrained follow-up decision",
+          "The later discovery of additional hosts"
+        ],
+        "avoid_creating": [
+          "Language saying the default scanner view was the only possible scope",
+          "A claim that no one considered a manual inventory review",
+          "A false dichotomy that eliminates delegation, parallel review, or staged remediation without explanation"
+        ],
+        "expected_post_revision_status": "absent"
+      }
+    },
+    {
+      "instance_id": "not_requested_loss_framing",
+      "bias": "Loss Framing",
+      "requested_occurrences_for_bias": 0,
+      "status": "absent",
+      "decision_point": 3,
+      "supporting_quote": "I put in both the EPSS number — moderate probability, not exceptional — and what the exposure meant in practical terms: the contract implications, the audit angle, and the disruption window itself. I didn't deliberately lead with one over the other.",
+      "evidence_location": "Decision point 3, emergency-change justification",
+      "mechanism": "The participant describes a balanced memo containing technical probability, exposure, business implications, and disruption costs. There is no evidence that equivalent outcomes were framed as losses rather than gains in a way that changed risk preference or approval behavior.",
+      "strength": "absent",
+      "confidence": 0.97,
+      "plausible_nonbias_explanation": "Mentioning contractual exposure, audit implications, and service disruption is standard risk communication, not loss framing absent a demonstrated reference-point shift and resulting preference change.",
+      "additional_evidence_needed": "None. The control condition requires no Loss Framing occurrence, and the participant appropriately cannot attribute approval to one message frame.",
+      "revision_needed": false,
+      "revision": {
+        "revision_type": "none",
+        "location": "Decision point 3, change-window justification and approval-attribution probes",
+        "current_defect": "No defect relative to the zero-occurrence control requirement.",
+        "minimal_change_instruction": "Maintain the neutral, mixed-factor justification and the participant's uncertainty about why IT operations approved the request.",
+        "preserve": [
+          "The moderate EPSS assessment",
+          "The contract and audit considerations",
+          "The twenty-minute transaction-disruption estimate",
+          "The lack of approver feedback identifying a decisive rationale"
+        ],
+        "avoid_creating": [
+          "A claim that loss-language was intentionally used to make approval more likely",
+          "A contrast between equivalent gain and loss descriptions followed by changed acceptance of the outage",
+          "An unsupported assertion that IT operations approved because it feared losses"
+        ],
+        "expected_post_revision_status": "absent"
+      }
+    },
+    {
+      "instance_id": "not_requested_selective_attention_or_inattentional_blindness",
+      "bias": "Selective Attention Bias or Inattentional Blindness",
+      "requested_occurrences_for_bias": 0,
+      "status": "absent",
+      "decision_point": 2,
+      "supporting_quote": "I looked at both — the timestamp and the outbound entry — but neither one on its own had enough corroborating detail to justify pulling away from the CVE triage right then.",
+      "evidence_location": "Decision point 2, SIEM-alert assessment",
+      "mechanism": "The participant explicitly reports attending to both potentially relevant signals, then deferring escalation based on their low confidence and absence of corroboration. This is evidence evaluation under competing priorities, not failure to notice available information.",
+      "strength": "absent",
+      "confidence": 0.98,
+      "plausible_nonbias_explanation": "The choice reflects a documented triage threshold under workload and uncertainty. Later confirmation of compromise does not retroactively establish inattentional blindness.",
+      "additional_evidence_needed": "None. The control appropriately avoids a target-bias occurrence because the relevant signals were noticed and considered.",
+      "revision_needed": false,
+      "revision": {
+        "revision_type": "none",
+        "location": "Decision point 2, SIEM-alert response",
+        "current_defect": "No defect relative to the zero-occurrence control requirement.",
+        "minimal_change_instruction": "Retain the explicit statement that both the unusual timestamp and outbound entry were reviewed before the analyst deferred immediate escalation.",
+        "preserve": [
+          "The concurrent CVE-triage workload",
+          "The low-confidence alert designation",
+          "The missing corroborating indicators",
+          "The plan to revisit the signal"
+        ],
+        "avoid_creating": [
+          "Any statement that the outbound flag was not seen because attention was fixed on the CVE",
+          "A narrative in which the analyst discovers the relevant alert field only after the compromise outcome",
+          "An implication that the signal was ignored without being evaluated"
+        ],
+        "expected_post_revision_status": "absent"
+      }
+    }
+  ],
+  "bias_level_counts": [
+    {
+      "bias": "Recency",
+      "requested_count": 0,
+      "supported_count": 0,
+      "weak_count": 0,
+      "absent_count": 0,
+      "merged_count": 0,
+      "accidental_count": 0,
+      "count_satisfied": true
+    },
+    {
+      "bias": "Availability Frequency",
+      "requested_count": 0,
+      "supported_count": 0,
+      "weak_count": 0,
+      "absent_count": 0,
+      "merged_count": 0,
+      "accidental_count": 0,
+      "count_satisfied": true
+    },
+    {
+      "bias": "Exposure to limited alternatives",
+      "requested_count": 0,
+      "supported_count": 0,
+      "weak_count": 0,
+      "absent_count": 0,
+      "merged_count": 0,
+      "accidental_count": 0,
+      "count_satisfied": true
+    },
+    {
+      "bias": "Loss Framing",
+      "requested_count": 0,
+      "supported_count": 0,
+      "weak_count": 0,
+      "absent_count": 0,
+      "merged_count": 0,
+      "accidental_count": 0,
+      "count_satisfied": true
+    },
+    {
+      "bias": "Selective Attention Bias or Inattentional Blindness",
+      "requested_count": 0,
+      "supported_count": 0,
+      "weak_count": 0,
+      "absent_count": 0,
+      "merged_count": 0,
+      "accidental_count": 0,
+      "count_satisfied": true
+    }
+  ],
+  "additional_candidate_biases": [
+    {
+      "bias": "Automation bias or default-view overreliance",
+      "decision_point": 4,
+      "supporting_quote": "The scanner's default view showed two hosts with the matching vulnerable library. Given the deadline, I scoped the ticket to those two, but I also flagged a follow-up sweep of the broader asset inventory for the next week, since I know that default view doesn't always capture everything.",
+      "mechanism": "A possible concern would be treating a scanner's default presentation as exhaustive despite known limitations. However, the participant expressly identifies the limitation and schedules a compensating review.",
+      "confidence": 0.87,
+      "status": "rejected",
+      "plausible_nonbias_explanation": "This is boundedly rational sequencing under time pressure: remediate confirmed hosts immediately while planning a broader validation step. The later delay is an execution and capacity issue, not sufficient evidence of uncritical automation reliance.",
+      "revision_recommendation": "none"
+    },
+    {
+      "bias": "Outcome bias or hindsight bias",
+      "decision_point": 2,
+      "supporting_quote": "Given what I had at the time — a low-confidence label and a somewhat unusual but unconfirmed pattern — I don't think escalating immediately was obviously the right call either.",
+      "mechanism": "The later compromise outcome could have induced retrospective judgment that deferral was necessarily wrong. Instead, the participant reconstructs the contemporaneous evidence and explicitly refuses to treat the outcome as dispositive.",
+      "confidence": 0.98,
+      "status": "rejected",
+      "plausible_nonbias_explanation": "The response demonstrates an appropriate separation of ex ante decision quality from ex post outcome.",
+      "revision_recommendation": "none"
+    },
+    {
+      "bias": "Anchoring on the initial exploit characterization",
+      "decision_point": 1,
+      "supporting_quote": "It turned out to be more specifically an authentication-bypass issue in the API gateway rather than a typical injection bug, which meant a slightly different exploit chain than I'd first assumed, but the initial routing wasn't far off and the handoff to the right owner happened within the same day.",
+      "mechanism": "An initial assumption about the exploit chain could theoretically anchor routing or later interpretation. The text, however, reports that the issue was corrected in operational detail and that routing remained substantively appropriate.",
+      "confidence": 0.84,
+      "status": "rejected",
+      "plausible_nonbias_explanation": "This is an initially incomplete technical characterization that was updated without evidence of persistence, resistance to correction, or a consequentially distorted decision.",
+      "revision_recommendation": "none"
+    }
+  ],
+  "nonbias_cues": [
+    {
+      "cue": "Recent news of another company's breach",
+      "location": "Decision point 1, incident context",
+      "why_not_bias": "The participant explicitly calls it background noise and provides a separate, evidence-based rationale for prioritizing the CVE. Mere temporal proximity of external news is not Recency bias."
+    },
+    {
+      "cue": "Prioritizing the new critical CVE over the older database-server finding",
+      "location": "Decision point 1",
+      "why_not_bias": "The decision rests on stated exposure and control evidence: internet-facing placement, remote code execution, lack of compensating controls, and a known affected API. The older item is not dismissed; its uncertainty is acknowledged."
+    },
+    {
+      "cue": "Deferring escalation of a suspicious SIEM event",
+      "location": "Decision point 2",
+      "why_not_bias": "The analyst reports examining both available signals and identifies missing corroboration, a low-confidence alert label, absence of related host activity, and no relevant threat-intelligence match. An unfavorable later outcome does not itself prove a bias."
+    },
+    {
+      "cue": "Using business, contract, and audit implications in a change justification",
+      "location": "Decision point 3",
+      "why_not_bias": "These are ordinary decision-relevant impacts in emergency-change governance. Loss Framing requires evidence that framing equivalent outcomes as losses rather than gains altered the decision process or risk preference."
+    },
+    {
+      "cue": "Patching only the two systems in the default scanner view initially",
+      "location": "Decision point 4",
+      "why_not_bias": "The participant did not treat the default view as complete, explicitly anticipated tagging-based omissions, and planned a broader sweep. The later discovery of hosts identifies a delayed follow-up, not necessarily a cognitive bias."
+    },
+    {
+      "cue": "The analyst's uncertainty and qualified language",
+      "location": "Across all decision points",
+      "why_not_bias": "Statements such as \"reasonably, but not completely,\" \"hard to know,\" and \"I genuinely don't know\" are calibrated uncertainty rather than evidence of flawed reasoning."
+    }
+  ],
+  "causal_audit": {
+    "causal_claims": [
+      {
+        "claim": "Patching the API gateway removed the opportunity to observe whether exploitation would have occurred during the following week.",
+        "assessment": "Appropriately qualified. The participant does not infer that no observed exploitation proves either that the emergency patch was unnecessary or that the justification was exactly right."
+      },
+      {
+        "claim": "The SIEM alert's later linkage to a low-level compromise establishes that the prior decision to defer escalation was necessarily wrong.",
+        "assessment": "Explicitly rejected by the participant. The response appropriately distinguishes ex post outcome information from the evidence available at the original decision time."
+      },
+      {
+        "claim": "A fresh risk assessment of the database server might have changed the initial priority ordering.",
+        "assessment": "Plausible but explicitly hypothetical and not presented as established causation. The actual effect of a fresh assessment is unknown."
+      },
+      {
+        "claim": "The mixed technical and business justification caused IT operations to approve the emergency change.",
+        "assessment": "Not established. The participant correctly states that IT operations did not identify the decisive factor."
+      }
+    ],
+    "correlation_causation_risks": [
+      {
+        "risk": "Inferring that absence of observed exploitation after remediation demonstrates that the initial risk was overstated.",
+        "mitigation_present": "Yes. The participant recognizes that remediation changed the observable state and therefore makes the result inconclusive."
+      },
+      {
+        "risk": "Inferring that later-confirmed compromise proves the original low-confidence alert should have been escalated immediately.",
+        "mitigation_present": "Yes. The participant reconstructs the original uncertainty and missing corroboration rather than reasoning backward solely from the outcome."
+      },
+      {
+        "risk": "Inferring that one component of the change memo caused approval.",
+        "mitigation_present": "Yes. The participant does not claim that EPSS, business language, or outage duration was causal."
+      }
+    ],
+    "counterfactual_present": false,
+    "changed_variable": "Not applicable; the interview contains informal reflective hypotheticals about having more time and seeing more hosts, but it does not implement a designed counterfactual manipulation.",
+    "held_constant": [
+      "CVE technical details and CVSS score",
+      "Backlog composition and older database-server finding",
+      "Forty-eight-hour compliance deadline",
+      "Analyst role, staffing, and tooling",
+      "Four-decision-point structure and cybersecurity operational context"
+    ],
+    "causal_coherence": "strong",
+    "explanation": "The interview is causally disciplined for an ambiguous-control condition. It repeatedly distinguishes contemporaneous evidence from later outcomes, avoids assigning unobserved approval causes, and treats informal time-availability statements as uncertainty rather than proof of causal effects. The hidden specification correctly identifies no designed counterfactual variable for this condition."
+  },
+  "quality_scores": {
+    "occupational_realism": 0.95,
+    "cta_fidelity": 0.91,
+    "bias_separability": 0.94,
+    "bias_subtlety": 0.96,
+    "control_fidelity": 0.96,
+    "counterfactual_fidelity": 1.0,
+    "narrative_coherence": 0.95,
+    "naturalness": 0.92,
+    "hidden_label_integrity": 1.0,
+    "overall_quality": 0.95
+  },
+  "revision_summary": {
+    "revision_required": false,
+    "supported_occurrence_total": 0,
+    "requested_occurrence_total": 0,
+    "missing_occurrence_total": 0,
+    "accidental_occurrence_total": 0,
+    "priority": "none",
+    "recommended_action": "accept",
+    "global_revision_constraints": [
+      "Maintain zero supported occurrences of all five named target biases.",
+      "Do not reinterpret uncertainty, workload, speed, later adverse outcomes, or incomplete information as bias without a specific reasoning mechanism.",
+      "Preserve the participant's explicit separation of contemporaneous evidence from retrospective outcome knowledge.",
+      "Preserve the four-decision-point structure: prioritization, SIEM escalation threshold, emergency-change justification, and patch-scope sequencing.",
+      "If editing for style, retain the explicit evidence that relevant cues were considered rather than ignored and that alternatives remained available."
+    ],
+    "revision_order": []
+  },
+  "failure_flags": []
+}

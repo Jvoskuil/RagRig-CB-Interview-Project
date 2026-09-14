@@ -16,7 +16,7 @@ INPUTS
 - Occupational domain: {{High-risk Engineering and Fire Engineering}}
 - Domain ID: {{HE}}
 - Role or seniority: {{Emergency Response/Incident Commander (Industrial Fire Brigade)}}
-- Scenario ID: {{HE_Biased_6}}
+- Scenario ID: {{HE_Biased_7}}
 - Condition: {{biased}}
 - Exact bias-occurrence manifest: {{
 [

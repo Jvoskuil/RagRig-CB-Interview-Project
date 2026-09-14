@@ -1,0 +1,68 @@
+# Ranker comparison: the default hybrid RRF ranker vs. pure cosine ranking
+# (WeightedFusionRanker alpha = 1.0), on the ragrig default chat backend
+# (Ollama, qwen3.5:9b), varying the context budget (4096 and 8192 tokens).
+# Corpus = the embedded HTML fixture book, default pipeline (full parser
+# registry + MarkdownChunker).
+
+corpus_dirs = ["papers=/mnt/c/Users/Joost/Documents/papers"]
+
+queries = [
+    "Word count is 1,484 (within the 1,215–1,485 range). Here is the revised interview, with the two flagged repairs applied: a case-specific cue at the pilotage decision showing personal experience discounting the current gust variability (cb_04), and a targeted follow-up eliciting a concrete meeting-dynamics mechanism for the withheld dissent (cb_05). All previously supported occurrences, the four-decision-point structure, and the causal/hypothetical probes are preserved unchanged. Interviewer: Thanks for making time for this. Before we start, I want to confirm this is a voluntary conversation about a specific shift you managed, purely to understand your decision-making process. Nothing here is about assigning fault. Are you comfortable with that, and can you tell me your role? Participant: Sure. I'm the Port Captain — vessel scheduling, pilotage coordination, and final sign-off on berthing and cargo operations when conditions get marginal. Nine years in this role, terminal operations before that. Interviewer: Great. I'd like you to walk me through a shift that stands out — the one involving the Nordic Star, with the wind system that came through. Can you give me the overall account first, start to finish? Participant: Sure. We had the Nordic Star scheduled to berth that morning. The plan had been signed off the night before based on a 20-knot forecast, which is well within our normal envelope. When I came in around six, the updated bulletin had gusts revised up to 28, trending toward 32 by afternoon. We also had a hard tidal window closing at two, and the next vessel was booked into that same berth at six that evening, so there wasn't a lot of slack. I looked at the numbers and decided to keep the plan as it was — the shift had already been briefed, tugs were assigned, the pilot was standing by, and reopening it would have meant restructuring the whole day for a bulletin that could easily soften by midday. Around noon it firmed up at 27 knots and climbing, so it wasn't a one-off spike. The pilotage went ahead early afternoon. Our pilot had done a lot of transits in similar conditions — I want to say 18 of the last 20 in that wind range went through clean. Crane manufacturer envelope allows up to 30 knots sustained, so we still had margin on paper. I've personally taken vessels through worse crosswinds, so between the pilot's numbers and my own read of it, we went ahead as planned rather than pulling in an extra tug or slowing the approach. It got the vessel alongside, but there was a gust right at the final approach that pushed the bow toward the fendering — no contact damage, but it was closer than anyone wanted. Then we moved into discharge. In the pre-lift meeting I laid out a plan to run the STS cranes at a reduced lift rate given the wind. That got agreed on quickly, no real pushback, and we started. Partway through, a gust spiked hard enough to trip the automatic wind alarm on one crane, so we had to pause. After it reset, the readings were bouncing around 24 knots but not settling, and one of our engineers wanted thirty minutes before restarting. I made the call to resume based on the operators we had on the cranes — very experienced team — and we finished the discharge with only a short delay. Interviewer: Let's slow down and rebuild that timeline piece by piece. What exactly changed between the evening plan and the six a.m. bulletin? Participant: The evening plan used a 20-knot forecast. The morning bulletin bumped that to 28 gusting, trending toward 32 later. It wasn't a small revision. Interviewer: And after the pilotage, what new information came in? Participant: The near-miss on the fender got logged, and I had a conversation with the pilot afterward about the gust timing on final approach. Interviewer: What happened structurally after the operations meeting, before the alarm tripped? Participant: We'd started reduced-rate lifting, everything looked normal for maybe forty minutes, then the spike came through and the crane's own safety system shut it down. Interviewer: And once it reset? Participant: Readings were fluctuating in the low-to-mid twenties, not stable, and that's when the engineer flagged waiting. Interviewer: Let's go back to that first call, keeping the original plan after the six a.m. bulletin. What told you the plan still held? Participant: Mostly that everything was already in motion — tugs booked, pilot briefed, berth confirmed. The forecast had moved, but forecasts move around this time of year, and 28 with a trend to 32 didn't feel like a different situation than the 20 we'd planned for, more like a variation on it. Reopening the schedule for a bulletin update felt like more disruption than the number justified. Interviewer: What alternatives did you actually consider at that point? Participant: I could've asked for a fresh risk assessment, pushed the berthing earlier to beat the trend, or delayed and eaten the tidal window. Delay meant missing the window entirely, and reassessment would've eaten into the same time we needed to berth. Interviewer: How much of that decision was about the number itself versus the fact the plan already existed? Participant: Honestly, probably both. But I keep coming back to — it wasn't 40 knots, it was still in the range we'd already built the plan around. Interviewer: Moving to the pilotage decision. What was the deciding factor there? Participant: The pilot's track record in that wind band, and the crane envelope still having margin. And frankly, I've been through plenty of crosswind approaches myself over the years, so I had a good feel for what the vessel could handle. The wind we were actually seeing that afternoon was gustier and more variable than what I usually deal with, but since I'd handled worse steady crosswinds before, I didn't think that gustiness changed much about how the approach would go. Interviewer: Did you weigh the alternative of adding a tug or slowing the approach? Participant: We talked about it briefly. But with 18 out of 20 similar transits going clean, and my own read of the conditions, it didn't seem necessary to add that complexity. Interviewer: If someone had put it to you as one in twenty transits having a problem, rather than eighteen out of twenty succeeding, would that have changed anything? Participant: I don't think I really thought about it that way at the time. Put like that it sounds worse, but it's the same numbers. Interviewer: Let's talk about the pre-lift meeting. How did the team land on proceeding with reduced-rate lifting? Participant: I presented the plan, and it was agreed pretty fast. Nobody raised an objection in the room. Interviewer: Did you learn anything afterward about how people actually felt going in? Participant: Later on, yeah — I found out two of the supervisors had talked between themselves beforehand and had some reservations about lifting so close to the soft limit. Neither of them said anything when I laid it out. Interviewer: Any read on why that didn't come up in the meeting itself? Participant: Hard to say. Maybe they figured I'd already made the call. Maybe they agreed once they heard the reduced-rate plan. It moved quickly either way. Interviewer: Did either of them say afterward what specifically held them back from raising it in the room? Participant: One of them mentioned it in passing — once I'd laid out the reduced-rate plan and it got nodded through that fast, it felt like reopening it would mean being the one who stalled the discharge, so they let it go rather than push back. Interviewer: Last decision point — resuming after the alarm reset. Walk me through that call. Participant: The engineer wanted thirty minutes to be sure the readings settled. I looked at the crew running the cranes — very capable, some of the most experienced operators we've got — and decided we could resume and they'd manage the fluctuation fine. We also had the next vessel coming in, so there was real pressure to get moving again. Interviewer: Was there anything in the readings themselves that supported resuming immediately, versus waiting the thirty minutes? Participant: Not really new data, no. The numbers hadn't stabilized, they were still bouncing. It came down to trusting the operators to handle it. Interviewer: How confident were you in each of these calls at the time, compared to now? Participant: At the time, fairly confident — you make these calls constantly and mostly they're fine. Looking back, the fender near-miss and the alarm trip make me want to sit with the numbers a bit longer next time rather than lean so much on how things usually go. Interviewer: Last couple of hypotheticals. If the six a.m. bulletin had shown 32 knots outright instead of 28 trending toward it, would your first decision have gone differently? Participant: Probably, yeah. Something clearly outside the range we planned for would've triggered a real reassessment. Interviewer: And if the supervisor who had reservations had spoken up in that meeting? Participant: I'd like to think we'd have paused to talk it through properly. It's possible the plan would've held anyway, but at least it would've been tested. Interviewer: Appreciate you walking through that in detail. Participant: No problem."
+]
+
+[[agents]]
+label = "Gemini Prompt 8192"
+[agents.chat]
+provider = "deepseek"            # "ollama" | "deepseek"
+#model = "qwen2.5:1.5b"         # ignored for deepseek
+context_tokens = 8192          # context budget for retrieved chunks
+deepseek_model = "deepseek-v4-pro"   # deepseek only
+#deepseek_api_key = DEEPSEEK_API_KEY # deepseek only (or DEEPSEEK_API_KEY env)
+# context_size_mode = "Auto"          # "Auto" | "Forced"
+system_prompt_path = "prompt_gemini.md"    # custom system prompt ({context} placeholder)
+# request_timeout_secs = 300          # per-request timeout, None = no timeout
+[agents.chat.params]                # generation overrides (all optional)
+# temperature = 0.7
+# top_p = 0.9
+# max_tokens = 1024
+seed = 42
+
+[[agents]]
+label = "Sonar Prompt 8192"
+[agents.chat]
+provider = "deepseek"            # "ollama" | "deepseek"
+#model = "qwen2.5:1.5b"         # ignored for deepseek
+context_tokens = 8192          # context budget for retrieved chunks
+deepseek_model = "deepseek-v4-pro"   # deepseek only
+#deepseek_api_key = DEEPSEEK_API_KEY # deepseek only (or DEEPSEEK_API_KEY env)
+# context_size_mode = "Auto"          # "Auto" | "Forced"
+system_prompt_path = "prompt_sonar.md"    # custom system prompt ({context} placeholder)
+# request_timeout_secs = 300          # per-request timeout, None = no timeout
+ [agents.chat.params]                # generation overrides (all optional)
+# temperature = 0.7
+# top_p = 0.9
+# max_tokens = 1024
+ seed = 42
+
+[[agents]]
+label = "Sonnet Prompt 8192"
+[agents.chat]
+provider = "deepseek"            # "ollama" | "deepseek"
+#model = "qwen2.5:1.5b"         # ignored for deepseek
+context_tokens = 8192          # context budget for retrieved chunks
+deepseek_model = "deepseek-v4-pro"   # deepseek only
+#deepseek_api_key = DEEPSEEK_API_KEY # deepseek only (or DEEPSEEK_API_KEY env)
+# context_size_mode = "Auto"          # "Auto" | "Forced"
+system_prompt_path = "prompt_sonnet.md"    # custom system prompt ({context} placeholder)
+# request_timeout_secs = 300          # per-request timeout, None = no timeout
+[agents.chat.params]                # generation overrides (all optional)
+# temperature = 0.7
+# top_p = 0.9
+# max_tokens = 1024
+seed = 42
+
+
+# ---Embed testing ---
+[embed]
+#top_k = 0
+top_k = 50

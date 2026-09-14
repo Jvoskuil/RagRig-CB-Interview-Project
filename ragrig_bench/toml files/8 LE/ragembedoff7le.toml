@@ -1,0 +1,67 @@
+# Ranker comparison: the default hybrid RRF ranker vs. pure cosine ranking
+# (WeightedFusionRanker alpha = 1.0), on the ragrig default chat backend
+# (Ollama, qwen3.5:9b), varying the context budget (4096 and 8192 tokens).
+# Corpus = the embedded HTML fixture book, default pipeline (full parser
+# registry + MarkdownChunker).
+
+corpus_dirs = ["papers=/mnt/c/Users/Joost/Documents/papers"]
+
+queries = [
+    "**Interviewer:** Thanks for making time for this. As explained, this is a routine debrief for our scene-processing case review — not a disciplinary review. I'll ask you to walk me through a specific call, how you made certain decisions on scene, and what information you had at each point. Nothing you say here goes into the case file. Sound okay? **Participant:** Sure, that's fine. Happy to walk through it. **Interviewer:** Can you tell me a bit about your role and how long you've been doing scene work? **Participant:** I've been a scene examiner for about nine years, six with this department. I handle sudden deaths, burglaries, occasionally violent crime scenes when the primary unit's tied up. This one was a sudden death — elderly male, found at the bottom of a staircase. **Interviewer:** Let's start with the call itself. What did you know before you arrived? **Participant:** Dispatch had it as an unresponsive elderly male at the bottom of interior stairs. That's it, pretty bare-bones. When I pulled up, patrol was already inside — they'd been there maybe fifteen minutes. The responding officer met me at the door and gave me a quick rundown: decedent was 82, lived with his daughter and son-in-law, used a walker, and had fallen twice before in the past year according to the family. He said something like, 'unsteady on his feet lately, this looks like another one of those.' I logged that context, and honestly it lined up with what I was seeing — walker knocked over near the body, body at the base of the stairs. So my opening note in the scene log was 'apparent accidental fall, elderly male with mobility history.' I started my walkthrough from there. **Interviewer:** Take me through the walkthrough itself — order of operations, what you looked at first. **Participant:** Standard sequence: overall scene photos, then work inward toward the body. I did wide shots of the staircase and landing, then focused on the walker — it was tipped over about two feet from him. I got several angles and measurements on that. The stair runner itself didn't show any drag marks or scuffing, which I noted but didn't flag as anything — that's pretty normal, carpet doesn't always take marks well. The walker gave me something concrete to point to, whereas the lack of marks didn't really register as pointing anywhere — there was nothing there to work from, even though I'd have expected at least some trace under a lot of fall scenarios. Then I moved to the body. That's when I noticed a bruise on his upper left arm, faint, not an obvious point of contact with the stairs or railing. I photographed it once, no scale marker, and moved on because I was also thinking about the second scene I had queued that afternoon — a burglary that needed processing before the residents got back. **Interviewer:** You mentioned the family and a neighbor spoke with you. When did that happen? **Participant:** Family — his daughter and son-in-law — talked to me maybe forty minutes in, once I'd cleared the immediate area around the body. Daughter told me he'd started a new blood pressure medication a couple weeks back and it made him dizzy, especially getting up from sitting. There was a pill bottle on the nightstand upstairs, I saw it but didn't check the dosage or when he'd last taken it. Then, right as I was wrapping up interior work, the next-door neighbor came over and mentioned she'd heard raised voices from the house two nights before. I asked her a few follow-ups — how sure she was of the night, whether she recognized the voices — because that's the kind of detail you want to pin down before you put weight on it. **Interviewer:** Let's go back to that first framing decision — adopting the fall narrative from patrol's briefing. What were you weighing there? **Participant:** I mean, patrol's often right about the general shape of these calls, they see a lot of them too. The alternative would've been to hold off on writing anything down until I'd done a full read of the scene myself. I did think about that, but with a second scene waiting, taking the officer's context as a starting point saved time. It wasn't a conclusion, just an orientation. **Interviewer:** Did that orientation affect what you looked for first? **Participant:** Probably some. I went to the walker and the stairs before anything else, because that's where a fall-consistent scene tells its story. I don't think I would've done it drastically differently otherwise — that's just where the informative evidence usually is on a fall call. **Interviewer:** On the documentation itself — you gave the walker and stairs multiple angles and measurements, but a single unscaled photo for the arm bruise. Walk me through that call. **Participant:** Time was a factor, honestly. The stairs and walker are the geometry that either supports or complicates a fall, so that's where I put my effort. The bruise — it wasn't clearly inconsistent with anything, it was just unexplained. I didn't have a reason at that moment to treat it as more significant than what I was already documenting. **Interviewer:** Was there a point where you considered giving it the same treatment — scale marker, multiple angles? **Participant:** I thought about it briefly. But I was already committed to the stairs documentation being the priority, and I didn't want to lose time second-guessing my own sequence. **Interviewer:** Let's talk about the family's statement versus the neighbor's. You said you followed up with the neighbor about timing and voice recognition. Did you do anything similar with the daughter's medication account? **Participant:** Not really, no. I wrote it down as given — new medication, dizziness, that fit with what I was already seeing. I didn't check the bottle's fill date or ask when his last dose was. **Interviewer:** Why the difference in how you approached those two accounts? **Participant:** The family knows him day to day. She'd know if he was dizzy. The neighbor's account felt more like something I needed to nail down before I gave it any weight — could've been a TV, could've been a different night. It just needed more pinning down. **Interviewer:** When you sat down to draft your working narrative, how did the pieces come together? **Participant:** It came together pretty naturally — dizziness from the medication, reaches for the walker, misses a step, goes down. The bruise fit into that too; arms flail during a fall, contact happens in ways that aren't always obvious from the final position. It read as one coherent sequence. **Interviewer:** Did you test that explanation for the bruise against the fall trajectory specifically, or was it more that it fit the overall story? **Participant:** More the latter, I'd say. It wasn't contradicting anything, so it slotted in. **Interviewer:** Let's move to later in the visit. Your earlier notes had a line about the bruise warranting further review. What happened to that language? **Participant:** Right, I'd written that mid-visit as a placeholder, just flagging it for myself. Then near the end, the detective called — he'd gotten the family's account secondhand and said it sounded like a straightforward fall, matched the history. By that point I'd already told him over the phone that the scene looked consistent with a fall, so when I sat down to finalize my report, I wrote it up along those lines. The hedge language didn't make it into the final version. **Interviewer:** Did the detective's call bring any new scene evidence with it, or was it mainly restating the fall account? **Participant:** No new evidence, no — nothing about the bruise or anything physical had changed since I'd written that note earlier. It was really just him repeating the family's version back to me. But hearing it right then, fresh, kind of pushed the earlier placeholder to the back of my mind when I was actually typing up the report. **Interviewer:** Was there anything between that mid-visit note and the final report that would have resolved the uncertainty behind it? **Participant:** Not really resolved, no. It just didn't come up again until I was doing the final body check before the ME investigator arrived, and I noticed the lividity pattern seemed a little off for how he was positioned when found. **Interviewer:** What did you do with that observation? **Participant:** It sat a little uneasily with me, honestly, because I'd already told the detective it looked like a fall. Going back and flagging something that cut against that felt like it would undo what I'd just told him. So I chalked it up to possible shifting during discovery — first responders checking for a pulse, that kind of thing — without actually confirming that anyone had moved him. It let me leave the account I'd given intact. **Interviewer:** If the lividity finding had come up earlier in the visit instead of near the end, do you think you'd have handled it differently? **Participant:** Maybe. If I'd seen it before I talked to the detective, I probably would've flagged it more prominently rather than folding it into a footnote. **Interviewer:** What would have changed your handling of the bruise or the neighbor's statement, looking back? **Participant:** Honestly, if I'd photographed the bruise with a scale marker right away, or pushed the family a bit on the medication timing the same way I pushed the neighbor, I'd have more to work with now. At the time none of it felt urgent enough to slow down for. **Interviewer:** Last one — if the neighbor had spoken to you before the family did, do you think your notes would look different? **Participant:** Possibly. I might've gone in asking the family more pointed questions instead of just recording what they offered. Order mattered more than I probably realized in the moment. **Interviewer:** That's helpful, thank you. I think that covers what I needed. **Participant:** No problem. Let me know if the ME's findings change anything — I'd want to know either way."
+]
+
+[[agents]]
+label = "Gemini Prompt 8192"
+[agents.chat]
+provider = "deepseek"            # "ollama" | "deepseek"
+#model = "qwen2.5:1.5b"         # ignored for deepseek
+context_tokens = 8192          # context budget for retrieved chunks
+deepseek_model = "deepseek-v4-pro"   # deepseek only
+#deepseek_api_key = DEEPSEEK_API_KEY # deepseek only (or DEEPSEEK_API_KEY env)
+# context_size_mode = "Auto"          # "Auto" | "Forced"
+system_prompt_path = "prompt_gemini.md"    # custom system prompt ({context} placeholder)
+# request_timeout_secs = 300          # per-request timeout, None = no timeout
+[agents.chat.params]                # generation overrides (all optional)
+# temperature = 0.7
+# top_p = 0.9
+# max_tokens = 1024
+seed = 42
+
+[[agents]]
+label = "Sonar Prompt 8192"
+[agents.chat]
+provider = "deepseek"            # "ollama" | "deepseek"
+#model = "qwen2.5:1.5b"         # ignored for deepseek
+context_tokens = 8192          # context budget for retrieved chunks
+deepseek_model = "deepseek-v4-pro"   # deepseek only
+#deepseek_api_key = DEEPSEEK_API_KEY # deepseek only (or DEEPSEEK_API_KEY env)
+# context_size_mode = "Auto"          # "Auto" | "Forced"
+system_prompt_path = "prompt_sonar.md"    # custom system prompt ({context} placeholder)
+# request_timeout_secs = 300          # per-request timeout, None = no timeout
+ [agents.chat.params]                # generation overrides (all optional)
+# temperature = 0.7
+# top_p = 0.9
+# max_tokens = 1024
+ seed = 42
+
+[[agents]]
+label = "Sonnet Prompt 8192"
+[agents.chat]
+provider = "deepseek"            # "ollama" | "deepseek"
+#model = "qwen2.5:1.5b"         # ignored for deepseek
+context_tokens = 8192          # context budget for retrieved chunks
+deepseek_model = "deepseek-v4-pro"   # deepseek only
+#deepseek_api_key = DEEPSEEK_API_KEY # deepseek only (or DEEPSEEK_API_KEY env)
+# context_size_mode = "Auto"          # "Auto" | "Forced"
+system_prompt_path = "prompt_sonnet.md"    # custom system prompt ({context} placeholder)
+# request_timeout_secs = 300          # per-request timeout, None = no timeout
+[agents.chat.params]                # generation overrides (all optional)
+# temperature = 0.7
+# top_p = 0.9
+# max_tokens = 1024
+seed = 42
+
+# ---Embed testing ---
+[embed]
+top_k = 0
+#top_k = 50

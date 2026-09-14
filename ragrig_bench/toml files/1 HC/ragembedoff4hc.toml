@@ -1,0 +1,69 @@
+# Ranker comparison: the default hybrid RRF ranker vs. pure cosine ranking
+# (WeightedFusionRanker alpha = 1.0), on the ragrig default chat backend
+# (Ollama, qwen3.5:9b), varying the context budget (4096 and 8192 tokens).
+# Corpus = the embedded HTML fixture book, default pipeline (full parser
+# registry + MarkdownChunker).
+
+corpus_dirs = ["papers=/mnt/c/Users/Joost/Documents/papers"]
+
+queries = [
+"Interviewer: Thanks for making time for this. Just to confirm, this is a voluntary conversation about how you approach clinical decisions, and I'll be asking about a specific case you flagged from a recent shift. Nothing you say will be attached to your name in any report. Sound okay? Participant: Sure, that's fine. I've done a couple of these before for QI purposes, so I know the drill. Interviewer: Great. Can you tell me your role and roughly how long you've been practicing? Participant: I'm a hospitalist, internal medicine. I've been an attending for about nine years now, mostly at this hospital. I take the day handoff from the night team and round on the general medicine floor. Interviewer: Perfect. Let's start broad — walk me through the case you had in mind. Participant: Sure. This was a 68-year-old man who came in overnight through the ED. Fever, around 38.9, heart rate up around 112, blood pressure a little soft, 98 over 62, and the nurse noted he was mildly confused for a bit overnight. No clear source jumped out — no cough, no dysuria that he reported, no obvious skin findings on the ED note. Labs showed a mild leukocytosis. So basically a nonspecific presentation that could've been urinary, pulmonary, early skin or soft tissue, honestly a handful of things. Interviewer: What was going through your mind when you first saw this? Participant: Two things, really. Clinically, it's a fairly textbook SIRS picture without a clear source yet — common enough. But I'll be honest, it reminded me a lot of a patient I had maybe three weeks earlier. Similar vitals, similar vague presentation, and that one turned out to be a very fast-moving soft tissue infection that we caught late. It didn't go well. So when I saw this chart, that case was sitting in the back of my mind. Interviewer: How did that shape what you did next? Participant: I ordered a CT of the torso pretty much right away, before we even had urinalysis back. My reasoning at the time was I didn't want to be in that position again where we're playing catch-up on a soft tissue source. In hindsight, if I strip away that recent memory, this patient didn't actually have any exam findings pointing that direction — no erythema, no crepitus, nothing focal. But it felt like the responsible thing given what I'd just been through. Interviewer: Got it. What other options were on the table? Participant: I could've done a more stepwise workup — basic labs, urinalysis, maybe a chest film first, and reserved cross-sectional imaging if something localized. Or waited to see how his vitals trended over the next hour or two before committing to advanced imaging. Both were reasonable. I just didn't feel comfortable waiting. Interviewer: What did the imaging show? Participant: Came back about three hours later — clean. No abscess, no fasciitis, no intra-abdominal process. Urinalysis was still pending at that point anyway. Interviewer: Let's move to antibiotics. What happened there? Participant: Once the SIRS criteria were clearly met, I pulled up our sepsis order set. It gives you three empiric bundles — a narrow single-agent option, a broad two-drug 'standard' bundle, and then a three-drug 'extended' bundle that basically tacks on an extra agent covering organisms the standard bundle already handles for a case like this, just with more infusion time and extra renal monitoring tacked on. Interviewer: How did you choose among those? Participant: He was hemodynamically stable enough — SIRS positive but not meeting severe sepsis criteria. Looking at the three side by side, that third option didn't really buy you anything extra for a stable patient like him, it just added burden. But honestly, seeing it sitting there next to the standard bundle made the standard one look like the obviously sensible choice — clearly more coverage than the narrow option, without the extra baggage of the third one. So that's what I went with. Interviewer: Did you separately work out what spectrum his actual severity called for, independent of the three options in front of you? Participant: That's a fair question. Looking back, I think seeing that third bundle sitting there made the standard one look better by comparison, more than me actually starting from his numbers and building up from there. Pharmacy flagged later that the extended bundle is rarely indicated at this severity level anyway, and when ID called back, they said the standard bundle was reasonable but that the narrow one probably would've covered him fine given how stable he was. Interviewer: How did you take that feedback? Participant: A little bit of 'huh, okay.' Not wrong exactly, just broader than strictly necessary in retrospect. Interviewer: Let's talk about the monitoring orders — telemetry and the catheter. Participant: Right, so by mid-morning he was much improved. Heart rate down to 88, pressure 118 over 74, mentating clearly. Our sepsis order set auto-populates five days of continuous telemetry and continues the indwelling catheter as part of the standard pathway. Nursing actually flagged that he was up and walking around and asked whether the catheter was still needed. Interviewer: What did you do with those orders? Participant: I signed off on them as they were configured. Didn't actively shorten the telemetry window or pull the catheter order at that point. Interviewer: Was there a specific reason you left them as configured versus reassessing given how much better he looked? Participant: Honestly, I didn't sit down and re-derive whether five days was still appropriate. It's just what comes up when you open the pathway, and it's what most patients on this protocol get. Case management mentioned afterward that prolonged catheter use bumps up infection risk and can drag out length of stay, and telemetry didn't show anything over the next two days anyway, so it's hard to say it changed his outcome. But I probably could have revisited it earlier than I did. Interviewer: Now the rounds discussion the next morning — what happened there? Participant: The overnight resident's handoff, and how she presented it verbally at rounds, framed this as 'likely urosepsis' — she'd seen mild pyuria on the early UA. That was the first thing said about the case, and honestly that framing kind of stuck for the group. Interviewer: What new information came in around that time? Participant: During that same discussion, the finalized urine culture came back with no significant growth, and the blood culture flagged preliminarily as gram-positive cocci in clusters — which honestly points more toward a skin or line source than urinary. Interviewer: How did the team handle that shift in the data? Participant: We acknowledged it, but the conversation kept circling back to the urosepsis framing for a while — talking about tweaking coverage for a urinary source, whether to repeat the UA, that kind of thing. It wasn't until a bit later, after we looked at his peripheral IV site and saw some redness there, that we really pivoted and started treating it as a likely catheter-related bacteremia instead. Interviewer: Looking back, what do you think anchored the conversation to the urinary framing for as long as it did? Participant: Probably that it was the first explanation on the table. Once you've got a plausible story and a room full of people nodding along, it takes a beat for contradictory data to really land, especially if it comes in mid-discussion rather than as the headline. Interviewer: If the culture results had come back before rounds even started, do you think the discussion would've gone differently? Participant: Probably, yeah. If gram-positive cocci and a negative urine culture were the opening facts instead of 'likely urosepsis,' I think we'd have gone straight to the IV site exam. Interviewer: How much time pressure were you under across the shift overall? Participant: Constant, honestly. ED wanted the bed, rounds have a hard start time, and you're juggling four or five other patients too. None of these felt like decisions I had the luxury of sitting with for twenty minutes each. Interviewer: If you were handed this exact same information again tomorrow, is there a point you'd approach differently? Participant: I think I'd force myself to write down the actual severity-based reasoning before looking at the order set options, rather than comparing across them first. And on the monitoring orders, I'd build in a habit of re-checking defaults once the patient's status changes, instead of just carrying them forward. The imaging call I'm less sure about — I still don't know that I'd talk myself out of it given how that last case ended. Interviewer: That's really helpful. Anything else stand out from this case you think is worth noting? Participant: Just that none of these felt like bad calls in the moment. It's only looking back at the sequence that you notice how much the earlier stuff — a past case, the first diagnosis mentioned, what's already checked in the system — shapes what happens next. Interviewer: Thanks, this has been really useful."
+]
+
+[[agents]]
+label = "Sonar Prompt 8192"
+[agents.chat]
+provider = "deepseek"            # "ollama" | "deepseek"
+#model = "qwen2.5:1.5b"         # ignored for deepseek
+context_tokens = 16384          # context budget for retrieved chunks
+deepseek_model = "deepseek-v4-pro"   # deepseek only
+#deepseek_api_key = DEEPSEEK_API_KEY # deepseek only (or DEEPSEEK_API_KEY env)
+# context_size_mode = "Auto"          # "Auto" | "Forced"
+system_prompt_path = "prompt_sonar.md"    # custom system prompt ({context} placeholder)
+# request_timeout_secs = 300          # per-request timeout, None = no timeout
+ [agents.chat.params]                # generation overrides (all optional)
+# temperature = 0.7
+# top_p = 0.9
+# max_tokens = 1024
+ seed = 42
+
+
+[[agents]]
+label = "Sonnet Prompt 8192"
+[agents.chat]
+provider = "deepseek"            # "ollama" | "deepseek"
+#model = "qwen2.5:1.5b"         # ignored for deepseek
+context_tokens = 16384          # context budget for retrieved chunks
+deepseek_model = "deepseek-v4-pro"   # deepseek only
+#deepseek_api_key = DEEPSEEK_API_KEY # deepseek only (or DEEPSEEK_API_KEY env)
+# context_size_mode = "Auto"          # "Auto" | "Forced"
+system_prompt_path = "prompt_sonnet.md"    # custom system prompt ({context} placeholder)
+# request_timeout_secs = 300          # per-request timeout, None = no timeout
+[agents.chat.params]                # generation overrides (all optional)
+# temperature = 0.7
+# top_p = 0.9
+# max_tokens = 1024
+seed = 42
+
+[[agents]]
+label = "Gemini Prompt 8192"
+[agents.chat]
+provider = "deepseek"            # "ollama" | "deepseek"
+#model = "qwen2.5:1.5b"         # ignored for deepseek
+context_tokens = 16384          # context budget for retrieved chunks
+deepseek_model = "deepseek-v4-pro"   # deepseek only
+#deepseek_api_key = DEEPSEEK_API_KEY # deepseek only (or DEEPSEEK_API_KEY env)
+# context_size_mode = "Auto"          # "Auto" | "Forced"
+system_prompt_path = "prompt_gemini.md"    # custom system prompt ({context} placeholder)
+# request_timeout_secs = 300          # per-request timeout, None = no timeout
+[agents.chat.params]                # generation overrides (all optional)
+# temperature = 0.7
+# top_p = 0.9
+# max_tokens = 1024
+seed = 42
+
+
+# ---Embed testing ---
+[embed]
+top_k = 0
+#top_k = 25

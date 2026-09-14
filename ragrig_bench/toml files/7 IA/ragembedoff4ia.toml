@@ -1,0 +1,67 @@
+# Ranker comparison: the default hybrid RRF ranker vs. pure cosine ranking
+# (WeightedFusionRanker alpha = 1.0), on the ragrig default chat backend
+# (Ollama, qwen3.5:9b), varying the context budget (4096 and 8192 tokens).
+# Corpus = the embedded HTML fixture book, default pipeline (full parser
+# registry + MarkdownChunker).
+
+corpus_dirs = ["papers=/mnt/c/Users/Joost/Documents/papers"]
+
+queries = [
+    "Interviewer: Thanks for making time for this. Just to confirm, this conversation is being recorded for internal case-review and training purposes only, and I'll be asking you to walk me through a specific case in detail. You're free to skip anything you're not comfortable discussing. Can you first tell me your role and how long you've been doing this kind of work? Participant: Sure. I'm a financial crime intelligence analyst on the FIU team, been here about six years, mostly focused on trade finance and sanctions-related typologies. Before that I did two years in transaction monitoring. Interviewer: Great, thanks. I want to focus on a specific case — the Meridian Trading matter. Can you walk me through how it first came to your attention and what you were trying to accomplish? Participant: Right, so this came in through an automated alert — three invoices from Meridian Trading LLC with quantity and value mismatches, which is a classic flag for trade-based money laundering. My objective was straightforward on paper: figure out whether this was probable sanctions evasion and, if so, get a defensible escalation to compliance and law enforcement before the filing window closed. We had ten business days from the alert. Interviewer: What did the alert batch actually contain? Participant: A cluster of counterparties. Meridian was the obvious one — the ultimate beneficial owner shared a registered agent with a company from a case I'd worked about eighteen months earlier, which had ended in a successful sanctions-evasion referral. There was also a separate counterparty in the same batch, a logistics firm, that didn't match anything I recognized. And it was a heavy week — alert volume across the team was well above average, so I needed to move efficiently. Interviewer: Let's reconstruct the sequence. What did you do right after opening the alert? Participant: I scoped the review. Given the registered-agent overlap with the prior case, I focused my initial workup on Meridian and its immediate corporate web — pulling registry filings, past KYC refresh notes, that kind of thing. The logistics counterparty I noted but set aside as lower priority since it didn't fit any typology I'd seen before. Interviewer: What specifically made you decide to scope it that way rather than, say, broadly across everyone in the batch? Participant: Honestly, the registered-agent match jumped out immediately. That pattern had been reliable before — same agent, similar shell structure, same region. With the volume we were under that week, I didn't feel I had the bandwidth to give equal weight to an entity that had no connection to anything I'd seen. I did glance at the logistics firm's file, but there was nothing that screamed 'look here,' so I moved on. Interviewer: Did you consider requesting broader automated screening before locking in that scope? Participant: I thought about it, but that would've added a day or two, and the Meridian angle felt like the more productive use of time. Interviewer: What happened with the logistics counterparty afterward? Participant: A few days later it showed an unusual same-day wire pattern — nothing I'd examined at that point. My team lead actually asked why it wasn't in my initial scoping note. I didn't have a great answer beyond 'it didn't fit the pattern I was chasing.' Interviewer: Let's move to the vendor report. Walk me through what happened when that arrived. Participant: About three days in, our OSINT vendor sent a report concluding Meridian was highly likely tied to the sanctioned end-user. Their argument traced a chain of corporate registry links. The bottom line matched exactly what I already suspected from the registered-agent overlap, so it felt like strong corroboration. Interviewer: Did anyone raise concerns about the report? Participant: One of our junior analysts flagged that a step in the vendor's chain — where they treated two similarly named entities as the same legal entity — hadn't been independently verified. I remember thinking that was a fair point to note, but it read to me as a technicality rather than something that undercut the conclusion, since the overall picture fit so well with what I was already building. Interviewer: What made you weight the report the way you did? Participant: The conclusion aligned with my working theory, and the vendor has a decent track record. I treated the alignment itself as a kind of confirmation. I didn't go back and independently re-verify that specific entity-matching step before folding the report into the case file. Interviewer: What did you later learn about that? Participant: A document pull afterward showed the two entities were actually legally distinct, different beneficial owners entirely. Compliance counsel asked directly what independent verification had been done on that claim, and I had to admit — not much, beyond the vendor's own chain. Interviewer: Let's talk about the correspondent bank. What was the situation there? Participant: We'd requested SWIFT records — MT202 and MT103 messages — to confirm the fund flow to the suspected end-user. That correspondent bank, in a secondary jurisdiction, is notoriously slow; historically those requests take twelve to fifteen business days. We were six days from the filing deadline with nothing back yet, no confirmation timeline in writing. Interviewer: What did you decide to do about the escalation while waiting? Participant: I held off drafting it. I figured the records would probably come through in time — I wanted the file to be complete with that corroborating piece rather than submit something with a gap in it. Interviewer: What gave you that expectation, given the track record you mentioned? Participant: Honestly, more that I wanted it to land that way. Nothing had actually changed with the correspondent bank's typical pace. On day six they came back and said it'd be another ten days. Interviewer: What happened to the case file at that point? Participant: My team lead pointed out there wasn't a contingency escalation path drafted, so we were now scrambling. Interviewer: Let's cover the last piece — the time estimate for remaining work. Participant: With reconciliation, narrative drafting, and compliance sign-off left, I estimated two business days. I walked through the sequence assuming everything went smoothly — no rework. Interviewer: How does that estimate compare to similar cases? Participant: Comparable cross-border verification cases have typically run five to seven days. I didn't really reference that when I made the call, and I still had two other active cases pulling at me. Interviewer: What happened once you started? Participant: Reconciliation turned up a discrepancy that needed a follow-up query — cost an extra day. Sign-off took longer too, over a routine question I hadn't anticipated. Interviewer: Looking back across all four points, what were you least certain about at the time? Participant: Probably the entity-matching step and whether the records would actually show up. Those felt like the shakiest parts, even while I was moving forward on them. Interviewer: A couple of hypotheticals. If the logistics counterparty had been flagged as high-risk from the start, how would your approach have changed? Participant: I'd have split my attention much earlier and probably caught the wire pattern days sooner. Interviewer: And if you'd known upfront the correspondent bank would take fifteen days? Participant: I would have drafted a conditional escalation immediately rather than waiting. Interviewer: Last one — if a colleague had reviewed your time estimate before you committed to it, what do you think they'd have flagged? Participant: The base rate, probably, and the fact that I was already stretched across two other cases. Fair critique. Interviewer: That's really helpful, thank you."
+]
+
+[[agents]]
+label = "Gemini Prompt 8192"
+[agents.chat]
+provider = "deepseek"            # "ollama" | "deepseek"
+#model = "qwen2.5:1.5b"         # ignored for deepseek
+context_tokens = 8192          # context budget for retrieved chunks
+deepseek_model = "deepseek-v4-pro"   # deepseek only
+#deepseek_api_key = DEEPSEEK_API_KEY # deepseek only (or DEEPSEEK_API_KEY env)
+# context_size_mode = "Auto"          # "Auto" | "Forced"
+system_prompt_path = "prompt_gemini.md"    # custom system prompt ({context} placeholder)
+# request_timeout_secs = 300          # per-request timeout, None = no timeout
+[agents.chat.params]                # generation overrides (all optional)
+# temperature = 0.7
+# top_p = 0.9
+# max_tokens = 1024
+seed = 42
+
+[[agents]]
+label = "Sonar Prompt 8192"
+[agents.chat]
+provider = "deepseek"            # "ollama" | "deepseek"
+#model = "qwen2.5:1.5b"         # ignored for deepseek
+context_tokens = 8192          # context budget for retrieved chunks
+deepseek_model = "deepseek-v4-pro"   # deepseek only
+#deepseek_api_key = DEEPSEEK_API_KEY # deepseek only (or DEEPSEEK_API_KEY env)
+# context_size_mode = "Auto"          # "Auto" | "Forced"
+system_prompt_path = "prompt_sonar.md"    # custom system prompt ({context} placeholder)
+# request_timeout_secs = 300          # per-request timeout, None = no timeout
+ [agents.chat.params]                # generation overrides (all optional)
+# temperature = 0.7
+# top_p = 0.9
+# max_tokens = 1024
+ seed = 42
+
+[[agents]]
+label = "Sonnet Prompt 8192"
+[agents.chat]
+provider = "deepseek"            # "ollama" | "deepseek"
+#model = "qwen2.5:1.5b"         # ignored for deepseek
+context_tokens = 8192          # context budget for retrieved chunks
+deepseek_model = "deepseek-v4-pro"   # deepseek only
+#deepseek_api_key = DEEPSEEK_API_KEY # deepseek only (or DEEPSEEK_API_KEY env)
+# context_size_mode = "Auto"          # "Auto" | "Forced"
+system_prompt_path = "prompt_sonnet.md"    # custom system prompt ({context} placeholder)
+# request_timeout_secs = 300          # per-request timeout, None = no timeout
+[agents.chat.params]                # generation overrides (all optional)
+# temperature = 0.7
+# top_p = 0.9
+# max_tokens = 1024
+seed = 42
+
+# ---Embed testing ---
+[embed]
+top_k = 0
+#top_k = 50

@@ -1,0 +1,616 @@
+{
+  "evaluation_metadata": {
+    "task": "ontology_free_rag_cognitive_bias_benchmark_evaluation",
+    "benchmark_run_metadata": {
+      "benchmark_run_id": "HC_Biased_3_Sonnet_off",
+      "interview_id": "HC_Biased_3",
+      "system_prompt_id": "Sonnet",
+      "system_prompt_generator": "Prompt 1_2",
+      "rag_model_id": "v1.0.0",
+      "corpus_condition": "off",
+      "retrieval_configuration_id": "k=0",
+      "decoding_configuration_id": null,
+      "temperature": 1,
+      "replicate_id": null,
+      "segment_map_id": null
+    },
+    "scenario_id": "HC_Biased_3",
+    "domain_id": "HC",
+    "condition": "biased",
+    "segment_map_status": "prevalidated_provided",
+    "rag_output_parse_status": "valid_json",
+    "rag_schema_assessment": "conformant"
+  },
+  "input_validation": {
+    "rag_output_schema_violations": [],
+    "rag_summary_count_consistency": {
+      "status": "consistent",
+      "details": "The summary lists one action_bias, one anchoring_bias, and one outcome_bias; these match the three identified occurrences."
+    },
+    "evaluation_limitations": [
+      "No retrieved passages, chunks, source documents, or retrieval logs were supplied.",
+      "The interview is retrospective self-report rather than direct observation."
+    ]
+  },
+  "evaluation_segment_map": {
+    "segment_mapping_version": "1.0",
+    "segments": [
+      {
+        "segment_id": "seg_001",
+        "speaker": "Participant",
+        "segment_type": "initial_diagnostic_interpretation",
+        "raw_interview_anchor": "Reproducible tenderness was described as classic for costochondritis, and the furniture-moving history was said to fit.",
+        "eligible_reasoning_segment": true,
+        "ground_truth_bias_present": false,
+        "ground_truth_instance_ids": [],
+        "ground_truth_rationale": "This is a plausible initial clinical interpretation without the required hidden-bias manifestation by itself."
+      },
+      {
+        "segment_id": "seg_002",
+        "speaker": "Participant",
+        "segment_type": "diagnostic_evidence_weighting_and_closure",
+        "raw_interview_anchor": "The chest wall tenderness was the dominant finding; the flight and calf symptom felt like background noise; the participant did not chase it further and considered the case basically settled.",
+        "eligible_reasoning_segment": true,
+        "ground_truth_bias_present": true,
+        "ground_truth_instance_ids": [
+          "pc_01"
+        ],
+        "ground_truth_rationale": "The participant settles on a musculoskeletal explanation after a salient finding, dismisses unresolved PE-risk cues, and stops further differential consideration."
+      },
+      {
+        "segment_id": "seg_003",
+        "speaker": "Participant",
+        "segment_type": "alternative_management_analysis",
+        "raw_interview_anchor": "The participant described either redoing risk stratification with Wells/PERC or obtaining CTPA immediately.",
+        "eligible_reasoning_segment": true,
+        "ground_truth_bias_present": false,
+        "ground_truth_instance_ids": [],
+        "ground_truth_rationale": "The participant explicitly articulates competing options; the bias manifestation occurs in the subsequent choice rationale."
+      },
+      {
+        "segment_id": "seg_004",
+        "speaker": "Participant",
+        "segment_type": "immediate_action_choice_and_resource_allocation",
+        "raw_interview_anchor": "The participant sent the patient straight for CTPA, citing the queue, boarding pressure, handoff deadline, and the desire to get a real answer and make the decisive move.",
+        "eligible_reasoning_segment": true,
+        "ground_truth_bias_present": true,
+        "ground_truth_instance_ids": [
+          "ab_01"
+        ],
+        "ground_truth_rationale": "The participant favors immediate imaging over rescoring or observation and frames the decision around decisiveness and resolving ambiguity under pressure."
+      },
+      {
+        "segment_id": "seg_005",
+        "speaker": "Participant",
+        "segment_type": "test_consequence_assessment",
+        "raw_interview_anchor": "The negative CTPA was reassuring, but the incidental nodule and mild contrast reaction required follow-up and monitoring and consumed additional time.",
+        "eligible_reasoning_segment": true,
+        "ground_truth_bias_present": false,
+        "ground_truth_instance_ids": [],
+        "ground_truth_rationale": "This is an assessment of consequences after the decision, not an intended hidden bias instance."
+      },
+      {
+        "segment_id": "seg_006",
+        "speaker": "Participant",
+        "segment_type": "retrospective_third_party_decision_evaluation",
+        "raw_interview_anchor": "Dr. B's decision was initially called clearly right because nothing bad happened; the participant later acknowledged reacting to the good outcome rather than what Dr. B knew going in.",
+        "eligible_reasoning_segment": true,
+        "ground_truth_bias_present": true,
+        "ground_truth_instance_ids": [
+          "ob_01"
+        ],
+        "ground_truth_rationale": "The initial evaluation of Dr. B's decision is based primarily on the favorable outcome before process information is known."
+      },
+      {
+        "segment_id": "seg_007",
+        "speaker": "Participant",
+        "segment_type": "final_disposition_reasoning",
+        "raw_interview_anchor": "The participant went back and forth about admission versus discharge, then discharged because the patient was stable, PE was excluded, outpatient follow-up was arranged, and admission would not change overnight management.",
+        "eligible_reasoning_segment": true,
+        "ground_truth_bias_present": false,
+        "ground_truth_instance_ids": [],
+        "ground_truth_rationale": "The disposition decision is explicitly uncertain, clinically reasoned, and intentionally neutral in the hidden specification."
+      },
+      {
+        "segment_id": "seg_008",
+        "speaker": "Participant",
+        "segment_type": "retrospective_uncertainty_reflection",
+        "raw_interview_anchor": "The participant identified the D-dimer moment as the point where they moved fastest and might have paused longer.",
+        "eligible_reasoning_segment": true,
+        "ground_truth_bias_present": false,
+        "ground_truth_instance_ids": [],
+        "ground_truth_rationale": "This is a retrospective reflection on uncertainty and pacing, not a separate hidden instance."
+      }
+    ]
+  },
+  "segment_level_adjudications": [
+    {
+      "segment_id": "seg_001",
+      "ground_truth_status": "negative",
+      "ground_truth_instance_ids": [],
+      "rag_identified_occurrence_ids": [],
+      "rag_detected_bias_in_segment": false,
+      "sdt_outcome": "correct_rejection",
+      "localization_basis": "No identified RAG occurrence maps to this segment.",
+      "adjudication_note": "Reasonable initial interpretation without a hidden-bias manifestation."
+    },
+    {
+      "segment_id": "seg_002",
+      "ground_truth_status": "positive",
+      "ground_truth_instance_ids": [
+        "pc_01"
+      ],
+      "rag_identified_occurrence_ids": [
+        "obs_001"
+      ],
+      "rag_detected_bias_in_segment": true,
+      "sdt_outcome": "hit",
+      "localization_basis": "The quoted evidence directly overlaps the dominant-finding, background-noise, and basically-settled reasoning span.",
+      "adjudication_note": "Segment-level hit despite the near-neighbor anchoring label."
+    },
+    {
+      "segment_id": "seg_003",
+      "ground_truth_status": "negative",
+      "ground_truth_instance_ids": [],
+      "rag_identified_occurrence_ids": [],
+      "rag_detected_bias_in_segment": false,
+      "sdt_outcome": "correct_rejection",
+      "localization_basis": "No identified RAG occurrence maps to the alternatives articulation segment.",
+      "adjudication_note": "The participant describes options without yet expressing the hidden action-bias rationale."
+    },
+    {
+      "segment_id": "seg_004",
+      "ground_truth_status": "positive",
+      "ground_truth_instance_ids": [
+        "ab_01"
+      ],
+      "rag_identified_occurrence_ids": [
+        "obs_002"
+      ],
+      "rag_detected_bias_in_segment": true,
+      "sdt_outcome": "hit",
+      "localization_basis": "The RAG quotes directly overlap the immediate CTPA choice and decisive-action rationale.",
+      "adjudication_note": "Exact segment-level detection at moderate confidence."
+    },
+    {
+      "segment_id": "seg_005",
+      "ground_truth_status": "negative",
+      "ground_truth_instance_ids": [],
+      "rag_identified_occurrence_ids": [],
+      "rag_detected_bias_in_segment": false,
+      "sdt_outcome": "correct_rejection",
+      "localization_basis": "No identified RAG occurrence maps to the consequence-assessment segment.",
+      "adjudication_note": "Post-decision consequences are not an intended hidden instance."
+    },
+    {
+      "segment_id": "seg_006",
+      "ground_truth_status": "positive",
+      "ground_truth_instance_ids": [
+        "ob_01"
+      ],
+      "rag_identified_occurrence_ids": [
+        "obs_003"
+      ],
+      "rag_detected_bias_in_segment": true,
+      "sdt_outcome": "hit",
+      "localization_basis": "The quoted evidence directly overlaps the outcome-based evaluation of Dr. B.",
+      "adjudication_note": "Exact segment-level detection at high confidence."
+    },
+    {
+      "segment_id": "seg_007",
+      "ground_truth_status": "negative",
+      "ground_truth_instance_ids": [],
+      "rag_identified_occurrence_ids": [],
+      "rag_detected_bias_in_segment": false,
+      "sdt_outcome": "correct_rejection",
+      "localization_basis": "The availability_heuristic item was only a candidate and is excluded from identified-occurrence SDT.",
+      "adjudication_note": "Appropriate abstention on an explicitly recognized but non-material pull."
+    },
+    {
+      "segment_id": "seg_008",
+      "ground_truth_status": "negative",
+      "ground_truth_instance_ids": [],
+      "rag_identified_occurrence_ids": [],
+      "rag_detected_bias_in_segment": false,
+      "sdt_outcome": "correct_rejection",
+      "localization_basis": "No identified RAG occurrence maps to this reflection segment.",
+      "adjudication_note": "Retrospective uncertainty reflection is not a separate hidden instance."
+    }
+  ],
+  "instance_level_adjudications": [
+    {
+      "hidden_instance_id": "pc_01",
+      "hidden_target_bias_label": "Premature Closure",
+      "hidden_decision_or_episode": "Initial diagnostic interpretation of pleuritic chest pain",
+      "hidden_mechanism": "Diagnostic closure on musculoskeletal strain immediately after a strong positive exam cue, with active dismissal of the flight/calf-ache risk cue and no further differential generation.",
+      "matched_rag_occurrence_id": "obs_001",
+      "rag_predicted_bias_label": "anchoring_bias",
+      "rag_confidence": "high",
+      "label_equivalence_result": "near_neighbor_label",
+      "localization_match_type": "exact_quote_match",
+      "mechanism_overlap": "full_mechanism_match",
+      "strict_scorecard_outcome": "false_negative",
+      "mechanism_first_scorecard_outcome": "true_positive",
+      "secondary_diagnostic_outcome": "correct_location_wrong_bias_label",
+      "label_equivalence_explanation": "Anchoring is a related but distinct construct, not an established scholarly equivalent of Premature Closure under the required full-mechanism standard.",
+      "mechanism_overlap_explanation": "The occurrence captures the salient exam cue, dismissal of the flight and calf cues, and premature stopping of PE-risk reasoning, matching the hidden closure mechanism.",
+      "evidence_fidelity_assessment": "The quoted passages are verbatim and directly support the mapped reasoning span."
+    },
+    {
+      "hidden_instance_id": "ab_01",
+      "hidden_target_bias_label": "Action Bias",
+      "hidden_decision_or_episode": "Response to mildly elevated D-dimer after calf swelling was noted",
+      "hidden_mechanism": "Preference for immediate decisive CTPA over structured rescoring or monitored observation, framed around acting to resolve ambiguity rather than risk-adjusted diagnostic value.",
+      "matched_rag_occurrence_id": "obs_002",
+      "rag_predicted_bias_label": "action_bias",
+      "rag_confidence": "moderate",
+      "label_equivalence_result": "exact_target_label",
+      "localization_match_type": "exact_quote_match",
+      "mechanism_overlap": "full_mechanism_match",
+      "strict_scorecard_outcome": "true_positive",
+      "mechanism_first_scorecard_outcome": "true_positive",
+      "secondary_diagnostic_outcome": "exact_instance_match",
+      "label_equivalence_explanation": "The predicted label exactly matches the hidden target label.",
+      "mechanism_overlap_explanation": "The prediction captures immediate imaging, rejection of further rescoring, and the framing of action as productive and decisive under uncertainty.",
+      "evidence_fidelity_assessment": "The quoted passages are verbatim and directly support the hidden action-selection mechanism."
+    },
+    {
+      "hidden_instance_id": "ob_01",
+      "hidden_target_bias_label": "Outcome Bias",
+      "hidden_decision_or_episode": "Initial evaluation of Dr. B's earlier decision not to image",
+      "hidden_mechanism": "Judgment of a colleague's prior decision as correct because the patient had a favorable outcome, before and independently of knowing the colleague's actual risk-assessment process.",
+      "matched_rag_occurrence_id": "obs_003",
+      "rag_predicted_bias_label": "outcome_bias",
+      "rag_confidence": "high",
+      "label_equivalence_result": "exact_target_label",
+      "localization_match_type": "exact_quote_match",
+      "mechanism_overlap": "full_mechanism_match",
+      "strict_scorecard_outcome": "true_positive",
+      "mechanism_first_scorecard_outcome": "true_positive",
+      "secondary_diagnostic_outcome": "exact_instance_match",
+      "label_equivalence_explanation": "The predicted label exactly matches the hidden target label.",
+      "mechanism_overlap_explanation": "The prediction correctly identifies outcome-driven retrospective judgment independent of the information available to Dr. B at the time.",
+      "evidence_fidelity_assessment": "The quoted passages are verbatim and directly support the hidden outcome-based evaluation mechanism."
+    }
+  ],
+  "unmatched_rag_predictions": [],
+  "candidate_analysis": {
+    "candidate_count": 1,
+    "candidates": [
+      {
+        "candidate_id": "cand_001",
+        "proposed_bias_label": "availability_heuristic",
+        "localized_segment_id": "seg_007",
+        "best_related_hidden_instance_id": null,
+        "quote_validity": "valid",
+        "would_match_if_promoted_strict": false,
+        "would_match_if_promoted_mechanism_first": false,
+        "candidate_assessment": "useful_abstention",
+        "details": "The candidate quote is valid, but the participant explicitly recognized the salient-event pull and discharged on clinical grounds; the thought did not materially determine the disposition and has no hidden-target relation."
+      }
+    ]
+  },
+  "signal_detection_summary": {
+    "evaluation_unit": "eligible_reasoning_segment",
+    "high_only": {
+      "positive_segments": 3,
+      "negative_segments": 5,
+      "hits": 2,
+      "misses": 1,
+      "false_alarms": 0,
+      "correct_rejections": 5,
+      "hit_rate": 0.6667,
+      "false_alarm_rate": 0.0000,
+      "accuracy": 0.8750,
+      "precision": 1.0000,
+      "recall": 0.6667,
+      "f1": 0.8000,
+      "detection_interpretation": "High-confidence findings detect the Premature Closure and Outcome Bias segments; the moderate-confidence Action Bias finding is omitted."
+    },
+    "high_and_moderate": {
+      "positive_segments": 3,
+      "negative_segments": 5,
+      "hits": 3,
+      "misses": 0,
+      "false_alarms": 0,
+      "correct_rejections": 5,
+      "hit_rate": 1.0000,
+      "false_alarm_rate": 0.0000,
+      "accuracy": 1.0000,
+      "precision": 1.0000,
+      "recall": 1.0000,
+      "f1": 1.0000,
+      "detection_interpretation": "All three positive segments are detected with no negative-segment false alarms."
+    },
+    "all_identified_confidence_levels": {
+      "positive_segments": 3,
+      "negative_segments": 5,
+      "hits": 3,
+      "misses": 0,
+      "false_alarms": 0,
+      "correct_rejections": 5,
+      "hit_rate": 1.0000,
+      "false_alarm_rate": 0.0000,
+      "accuracy": 1.0000,
+      "precision": 1.0000,
+      "recall": 1.0000,
+      "f1": 1.0000,
+      "detection_interpretation": "No low-confidence identified findings were present, so results equal the high-and-moderate threshold."
+    }
+  },
+  "strict_instance_level_metrics": {
+    "high_only": {
+      "true_positives": 1,
+      "false_negatives": 2,
+      "false_positives": 1,
+      "precision": 0.5000,
+      "recall": 0.3333,
+      "f1": 0.4000,
+      "exact_occurrence_match_rate": 0.3333,
+      "occurrence_count_match_rate": 0.3333
+    },
+    "high_and_moderate": {
+      "true_positives": 2,
+      "false_negatives": 1,
+      "false_positives": 1,
+      "precision": 0.6667,
+      "recall": 0.6667,
+      "f1": 0.6667,
+      "exact_occurrence_match_rate": 0.6667,
+      "occurrence_count_match_rate": 0.6667
+    },
+    "all_identified_confidence_levels": {
+      "true_positives": 2,
+      "false_negatives": 1,
+      "false_positives": 1,
+      "precision": 0.6667,
+      "recall": 0.6667,
+      "f1": 0.6667,
+      "exact_occurrence_match_rate": 0.6667,
+      "occurrence_count_match_rate": 0.6667
+    }
+  },
+  "mechanism_first_instance_level_metrics": {
+    "high_only": {
+      "true_positives": 2,
+      "false_negatives": 1,
+      "false_positives": 0,
+      "precision": 1.0000,
+      "recall": 0.6667,
+      "f1": 0.8000,
+      "exact_occurrence_match_rate": 0.6667,
+      "occurrence_count_match_rate": 0.6667
+    },
+    "high_and_moderate": {
+      "true_positives": 3,
+      "false_negatives": 0,
+      "false_positives": 0,
+      "precision": 1.0000,
+      "recall": 1.0000,
+      "f1": 1.0000,
+      "exact_occurrence_match_rate": 1.0000,
+      "occurrence_count_match_rate": 1.0000
+    },
+    "all_identified_confidence_levels": {
+      "true_positives": 3,
+      "false_negatives": 0,
+      "false_positives": 0,
+      "precision": 1.0000,
+      "recall": 1.0000,
+      "f1": 1.0000,
+      "exact_occurrence_match_rate": 1.0000,
+      "occurrence_count_match_rate": 1.0000
+    }
+  },
+  "target_bias_performance": [
+    {
+      "hidden_target_bias_label": "Premature Closure",
+      "hidden_requested_occurrences": 1,
+      "strict_true_positives": 0,
+      "strict_false_negatives": 1,
+      "strict_false_positives_attributed_to_target": 0,
+      "strict_precision": null,
+      "strict_recall": 0.0000,
+      "strict_f1": 0.0000,
+      "mechanism_first_true_positives": 1,
+      "mechanism_first_false_negatives": 0,
+      "mechanism_first_false_positives_attributed_to_target": 0,
+      "mechanism_first_precision": 1.0000,
+      "mechanism_first_recall": 1.0000,
+      "mechanism_first_f1": 1.0000,
+      "count_match_status": "underdetected"
+    },
+    {
+      "hidden_target_bias_label": "Outcome Bias",
+      "hidden_requested_occurrences": 1,
+      "strict_true_positives": 1,
+      "strict_false_negatives": 0,
+      "strict_false_positives_attributed_to_target": 0,
+      "strict_precision": 1.0000,
+      "strict_recall": 1.0000,
+      "strict_f1": 1.0000,
+      "mechanism_first_true_positives": 1,
+      "mechanism_first_false_negatives": 0,
+      "mechanism_first_false_positives_attributed_to_target": 0,
+      "mechanism_first_precision": 1.0000,
+      "mechanism_first_recall": 1.0000,
+      "mechanism_first_f1": 1.0000,
+      "count_match_status": "exact_match"
+    },
+    {
+      "hidden_target_bias_label": "Action Bias",
+      "hidden_requested_occurrences": 1,
+      "strict_true_positives": 1,
+      "strict_false_negatives": 0,
+      "strict_false_positives_attributed_to_target": 0,
+      "strict_precision": 1.0000,
+      "strict_recall": 1.0000,
+      "strict_f1": 1.0000,
+      "mechanism_first_true_positives": 1,
+      "mechanism_first_false_negatives": 0,
+      "mechanism_first_false_positives_attributed_to_target": 0,
+      "mechanism_first_precision": 1.0000,
+      "mechanism_first_recall": 1.0000,
+      "mechanism_first_f1": 1.0000,
+      "count_match_status": "exact_match"
+    }
+  ],
+  "rag_label_false_positive_inventory": [
+    {
+      "rag_predicted_bias_label": "anchoring_bias",
+      "alternative_labels": [
+        "premature_closure",
+        "diagnostic_momentum"
+      ],
+      "occurrence_count": 1,
+      "best_related_hidden_target_bias_label": "Premature Closure",
+      "label_relation": "near_neighbor",
+      "mechanism_overlap_summary": "The label differs, but the occurrence fully captures dismissal of competing risk cues and premature diagnostic closure after a salient exam finding.",
+      "primary_error_types": [
+        "correct_location_wrong_bias_label",
+        "near_neighbor_label"
+      ]
+    }
+  ],
+  "diagnostic_error_summary": {
+    "correct_location_wrong_bias_label_count": 1,
+    "correct_label_wrong_location_count": 0,
+    "correct_label_location_wrong_mechanism_count": 0,
+    "mechanism_detected_label_unresolved_count": 0,
+    "partial_mechanism_match_count": 0,
+    "duplicate_prediction_count": 0,
+    "unsupported_prediction_count": 0,
+    "fabricated_or_invalid_quote_count": 0,
+    "approved_alias_or_equivalence_count": 0,
+    "near_neighbor_label_count": 1,
+    "different_construct_label_count": 0,
+    "candidate_count": 1,
+    "candidate_useful_abstention_count": 1,
+    "candidate_near_miss_count": 0
+  },
+  "corpus_support_audit": {
+    "primary_corpus_fidelity_score_available": false,
+    "rag_occurrences_claiming_retrieved_support": 0,
+    "rag_occurrences_with_no_claimed_retrieved_support": 3,
+    "rag_occurrences_with_unverifiable_or_internally_inconsistent_citation_metadata": 0,
+    "assessment_note": "The RAG output explicitly states that no retrieved corpus passages were used and supplies no citation metadata; corpus fidelity is therefore unavailable but no citation inconsistency is present."
+  },
+  "comparison_ready_summary": {
+    "primary_recommended_comparison_threshold": "high_and_moderate",
+    "segment_detection": {
+      "high_only": {
+        "hits": 2,
+        "misses": 1,
+        "false_alarms": 0,
+        "correct_rejections": 5,
+        "hit_rate": 0.6667,
+        "false_alarm_rate": 0.0000,
+        "f1": 0.8000
+      },
+      "high_and_moderate": {
+        "hits": 3,
+        "misses": 0,
+        "false_alarms": 0,
+        "correct_rejections": 5,
+        "hit_rate": 1.0000,
+        "false_alarm_rate": 0.0000,
+        "f1": 1.0000
+      },
+      "all_identified_confidence_levels": {
+        "hits": 3,
+        "misses": 0,
+        "false_alarms": 0,
+        "correct_rejections": 5,
+        "hit_rate": 1.0000,
+        "false_alarm_rate": 0.0000,
+        "f1": 1.0000
+      }
+    },
+    "strict_instance_identification": {
+      "high_only": {
+        "true_positives": 1,
+        "false_negatives": 2,
+        "false_positives": 1,
+        "precision": 0.5000,
+        "recall": 0.3333,
+        "f1": 0.4000
+      },
+      "high_and_moderate": {
+        "true_positives": 2,
+        "false_negatives": 1,
+        "false_positives": 1,
+        "precision": 0.6667,
+        "recall": 0.6667,
+        "f1": 0.6667
+      },
+      "all_identified_confidence_levels": {
+        "true_positives": 2,
+        "false_negatives": 1,
+        "false_positives": 1,
+        "precision": 0.6667,
+        "recall": 0.6667,
+        "f1": 0.6667
+      }
+    },
+    "mechanism_first_identification": {
+      "high_only": {
+        "true_positives": 2,
+        "false_negatives": 1,
+        "false_positives": 0,
+        "precision": 1.0000,
+        "recall": 0.6667,
+        "f1": 0.8000
+      },
+      "high_and_moderate": {
+        "true_positives": 3,
+        "false_negatives": 0,
+        "false_positives": 0,
+        "precision": 1.0000,
+        "recall": 1.0000,
+        "f1": 1.0000
+      },
+      "all_identified_confidence_levels": {
+        "true_positives": 3,
+        "false_negatives": 0,
+        "false_positives": 0,
+        "precision": 1.0000,
+        "recall": 1.0000,
+        "f1": 1.0000
+      }
+    },
+    "taxonomy_gap": {
+      "high_only": {
+        "mechanism_first_f1_minus_strict_f1": 0.4000
+      },
+      "high_and_moderate": {
+        "mechanism_first_f1_minus_strict_f1": 0.3333
+      },
+      "all_identified_confidence_levels": {
+        "mechanism_first_f1_minus_strict_f1": 0.3333
+      }
+    },
+    "confidence_tradeoff": {
+      "increment_from_high_to_high_and_moderate": "Adding the moderate-confidence Action Bias finding raises segment F1 from 0.8000 to 1.0000 and strict instance F1 from 0.4000 to 0.6667.",
+      "increment_from_high_and_moderate_to_all_confidence": "No change; there were no low-confidence identified occurrences."
+    }
+  },
+  "overall_evaluation_summary": {
+    "hidden_total_planned_occurrences": 3,
+    "rag_total_identified_occurrences": 3,
+    "rag_total_candidate_biases": 1,
+    "segment_level_primary_result": "At the high-and-moderate threshold, all 3 positive segments were detected with 0 false alarms across 8 eligible segments.",
+    "strict_label_plus_mechanism_result": "At all identified confidence levels, strict performance was 2 true positives, 1 false negative, and 1 false positive, with F1 0.6667.",
+    "mechanism_first_result": "At all identified confidence levels, mechanism-first performance was 3 true positives with no false negatives or false positives, with F1 1.0000.",
+    "main_failure_modes": [
+      "The Premature Closure instance was labeled anchoring_bias, a correctly localized near-neighbor rather than the target label.",
+      "The Action Bias finding was only moderate confidence and is missed at the high-only threshold.",
+      "Corpus fidelity cannot be assessed because no retrieved support was provided."
+    ],
+    "main_strengths": [
+      "All three positive segments were correctly localized.",
+      "Action Bias and Outcome Bias were exact strict matches.",
+      "The candidate disposition concern was appropriately withheld from identified-bias scoring."
+    ],
+    "benchmark_interpretation": "This single run shows perfect segment detection and mechanism-first identification when moderate confidence is included, with a taxonomy error reducing strict label-plus-mechanism performance. No dataset-level, corpus-fidelity, or prompt-ranking conclusions should be drawn from this interview alone."
+  }
+}

@@ -1,0 +1,551 @@
+{
+  "evaluation_metadata": {
+    "task": "ontology_free_rag_cognitive_bias_benchmark_evaluation",
+    "benchmark_run_metadata": {
+      "benchmark_run_id": "HC_Biased_1_Sonar_on",
+      "interview_id": "HC_Biased_1",
+      "system_prompt_id": "Sonar",
+      "system_prompt_generator": "Prompt 1_2",
+      "rag_model_id": "v1.0.0",
+      "corpus_condition": "on",
+      "retrieval_configuration_id": "k=25",
+      "decoding_configuration_id": null,
+      "temperature": 1,
+      "replicate_id": null,
+      "segment_map_id": null
+    },
+    "scenario_id": "HC_Biased_1",
+    "domain_id": "HC",
+    "condition": "biased",
+    "segment_map_status": "prevalidated_provided",
+    "rag_output_parse_status": "valid_json",
+    "rag_schema_assessment": "conformant"
+  },
+  "input_validation": {
+    "rag_output_schema_violations": [],
+    "rag_summary_count_consistency": {
+      "status": "consistent",
+      "details": "The summary reports one anchoring-bias occurrence and one search-satisficing occurrence, matching the two identified occurrence objects; no candidates are reported."
+    },
+    "evaluation_limitations": [
+      "No retrieved chunks, source documents, or retrieval logs were provided, so corpus fidelity cannot be independently scored.",
+      "The interview evidence is retrospective self-report."
+    ]
+  },
+  "evaluation_segment_map": {
+    "segment_mapping_version": "1.0",
+    "segments": [
+      {
+        "segment_id": "seg_001",
+        "speaker": "Participant",
+        "segment_type": "initial_clinical_impression",
+        "raw_interview_anchor": "Recognized five prior panic-attack-coded visits and described the presentation as classic on the surface.",
+        "eligible_reasoning_segment": true,
+        "ground_truth_bias_present": false,
+        "ground_truth_instance_ids": [],
+        "ground_truth_rationale": "Initial impression and chart recognition are background framing here; the hidden occurrence is assigned narrowly to the later ambiguous-vital-sign interpretation."
+      },
+      {
+        "segment_id": "seg_002",
+        "speaker": "Participant",
+        "segment_type": "protocol_action_rationale",
+        "raw_interview_anchor": "“Chest pain protocol doesn't care about history” and ECG was obtained within the protocol window.",
+        "eligible_reasoning_segment": true,
+        "ground_truth_bias_present": false,
+        "ground_truth_instance_ids": [],
+        "ground_truth_rationale": "Protocol adherence regardless of psychiatric history; no hidden bias mechanism."
+      },
+      {
+        "segment_id": "seg_003",
+        "speaker": "Participant",
+        "segment_type": "triage_choice_rationale",
+        "raw_interview_anchor": "Chose full chest-pain protocol rather than lowering acuity because of the anxiety history.",
+        "eligible_reasoning_segment": true,
+        "ground_truth_bias_present": false,
+        "ground_truth_instance_ids": [],
+        "ground_truth_rationale": "Explicitly evidence- and protocol-consistent triage choice."
+      },
+      {
+        "segment_id": "seg_004",
+        "speaker": "Participant",
+        "segment_type": "ambiguous_evidence_interpretation",
+        "raw_interview_anchor": "“My read at the time was that this looked like her usual picture” and he gave an anxiolytic with reassessment instead of immediate D-dimer/CT.",
+        "eligible_reasoning_segment": true,
+        "ground_truth_bias_present": true,
+        "ground_truth_instance_ids": [
+          "eb_01"
+        ],
+        "ground_truth_rationale": "The participant interpreted borderline tachycardia and SpO2 through the chart-derived expectation of recurrent anxiety and deferred PE testing."
+      },
+      {
+        "segment_id": "seg_005",
+        "speaker": "Participant",
+        "segment_type": "evidence_update_and_workup",
+        "raw_interview_anchor": "New calf tenderness and swelling did not fit the prior pattern; he calculated Wells score and ordered D-dimer and CT angiography.",
+        "eligible_reasoning_segment": true,
+        "ground_truth_bias_present": false,
+        "ground_truth_instance_ids": [],
+        "ground_truth_rationale": "Evidence-driven updating and escalation after new information."
+      },
+      {
+        "segment_id": "seg_006",
+        "speaker": "Participant",
+        "segment_type": "disposition_rationale",
+        "raw_interview_anchor": "Held the patient in a monitored bed rather than admitting before imaging because she was stable and CT was pending.",
+        "eligible_reasoning_segment": true,
+        "ground_truth_bias_present": false,
+        "ground_truth_instance_ids": [],
+        "ground_truth_rationale": "Disposition decision based on uncertainty and clinical stability, not the hidden bias."
+      },
+      {
+        "segment_id": "seg_007",
+        "speaker": "Participant",
+        "segment_type": "uncertainty_assessment",
+        "raw_interview_anchor": "Reported the greatest uncertainty after the elevated D-dimer while imaging was pending.",
+        "eligible_reasoning_segment": true,
+        "ground_truth_bias_present": false,
+        "ground_truth_instance_ids": [],
+        "ground_truth_rationale": "Explicit uncertainty tolerance; no hidden bias mechanism."
+      },
+      {
+        "segment_id": "seg_008",
+        "speaker": "Participant",
+        "segment_type": "retrospective_adjustment",
+        "raw_interview_anchor": "“I'd probably weigh the sats a little more heavily on their own” in retrospect.",
+        "eligible_reasoning_segment": true,
+        "ground_truth_bias_present": false,
+        "ground_truth_instance_ids": [],
+        "ground_truth_rationale": "Retrospective corrective reflection, not an additional hidden occurrence."
+      }
+    ]
+  },
+  "segment_level_adjudications": [
+    {
+      "segment_id": "seg_001",
+      "ground_truth_status": "negative",
+      "ground_truth_instance_ids": [],
+      "rag_identified_occurrence_ids": [],
+      "rag_detected_bias_in_segment": false,
+      "sdt_outcome": "correct_rejection",
+      "localization_basis": "No RAG occurrence was localized here.",
+      "adjudication_note": "Correctly left initial chart recognition unflagged."
+    },
+    {
+      "segment_id": "seg_002",
+      "ground_truth_status": "negative",
+      "ground_truth_instance_ids": [],
+      "rag_identified_occurrence_ids": [],
+      "rag_detected_bias_in_segment": false,
+      "sdt_outcome": "correct_rejection",
+      "localization_basis": "No RAG occurrence was localized here.",
+      "adjudication_note": "Correctly left protocol adherence unflagged."
+    },
+    {
+      "segment_id": "seg_003",
+      "ground_truth_status": "negative",
+      "ground_truth_instance_ids": [],
+      "rag_identified_occurrence_ids": [],
+      "rag_detected_bias_in_segment": false,
+      "sdt_outcome": "correct_rejection",
+      "localization_basis": "No RAG occurrence was localized here.",
+      "adjudication_note": "Correctly left the protocol-consistent triage choice unflagged."
+    },
+    {
+      "segment_id": "seg_004",
+      "ground_truth_status": "positive",
+      "ground_truth_instance_ids": [
+        "eb_01"
+      ],
+      "rag_identified_occurrence_ids": [
+        "obs_001",
+        "obs_002"
+      ],
+      "rag_detected_bias_in_segment": true,
+      "sdt_outcome": "hit",
+      "localization_basis": "Both occurrences cite valid Participant evidence from the Phase 2 ambiguous-vital-sign interpretation and deferred PE workup.",
+      "adjudication_note": "The target episode was detected and localized, although one occurrence uses a near-neighbor label and the second is an additional, distinct search-satisficing claim."
+    },
+    {
+      "segment_id": "seg_005",
+      "ground_truth_status": "negative",
+      "ground_truth_instance_ids": [],
+      "rag_identified_occurrence_ids": [],
+      "rag_detected_bias_in_segment": false,
+      "sdt_outcome": "correct_rejection",
+      "localization_basis": "No RAG occurrence was localized here.",
+      "adjudication_note": "Correctly recognized evidence-driven updating without assigning an additional bias."
+    },
+    {
+      "segment_id": "seg_006",
+      "ground_truth_status": "negative",
+      "ground_truth_instance_ids": [],
+      "rag_identified_occurrence_ids": [],
+      "rag_detected_bias_in_segment": false,
+      "sdt_outcome": "correct_rejection",
+      "localization_basis": "No RAG occurrence was localized here.",
+      "adjudication_note": "Correctly left uncertainty-based disposition reasoning unflagged."
+    },
+    {
+      "segment_id": "seg_007",
+      "ground_truth_status": "negative",
+      "ground_truth_instance_ids": [],
+      "rag_identified_occurrence_ids": [],
+      "rag_detected_bias_in_segment": false,
+      "sdt_outcome": "correct_rejection",
+      "localization_basis": "No RAG occurrence was localized here.",
+      "adjudication_note": "Correctly left ordinary uncertainty unflagged."
+    },
+    {
+      "segment_id": "seg_008",
+      "ground_truth_status": "negative",
+      "ground_truth_instance_ids": [],
+      "rag_identified_occurrence_ids": [],
+      "rag_detected_bias_in_segment": false,
+      "sdt_outcome": "correct_rejection",
+      "localization_basis": "No RAG occurrence was localized here.",
+      "adjudication_note": "Correctly left retrospective corrective reflection unflagged."
+    }
+  ],
+  "instance_level_adjudications": [
+    {
+      "hidden_instance_id": "eb_01",
+      "hidden_target_bias_label": "Expectation Bias",
+      "hidden_decision_or_episode": "Decision point 2: interpreting borderline tachycardia and SpO2 in the context of five prior panic-attack diagnoses and deferring D-dimer/CT.",
+      "hidden_mechanism": "Interpretation of ambiguous tachycardia and mild hypoxia as consistent with the expected panic-attack diagnosis derived from prior chart history, leading to deferral of D-dimer/CT workup.",
+      "matched_rag_occurrence_id": "obs_001",
+      "rag_predicted_bias_label": "anchoring bias",
+      "rag_confidence": "high",
+      "label_equivalence_result": "near_neighbor_label",
+      "localization_match_type": "exact_quote_match",
+      "mechanism_overlap": "full_mechanism_match",
+      "strict_scorecard_outcome": "false_negative",
+      "mechanism_first_scorecard_outcome": "true_positive",
+      "secondary_diagnostic_outcome": "correct_location_wrong_bias_label",
+      "label_equivalence_explanation": "Anchoring bias is a related but distinct construct from Expectation Bias; it is not an established alias for the target label.",
+      "mechanism_overlap_explanation": "The occurrence captures the chart-derived expectation, interpretation of ambiguous tachycardia and hypoxia through that expectation, insufficient adjustment toward PE, and delayed testing.",
+      "evidence_fidelity_assessment": "The cited Participant quotations are verbatim present in the raw interview and directly support the Phase 2 mechanism and decision."
+    }
+  ],
+  "unmatched_rag_predictions": [
+    {
+      "rag_occurrence_id": "obs_002",
+      "rag_predicted_bias_label": "search satisficing",
+      "rag_confidence": "high",
+      "localized_segment_id": "seg_004",
+      "best_related_hidden_instance_id": "eb_01",
+      "label_equivalence_result": "different_construct",
+      "mechanism_overlap": "partial_mechanism_overlap",
+      "strict_classification": "duplicate_prediction",
+      "mechanism_first_classification": "duplicate_prediction",
+      "why_not_an_exact_strict_match": "The quotes validly describe stopping or deferring diagnostic search after considering PE, but search satisficing is a distinct construct from the hidden expectation-driven interpretation mechanism. One-to-one matching assigns the target instance to obs_001, leaving obs_002 as an extra prediction."
+    }
+  ],
+  "candidate_analysis": {
+    "candidate_count": 0,
+    "candidates": []
+  },
+  "signal_detection_summary": {
+    "evaluation_unit": "eligible_reasoning_segment",
+    "high_only": {
+      "positive_segments": 1,
+      "negative_segments": 7,
+      "hits": 1,
+      "misses": 0,
+      "false_alarms": 0,
+      "correct_rejections": 7,
+      "hit_rate": 1,
+      "false_alarm_rate": 0,
+      "accuracy": 1,
+      "precision": 1,
+      "recall": 1,
+      "f1": 1,
+      "detection_interpretation": "Perfect segment-level detection; the target episode was localized and no negative segment was flagged."
+    },
+    "high_and_moderate": {
+      "positive_segments": 1,
+      "negative_segments": 7,
+      "hits": 1,
+      "misses": 0,
+      "false_alarms": 0,
+      "correct_rejections": 7,
+      "hit_rate": 1,
+      "false_alarm_rate": 0,
+      "accuracy": 1,
+      "precision": 1,
+      "recall": 1,
+      "f1": 1,
+      "detection_interpretation": "Same as high-only because both identified occurrences have high confidence."
+    },
+    "all_identified_confidence_levels": {
+      "positive_segments": 1,
+      "negative_segments": 7,
+      "hits": 1,
+      "misses": 0,
+      "false_alarms": 0,
+      "correct_rejections": 7,
+      "hit_rate": 1,
+      "false_alarm_rate": 0,
+      "accuracy": 1,
+      "precision": 1,
+      "recall": 1,
+      "f1": 1,
+      "detection_interpretation": "Same as high-only because both identified occurrences have high confidence."
+    }
+  },
+  "strict_instance_level_metrics": {
+    "high_only": {
+      "true_positives": 0,
+      "false_negatives": 1,
+      "false_positives": 2,
+      "precision": 0,
+      "recall": 0,
+      "f1": 0,
+      "exact_occurrence_match_rate": 0,
+      "occurrence_count_match_rate": 0
+    },
+    "high_and_moderate": {
+      "true_positives": 0,
+      "false_negatives": 1,
+      "false_positives": 2,
+      "precision": 0,
+      "recall": 0,
+      "f1": 0,
+      "exact_occurrence_match_rate": 0,
+      "occurrence_count_match_rate": 0
+    },
+    "all_identified_confidence_levels": {
+      "true_positives": 0,
+      "false_negatives": 1,
+      "false_positives": 2,
+      "precision": 0,
+      "recall": 0,
+      "f1": 0,
+      "exact_occurrence_match_rate": 0,
+      "occurrence_count_match_rate": 0
+    }
+  },
+  "mechanism_first_instance_level_metrics": {
+    "high_only": {
+      "true_positives": 1,
+      "false_negatives": 0,
+      "false_positives": 1,
+      "precision": 0.5,
+      "recall": 1,
+      "f1": 0.6666666667,
+      "exact_occurrence_match_rate": 1,
+      "occurrence_count_match_rate": 1
+    },
+    "high_and_moderate": {
+      "true_positives": 1,
+      "false_negatives": 0,
+      "false_positives": 1,
+      "precision": 0.5,
+      "recall": 1,
+      "f1": 0.6666666667,
+      "exact_occurrence_match_rate": 1,
+      "occurrence_count_match_rate": 1
+    },
+    "all_identified_confidence_levels": {
+      "true_positives": 1,
+      "false_negatives": 0,
+      "false_positives": 1,
+      "precision": 0.5,
+      "recall": 1,
+      "f1": 0.6666666667,
+      "exact_occurrence_match_rate": 1,
+      "occurrence_count_match_rate": 1
+    }
+  },
+  "target_bias_performance": [
+    {
+      "hidden_target_bias_label": "Expectation Bias",
+      "hidden_requested_occurrences": 1,
+      "strict_true_positives": 0,
+      "strict_false_negatives": 1,
+      "strict_false_positives_attributed_to_target": 2,
+      "strict_precision": 0,
+      "strict_recall": 0,
+      "strict_f1": 0,
+      "mechanism_first_true_positives": 1,
+      "mechanism_first_false_negatives": 0,
+      "mechanism_first_false_positives_attributed_to_target": 1,
+      "mechanism_first_precision": 0.5,
+      "mechanism_first_recall": 1,
+      "mechanism_first_f1": 0.6666666667,
+      "count_match_status": "underdetected"
+    }
+  ],
+  "rag_label_false_positive_inventory": [
+    {
+      "rag_predicted_bias_label": "anchoring bias",
+      "alternative_labels": [
+        "anchoring and adjustment",
+        "anchoring effect"
+      ],
+      "occurrence_count": 1,
+      "best_related_hidden_target_bias_label": "Expectation Bias",
+      "label_relation": "near_neighbor",
+      "mechanism_overlap_summary": "Full overlap with the hidden chart-expectation interpretation and deferral mechanism, but anchoring is a distinct label rather than an approved equivalent.",
+      "primary_error_types": [
+        "correct_location_wrong_bias_label",
+        "near_neighbor_label"
+      ]
+    },
+    {
+      "rag_predicted_bias_label": "search satisficing",
+      "alternative_labels": [
+        "premature closure",
+        "satisficing"
+      ],
+      "occurrence_count": 1,
+      "best_related_hidden_target_bias_label": "Expectation Bias",
+      "label_relation": "different_construct",
+      "mechanism_overlap_summary": "Shares the deferred PE workup and early narrowing of attention, but centers on terminating diagnostic search rather than interpreting ambiguous physiological evidence through a chart-derived expectation.",
+      "primary_error_types": [
+        "duplicate_prediction",
+        "different_construct_label",
+        "partial_mechanism_match"
+      ]
+    }
+  ],
+  "diagnostic_error_summary": {
+    "correct_location_wrong_bias_label_count": 1,
+    "correct_label_wrong_location_count": 0,
+    "correct_label_location_wrong_mechanism_count": 0,
+    "mechanism_detected_label_unresolved_count": 0,
+    "partial_mechanism_match_count": 1,
+    "duplicate_prediction_count": 1,
+    "unsupported_prediction_count": 0,
+    "fabricated_or_invalid_quote_count": 0,
+    "approved_alias_or_equivalence_count": 0,
+    "near_neighbor_label_count": 1,
+    "different_construct_label_count": 1,
+    "candidate_count": 0,
+    "candidate_useful_abstention_count": 0,
+    "candidate_near_miss_count": 0
+  },
+  "corpus_support_audit": {
+    "primary_corpus_fidelity_score_available": false,
+    "rag_occurrences_claiming_retrieved_support": 2,
+    "rag_occurrences_with_no_claimed_retrieved_support": 0,
+    "rag_occurrences_with_unverifiable_or_internally_inconsistent_citation_metadata": 2,
+    "assessment_note": "Both occurrences claim retrieved corpus support and provide internally consistent citation fields, but no retrieved passages, chunks, source documents, or logs were supplied for independent verification; corpus fidelity is therefore not scored."
+  },
+  "comparison_ready_summary": {
+    "primary_recommended_comparison_threshold": "high_and_moderate",
+    "segment_detection": {
+      "high_only": {
+        "hits": 1,
+        "misses": 0,
+        "false_alarms": 0,
+        "correct_rejections": 7,
+        "hit_rate": 1,
+        "false_alarm_rate": 0,
+        "f1": 1
+      },
+      "high_and_moderate": {
+        "hits": 1,
+        "misses": 0,
+        "false_alarms": 0,
+        "correct_rejections": 7,
+        "hit_rate": 1,
+        "false_alarm_rate": 0,
+        "f1": 1
+      },
+      "all_identified_confidence_levels": {
+        "hits": 1,
+        "misses": 0,
+        "false_alarms": 0,
+        "correct_rejections": 7,
+        "hit_rate": 1,
+        "false_alarm_rate": 0,
+        "f1": 1
+      }
+    },
+    "strict_instance_identification": {
+      "high_only": {
+        "true_positives": 0,
+        "false_negatives": 1,
+        "false_positives": 2,
+        "precision": 0,
+        "recall": 0,
+        "f1": 0
+      },
+      "high_and_moderate": {
+        "true_positives": 0,
+        "false_negatives": 1,
+        "false_positives": 2,
+        "precision": 0,
+        "recall": 0,
+        "f1": 0
+      },
+      "all_identified_confidence_levels": {
+        "true_positives": 0,
+        "false_negatives": 1,
+        "false_positives": 2,
+        "precision": 0,
+        "recall": 0,
+        "f1": 0
+      }
+    },
+    "mechanism_first_identification": {
+      "high_only": {
+        "true_positives": 1,
+        "false_negatives": 0,
+        "false_positives": 1,
+        "precision": 0.5,
+        "recall": 1,
+        "f1": 0.6666666667
+      },
+      "high_and_moderate": {
+        "true_positives": 1,
+        "false_negatives": 0,
+        "false_positives": 1,
+        "precision": 0.5,
+        "recall": 1,
+        "f1": 0.6666666667
+      },
+      "all_identified_confidence_levels": {
+        "true_positives": 1,
+        "false_negatives": 0,
+        "false_positives": 1,
+        "precision": 0.5,
+        "recall": 1,
+        "f1": 0.6666666667
+      }
+    },
+    "taxonomy_gap": {
+      "high_only": {
+        "mechanism_first_f1_minus_strict_f1": 0.6666666667
+      },
+      "high_and_moderate": {
+        "mechanism_first_f1_minus_strict_f1": 0.6666666667
+      },
+      "all_identified_confidence_levels": {
+        "mechanism_first_f1_minus_strict_f1": 0.6666666667
+      }
+    },
+    "confidence_tradeoff": {
+      "increment_from_high_to_high_and_moderate": "No change: no moderate-confidence occurrences were present.",
+      "increment_from_high_and_moderate_to_all_confidence": "No change: no low-confidence occurrences were present."
+    }
+  },
+  "overall_evaluation_summary": {
+    "hidden_total_planned_occurrences": 1,
+    "rag_total_identified_occurrences": 2,
+    "rag_total_candidate_biases": 0,
+    "segment_level_primary_result": "Perfect segment-level detection: 1 hit, 0 misses, 0 false alarms, and 7 correct rejections.",
+    "strict_label_plus_mechanism_result": "No strict true positive. The target mechanism was assigned the near-neighbor label anchoring bias, and an additional search-satisficing occurrence was a duplicate/different-construct false positive.",
+    "mechanism_first_result": "One mechanism-first true positive and one false positive, yielding precision 0.5, recall 1.0, and F1 0.6666666667.",
+    "main_failure_modes": [
+      "Used anchoring bias instead of the hidden Expectation Bias label.",
+      "Added search satisficing as a separate occurrence despite the single-instance ground truth."
+    ],
+    "main_strengths": [
+      "Localized the target reasoning episode correctly.",
+      "Captured the full hidden mechanism with valid verbatim interview evidence.",
+      "Correctly avoided flagging protocol adherence, evidence updating, uncertainty tolerance, and retrospective reflection."
+    ],
+    "benchmark_interpretation": "The run demonstrates strong segment detection and mechanism recognition but imperfect ontology precision: the main target was identified under a near-neighbor label, while a related but distinct additional construct was overdetected."
+  }
+}

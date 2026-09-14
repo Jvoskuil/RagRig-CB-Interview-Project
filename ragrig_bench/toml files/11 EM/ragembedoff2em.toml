@@ -1,0 +1,67 @@
+# Ranker comparison: the default hybrid RRF ranker vs. pure cosine ranking
+# (WeightedFusionRanker alpha = 1.0), on the ragrig default chat backend
+# (Ollama, qwen3.5:9b), varying the context budget (4096 and 8192 tokens).
+# Corpus = the embedded HTML fixture book, default pipeline (full parser
+# registry + MarkdownChunker).
+
+corpus_dirs = ["papers=/mnt/c/Users/Joost/Documents/papers"]
+
+queries = [
+   "**Interviewer:** Thanks for making time for this. Just to confirm — this is a voluntary debrief for our after-action learning file, not a performance review. I'll ask you to walk me through the Riverside facility fire from your role as PIO, and I may pause to dig into specific moments. Sound okay? **Participant:** Sure, happy to do it. It's still pretty fresh — that was a long shift. **Interviewer:** Good. Before we get into detail, can you give me a quick overview of the incident and what you were trying to accomplish? **Participant:** Basically, we had a fire break out at the solvent recycling facility on the east side, maybe three hundred meters from a residential block and not far from the elementary school. My job was to get accurate public messaging out fast — warn people if they needed to shelter, keep the media from running ahead of us, and coordinate with the school and health officer so nobody's getting conflicting instructions. Objective was simple to state, hard to execute: protect people without causing panic, and don't say anything we'd have to walk back. **Interviewer:** Walk me through how it started. **Participant:** Dispatch got the call a little after 1pm. Within ten minutes we had confirmation of a working fire, heavy smoke, and wind carrying it toward the neighborhood. 911 was lighting up with people reporting a chemical smell. Problem was, we didn't have the facility's chemical manifest yet — that takes time to pull and verify with the fire marshal. So I'm standing in the JIC with a wind direction, an odor complaint pattern, and no confirmed hazard identity. I recommended we go out with a precautionary shelter-in-place advisory rather than wait, because closing windows and staying put costs us very little if it turns out to be nothing, but waiting costs a lot if it's not nothing. **Interviewer:** What information came in after that first call? **Participant:** Within about forty minutes the manifest came back — mostly low-toxicity solvents, not the worst-case chemical we'd feared. Wind also shifted slightly, pushing the plume a bit more over open ground. So the initial risk picture actually eased some, which was a relief, but by then we'd already committed to the advisory, which I think was still the right call given what we knew at the time. **Interviewer:** Let's reconstruct the next couple hours. What happened after that initial advisory went out? **Participant:** We had about a ninety-minute window where the air monitoring wasn't fully stood up yet, so we were operating a little blind on the contaminant side. Meanwhile the Incident Commander is focused on suppression, the health officer wants to weigh in on any health guidance, and our elected officials are asking me for updates every twenty minutes. Then social media started moving faster than we could — somebody posted early speculation that it was a 'chemical explosion,' which wasn't accurate, and we had to spend cycles knocking that down instead of just informing. **Interviewer:** That's around when you had to choose how to actually push out that first advisory — which system to use. Tell me about that decision. **Participant:** Right, so our comms team had two options. There's the reverse-911 system, which got upgraded last year — it can geotarget down to the block level, so you're only alerting people actually in the plume path. Then there's our Community Alert Network, the CAN system, which is the one we've used in every drill and every real incident for at least five years. I know that script cold, I know how the spokesperson delivery works with it, I know what it sounds like when it goes out. **Interviewer:** And you went with CAN. **Participant:** I did. It's just the one that's always worked for us. Somebody on the comms desk mentioned reverse-911 had a couple of successful tests on the books, but I didn't pull the test log or ask the on-call tech what the fallback would be if it hiccupped mid-broadcast — I just had this sense that a system I hadn't personally run live could have bugs, and that was enough to steer me back to what I already knew. I was aware CAN would blast countywide instead of just the plume area, which isn't really a great fit for a localized smoke event, but that didn't weigh very heavily against just going with the familiar option. **Interviewer:** Did you weigh the two options against each other on any specific criteria — reach accuracy, message length, anything like that? **Participant:** Not in a formal sense, no. It was more that CAN is the one I trust because I've been using it for years. In hindsight the countywide reach did cause some issues — we got a bunch of calls from people way outside the plume who got scared for no reason — but at the time it felt like the safer choice just because it was the tool I knew. **Interviewer:** Let's move to the third decision point — the escalation discussion. What was happening then? **Participant:** About two hours in, the health officer's sensor readings were coming through — text table, updated every fifteen minutes — and contaminant levels were sitting in the advisory range, not danger range. But right around the same time, a resident's photo of this huge black smoke plume went viral locally, just an incredibly dramatic shot, rooftops with this black column behind them. Media started calling, asking if we were about to order an evacuation. **Interviewer:** How did that shape your thinking? **Participant:** Honestly, looking at that photo, my gut said this looks bad, we should be moving toward evacuation language. I actually had a draft evacuation recommendation half-written. The sensor table was open right there on my second monitor the whole time, showing levels weren't at that threshold, but the image was what I kept coming back to when I was talking through it with the team — how thick and dark that smoke looked. We ended up holding at shelter-in-place because the health officer pushed back hard on the data, not because I'd fully talked myself out of the escalation. **Interviewer:** What did you learn afterward? **Participant:** The follow-up readings thirty minutes later confirmed levels had stayed stable the whole time. And it turned out that black smoke was mostly from a stockpile of packaging material catching fire, not the solvents themselves. So visually it looked like the worst-case scenario, but the actual air data never supported that story. **Interviewer:** Last decision point — the all-clear. **Participant:** By hour five, suppression's basically done, Incident Commander says fire's under control. But we've got parents showing up at the school reunification point, some residents still smelling residual smoke, and the health officer recommends lifting shelter-in-place but keeping a window-closure advisory for two more hours as a buffer. I went with that phased approach instead of a full all-clear right away. **Interviewer:** Any pushback on that? **Participant:** A handful of residents said the phased message was confusing — they wanted a clean yes-or-no. But given we still had some odor reports, I felt the cautious, staged approach was more defensible than an immediate blanket all-clear, even if it wasn't as tidy a message. **Interviewer:** If the reverse-911 system had already been used successfully in a live incident before this one, do you think you'd have made a different channel choice? **Participant:** Probably, yeah. If I'd seen it perform live even once, I think I'd have trusted it enough to use it instead of CAN, especially given the geotargeting benefit. **Interviewer:** And if that photo had never circulated — does the escalation conversation go differently? **Participant:** I think it's calmer, honestly. The sensor data alone was pretty steady the whole time. Without that image driving the room's mood, we probably stay at shelter-in-place without ever drafting the evacuation language. **Interviewer:** Anything you'd evaluate differently with the same information again? **Participant:** Maybe build in a habit of stating the data source out loud before reacting to whatever's most visually striking in the moment. And for channel choice, I'd want someone to actually pull the reverse-911 test record and talk to the on-call tech before I default to the tool I already know, so familiarity isn't doing all the deciding. Otherwise, given what we knew at each point, I think the calls were reasonable."
+]
+
+[[agents]]
+label = "Gemini Prompt 8192"
+[agents.chat]
+provider = "deepseek"            # "ollama" | "deepseek"
+#model = "qwen2.5:1.5b"         # ignored for deepseek
+context_tokens = 8192          # context budget for retrieved chunks
+deepseek_model = "deepseek-v4-pro"   # deepseek only
+#deepseek_api_key = DEEPSEEK_API_KEY # deepseek only (or DEEPSEEK_API_KEY env)
+# context_size_mode = "Auto"          # "Auto" | "Forced"
+system_prompt_path = "prompt_gemini.md"    # custom system prompt ({context} placeholder)
+# request_timeout_secs = 300          # per-request timeout, None = no timeout
+[agents.chat.params]                # generation overrides (all optional)
+# temperature = 0.7
+# top_p = 0.9
+# max_tokens = 1024
+seed = 42
+
+[[agents]]
+label = "Sonar Prompt 8192"
+[agents.chat]
+provider = "deepseek"            # "ollama" | "deepseek"
+#model = "qwen2.5:1.5b"         # ignored for deepseek
+context_tokens = 8192          # context budget for retrieved chunks
+deepseek_model = "deepseek-v4-pro"   # deepseek only
+#deepseek_api_key = DEEPSEEK_API_KEY # deepseek only (or DEEPSEEK_API_KEY env)
+# context_size_mode = "Auto"          # "Auto" | "Forced"
+system_prompt_path = "prompt_sonar.md"    # custom system prompt ({context} placeholder)
+# request_timeout_secs = 300          # per-request timeout, None = no timeout
+ [agents.chat.params]                # generation overrides (all optional)
+# temperature = 0.7
+# top_p = 0.9
+# max_tokens = 1024
+ seed = 42
+
+[[agents]]
+label = "Sonnet Prompt 8192"
+[agents.chat]
+provider = "deepseek"            # "ollama" | "deepseek"
+#model = "qwen2.5:1.5b"         # ignored for deepseek
+context_tokens = 8192          # context budget for retrieved chunks
+deepseek_model = "deepseek-v4-pro"   # deepseek only
+#deepseek_api_key = DEEPSEEK_API_KEY # deepseek only (or DEEPSEEK_API_KEY env)
+# context_size_mode = "Auto"          # "Auto" | "Forced"
+system_prompt_path = "prompt_sonnet.md"    # custom system prompt ({context} placeholder)
+# request_timeout_secs = 300          # per-request timeout, None = no timeout
+[agents.chat.params]                # generation overrides (all optional)
+# temperature = 0.7
+# top_p = 0.9
+# max_tokens = 1024
+seed = 42
+
+# ---Embed testing ---
+[embed]
+top_k = 0
+#top_k = 50

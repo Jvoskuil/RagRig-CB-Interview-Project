@@ -7,10 +7,161 @@ Do not assume the generator followed the specification. Do not infer bias merely
 INPUTS
 
 Interview:
-{{INTERVIEW}}
+{{Interviewer: Thanks for taking the time. Quick check-in before we start — this is just a walkthrough of how you handled a specific case, for process review, not a performance evaluation. Can you tell me your role and background?
+
+Participant: Sure. I'm a Vulnerability Management Analyst, been doing this about three years, SOC monitoring before that. I own triage and remediation tracking for our internet-facing assets — patch coordination, compensating controls, closing tickets against our SLA.
+
+Interviewer: Good. Tell me how this case started and what you were trying to achieve.
+
+Participant: Our threat intel feed flagged a new CVE — critical, 9.8 on CVSS, with confirmed exploitation already happening in the wild. It hit the web framework under our legacy order-processing gateway, which is Tier-1 criticality — internet-facing, handles checkout. My objective was to close this within our 30-day SLA without taking that system down during peak sales. Complication: the gateway needs vendor coordination to patch, we had a partial change freeze ten days out, and I was also carrying two other high-severity tickets at the same time.
+
+Interviewer: How did it unfold, in order?
+
+Participant: Day one, alert comes in, I do triage and have to decide between the standard 21-day cycle and pushing for an emergency change board slot. I escalate, and we get a two-hour emergency window — not enough for full regression testing. Around day three we deploy a WAF rule as an interim compensating control. While setting that up I also noticed some odd outbound DNS traffic on the same host, unrelated to the CVE signature, so I opened a separate low-priority item to look into that. About a week in, IT Ops flags that a vendor SIEM correlation rule for this CVE family is now available, so I have to decide what to do with the detection script I'd built for it myself. Then around day 27, with the SLA clock almost out and the real patch still not deployed, I have to decide how to position the ticket for closure.
+
+Interviewer: Let's go through the first one. What made you push for the emergency CAB slot instead of the 21-day cycle?
+
+Participant: I actually wrote up a short comparison for my manager. On one side, waiting 21 days with an exploit already active in the wild against a Tier-1 asset — that's a meaningful probability of exposure over three weeks. On the other side, an emergency patch attempt with a compressed testing window has its own risk of breaking checkout during a high-traffic period. I laid both out, roughly weighted the likelihood of exploitation against the likelihood of a bad deploy, and the exploit-in-the-wild status tipped it toward escalating, but it was close enough that I documented the disruption risk too, in case leadership wanted to weigh it differently.
+
+Interviewer: Did anyone push back on that framing?
+
+Participant: The app owner did, mostly on the disruption side — worried about the two-hour window not being enough for proper testing. That's actually what happened; the window turned out to be too short for full regression, which is why we ended up needing the WAF rule as a bridge.
+
+Interviewer: Second decision — the WAF rule and that DNS anomaly. Walk me through it.
+
+Participant: The dashboard showed a clear spike matching the known exploit payload pattern, so I deployed the WAF rule against that first. In the same dashboard view, there was also this burst of unusual outbound DNS queries from the same host. It wasn't part of the CVE's known indicators, so it didn't belong in this ticket, but I didn't want it sitting unlogged either. I opened a separate, lower-priority task for it right away and assigned it to be looked at in parallel rather than folding it into the CVE investigation or just noting it and moving on.
+
+Interviewer: What was your thinking behind treating it separately rather than either ignoring it or merging it into the main ticket?
+
+Participant: Mixing an unconfirmed anomaly into a critical CVE ticket muddies the SLA tracking for the actual vulnerability. But two things showing up on the same host in the same week is worth someone's attention, so a parallel low-priority task felt like the right way to keep both threads visible without conflating them. That anomaly ended up tracing back to an internal monitoring job that had recently been reconfigured — unrelated to the CVE, closed without further action, but it was worth the half hour it took to check.
+
+Interviewer: Third decision — the script versus the vendor rule.
+
+Participant: Right, I'd written a detection script six months earlier that covered the one payload variant we'd seen. When the vendor rule came out covering multiple variants with less upkeep, IT Ops suggested standardizing on it. I put together a quick comparison — variants covered, maintenance overhead, how each had performed in testing — and decided to run both in parallel for a transition period rather than cutting over immediately or keeping mine as the sole primary.
+
+Interviewer: Why parallel instead of just switching over, given the vendor rule's broader coverage looked better on paper?
+
+Participant: Mainly because neither one had a track record long enough yet in our environment to bet everything on it alone. Running both meant if the vendor rule had an unexpected gap or false-positive issue during rollout, my script was still catching the one variant we knew about, and vice versa. A week later a slightly different variant did show up, and the vendor rule flagged it — which is exactly the kind of gap the parallel run was meant to catch.
+
+Interviewer: Last one — closing the ticket near day 27.
+
+Participant: At that point the actual vendor patch still wasn't deployed, just the WAF rule and both detection tools. Compliance asked for a documented risk position before the SLA deadline. I pulled together everything outstanding — the unpatched root cause, the current dual-tool coverage, the DNS item that had already closed clean — and instead of closing the ticket outright, I escalated the residual risk summary to the CISO for a formal risk-acceptance call, since the underlying patch was still pending.
+
+Interviewer: What made you escalate rather than just close it as adequately mitigated?
+
+Participant: The compensating controls looked solid on paper, but the root cause was still open, and I didn't think that decision should rest on my sign-off alone given it was going past the SLA target. Documenting the gaps and pushing it up felt like the more defensible move than declaring it done.
+
+Interviewer: How confident were you in the compensating controls at that point?
+
+Participant: Reasonably, based on what the dual-tool coverage data showed, but I was explicit in the writeup that "reasonably confident" isn't the same as "resolved," which is part of why I sent it up rather than closing it myself.
+
+Interviewer: If you'd had another week before the deadline, anything different?
+
+Participant: Probably would have pushed harder to get the actual maintenance window scheduled before the freeze, rather than relying on the compensating controls for as long as we did.
+
+Interviewer: If the vendor rule hadn't existed at all, how would detection have looked?
+
+Participant: We'd have been leaning entirely on my script, which only covered the one variant — so that later variant might have slipped through until something else caught it.
+
+Interviewer: If the DNS anomaly had turned out to be related to the CVE, would your sequencing have changed?
+
+Participant: Yes, it would have gotten folded straight into the main ticket and probably accelerated the escalation call. It just happened not to be connected.
+
+Interviewer: Anywhere you think more information up front would have changed a decision?
+
+Participant: Knowing earlier that the emergency window would only be two hours might have changed how much I leaned on the WAF rule versus pushing for a longer maintenance slot from the start.
+
+Interviewer: This has been really useful, thank you.}}
 
 Hidden generation specification:
-{{GENERATION_SPECIFICATION}}
+{{"hidden_validation_specification": {
+    "hidden_spec_version": "1.0",
+    "condition": "vocabulary_control",
+    "exact_occurrence_manifest": [
+      {
+        "bias": "Loss Framing",
+        "occurrences": 0,
+        "mechanism_constraint": "Do not embed; escalation justification must be evenly weighted between loss and disruption-cost considerations"
+      },
+      {
+        "bias": "Selective Attention Bias or Inattentional Blindness",
+        "occurrences": 0,
+        "mechanism_constraint": "Do not embed; both the exploit signature and the DNS anomaly must receive documented, parallel attention"
+      },
+      {
+        "bias": "Illusion of control",
+        "occurrences": 0,
+        "mechanism_constraint": "Do not embed; closure/escalation reasoning must not overstate personal control over residual risk"
+      },
+      {
+        "bias": "Recency",
+        "occurrences": 0,
+        "mechanism_constraint": "Do not embed; urgency judgments must be based on documented ticket data, not on an unrelated recent event"
+      },
+      {
+        "bias": "Endowment",
+        "occurrences": 0,
+        "mechanism_constraint": "Do not embed; tool selection must be based on comparative coverage/overhead criteria, not ownership or effort investment"
+      }
+    ],
+    "target_bias_names": [
+      "Loss Framing",
+      "Selective Attention Bias or Inattentional Blindness",
+      "Illusion of control",
+      "Recency",
+      "Endowment"
+    ],
+    "requested_occurrence_count_for_each_bias": [
+      {
+        "bias": "Loss Framing",
+        "requested_occurrences": 0
+      },
+      {
+        "bias": "Selective Attention Bias or Inattentional Blindness",
+        "requested_occurrences": 0
+      },
+      {
+        "bias": "Illusion of control",
+        "requested_occurrences": 0
+      },
+      {
+        "bias": "Recency",
+        "requested_occurrences": 0
+      },
+      {
+        "bias": "Endowment",
+        "requested_occurrences": 0
+      }
+    ],
+    "planned_instance_ids": [],
+    "intended_decision_points": [],
+    "intended_mechanisms": [],
+    "intended_strength": [],
+    "paired_scenario_id": "CS_Biased_5",
+    "counterfactual_variable": {
+      "name": "not_applicable",
+      "original_state": "not_applicable",
+      "changed_state": "not_applicable",
+      "variables_to_hold_constant": []
+    },
+    "scenario_id": "CS_Vocab_Control_5",
+    "domain_id": "CS",
+    "total_requested_occurrences": 0,
+    "total_planned_occurrences": 0,
+    "allocation_rule_used": "Not applicable in the bias-placement sense; this is a vocabulary-matched control requiring zero intended bias instances. Each of the four decision points from the paired biased scenario (CS_Biased_5) was re-resolved using balanced, evidence-based reasoning that mirrors the original's structure, vocabulary, stakeholders, and decision count while explicitly removing the loss-framing, selective-attention, endowment, illusion-of-control, and recency mechanisms.",
+    "control_zero_bias_requirement": true,
+    "variables_to_hold_constant": [
+      "Domain and role (Cyber Security, Vulnerability Management Analyst)",
+      "Occupational objective (triage, mitigate, close CVE within SLA without downtime)",
+      "Setting and organizational constraints (legacy gateway, change freeze, competing tickets, 30-day SLA)",
+      "Stakeholders (CISO, IT Ops manager, app owner, Compliance/GRC officer, threat intel lead)",
+      "Four-decision-point structure and general chronological arc",
+      "Technical vocabulary list (CVSS, exploit-in-the-wild, WAF virtual patch, compensating control, residual risk, SIEM correlation rule, CAB, asset criticality tier, patch window, threat intel feed, SLA remediation clock)",
+      "Emotional tone and difficulty level (subtle, professional, time-pressured)",
+      "Target word count range (1,215-1,485 words)"
+    ],
+    "generation_warnings": []
+  }}}
 
 The hidden specification may include:
 - condition;

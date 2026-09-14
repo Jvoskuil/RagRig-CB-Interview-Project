@@ -1,0 +1,67 @@
+# Ranker comparison: the default hybrid RRF ranker vs. pure cosine ranking
+# (WeightedFusionRanker alpha = 1.0), on the ragrig default chat backend
+# (Ollama, qwen3.5:9b), varying the context budget (4096 and 8192 tokens).
+# Corpus = the embedded HTML fixture book, default pipeline (full parser
+# registry + MarkdownChunker).
+
+corpus_dirs = ["papers=/mnt/c/Users/Joost/Documents/papers"]
+
+queries = [
+    "Interviewer: Thanks for making time for this. Just to confirm, this conversation is being recorded for internal process-review purposes, and it's fine to speak candidly about decisions, including ones that didn't pan out the way you expected. Can you start by telling me your role and how you got pulled into the micro-pitting issue on the anodizing line? Participant: Sure. I'm the process engineer responsible for surface treatment qualification on new equipment. I got pulled in when QA flagged intermittent pitting on aluminum brackets coming off the new anodizing line — this was about three weeks before a customer PPAP submission, so there wasn't a lot of slack in the schedule. Interviewer: Walk me through what happened when you were first assigned. Participant: The first thing on my desk that morning was a handoff note from the night-shift operator saying the bath temperature had spiked overnight and he suspected that was causing the pitting. That made immediate sense to me — anodizing bath temperature is a classic culprit for pitting, it's easy to check, and it fit a story I could act on right away. So I started there. I pulled the chiller maintenance history and had our tech verify the temperature controller. There was actually a short rectifier-log summary sitting in the same folder that flagged a calibration deviation from a few days earlier, but I didn't open it that week — the temperature story was already the frame I was working from, so the chiller took priority and the rectifier note just sat there. Interviewer: What was your objective at that point? Participant: Just to stop the bleeding — figure out the root cause fast enough that we could run a clean trial lot and still hit the PPAP window. Interviewer: Let's reconstruct the timeline a bit before we get into specifics. What information did you have on day one versus what came later? Participant: Day one, I had the operator's note, the unopened rectifier summary, and a defect-rate report showing day-shift batches were pitting more than night-shift batches. Coil certs also existed but I hadn't reviewed them. Within about a day we fixed the chiller and temperatures stabilized. But pitting didn't disappear — it dropped, but a low rate persisted. That told me temperature wasn't the whole story. From there we moved into looking at the dosing system, since the residual defect pattern looked more like a chemistry consistency issue. Interviewer: When you saw that day-shift batches had a higher defect rate than night-shift, what was your read on that? Participant: Honestly, my first instinct was that the day-shift operator was less careful — he's newer, and I'd noticed him rushing rack loading a couple times. I flagged it in my notes as a contributing factor. Looking back, I didn't spend much time asking whether the equipment was in worse condition during the day, or whether the chemistry itself might drift over the course of a shift. I focused on him. Interviewer: Did you consider other explanations for that gap? Participant: Not seriously at the time, no. It seemed like a reasonably clean explanation given what I'd observed of him. Interviewer: Let's move to the second decision — selecting a corrective dosing technology. What were you weighing? Participant: Once we knew residual pitting was chemistry-related, we needed a better dosing control system. There were two options. Vendor A had an automated retrofit already running at three of our sister plants. Vendor B had a newer inline sensor-based system with a stronger spec sheet on paper — actually stronger on the sensing and control criteria we cared about most — but only one reference installation, and their documentation was thin, with gaps in the install manual and unclear commissioning steps. Interviewer: How did you decide between them? Participant: I called a couple of engineers at sister plants, and they were generally happy with Vendor A — three plants running it gave me some confidence it was a known quantity. We'd started a requirement-by-requirement comparison of the two systems, and early on it was actually tilting toward Vendor B on the technical side. But once I had three sister plants confirming Vendor A worked, that was enough for me — I didn't finish walking through the rest of the comparison. Vendor B's applications engineer even offered to walk us through the open commissioning questions, and there wasn't any identified incompatibility, but the unresolved gaps still felt less acceptable to me than Vendor A's familiar unknowns, so I didn't take him up on it. Interviewer: Did anything about Vendor A's track record give you pause? Participant: One of the three plants had reported mixed results with it. I knew that going in. But with three plants running it versus one incomplete installation elsewhere, it felt like the safer bet. Interviewer: What happened after installation? Participant: Retrofit went in within three days. First two batches still showed minor pitting, which was a little concerning. Then the next five batches came back completely clean. Interviewer: What was your interpretation of that pattern? Participant: Honestly, after those two rough batches, having five clean ones in a row felt like the process had settled the score — like whatever bad luck or instability had been in the system early on had been used up, so another rough batch felt a lot less likely right then. I remember telling the quality manager the odds of another bad one showing up were pretty low, given the run we'd had. Interviewer: Did you complete the full SPC sample size that's normally recommended before declaring a process stable? Participant: No, we hadn't hit the full sample yet. We started prepping the certification paperwork in parallel because the timeline demanded it, not because I was ready to call the process stable — I was still treating that call as open. The streak affected my gut read more than it should have, but the certification-prep timing itself was really about the calendar. Interviewer: Was there anything else happening during that same window that could have contributed to the improvement? Participant: There was a routine bath chemistry replenishment scheduled in there too. But honestly, I attributed most of the turnaround to the manual rectifier voltage adjustments I was making between runs — small tweaks based on how the previous batch looked. I felt like I was actively steering it back into spec. I never really separated the two effects out. Interviewer: That leads to the final decision — signing off for PPAP. What did that process look like? Participant: We had a full two-week trial dataset with real variability in the earlier lots, and then a final validation lot the day before the deadline that came back completely clean. The customer SQE needed the sign-off memo within 24 hours. Interviewer: How did you weigh the earlier variability against that final lot? Participant: The final lot was really what tipped my confidence. It was the cleanest result we'd seen, run right before submission, so it felt like the truest picture of where the process actually stood. I referenced the earlier trial data in the memo, but the final lot carried most of the weight in my recommendation to certify. Interviewer: Was there any other data available at that point, like the Cpk finding from the independent audit? Participant: There was a marginal Cpk result from a quality audit, yes, but it had been filed separately from the sign-off packet, so it wasn't front and center when I was writing the recommendation. Interviewer: Under less time pressure, would you have handled that differently? Participant: Maybe. I think I would have pulled that Cpk data into the memo directly rather than letting the last lot speak for itself. Interviewer: Let me ask a couple of hypotheticals. If you'd reviewed the rectifier calibration logs before the operator's temperature note, do you think the investigation would have unfolded differently? Participant: Possibly — if the rectifier deviation had been the first thing in front of me, I probably would have chased that first instead of the chiller. It's hard to say which one I'd have found more compelling, but the order I got things in definitely shaped where I looked first. Interviewer: And if that final validation lot had shown pitting instead of coming back clean? Participant: Then I'd have had to delay and either extend the deadline or issue something conditional. It would have forced a harder look at the full dataset rather than leaning on one result. Interviewer: Looking back, is there anything about how you weighed the evidence you'd reconsider? Participant: Probably how much credit I gave myself for the manual adjustments versus the chemistry replenishment — I never really separated those out. And I'd want to revisit that attribution I made about the day-shift operator; I never fully ruled out equipment or process factors there. I'd also go back and actually open that rectifier summary on day one instead of letting the first explanation carry the week. Otherwise, given the time we had, I think the calls were defensible. Interviewer: That's a helpful place to stop. Thanks for walking through this in detail."
+]
+
+[[agents]]
+label = "Gemini Prompt 8192"
+[agents.chat]
+provider = "deepseek"            # "ollama" | "deepseek"
+#model = "qwen2.5:1.5b"         # ignored for deepseek
+context_tokens = 8192          # context budget for retrieved chunks
+deepseek_model = "deepseek-v4-pro"   # deepseek only
+#deepseek_api_key = DEEPSEEK_API_KEY # deepseek only (or DEEPSEEK_API_KEY env)
+# context_size_mode = "Auto"          # "Auto" | "Forced"
+system_prompt_path = "prompt_gemini.md"    # custom system prompt ({context} placeholder)
+# request_timeout_secs = 300          # per-request timeout, None = no timeout
+[agents.chat.params]                # generation overrides (all optional)
+# temperature = 0.7
+# top_p = 0.9
+# max_tokens = 1024
+seed = 42
+
+[[agents]]
+label = "Sonar Prompt 8192"
+[agents.chat]
+provider = "deepseek"            # "ollama" | "deepseek"
+#model = "qwen2.5:1.5b"         # ignored for deepseek
+context_tokens = 8192          # context budget for retrieved chunks
+deepseek_model = "deepseek-v4-pro"   # deepseek only
+#deepseek_api_key = DEEPSEEK_API_KEY # deepseek only (or DEEPSEEK_API_KEY env)
+# context_size_mode = "Auto"          # "Auto" | "Forced"
+system_prompt_path = "prompt_sonar.md"    # custom system prompt ({context} placeholder)
+# request_timeout_secs = 300          # per-request timeout, None = no timeout
+ [agents.chat.params]                # generation overrides (all optional)
+# temperature = 0.7
+# top_p = 0.9
+# max_tokens = 1024
+ seed = 42
+
+[[agents]]
+label = "Sonnet Prompt 8192"
+[agents.chat]
+provider = "deepseek"            # "ollama" | "deepseek"
+#model = "qwen2.5:1.5b"         # ignored for deepseek
+context_tokens = 8192          # context budget for retrieved chunks
+deepseek_model = "deepseek-v4-pro"   # deepseek only
+#deepseek_api_key = DEEPSEEK_API_KEY # deepseek only (or DEEPSEEK_API_KEY env)
+# context_size_mode = "Auto"          # "Auto" | "Forced"
+system_prompt_path = "prompt_sonnet.md"    # custom system prompt ({context} placeholder)
+# request_timeout_secs = 300          # per-request timeout, None = no timeout
+[agents.chat.params]                # generation overrides (all optional)
+# temperature = 0.7
+# top_p = 0.9
+# max_tokens = 1024
+seed = 42
+
+# ---Embed testing ---
+[embed]
+top_k = 0
+#top_k = 50

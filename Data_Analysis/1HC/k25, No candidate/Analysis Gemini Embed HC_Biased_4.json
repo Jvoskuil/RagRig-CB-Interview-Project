@@ -1,0 +1,683 @@
+{
+  "evaluation_metadata": {
+    "task": "ontology_free_rag_cognitive_bias_benchmark_evaluation",
+    "benchmark_run_metadata": {
+      "benchmark_run_id": "HC_Biased_4_Gemini_on",
+      "interview_id": "HC_Biased_4",
+      "system_prompt_id": "Gemini",
+      "system_prompt_generator": "Prompt 1_2",
+      "rag_model_id": "v1.0.0",
+      "corpus_condition": "on",
+      "retrieval_configuration_id": "k=25",
+      "decoding_configuration_id": null,
+      "temperature": 1,
+      "replicate_id": null,
+      "segment_map_id": null
+    },
+    "scenario_id": "HC_Biased_4",
+    "domain_id": "HC",
+    "condition": "biased",
+    "segment_map_status": "generated_not_prevalidated",
+    "rag_output_parse_status": "valid_json",
+    "rag_schema_assessment": "conformant"
+  },
+  "input_validation": {
+    "rag_output_schema_violations": [],
+    "rag_summary_count_consistency": {
+      "status": "consistent",
+      "details": "The four identified-bias summary counts total four and match the four identified occurrences."
+    },
+    "evaluation_limitations": [
+      "No actual retrieved passages, source documents, chunks, or retrieval logs were supplied, so corpus fidelity is not scored.",
+      "The evaluation segment map was generated from the raw interview and hidden specification."
+    ]
+  },
+  "evaluation_segment_map": {
+    "segment_mapping_version": "1.0",
+    "segments": [
+      {
+        "segment_id": "seg_001",
+        "speaker": "Participant",
+        "segment_type": "initial_clinical_interpretation",
+        "raw_interview_anchor": "Clinically, it's a fairly textbook SIRS picture without a clear source yet... a handful of things.",
+        "eligible_reasoning_segment": true,
+        "ground_truth_bias_present": false,
+        "ground_truth_instance_ids": [],
+        "ground_truth_rationale": "Substantive differential-diagnosis and severity interpretation without a hidden bias manifestation."
+      },
+      {
+        "segment_id": "seg_002",
+        "speaker": "Participant",
+        "segment_type": "imaging_decision_and_rationale",
+        "raw_interview_anchor": "It reminded me a lot of a patient I had maybe three weeks earlier... I ordered a CT of the torso pretty much right away... it felt like the responsible thing given what I'd just been through.",
+        "eligible_reasoning_segment": true,
+        "ground_truth_bias_present": true,
+        "ground_truth_instance_ids": [
+          "ah_01"
+        ],
+        "ground_truth_rationale": "A vivid recent adverse case emotionally elevated perceived soft-tissue risk and drove urgent imaging despite absent focal findings."
+      },
+      {
+        "segment_id": "seg_003",
+        "speaker": "Participant",
+        "segment_type": "workup_alternatives",
+        "raw_interview_anchor": "I could've done a more stepwise workup... Both were reasonable. I just didn't feel comfortable waiting.",
+        "eligible_reasoning_segment": true,
+        "ground_truth_bias_present": false,
+        "ground_truth_instance_ids": [],
+        "ground_truth_rationale": "Explicit comparison of reasonable workup alternatives without an additional hidden instance."
+      },
+      {
+        "segment_id": "seg_004",
+        "speaker": "Participant",
+        "segment_type": "antibiotic_bundle_selection",
+        "raw_interview_anchor": "Seeing it sitting there next to the standard bundle made the standard one look like the obviously sensible choice... So that's what I went with.",
+        "eligible_reasoning_segment": true,
+        "ground_truth_bias_present": true,
+        "ground_truth_instance_ids": [
+          "de_01"
+        ],
+        "ground_truth_rationale": "The dominated extended option made the standard bundle appear preferable by comparison rather than through independent severity-based derivation."
+      },
+      {
+        "segment_id": "seg_005",
+        "speaker": "Participant",
+        "segment_type": "monitoring_order_confirmation",
+        "raw_interview_anchor": "I signed off on them as they were configured... I didn't sit down and re-derive whether five days was still appropriate. It's just what comes up when you open the pathway.",
+        "eligible_reasoning_segment": true,
+        "ground_truth_bias_present": true,
+        "ground_truth_instance_ids": [
+          "db_01"
+        ],
+        "ground_truth_rationale": "Preconfigured telemetry and catheter defaults were accepted without active reassessment despite clinical improvement and nursing input."
+      },
+      {
+        "segment_id": "seg_006",
+        "speaker": "Participant",
+        "segment_type": "rounds_diagnostic_updating",
+        "raw_interview_anchor": "That was the first thing said about the case, and honestly that framing kind of stuck for the group... the conversation kept circling back to the urosepsis framing for a while.",
+        "eligible_reasoning_segment": true,
+        "ground_truth_bias_present": true,
+        "ground_truth_instance_ids": [
+          "pb_01"
+        ],
+        "ground_truth_rationale": "The first diagnostic framing continued to dominate discussion despite negative urine culture and blood-culture evidence favoring another source."
+      },
+      {
+        "segment_id": "seg_007",
+        "speaker": "Participant",
+        "segment_type": "time_pressure_context",
+        "raw_interview_anchor": "Constant, honestly. ED wanted the bed, rounds have a hard start time, and you're juggling four or five other patients too.",
+        "eligible_reasoning_segment": true,
+        "ground_truth_bias_present": false,
+        "ground_truth_instance_ids": [],
+        "ground_truth_rationale": "Substantive contextual explanation of time pressure, without a hidden bias instance."
+      },
+      {
+        "segment_id": "seg_008",
+        "speaker": "Participant",
+        "segment_type": "retrospective_learning",
+        "raw_interview_anchor": "I'd force myself to write down the actual severity-based reasoning... build in a habit of re-checking defaults once the patient's status changes.",
+        "eligible_reasoning_segment": true,
+        "ground_truth_bias_present": false,
+        "ground_truth_instance_ids": [],
+        "ground_truth_rationale": "Retrospective improvement plan and uncertainty statement, not a new intended occurrence."
+      }
+    ]
+  },
+  "segment_level_adjudications": [
+    {
+      "segment_id": "seg_001",
+      "ground_truth_status": "negative",
+      "ground_truth_instance_ids": [],
+      "rag_identified_occurrence_ids": [],
+      "rag_detected_bias_in_segment": false,
+      "sdt_outcome": "correct_rejection",
+      "localization_basis": "No identified RAG occurrence was mapped to this segment.",
+      "adjudication_note": "The participant describes a nonspecific SIRS presentation and differential diagnosis without a hidden manifestation."
+    },
+    {
+      "segment_id": "seg_002",
+      "ground_truth_status": "positive",
+      "ground_truth_instance_ids": [
+        "ah_01"
+      ],
+      "rag_identified_occurrence_ids": [
+        "obs_001"
+      ],
+      "rag_detected_bias_in_segment": true,
+      "sdt_outcome": "hit",
+      "localization_basis": "obs_001 quotes directly overlap the recalled adverse case and immediate CT rationale.",
+      "adjudication_note": "Localized correctly; the label and mechanism are adjudicated separately at instance level."
+    },
+    {
+      "segment_id": "seg_003",
+      "ground_truth_status": "negative",
+      "ground_truth_instance_ids": [],
+      "rag_identified_occurrence_ids": [],
+      "rag_detected_bias_in_segment": false,
+      "sdt_outcome": "correct_rejection",
+      "localization_basis": "No identified RAG occurrence was mapped to this segment.",
+      "adjudication_note": "The segment presents reasonable alternative workups and discomfort with waiting, without an additional hidden instance."
+    },
+    {
+      "segment_id": "seg_004",
+      "ground_truth_status": "positive",
+      "ground_truth_instance_ids": [
+        "de_01"
+      ],
+      "rag_identified_occurrence_ids": [
+        "obs_002"
+      ],
+      "rag_detected_bias_in_segment": true,
+      "sdt_outcome": "hit",
+      "localization_basis": "obs_002 directly quotes the three-option comparison and standard-bundle choice.",
+      "adjudication_note": "Exact target label, mechanism, and evidence match."
+    },
+    {
+      "segment_id": "seg_005",
+      "ground_truth_status": "positive",
+      "ground_truth_instance_ids": [
+        "db_01"
+      ],
+      "rag_identified_occurrence_ids": [
+        "obs_003"
+      ],
+      "rag_detected_bias_in_segment": true,
+      "sdt_outcome": "hit",
+      "localization_basis": "obs_003 directly quotes passive sign-off and failure to re-derive the default duration.",
+      "adjudication_note": "Correctly localized and mechanismally supported; primary label is treated as an approved equivalent through the stated alternative label."
+    },
+    {
+      "segment_id": "seg_006",
+      "ground_truth_status": "positive",
+      "ground_truth_instance_ids": [
+        "pb_01"
+      ],
+      "rag_identified_occurrence_ids": [
+        "obs_004"
+      ],
+      "rag_detected_bias_in_segment": true,
+      "sdt_outcome": "hit",
+      "localization_basis": "obs_004 quotes the initial urosepsis framing, contradictory culture data, and continued urosepsis-centered discussion.",
+      "adjudication_note": "Correctly localized; the anchoring label is a near neighbor of the hidden primacy label."
+    },
+    {
+      "segment_id": "seg_007",
+      "ground_truth_status": "negative",
+      "ground_truth_instance_ids": [],
+      "rag_identified_occurrence_ids": [],
+      "rag_detected_bias_in_segment": false,
+      "sdt_outcome": "correct_rejection",
+      "localization_basis": "No identified RAG occurrence was mapped to this segment.",
+      "adjudication_note": "Time pressure is described as a constraint, not as a hidden cognitive-bias instance."
+    },
+    {
+      "segment_id": "seg_008",
+      "ground_truth_status": "negative",
+      "ground_truth_instance_ids": [],
+      "rag_identified_occurrence_ids": [],
+      "rag_detected_bias_in_segment": false,
+      "sdt_outcome": "correct_rejection",
+      "localization_basis": "No identified RAG occurrence was mapped to this segment.",
+      "adjudication_note": "Retrospective learning statements do not constitute additional planned occurrences."
+    }
+  ],
+  "instance_level_adjudications": [
+    {
+      "hidden_instance_id": "ah_01",
+      "hidden_target_bias_label": "Affect Heuristic",
+      "hidden_decision_or_episode": "Initial risk-driven imaging decision",
+      "hidden_mechanism": "Emotional residue from a recent vivid adverse outcome elevates perceived risk and drives urgent imaging independently of the current patient's objective pretest probability.",
+      "matched_rag_occurrence_id": "obs_001",
+      "rag_predicted_bias_label": "availability bias",
+      "rag_confidence": "high",
+      "label_equivalence_result": "near_neighbor_label",
+      "localization_match_type": "exact_quote_match",
+      "mechanism_overlap": "partial_mechanism_overlap",
+      "strict_scorecard_outcome": "false_negative",
+      "mechanism_first_scorecard_outcome": "false_negative",
+      "secondary_diagnostic_outcome": "correct_location_wrong_bias_label",
+      "label_equivalence_explanation": "Availability bias and affect heuristic are adjacent but not established aliases here. The RAG output emphasizes ease of recall and salience rather than emotional residue as the causal driver.",
+      "mechanism_overlap_explanation": "The output captures the recent vivid adverse case, elevated urgency, and absence of focal findings, but does not fully preserve the hidden affect-driven rather than recall-accessibility-driven mechanism.",
+      "evidence_fidelity_assessment": "The quoted interview evidence is valid, directly overlapping, and supports the described prior-case influence."
+    },
+    {
+      "hidden_instance_id": "de_01",
+      "hidden_target_bias_label": "Decoy Effect",
+      "hidden_decision_or_episode": "Comparative selection among three empiric antibiotic bundles",
+      "hidden_mechanism": "A dominated extended bundle makes the standard bundle appear preferable by comparison rather than through independent severity-based reasoning.",
+      "matched_rag_occurrence_id": "obs_002",
+      "rag_predicted_bias_label": "decoy effect",
+      "rag_confidence": "moderate",
+      "label_equivalence_result": "exact_target_label",
+      "localization_match_type": "exact_quote_match",
+      "mechanism_overlap": "full_mechanism_match",
+      "strict_scorecard_outcome": "true_positive",
+      "mechanism_first_scorecard_outcome": "true_positive",
+      "secondary_diagnostic_outcome": "exact_instance_match",
+      "label_equivalence_explanation": "The predicted label is the target construct.",
+      "mechanism_overlap_explanation": "The output correctly identifies the three-option comparison, the dominated extended bundle, and the resulting preference for the standard bundle.",
+      "evidence_fidelity_assessment": "Both quoted passages are valid and directly support the comparison-based choice rationale."
+    },
+    {
+      "hidden_instance_id": "db_01",
+      "hidden_target_bias_label": "Default Bias",
+      "hidden_decision_or_episode": "Acceptance of preconfigured telemetry and catheter orders",
+      "hidden_mechanism": "Prechecked EHR defaults are accepted without active reassessment despite improved status and cues supporting modification.",
+      "matched_rag_occurrence_id": "obs_003",
+      "rag_predicted_bias_label": "status quo bias",
+      "rag_confidence": "moderate",
+      "label_equivalence_result": "established_alias_or_equivalent",
+      "localization_match_type": "exact_quote_match",
+      "mechanism_overlap": "full_mechanism_match",
+      "strict_scorecard_outcome": "true_positive",
+      "mechanism_first_scorecard_outcome": "true_positive",
+      "secondary_diagnostic_outcome": "approved_alias_match",
+      "label_equivalence_explanation": "Although the primary label is status quo bias, the output explicitly supplies default bias as an alternative and describes the benchmark's default-acceptance mechanism.",
+      "mechanism_overlap_explanation": "The output fully captures passive acceptance of pre-set telemetry and catheter orders without patient-specific reassessment after improvement.",
+      "evidence_fidelity_assessment": "The quoted evidence is valid, directly overlapping, and materially supports the mechanism."
+    },
+    {
+      "hidden_instance_id": "pb_01",
+      "hidden_target_bias_label": "Primacy Bias",
+      "hidden_decision_or_episode": "Diagnostic updating during morning rounds",
+      "hidden_mechanism": "The first-presented urosepsis framing retains disproportionate weight despite later negative urine culture and blood-culture evidence favoring another source.",
+      "matched_rag_occurrence_id": "obs_004",
+      "rag_predicted_bias_label": "anchoring bias",
+      "rag_confidence": "high",
+      "label_equivalence_result": "near_neighbor_label",
+      "localization_match_type": "exact_quote_match",
+      "mechanism_overlap": "full_mechanism_match",
+      "strict_scorecard_outcome": "false_negative",
+      "mechanism_first_scorecard_outcome": "true_positive",
+      "secondary_diagnostic_outcome": "correct_location_wrong_bias_label",
+      "label_equivalence_explanation": "Anchoring is a near-neighbor construct, not an approved exact alias for primacy bias in this evaluation.",
+      "mechanism_overlap_explanation": "The output fully captures the first-presented diagnostic frame, contradictory later evidence, and continued discussion around the initial hypothesis.",
+      "evidence_fidelity_assessment": "All quoted passages are valid and directly support the sequential belief-updating mechanism."
+    }
+  ],
+  "unmatched_rag_predictions": [],
+  "candidate_analysis": {
+    "candidate_count": 2,
+    "candidates": [
+      {
+        "candidate_id": "cand_001",
+        "proposed_bias_label": "confirmation bias",
+        "localized_segment_id": "seg_006",
+        "best_related_hidden_instance_id": "pb_01",
+        "quote_validity": "valid",
+        "would_match_if_promoted_strict": false,
+        "would_match_if_promoted_mechanism_first": false,
+        "candidate_assessment": "useful_abstention",
+        "details": "The quote is valid, but the output appropriately explains that the transcript does not establish an independent confirmatory-search process beyond the anchoring episode."
+      },
+      {
+        "candidate_id": "cand_002",
+        "proposed_bias_label": "groupthink",
+        "localized_segment_id": "seg_006",
+        "best_related_hidden_instance_id": "pb_01",
+        "quote_validity": "valid",
+        "would_match_if_promoted_strict": false,
+        "would_match_if_promoted_mechanism_first": false,
+        "candidate_assessment": "useful_abstention",
+        "details": "The transcript lacks sufficient evidence of suppressed dissent or self-censorship; the described persistence is better explained by the primacy/anchoring episode."
+      }
+    ]
+  },
+  "signal_detection_summary": {
+    "evaluation_unit": "eligible_reasoning_segment",
+    "high_only": {
+      "positive_segments": 4,
+      "negative_segments": 4,
+      "hits": 2,
+      "misses": 2,
+      "false_alarms": 0,
+      "correct_rejections": 4,
+      "hit_rate": 0.5,
+      "false_alarm_rate": 0.0,
+      "accuracy": 0.75,
+      "precision": 1.0,
+      "recall": 0.5,
+      "f1": 0.6667,
+      "detection_interpretation": "High-confidence findings detect the affect/imaging and primacy/rounds segments, while moderate-confidence decoy and default findings are omitted."
+    },
+    "high_and_moderate": {
+      "positive_segments": 4,
+      "negative_segments": 4,
+      "hits": 4,
+      "misses": 0,
+      "false_alarms": 0,
+      "correct_rejections": 4,
+      "hit_rate": 1.0,
+      "false_alarm_rate": 0.0,
+      "accuracy": 1.0,
+      "precision": 1.0,
+      "recall": 1.0,
+      "f1": 1.0,
+      "detection_interpretation": "All four hidden positive segments are detected with no segment-level false alarms."
+    },
+    "all_identified_confidence_levels": {
+      "positive_segments": 4,
+      "negative_segments": 4,
+      "hits": 4,
+      "misses": 0,
+      "false_alarms": 0,
+      "correct_rejections": 4,
+      "hit_rate": 1.0,
+      "false_alarm_rate": 0.0,
+      "accuracy": 1.0,
+      "precision": 1.0,
+      "recall": 1.0,
+      "f1": 1.0,
+      "detection_interpretation": "All identified findings are localized to positive segments; no low-confidence findings were present."
+    }
+  },
+  "strict_instance_level_metrics": {
+    "high_only": {
+      "true_positives": 0,
+      "false_negatives": 4,
+      "false_positives": 2,
+      "precision": 0.0,
+      "recall": 0.0,
+      "f1": 0.0,
+      "exact_occurrence_match_rate": 0.0,
+      "occurrence_count_match_rate": 0.0
+    },
+    "high_and_moderate": {
+      "true_positives": 2,
+      "false_negatives": 2,
+      "false_positives": 2,
+      "precision": 0.5,
+      "recall": 0.5,
+      "f1": 0.5,
+      "exact_occurrence_match_rate": 0.5,
+      "occurrence_count_match_rate": 0.5
+    },
+    "all_identified_confidence_levels": {
+      "true_positives": 2,
+      "false_negatives": 2,
+      "false_positives": 2,
+      "precision": 0.5,
+      "recall": 0.5,
+      "f1": 0.5,
+      "exact_occurrence_match_rate": 0.5,
+      "occurrence_count_match_rate": 0.5
+    }
+  },
+  "mechanism_first_instance_level_metrics": {
+    "high_only": {
+      "true_positives": 1,
+      "false_negatives": 3,
+      "false_positives": 1,
+      "precision": 0.5,
+      "recall": 0.25,
+      "f1": 0.3333,
+      "exact_occurrence_match_rate": 0.25,
+      "occurrence_count_match_rate": 0.25
+    },
+    "high_and_moderate": {
+      "true_positives": 3,
+      "false_negatives": 1,
+      "false_positives": 1,
+      "precision": 0.75,
+      "recall": 0.75,
+      "f1": 0.75,
+      "exact_occurrence_match_rate": 0.75,
+      "occurrence_count_match_rate": 0.75
+    },
+    "all_identified_confidence_levels": {
+      "true_positives": 3,
+      "false_negatives": 1,
+      "false_positives": 1,
+      "precision": 0.75,
+      "recall": 0.75,
+      "f1": 0.75,
+      "exact_occurrence_match_rate": 0.75,
+      "occurrence_count_match_rate": 0.75
+    }
+  },
+  "target_bias_performance": [
+    {
+      "hidden_target_bias_label": "Affect Heuristic",
+      "hidden_requested_occurrences": 1,
+      "strict_true_positives": 0,
+      "strict_false_negatives": 1,
+      "strict_false_positives_attributed_to_target": 1,
+      "strict_precision": 0.0,
+      "strict_recall": 0.0,
+      "strict_f1": 0.0,
+      "mechanism_first_true_positives": 0,
+      "mechanism_first_false_negatives": 1,
+      "mechanism_first_false_positives_attributed_to_target": 1,
+      "mechanism_first_precision": 0.0,
+      "mechanism_first_recall": 0.0,
+      "mechanism_first_f1": 0.0,
+      "count_match_status": "underdetected"
+    },
+    {
+      "hidden_target_bias_label": "Decoy Effect",
+      "hidden_requested_occurrences": 1,
+      "strict_true_positives": 1,
+      "strict_false_negatives": 0,
+      "strict_false_positives_attributed_to_target": 0,
+      "strict_precision": 1.0,
+      "strict_recall": 1.0,
+      "strict_f1": 1.0,
+      "mechanism_first_true_positives": 1,
+      "mechanism_first_false_negatives": 0,
+      "mechanism_first_false_positives_attributed_to_target": 0,
+      "mechanism_first_precision": 1.0,
+      "mechanism_first_recall": 1.0,
+      "mechanism_first_f1": 1.0,
+      "count_match_status": "exact_match"
+    },
+    {
+      "hidden_target_bias_label": "Default Bias",
+      "hidden_requested_occurrences": 1,
+      "strict_true_positives": 1,
+      "strict_false_negatives": 0,
+      "strict_false_positives_attributed_to_target": 0,
+      "strict_precision": 1.0,
+      "strict_recall": 1.0,
+      "strict_f1": 1.0,
+      "mechanism_first_true_positives": 1,
+      "mechanism_first_false_negatives": 0,
+      "mechanism_first_false_positives_attributed_to_target": 0,
+      "mechanism_first_precision": 1.0,
+      "mechanism_first_recall": 1.0,
+      "mechanism_first_f1": 1.0,
+      "count_match_status": "exact_match"
+    },
+    {
+      "hidden_target_bias_label": "Primacy Bias",
+      "hidden_requested_occurrences": 1,
+      "strict_true_positives": 0,
+      "strict_false_negatives": 1,
+      "strict_false_positives_attributed_to_target": 1,
+      "strict_precision": 0.0,
+      "strict_recall": 0.0,
+      "strict_f1": 0.0,
+      "mechanism_first_true_positives": 1,
+      "mechanism_first_false_negatives": 0,
+      "mechanism_first_false_positives_attributed_to_target": 0,
+      "mechanism_first_precision": 1.0,
+      "mechanism_first_recall": 1.0,
+      "mechanism_first_f1": 1.0,
+      "count_match_status": "underdetected"
+    }
+  ],
+  "rag_label_false_positive_inventory": [
+    {
+      "rag_predicted_bias_label": "availability bias",
+      "alternative_labels": [
+        "availability heuristic"
+      ],
+      "occurrence_count": 1,
+      "best_related_hidden_target_bias_label": "Affect Heuristic",
+      "label_relation": "near_neighbor",
+      "mechanism_overlap_summary": "Both involve a recent vivid adverse case affecting risk judgment, but the RAG explanation centers on ease of recall while the hidden mechanism requires emotional residue as the causal driver.",
+      "primary_error_types": [
+        "correct_location_wrong_bias_label",
+        "partial_mechanism_match"
+      ]
+    },
+    {
+      "rag_predicted_bias_label": "anchoring bias",
+      "alternative_labels": [
+        "anchoring",
+        "anchoring and adjustment",
+        "diagnostic momentum"
+      ],
+      "occurrence_count": 1,
+      "best_related_hidden_target_bias_label": "Primacy Bias",
+      "label_relation": "near_neighbor",
+      "mechanism_overlap_summary": "The RAG mechanism fully captures the first-presented diagnostic frame persisting despite contradictory later data, but anchoring is not treated as the exact target label.",
+      "primary_error_types": [
+        "correct_location_wrong_bias_label"
+      ]
+    }
+  ],
+  "diagnostic_error_summary": {
+    "correct_location_wrong_bias_label_count": 2,
+    "correct_label_wrong_location_count": 0,
+    "correct_label_location_wrong_mechanism_count": 0,
+    "mechanism_detected_label_unresolved_count": 0,
+    "partial_mechanism_match_count": 1,
+    "duplicate_prediction_count": 0,
+    "unsupported_prediction_count": 0,
+    "fabricated_or_invalid_quote_count": 0,
+    "approved_alias_or_equivalence_count": 1,
+    "near_neighbor_label_count": 2,
+    "different_construct_label_count": 0,
+    "candidate_count": 2,
+    "candidate_useful_abstention_count": 2,
+    "candidate_near_miss_count": 0
+  },
+  "corpus_support_audit": {
+    "primary_corpus_fidelity_score_available": false,
+    "rag_occurrences_claiming_retrieved_support": 2,
+    "rag_occurrences_with_no_claimed_retrieved_support": 2,
+    "rag_occurrences_with_unverifiable_or_internally_inconsistent_citation_metadata": 2,
+    "assessment_note": "obs_001 and obs_004 claim retrieved support; obs_002 and obs_003 disclose no direct retrieved support. The cited source metadata for the two supported occurrences cannot be independently verified without retrieval logs or source passages."
+  },
+  "comparison_ready_summary": {
+    "primary_recommended_comparison_threshold": "high_and_moderate",
+    "segment_detection": {
+      "high_only": {
+        "hits": 2,
+        "misses": 2,
+        "false_alarms": 0,
+        "correct_rejections": 4,
+        "hit_rate": 0.5,
+        "false_alarm_rate": 0.0,
+        "f1": 0.6667
+      },
+      "high_and_moderate": {
+        "hits": 4,
+        "misses": 0,
+        "false_alarms": 0,
+        "correct_rejections": 4,
+        "hit_rate": 1.0,
+        "false_alarm_rate": 0.0,
+        "f1": 1.0
+      },
+      "all_identified_confidence_levels": {
+        "hits": 4,
+        "misses": 0,
+        "false_alarms": 0,
+        "correct_rejections": 4,
+        "hit_rate": 1.0,
+        "false_alarm_rate": 0.0,
+        "f1": 1.0
+      }
+    },
+    "strict_instance_identification": {
+      "high_only": {
+        "true_positives": 0,
+        "false_negatives": 4,
+        "false_positives": 2,
+        "precision": 0.0,
+        "recall": 0.0,
+        "f1": 0.0
+      },
+      "high_and_moderate": {
+        "true_positives": 2,
+        "false_negatives": 2,
+        "false_positives": 2,
+        "precision": 0.5,
+        "recall": 0.5,
+        "f1": 0.5
+      },
+      "all_identified_confidence_levels": {
+        "true_positives": 2,
+        "false_negatives": 2,
+        "false_positives": 2,
+        "precision": 0.5,
+        "recall": 0.5,
+        "f1": 0.5
+      }
+    },
+    "mechanism_first_identification": {
+      "high_only": {
+        "true_positives": 1,
+        "false_negatives": 3,
+        "false_positives": 1,
+        "precision": 0.5,
+        "recall": 0.25,
+        "f1": 0.3333
+      },
+      "high_and_moderate": {
+        "true_positives": 3,
+        "false_negatives": 1,
+        "false_positives": 1,
+        "precision": 0.75,
+        "recall": 0.75,
+        "f1": 0.75
+      },
+      "all_identified_confidence_levels": {
+        "true_positives": 3,
+        "false_negatives": 1,
+        "false_positives": 1,
+        "precision": 0.75,
+        "recall": 0.75,
+        "f1": 0.75
+      }
+    },
+    "taxonomy_gap": {
+      "high_only": {
+        "mechanism_first_f1_minus_strict_f1": 0.3333
+      },
+      "high_and_moderate": {
+        "mechanism_first_f1_minus_strict_f1": 0.25
+      },
+      "all_identified_confidence_levels": {
+        "mechanism_first_f1_minus_strict_f1": 0.25
+      }
+    },
+    "confidence_tradeoff": {
+      "increment_from_high_to_high_and_moderate": "Segment F1 rises from 0.6667 to 1.0000; strict instance F1 rises from 0.0000 to 0.5000; mechanism-first F1 rises from 0.3333 to 0.7500.",
+      "increment_from_high_and_moderate_to_all_confidence": "No change; no low-confidence identified occurrences were present."
+    }
+  },
+  "overall_evaluation_summary": {
+    "hidden_total_planned_occurrences": 4,
+    "rag_total_identified_occurrences": 4,
+    "rag_total_candidate_biases": 2,
+    "segment_level_primary_result": "Perfect segment detection at high_and_moderate and all-confidence thresholds, with no segment-level false alarms; high-only recall is 0.5000 because two moderate findings are excluded.",
+    "strict_label_plus_mechanism_result": "2 of 4 hidden instances are strict true positives. The affect and primacy instances are correctly localized but receive near-neighbor labels; default bias is credited through an approved equivalent label.",
+    "mechanism_first_result": "3 of 4 hidden instances are mechanism-first true positives. The primacy/anchoring prediction is credited for full mechanism match, while the affect/availability prediction remains a partial mechanism match.",
+    "main_failure_modes": [
+      "Near-neighbor taxonomy substitutions for Affect Heuristic and Primacy Bias.",
+      "Availability analysis does not fully distinguish emotional residue from ease of recall.",
+      "Two moderate-confidence findings are missed at the high-only threshold."
+    ],
+    "main_strengths": [
+      "All four identified occurrences are validly quoted and localized to positive segments.",
+      "Decoy Effect is an exact label and mechanism match.",
+      "Status quo bias is supported by a full default-acceptance mechanism and an explicit default-bias alternative label.",
+      "Candidates are appropriately withheld from identified findings."
+    ],
+    "benchmark_interpretation": "The run has excellent segment-level detection and strong mechanism-first performance, but strict label fidelity is limited by near-neighbor substitutions for Affect Heuristic and Primacy Bias."
+  }
+}

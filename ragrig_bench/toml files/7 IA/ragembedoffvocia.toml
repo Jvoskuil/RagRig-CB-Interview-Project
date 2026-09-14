@@ -1,0 +1,67 @@
+# Ranker comparison: the default hybrid RRF ranker vs. pure cosine ranking
+# (WeightedFusionRanker alpha = 1.0), on the ragrig default chat backend
+# (Ollama, qwen3.5:9b), varying the context budget (4096 and 8192 tokens).
+# Corpus = the embedded HTML fixture book, default pipeline (full parser
+# registry + MarkdownChunker).
+
+corpus_dirs = ["papers=/mnt/c/Users/Joost/Documents/papers"]
+
+queries = [
+    "Interviewer: Thanks for making time for this. This conversation is being recorded for internal process review, and I'll ask you to walk me through a specific shift in detail. Skip anything you're not comfortable discussing. Can you tell me your role and how long you've been doing it? Participant: Sure. I'm a threat intelligence analyst on the SOC team, about four years in, mostly financial services environments. During shift I handle triage, attribution, and hunt scoping when something looks like more than commodity noise. Interviewer: Good. Let's start broad. Can you walk me through what this shift looked like when the alert cluster first appeared? Participant: About two hours into an overnight shift, EDR kicked out a cluster of alerts on a trading-support server — the box that feeds reporting data to the trading engine, not the engine itself. The auto-triage score came back Low. That queue does throw a lot of low-severity noise from that host, and I'd seen similar low scores turn out benign twice before. But I also remembered one shift where a Low score turned into something real, so I didn't want to just wave it through on pattern-matching alone. Interviewer: What was your primary objective at that point? Participant: Cover the queue efficiently without missing something that needed attention, and produce a handoff that would hold up. About three hours were left in the shift, so I wanted to be deliberate about where I spent time. Interviewer: Take me through what happened next, chronologically. Participant: After the Low score, I did a quick scan of the alert summary fields — parent process, any flagged child processes, whether the trading-support role tag showed anything unusual. Nothing in that quick look overrode the Low score, so I deferred the full manual log pull, which would've run fifteen to twenty minutes, but I noted it to revisit if anything else came in. About forty minutes later it did — an outbound connection to an unfamiliar IP. That's when I opened the case properly. I found a registry-key artifact matching a GreyFalcon campaign I'd tracked myself about six months back. At the same time, two things didn't fit cleanly: the C2 domain's registration pattern looked different from GreyFalcon's usual infrastructure, and there was an attempted connection to the HR benefits database, which isn't a target GreyFalcon has gone after before. I didn't want to commit to an attribution with those loose ends open. A vendor bulletin came in with five IOCs — a rare C2 protocol signature and two file hashes among them — and I used that to build a scope. Near the end of shift, I had a vendor bulletin and a colleague's more hedged internal notes to work from for the containment write-up, and I checked both against telemetry before finalizing. Interviewer: Let's slow down and go through each decision individually. First — the initial Low-severity alert. What cues were you weighing right then? Participant: The auto-triage score, the server's history of false alarms, and the absence of any reported business disruption. But I also pulled up the summary fields rather than just accepting the score outright. Interviewer: What made you decide to do that quick scan instead of either accepting the score outright or doing the full pull immediately? Participant: It was a middle option. A full manual pull is a real time cost — fifteen, twenty minutes — and I didn't have grounds yet to justify that against the rest of the queue. But taking the score completely at face value without even glancing at the summary felt like too much trust in a score that's generated from a limited rule set. The five-minute look was a way to catch anything obviously wrong without committing the full review time. Interviewer: Did you consider escalating to the IR lead first? Participant: Briefly, but there wasn't anything at that point to escalate — a Low score and a quiet business environment. I planned to revisit if anything changed, which it did forty minutes later. Interviewer: Understood. Let's move to the attribution decision after the outbound connection appeared. What was the basis for your attribution call? Participant: The registry-key match was strong — I'd documented that artifact myself in an earlier report, so I trusted it as a data point. But I didn't want to treat it as decisive on its own, because two things cut against it: the C2 domain's registration profile didn't match GreyFalcon's usual infrastructure, and the target — an HR database — wasn't something GreyFalcon has gone after in anything I've tracked. So I called it moderate confidence rather than high, and flagged both mismatches explicitly as things the hunt would need to test. Interviewer: How did you handle the HR-targeting mismatch specifically? Did you have an explanation for it? Participant: I didn't try to force one. It's possible there's a reason a GreyFalcon operator would go after HR data, but I didn't have evidence for that, so rather than guess at their motive I just left it as an open inconsistency — something that either gets explained by more evidence or ends up pointing away from this actor entirely. Interviewer: Let's talk about the hunt scope decision once the vendor bulletin came in. How did you decide what to include? Participant: The bulletin listed five IOCs — the protocol signature and two file hashes among them, not really ranked by the vendor in any stated order. I started with the two file hashes first, since they're more specific and carry a lower false-positive risk technically, and treated the protocol signature as a second pass to expand into if the first pass didn't resolve things. It wasn't about which one stood out most on the page — it was about which ones would tell me the most per unit of hunt effort. Interviewer: Did the business preference for a narrow scope influence that? Participant: A bit — trading-adjacent systems are sensitive to downtime, so starting narrow and staged was partly about not disrupting things unnecessarily. But the sequencing itself was based on which indicators were more diagnostic, not on convenience alone. Interviewer: Last decision point — the containment recommendation. You had the vendor bulletin and your colleague's notes. How did you decide between them? Participant: I didn't pick one over the other outright. The vendor bulletin was well-formatted and specific; the colleague's notes were hedged but, as far as I could tell, accurate. I checked specific claims from both against the telemetry I had — did the timestamps line up, did the described behavior match what we actually saw — and both held up partially. So the recommendation ended up blending the vendor's specific technical steps with the broader precautionary scope from the internal notes, because that's what the corroborated evidence supported, not because one read more convincingly than the other. Interviewer: How confident were you overall in the final recommendation you handed off? Participant: Moderate, maybe six out of ten. There was still an open question about attribution and an unresolved partial match on an additional host from the scope sweep, so I flagged both for next-shift follow-up rather than presenting it as closed. Interviewer: Looking back, if you'd pulled the raw logs immediately in phase one instead of doing the shorter scan, how might things have unfolded? Participant: I might have caught the outbound connection a little sooner, which could have given me more runway before the vendor window closed. Hard to know for sure — the summary scan didn't show anything that would've changed my initial call anyway. Interviewer: If the vendor bulletin had listed its IOCs in a different order, do you think your scoping would have changed? Participant: I don't think so. I wasn't going by the order they came in — I was staging based on which ones were more specific technically. If anything, reordering the list wouldn't have changed which ones I started with. Interviewer: Is there a point in this sequence where you'd still want a second analyst's independent read before proceeding? Participant: Probably the attribution step, just because of how much rode on it downstream. Even with the mismatches flagged, a second opinion on whether the registry-key match should carry as much weight as it did might have sharpened that call earlier rather than carrying open questions all the way through the hunt. Interviewer: That's helpful, thank you. I think that covers what I need."
+]
+
+[[agents]]
+label = "Gemini Prompt 8192"
+[agents.chat]
+provider = "deepseek"            # "ollama" | "deepseek"
+#model = "qwen2.5:1.5b"         # ignored for deepseek
+context_tokens = 8192          # context budget for retrieved chunks
+deepseek_model = "deepseek-v4-pro"   # deepseek only
+#deepseek_api_key = DEEPSEEK_API_KEY # deepseek only (or DEEPSEEK_API_KEY env)
+# context_size_mode = "Auto"          # "Auto" | "Forced"
+system_prompt_path = "prompt_gemini.md"    # custom system prompt ({context} placeholder)
+# request_timeout_secs = 300          # per-request timeout, None = no timeout
+[agents.chat.params]                # generation overrides (all optional)
+# temperature = 0.7
+# top_p = 0.9
+# max_tokens = 1024
+seed = 42
+
+[[agents]]
+label = "Sonar Prompt 8192"
+[agents.chat]
+provider = "deepseek"            # "ollama" | "deepseek"
+#model = "qwen2.5:1.5b"         # ignored for deepseek
+context_tokens = 8192          # context budget for retrieved chunks
+deepseek_model = "deepseek-v4-pro"   # deepseek only
+#deepseek_api_key = DEEPSEEK_API_KEY # deepseek only (or DEEPSEEK_API_KEY env)
+# context_size_mode = "Auto"          # "Auto" | "Forced"
+system_prompt_path = "prompt_sonar.md"    # custom system prompt ({context} placeholder)
+# request_timeout_secs = 300          # per-request timeout, None = no timeout
+ [agents.chat.params]                # generation overrides (all optional)
+# temperature = 0.7
+# top_p = 0.9
+# max_tokens = 1024
+ seed = 42
+
+[[agents]]
+label = "Sonnet Prompt 8192"
+[agents.chat]
+provider = "deepseek"            # "ollama" | "deepseek"
+#model = "qwen2.5:1.5b"         # ignored for deepseek
+context_tokens = 8192          # context budget for retrieved chunks
+deepseek_model = "deepseek-v4-pro"   # deepseek only
+#deepseek_api_key = DEEPSEEK_API_KEY # deepseek only (or DEEPSEEK_API_KEY env)
+# context_size_mode = "Auto"          # "Auto" | "Forced"
+system_prompt_path = "prompt_sonnet.md"    # custom system prompt ({context} placeholder)
+# request_timeout_secs = 300          # per-request timeout, None = no timeout
+[agents.chat.params]                # generation overrides (all optional)
+# temperature = 0.7
+# top_p = 0.9
+# max_tokens = 1024
+seed = 42
+
+# ---Embed testing ---
+[embed]
+top_k = 0
+#top_k = 50

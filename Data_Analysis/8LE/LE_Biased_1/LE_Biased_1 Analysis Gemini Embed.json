@@ -1,0 +1,577 @@
+{
+  "evaluation_metadata": {
+    "task": "ontology_free_rag_cognitive_bias_benchmark_evaluation",
+    "benchmark_run_metadata": {
+      "benchmark_run_id": "LE_Biased_1_Gemini_on",
+      "interview_id": "LE_Biased_1",
+      "system_prompt_id": "Gemini",
+      "system_prompt_generator": "Prompt 1_2",
+      "rag_model_id": "v1.0.0",
+      "corpus_condition": "on",
+      "retrieval_configuration_id": "k=50",
+      "decoding_configuration_id": null,
+      "temperature": 1,
+      "replicate_id": null,
+      "segment_map_id": null
+    },
+    "scenario_id": "LE_Biased_1",
+    "domain_id": "LE",
+    "condition": "biased",
+    "segment_map_status": "generated_not_prevalidated",
+    "rag_output_parse_status": "valid_json",
+    "rag_schema_assessment": "conformant"
+  },
+  "input_validation": {
+    "rag_output_schema_violations": [],
+    "rag_summary_count_consistency": {
+      "status": "consistent",
+      "details": "identified_bias_summary reports one expectation bias occurrence, identified_occurrences contains exactly obs_001 with identified status and moderate confidence, candidate_biases is empty, and no_supported_biases_found is false."
+    },
+    "evaluation_limitations": [
+      "No frozen evaluation segment map was supplied; four decision-point reasoning segments were generated from the raw interview and hidden specification.",
+      "No retrieved passages or retrieval logs were supplied, so corpus retrieval fidelity cannot be independently scored."
+    ]
+  },
+  "evaluation_segment_map": {
+    "segment_mapping_version": "1.0",
+    "segments": [
+      {
+        "segment_id": "seg_001",
+        "speaker": "Participant",
+        "segment_type": "initial_observation_reasoning",
+        "raw_interview_anchor": "Watching first just gives me information without giving up the advantage.",
+        "eligible_reasoning_segment": true,
+        "ground_truth_bias_present": false,
+        "ground_truth_instance_ids": [],
+        "ground_truth_rationale": "Decision point 1 is not the hidden positive instance; the officer chooses distance-based observation from vague dispatch information and recent break-ins."
+      },
+      {
+        "segment_id": "seg_002",
+        "speaker": "Participant",
+        "segment_type": "pat_down_evidence_weighting_reasoning",
+        "raw_interview_anchor": "They didn't really go on the same scale for me, if I'm honest. The bulge was a fact I could point to—something's there, I don't know what. Him being relaxed about it, answering fine, not flinching—yeah, in hindsight that probably should've counted for something on the other side. Normally in an uncertain stop like that, somebody being that calm and cooperative does ease things off for me a notch, gives me a little more room to slow down. But here, once I clocked the bulge, that easing just didn't happen—the calm didn't really buy him anything against the pocket.",
+        "eligible_reasoning_segment": true,
+        "ground_truth_bias_present": true,
+        "ground_truth_instance_ids": [
+          "fpe_01"
+        ],
+        "ground_truth_rationale": "The hidden instance is at decision point 2: the present pocket bulge is weighted heavily while the absent nervous/evasive cues and calm cooperation are discounted in the same pat-down judgment."
+      },
+      {
+        "segment_id": "seg_003",
+        "speaker": "Participant",
+        "segment_type": "post_pat_down_detention_reasoning",
+        "raw_interview_anchor": "Holding him a few extra minutes to get dispatch confirmation felt like the reasonable middle ground—not cutting him loose on an unverified story, but not escalating into an arrest either.",
+        "eligible_reasoning_segment": true,
+        "ground_truth_bias_present": false,
+        "ground_truth_instance_ids": [],
+        "ground_truth_rationale": "Decision point 3 is outside the single hidden instance; the officer holds briefly for independent verification after a clean pat-down."
+      },
+      {
+        "segment_id": "seg_004",
+        "speaker": "Participant",
+        "segment_type": "stop_closure_reasoning",
+        "raw_interview_anchor": "Once dispatch confirmed the account and the employee showed up right after, there wasn't anything left to hang a citation on.",
+        "eligible_reasoning_segment": true,
+        "ground_truth_bias_present": false,
+        "ground_truth_instance_ids": [],
+        "ground_truth_rationale": "Decision point 4 is outside the hidden instance; verified delivery information and the employee’s arrival support release and documentation."
+      }
+    ]
+  },
+  "segment_level_adjudications": [
+    {
+      "segment_id": "seg_001",
+      "ground_truth_status": "negative",
+      "ground_truth_instance_ids": [],
+      "rag_identified_occurrence_ids": [],
+      "rag_candidate_ids_counted_at_fourth_threshold": [],
+      "rag_detected_bias_in_segment_by_threshold": {
+        "high_only": false,
+        "high_and_moderate": false,
+        "all_identified_confidence_levels": false,
+        "all_confidence_and_candidates": false
+      },
+      "sdt_outcome_by_threshold": {
+        "high_only": "correct_rejection",
+        "high_and_moderate": "correct_rejection",
+        "all_identified_confidence_levels": "correct_rejection",
+        "all_confidence_and_candidates": "correct_rejection"
+      },
+      "localization_basis": "No RAG finding localizes to the initial observation decision.",
+      "adjudication_note": "Negative segment with no qualifying RAG finding."
+    },
+    {
+      "segment_id": "seg_002",
+      "ground_truth_status": "positive",
+      "ground_truth_instance_ids": [
+        "fpe_01"
+      ],
+      "rag_identified_occurrence_ids": [
+        "obs_001"
+      ],
+      "rag_candidate_ids_counted_at_fourth_threshold": [],
+      "rag_detected_bias_in_segment_by_threshold": {
+        "high_only": false,
+        "high_and_moderate": true,
+        "all_identified_confidence_levels": true,
+        "all_confidence_and_candidates": true
+      },
+      "sdt_outcome_by_threshold": {
+        "high_only": "miss",
+        "high_and_moderate": "hit",
+        "all_identified_confidence_levels": "hit",
+        "all_confidence_and_candidates": "hit"
+      },
+      "localization_basis": "obs_001 quotes and paraphrases the participant's pat-down reasoning; its third verbatim quote directly overlaps the mapped primary evidence span about the bulge and calm demeanor.",
+      "adjudication_note": "The moderate-confidence finding localizes exactly to the sole hidden positive segment. Its label is a near neighbor, but the described present-versus-absent cue weighting matches the hidden mechanism."
+    },
+    {
+      "segment_id": "seg_003",
+      "ground_truth_status": "negative",
+      "ground_truth_instance_ids": [],
+      "rag_identified_occurrence_ids": [],
+      "rag_candidate_ids_counted_at_fourth_threshold": [],
+      "rag_detected_bias_in_segment_by_threshold": {
+        "high_only": false,
+        "high_and_moderate": false,
+        "all_identified_confidence_levels": false,
+        "all_confidence_and_candidates": false
+      },
+      "sdt_outcome_by_threshold": {
+        "high_only": "correct_rejection",
+        "high_and_moderate": "correct_rejection",
+        "all_identified_confidence_levels": "correct_rejection",
+        "all_confidence_and_candidates": "correct_rejection"
+      },
+      "localization_basis": "No RAG finding localizes to the brief post-pat-down hold pending dispatch confirmation.",
+      "adjudication_note": "Negative segment with no qualifying RAG finding."
+    },
+    {
+      "segment_id": "seg_004",
+      "ground_truth_status": "negative",
+      "ground_truth_instance_ids": [],
+      "rag_identified_occurrence_ids": [],
+      "rag_candidate_ids_counted_at_fourth_threshold": [],
+      "rag_detected_bias_in_segment_by_threshold": {
+        "high_only": false,
+        "high_and_moderate": false,
+        "all_identified_confidence_levels": false,
+        "all_confidence_and_candidates": false
+      },
+      "sdt_outcome_by_threshold": {
+        "high_only": "correct_rejection",
+        "high_and_moderate": "correct_rejection",
+        "all_identified_confidence_levels": "correct_rejection",
+        "all_confidence_and_candidates": "correct_rejection"
+      },
+      "localization_basis": "No RAG finding localizes to the release and stop-closure decision.",
+      "adjudication_note": "Negative segment with no qualifying RAG finding."
+    }
+  ],
+  "instance_level_adjudications": [
+    {
+      "hidden_instance_id": "fpe_01",
+      "hidden_target_bias_label": "Feature positive effect",
+      "hidden_decision_or_episode": "Pat-down decision after observing the jacket-pocket bulge (decision point 2)",
+      "hidden_mechanism": "Presence of a salient cue (pocket bulge) is weighted heavily in the pat-down decision while an equally diagnostic absent cue (no nervous/evasive behavior) is discounted or ignored in the same judgment.",
+      "matched_finding_by_threshold": {
+        "high_only": {
+          "matched_id": null,
+          "matched_type": "none"
+        },
+        "high_and_moderate": {
+          "matched_id": "obs_001",
+          "matched_type": "identified"
+        },
+        "all_identified_confidence_levels": {
+          "matched_id": "obs_001",
+          "matched_type": "identified"
+        },
+        "all_confidence_and_candidates": {
+          "matched_id": "obs_001",
+          "matched_type": "identified"
+        }
+      },
+      "rag_predicted_bias_label": "expectation bias",
+      "rag_confidence": "moderate",
+      "label_equivalence_result": "near_neighbor_label",
+      "localization_match_type": "exact_quote_match",
+      "mechanism_overlap": "full_mechanism_match",
+      "strict_scorecard_outcome_by_threshold": {
+        "high_only": "false_negative",
+        "high_and_moderate": "false_negative",
+        "all_identified_confidence_levels": "false_negative",
+        "all_confidence_and_candidates": "false_negative"
+      },
+      "mechanism_first_scorecard_outcome_by_threshold": {
+        "high_only": "false_negative",
+        "high_and_moderate": "true_positive",
+        "all_identified_confidence_levels": "true_positive",
+        "all_confidence_and_candidates": "true_positive"
+      },
+      "secondary_diagnostic_outcome": "correct_location_wrong_bias_label",
+      "label_equivalence_explanation": "Expectation bias is a related broad cue-weighting construct, but it is not an established scholarly alias for Feature positive effect. The output does not use the hidden target label, so strict label matching fails despite the correct episode and mechanism.",
+      "mechanism_overlap_explanation": "Full match: the finding identifies the salient present bulge as dominating the pat-down judgment, explicitly contrasts it with calm/cooperative and non-evasive behavior, and characterizes the affected operation as threat assessment and evidence weighting under uncertainty.",
+      "evidence_fidelity_assessment": "The three quoted interview spans are verbatim, attributed to the Participant, and directly support the pat-down episode. The third quote is an exact match to the primary asymmetric-weighting evidence span."
+    }
+  ],
+  "unmatched_rag_predictions": [],
+  "candidate_analysis": {
+    "candidate_count": 0,
+    "candidates": []
+  },
+  "signal_detection_summary": {
+    "evaluation_unit": "eligible_reasoning_segment",
+    "high_only": {
+      "positive_segments": 1,
+      "negative_segments": 3,
+      "hits": 0,
+      "misses": 1,
+      "false_alarms": 0,
+      "correct_rejections": 3,
+      "hit_rate": 0,
+      "false_alarm_rate": 0,
+      "accuracy": 0.75,
+      "precision": null,
+      "recall": 0,
+      "f1": 0,
+      "detection_interpretation": "The moderate-confidence finding is excluded at high_only, so the sole positive segment is missed and all three negative segments are correctly rejected."
+    },
+    "high_and_moderate": {
+      "positive_segments": 1,
+      "negative_segments": 3,
+      "hits": 1,
+      "misses": 0,
+      "false_alarms": 0,
+      "correct_rejections": 3,
+      "hit_rate": 1,
+      "false_alarm_rate": 0,
+      "accuracy": 1,
+      "precision": 1,
+      "recall": 1,
+      "f1": 1,
+      "detection_interpretation": "Including moderate confidence admits obs_001 on the sole positive segment, producing a hit with no false alarms."
+    },
+    "all_identified_confidence_levels": {
+      "positive_segments": 1,
+      "negative_segments": 3,
+      "hits": 1,
+      "misses": 0,
+      "false_alarms": 0,
+      "correct_rejections": 3,
+      "hit_rate": 1,
+      "false_alarm_rate": 0,
+      "accuracy": 1,
+      "precision": 1,
+      "recall": 1,
+      "f1": 1,
+      "detection_interpretation": "All identified confidence levels are the same as high_and_moderate because obs_001 is moderate and there are no low-confidence findings."
+    },
+    "all_confidence_and_candidates": {
+      "positive_segments": 1,
+      "negative_segments": 3,
+      "hits": 1,
+      "misses": 0,
+      "false_alarms": 0,
+      "correct_rejections": 3,
+      "hit_rate": 1,
+      "false_alarm_rate": 0,
+      "accuracy": 1,
+      "precision": 1,
+      "recall": 1,
+      "f1": 1,
+      "detection_interpretation": "There are no candidates, so the candidate-inclusive threshold is identical to all identified confidence levels."
+    }
+  },
+  "strict_instance_level_metrics": {
+    "high_only": {
+      "true_positives": 0,
+      "false_negatives": 1,
+      "false_positives": 0,
+      "precision": null,
+      "recall": 0,
+      "f1": 0,
+      "exact_occurrence_match_rate": 0,
+      "occurrence_count_match_rate": 0
+    },
+    "high_and_moderate": {
+      "true_positives": 0,
+      "false_negatives": 1,
+      "false_positives": 1,
+      "precision": 0,
+      "recall": 0,
+      "f1": 0,
+      "exact_occurrence_match_rate": 0,
+      "occurrence_count_match_rate": 0
+    },
+    "all_identified_confidence_levels": {
+      "true_positives": 0,
+      "false_negatives": 1,
+      "false_positives": 1,
+      "precision": 0,
+      "recall": 0,
+      "f1": 0,
+      "exact_occurrence_match_rate": 0,
+      "occurrence_count_match_rate": 0
+    },
+    "all_confidence_and_candidates": {
+      "true_positives": 0,
+      "false_negatives": 1,
+      "false_positives": 1,
+      "precision": 0,
+      "recall": 0,
+      "f1": 0,
+      "exact_occurrence_match_rate": 0,
+      "occurrence_count_match_rate": 0
+    }
+  },
+  "mechanism_first_instance_level_metrics": {
+    "high_only": {
+      "true_positives": 0,
+      "false_negatives": 1,
+      "false_positives": 0,
+      "precision": null,
+      "recall": 0,
+      "f1": 0,
+      "exact_occurrence_match_rate": 0,
+      "occurrence_count_match_rate": 0
+    },
+    "high_and_moderate": {
+      "true_positives": 1,
+      "false_negatives": 0,
+      "false_positives": 0,
+      "precision": 1,
+      "recall": 1,
+      "f1": 1,
+      "exact_occurrence_match_rate": 1,
+      "occurrence_count_match_rate": 1
+    },
+    "all_identified_confidence_levels": {
+      "true_positives": 1,
+      "false_negatives": 0,
+      "false_positives": 0,
+      "precision": 1,
+      "recall": 1,
+      "f1": 1,
+      "exact_occurrence_match_rate": 1,
+      "occurrence_count_match_rate": 1
+    },
+    "all_confidence_and_candidates": {
+      "true_positives": 1,
+      "false_negatives": 0,
+      "false_positives": 0,
+      "precision": 1,
+      "recall": 1,
+      "f1": 1,
+      "exact_occurrence_match_rate": 1,
+      "occurrence_count_match_rate": 1
+    }
+  },
+  "target_bias_performance": [
+    {
+      "hidden_target_bias_label": "Feature positive effect",
+      "hidden_requested_occurrences": 1,
+      "strict_true_positives_by_threshold": {
+        "high_only": 0,
+        "high_and_moderate": 0,
+        "all_identified_confidence_levels": 0,
+        "all_confidence_and_candidates": 0
+      },
+      "mechanism_first_true_positives_by_threshold": {
+        "high_only": 0,
+        "high_and_moderate": 1,
+        "all_identified_confidence_levels": 1,
+        "all_confidence_and_candidates": 1
+      },
+      "count_match_status_at_all_confidence_and_candidates": "underdetected"
+    }
+  ],
+  "rag_label_false_positive_inventory": [
+    {
+      "rag_predicted_bias_label": "expectation bias",
+      "finding_type": "identified",
+      "alternative_labels": [
+        "expectancy bias"
+      ],
+      "occurrence_count": 1,
+      "best_related_hidden_target_bias_label": "Feature positive effect",
+      "label_relation": "near_neighbor",
+      "mechanism_overlap_summary": "The finding fully captures the hidden present-versus-absent cue-weighting mechanism, but expectation bias is broader and is not an approved synonym for Feature positive effect.",
+      "primary_error_types": [
+        "correct_location_wrong_bias_label"
+      ]
+    }
+  ],
+  "diagnostic_error_summary": {
+    "correct_location_wrong_bias_label_count": 1,
+    "correct_label_wrong_location_count": 0,
+    "correct_label_location_wrong_mechanism_count": 0,
+    "mechanism_detected_label_unresolved_count": 0,
+    "partial_mechanism_match_count": 0,
+    "duplicate_prediction_count": 0,
+    "unsupported_prediction_count": 0,
+    "fabricated_or_invalid_quote_count": 0,
+    "approved_alias_or_equivalence_count": 0,
+    "near_neighbor_label_count": 1,
+    "different_construct_label_count": 0,
+    "candidate_count": 0,
+    "candidate_useful_abstention_count": 0,
+    "candidate_near_miss_count": 0,
+    "candidates_promoted_to_true_positive_at_fourth_threshold_count": 0
+  },
+  "corpus_support_audit": {
+    "primary_corpus_fidelity_score_available": false,
+    "rag_occurrences_claiming_retrieved_support": 1,
+    "rag_occurrences_with_no_claimed_retrieved_support": 0,
+    "rag_occurrences_with_unverifiable_or_internally_inconsistent_citation_metadata": 0,
+    "assessment_note": "obs_001 claims retrieved corpus support and supplies source metadata, but no retrieved chunks or logs were supplied independently; citation fidelity is therefore not scored."
+  },
+  "comparison_ready_summary": {
+    "primary_recommended_comparison_threshold": "high_and_moderate",
+    "segment_detection": {
+      "high_only": {
+        "hits": 0,
+        "misses": 1,
+        "false_alarms": 0,
+        "correct_rejections": 3,
+        "hit_rate": 0,
+        "false_alarm_rate": 0,
+        "f1": 0
+      },
+      "high_and_moderate": {
+        "hits": 1,
+        "misses": 0,
+        "false_alarms": 0,
+        "correct_rejections": 3,
+        "hit_rate": 1,
+        "false_alarm_rate": 0,
+        "f1": 1
+      },
+      "all_identified_confidence_levels": {
+        "hits": 1,
+        "misses": 0,
+        "false_alarms": 0,
+        "correct_rejections": 3,
+        "hit_rate": 1,
+        "false_alarm_rate": 0,
+        "f1": 1
+      },
+      "all_confidence_and_candidates": {
+        "hits": 1,
+        "misses": 0,
+        "false_alarms": 0,
+        "correct_rejections": 3,
+        "hit_rate": 1,
+        "false_alarm_rate": 0,
+        "f1": 1
+      }
+    },
+    "strict_instance_identification": {
+      "high_only": {
+        "true_positives": 0,
+        "false_negatives": 1,
+        "false_positives": 0,
+        "precision": null,
+        "recall": 0,
+        "f1": 0
+      },
+      "high_and_moderate": {
+        "true_positives": 0,
+        "false_negatives": 1,
+        "false_positives": 1,
+        "precision": 0,
+        "recall": 0,
+        "f1": 0
+      },
+      "all_identified_confidence_levels": {
+        "true_positives": 0,
+        "false_negatives": 1,
+        "false_positives": 1,
+        "precision": 0,
+        "recall": 0,
+        "f1": 0
+      },
+      "all_confidence_and_candidates": {
+        "true_positives": 0,
+        "false_negatives": 1,
+        "false_positives": 1,
+        "precision": 0,
+        "recall": 0,
+        "f1": 0
+      }
+    },
+    "mechanism_first_identification": {
+      "high_only": {
+        "true_positives": 0,
+        "false_negatives": 1,
+        "false_positives": 0,
+        "precision": null,
+        "recall": 0,
+        "f1": 0
+      },
+      "high_and_moderate": {
+        "true_positives": 1,
+        "false_negatives": 0,
+        "false_positives": 0,
+        "precision": 1,
+        "recall": 1,
+        "f1": 1
+      },
+      "all_identified_confidence_levels": {
+        "true_positives": 1,
+        "false_negatives": 0,
+        "false_positives": 0,
+        "precision": 1,
+        "recall": 1,
+        "f1": 1
+      },
+      "all_confidence_and_candidates": {
+        "true_positives": 1,
+        "false_negatives": 0,
+        "false_positives": 0,
+        "precision": 1,
+        "recall": 1,
+        "f1": 1
+      }
+    },
+    "taxonomy_gap": {
+      "high_only": {
+        "mechanism_first_f1_minus_strict_f1": 0
+      },
+      "high_and_moderate": {
+        "mechanism_first_f1_minus_strict_f1": 1
+      },
+      "all_identified_confidence_levels": {
+        "mechanism_first_f1_minus_strict_f1": 1
+      },
+      "all_confidence_and_candidates": {
+        "mechanism_first_f1_minus_strict_f1": 1
+      }
+    },
+    "confidence_tradeoff": {
+      "increment_from_high_to_high_and_moderate": "Adding the moderate-confidence finding changes segment detection from one miss to one hit and changes mechanism-first instance detection from a miss to a true positive; strict identification remains a false negative with a wrong-label false positive.",
+      "increment_from_high_and_moderate_to_all_confidence": "No change: obs_001 is the only identified finding and it is moderate confidence.",
+      "increment_from_all_confidence_to_all_confidence_and_candidates": "No change: no candidate biases were supplied."
+    }
+  },
+  "overall_evaluation_summary": {
+    "hidden_total_planned_occurrences": 1,
+    "rag_total_identified_occurrences": 1,
+    "rag_total_candidate_biases": 0,
+    "segment_level_primary_result": "At the recommended high_and_moderate threshold, the RAG hits the sole positive pat-down segment and correctly rejects the three negative decision segments.",
+    "strict_label_plus_mechanism_result": "Strict identification is a label miss: expectation bias is a near-neighbor label, so the moderate finding counts as a strict false positive and the hidden Feature positive effect remains a false negative.",
+    "mechanism_first_result": "Mechanism-first identification is successful at moderate-inclusive thresholds because the finding is exactly localized and fully captures asymmetric weighting of the pocket bulge over absent nervous/evasive cues.",
+    "candidate_tier_value_assessment": "No candidates were supplied, so the candidate tier adds no information or errors.",
+    "main_failure_modes": [
+      "The model selected the broader near-neighbor label expectation bias instead of the hidden target label Feature positive effect.",
+      "Moderate confidence prevents detection at the high_only threshold."
+    ],
+    "main_strengths": [
+      "The finding localizes to the correct pat-down decision and uses valid verbatim interview evidence.",
+      "The mechanism description fully captures the hidden present-versus-absent cue-weighting distortion.",
+      "The output provides a plausible non-bias/legal-safety caveat without losing the reported asymmetry."
+    ],
+    "benchmark_interpretation": "This biased run shows strong evidence-level and mechanism-level detection once moderate confidence is included, but a taxonomy gap at the strict label scorecard. The broader expectation-bias label should not be treated as an approved alias for Feature positive effect."
+  }
+}

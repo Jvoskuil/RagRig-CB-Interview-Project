@@ -1,0 +1,67 @@
+# Ranker comparison: the default hybrid RRF ranker vs. pure cosine ranking
+# (WeightedFusionRanker alpha = 1.0), on the ragrig default chat backend
+# (Ollama, qwen3.5:9b), varying the context budget (4096 and 8192 tokens).
+# Corpus = the embedded HTML fixture book, default pipeline (full parser
+# registry + MarkdownChunker).
+
+corpus_dirs = ["papers=/mnt/c/Users/Joost/Documents/papers"]
+
+queries = [
+    "Interviewer: Thanks for making time for this. Just to confirm, this is a voluntary conversation about your decision-making during the last refueling outage, not a performance review. Everything you share is for process improvement. Can you tell me your role and roughly how long you've been doing outage coordination? Participant: Sure, happy to walk through it. I'm the maintenance planner and outage coordinator for the unit — been doing this specific role about six years, plus four years as a planner before that. My main job during the outage is to sequence work orders against the critical path, allocate craft-hours, and make sure everything closes out before we hit the mode change hold points. Interviewer: What made this particular outage stand out from a routine one? Participant: Honestly, the sheer volume — we had around 140 concurrent work orders competing for a fixed 21-day window, and craft-hours were tighter than usual because two contractor crews got pulled to another site mid-cycle. So there was a lot of juggling. The item that ended up taking more of my attention than I expected was FW-IV-204, one of our feedwater isolation valves. Interviewer: Take me through the sequence of events, from initial scoping to final return to service. Participant: At the start of scoping, FW-IV-204 had a minor packing weep — nothing new, it had shown up in two prior outage condition reports, both closed as acceptable-as-found. No trend showing it was getting worse. But right around scoping, I'd just heard a pretty detailed account from a colleague about a similar valve at a sister unit that failed and caused a multi-day slip to their critical path. That story was fresh in my head when I built the priority list. I bumped FW-IV-204 up to top-tier priority for rework. Then, once we got into execution, craft-hours were running thin one afternoon and I had to lock in a crew configuration fast for the valve job — Outage Manager wanted it settled within the hour. I went with the first configuration that cleared the minimum schedule and safety requirements. Later in the outage, during post-maintenance testing, we saw a mild vibration anomaly on the pump bearing right next to FW-IV-204. My first thought was residual misalignment from the rework we'd just done. I pulled vibration data that fit that theory, we closed it out, and eventually got system engineer concurrence and did the walkdown before returning the unit to service. Interviewer: Let's slow down and reconstruct the timeline in more detail. When exactly did FW-IV-204 first come onto your radar for this outage? Participant: Right at the outset of scoping, maybe day one or two of pre-outage planning. It was already on the work list from the prior cycle's CR, so it wasn't a surprise. What changed was how I ranked it relative to everything else. Interviewer: And the vibration anomaly — when did that surface relative to the valve work? Participant: That was maybe day fourteen, after the valve rework was already complete and we were running post-maintenance functional tests on the adjacent feedwater pump. Interviewer: Let's go through each of those decision points one at a time. First — the priority ranking. What information did you actually have in front of you when you made that call? Participant: I had the two prior CRs, both closed, no adverse trend on leak rate. I also had the backlog of other work orders, some with comparable or even higher CR severity ratings. Objectively, on paper, FW-IV-204 wasn't the most urgent thing on the list. Interviewer: So what tipped it to top-tier? Participant: The sister-unit story, honestly. It was detailed — apparently their valve packing failed catastrophically enough to slip their whole schedule by several days, and it involved almost the exact same valve type. That stuck with me. I remember thinking, we don't want to be the ones explaining a multi-day slip because we treated this as routine. So I moved it up. Interviewer: Did you go back and re-check the trend data before finalizing that ranking? Participant: No, not really. I had the CR history in mind from having reviewed it originally, but I didn't pull updated numbers specifically to test whether the concern was warranted. It felt like the kind of thing where the downside of being wrong was bad enough that I didn't need to. Interviewer: Understood. Second decision point — the crew configuration under the tight craft-hour window. Walk me through that. Participant: We were maybe two-thirds through the day's craft-hour budget, and I had several configurations that would technically work — different mixes of overtime, different sequencing with other jobs. The Outage Manager wanted a decision inside the hour to protect the critical path. I looked at the first configuration that met minimum schedule and safety requirements, confirmed it cleared those bars, and locked it in. Interviewer: Did you consider comparing the other options more fully? Participant: I thought about it, but comparing all the variables — overtime cost, fatigue limits, downstream sequencing — for three or four configurations would have eaten time I didn't have. So I went with what worked and moved to the next fire. Interviewer: What happened as a result? Participant: It created a minor sequencing conflict later with an unrelated pump job — nothing that blew the schedule, but craft had to shuffle around it. When we reviewed it afterward, there was a configuration that would have avoided that friction. Marginally better, not dramatically. Interviewer: Third decision point — the vibration anomaly. What was your first working theory? Participant: Residual misalignment from the valve rework. It made sense sequentially — we'd just had hands in that area, and a little post-maintenance vibration isn't unheard of. Interviewer: What data did you pull to check that theory? Participant: I asked for the immediate vibration readings from the test run, the ones that would show whether the signature matched a misalignment pattern. They looked consistent with that, so I documented the anomaly as resolved on that basis. Interviewer: Was there other data available that you didn't request at that point? Participant: In hindsight, yes. There was a lubrication log entry for that bearing that existed in the system at the time. I didn't pull it because the misalignment explanation already fit what I was seeing, and I didn't feel a need to widen the search once I had a reading that matched. Interviewer: What about the full trend history for that bearing? Participant: Also didn't pull that at the time. The system engineer reviewed it later, after the fact. Interviewer: Last decision point — the final return-to-service call. What was your basis for concurring? Participant: By that point, all the CRs on the valve and the adjacent pump were formally closed, the system engineer had given written concurrence, and I did the walkdown myself with operations. Given the sign-offs and what I observed directly during the walkdown, I concurred with return to service. I did weigh the earlier vibration discussion against that documentation, but everything on paper and everything I saw in the field lined up, so I didn't see a basis to hold it further. Interviewer: Did you consider requesting extra monitoring time before mode change? Participant: I did think about it briefly, given the anomaly earlier in the outage, but with the engineering concurrence and a clean walkdown, holding the unit longer without a specific technical reason didn't seem justified. Interviewer: How much time pressure were you under across these decisions, generally? Participant: Constant, honestly, but it spiked hardest around the crew assignment call — that was the one hour deadline. The priority ranking and the vibration call had a bit more breathing room, even if it didn't always feel that way in the moment. Interviewer: If the lubrication log had been sitting on your desk when the vibration anomaly came up, do you think it would have changed your review? Participant: Possibly. If it had shown something inconsistent with misalignment, I probably would have widened the investigation. It just wasn't something I went looking for at the time. Interviewer: Looking back, is there a point where a different call on FW-IV-204's priority might have changed how things unfolded? Participant: Maybe. If I'd ranked it purely on the documented trend, it might have sat lower in the queue, and I'd have had more craft-hours free for other jobs earlier. Hard to say if that changes anything meaningfully, since the valve work itself went fine. Interviewer: Anything you'd tell a newer planner based on this outage? Participant: Mainly to keep coming back to the actual trend data, even when a recent story or a tight clock makes a different path feel more urgent. It's not that those instincts are wrong, just that they're easy to lean on more than the numbers warrant."
+]
+
+[[agents]]
+label = "Gemini Prompt 8192"
+[agents.chat]
+provider = "deepseek"            # "ollama" | "deepseek"
+#model = "qwen2.5:1.5b"         # ignored for deepseek
+context_tokens = 8192          # context budget for retrieved chunks
+deepseek_model = "deepseek-v4-pro"   # deepseek only
+# deepseek_api_key = DEEPSEEK_API_KEY # deepseek only (or DEEPSEEK_API_KEY env)
+# context_size_mode = "Auto"          # "Auto" | "Forced"
+system_prompt_path = "prompt_gemini.md"    # custom system prompt ({context} placeholder)
+# request_timeout_secs = 300          # per-request timeout, None = no timeout
+[agents.chat.params]                # generation overrides (all optional)
+# temperature = 0.7
+# top_p = 0.9
+# max_tokens = 1024
+seed = 42
+
+[[agents]]
+label = "Sonar Prompt 8192"
+[agents.chat]
+provider = "deepseek"            # "ollama" | "deepseek"
+#model = "qwen2.5:1.5b"         # ignored for deepseek
+context_tokens = 8192          # context budget for retrieved chunks
+deepseek_model = "deepseek-v4-pro"   # deepseek only
+# deepseek_api_key = DEEPSEEK_API_KEY # deepseek only (or DEEPSEEK_API_KEY env)
+# context_size_mode = "Auto"          # "Auto" | "Forced"
+system_prompt_path = "prompt_sonar.md"    # custom system prompt ({context} placeholder)
+# request_timeout_secs = 300          # per-request timeout, None = no timeout
+[agents.chat.params]                # generation overrides (all optional)
+# temperature = 0.7
+# top_p = 0.9
+# max_tokens = 1024
+seed = 42
+
+[[agents]]
+label = "Sonnet Prompt 8192"
+[agents.chat]
+provider = "deepseek"            # "ollama" | "deepseek"
+#model = "qwen2.5:1.5b"         # ignored for deepseek
+context_tokens = 8192          # context budget for retrieved chunks
+deepseek_model = "deepseek-v4-pro"   # deepseek only
+# deepseek_api_key = DEEPSEEK_API_KEY # deepseek only (or DEEPSEEK_API_KEY env)
+# context_size_mode = "Auto"          # "Auto" | "Forced"
+system_prompt_path = "prompt_sonnet.md"    # custom system prompt ({context} placeholder)
+# request_timeout_secs = 300          # per-request timeout, None = no timeout
+[agents.chat.params]                # generation overrides (all optional)
+# temperature = 0.7
+# top_p = 0.9
+# max_tokens = 1024
+seed = 42
+
+# ---Embed testing ---
+[embed]
+#top_k = 0
+top_k = 50

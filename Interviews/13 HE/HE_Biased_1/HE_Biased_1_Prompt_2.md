@@ -4,7 +4,205 @@ Generate one simulated cognitive task analysis interview from the supplied gener
 
 INPUT
 Generation specification:
-{{PASTE_PROMPT_1_OUTPUT_HERE}}
+{{"scenario_id": "HE_Biased_1",
+  "domain_id": "HE",
+  "domain": "High-risk Engineering and Fire Engineering",
+  "role": "Fire Inspector (Building Code Compliance)",
+  "condition": "biased",
+  "generation_specification": {
+    "scenario_title_internal": "Annual Life-Safety Re-Inspection at a Renovated Mixed-Use Building",
+    "scenario_summary_internal": "A fire inspector conducts the annual life-safety re-inspection of a three-story mixed-use building (ground-floor retail, upper-floor offices) that recently completed a tenant-fit-out renovation, ahead of certificate-of-occupancy renewal. The inspector must evaluate egress clearance, door hardware/closer function, fire alarm testing documentation, and overall compliance sufficiency across four sequential decision points, working with a long-standing, cordial building manager under a same-day inspection deadline.",
+    "occupational_realism": {
+      "objective": "Determine whether the building's fire/life-safety systems and egress paths meet code requirements sufficient to recommend renewal of the certificate of occupancy.",
+      "setting": "A mid-rise mixed-use commercial building undergoing final walkthrough after tenant renovation, inspected during business hours with staff and customers present.",
+      "constraints": [
+        "Inspection must be completed within a single working day before the certificate expires",
+        "Building manager has a multi-year cooperative working relationship with the inspector",
+        "Retail tenants are operating during the inspection, limiting access to some areas",
+        "Renovation contractor is not on-site to answer technical questions directly",
+        "Inspector's supervisor expects a same-day summary recommendation"
+      ],
+      "stakeholders": [
+        "Fire inspector (protagonist)",
+        "Building manager",
+        "Ground-floor retail tenant staff",
+        "Inspector's supervising fire marshal",
+        "Renovation contractor (off-site, referenced only)"
+      ],
+      "technical_terms_to_use": [
+        "egress corridor",
+        "self-closing device",
+        "fire door assembly",
+        "certificate of occupancy",
+        "life-safety hazard classification",
+        "fire alarm test log",
+        "means of egress obstruction",
+        "advisory note vs. formal violation"
+      ],
+      "technical_terms_to_avoid": [
+        "courtesy bias",
+        "social desirability",
+        "conformity",
+        "politeness bias",
+        "impression management"
+      ]
+    },
+    "timeline": [
+      {
+        "phase": 1,
+        "decision_point": true,
+        "facts_available_before_decision": [
+          "Stacked inventory pallets partially narrow the secondary egress corridor near the loading dock",
+          "Code requires a minimum clear width for that corridor",
+          "Manager states the pallets are 'just for today' during a delivery"
+        ],
+        "new_information_after_decision": [
+          "A retail employee mentions the pallets have been stored there intermittently for two weeks",
+          "The loading dock area has no alternate storage space identified"
+        ],
+        "alternatives": [
+          "Issue a formal written violation for egress obstruction",
+          "Log an informal advisory note and request voluntary correction",
+          "Measure the corridor width precisely before deciding classification"
+        ],
+        "intended_action": "Inspector measures the obstruction, documents it as a formal minor violation with a short correction deadline, independent of the manager's explanation."
+      },
+      {
+        "phase": 2,
+        "decision_point": true,
+        "facts_available_before_decision": [
+          "The stairwell door serving the secondary egress stair has a disconnected self-closing device",
+          "Code classifies a non-functioning self-closer on a fire door assembly as a significant life-safety deficiency",
+          "The manager personally apologizes, says maintenance was informed last week, and offers to fix it 'right now' in front of the inspector"
+        ],
+        "new_information_after_decision": [
+          "The maintenance ticket referenced by the manager was actually logged only that morning, not last week",
+          "A similar closer issue was noted as 'corrected' in the prior year's report but recurs"
+        ],
+        "alternatives": [
+          "Classify the finding as an immediate life-safety hazard requiring formal citation and re-verification",
+          "Downgrade the finding to an informal advisory note based on the manager's assurance and apologetic tone",
+          "Request the maintenance ticket and prior-year records before classifying"
+        ],
+        "intended_action": "Inspector, moved by the manager's contrite demeanor and desire to avoid an awkward confrontation with a cooperative long-term contact, downgrades the classification to an advisory note without verifying the maintenance ticket or prior-year recurrence."
+      },
+      {
+        "phase": 3,
+        "decision_point": true,
+        "facts_available_before_decision": [
+          "The monthly fire alarm test log shows a gap for one month with no recorded test",
+          "Code requires monthly documented testing with no exceptions",
+          "The manager verbally states the test was 'definitely done, just not logged'"
+        ],
+        "new_information_after_decision": [
+          "The alarm monitoring company's records (available on request) show no test signal was received that month",
+          "Two other months in the log have testing timestamps outside normal business hours, an irregular pattern"
+        ],
+        "alternatives": [
+          "Require the manager to produce third-party monitoring records before accepting the log as complete",
+          "Accept the verbal assurance and mark the log as substantially compliant",
+          "Flag the gap as a documentation deficiency pending verification"
+        ],
+        "intended_action": "Inspector requests the monitoring company's records rather than relying on verbal assurance, and flags the gap as an open documentation deficiency pending verification."
+      },
+      {
+        "phase": 4,
+        "decision_point": true,
+        "facts_available_before_decision": [
+          "Findings from phases 1-3: one formal egress violation, one downgraded advisory note on the stair door closer, one pending documentation deficiency on alarm testing",
+          "Same-day deadline for a recommendation on certificate renewal",
+          "Supervisor expects a clear pass/conditional-pass/fail summary"
+        ],
+        "new_information_after_decision": [
+          "Supervisor asks why the stair door closer was not treated as a formal citation given its life-safety classification",
+          "Manager sends a follow-up message thanking the inspector for being 'reasonable' during the visit"
+        ],
+        "alternatives": [
+          "Recommend conditional certificate renewal pending correction of all three items, each classified independently on its own evidentiary merits",
+          "Recommend full renewal, treating the advisory-note item as effectively resolved",
+          "Recommend renewal denial pending complete re-inspection of all systems"
+        ],
+        "intended_action": "Inspector recommends conditional renewal, carrying forward the earlier advisory-note classification for the stair door closer without revisiting whether that classification matched the underlying life-safety evidence."
+      }
+    ],
+    "probe_plan": {
+      "opening": [
+        "Walk me through what you were asked to accomplish during this inspection.",
+        "What was your first impression when you arrived at the building?"
+      ],
+      "timeline_reconstruction": [
+        "What did you notice first, and in what order did you check each area?",
+        "What information did you have before you made each classification decision, and what did you learn afterward?"
+      ],
+      "decision_point_probes": [
+        "What specific cues led you to classify the loading-dock obstruction the way you did?",
+        "When you found the disconnected door closer, what factors went into deciding how serious to mark it?",
+        "How did the manager's response affect what you decided to record, if at all?",
+        "What made you decide to request outside verification for the alarm log but not for the door closer?",
+        "When writing the final recommendation, how did you weigh the three findings against each other?"
+      ],
+      "closing_hypotheticals": [
+        "If a different, less familiar building manager had reacted defensively instead of apologetically, would your classification of the door closer have changed?",
+        "If your supervisor had been present during the walkthrough, do you think your documentation would have looked different?",
+        "Looking back, is there a decision point where you'd want more information before deciding again?",
+        "What would you tell a newer inspector about handling a similar situation with a cooperative, long-term contact?"
+      ]
+    },
+    "occurrence_embedding_plan_internal": [
+      {
+        "instance_id": "cb_01",
+        "bias": "Courtesy Bias",
+        "decision_point": 2,
+        "mechanism": "Inspector downgrades the severity classification of a life-safety-significant fire door closer deficiency from a formal hazard citation to an informal advisory note, driven primarily by the building manager's apologetic tone and the desire to preserve a cordial, non-confrontational relationship, rather than by re-examining the maintenance ticket timeline or the prior-year recurrence.",
+        "affected_reasoning_operation": "Severity classification / risk categorization judgment under interpersonal pressure",
+        "evidence_available_at_time": [
+          "Disconnected self-closing device on a required fire door assembly",
+          "Code classification standard treating this as a significant life-safety deficiency",
+          "Manager's apologetic, reassuring in-person response and offer to fix immediately",
+          "An unverified claim about when the maintenance ticket was logged"
+        ],
+        "required_textual_manifestation": "The inspector explicitly links the softened classification to not wanting to make the manager 'feel bad' or to avoid an uncomfortable exchange after years of easy cooperation, and does so without checking the maintenance ticket date or the prior-year repeat-finding record before finalizing the note.",
+        "plausible_nonbias_interpretation": "The inspector could reasonably argue that on-the-spot correction of a simple mechanical fix legitimately warrants a lighter administrative touch, consistent with common field practice of allowing immediate remediation without formal citation.",
+        "strength": "moderate",
+        "do_not_make_explicit": [
+          "courtesy bias",
+          "social politeness",
+          "impression management",
+          "any explicit psychological labeling of the reasoning"
+        ]
+      }
+    ],
+    "control_specification": {
+      "paired_scenario_id": null,
+      "features_to_match": [],
+      "features_to_remove_or_change": [],
+      "ambiguity_boundary": "Not applicable; this is the biased condition and no paired control is being generated in this specification."
+    },
+    "counterfactual_specification": {
+      "causal_variable": "Building manager's interpersonal demeanor during the door-closer finding (apologetic/cordial vs. neutral/defensive)",
+      "original_state": "Manager reacts apologetically and personally reassures the inspector, invoking the long cooperative history",
+      "counterfactual_state": "Manager reacts neutrally or defensively, offering the same factual assurance about same-day repair without an apologetic or relationship-invoking tone",
+      "variables_to_hold_constant": [
+        "The underlying technical deficiency (disconnected self-closer)",
+        "The code classification standard",
+        "Time pressure and same-day deadline",
+        "All other decision points and findings",
+        "Overall building type, layout, and renovation context"
+      ],
+      "expected_causal_difference": "Under the counterfactual neutral/defensive demeanor, the inspector would be expected to classify the door-closer deficiency as a formal citation rather than an advisory note, since the softening in the original scenario is hypothesized to stem from social/relational pressure rather than technical judgment.",
+      "causal_test_question": "Does the inspector's classification of the door-closer finding change when the manager's interpersonal demeanor changes, holding the technical facts constant?"
+    },
+    "generation_checks": [
+      "Exactly one Courtesy Bias instance planned, matching manifest occurrences=1",
+      "Instance cb_01 assigned to exactly one decision point (phase 2)",
+      "No bias terminology or explicit psychological labels appear in the planned interview content",
+      "Decision points 1, 3, and 4 contain no intentionally embedded bias instances",
+      "Each decision point includes at least two plausible alternatives and pre/post information",
+      "Probe plan covers cues, information sources, goals, alternatives, decision basis, prior experience, time pressure, uncertainty, and hypotheticals",
+      "Scenario supports 1,215-1,485 word target without repetitive exposition across four chronological phases",
+      "Consequences (supervisor query, manager's thank-you note) do not mechanically prove bias; they invite interpretation"
+    ]
+  }}}
 
 WRITING REQUIREMENTS
 1. Produce only the interview, with no preface, postscript, analysis, labels, answer key, bias names, or JSON.

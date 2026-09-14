@@ -7,7 +7,70 @@ Do not assess cognitive biases. Do not use any hidden bias-generation specificat
 Return valid JSON only. Do not return prose outside the JSON object.
 
 INTERVIEW
-{{PASTE_FINAL_INTERVIEW_HERE}}
+{{Interviewer: Thanks for sitting down for this. This is voluntary, and I'm interested in your reasoning process, not in re-grading your final report. Can you give me your role and background?
+
+Participant: Sure. Certified fire investigator, IAAI-CFI, eleven years doing origin and cause, mostly commercial buildings. Six years on suppression before that.
+
+Interviewer: Good. Tell me about the incident. What did you see and hear when you first arrived?
+
+Participant: Two-story mixed-use building—café downstairs, apartment above. Fire was already knocked down. The rear of the ground floor, dry storage plus part of the kitchen, had a partial ceiling collapse. The electrical panel sat on the wall maybe eight feet from the fryer exhaust duct. Suppression crew said they hit heavy smoke logging before they even got through the back door, so it had clearly been burning a while in low oxygen before anyone noticed. That matters because ventilation-limited burning smears your pattern reading—you don't get one clean V-pattern pointing at a single spot. The whole back room was charred fairly evenly, top to bottom, which made the visual read genuinely hard.
+
+Interviewer: What was your objective going in?
+
+Participant: Defensible origin and cause, NFPA 921 methodology, systematic elimination of ignition sources, all documented well enough to survive insurer and possibly legal scrutiny. And we had the clock running—48 hours before the demolition permit kicked in.
+
+Interviewer: Walk me through the sequence, start to finish.
+
+Participant: Scene photography and assessment first. Then excavation, starting in the rear zone since that's where the damage was worst. Within that zone I had to pick which side to dig into first, panel or fryer. Then witness statements came in and I had to fold those into a timeline that didn't quite match the dispatch log. Then a hard resource call—only one component could go out for full lab testing before demolition. And finally the report had to go out with whatever I had, on deadline.
+
+Interviewer: Let's take the excavation order first. What led you to start where you did?
+
+Participant: The panel breaker had visually severe heat damage, that's true. But honestly, what really settled it for me was that this whole setup—panel right next to a grease-heavy kitchen zone, older wiring—reminded me hard of a case I worked maybe four years back where a corroded panel connection took out a similar back-of-house area. That case stuck with me. So when I saw this layout, my gut said panel, and I went with the panel side first.
+
+Interviewer: Even though the fryer wiring showed comparable damage and that zone had a higher fuel load and heavier daily use?
+
+Participant: Yeah, and if you'd asked me to lay it out purely on the numbers—damage severity, fuel load, use frequency—it's closer than I probably made it sound at the time. But it felt like the same shape of fire I'd already solved once, so panel got my attention first. I'll grant that's not purely evidence-driven; it's partly this one felt familiar.
+
+Interviewer: Let's move to the witness accounts. What exactly did the tenant tell you?
+
+Participant: She said she smelled an electrical, burning-plastic odor about twenty minutes before she saw flame—and she also mentioned catching a flicker, like a spark, near where the panel is, before the smell really set in. That's a strong data point pointing at the panel.
+
+Interviewer: I want to check that against what you told me earlier, when we first logged her statement—you described it then as smell only, no visual detail. Can you help me reconcile that?
+
+Participant: Huh. You're right, that's how I noted it initially—smell only. I'm... now second-guessing whether she actually said "flicker" to me directly, or whether that's something I pieced together afterward from the panel damage and just started saying it as if she'd told me. It's possible I filled that in without meaning to. I don't think I did it on purpose, but sitting here, I can't swear the flicker detail came from her and not from my own read of the scene.
+
+Interviewer: That's helpful to flag. How did the employee's account factor in?
+
+Participant: He said the fryer had been left on, unattended, longer than usual before closing. Neither his estimate nor the tenant's matched the 911 log precisely—people misjudge time under stress, that's normal. I logged both as provisional. I didn't have a strong basis to fully trust one over the other independent of physical evidence.
+
+Interviewer: Third decision point—the lab retention call, since you could only send one component out.
+
+Participant: Right, demolition was scheduled, budget only covered one full forensic workup. Panel breaker or fryer control assembly. The utility inspector had given me an informal, not-yet-written read that leaned panel. I weighed that against the fryer component's condition, which was also degradable enough to still be informative. I picked the panel breaker. I considered asking for a deadline extension to save both, but the insurer pushed back hard, and waiting risked losing both to further collapse anyway.
+
+Interviewer: What would have made you send the fryer assembly instead?
+
+Participant: Clear independent radiating burn patterns from the appliance itself. It wasn't a toss-up, but it wasn't locked in either.
+
+Interviewer: Last point—the final classification under deadline.
+
+Participant: With no new evidence coming and the clock out, I had three options: determinate finding, undetermined pending lab results, or a conditional finding naming both with relative likelihood. I went conditional—panel fault primary, fryer malfunction as a documented secondary possibility. A hard determinate call felt premature since the fryer possibility wasn't eliminated, and "undetermined" felt like it undersold the direction the pattern evidence and the inspector's preliminary read were pointing.
+
+Interviewer: What single piece of missing evidence would have most changed your confidence?
+
+Participant: Independent lab results on both components. Losing the fryer assembly to demolition is the one thing I'd redo—push harder for even partial preservation.
+
+Interviewer: If the witness timestamps had matched the dispatch log exactly, would your timeline weighting have differed?
+
+Participant: Probably, yeah—I'd have leaned into whichever account lined up and trusted it more as an anchor point instead of treating both as soft.
+
+Interviewer: How much of your final call would you attribute to prior cases versus this case's own evidence?
+
+Participant: I'd like to say it was mostly this case. Looking back at how I've described a couple of these steps to you, though, I think the prior case did more work in my head than I'd have said if you'd asked me that on day one—especially early on, before the excavation even really got going.
+
+Interviewer: Anything you'd flag for someone reviewing this file cold?
+
+Participant: That the ambiguity was real, and that at least one detail I reported to you about the tenant's statement needs to be double-checked against her actual recorded interview before it goes in the file as fact.
+}}
 
 OPTIONAL METADATA
 The following metadata may help identify the setting but must not determine the classification:

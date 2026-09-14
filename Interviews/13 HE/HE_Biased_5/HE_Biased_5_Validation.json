@@ -1,0 +1,502 @@
+{
+  "validator_version": "2.0",
+  "interview_id": "HE_Biased_5",
+  "condition": "biased",
+  "domain_assessment": {
+    "domain": "Chemical-process safety and batch-process operations",
+    "role": "Process safety engineer responsible for the batch nitration unit",
+    "objective": "Complete the batch exothermic-hold step and hand off a clean, deviation-free batch into the next unit operation at shift change.",
+    "incident_type": "Abnormal reactor-pressure trend during a nitration-batch hold, followed by relief-valve lifting, uncertain root-cause attribution, mitigation selection, and MOC closure.",
+    "confidence": 0.99
+  },
+  "structure_audit": {
+    "estimated_word_count": 1245,
+    "within_target_range": true,
+    "decision_point_count": 4,
+    "decision_points": [
+      {
+        "id": 1,
+        "summary": "The control-room group decides to continue monitoring rather than interrupt the batch, initiate an emergency hold, or escalate to the on-call plant manager.",
+        "evidence_before": [
+          "DCS pressure was approximately eight percent above the expected curve.",
+          "Temperature remained in band, reducing but not eliminating concern about a runaway reaction.",
+          "The group recalled two prior deviations that had been attributed to sensor drift."
+        ],
+        "evidence_after": [
+          "Pressure continued to climb over approximately twenty minutes.",
+          "The relief valve lifted and then reseated.",
+          "The team remained uncertain whether the chemistry was compromised."
+        ],
+        "goals_constraints": [
+          "Maintain safe control of a potentially abnormal exothermic batch.",
+          "Avoid unnecessary interruption of production.",
+          "Make a decision during a night-shift transition with incomplete diagnostic evidence."
+        ],
+        "alternatives": [
+          "Continue monitoring.",
+          "Call an emergency hold pending manual inspection.",
+          "Escalate directly to the on-call plant manager."
+        ],
+        "decision_basis": "The collective discussion converged on the familiar benign interpretation that the trend was probably another sensor-drift event.",
+        "time_pressure": "Present but indirect: shift transition and the desire to maintain batch continuity.",
+        "uncertainty": "Material uncertainty remained because elevated pressure was unexplained and temperature alone did not rule out all reaction or equipment causes."
+      },
+      {
+        "id": 2,
+        "summary": "After the relief lift, the participant attributes the event to sensor drift and does not wait for a full instrument and kinetics review before settling on that explanation.",
+        "evidence_before": [
+          "The event resembled prior gradual pressure-creep events.",
+          "There was no temperature excursion.",
+          "A newer catalyst lot was in use and had not been present in the two earlier events.",
+          "A full instrument and kinetics review was estimated to take three to four hours."
+        ],
+        "evidence_after": [
+          "A calibration spot-check found the transmitter within tolerance.",
+          "The new catalyst lot's exotherm profile was not independently reviewed.",
+          "The diagnosis was not closed out on the chemistry side."
+        ],
+        "goals_constraints": [
+          "Develop a workable causal explanation.",
+          "Determine whether restart and handoff decisions could proceed.",
+          "Avoid delaying shift changeover."
+        ],
+        "alternatives": [
+          "Treat sensor drift as the working diagnosis and proceed.",
+          "Keep causal attribution open pending instrument and kinetics review.",
+          "Elevate the catalyst-lot difference as a potentially disqualifying difference from prior events."
+        ],
+        "decision_basis": "The participant gave decisive weight to surface similarity with prior drift events and insufficient weight to the known, unreviewed catalyst-lot difference.",
+        "time_pressure": "Explicit: the expected review duration would extend beyond shift changeover, although no hard deadline required immediate causal closure.",
+        "uncertainty": "High: transmitter calibration and catalyst-lot kinetics had not been adequately resolved at the time of attribution."
+      },
+      {
+        "id": 3,
+        "summary": "The participant recommends retaining the manual response procedure rather than installing an automated high-pressure interlock before restart.",
+        "evidence_before": [
+          "The external relief-system contractor reported that the existing relief system had a narrower margin than assumed for the new catalyst lot.",
+          "The contractor recommended an automated high-pressure interlock.",
+          "The interlock had a record at two comparable plants.",
+          "The current manual procedure had been used locally for years without failure."
+        ],
+        "evidence_after": [
+          "The plant manager later noted that the interlock would have cost roughly one shift of downtime.",
+          "No further excursions occurred during the campaign, leaving the counterfactual benefit of the interlock unresolved."
+        ],
+        "goals_constraints": [
+          "Reduce restart risk.",
+          "Avoid introducing an unfamiliar operating feature.",
+          "Maintain production continuity."
+        ],
+        "alternatives": [
+          "Install the automated high-pressure interlock before restart.",
+          "Retain the existing manual response procedure."
+        ],
+        "decision_basis": "The participant placed greater weight on the unfamiliarity of the interlock than on documented reduction in the relief-system safety margin under the status quo.",
+        "time_pressure": "Operational pressure is implied through restart and downtime consequences, but no urgent deadline is stated.",
+        "uncertainty": "Moderate: the local implementation risk of the interlock was not fully characterized, but neither was the safety consequence of retaining the existing procedure under the new catalyst lot."
+      },
+      {
+        "id": 4,
+        "summary": "During the MOC disagreement, the participant sides with the senior internal engineer and closes the MOC without a kinetics review rather than maintaining the contractor's recommended open technical gap.",
+        "evidence_before": [
+          "The senior process safety engineer supported the sensor-drift interpretation.",
+          "The contractor's written analysis identified catalyst-lot kinetics as an unresolved issue and recommended keeping the MOC open.",
+          "No new data had arrived since the calibration check.",
+          "The senior engineer was an original commissioning-team member with long unit experience and an excellent safety record."
+        ],
+        "evidence_after": [
+          "The MOC was closed and the unit restarted without the kinetics review.",
+          "Subsequent production did not clearly validate or invalidate the decision."
+        ],
+        "goals_constraints": [
+          "Resolve a technical disagreement for MOC closure.",
+          "Determine whether restart could proceed.",
+          "Balance internal operational knowledge against an external technical recommendation."
+        ],
+        "alternatives": [
+          "Close the MOC and restart based on the senior engineer's assessment.",
+          "Keep the MOC open pending kinetics review.",
+          "Seek additional independent technical evidence before choosing."
+        ],
+        "decision_basis": "The participant explicitly relied on both the senior engineer's insider status and his general safety reputation, despite the absence of new technical evidence resolving the catalyst-lot question.",
+        "time_pressure": "Explicit perceived pressure from shift-changeover timing, but the participant states that neither decision had a hard deadline.",
+        "uncertainty": "High: the catalyst-lot kinetics issue remained open and no new evidence resolved the disagreement."
+      }
+    ]
+  },
+  "target_occurrence_audit": [
+    {
+      "instance_id": "gp_01",
+      "bias": "Group Polarization",
+      "requested_occurrences_for_bias": 1,
+      "status": "supported",
+      "decision_point": 1,
+      "supporting_quote": "“By the time I'd joined in, the feeling in the room was pretty settled — everyone was more confident it was benign than any one of us probably was on our own five minutes earlier.”",
+      "evidence_location": "Control-room discussion immediately after the elevated-pressure trend is noticed and before the continue-versus-interrupt decision.",
+      "mechanism": "The text directly describes a collective discussion that moved the group's benign-risk judgment toward greater confidence than the members initially held individually. That more extreme collective confidence then supported continued monitoring instead of interruption or escalation.",
+      "strength": "moderate",
+      "confidence": 0.97,
+      "plausible_nonbias_explanation": "The group may have legitimately pooled operational observations and prior-event knowledge. However, the participant explicitly distinguishes the post-discussion confidence from each person's earlier independent confidence and indicates that the room's settled view shaped the action before independent verification.",
+      "additional_evidence_needed": "None for minimum support. A pre-discussion record of individual confidence would strengthen measurement precision but is not necessary because the participant explicitly reports the within-group shift.",
+      "revision_needed": false,
+      "revision": {
+        "revision_type": "none",
+        "location": "Decision point 1, participant response beginning “Well, by the time I'd pulled up the trend...”",
+        "current_defect": "None material. The dialogue provides a distinct group-discussion episode, an observable confidence shift, and a linked monitoring decision.",
+        "minimal_change_instruction": "No revision required.",
+        "preserve": [
+          "The statement that confidence after discussion exceeded individual confidence before discussion.",
+          "The explicit link between the discussion and continued monitoring.",
+          "The distinction between temperature being in band and pressure remaining abnormal."
+        ],
+        "avoid_creating": [
+          "Do not add a separate later group-conformity or group-polarization episode.",
+          "Do not convert the discussion into explicit consensus language that removes the subtlety of the account."
+        ],
+        "expected_post_revision_status": "supported"
+      }
+    },
+    {
+      "instance_id": "dk_01",
+      "bias": "Dunning-Kruger effect or Illusion of understanding",
+      "requested_occurrences_for_bias": 1,
+      "status": "supported",
+      "decision_point": 2,
+      "supporting_quote": "“It looked enough like the earlier pattern that I was comfortable calling it drift without waiting on the fuller review.” “I've been on this unit a long time, I've seen this signature before. It felt like a case I recognized rather than a case I needed to dig into further.”",
+      "evidence_location": "Root-cause attribution after the relief-valve lift and before the instrument and kinetics review.",
+      "mechanism": "The defensible label is illusion of understanding, not Dunning-Kruger. The participant reports confidence in a causal conclusion based on superficial resemblance to prior events while knowingly underweighting a material, unreviewed difference: the new catalyst lot. The later in-tolerance spot-check and unresolved kinetics review reveal that the apparent explanatory fit exceeded the evidentiary basis.",
+      "strength": "moderate",
+      "confidence": 0.91,
+      "plausible_nonbias_explanation": "Pattern recognition by an experienced process safety engineer can be valid naturalistic expertise, particularly when the trend signature resembles prior events and temperature is stable. The occurrence remains supported because the participant knew the catalyst lot made the analogy incomplete but still treated the familiar pattern as sufficient to close causal inquiry.",
+      "additional_evidence_needed": "None for an illusion-of-understanding classification. Evidence of objectively low expertise or demonstrated inability to assess one's competence would be needed to classify this specifically as Dunning-Kruger.",
+      "revision_needed": false,
+      "revision": {
+        "revision_type": "none",
+        "location": "Decision point 2, participant responses beginning “I concluded fairly quickly...” and “Yeah, actually — this batch was running a newer catalyst lot.”",
+        "current_defect": "The specification's disjunctive label is broader than necessary: the text supports illusion of understanding more clearly than Dunning-Kruger.",
+        "minimal_change_instruction": "No interview revision is required. In downstream annotation, record the occurrence as “Illusion of understanding” rather than asserting a Dunning-Kruger effect.",
+        "preserve": [
+          "The known new catalyst-lot difference.",
+          "The participant's confidence based on recognition of a prior signature.",
+          "The later calibration evidence that undercuts the drift explanation.",
+          "The distinction between a provisional working hypothesis and the participant's premature causal confidence."
+        ],
+        "avoid_creating": [
+          "Do not add statements that portray the participant as generally incompetent; that would alter role realism and introduce an unsupported Dunning-Kruger mechanism.",
+          "Do not add a second diagnostic pattern-matching episode elsewhere."
+        ],
+        "expected_post_revision_status": "supported"
+      }
+    },
+    {
+      "instance_id": "ra_01",
+      "bias": "Risk aversion bias",
+      "requested_occurrences_for_bias": 1,
+      "status": "supported",
+      "decision_point": 3,
+      "supporting_quote": "“The interlock wasn't something our operators had hands-on familiarity with, and introducing something new felt like it carried its own risk profile that we hadn't lived with yet.” “The known system winning out over the new one felt like the safer bet.”",
+      "evidence_location": "Mitigation-choice discussion after the contractor recommends an automated high-pressure interlock.",
+      "mechanism": "The participant disproportionately weights the uncertain risk of introducing an unfamiliar interlock over the contractor's documented evidence that the existing relief arrangement has a narrower safety margin for the new catalyst lot. The familiarity of the current manual procedure is treated as the safer option despite evidence of status-quo exposure.",
+      "strength": "moderate",
+      "confidence": 0.89,
+      "plausible_nonbias_explanation": "A new automated interlock can create legitimate implementation, human-factors, maintenance, and fail-safe risks. The account supports bias because those risks are described principally as unfamiliarity and lack of local experience, while the documented status-quo margin reduction receives less weight without a corresponding technical comparison.",
+      "additional_evidence_needed": "None for minimum support. A direct contrast such as “we had not identified a specific failure mode for the interlock, but its unfamiliarity still worried me more” would make disproportionate weighting even clearer.",
+      "revision_needed": false,
+      "revision": {
+        "revision_type": "none",
+        "location": "Decision point 3, participant responses beginning “I recommended keeping the manual procedure...” and “I didn't dismiss the margin data...”",
+        "current_defect": "None material. The account presents both the documented status-quo risk and the unfamiliar-change concern, then states that the latter dominated.",
+        "minimal_change_instruction": "No revision required.",
+        "preserve": [
+          "The contractor's catalyst-lot-specific margin analysis.",
+          "The interlock's track record at comparable plants.",
+          "The existing manual procedure's local history.",
+          "The participant's explicit status-quo preference because the existing system is known."
+        ],
+        "avoid_creating": [
+          "Do not add concrete, independently verified interlock hazards that would make the choice fully justified on technical grounds.",
+          "Do not add another separate change-versus-status-quo decision elsewhere in the interview."
+        ],
+        "expected_post_revision_status": "supported"
+      }
+    },
+    {
+      "instance_id": "ig_01",
+      "bias": "In-group bias",
+      "requested_occurrences_for_bias": 1,
+      "status": "supported",
+      "decision_point": 4,
+      "supporting_quote": "“The contractor's point was on paper, but it felt like an outside read compared to someone who's actually run this unit for fifteen years.”",
+      "evidence_location": "MOC disagreement over whether to close the MOC without resolving the catalyst-lot kinetics issue.",
+      "mechanism": "The participant discounts an external contractor's written technical objection partly because it is an “outside read” and gives extra credit to the internal senior engineer partly because he is embedded in the unit's history and local team. This is source-of-origin weighting, distinct from the engineer's general safety reputation.",
+      "strength": "moderate",
+      "confidence": 0.83,
+      "plausible_nonbias_explanation": "Fifteen years of unit-specific operational experience is legitimately relevant and may reasonably be more informative than generic external experience. The in-group occurrence is supported because the participant expressly contrasts internal belonging with outsider status, while no new technical evidence had resolved the contractor's catalyst-lot concern.",
+      "additional_evidence_needed": "None for minimum support. Evidence would be stronger if the participant identified a contractor argument as technically sound yet still discounted it because the source was external, but the current source-origin contrast is sufficient.",
+      "revision_needed": false,
+      "revision": {
+        "revision_type": "none",
+        "location": "Decision point 4, participant response beginning “I sided with the senior engineer's view.”",
+        "current_defect": "The episode is close to a valid expertise-based judgment because the colleague's unit tenure is relevant; however, the explicit inside-versus-outside framing supplies a separable affiliation mechanism.",
+        "minimal_change_instruction": "No revision required. Retain the phrase contrasting the contractor as an “outside read” with the internal colleague's local standing.",
+        "preserve": [
+          "The contractor's specific written recommendation to keep the MOC open.",
+          "The lack of new data since the calibration check.",
+          "The explicit contrast between internal and external sources.",
+          "The separate statement about the senior engineer's safety reputation for the halo-effect occurrence."
+        ],
+        "avoid_creating": [
+          "Do not add repeated internal-versus-external source preferences at another decision point.",
+          "Do not replace affiliation language solely with technical-experience language, which would collapse this occurrence into justified expertise."
+        ],
+        "expected_post_revision_status": "supported"
+      }
+    },
+    {
+      "instance_id": "he_01",
+      "bias": "Halo effect",
+      "requested_occurrences_for_bias": 1,
+      "status": "supported",
+      "decision_point": 4,
+      "supporting_quote": "“His overall safety record here is excellent, so when he says something lines up with his experience, I tend to trust that assessment even without new numbers behind it.”",
+      "evidence_location": "MOC disagreement, in the same participant response as the internal-versus-external source comparison.",
+      "mechanism": "The participant transfers a broad positive trait and reputation—an excellent overall safety record—to confidence in a particular unresolved technical assessment about sensor drift and catalyst-lot kinetics. The text makes the credibility transfer explicit by stating that the claim is trusted despite the absence of new quantitative evidence.",
+      "strength": "moderate",
+      "confidence": 0.9,
+      "plausible_nonbias_explanation": "A strong safety record can be relevant evidence that an engineer is conscientious and reliable. It does not by itself validate a specific unverified kinetics or instrumentation conclusion; the occurrence is supported because the participant treats the general reputation as sufficient reason to trust the specific assessment without new data.",
+      "additional_evidence_needed": "None for minimum support. The specific claim's unresolved evidentiary status is already established by the contractor's open kinetics issue and the absence of new data.",
+      "revision_needed": false,
+      "revision": {
+        "revision_type": "none",
+        "location": "Decision point 4, sentence beginning “And frankly, his overall safety record here is excellent...”",
+        "current_defect": "None material. The general-reputation-to-specific-claim transfer is explicit and distinguishable from in-group source weighting.",
+        "minimal_change_instruction": "No revision required.",
+        "preserve": [
+          "The reference to the senior engineer's broad safety reputation.",
+          "The phrase “even without new numbers behind it.”",
+          "The unresolved catalyst-lot kinetics issue.",
+          "The distinct internal-versus-external framing needed for the separate in-group-bias occurrence."
+        ],
+        "avoid_creating": [
+          "Do not expand the senior engineer's reputation into specific, directly relevant catalyst-lot evidence, which would weaken the halo mechanism.",
+          "Do not add another trait-to-technical-claim credibility transfer elsewhere."
+        ],
+        "expected_post_revision_status": "supported"
+      }
+    }
+  ],
+  "bias_level_counts": [
+    {
+      "bias": "Group Polarization",
+      "requested_count": 1,
+      "supported_count": 1,
+      "weak_count": 0,
+      "absent_count": 0,
+      "merged_count": 0,
+      "accidental_count": 0,
+      "count_satisfied": true
+    },
+    {
+      "bias": "Dunning-Kruger effect or Illusion of understanding",
+      "requested_count": 1,
+      "supported_count": 1,
+      "weak_count": 0,
+      "absent_count": 0,
+      "merged_count": 0,
+      "accidental_count": 0,
+      "count_satisfied": true
+    },
+    {
+      "bias": "Risk aversion bias",
+      "requested_count": 1,
+      "supported_count": 1,
+      "weak_count": 0,
+      "absent_count": 0,
+      "merged_count": 0,
+      "accidental_count": 0,
+      "count_satisfied": true
+    },
+    {
+      "bias": "In-group bias",
+      "requested_count": 1,
+      "supported_count": 1,
+      "weak_count": 0,
+      "absent_count": 0,
+      "merged_count": 0,
+      "accidental_count": 0,
+      "count_satisfied": true
+    },
+    {
+      "bias": "Halo effect",
+      "requested_count": 1,
+      "supported_count": 1,
+      "weak_count": 0,
+      "absent_count": 0,
+      "merged_count": 0,
+      "accidental_count": 0,
+      "count_satisfied": true
+    }
+  ],
+  "additional_candidate_biases": [
+    {
+      "bias": "Confirmation bias",
+      "decision_point": 2,
+      "supporting_quote": "“I knew that going in, but I didn't weight it heavily. It looked enough like the earlier pattern that I was comfortable calling it drift without waiting on the fuller review.”",
+      "mechanism": "Once sensor drift became the favored explanation, the participant selectively privileges similarity-consistent evidence and discounts a known disconfirming variable: the new catalyst lot.",
+      "confidence": 0.78,
+      "status": "candidate",
+      "plausible_nonbias_explanation": "The participant may have judged the catalyst-lot difference to have low causal relevance based on unreported technical knowledge. The transcript does not provide that technical rationale, while it does explicitly report underweighting the difference.",
+      "revision_recommendation": "consider_adding_to_manifest"
+    },
+    {
+      "bias": "Status quo bias",
+      "decision_point": 3,
+      "supporting_quote": "“Our manual process, whatever its limits, was a known quantity.”",
+      "mechanism": "Preference for retaining the existing manual procedure is partly driven by the familiarity of the current arrangement rather than by a fully specified comparison of implementation hazards and documented status-quo safety margin.",
+      "confidence": 0.72,
+      "status": "candidate",
+      "plausible_nonbias_explanation": "This may be the same underlying evidence trace as the supported risk-aversion occurrence rather than a separate additional instance. It should not be counted separately unless a future taxonomy intentionally permits overlapping labels for one decision episode.",
+      "revision_recommendation": "none"
+    },
+    {
+      "bias": "Premature closure",
+      "decision_point": 2,
+      "supporting_quote": "“The diagnosis I'd settled on quickly was never really closed out on the chemistry side.”",
+      "mechanism": "The participant reaches practical diagnostic closure before completing available checks that could distinguish an instrumentation cause from catalyst-lot kinetics.",
+      "confidence": 0.81,
+      "status": "candidate",
+      "plausible_nonbias_explanation": "Operational triage often requires provisional decisions under limited time. It becomes a candidate cognitive failure because the participant retrospectively acknowledges that causal closure occurred without resolving a known competing explanation.",
+      "revision_recommendation": "consider_adding_to_manifest"
+    }
+  ],
+  "nonbias_cues": [
+    {
+      "cue": "Temperature was in band and did not show an excursion.",
+      "location": "Initial DCS-trend assessment before decision point 1.",
+      "why_not_bias": "Checking temperature as an initial runaway indicator is a reasonable domain-specific diagnostic action. It becomes relevant to bias only because the group later overgeneralizes from the partial similarity to earlier sensor events; the temperature check itself is not biased."
+    },
+    {
+      "cue": "The relief valve lifted, then pressure fell and reseated.",
+      "location": "Incident progression after continued monitoring.",
+      "why_not_bias": "This is an operational event and safety outcome, not evidence of a reasoning mechanism. A bad or near-bad outcome does not independently establish that any earlier decision was biased."
+    },
+    {
+      "cue": "The full review would take three to four hours and extend beyond shift changeover.",
+      "location": "Decision point 2.",
+      "why_not_bias": "Time pressure is an organizational and operational constraint. It explains why a quick decision may have been tempting, but it is not itself a cognitive bias."
+    },
+    {
+      "cue": "The senior engineer had fifteen years of unit experience and was on the commissioning team.",
+      "location": "Decision point 4.",
+      "why_not_bias": "Unit-specific experience is potentially diagnostic and can be a justified basis for expertise weighting. The in-group-bias classification rests only on the additional explicit inside-versus-outside source framing, not on tenure alone."
+    },
+    {
+      "cue": "No further excursions occurred for the rest of the campaign.",
+      "location": "Post-mitigation reflection after decision point 3.",
+      "why_not_bias": "The participant correctly avoids treating the absence of additional excursions as proof that retaining the manual procedure was safe or that the interlock would not have mattered."
+    },
+    {
+      "cue": "The contractor's interlock had a decent track record at two comparable plants.",
+      "location": "Mitigation-option evidence before decision point 3.",
+      "why_not_bias": "Comparable-plant performance is relevant evidence, though its transferability to this site may be uncertain. It is not bias evidence by itself."
+    }
+  ],
+  "causal_audit": {
+    "causal_claims": [
+      {
+        "claim": "The elevated-pressure trend was probably caused by sensor drift.",
+        "support": [
+          "Similarity to two previous events attributed to drift.",
+          "Gradual pressure creep.",
+          "No temperature excursion."
+        ],
+        "limitations": [
+          "The current batch used a newer catalyst lot absent from the earlier events.",
+          "The transmitter was later found to be within tolerance on a partial calibration spot-check.",
+          "The catalyst-lot exotherm profile was not independently reviewed.",
+          "A full instrument and kinetics review was not completed before causal closure."
+        ],
+        "audit_assessment": "The claim is weakly supported as a working hypothesis but not adequately supported as a closed root-cause conclusion."
+      },
+      {
+        "claim": "An automated high-pressure interlock would be preferable to the manual procedure because the existing relief system had a narrower margin for the new catalyst lot.",
+        "support": [
+          "Contractor data package identifying reduced relief-system margin.",
+          "Contractor recommendation for an interlock.",
+          "Interlock track record at two comparable plants."
+        ],
+        "limitations": [
+          "The interview does not supply the contractor's assumptions, uncertainty bounds, or site-specific interlock failure-mode analysis.",
+          "Comparable-plant performance is not a complete substitute for site-specific validation."
+        ],
+        "audit_assessment": "The contractor's conclusion is plausible and more evidence-based than the participant's familiarity rationale, but the transcript appropriately does not establish it as a proven causal counterfactual."
+      },
+      {
+        "claim": "The senior engineer's assessment should carry more weight than the contractor's objection.",
+        "support": [
+          "The senior engineer's long unit tenure and commissioning history."
+        ],
+        "limitations": [
+          "No new data resolved the catalyst-lot kinetics question.",
+          "General safety reputation does not verify a specific technical conclusion.",
+          "Insider status is not a technical evidentiary property."
+        ],
+        "audit_assessment": "The claim partially rests on relevant local expertise but is weakened by source-affiliation weighting and reputation-based credibility transfer."
+      }
+    ],
+    "correlation_causation_risks": [
+      {
+        "risk": "Prior sensor-drift attributions are treated as if trend similarity establishes the same cause in the new catalyst-lot batch.",
+        "why_it_matters": "Similarity of the pressure trajectory is correlational and does not isolate transmitter behavior from changed reaction kinetics, venting, or other process causes."
+      },
+      {
+        "risk": "The absence of later excursions could be misread as validation of the manual procedure.",
+        "why_it_matters": "No subsequent event does not identify the counterfactual performance of the interlock and may reflect exposure, operating conditions, or chance. The participant appropriately notes that it was not a clean test."
+      },
+      {
+        "risk": "The senior engineer's general safety record is used as evidence for a specific technical proposition.",
+        "why_it_matters": "A broad positive reputation may correlate with conscientious practice but does not causally establish the accuracy of a catalyst-lot or transmitter diagnosis."
+      }
+    ],
+    "counterfactual_present": false,
+    "changed_variable": "No formal paired counterfactual variable is specified. The interview includes an informal retrospective probe that changes only the timing of receipt of the contractor's margin report.",
+    "held_constant": [
+      "The reactor event and observed pressure trend.",
+      "The control-room participants and prior-event history.",
+      "The new catalyst lot.",
+      "The available decision alternatives."
+    ],
+    "causal_coherence": "moderate",
+    "explanation": "The informal timing counterfactual is coherent because it asks whether earlier availability of the contractor's margin data might have changed the group's initial convergence. However, the answer is appropriately tentative (“possibly”), and it cannot establish causation because the earlier information could also alter discussion content, perceived urgency, escalation behavior, and evidence weighting. The interview does not claim a formal counterfactual condition, and none is required by the hidden specification."
+  },
+  "quality_scores": {
+    "occupational_realism": 92,
+    "cta_fidelity": 91,
+    "bias_separability": 87,
+    "bias_subtlety": 84,
+    "control_fidelity": 100,
+    "counterfactual_fidelity": 100,
+    "narrative_coherence": 93,
+    "naturalness": 88,
+    "hidden_label_integrity": 93,
+    "overall_quality": 91
+  },
+  "revision_summary": {
+    "revision_required": false,
+    "supported_occurrence_total": 5,
+    "requested_occurrence_total": 5,
+    "missing_occurrence_total": 0,
+    "accidental_occurrence_total": 0,
+    "priority": "none",
+    "recommended_action": "accept",
+    "global_revision_constraints": [
+      "Annotate dk_01 specifically as illusion of understanding rather than making the stronger and less defensible claim that the participant exhibits Dunning-Kruger.",
+      "Do not separately count confirmation bias, premature closure, or status quo bias as additional required occurrences unless the annotation framework explicitly allows alternate labels for the same evidence trace.",
+      "Preserve the decision-point separation: collective risk judgment at decision point 1, causal attribution at decision point 2, mitigation selection at decision point 3, and source weighting during MOC closure at decision point 4.",
+      "Preserve the distinction within decision point 4 between affiliation-based source weighting for in-group bias and general-reputation-to-specific-claim transfer for halo effect.",
+      "Do not infer that the relief lift, the incomplete review, the absence of later excursions, or time pressure alone proves a cognitive bias."
+    ],
+    "revision_order": []
+  },
+  "failure_flags": []
+}

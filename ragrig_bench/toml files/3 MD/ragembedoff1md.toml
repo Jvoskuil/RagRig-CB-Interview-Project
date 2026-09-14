@@ -1,0 +1,67 @@
+# Ranker comparison: the default hybrid RRF ranker vs. pure cosine ranking
+# (WeightedFusionRanker alpha = 1.0), on the ragrig default chat backend
+# (Ollama, qwen3.5:9b), varying the context budget (4096 and 8192 tokens).
+# Corpus = the embedded HTML fixture book, default pipeline (full parser
+# registry + MarkdownChunker).
+
+corpus_dirs = ["papers=/mnt/c/Users/Joost/Documents/papers"]
+
+queries = [
+    "Interviewer: Thanks for sitting down with me. This is a cognitive task analysis debrief — I want to understand how you reasoned through the District X attack tempo assessment, not evaluate whether the outcome was right. Nothing here affects your record, and you can skip anything. Sound okay? Participant: Sure, that's fine. Interviewer: Can you tell me your role and how this landed on your desk? Participant: I'm the all-source analyst covering District X for the battalion S2. It came to me because SIGACTS showed a sharp jump in attacks and command wanted an assessment fast for the weekly INTSUM. Interviewer: What was the objective as you understood it? Participant: Figure out what was driving the numbers, recommend a response, and later judge whether that response actually worked, since the commander needed something concrete for a regional brief and for deciding where checkpoint resources should go next. Interviewer: Walk me through the incident from the start. Participant: For about a month, District X was steady — roughly three attacks a week, small-arms harassment, occasional IED. Then week five came in at eleven. That's the highest we'd seen in the whole dataset. Around the same time, HUMINT was reporting a local festival drawing big crowds, chatter about a resupplied weapons cache, and a tribal land dispute that had flared up. None of it was fully confirmed, but it was all sitting in the reporting at once. I had to give command something for that week's INTSUM. Interviewer: What did you recommend? Participant: I didn't want to jump straight to a cordon-and-search without solid targeting, so I pushed more ISR onto two suspected cache routes and stood up a limited checkpoint pilot in the busiest corridor. It felt like the right middle ground — do something, but don't commit the whole posture before knowing if week five was a real trend or a one-off. Interviewer: What drove that choice over the alternatives? Participant: Mostly the thin data. Eight weeks total isn't much to build a trend on, and I didn't want to overcommit resources off one bad week. But sitting on it wasn't an option either, with command already asking questions. The pilot let us act without locking in a bigger resourcing decision. Interviewer: What happened after the pilot went in? Participant: S3 liked it enough to expand it battalion-wide in week six — that became Operation Steady Watch. Week six came in at six, still elevated but down from eleven. Week seven dropped to three, week eight to four. Basically back near where we'd been before the spike. Interviewer: Did anything else come in around that time? Participant: Yeah. HUMINT caught up — the festival had ended by week six, the tribal dispute got mediated by local elders, and there were reports the resupplied cache had largely been used up in whatever drove the spike. So a few things were resolving in the same window as Steady Watch going in. Interviewer: Your supervisor asked for a causal read for the command brief. What did you actually tell them? Participant: Honestly, I told them I couldn't cleanly separate the two explanations. The timing fit Steady Watch — presence went up, attacks went down. But the timing also fit the festival ending and the dispute settling. Both stories explain the same numbers. With only eight weeks of data and all three of those things resolving in roughly the same stretch, I didn't think I had enough to say confidently which one was doing the work, or how much of each. I flagged the checkpoint effect as plausible but unconfirmed and recommended we keep watching before treating it as proven. Interviewer: Was there pressure to just pick one explanation for the brief? Participant: Some. Command likes a clean narrative, and 'the checkpoints worked' is a better line than 'we're not sure yet.' But I've been burned before recommending something off two data points that didn't hold up, so I'd rather flag the uncertainty than overstate it. Interviewer: That fed into a District Y question. Tell me about that. Participant: Right, the commander wanted to know if we should roll Steady Watch out to District Y too. District Y had its own spike — hit nine in week four, eased to five or six after, no posture change over there. Given that I wasn't confident about what actually drove District X's drop, I didn't want to treat that result as a proven model. Plus the District Y handler flagged that their spike had a different, still-unresolved driver — not the same mix of factors we'd seen in District X. Interviewer: So what did you recommend? Participant: I recommended holding off on committing checkpoint materials and doing a short standalone look at District Y first, since its situation wasn't a clean match for what we'd just seen. S3 agreed to wait rather than provision resources immediately. Interviewer: And the forecast for the commander's brief — what did you present? Participant: With the brief three days out and only two weeks of data past the implementation, I gave a range rather than a single number. I told the commander the tempo could hold near three to four a week, but that we hadn't isolated what was actually driving the drop, and that four more weeks would tell us a lot more than two. He wasn't thrilled with the hedge, but he approved continued funding with a review point built in rather than an open-ended commitment. Interviewer: If the tribal dispute hadn't been resolved that week, would your read have changed? Participant: Probably would've made me more comfortable crediting Steady Watch, yeah — one less competing explanation sitting on top of the same data. Interviewer: And if District Y's spike had also faded without any posture change there? Participant: That would've made me want even more data before trusting the District X story, since it'd suggest spikes can settle on their own regardless of what we do. Interviewer: Anything about how the data came together that week you'd want to see differently? Participant: I'd want a longer baseline before the spike, and I'd want the local reporting on the festival, the cache, and the dispute nailed down earlier instead of confirmed after the fact. Getting that timing right sooner would have made it a lot easier to say what actually moved the numbers instead of leaving it open the way we did."
+]
+
+[[agents]]
+label = "Gemini Prompt 8192"
+[agents.chat]
+provider = "deepseek"            # "ollama" | "deepseek"
+#model = "qwen2.5:1.5b"         # ignored for deepseek
+context_tokens = 8192          # context budget for retrieved chunks
+deepseek_model = "deepseek-v4-pro"   # deepseek only
+# deepseek_api_key = DEEPSEEK_API_KEY # deepseek only (or DEEPSEEK_API_KEY env)
+# context_size_mode = "Auto"          # "Auto" | "Forced"
+system_prompt_path = "prompt_gemini.md"    # custom system prompt ({context} placeholder)
+# request_timeout_secs = 300          # per-request timeout, None = no timeout
+[agents.chat.params]                # generation overrides (all optional)
+# temperature = 0.7
+# top_p = 0.9
+# max_tokens = 1024
+seed = 42
+
+[[agents]]
+label = "Sonar Prompt 8192"
+[agents.chat]
+provider = "deepseek"            # "ollama" | "deepseek"
+#model = "qwen2.5:1.5b"         # ignored for deepseek
+context_tokens = 8192          # context budget for retrieved chunks
+deepseek_model = "deepseek-v4-pro"   # deepseek only
+# deepseek_api_key = DEEPSEEK_API_KEY # deepseek only (or DEEPSEEK_API_KEY env)
+# context_size_mode = "Auto"          # "Auto" | "Forced"
+system_prompt_path = "prompt_sonar.md"    # custom system prompt ({context} placeholder)
+# request_timeout_secs = 300          # per-request timeout, None = no timeout
+[agents.chat.params]                # generation overrides (all optional)
+# temperature = 0.7
+# top_p = 0.9
+# max_tokens = 1024
+seed = 42
+
+[[agents]]
+label = "Sonnet Prompt 8192"
+[agents.chat]
+provider = "deepseek"            # "ollama" | "deepseek"
+#model = "qwen2.5:1.5b"         # ignored for deepseek
+context_tokens = 8192          # context budget for retrieved chunks
+deepseek_model = "deepseek-v4-pro"   # deepseek only
+# deepseek_api_key = DEEPSEEK_API_KEY # deepseek only (or DEEPSEEK_API_KEY env)
+# context_size_mode = "Auto"          # "Auto" | "Forced"
+system_prompt_path = "prompt_sonnet.md"    # custom system prompt ({context} placeholder)
+# request_timeout_secs = 300          # per-request timeout, None = no timeout
+[agents.chat.params]                # generation overrides (all optional)
+# temperature = 0.7
+# top_p = 0.9
+# max_tokens = 1024
+seed = 42
+
+# ---Embed testing ---
+[embed]
+top_k = 0
+#top_k = 50

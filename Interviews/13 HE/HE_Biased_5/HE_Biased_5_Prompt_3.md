@@ -7,10 +7,214 @@ Do not assume the generator followed the specification. Do not infer bias merely
 INPUTS
 
 Interview:
-{{INTERVIEW}}
+{{**Interviewer:** Thanks for taking the time. Just to confirm — this is a cognitive task analysis interview, it's confidential, and I'll be asking you to reconstruct a specific incident in detail. There's no evaluation of your performance here, just your reasoning process. Can you start by telling me your role and roughly when this happened?
+
+**Participant:** Sure. I'm a process safety engineer at the site — I cover the batch nitration unit among others. This was about four months ago, night shift transition. I'd just come on when the trend started.
+
+**Interviewer:** Good. Before we get into the sequence, what was the operational objective that shift?
+
+**Participant:** Straightforward — get the batch through its exothermic hold step cleanly and into the next unit operation without deviation, so we could hand off a clean batch at shift change. Nothing unusual planned.
+
+**Interviewer:** Walk me through what first drew your attention to the reactor.
+
+**Participant:** The DCS trend. Pressure was running about eight percent above the expected curve for that stage of the hold. Temperature was fine, right in band, which is usually the first thing you check because if temperature's climbing too you're thinking runaway. It wasn't. So it read more like an instrumentation quirk than a reaction problem, at least on the surface.
+
+**Interviewer:** What did you do with that information?
+
+**Participant:** Well, by the time I'd pulled up the trend, the shift supervisor and two operators were already standing around the panel talking about it. And honestly, that conversation shaped things a lot. Someone said "this looks like the same thing we saw in March," and someone else agreed, and by the time I'd joined in, the feeling in the room was pretty settled — everyone was more confident it was benign than any one of us probably was on our own five minutes earlier. I remember thinking, going into that conversation, I wasn't sure, but coming out of it I felt fairly sure. We'd had two prior deviations like this, both chalked up to sensor drift, no incident either time. That history was doing a lot of work in the room.
+
+**Interviewer:** So what was the actual decision at that point — stop the batch, escalate, or continue?
+
+**Participant:** Continue monitoring. We didn't interrupt. Looking back, the alternative was to call an emergency hold pending manual inspection, or escalate straight to the on-call plant manager. I didn't push for either. The shared read in the room was "probably the same sensor issue," and that's the frame I went with.
+
+**Interviewer:** What happened next?
+
+**Participant:** Pressure kept climbing, slowly, over about twenty minutes. Eventually the relief valve lifted — you could hear it, a distinct pop — and then pressure fell back and reseated. No release beyond the relief line, nobody hurt. But at that point we genuinely didn't know if the batch chemistry itself was compromised.
+
+**Interviewer:** How did you move from "we had a relief lift" to a root cause?
+
+**Participant:** I concluded fairly quickly it was the same sensor drift pattern we'd seen before. It matched — same unit, same kind of gradual pressure creep, no temperature excursion. A full instrument and kinetics review would've taken three to four hours, and that would blow past shift changeover, so there was real pressure to land on something workable.
+
+**Interviewer:** Did anything about this batch differ from the two prior "drift" events?
+
+**Participant:** Yeah, actually — this batch was running a newer catalyst lot. Neither of the earlier drift events used that lot. I knew that going in, but I didn't weight it heavily. It looked enough like the earlier pattern that I was comfortable calling it drift without waiting on the fuller review.
+
+**Interviewer:** How confident were you in that diagnosis at the time?
+
+**Participant:** Fairly confident, honestly. I've been on this unit a long time, I've seen this signature before. It felt like a case I recognized rather than a case I needed to dig into further.
+
+**Interviewer:** What did you learn afterward that touched on that conclusion?
+
+**Participant:** A partial calibration spot-check later showed the transmitter was actually within tolerance. That undercuts the drift explanation somewhat. And nobody had gone back and independently reviewed the new catalyst lot's exotherm profile. So the diagnosis I'd settled on quickly was never really closed out on the chemistry side.
+
+**Interviewer:** Let's move to the mitigation decision. What options were in front of you?
+
+**Participant:** The external relief-system contractor reviewed the incident and came back with a data package showing our existing relief system had a narrower margin than we'd assumed, specifically for this catalyst lot. Their recommendation was to add an automated high-pressure interlock trip before restart. It's a system with a decent track record at two comparable plants. The alternative was keeping our current manual response procedure, which has run for years here without failure.
+
+**Interviewer:** What did you decide?
+
+**Participant:** I recommended keeping the manual procedure for this restart. The interlock wasn't something our operators had hands-on familiarity with, and introducing something new felt like it carried its own risk profile that we hadn't lived with yet. Our manual process, whatever its limits, was a known quantity.
+
+**Interviewer:** How did you weigh the contractor's margin data against that operational familiarity?
+
+**Participant:** I didn't dismiss the margin data, I just — I think I gave more weight to the fact that the interlock was unproven here specifically, on our unit, with our people. The margin reduction was real on paper, but it hadn't caused an actual failure yet either. The known system winning out over the new one felt like the safer bet.
+
+**Interviewer:** Any information afterward relevant to that call?
+
+**Participant:** The plant manager pointed out later that adding the interlock then would've cost about one shift of downtime, versus none for keeping status quo. And no further excursions happened for the rest of the campaign, so we never really got a clean test of whether the interlock would've mattered.
+
+**Interviewer:** Take me into the MOC meeting. Who was there and what was the disagreement?
+
+**Participant:** Myself, the senior process safety engineer — he was on the original commissioning team for this unit, well known across the plant for a strong safety record — and the contractor. The senior engineer backed my sensor-drift read, said it matched his experience with the unit over the years. The contractor's written analysis flagged the catalyst-lot kinetics as an open gap and recommended keeping the MOC open until that was resolved. No new data had come in since the calibration check.
+
+**Interviewer:** How did you resolve that?
+
+**Participant:** I sided with the senior engineer's view. He's someone I've worked alongside for years, part of the original team that built this unit — that carries weight with me, knowing he's lived with this reactor longer than most people on-site. And frankly, his overall safety record here is excellent, so when he says something lines up with his experience, I tend to trust that assessment even without new numbers behind it. The contractor's point was on paper, but it felt like an outside read compared to someone who's actually run this unit for fifteen years.
+
+**Interviewer:** What happened after the MOC closed?
+
+**Participant:** We restarted without the kinetics review. Production since then hasn't clearly proven or disproven that call either way.
+
+**Interviewer:** Looking back across the shift, where did time pressure weigh most heavily?
+
+**Participant:** Definitely the root cause call and the MOC closure — both had that shift-changeover clock running, and neither had a hard deadline forcing an answer, but it felt like there was one.
+
+**Interviewer:** If the contractor's report had arrived before the control-room discussion instead of after, do you think the outcome changes?
+
+**Participant:** Possibly. If that margin data had been sitting on the table before everyone converged on "probably fine," it might have slowed the room down. Order mattered more than I'd like to admit.
+
+**Interviewer:** If a less senior colleague had proposed the sensor-drift explanation in that MOC meeting, would you have accepted it as readily?
+
+**Participant:** Probably not with the same confidence, no.
+
+**Interviewer:** What would you do differently with a similar deviation on a new catalyst lot?
+
+**Participant:** Flag the lot change explicitly, early, before pattern-matching to prior events — treat it as its own case rather than assuming it inherits the old explanation.}}
 
 Hidden generation specification:
-{{GENERATION_SPECIFICATION}}
+{{"hidden_validation_specification": {
+    "hidden_spec_version": "1.0",
+    "condition": "biased",
+    "exact_occurrence_manifest": [
+      {
+        "bias": "Group Polarization",
+        "occurrences": 1,
+        "mechanism_constraint": "must manifest via observable shift toward group extremity in a collective monitoring decision, not individual reasoning alone"
+      },
+      {
+        "bias": "Dunning-Kruger effect or Illusion of understanding",
+        "occurrences": 1,
+        "mechanism_constraint": "must manifest via overconfident causal conclusion drawn from incomplete pattern-matching, ignoring a known unknown (new catalyst lot)"
+      },
+      {
+        "bias": "Risk aversion bias",
+        "occurrences": 1,
+        "mechanism_constraint": "must manifest via disproportionate weighting of unfamiliar-change risk over documented status-quo risk in a mitigation choice"
+      },
+      {
+        "bias": "In-group bias",
+        "occurrences": 1,
+        "mechanism_constraint": "must manifest via crediting an in-house colleague's view due to team affiliation rather than technical content"
+      },
+      {
+        "bias": "Halo effect",
+        "occurrences": 1,
+        "mechanism_constraint": "must manifest via transferring general reputation to credibility of a specific unverified technical claim"
+      }
+    ],
+    "target_bias_names": [
+      "Group Polarization",
+      "Dunning-Kruger effect or Illusion of understanding",
+      "Risk aversion bias",
+      "In-group bias",
+      "Halo effect"
+    ],
+    "requested_occurrence_count_for_each_bias": [
+      { "bias": "Group Polarization", "requested_occurrences": 1 },
+      { "bias": "Dunning-Kruger effect or Illusion of understanding", "requested_occurrences": 1 },
+      { "bias": "Risk aversion bias", "requested_occurrences": 1 },
+      { "bias": "In-group bias", "requested_occurrences": 1 },
+      { "bias": "Halo effect", "requested_occurrences": 1 }
+    ],
+    "planned_instance_ids": [
+      { "instance_id": "gp_01", "bias": "Group Polarization" },
+      { "instance_id": "dk_01", "bias": "Dunning-Kruger effect or Illusion of understanding" },
+      { "instance_id": "ra_01", "bias": "Risk aversion bias" },
+      { "instance_id": "ig_01", "bias": "In-group bias" },
+      { "instance_id": "he_01", "bias": "Halo effect" }
+    ],
+    "intended_decision_points": [
+      { "instance_id": "gp_01", "bias": "Group Polarization", "decision_point": 1 },
+      { "instance_id": "dk_01", "bias": "Dunning-Kruger effect or Illusion of understanding", "decision_point": 2 },
+      { "instance_id": "ra_01", "bias": "Risk aversion bias", "decision_point": 3 },
+      { "instance_id": "ig_01", "bias": "In-group bias", "decision_point": 4 },
+      { "instance_id": "he_01", "bias": "Halo effect", "decision_point": 4 }
+    ],
+    "intended_mechanisms": [
+      {
+        "instance_id": "gp_01",
+        "bias": "Group Polarization",
+        "mechanism": "Collective discussion in the control room shifts the group's confidence toward a more extreme benign judgment than any individual initially held, driving continued monitoring instead of an independent interrupt",
+        "affected_reasoning_operation": "Group risk judgment formation before interrupt/continue decision",
+        "evidence_source": "Informal control-room discussion among supervisor, operators, and engineer",
+        "distinctiveness_requirement": "Only instance of this bias; occurs at decision point 1 via group discussion dynamics, not individual cognition"
+      },
+      {
+        "instance_id": "dk_01",
+        "bias": "Dunning-Kruger effect or Illusion of understanding",
+        "mechanism": "Confident causal conclusion drawn from superficial pattern match to prior events, unaware that the new catalyst lot places the current situation outside prior experience",
+        "affected_reasoning_operation": "Causal attribution / root cause conclusion under incomplete data",
+        "evidence_source": "Two prior 'drift' precedents plus new, unreviewed catalyst-lot variable",
+        "distinctiveness_requirement": "Only instance of this bias; occurs at decision point 2 as an individual diagnostic judgment, distinct in evidence and operation from gp_01"
+      },
+      {
+        "instance_id": "ra_01",
+        "bias": "Risk aversion bias",
+        "mechanism": "Disproportionate weight given to the unfamiliar risk of a new interlock relative to the better-documented margin-reduction risk of the status quo procedure",
+        "affected_reasoning_operation": "Mitigation option selection under asymmetric gain/loss framing",
+        "evidence_source": "Contractor's margin analysis versus unit's manual-procedure track record",
+        "distinctiveness_requirement": "Only instance of this bias; occurs at decision point 3, involving a change-versus-status-quo choice distinct from prior decision points"
+      },
+      {
+        "instance_id": "ig_01",
+        "bias": "In-group bias",
+        "mechanism": "Crediting a colleague's conclusion because of shared team membership, discounting an outsider's written technical objection",
+        "affected_reasoning_operation": "Evidence-source weighting during MOC technical disagreement",
+        "evidence_source": "Senior colleague's verbal agreement citing team tenure",
+        "distinctiveness_requirement": "Shares decision point 4 with he_01 but uses a distinct evidence source (team-affiliation statement) and reasoning operation (source-of-origin weighting) rather than trait-based credibility transfer"
+      },
+      {
+        "instance_id": "he_01",
+        "bias": "Halo effect",
+        "mechanism": "General reputation for safety performance is used to validate an unrelated, specific, unverified technical claim about catalyst-lot kinetics",
+        "affected_reasoning_operation": "Credibility transfer from general trait to specific claim",
+        "evidence_source": "Senior colleague's plant-wide reputation record",
+        "distinctiveness_requirement": "Shares decision point 4 with ig_01 but uses a distinct evidence source (reputation record) and reasoning operation (trait-to-claim generalization) rather than group-affiliation weighting"
+      }
+    ],
+    "intended_strength": [
+      { "instance_id": "gp_01", "bias": "Group Polarization", "strength": "subtle" },
+      { "instance_id": "dk_01", "bias": "Dunning-Kruger effect or Illusion of understanding", "strength": "moderate" },
+      { "instance_id": "ra_01", "bias": "Risk aversion bias", "strength": "subtle" },
+      { "instance_id": "ig_01", "bias": "In-group bias", "strength": "subtle" },
+      { "instance_id": "he_01", "bias": "Halo effect", "strength": "subtle" }
+    ],
+    "paired_scenario_id": null,
+    "counterfactual_variable": {
+      "name": null,
+      "original_state": null,
+      "changed_state": null,
+      "variables_to_hold_constant": []
+    },
+    "scenario_id": "HE_Biased_5",
+    "domain_id": "HE",
+    "total_requested_occurrences": 5,
+    "total_planned_occurrences": 5,
+    "allocation_rule_used": "Occurrences spread across 4 decision points by mechanism fit and narrative realism: one bias per decision point at DP1-DP3; DP4 hosts two biases (In-group bias and Halo effect) because the MOC closure moment naturally involves both source-affiliation weighting and reputation-based credibility transfer, kept distinct via separate evidence sources and reasoning operations per co-location rule (max two per decision point, no more than two of the same bias anywhere).",
+    "control_zero_bias_requirement": false,
+    "variables_to_hold_constant": [],
+    "generation_warnings": []
+  }}}
 
 The hidden specification may include:
 - condition;

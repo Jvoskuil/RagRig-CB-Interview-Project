@@ -1,0 +1,67 @@
+# Ranker comparison: the default hybrid RRF ranker vs. pure cosine ranking
+# (WeightedFusionRanker alpha = 1.0), on the ragrig default chat backend
+# (Ollama, qwen3.5:9b), varying the context budget (4096 and 8192 tokens).
+# Corpus = the embedded HTML fixture book, default pipeline (full parser
+# registry + MarkdownChunker).
+
+corpus_dirs = ["papers=/mnt/c/Users/Joost/Documents/papers"]
+
+queries = [
+    "Interviewer: Thanks for making time for this. Just to confirm, this conversation is being recorded for a training-review case study, your name won't be attached to the write-up, and you can skip any question you're not comfortable with. That work for you? Participant: Yeah, that's fine. I've done these before for the sergeant's after-action reviews. Interviewer: Good. Can you tell me your role and roughly how long you've been doing patrol work? Participant: Patrol officer, field response, going on seven years now. Mostly nights the last three. Interviewer: Let's start with the incident itself. Walk me through it from the top. Participant: Sure. This was about 1:40 in the morning, dispatch got an anonymous call about somebody loitering near the strip mall on Route 9—the one with the electronics store, the nail salon, couple other places, all closed. Caller just said the guy was 'acting suspicious,' no clothing description, nothing about a weapon, nothing specific. That stretch has had a run of break-ins the last couple months, so it's on our radar anyway. I was closest unit, backup was maybe six, seven minutes out. I rolled up, parked down the row a bit instead of pulling right up on him, and just watched for a minute. Saw one guy standing near a parked car outside the electronics store, looking at his phone. Nothing dramatic—no forced entry, no tools, nothing like that. Interviewer: What made you hold back and observe instead of approaching right away? Participant: Habit, mostly. If somebody's actually up to something, walking straight in tips them off and you lose the read you'd get from watching them not know you're there. He wasn't doing anything urgent-looking, so there wasn't a reason to rush it. Interviewer: Okay, so you approach. What happens next? Participant: I get out, identify myself, ask what he's doing there. He's calm, looks right at me, no hesitation. Says he's a delivery driver, waiting on a store employee to come let him drop a late shipment—one of those after-hours restock things some retailers do. He's got a company badge clipped to his jacket, hands me his license without me even asking twice. Answers are straight, no stumbling. While we're talking I notice there's a noticeable bulge in his jacket pocket, kind of squared off. That's the thing that stuck with me. Interviewer: What did you do with that observation? Participant: I asked him to keep his hands visible and I patted him down. Given the hour, the area, the break-in history, and then seeing something in the pocket I couldn't identify—that's enough for me to check. I'm not going to stand there and just hope it's nothing. Interviewer: Before we get further into that, let's build out the full timeline so I've got the order right. After the pat-down, what happened? Participant: Pat-down's clean. Bulge turns out to be a rolled invoice clipboard and a phone charger brick. No weapon. I still hadn't confirmed his story independently, though, and backup still wasn't there yet, so I had him stay put while I ran his info and had dispatch try to verify the delivery account. That came back a few minutes later—company does have an active account with that electronics store, late drop-offs are apparently normal for their overnight restock cycle. Store employee showed up shortly after that to actually take the delivery. I cut him loose, wrote up the field contact, noted the pat-down and the reason for it, and that was the end of it. Interviewer: Let's go back through this decision by decision. First one: choosing to observe from the car before approaching. What alternatives did you consider there? Participant: I could've walked straight up, or called dispatch back for more detail before doing anything. I didn't see the point in calling back—caller didn't leave much to work with anyway. Watching first just gives me information without giving up the advantage. Interviewer: Second decision point—the pat-down. What was the single biggest factor driving that? Participant: Honestly, the bulge. That's what made me act. Everything else about him was pretty unremarkable at that point. Interviewer: You mentioned he was calm, made eye contact, answered clearly, didn't move away. How did those factor into the decision? Participant: I mean, I noticed them, sure. But that's not really something I weighed much in the moment. Plenty of people are composed and still turn out to be a problem, so I don't put a lot of stock in somebody acting normal. The pocket's the thing I can't see into, so that's what needs resolving. Interviewer: If you think about it as two things pointing in opposite directions—the bulge saying there might be something to worry about, him being calm and cooperative saying there might not be—how did those actually balance out for you in the moment? Participant: They didn't really go on the same scale for me, if I'm honest. The bulge was a fact I could point to—something's there, I don't know what. Him being relaxed about it, answering fine, not flinching—yeah, in hindsight that probably should've counted for something on the other side. Normally in an uncertain stop like that, somebody being that calm and cooperative does ease things off for me a notch, gives me a little more room to slow down. But here, once I clocked the bulge, that easing just didn't happen—the calm didn't really buy him anything against the pocket. It felt like the pocket was the open question and everything else was just... him being fine, which didn't move the needle on it one way or the other. Interviewer: If he'd been visibly nervous or wouldn't make eye contact, would that have changed what you did? Participant: Yeah, probably would've moved things along faster, maybe called for backup to get there before I even engaged that closely. Nervousness adds to it. Interviewer: And if there'd been no bulge at all, same calm demeanor, same story? Participant: Then there's nothing to pat down for. No visible object, no pat-down. It'd just be a field interview and I'd let him go once the story checked out. Interviewer: Third decision point—after the pat-down comes back clean, you keep him at the scene rather than releasing him right away. What's the reasoning? Participant: His story wasn't confirmed yet. ID and badge looked legitimate, but I've had people carry legit-looking credentials for jobs they don't actually have anymore, or badges that are old. Backup still hadn't arrived. Holding him a few extra minutes to get dispatch confirmation felt like the reasonable middle ground—not cutting him loose on an unverified story, but not escalating into an arrest either. Interviewer: Did you consider walking him up to the store to check in person? Participant: Thought about it, but the store's locked and dark, nobody's answering that door at 1:45 a.m. Waiting on dispatch and the employee showing up made more sense than dragging him around the parking lot. Interviewer: Fourth decision point—closing it out. Why release with no citation rather than something like a loitering warning? Participant: Once dispatch confirmed the account and the employee showed up right after, there wasn't anything left to hang a citation on. He had a legitimate reason to be there and it checked out. Writing him up at that point would've just been punishing him for existing near a business at night, which isn't fair or defensible. Interviewer: Stepping back—how much did being alone without backup shape the pace of any of this? Participant: Some. I'm more careful about closing distance and more inclined to check things I can't see, like the pocket, when I don't have a second set of eyes yet. If backup had already been on scene, I might've taken a slower approach to the pat-down, maybe just asked him to show me what's in the pocket instead of doing it myself. Interviewer: At what point were you least certain about what was actually going on? Participant: Probably right when I first saw the bulge, before the pat-down. Everything else about him read fine, but that one thing was the piece I genuinely couldn't explain yet, and until I could, I wasn't going to relax. Interviewer: Has something like that bulge turned out to be a weapon for you before? Participant: Not personally, no. It's just an unidentified object, and until I know what it is, I treat it as something to resolve—that's really it. Interviewer: Last question—looking back at how the whole stop played out, is there anything you'd weigh differently next time? Participant: Maybe I'd ask him to show me the pocket contents himself before going straight to a pat-down, since he was cooperative the whole time. But given what I knew standing there, I don't think I'd change the core call. The pocket was the unresolved piece, and resolving unresolved pieces is the job. Interviewer: That's helpful, thank you. I think that covers everything I need. Participant: No problem. Glad it worked out clean for the guy."
+]
+
+[[agents]]
+label = "Gemini Prompt 8192"
+[agents.chat]
+provider = "deepseek"            # "ollama" | "deepseek"
+#model = "qwen2.5:1.5b"         # ignored for deepseek
+context_tokens = 8192          # context budget for retrieved chunks
+deepseek_model = "deepseek-v4-pro"   # deepseek only
+#deepseek_api_key = DEEPSEEK_API_KEY # deepseek only (or DEEPSEEK_API_KEY env)
+# context_size_mode = "Auto"          # "Auto" | "Forced"
+system_prompt_path = "prompt_gemini.md"    # custom system prompt ({context} placeholder)
+# request_timeout_secs = 300          # per-request timeout, None = no timeout
+[agents.chat.params]                # generation overrides (all optional)
+# temperature = 0.7
+# top_p = 0.9
+# max_tokens = 1024
+seed = 42
+
+[[agents]]
+label = "Sonar Prompt 8192"
+[agents.chat]
+provider = "deepseek"            # "ollama" | "deepseek"
+#model = "qwen2.5:1.5b"         # ignored for deepseek
+context_tokens = 8192          # context budget for retrieved chunks
+deepseek_model = "deepseek-v4-pro"   # deepseek only
+#deepseek_api_key = DEEPSEEK_API_KEY # deepseek only (or DEEPSEEK_API_KEY env)
+# context_size_mode = "Auto"          # "Auto" | "Forced"
+system_prompt_path = "prompt_sonar.md"    # custom system prompt ({context} placeholder)
+# request_timeout_secs = 300          # per-request timeout, None = no timeout
+ [agents.chat.params]                # generation overrides (all optional)
+# temperature = 0.7
+# top_p = 0.9
+# max_tokens = 1024
+ seed = 42
+
+[[agents]]
+label = "Sonnet Prompt 8192"
+[agents.chat]
+provider = "deepseek"            # "ollama" | "deepseek"
+#model = "qwen2.5:1.5b"         # ignored for deepseek
+context_tokens = 8192          # context budget for retrieved chunks
+deepseek_model = "deepseek-v4-pro"   # deepseek only
+#deepseek_api_key = DEEPSEEK_API_KEY # deepseek only (or DEEPSEEK_API_KEY env)
+# context_size_mode = "Auto"          # "Auto" | "Forced"
+system_prompt_path = "prompt_sonnet.md"    # custom system prompt ({context} placeholder)
+# request_timeout_secs = 300          # per-request timeout, None = no timeout
+[agents.chat.params]                # generation overrides (all optional)
+# temperature = 0.7
+# top_p = 0.9
+# max_tokens = 1024
+seed = 42
+
+# ---Embed testing ---
+[embed]
+top_k = 0
+#top_k = 50

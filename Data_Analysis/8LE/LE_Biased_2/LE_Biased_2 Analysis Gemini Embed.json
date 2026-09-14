@@ -1,0 +1,996 @@
+{
+  "evaluation_metadata": {
+    "task": "ontology_free_rag_cognitive_bias_benchmark_evaluation",
+    "benchmark_run_metadata": {
+      "benchmark_run_id": "LE_Biased_2_Gemini_on",
+      "interview_id": "LE_Biased_2",
+      "system_prompt_id": "Gemini",
+      "system_prompt_generator": "Prompt 1_2",
+      "rag_model_id": "v1.0.0",
+      "corpus_condition": "on",
+      "retrieval_configuration_id": "k=50",
+      "decoding_configuration_id": null,
+      "temperature": 1,
+      "replicate_id": null,
+      "segment_map_id": null
+    },
+    "scenario_id": "LE_Biased_2",
+    "domain_id": "LE",
+    "condition": "biased",
+    "segment_map_status": "generated_not_prevalidated",
+    "rag_output_parse_status": "valid_json",
+    "rag_schema_assessment": "conformant"
+  },
+  "input_validation": {
+    "rag_output_schema_violations": [],
+    "rag_summary_count_consistency": {
+      "status": "consistent",
+      "details": "identified_bias_summary reports two confirmation-bias occurrences and identified_occurrences contains two; candidate_biases contains two candidates."
+    },
+    "evaluation_limitations": [
+      "No frozen evaluation segment map was supplied; four eligible reasoning segments were generated from the four timeline decision points.",
+      "The RAG supplied corpus-support metadata and passage summaries, but no retrieved chunks or retrieval logs were provided, so corpus fidelity is not scored.",
+      "The hidden specification documents plausible non-bias interpretations for both positive episodes; adjudication credits only the explicit mechanism evidence."
+    ]
+  },
+  "evaluation_segment_map": {
+    "segment_mapping_version": "1.0",
+    "segments": [
+      {
+        "segment_id": "seg_001",
+        "speaker": "Participant",
+        "segment_type": "intake_information_handling",
+        "raw_interview_anchor": "Detective supplies confession and prior-conviction information; examiner logs it and notes that the lab normally receives such context without blind review.",
+        "eligible_reasoning_segment": true,
+        "ground_truth_bias_present": false,
+        "ground_truth_instance_ids": [],
+        "ground_truth_rationale": "This is substantive intake information handling, but the hidden contextual-bias instance is localized to the later ambiguous-detail interpretation."
+      },
+      {
+        "segment_id": "seg_002",
+        "speaker": "Participant",
+        "segment_type": "intake_choice_under_deadline",
+        "raw_interview_anchor": "Examiner considers a fresh look or supervisor flag, then proceeds because reassignment would delay the case and the confession does not change the print.",
+        "eligible_reasoning_segment": true,
+        "ground_truth_bias_present": false,
+        "ground_truth_instance_ids": [],
+        "ground_truth_rationale": "The intake choice is explained by turnaround constraints and the examiner's view of print evidence; no hidden instance is assigned here."
+      },
+      {
+        "segment_id": "seg_003",
+        "speaker": "Participant",
+        "segment_type": "latent_quality_and_sufficiency_assessment",
+        "raw_interview_anchor": "Examiner assesses a partial, smudged latent with peripheral distortion and ten clear minutiae.",
+        "eligible_reasoning_segment": true,
+        "ground_truth_bias_present": false,
+        "ground_truth_instance_ids": [],
+        "ground_truth_rationale": "This is a substantive technical assessment of print quality and sufficiency without the hidden context-to-ambiguous-detail shift."
+      },
+      {
+        "segment_id": "seg_004",
+        "speaker": "Participant",
+        "segment_type": "ambiguous_detail_interpretation",
+        "raw_interview_anchor": "Examiner compares the distorted peripheral region, says the confession made it feel like confirmation, and resolves it as consistent for individualization.",
+        "eligible_reasoning_segment": true,
+        "ground_truth_bias_present": true,
+        "ground_truth_instance_ids": [
+          "ctx_01"
+        ],
+        "ground_truth_rationale": "The phase-2 comparison response contains the hidden contextual-bias mechanism: case context enters interpretation of genuinely ambiguous ridge detail."
+      },
+      {
+        "segment_id": "seg_005",
+        "speaker": "Participant",
+        "segment_type": "verification_routing_choice",
+        "raw_interview_anchor": "Examiner sends the full worksheet and conclusion, acknowledging blind verification as cleaner but choosing the standard route under staffing and deadline pressure.",
+        "eligible_reasoning_segment": true,
+        "ground_truth_bias_present": false,
+        "ground_truth_instance_ids": [],
+        "ground_truth_rationale": "The routing decision is a negative segment; standard practice, staffing, and deadline explain the non-blind packet."
+      },
+      {
+        "segment_id": "seg_006",
+        "speaker": "Participant",
+        "segment_type": "discrepancy_reconciliation_and_belief_update",
+        "raw_interview_anchor": "After the verifier flags the peripheral region, examiner searches for a distortion explanation, considers inconclusive and non-match alternatives, discounts the non-match, and keeps individualization.",
+        "eligible_reasoning_segment": true,
+        "ground_truth_bias_present": true,
+        "ground_truth_instance_ids": [
+          "coh_01"
+        ],
+        "ground_truth_rationale": "The phase-4 reconciliation response contains the hidden coherence-based reasoning/rationalisation mechanism: post-hoc distortion explanation preserves the standing conclusion after disconfirming feedback."
+      },
+      {
+        "segment_id": "seg_007",
+        "speaker": "Participant",
+        "segment_type": "confidence_assessment",
+        "raw_interview_anchor": "Examiner rates the peripheral read six or seven out of ten alone but feels solid overall because of the ten clear minutiae.",
+        "eligible_reasoning_segment": true,
+        "ground_truth_bias_present": false,
+        "ground_truth_instance_ids": [],
+        "ground_truth_rationale": "This is an explicit uncertainty and evidence-weighting reflection; it is not a separate hidden bias instance."
+      },
+      {
+        "segment_id": "seg_008",
+        "speaker": "Participant",
+        "segment_type": "prior_experience_heuristic",
+        "raw_interview_anchor": "Examiner says textured tool surfaces are a known headache and that strong core detail usually keeps a rough edge from derailing the call.",
+        "eligible_reasoning_segment": true,
+        "ground_truth_bias_present": false,
+        "ground_truth_instance_ids": [],
+        "ground_truth_rationale": "The professional heuristic is a negative segment because the hidden contextual instance specifically concerns confession/prior-record context, not prior tool-surface experience."
+      },
+      {
+        "segment_id": "seg_009",
+        "speaker": "Participant",
+        "segment_type": "counterfactual_context_reflection",
+        "raw_interview_anchor": "Examiner says the read might have differed without the confession or priors and cannot rule out extra confidence doing work.",
+        "eligible_reasoning_segment": true,
+        "ground_truth_bias_present": false,
+        "ground_truth_instance_ids": [],
+        "ground_truth_rationale": "This is a retrospective counterfactual reflection, not an additional manifested instance."
+      },
+      {
+        "segment_id": "seg_010",
+        "speaker": "Participant",
+        "segment_type": "counterfactual_verification_reflection",
+        "raw_interview_anchor": "Examiner says an earlier verifier discrepancy might have led to an indeterminate treatment from the start.",
+        "eligible_reasoning_segment": true,
+        "ground_truth_bias_present": false,
+        "ground_truth_instance_ids": [],
+        "ground_truth_rationale": "This is retrospective process reasoning about sequencing and is not an additional hidden instance."
+      },
+      {
+        "segment_id": "seg_011",
+        "speaker": "Participant",
+        "segment_type": "process_improvement_counterfactual",
+        "raw_interview_anchor": "With no deadline, examiner would request a fresh lift or enhanced imaging and a blind second look.",
+        "eligible_reasoning_segment": true,
+        "ground_truth_bias_present": false,
+        "ground_truth_instance_ids": [],
+        "ground_truth_rationale": "This is a substantive improvement recommendation, but it is not a new bias occurrence."
+      }
+    ]
+  },
+  "segment_level_adjudications": [
+    {
+      "segment_id": "seg_001",
+      "ground_truth_status": "negative",
+      "ground_truth_instance_ids": [],
+      "rag_identified_occurrence_ids": [],
+      "rag_candidate_ids_counted_at_fourth_threshold": [],
+      "rag_detected_bias_in_segment_by_threshold": {
+        "high_only": false,
+        "high_and_moderate": false,
+        "all_identified_confidence_levels": false,
+        "all_confidence_and_candidates": false
+      },
+      "sdt_outcome_by_threshold": {
+        "high_only": "correct_rejection",
+        "high_and_moderate": "correct_rejection",
+        "all_identified_confidence_levels": "correct_rejection",
+        "all_confidence_and_candidates": "correct_rejection"
+      },
+      "localization_basis": "No RAG finding localizes to intake information handling.",
+      "adjudication_note": "Negative segment with no qualifying finding."
+    },
+    {
+      "segment_id": "seg_002",
+      "ground_truth_status": "negative",
+      "ground_truth_instance_ids": [],
+      "rag_identified_occurrence_ids": [],
+      "rag_candidate_ids_counted_at_fourth_threshold": [],
+      "rag_detected_bias_in_segment_by_threshold": {
+        "high_only": false,
+        "high_and_moderate": false,
+        "all_identified_confidence_levels": false,
+        "all_confidence_and_candidates": false
+      },
+      "sdt_outcome_by_threshold": {
+        "high_only": "correct_rejection",
+        "high_and_moderate": "correct_rejection",
+        "all_identified_confidence_levels": "correct_rejection",
+        "all_confidence_and_candidates": "correct_rejection"
+      },
+      "localization_basis": "No RAG finding localizes to the intake reassignment choice.",
+      "adjudication_note": "Negative segment; deadline and operational rationale are not scored as a bias."
+    },
+    {
+      "segment_id": "seg_003",
+      "ground_truth_status": "negative",
+      "ground_truth_instance_ids": [],
+      "rag_identified_occurrence_ids": [],
+      "rag_candidate_ids_counted_at_fourth_threshold": [],
+      "rag_detected_bias_in_segment_by_threshold": {
+        "high_only": false,
+        "high_and_moderate": false,
+        "all_identified_confidence_levels": false,
+        "all_confidence_and_candidates": false
+      },
+      "sdt_outcome_by_threshold": {
+        "high_only": "correct_rejection",
+        "high_and_moderate": "correct_rejection",
+        "all_identified_confidence_levels": "correct_rejection",
+        "all_confidence_and_candidates": "correct_rejection"
+      },
+      "localization_basis": "No RAG finding localizes to the initial print-quality assessment.",
+      "adjudication_note": "Negative technical assessment segment."
+    },
+    {
+      "segment_id": "seg_004",
+      "ground_truth_status": "positive",
+      "ground_truth_instance_ids": [
+        "ctx_01"
+      ],
+      "rag_identified_occurrence_ids": [
+        "obs_001"
+      ],
+      "rag_candidate_ids_counted_at_fourth_threshold": [],
+      "rag_detected_bias_in_segment_by_threshold": {
+        "high_only": true,
+        "high_and_moderate": true,
+        "all_identified_confidence_levels": true,
+        "all_confidence_and_candidates": true
+      },
+      "sdt_outcome_by_threshold": {
+        "high_only": "hit",
+        "high_and_moderate": "hit",
+        "all_identified_confidence_levels": "hit",
+        "all_confidence_and_candidates": "hit"
+      },
+      "localization_basis": "obs_001 uses exact participant quotations from the phase-2 ambiguous-detail interpretation; cand_002 uses an exact quote from the same decision episode's prior-experience reflection.",
+      "adjudication_note": "Segment hit at every threshold; cand_002 is a duplicate candidate at the fourth threshold."
+    },
+    {
+      "segment_id": "seg_005",
+      "ground_truth_status": "negative",
+      "ground_truth_instance_ids": [],
+      "rag_identified_occurrence_ids": [],
+      "rag_candidate_ids_counted_at_fourth_threshold": [
+        "cand_001"
+      ],
+      "rag_detected_bias_in_segment_by_threshold": {
+        "high_only": false,
+        "high_and_moderate": false,
+        "all_identified_confidence_levels": false,
+        "all_confidence_and_candidates": true
+      },
+      "sdt_outcome_by_threshold": {
+        "high_only": "correct_rejection",
+        "high_and_moderate": "correct_rejection",
+        "all_identified_confidence_levels": "correct_rejection",
+        "all_confidence_and_candidates": "false_positive"
+      },
+      "localization_basis": "cand_001 quotes the phase-3 full-packet verification-routing choice.",
+      "adjudication_note": "Candidate-only status quo speculation creates the fourth-threshold false alarm on a negative segment."
+    },
+    {
+      "segment_id": "seg_006",
+      "ground_truth_status": "positive",
+      "ground_truth_instance_ids": [
+        "coh_01"
+      ],
+      "rag_identified_occurrence_ids": [
+        "obs_002"
+      ],
+      "rag_candidate_ids_counted_at_fourth_threshold": [],
+      "rag_detected_bias_in_segment_by_threshold": {
+        "high_only": false,
+        "high_and_moderate": false,
+        "all_identified_confidence_levels": true,
+        "all_confidence_and_candidates": true
+      },
+      "sdt_outcome_by_threshold": {
+        "high_only": "miss",
+        "high_and_moderate": "miss",
+        "all_identified_confidence_levels": "hit",
+        "all_confidence_and_candidates": "hit"
+      },
+      "localization_basis": "obs_002 uses exact participant quotations from the discrepancy-reconciliation span.",
+      "adjudication_note": "Low-confidence identified occurrence is excluded from the first two thresholds but counted at the all-identified threshold."
+    },
+    {
+      "segment_id": "seg_007",
+      "ground_truth_status": "negative",
+      "ground_truth_instance_ids": [],
+      "rag_identified_occurrence_ids": [],
+      "rag_candidate_ids_counted_at_fourth_threshold": [],
+      "rag_detected_bias_in_segment_by_threshold": {
+        "high_only": false,
+        "high_and_moderate": false,
+        "all_identified_confidence_levels": false,
+        "all_confidence_and_candidates": false
+      },
+      "sdt_outcome_by_threshold": {
+        "high_only": "correct_rejection",
+        "high_and_moderate": "correct_rejection",
+        "all_identified_confidence_levels": "correct_rejection",
+        "all_confidence_and_candidates": "correct_rejection"
+      },
+      "localization_basis": "No RAG finding localizes to the confidence-rating reflection.",
+      "adjudication_note": "Negative uncertainty reflection."
+    },
+    {
+      "segment_id": "seg_008",
+      "ground_truth_status": "negative",
+      "ground_truth_instance_ids": [],
+      "rag_identified_occurrence_ids": [],
+      "rag_candidate_ids_counted_at_fourth_threshold": [
+        "cand_002"
+      ],
+      "rag_detected_bias_in_segment_by_threshold": {
+        "high_only": false,
+        "high_and_moderate": false,
+        "all_identified_confidence_levels": false,
+        "all_confidence_and_candidates": true
+      },
+      "sdt_outcome_by_threshold": {
+        "high_only": "correct_rejection",
+        "high_and_moderate": "correct_rejection",
+        "all_identified_confidence_levels": "correct_rejection",
+        "all_confidence_and_candidates": "false_positive"
+      },
+      "localization_basis": "cand_002 quotes the prior-experience heuristic about textured tool surfaces.",
+      "adjudication_note": "Candidate cand_002 is a partial near-miss on a negative segment and is also a duplicate of obs_001 at the episode level."
+    },
+    {
+      "segment_id": "seg_009",
+      "ground_truth_status": "negative",
+      "ground_truth_instance_ids": [],
+      "rag_identified_occurrence_ids": [],
+      "rag_candidate_ids_counted_at_fourth_threshold": [],
+      "rag_detected_bias_in_segment_by_threshold": {
+        "high_only": false,
+        "high_and_moderate": false,
+        "all_identified_confidence_levels": false,
+        "all_confidence_and_candidates": false
+      },
+      "sdt_outcome_by_threshold": {
+        "high_only": "correct_rejection",
+        "high_and_moderate": "correct_rejection",
+        "all_identified_confidence_levels": "correct_rejection",
+        "all_confidence_and_candidates": "correct_rejection"
+      },
+      "localization_basis": "No RAG finding quotes the no-context counterfactual.",
+      "adjudication_note": "Negative retrospective counterfactual segment."
+    },
+    {
+      "segment_id": "seg_010",
+      "ground_truth_status": "negative",
+      "ground_truth_instance_ids": [],
+      "rag_identified_occurrence_ids": [],
+      "rag_candidate_ids_counted_at_fourth_threshold": [],
+      "rag_detected_bias_in_segment_by_threshold": {
+        "high_only": false,
+        "high_and_moderate": false,
+        "all_identified_confidence_levels": false,
+        "all_confidence_and_candidates": false
+      },
+      "sdt_outcome_by_threshold": {
+        "high_only": "correct_rejection",
+        "high_and_moderate": "correct_rejection",
+        "all_identified_confidence_levels": "correct_rejection",
+        "all_confidence_and_candidates": "correct_rejection"
+      },
+      "localization_basis": "No RAG finding quotes the verifier-order counterfactual.",
+      "adjudication_note": "Negative retrospective process segment."
+    },
+    {
+      "segment_id": "seg_011",
+      "ground_truth_status": "negative",
+      "ground_truth_instance_ids": [],
+      "rag_identified_occurrence_ids": [],
+      "rag_candidate_ids_counted_at_fourth_threshold": [],
+      "rag_detected_bias_in_segment_by_threshold": {
+        "high_only": false,
+        "high_and_moderate": false,
+        "all_identified_confidence_levels": false,
+        "all_confidence_and_candidates": false
+      },
+      "sdt_outcome_by_threshold": {
+        "high_only": "correct_rejection",
+        "high_and_moderate": "correct_rejection",
+        "all_identified_confidence_levels": "correct_rejection",
+        "all_confidence_and_candidates": "correct_rejection"
+      },
+      "localization_basis": "No RAG finding quotes the no-deadline improvement recommendation.",
+      "adjudication_note": "Negative process-improvement counterfactual segment."
+    }
+  ],
+  "instance_level_adjudications": [
+    {
+      "hidden_instance_id": "ctx_01",
+      "hidden_target_bias_label": "Contextual Bias",
+      "hidden_decision_or_episode": "Phase 2 comparison of ambiguous peripheral ridge detail",
+      "hidden_mechanism": "Extraneous case information (confession, prior convictions) received before analysis shifts interpretation of genuinely ambiguous minutiae toward a conclusion consistent with guilt, rather than the ambiguous data being resolved on print evidence alone.",
+      "matched_finding_by_threshold": {
+        "high_only": {
+          "matched_id": "obs_001",
+          "matched_type": "identified"
+        },
+        "high_and_moderate": {
+          "matched_id": "obs_001",
+          "matched_type": "identified"
+        },
+        "all_identified_confidence_levels": {
+          "matched_id": "obs_001",
+          "matched_type": "identified"
+        },
+        "all_confidence_and_candidates": {
+          "matched_id": "obs_001",
+          "matched_type": "identified"
+        }
+      },
+      "rag_predicted_bias_label": "confirmation bias",
+      "rag_confidence": "high",
+      "label_equivalence_result": "near_neighbor_label",
+      "localization_match_type": "exact_quote_match",
+      "mechanism_overlap": "full_mechanism_match",
+      "strict_scorecard_outcome_by_threshold": {
+        "high_only": "false_negative",
+        "high_and_moderate": "false_negative",
+        "all_identified_confidence_levels": "false_negative",
+        "all_confidence_and_candidates": "false_negative"
+      },
+      "mechanism_first_scorecard_outcome_by_threshold": {
+        "high_only": "true_positive",
+        "high_and_moderate": "true_positive",
+        "all_identified_confidence_levels": "true_positive",
+        "all_confidence_and_candidates": "true_positive"
+      },
+      "secondary_diagnostic_outcome": "correct_location_wrong_bias_label",
+      "label_equivalence_explanation": "Confirmation bias is a related evidence-confirming construct, but it is not an established alias for the hidden Contextual Bias target, which specifically requires extraneous case information to shift interpretation.",
+      "mechanism_overlap_explanation": "Full match: the confession and prior convictions are identified as contextual information, the peripheral detail is genuinely ambiguous, and the participant says the context made it feel confirmatory rather than indeterminate.",
+      "evidence_fidelity_assessment": "Both supplied participant quotations are verbatim spans from the phase-2 comparison episode and directly support the context-linked interpretation."
+    },
+    {
+      "hidden_instance_id": "coh_01",
+      "hidden_target_bias_label": "Coherence-based reasoning or Rationalisation",
+      "hidden_decision_or_episode": "Phase 4 reconciliation of verifier discrepancy",
+      "hidden_mechanism": "Upon receiving verifier feedback that contradicts the standing conclusion, the examiner constructs a post-hoc explanation (distortion/pressure variance) that renders the discrepancy compatible with the pre-existing individualization conclusion, rather than treating the discrepancy as evidence that should update the conclusion's probability.",
+      "matched_finding_by_threshold": {
+        "high_only": {
+          "matched_id": null,
+          "matched_type": "none"
+        },
+        "high_and_moderate": {
+          "matched_id": null,
+          "matched_type": "none"
+        },
+        "all_identified_confidence_levels": {
+          "matched_id": "obs_002",
+          "matched_type": "identified"
+        },
+        "all_confidence_and_candidates": {
+          "matched_id": "obs_002",
+          "matched_type": "identified"
+        }
+      },
+      "rag_predicted_bias_label": "confirmation bias",
+      "rag_confidence": "low",
+      "label_equivalence_result": "near_neighbor_label",
+      "localization_match_type": "exact_quote_match",
+      "mechanism_overlap": "full_mechanism_match",
+      "strict_scorecard_outcome_by_threshold": {
+        "high_only": "false_negative",
+        "high_and_moderate": "false_negative",
+        "all_identified_confidence_levels": "false_negative",
+        "all_confidence_and_candidates": "false_negative"
+      },
+      "mechanism_first_scorecard_outcome_by_threshold": {
+        "high_only": "false_negative",
+        "high_and_moderate": "false_negative",
+        "all_identified_confidence_levels": "true_positive",
+        "all_confidence_and_candidates": "true_positive"
+      },
+      "secondary_diagnostic_outcome": "correct_location_wrong_bias_label",
+      "label_equivalence_explanation": "Confirmation bias is a related hypothesis-preserving construct, but it is not an established alias for the hidden coherence-based reasoning/rationalisation target involving post-hoc reconciliation of disconfirming feedback.",
+      "mechanism_overlap_explanation": "Full match: after the verifier flags a discrepancy, the participant searches for a distortion explanation, records it, preserves individualization, and discounts the non-matching alternative once the preserving explanation is available.",
+      "evidence_fidelity_assessment": "Both supplied participant quotations are verbatim spans from the phase-4 reconciliation episode and support the post-hoc preservation mechanism."
+    }
+  ],
+  "unmatched_rag_predictions": [
+    {
+      "rag_occurrence_id": "obs_001",
+      "rag_finding_type": "identified",
+      "rag_predicted_bias_label": "confirmation bias",
+      "rag_confidence": "high",
+      "localized_segment_id": "seg_2",
+      "best_related_hidden_instance_id": "ctx_01",
+      "label_equivalence_result": "near_neighbor_label",
+      "mechanism_overlap": "full_mechanism_match",
+      "strict_classification": "correct_location_wrong_bias_label",
+      "mechanism_first_classification": "not_applicable",
+      "counted_at_thresholds": [
+        "high_only",
+        "high_and_moderate",
+        "all_identified_confidence_levels",
+        "all_confidence_and_candidates"
+      ],
+      "why_not_an_exact_strict_match": "The finding localizes exactly and captures the hidden mechanism, but confirmation bias is a near-neighbor label rather than an approved equivalent of Contextual Bias."
+    },
+    {
+      "rag_occurrence_id": "obs_002",
+      "rag_finding_type": "identified",
+      "rag_predicted_bias_label": "confirmation bias",
+      "rag_confidence": "low",
+      "localized_segment_id": "seg_4",
+      "best_related_hidden_instance_id": "coh_01",
+      "label_equivalence_result": "near_neighbor_label",
+      "mechanism_overlap": "full_mechanism_match",
+      "strict_classification": "correct_location_wrong_bias_label",
+      "mechanism_first_classification": "not_applicable",
+      "counted_at_thresholds": [
+        "all_identified_confidence_levels",
+        "all_confidence_and_candidates"
+      ],
+      "why_not_an_exact_strict_match": "The finding localizes exactly and captures post-hoc conclusion preservation, but confirmation bias is not an approved equivalent of coherence-based reasoning or rationalisation."
+    },
+    {
+      "rag_occurrence_id": "cand_001",
+      "rag_finding_type": "candidate",
+      "rag_predicted_bias_label": "status quo bias",
+      "rag_confidence": "candidate",
+      "localized_segment_id": "seg_3",
+      "best_related_hidden_instance_id": null,
+      "label_equivalence_result": "different_construct",
+      "mechanism_overlap": "no_mechanism_overlap",
+      "strict_classification": "false_positive",
+      "mechanism_first_classification": "false_positive",
+      "counted_at_thresholds": [
+        "all_confidence_and_candidates"
+      ],
+      "why_not_an_exact_strict_match": "The candidate is on a negative verification-routing segment and the transcript supports standard practice and deadline constraints rather than a distinct status quo mechanism."
+    },
+    {
+      "rag_occurrence_id": "cand_002",
+      "rag_finding_type": "candidate",
+      "rag_predicted_bias_label": "base rate expectation bias",
+      "rag_confidence": "candidate",
+      "localized_segment_id": "seg_008",
+      "best_related_hidden_instance_id": "ctx_01",
+      "label_equivalence_result": "near_neighbor_label",
+      "mechanism_overlap": "partial_mechanism_overlap",
+      "strict_classification": "duplicate_prediction",
+      "mechanism_first_classification": "duplicate_prediction",
+      "counted_at_thresholds": [
+        "all_confidence_and_candidates"
+      ],
+      "why_not_an_exact_strict_match": "The candidate quotes a legitimate professional heuristic and does not show the hidden context-to-ambiguous-detail mechanism; it also duplicates obs_001 on the same positive segment, so it cannot claim the hidden instance."
+    }
+  ],
+  "candidate_analysis": {
+    "candidate_count": 2,
+    "candidates": [
+      {
+        "candidate_id": "cand_001",
+        "proposed_bias_label": "status quo bias",
+        "localized_segment_id": "seg_3",
+        "best_related_hidden_instance_id": null,
+        "quote_validity": "valid",
+        "would_match_if_promoted_strict": false,
+        "would_match_if_promoted_mechanism_first": false,
+        "counted_as_detection_at_fourth_threshold": true,
+        "fourth_threshold_outcome": "false_positive",
+        "candidate_assessment": "unsupported_speculation",
+        "details": "The quote is valid, but the phase-3 choice is accounted for by institutional default, staffing, and deadline pressure; no distinct status quo distortion is established."
+      },
+      {
+        "candidate_id": "cand_002",
+        "proposed_bias_label": "base rate expectation bias",
+        "localized_segment_id": "seg_008",
+        "best_related_hidden_instance_id": "ctx_01",
+        "quote_validity": "valid",
+        "would_match_if_promoted_strict": false,
+        "would_match_if_promoted_mechanism_first": false,
+        "counted_as_detection_at_fourth_threshold": true,
+        "fourth_threshold_outcome": "duplicate_prediction",
+        "candidate_assessment": "candidate_near_miss",
+        "details": "The quote supports experience with textured tools, but not a separate bias mechanism; obs_001 already claims the phase-2 hidden instance."
+      }
+    ]
+  },
+  "signal_detection_summary": {
+    "evaluation_unit": "eligible_reasoning_segment",
+    "high_only": {
+      "positive_segments": 2,
+      "negative_segments": 9,
+      "hits": 1,
+      "misses": 1,
+      "false_alarms": 0,
+      "correct_rejections": 9,
+      "hit_rate": 0.5,
+      "false_alarm_rate": 0,
+      "accuracy": 0.9091,
+      "precision": 1,
+      "recall": 0.5,
+      "f1": 0.6667,
+      "detection_interpretation": "One of two positive segments is detected; the low-confidence phase-4 instance is excluded."
+    },
+    "high_and_moderate": {
+      "positive_segments": 2,
+      "negative_segments": 9,
+      "hits": 1,
+      "misses": 1,
+      "false_alarms": 0,
+      "correct_rejections": 9,
+      "hit_rate": 0.5,
+      "false_alarm_rate": 0,
+      "accuracy": 0.9091,
+      "precision": 1,
+      "recall": 0.5,
+      "f1": 0.6667,
+      "detection_interpretation": "Same as high-only because the only moderate-or-higher finding is obs_001."
+    },
+    "all_identified_confidence_levels": {
+      "positive_segments": 2,
+      "negative_segments": 9,
+      "hits": 2,
+      "misses": 0,
+      "false_alarms": 0,
+      "correct_rejections": 9,
+      "hit_rate": 1,
+      "false_alarm_rate": 0,
+      "accuracy": 1,
+      "precision": 1,
+      "recall": 1,
+      "f1": 1,
+      "detection_interpretation": "Both positive segments are detected with identified findings and no segment false alarms."
+    },
+    "all_confidence_and_candidates": {
+      "positive_segments": 2,
+      "negative_segments": 9,
+      "hits": 2,
+      "misses": 0,
+      "false_alarms": 2,
+      "correct_rejections": 7,
+      "hit_rate": 1,
+      "false_alarm_rate": 0.2222,
+      "accuracy": 0.8182,
+      "precision": 0.5,
+      "recall": 1,
+      "f1": 0.6667,
+      "detection_interpretation": "Both positive segments are detected, while cand_001 and cand_002 add false alarms on negative segments."
+    }
+  },
+  "strict_instance_level_metrics": {
+    "high_only": {
+      "true_positives": 0,
+      "false_negatives": 2,
+      "false_positives": 1,
+      "precision": 0,
+      "recall": 0,
+      "f1": 0,
+      "exact_occurrence_match_rate": 0,
+      "occurrence_count_match_rate": 0
+    },
+    "high_and_moderate": {
+      "true_positives": 0,
+      "false_negatives": 2,
+      "false_positives": 1,
+      "precision": 0,
+      "recall": 0,
+      "f1": 0,
+      "exact_occurrence_match_rate": 0,
+      "occurrence_count_match_rate": 0
+    },
+    "all_identified_confidence_levels": {
+      "true_positives": 0,
+      "false_negatives": 2,
+      "false_positives": 2,
+      "precision": 0,
+      "recall": 0,
+      "f1": 0,
+      "exact_occurrence_match_rate": 0,
+      "occurrence_count_match_rate": 0
+    },
+    "all_confidence_and_candidates": {
+      "true_positives": 0,
+      "false_negatives": 2,
+      "false_positives": 4,
+      "precision": 0,
+      "recall": 0,
+      "f1": 0,
+      "exact_occurrence_match_rate": 0,
+      "occurrence_count_match_rate": 0
+    }
+  },
+  "mechanism_first_instance_level_metrics": {
+    "high_only": {
+      "true_positives": 1,
+      "false_negatives": 1,
+      "false_positives": 0,
+      "precision": 1,
+      "recall": 0.5,
+      "f1": 0.6667,
+      "exact_occurrence_match_rate": 0.5,
+      "occurrence_count_match_rate": 0.5
+    },
+    "high_and_moderate": {
+      "true_positives": 1,
+      "false_negatives": 1,
+      "false_positives": 0,
+      "precision": 1,
+      "recall": 0.5,
+      "f1": 0.6667,
+      "exact_occurrence_match_rate": 0.5,
+      "occurrence_count_match_rate": 0.5
+    },
+    "all_identified_confidence_levels": {
+      "true_positives": 2,
+      "false_negatives": 0,
+      "false_positives": 0,
+      "precision": 1,
+      "recall": 1,
+      "f1": 1,
+      "exact_occurrence_match_rate": 1,
+      "occurrence_count_match_rate": 1
+    },
+    "all_confidence_and_candidates": {
+      "true_positives": 2,
+      "false_negatives": 0,
+      "false_positives": 2,
+      "precision": 0.5,
+      "recall": 1,
+      "f1": 0.6667,
+      "exact_occurrence_match_rate": 1,
+      "occurrence_count_match_rate": 1
+    }
+  },
+  "target_bias_performance": [
+    {
+      "hidden_target_bias_label": "Contextual Bias",
+      "hidden_requested_occurrences": 1,
+      "strict_true_positives_by_threshold": {
+        "high_only": 0,
+        "high_and_moderate": 0,
+        "all_identified_confidence_levels": 0,
+        "all_confidence_and_candidates": 0
+      },
+      "mechanism_first_true_positives_by_threshold": {
+        "high_only": 1,
+        "high_and_moderate": 1,
+        "all_identified_confidence_levels": 1,
+        "all_confidence_and_candidates": 1
+      },
+      "count_match_status_at_all_confidence_and_candidates": "exact_match"
+    },
+    {
+      "hidden_target_bias_label": "Coherence-based reasoning or Rationalisation",
+      "hidden_requested_occurrences": 1,
+      "strict_true_positives_by_threshold": {
+        "high_only": 0,
+        "high_and_moderate": 0,
+        "all_identified_confidence_levels": 0,
+        "all_confidence_and_candidates": 0
+      },
+      "mechanism_first_true_positives_by_threshold": {
+        "high_only": 0,
+        "high_and_moderate": 0,
+        "all_identified_confidence_levels": 1,
+        "all_confidence_and_candidates": 1
+      },
+      "count_match_status_at_all_confidence_and_candidates": "exact_match"
+    }
+  ],
+  "rag_label_false_positive_inventory": [
+    {
+      "rag_predicted_bias_label": "confirmation bias",
+      "finding_type": "identified",
+      "alternative_labels": [
+        "contextual bias",
+        "expectation bias",
+        "belief perseverance",
+        "motivated reasoning"
+      ],
+      "occurrence_count": 2,
+      "best_related_hidden_target_bias_label": "Contextual Bias",
+      "label_relation": "near_neighbor",
+      "mechanism_overlap_summary": "Both identified occurrences have full mechanism overlap with their localized hidden episodes, but the single confirmation-bias label is not equivalent to either hidden target.",
+      "primary_error_types": [
+        "correct_location_wrong_bias_label"
+      ]
+    },
+    {
+      "rag_predicted_bias_label": "status quo bias",
+      "finding_type": "candidate",
+      "alternative_labels": [
+        "default bias"
+      ],
+      "occurrence_count": 1,
+      "best_related_hidden_target_bias_label": null,
+      "label_relation": "no_related_target",
+      "mechanism_overlap_summary": "Candidate is unsupported on a negative segment; operational default and deadline explain the choice.",
+      "primary_error_types": [
+        "unsupported_prediction"
+      ]
+    },
+    {
+      "rag_predicted_bias_label": "base rate expectation bias",
+      "finding_type": "candidate",
+      "alternative_labels": [
+        "experience-based expectation"
+      ],
+      "occurrence_count": 1,
+      "best_related_hidden_target_bias_label": "Contextual Bias",
+      "label_relation": "near_neighbor",
+      "mechanism_overlap_summary": "Only a partial overlap with phase-2 context/interpretation; it lacks evidence that prior experience caused the ambiguous detail to be resolved toward guilt.",
+      "primary_error_types": [
+        "partial_mechanism_match",
+        "duplicate_prediction"
+      ]
+    }
+  ],
+  "diagnostic_error_summary": {
+    "correct_location_wrong_bias_label_count": 2,
+    "correct_label_wrong_location_count": 0,
+    "correct_label_location_wrong_mechanism_count": 0,
+    "mechanism_detected_label_unresolved_count": 0,
+    "partial_mechanism_match_count": 1,
+    "duplicate_prediction_count": 1,
+    "unsupported_prediction_count": 1,
+    "fabricated_or_invalid_quote_count": 0,
+    "approved_alias_or_equivalence_count": 0,
+    "near_neighbor_label_count": 3,
+    "different_construct_label_count": 1,
+    "candidate_count": 2,
+    "candidate_useful_abstention_count": 0,
+    "candidate_near_miss_count": 1,
+    "candidates_promoted_to_true_positive_at_fourth_threshold_count": 0
+  },
+  "corpus_support_audit": {
+    "primary_corpus_fidelity_score_available": false,
+    "rag_occurrences_claiming_retrieved_support": 2,
+    "rag_occurrences_with_no_claimed_retrieved_support": 0,
+    "rag_occurrences_with_unverifiable_or_internally_inconsistent_citation_metadata": 2,
+    "assessment_note": "Both identified occurrences claim retrieved support and include passage summaries, but the actual retrieved material and retrieval logs are absent; citation fidelity is therefore unavailable and the supplied metadata cannot be independently verified."
+  },
+  "comparison_ready_summary": {
+    "primary_recommended_comparison_threshold": "high_and_moderate",
+    "segment_detection": {
+      "high_only": {
+        "hits": 1,
+        "misses": 1,
+        "false_alarms": 0,
+        "correct_rejections": 9,
+        "hit_rate": 0.5,
+        "false_alarm_rate": 0,
+        "f1": 0.6667
+      },
+      "high_and_moderate": {
+        "hits": 1,
+        "misses": 1,
+        "false_alarms": 0,
+        "correct_rejections": 9,
+        "hit_rate": 0.5,
+        "false_alarm_rate": 0,
+        "f1": 0.6667
+      },
+      "all_identified_confidence_levels": {
+        "hits": 2,
+        "misses": 0,
+        "false_alarms": 0,
+        "correct_rejections": 9,
+        "hit_rate": 1,
+        "false_alarm_rate": 0,
+        "f1": 1
+      },
+      "all_confidence_and_candidates": {
+        "hits": 2,
+        "misses": 0,
+        "false_alarms": 2,
+        "correct_rejections": 7,
+        "hit_rate": 1,
+        "false_alarm_rate": 0.2222,
+        "f1": 0.6667
+      }
+    },
+    "strict_instance_identification": {
+      "high_only": {
+        "true_positives": 0,
+        "false_negatives": 2,
+        "false_positives": 1,
+        "precision": 0,
+        "recall": 0,
+        "f1": 0
+      },
+      "high_and_moderate": {
+        "true_positives": 0,
+        "false_negatives": 2,
+        "false_positives": 1,
+        "precision": 0,
+        "recall": 0,
+        "f1": 0
+      },
+      "all_identified_confidence_levels": {
+        "true_positives": 0,
+        "false_negatives": 2,
+        "false_positives": 2,
+        "precision": 0,
+        "recall": 0,
+        "f1": 0
+      },
+      "all_confidence_and_candidates": {
+        "true_positives": 0,
+        "false_negatives": 2,
+        "false_positives": 4,
+        "precision": 0,
+        "recall": 0,
+        "f1": 0
+      }
+    },
+    "mechanism_first_identification": {
+      "high_only": {
+        "true_positives": 1,
+        "false_negatives": 1,
+        "false_positives": 0,
+        "precision": 1,
+        "recall": 0.5,
+        "f1": 0.6667
+      },
+      "high_and_moderate": {
+        "true_positives": 1,
+        "false_negatives": 1,
+        "false_positives": 0,
+        "precision": 1,
+        "recall": 0.5,
+        "f1": 0.6667
+      },
+      "all_identified_confidence_levels": {
+        "true_positives": 2,
+        "false_negatives": 0,
+        "false_positives": 0,
+        "precision": 1,
+        "recall": 1,
+        "f1": 1
+      },
+      "all_confidence_and_candidates": {
+        "true_positives": 2,
+        "false_negatives": 0,
+        "false_positives": 2,
+        "precision": 0.5,
+        "recall": 1,
+        "f1": 0.6667
+      }
+    },
+    "taxonomy_gap": {
+      "high_only": {
+        "mechanism_first_f1_minus_strict_f1": 0.6667
+      },
+      "high_and_moderate": {
+        "mechanism_first_f1_minus_strict_f1": 0.6667
+      },
+      "all_identified_confidence_levels": {
+        "mechanism_first_f1_minus_strict_f1": 1
+      },
+      "all_confidence_and_candidates": {
+        "mechanism_first_f1_minus_strict_f1": 0.6667
+      }
+    },
+    "confidence_tradeoff": {
+      "increment_from_high_to_high_and_moderate": "No change: the same high-confidence obs_001 finding is counted.",
+      "increment_from_high_and_moderate_to_all_confidence": "Adding low-confidence obs_002 changes segment detection from one hit/one miss to two hits and adds one mechanism-first true positive.",
+      "increment_from_all_confidence_to_all_confidence_and_candidates": "Candidates add two segment false alarms and two instance false positives; true-positive counts remain unchanged."
+    }
+  },
+  "overall_evaluation_summary": {
+    "hidden_total_planned_occurrences": 2,
+    "rag_total_identified_occurrences": 2,
+    "rag_total_candidate_biases": 2,
+    "segment_level_primary_result": "At the recommended high_and_moderate threshold, one of two positive segments is detected with no false alarms; the phase-4 low-confidence finding is missed.",
+    "strict_label_plus_mechanism_result": "Strict instance identification has zero true positives at every threshold because both mechanisms are labeled confirmation bias rather than the two hidden target constructs; correct localization produces two strict false positives when identified findings are included.",
+    "mechanism_first_result": "Mechanism-first identification detects ctx_01 at high confidence and both hidden instances when low confidence is included; candidate scoring adds two fourth-threshold false positives without adding a true positive.",
+    "candidate_tier_value_assessment": "Candidates provide transparent near-miss and unsupported hypotheses but do not improve true-positive detection; one candidate adds a negative-segment false alarm and one duplicates an identified claim.",
+    "main_failure_modes": [
+      "Conflation of confirmation bias with the distinct hidden labels Contextual Bias and coherence-based reasoning/rationalisation.",
+      "Low confidence assigned to the correctly localized phase-4 mechanism, causing a miss at the recommended threshold.",
+      "Candidate status quo speculation creates a fourth-threshold false alarm, while the base-rate candidate duplicates the phase-2 claim."
+    ],
+    "main_strengths": [
+      "Exact interview quotations localize both identified findings to the correct episodes.",
+      "Both identified mechanisms fully capture the hidden evidence operation despite label mismatch.",
+      "The RAG discloses plausible non-bias alternatives and keeps candidates separate from identified findings."
+    ],
+    "benchmark_interpretation": "This run shows strong mechanism and localization sensitivity but weak strict taxonomy discrimination. The recommended threshold trades recall for avoiding the low-confidence phase-4 claim; including all confidence levels recovers both mechanisms, while candidate inclusion increases false alarms."
+  }
+}

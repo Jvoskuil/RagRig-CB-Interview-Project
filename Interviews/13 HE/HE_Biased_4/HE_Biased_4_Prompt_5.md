@@ -7,7 +7,86 @@ Do not assess cognitive biases. Do not use any hidden bias-generation specificat
 Return valid JSON only. Do not return prose outside the JSON object.
 
 INTERVIEW
-{{PASTE_FINAL_INTERVIEW_HERE}}
+{{**Interviewer:** Thanks for making time this week. Just to confirm, this is a voluntary conversation about your recent work verifying the fire engineering package on the tower project—I'll be asking about a specific sequence of decisions, and there's no need to reference anything confidential like commercial terms. That work for you?
+
+**Participant:** Sure, that's fine. I led the performance-based design verification on the 42-story mixed-use tower—office floors, residential above, and an assembly space at podium level. My job was to close out the fire strategy sign-off before the developer's occupancy certificate deadline.
+
+**Interviewer:** Can you give me a general account of what happened in that final stretch?
+
+**Participant:** It was a compressed week. We had four things converging: a late glazing substitution from the contractor, a smoke-control model that came back borderline, a punch list that wasn't fully closed, and a final egress run we needed clean before submission. Normally these would be spaced out, but the contract had liquidated damages tied to the occupancy date, so everything landed at once. The contractor proposed swapping the specified glazing for a cheaper product from another supplier—call them Vendor B—because the original product had a lead-time problem. Around the same time, our CFD smoke model for the atrium showed a visibility result at the escape stair door that was right at the edge of the tenability threshold. Then, with about two inspection days left, our QA reviewer flagged some open punch-list items across cladding fire-stopping, stair pressurization, and signage. And finally, we had to finalize the egress modeling parameters before submitting to building control.
+
+**Interviewer:** Let's reconstruct that in order. What came first?
+
+**Participant:** The glazing issue surfaced first, maybe ten days out. Vendor B sent their technical bulletin, and their rep followed up by email restating the same fire resistance figure, and then I found the same number again in their product brochure. The CFD result came in a few days later, right when we were prepping for fan commissioning. The punch-list conversation happened after that, once the QA reviewer did a walk-through. The egress modeling was the last piece, done in the final two days before submission.
+
+**Interviewer:** Let's take the glazing decision first. What did you have in front of you?
+
+**Participant:** The original spec had a UL-tested 90-minute integrity rating, properly documented. Vendor B's material said their product also achieved "90 minutes, independently verified." I saw that phrase in their bulletin, then again in the cover email, then again in their brochure.
+
+**Interviewer:** What made you comfortable with that?
+
+**Participant:** Honestly, seeing it stated the same way three times across three different documents gave me a level of confidence I probably wouldn't have had from just one. It felt corroborated—like it wasn't just marketing spin, because the same number kept showing up consistently.
+
+**Interviewer:** Did you look at whether those three statements were drawing on the same underlying test?
+
+**Participant:** Not at that stage, no. It didn't occur to me to check whether the bulletin, the email, and the brochure were all citing the same lab report versus separate testing. Building control asked for the raw report later, and that's when we found the mounting configuration in the original test didn't match our as-installed detail, which meant we needed a compatibility assessment. At the time, though, I provisionally accepted the substitution on the basis that it was consistently documented.
+
+**Interviewer:** Moving to the CFD result—what were the options there?
+
+**Participant:** The model showed visibility at the stair door getting close to the threshold around the six-minute mark. Our QA reviewer recommended re-running it with a revised HVAC shutdown sequence, which would've added about five working days. We had four days to the deadline. Fan commissioning was next on the critical path.
+
+**Interviewer:** What did you decide, and why?
+
+**Participant:** I authorized the commissioning to proceed. We were losing days, and holding the whole phase for a re-run felt like it would stall the entire program right when we needed to keep moving. I treated the re-run as something that could happen in parallel rather than as a gate before the next milestone.
+
+**Interviewer:** Was there a technical basis for treating it as non-blocking, or was it mainly about the schedule?
+
+**Participant:** If I'm honest, it was mostly about not wanting the project to stand still. The commissioning itself wasn't destructive, so proceeding felt like the safer, more productive choice compared to just waiting around for numbers we already suspected might come back tight. The re-run did eventually show the margin was narrower under a slightly different shutdown assumption, but by then commissioning had already passed its initial functional tests.
+
+**Interviewer:** Let's talk about the punch-list reprioritization. What was on the list at that point?
+
+**Participant:** Cladding fire-stopping, a pressurization deficiency on one of the lift-shaft fan doors, and some egress signage items. Two inspection days left.
+
+**Interviewer:** How did you decide where to spend those two days?
+
+**Participant:** There'd been that apartment-tower fire overseas about two weeks earlier—cladding-related, and the footage was everywhere. It stuck with me. Even though our cladding and compartmentation system is different and already well-documented, I put the remaining time into re-inspecting the cladding fire-stopping.
+
+**Interviewer:** What about the pressurization fan-door deficiency?
+
+**Participant:** It got pushed down the list. It had already been logged, so it felt like something we understood and could revisit later. The cladding felt like the one I needed to be extra sure about after watching that. In hindsight, a follow-up visit found the fan-door issue was more significant than we'd initially logged, and the cladding re-inspection didn't turn up anything new.
+
+**Interviewer:** Did you use the standard risk matrix to rank those items?
+
+**Participant:** Not formally at that point. It was more of a judgment call based on what felt most urgent to check again.
+
+**Interviewer:** Last decision point—the egress modeling parameters.
+
+**Participant:** Right, this was in the final two days. The software's default library has pre-movement times and flow rates calibrated for generic office occupancy. Our building's mixed-use—office, residential, assembly—so the population isn't quite the same. A colleague flagged that we actually had project-specific pre-movement survey data, plus some comparable mixed-use studies, that could refine those numbers.
+
+**Interviewer:** Did you use that data?
+
+**Participant:** We didn't, in the end. Recalibrating with the survey data would've meant extra runs and QA time we didn't have. The defaults are the standard starting point in that software, so I kept them for the final compliance run. I flagged in my notes that the calibration population wasn't a perfect match, but the run passed the required threshold, so we submitted it as is.
+
+**Interviewer:** If recalibrating had taken less effort, would you have used the survey data instead?
+
+**Participant:** Probably, yes. It wasn't that I thought the defaults were more accurate—it was more that changing them under that timeline felt like an unnecessary complication.
+
+**Interviewer:** Looking back across all four decisions, what would have changed your approach on the glazing, if anything?
+
+**Participant:** If the 90-minute claim had come from one document instead of three, I think I'd have pushed harder for the raw report before accepting it. Something about seeing it repeated made it feel more settled than it actually was.
+
+**Interviewer:** And if there'd been no deadline pressure at all that week?
+
+**Participant:** The CFD re-run probably would've been a hard hold point rather than something running in parallel. Without the schedule squeeze, I don't think I'd have authorized commissioning ahead of it.
+
+**Interviewer:** Last one—if that overseas fire hadn't been in the news right before your punch-list decision, do you think the priority would have looked different?
+
+**Participant:** Possibly. I'd like to think I'd have gone with the risk matrix from the start. But I can't fully separate how much of that reallocation was the news versus genuine caution.
+
+**Interviewer:** That's a helpful place to stop. Thanks for walking through it in this much detail.
+
+**Participant:** No problem. It's useful to go back over it, honestly.
+}}
 
 OPTIONAL METADATA
 The following metadata may help identify the setting but must not determine the classification:

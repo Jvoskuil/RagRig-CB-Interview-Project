@@ -7,10 +7,142 @@ Do not assume the generator followed the specification. Do not infer bias merely
 INPUTS
 
 Interview:
-{{INTERVIEW}}
+{{Interviewer: Thanks for making time for this. Just to confirm — this is for internal process research, not a performance review, and you can decline to answer anything. Okay?
+
+Participant: Sure, that's fine.
+
+Interviewer: Can you tell me a bit about your role?
+
+Participant: I'm a vulnerability management analyst on the security operations team. I triage scanner findings, vendor advisories, coordinate patch timelines with IT ops, and escalate anything that looks like active exploitation to incident response. I also work through our open findings backlog for compliance reporting, and I sit in on the weekly risk review with application owners.
+
+Interviewer: Let's talk about the CVE that came in a few weeks back. Walk me through what happened.
+
+Participant: It was mid-morning when a vendor advisory landed — a new CVE, CVSS 9.8, remote code execution, affecting our internet-facing authentication API. At the same time I had roughly forty open findings from the previous week's scan sitting in my queue, with forty-eight hours until our compliance audit report was due. One backlog item was an unpatched database server with excessive service-account privileges, open ninety-plus days. There'd also been some industry news about a breach at another company the week before, though that wasn't really something I was thinking about directly when this came in — just background noise on the security channels, the kind of thing that's always circulating.
+
+Interviewer: When the new CVE came in, what did you do first?
+
+Participant: I read through the advisory, checked the CVSS score and the exposure — internet-facing, no compensating control in front of it, no WAF rule that would catch this pattern — and decided it needed to jump ahead of the backlog. The database finding is serious on paper, but at that point I didn't have a confirmed exploit path for it, just the privilege configuration itself and how long it had been sitting there. So it came down to weighing a confirmed critical exposure against an older, structurally risky one without fresh evidence of active exploitability.
+
+Interviewer: How confident were you in that call?
+
+Participant: Reasonably, but not completely. If I'd had time to pull a fresh risk assessment on the database server that morning, it's possible that would've changed the ordering. I didn't have that luxury, and honestly both items had a legitimate claim to going first.
+
+Interviewer: Where did you route the new CVE?
+
+Participant: Into our standard remediation workflow, tagged toward the web-facing application team, since it touches a customer-facing API and that team handles most of our external-facing patch coordination. It turned out to be more specifically an authentication-bypass issue in the API gateway rather than a typical injection bug, which meant a slightly different exploit chain than I'd first assumed, but the initial routing wasn't far off and the handoff to the right owner happened within the same day.
+
+Interviewer: Walk me through what happened next, later that day.
+
+Participant: While I was cross-referencing the CVE against our asset inventory, the SIEM threw an alert — "privilege escalation, low confidence" — on an internal host. I pulled up the log entry, saw a lateral-movement timestamp that looked a little off from the usual pattern, and there was also an outbound traffic flag on the same host in the same view.
+
+Interviewer: What did you do with that?
+
+Participant: I looked at both — the timestamp and the outbound entry — but neither one on its own had enough corroborating detail to justify pulling away from the CVE triage right then. No matching indicator from the threat intel feed, no other host showing similar activity, nothing in the ticket history suggesting a known campaign. I made a note to loop back once the CVE work was further along and kept going.
+
+Interviewer: Two days later that outbound entry turned out to be linked to an actual low-level compromise. Looking back, do you read that decision differently?
+
+Participant: It's hard to say. Given what I had at the time — a low-confidence label and a somewhat unusual but unconfirmed pattern — I don't think escalating immediately was obviously the right call either. It could've gone either way with the same information in front of me. I've seen similar-looking situations resolve as nothing more than a test process before, and I've also seen them turn out to matter, so I don't think this one particular case tells me much either way about how I generally handle it.
+
+Interviewer: Let's talk about the change window request.
+
+Participant: Patching the API gateway meant an emergency change window during business hours, about twenty minutes of disruption to customer transactions. IT ops needed a written justification to approve that instead of waiting for the weekend cycle.
+
+Interviewer: What went into the justification?
+
+Participant: I put in both the EPSS number — moderate probability, not exceptional — and what the exposure meant in practical terms: the contract implications, the audit angle, and the disruption window itself. I didn't deliberately lead with one over the other, honestly. It read as a fairly standard risk memo, the same format I use for most emergency requests.
+
+Interviewer: Which part do you think actually got it approved?
+
+Participant: I genuinely don't know. IT ops doesn't usually explain which line convinced them. Could've been the score, could've been the business language, could've been that the ask was only for twenty minutes rather than a longer outage. I couldn't tell you with confidence which one mattered most.
+
+Interviewer: Did anything happen afterward that would clarify that?
+
+Participant: Not really. No exploitation was observed against that CVE in the following week, but that doesn't tell me whether the request was overstated or exactly right — we patched it, so there was nothing left to observe either way. It's genuinely inconclusive from where I sit.
+
+Interviewer: Last decision point — scoping which systems got patched.
+
+Participant: The scanner's default view showed two hosts with the matching vulnerable library. Given the deadline, I scoped the ticket to those two, but I also flagged a follow-up sweep of the broader asset inventory for the next week, since I know that default view doesn't always capture everything depending on how assets are tagged in different categories.
+
+Interviewer: One of three additional hosts under a different category turned out to still have the vulnerable library a week later.
+
+Participant: Right, and that's a fair miss. I did build in the follow-up step, it just didn't happen fast enough given everything else on my plate that week. Whether a full manual cross-check up front versus a scheduled follow-up was the better trade-off given the deadline — I go back and forth on that even now.
+
+Interviewer: If you'd had more time before the deadline, would any of these have gone differently?
+
+Participant: Maybe the database server would've gotten a proper fresh look instead of being compared mostly on paper. And I might've pushed the manual inventory check earlier instead of scheduling it after the ticket closed. Hard to know for sure without actually having had that time.
+
+Interviewer: If the scanner had shown five hosts instead of two, would scoping have changed?
+
+Participant: I'd have patched what was in front of me either way, so probably not much different in terms of process — the follow-up sweep would just have had a shorter list left to check afterward.
+
+Interviewer: Looking back, is there anything you'd weigh differently now?
+
+Participant: Maybe how much weight I gave the SIEM alert without a corroborating signal. Not sure I'd act differently even now with the same information, but it's the one I think about.
+
+Interviewer: If you had to write the change-window justification again, would you present it differently?
+
+Participant: Possibly lead more with the numbers and less with the business language, just to see if it changes anything. I don't have strong evidence either framing actually mattered to the outcome.
+
+Interviewer: That's really helpful, thank you for walking through it in detail.
+
+Participant: No problem, glad to help.}}
 
 Hidden generation specification:
-{{GENERATION_SPECIFICATION}}
+{{"hidden_validation_specification": {
+    "hidden_spec_version": "1.0",
+    "condition": "ambiguous_control",
+    "exact_occurrence_manifest": [
+      { "bias": "Recency", "occurrences": 0, "mechanism_constraint": null },
+      { "bias": "Availability Frequency", "occurrences": 0, "mechanism_constraint": "ease of recall of one category over that of another leading to the selection of that category even if the other category is a better fit." },
+      { "bias": "Exposure to limited alternatives", "occurrences": 0, "mechanism_constraint": null },
+      { "bias": "Loss Framing", "occurrences": 0, "mechanism_constraint": null },
+      { "bias": "Selective Attention Bias or Inattentional Blindness", "occurrences": 0, "mechanism_constraint": null }
+    ],
+    "target_bias_names": [
+      "Recency",
+      "Availability Frequency",
+      "Exposure to limited alternatives",
+      "Loss Framing",
+      "Selective Attention Bias or Inattentional Blindness"
+    ],
+    "requested_occurrence_count_for_each_bias": [
+      { "bias": "Recency", "requested_occurrences": 0 },
+      { "bias": "Availability Frequency", "requested_occurrences": 0 },
+      { "bias": "Exposure to limited alternatives", "requested_occurrences": 0 },
+      { "bias": "Loss Framing", "requested_occurrences": 0 },
+      { "bias": "Selective Attention Bias or Inattentional Blindness", "requested_occurrences": 0 }
+    ],
+    "planned_instance_ids": [],
+    "intended_decision_points": [],
+    "intended_mechanisms": [],
+    "intended_strength": [],
+    "paired_scenario_id": "CS_Biased_6",
+    "counterfactual_variable": {
+      "name": "Not applicable in this condition",
+      "original_state": "Not applicable",
+      "changed_state": "Not applicable",
+      "variables_to_hold_constant": [
+        "CVE technical details and CVSS score",
+        "Backlog composition and the older database finding",
+        "48-hour compliance deadline",
+        "Analyst role, staffing, and tooling"
+      ]
+    },
+    "scenario_id": "CS_Ambigious_6",
+    "domain_id": "CS",
+    "total_requested_occurrences": 0,
+    "total_planned_occurrences": 0,
+    "allocation_rule_used": "No occurrences requested; ambiguous_control condition requires zero intended instances of all named target biases. Decision points were instead constructed to preserve genuine ambiguity and plausible non-bias justifications at each of the four decision points, mirroring the structural positions used for bias instances in the paired biased scenario (CS_Biased_6) without instantiating any bias mechanism.",
+    "control_zero_bias_requirement": true,
+    "variables_to_hold_constant": [
+      "CVE technical details and CVSS score",
+      "Backlog composition and the older database finding",
+      "48-hour compliance deadline",
+      "Analyst role, staffing, and tooling",
+      "Four-decision-point structure and domain vocabulary matching CS_Biased_6"
+    ],
+    "generation_warnings": []
+  }}}
 
 The hidden specification may include:
 - condition;

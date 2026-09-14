@@ -1,0 +1,68 @@
+# Ranker comparison: the default hybrid RRF ranker vs. pure cosine ranking
+# (WeightedFusionRanker alpha = 1.0), on the ragrig default chat backend
+# (Ollama, qwen3.5:9b), varying the context budget (4096 and 8192 tokens).
+# Corpus = the embedded HTML fixture book, default pipeline (full parser
+# registry + MarkdownChunker).
+
+corpus_dirs = ["papers=/mnt/c/Users/Joost/Documents/papers"]
+
+queries = [
+    "Interviewer: Thanks for making time for this. Before we start, is it okay if I record this conversation for internal research on curriculum decision-making, with everything used in de-identified form? Participant: Sure, that's fine. Interviewer: Can you tell me about your role and what this particular adoption cycle involved? Participant: I've served on the district curriculum committee for about five years, representing middle school math. Last fall, after sixth-grade state scores dropped eight points district-wide, the superintendent's office asked us to run a full adoption cycle for a new K-8 math curriculum. This time we actually had twelve weeks instead of the usual six, since the state calendar shifted and gave us extra room. Everyone was glad for the breathing space, honestly — most of us still teach or run buildings full-time. Interviewer: Walk me through how the review actually started. Participant: Three publishers submitted proposals — Curriculum A, B, and C. Each had a standards-alignment matrix, sample units, vendor support materials, the usual package. With twelve weeks, we had every intention of giving all three a genuinely deep look before narrowing anything down. But right around when the proposals landed, two of our members came back from a regional math conference where a neighboring district presented on their experience adopting Curriculum B. They were enthusiastic — said it fixed their pacing issues. Our people came back energized, and even with all that extra runway, our first working session ended up centered on B. A and C got more of a checklist pass. Interviewer: Given you had twelve weeks instead of six, was there a reason A and C didn't get the same depth early on? Participant: That's the part I keep turning over. There wasn't really a scheduling reason. We had time. It's just that once people were talking about what the neighboring district found, B became the thing everyone wanted to dig into first. We told ourselves we'd circle back to A and C properly, and we had the calendar to do it. Interviewer: Did you? Participant: Eventually, yes — around scoring, we went back to Curriculum A's proposal, and it actually had a stronger differentiated-instruction plan than B's. But by then, even weeks into a much longer process, the conversation was still framed as 'is this good enough to make us reconsider B,' instead of just asking how strong A was standing on its own. Interviewer: Let's move to the vendor meeting. What happened there? Participant: That was maybe three weeks in, so still plenty of runway left — something like nine weeks to go. Curriculum B's rep brought in committee members from other districts using it. One of them told a really vivid story about a struggling classroom that turned around within a semester. I still remember the details clearly. Somewhere in that same meeting, someone mentioned a statistical pilot report from a comparable district, covering multiple schools over a full year. I barely registered that part. Interviewer: You had time to go get that report right away. What happened instead? Participant: I kept meaning to. It sat on my list for weeks. The story was just more vivid — a real teacher, real kids, a real unit. The report was two sentences and some numbers I didn't have in front of me. It wasn't until we were close to final scoring that anyone actually pulled the report up. When we did, it showed mixed results across schools, not the clean win the anecdote suggested. But by then my sense of B's promise was already pretty locked in. Interviewer: Did the extra time change how you weighed the testimonials versus the report? Participant: Honestly, not as much as it should have. The testimonials felt like they confirmed what we already believed from the conference, so they didn't feel like they needed more scrutiny. The report felt like something to get to eventually rather than something urgent, even though nothing was stopping us from pulling it the same week. Interviewer: Let's talk about the pilot. What happened when concerns came up? Participant: We ran a three-week pilot of Curriculum B in two schools. About halfway through, one of the pilot teachers flagged pacing problems in a unit — said the sequencing didn't match how her students were actually progressing. By that point most of the committee had already spoken favorably about B in earlier meetings. We still had several weeks before the deadline, so there wasn't really an urgent reason to rush past it. Interviewer: How was the concern handled? Participant: It got mentioned, acknowledged, and the conversation moved along toward agreement fairly quickly anyway. We didn't send anyone to observe the second pilot classroom, even though we had the calendar space to do that easily. We just nodded and kept going. I found out afterward that one member had reservations that day but didn't voice them, given how the room felt. Interviewer: Did that pacing issue end up mattering? Participant: It did. A second classroom hit the same snag during full rollout. So the concern was real. It just didn't get a real hearing when it came up, even with time on our side. Interviewer: Last decision point — final scoring. How did that go? Participant: Everyone submitted rubric scores across five criteria for all three curricula. When the chair compiled them, Curriculum A had an odd split on differentiated-instruction support — two very high scores, two very low. B's scores were tighter across the board. The chair still needed one composite number per curriculum for the board memo, even though the memo wasn't due for weeks. The scores just got averaged straight across, split included. Once that single number came back, it read as a settled, middling score for A, and nobody suggested pulling it apart to see what was underneath. Interviewer: Was the disagreement on Curriculum A discussed before combining the numbers? Participant: Not really, even with all that time available. It went into the spreadsheet like everything else. It was only afterward, when someone asked why A's differentiation score looked so unremarkable despite that split, that we found out the two low scorers hadn't reviewed the differentiation appendix, while the two high scorers had. The average wasn't really consensus — it was masking a difference in how much people had actually read. Interviewer: Did the board notice? Participant: They asked. Why a criterion with that much internal disagreement got reported as one clean number. We didn't have a great answer beyond 'that's how we compile scores.' Interviewer: Stepping back — with twelve weeks instead of six, did scheduling actually drive how quickly things moved? Participant: Less than I expected, if I'm honest. We had room to slow down at almost every point, and mostly didn't use it. The pacing concern is the one that sits with me. Nobody was acting in bad faith. B just already felt like the likely outcome by the time real friction showed up, deadline or no deadline. Interviewer: If the pacing concern had surfaced earlier, would the outcome have changed? Participant: Possibly. Before people's minds were as made up, I think it would've gotten a more serious look, regardless of how much calendar time was left. Interviewer: And if the neighboring district hadn't mentioned Curriculum B at that conference at all? Participant: I've wondered that. I think A and C would've gotten a more even start from day one. B's materials were genuinely solid, so it might still have won out. But the early spotlight wouldn't have been there from the beginning. Interviewer: If you had the scoring step to redo, even with no deadline pressure, would you handle the split differently? Participant: Yes. I'd flag any criterion with a wide spread and ask why before folding it into one number. The spread itself was telling us something. Averaging it away just erased that, and having extra weeks available didn't stop us from doing it anyway."
+]
+
+[[agents]]
+label = "Gemini Prompt 8192"
+[agents.chat]
+provider = "deepseek"            # "ollama" | "deepseek"
+#model = "qwen2.5:1.5b"         # ignored for deepseek
+context_tokens = 8192          # context budget for retrieved chunks
+deepseek_model = "deepseek-v4-pro"   # deepseek only
+#deepseek_api_key = DEEPSEEK_API_KEY # deepseek only (or DEEPSEEK_API_KEY env)
+# context_size_mode = "Auto"          # "Auto" | "Forced"
+system_prompt_path = "prompt_gemini.md"    # custom system prompt ({context} placeholder)
+# request_timeout_secs = 300          # per-request timeout, None = no timeout
+[agents.chat.params]                # generation overrides (all optional)
+# temperature = 0.7
+# top_p = 0.9
+# max_tokens = 1024
+seed = 42
+
+[[agents]]
+label = "Sonar Prompt 8192"
+[agents.chat]
+provider = "deepseek"            # "ollama" | "deepseek"
+#model = "qwen2.5:1.5b"         # ignored for deepseek
+context_tokens = 8192          # context budget for retrieved chunks
+deepseek_model = "deepseek-v4-pro"   # deepseek only
+#deepseek_api_key = DEEPSEEK_API_KEY # deepseek only (or DEEPSEEK_API_KEY env)
+# context_size_mode = "Auto"          # "Auto" | "Forced"
+system_prompt_path = "prompt_sonar.md"    # custom system prompt ({context} placeholder)
+# request_timeout_secs = 300          # per-request timeout, None = no timeout
+ [agents.chat.params]                # generation overrides (all optional)
+# temperature = 0.7
+# top_p = 0.9
+# max_tokens = 1024
+ seed = 42
+
+[[agents]]
+label = "Sonnet Prompt 8192"
+[agents.chat]
+provider = "deepseek"            # "ollama" | "deepseek"
+#model = "qwen2.5:1.5b"         # ignored for deepseek
+context_tokens = 8192          # context budget for retrieved chunks
+deepseek_model = "deepseek-v4-pro"   # deepseek only
+#deepseek_api_key = DEEPSEEK_API_KEY # deepseek only (or DEEPSEEK_API_KEY env)
+# context_size_mode = "Auto"          # "Auto" | "Forced"
+system_prompt_path = "prompt_sonnet.md"    # custom system prompt ({context} placeholder)
+# request_timeout_secs = 300          # per-request timeout, None = no timeout
+[agents.chat.params]                # generation overrides (all optional)
+# temperature = 0.7
+# top_p = 0.9
+# max_tokens = 1024
+seed = 42
+
+
+# ---Embed testing ---
+[embed]
+#top_k = 0
+top_k = 50

@@ -1,0 +1,68 @@
+# Ranker comparison: the default hybrid RRF ranker vs. pure cosine ranking
+# (WeightedFusionRanker alpha = 1.0), on the ragrig default chat backend
+# (Ollama, qwen3.5:9b), varying the context budget (4096 and 8192 tokens).
+# Corpus = the embedded HTML fixture book, default pipeline (full parser
+# registry + MarkdownChunker).
+
+corpus_dirs = ["papers=/mnt/c/Users/Joost/Documents/papers"]
+
+queries = [
+    "Interviewer: Thanks for making time for this. Just to confirm, this is a voluntary cognitive task analysis interview about your handling of the Millbrook Creek flash flood event. I'll ask you to walk me through what happened, and I may pause to dig into specific decisions. Nothing you say here is used for discipline or performance review. Can you state your role for the record? Participant: Sure. I'm the county's emergency manager, been in the role about nine years, and I oversee EOC activation, evacuation orders, and shelter coordination for the whole county, but Millbrook Creek is one of our higher-attention areas because of the mobile home park down there. Interviewer: Good. Before we get into specifics, give me the general shape of the incident. Participant: It started as a fairly normal night shift. We had a flash flood watch come in from the National Weather Service for a storm system that was moving slower than usual and carrying a lot of moisture. The duty forecaster actually called me directly, which isn't standard for a watch-level product, and mentioned the storm structure looked different from what we typically see. I noted it, but Millbrook Creek has a long track record of handling these watches fine. Fifteen years of data at that gauge, and it's never gone past minor nuisance flooding on any watch I've been part of. So I kept us at routine monitoring rather than activating the EOC. A couple hours later, radar rainfall estimates blew past the watch threshold, and the gauge started climbing faster than anything I'd seen there before. NWS upgraded to a warning. From there we had to evacuate the mobile home park, manage two shelters with uneven capacity, and eventually request mutual aid. We got through it without any deaths, but there was a close call with a transport vehicle on the access road right as it was closing. Interviewer: Let's reconstruct the timeline in a bit more detail. What information did you have at each stage, and where did it come from? Participant: Initially it was NWS products plus the forecaster's call, and our own gauge telemetry, which was reading normal. About two hours in, we got updated radar rainfall totals from the regional office, and that's when the gauge began rising sharply. Once the warning was issued, our field liaison at the mobile home park confirmed water was already approaching the lowest units. After the evacuation was underway, Public Works reported the access road was narrowing due to runoff, and that's when the shelter and mutual aid pieces came into play. Interviewer: Let's go through the decisions one at a time, starting with that initial watch. What alternatives did you consider before deciding to hold at routine monitoring? Participant: I could've activated the EOC to Level 2 right when the watch came in, gotten resources pre-positioned. I also could've just called the forecaster back and asked more questions before deciding anything. But activating the EOC has real costs — staff overtime, pulling people off other duties — and I didn't want to cry wolf again after we'd done that twice last year on systems that fizzled. Given that gauge has never done anything but minor overflow on a watch, I made the call to hold at routine monitoring and wait for an actual warning before committing resources. Interviewer: The forecaster flagged this one as structurally different. How did that factor into your decision? Participant: I heard it, and I noted it, but honestly what carried more weight for me was the track record. That gauge just doesn't misbehave. I've watched a dozen watches come and go there with nothing to show for it, so a watch alone wasn't enough to move me off routine monitoring. Interviewer: Moving to the evacuation decision once the warning came in. What alternatives did you weigh there? Participant: We could evacuate with contingency time built in and pre-stage extra transport before ordering it, or issue a partial shelter-in-place for upper units and just pull the ground floor first. I chose to order a full evacuation, and I built the timeline off our fastest previous evacuation of that same park, which was under 90 minutes. Interviewer: How did you arrive at that specific estimate? Participant: We'd done it before in daylight with full staffing and it went under 90 minutes, so that was my benchmark. In hindsight, this time was nighttime, we had a skeleton crew until the EOC ramped up, and a chunk of those residents don't have their own vehicles, so it needs door-to-door contact. It ended up taking over three hours, and the shuttle buses from Public Works arrived later than I'd planned for. That gap surprised me at the time, honestly. Interviewer: What made three hours surprising, given those differences were known going in? Participant: I suppose I anchored on the best version of that evacuation rather than really adjusting for what was different this time. The information was there — nighttime, staffing, no-vehicle households — I just didn't weight it heavily enough when I set the timeline. Interviewer: Let's talk about the shelter and mutual aid decision. What were the alternatives? Participant: We could submit the mutual aid request immediately alongside the shelter routing calls, or split evacuees evenly across both shelters regardless of real-time numbers, or wait on mutual aid until we had firmer capacity data. I routed most evacuees to shelter A based on our initial capacity numbers and held off on mutual aid until we could confirm the picture more fully. Interviewer: What happened as a result? Participant: Shelter B actually filled up faster than shelter A because of how people were routed in from the road closures, and by the time we submitted mutual aid, the access road had already closed, so those resources arrived too late to help with the routing problem directly. Interviewer: Was there information available at that point that could have changed the routing or timing decision? Participant: The Red Cross coordinator had flagged that shelter B would need extra staff for overflow, and Public Works said the road might close within the hour. I had both of those inputs before I made the call. I was leaning on the initial capacity assumptions more than the live warnings coming in. Interviewer: Let's move to the after-action review. Walk me through that discussion. Participant: The panel was going through the timeline, and there was some pointed conversation about the Sheriff's watch commander, who had pushed back internally when the watch first came in, arguing it probably wasn't going to amount to much. People in the room were fairly critical of that, saying he let the historical pattern cloud his judgment on a night when the forecaster was explicitly saying this one was different. Interviewer: How did you see your own role in that same conversation? Participant: I felt for him, but I also think there's a difference — he was pushing back without really engaging with the forecaster's call, whereas I did hear it and made a judgment based on the full track record we had. My escalation timing and the evacuation plan were built on real experience with that location, so I'd characterize my decisions as sound given what I knew at each point. Interviewer: Looking at your own decision log next to his account, do you see any similarities in the pattern? Participant: I mean, on paper the timing gap looks similar, and I did build the evacuation estimate off a best-case prior run. But I still think context matters — I was managing a lot more moving pieces than he was, so I'd hesitate to put us in the same category. Interviewer: Last few questions. If the storm had behaved like a typical watch-level event, what would you have done differently? Participant: Probably nothing — routine monitoring would've been the right call, and we'd have avoided the overtime and disruption. That's part of why the decision felt reasonable going in. Interviewer: If you'd had unlimited staffing from the very start, what would change about the evacuation? Participant: I'd have pre-staged the shuttle buses and had more people for door-to-door contact from minute one, which probably closes most of that three-hour gap. Interviewer: What would you tell a newer emergency manager to watch for in a similar situation? Participant: Trust the data, but don't dismiss a forecaster who's willing to pick up the phone on something that's usually just a form letter. That's not something they do casually. Interviewer: Thank you, this has been very helpful. Participant: Happy to help. Hope it's useful for the next one of these we run into."
+]
+
+[[agents]]
+label = "Gemini Prompt 8192"
+[agents.chat]
+provider = "deepseek"            # "ollama" | "deepseek"
+#model = "qwen2.5:1.5b"         # ignored for deepseek
+context_tokens = 8192          # context budget for retrieved chunks
+deepseek_model = "deepseek-v4-pro"   # deepseek only
+#deepseek_api_key = DEEPSEEK_API_KEY # deepseek only (or DEEPSEEK_API_KEY env)
+# context_size_mode = "Auto"          # "Auto" | "Forced"
+system_prompt_path = "prompt_gemini.md"    # custom system prompt ({context} placeholder)
+# request_timeout_secs = 300          # per-request timeout, None = no timeout
+[agents.chat.params]                # generation overrides (all optional)
+# temperature = 0.7
+# top_p = 0.9
+# max_tokens = 1024
+seed = 42
+
+[[agents]]
+label = "Sonar Prompt 8192"
+[agents.chat]
+provider = "deepseek"            # "ollama" | "deepseek"
+#model = "qwen2.5:1.5b"         # ignored for deepseek
+context_tokens = 8192          # context budget for retrieved chunks
+deepseek_model = "deepseek-v4-pro"   # deepseek only
+#deepseek_api_key = DEEPSEEK_API_KEY # deepseek only (or DEEPSEEK_API_KEY env)
+# context_size_mode = "Auto"          # "Auto" | "Forced"
+system_prompt_path = "prompt_sonar.md"    # custom system prompt ({context} placeholder)
+# request_timeout_secs = 300          # per-request timeout, None = no timeout
+ [agents.chat.params]                # generation overrides (all optional)
+# temperature = 0.7
+# top_p = 0.9
+# max_tokens = 1024
+ seed = 42
+
+[[agents]]
+label = "Sonnet Prompt 8192"
+[agents.chat]
+provider = "deepseek"            # "ollama" | "deepseek"
+#model = "qwen2.5:1.5b"         # ignored for deepseek
+context_tokens = 8192          # context budget for retrieved chunks
+deepseek_model = "deepseek-v4-pro"   # deepseek only
+#deepseek_api_key = DEEPSEEK_API_KEY # deepseek only (or DEEPSEEK_API_KEY env)
+# context_size_mode = "Auto"          # "Auto" | "Forced"
+system_prompt_path = "prompt_sonnet.md"    # custom system prompt ({context} placeholder)
+# request_timeout_secs = 300          # per-request timeout, None = no timeout
+[agents.chat.params]                # generation overrides (all optional)
+# temperature = 0.7
+# top_p = 0.9
+# max_tokens = 1024
+seed = 42
+
+
+# ---Embed testing ---
+[embed]
+#top_k = 0
+top_k = 50

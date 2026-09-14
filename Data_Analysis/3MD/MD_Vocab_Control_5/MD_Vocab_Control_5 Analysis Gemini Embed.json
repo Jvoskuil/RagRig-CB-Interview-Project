@@ -1,0 +1,346 @@
+{
+  "evaluation_metadata": {
+    "task": "ontology_free_rag_cognitive_bias_benchmark_evaluation",
+    "benchmark_run_metadata": {
+      "benchmark_run_id": "MD_Vocab_Control_5_Gemini_on",
+      "interview_id": "MD_Vocab_Control_5",
+      "system_prompt_id": "Gemini",
+      "system_prompt_generator": "Prompt 1_2",
+      "rag_model_id": "v1.0.0",
+      "corpus_condition": "on",
+      "retrieval_configuration_id": "k=50",
+      "decoding_configuration_id": null,
+      "temperature": 1,
+      "replicate_id": null,
+      "segment_map_id": null
+    },
+    "scenario_id": "MD_Vocab_Control_5",
+    "domain_id": "MD",
+    "condition": "vocabulary_control",
+    "segment_map_status": "generated_not_prevalidated",
+    "rag_output_parse_status": "valid_json",
+    "rag_schema_assessment": "conformant"
+  },
+  "input_validation": {
+    "rag_output_schema_violations": [],
+    "rag_summary_count_consistency": {
+      "status": "consistent",
+      "details": "The identified_bias_summary and identified_occurrences arrays are both empty, no_supported_biases_found is true, and the two candidate records are internally well formed."
+    },
+    "evaluation_limitations": [
+      "No prevalidated segment map was supplied; the exhaustive eligible reasoning map was generated for this run.",
+      "The hidden manifest is a zero-instance control, so no instance-level misses can occur and candidate findings are scored as false alarms only at the fourth threshold.",
+      "No retrieved chunks or retrieval logs were supplied; corpus fidelity is not scored."
+    ]
+  },
+  "evaluation_segment_map": {
+    "segment_mapping_version": "1.0",
+    "segments": [
+      {
+        "segment_id": "seg_001",
+        "speaker": "Participant",
+        "segment_type": "mission_objective_rationale",
+        "raw_interview_anchor": "It mattered because if we didn't hold that crossing on schedule, brigade's synchronization slid.",
+        "eligible_reasoning_segment": true,
+        "ground_truth_bias_present": false,
+        "ground_truth_instance_ids": [],
+        "ground_truth_rationale": "The statement explains the operational consequence of the mission without manifesting a hidden bias instance."
+      },
+      {
+        "segment_id": "seg_002",
+        "speaker": "Participant",
+        "segment_type": "decision_rationale",
+        "raw_interview_anchor": "Given the ISR window was closing, we didn't want to burn the whole asset chasing one sighting, but we also didn't want to write it off, so we split it.",
+        "eligible_reasoning_segment": true,
+        "ground_truth_bias_present": false,
+        "ground_truth_instance_ids": [],
+        "ground_truth_rationale": "The participant explicitly weighs the pattern deviation, ISR cost, and need for confirmation before choosing partial retasking."
+      },
+      {
+        "segment_id": "seg_003",
+        "speaker": "Participant",
+        "segment_type": "risk_escalation_rationale",
+        "raw_interview_anchor": "Rather than just noting it and moving on, I put it in writing to brigade and asked for an expedited classification survey to run in parallel with our movement.",
+        "eligible_reasoning_segment": true,
+        "ground_truth_bias_present": false,
+        "ground_truth_instance_ids": [],
+        "ground_truth_rationale": "Formal escalation and parallel mitigation are evidence-weighed actions, and the hidden validation manifest specifies no authority-bias instance."
+      },
+      {
+        "segment_id": "seg_004",
+        "speaker": "Participant",
+        "segment_type": "planning_choice_rationale",
+        "raw_interview_anchor": "We landed on resequencing, and flagged the ford as a documented branch option since it hadn't been reconned in current water conditions.",
+        "eligible_reasoning_segment": true,
+        "ground_truth_bias_present": false,
+        "ground_truth_instance_ids": [],
+        "ground_truth_rationale": "The choice is justified by comparison of resequencing, rerouting, and retaining the plan, with the ford preserved as a branch."
+      },
+      {
+        "segment_id": "seg_005",
+        "speaker": "Participant",
+        "segment_type": "uncertainty_assessment",
+        "raw_interview_anchor": "At H-48 I had the sighting and the pattern, nothing confirmed.",
+        "eligible_reasoning_segment": true,
+        "ground_truth_bias_present": false,
+        "ground_truth_instance_ids": [],
+        "ground_truth_rationale": "This is a calibrated statement of what was and was not known at the decision time."
+      },
+      {
+        "segment_id": "seg_006",
+        "speaker": "Participant",
+        "segment_type": "evidence_quality_assessment",
+        "raw_interview_anchor": "After the partial retasking, I had an inconclusive picture—better than nothing, still not definitive.",
+        "eligible_reasoning_segment": true,
+        "ground_truth_bias_present": false,
+        "ground_truth_instance_ids": [],
+        "ground_truth_rationale": "The participant accurately characterizes the partial ISR result as informative but inconclusive."
+      },
+      {
+        "segment_id": "seg_007",
+        "speaker": "Participant",
+        "segment_type": "evidence_weighting_rationale",
+        "raw_interview_anchor": "The location didn't fit. Three months of consistent behavior is a strong baseline, but a scout element showing up closer to the crossing than the ridge is a meaningful enough deviation that I didn't want to assume it away.",
+        "eligible_reasoning_segment": true,
+        "ground_truth_bias_present": false,
+        "ground_truth_instance_ids": [],
+        "ground_truth_rationale": "The participant acknowledges the baseline while actively investigating the deviation; the hidden representativeness instance count is zero."
+      },
+      {
+        "segment_id": "seg_008",
+        "speaker": "Participant",
+        "segment_type": "resource_reallocation_threshold",
+        "raw_interview_anchor": "A second independent report—ground or signals—pointing at the same location. One sighting alone, I wasn't going to reallocate the whole asset.",
+        "eligible_reasoning_segment": true,
+        "ground_truth_bias_present": false,
+        "ground_truth_instance_ids": [],
+        "ground_truth_rationale": "The participant specifies an evidence threshold for escalating ISR rather than dismissing or overreacting to one report."
+      },
+      {
+        "segment_id": "seg_009",
+        "speaker": "Participant",
+        "segment_type": "alternative_comparison_rationale",
+        "raw_interview_anchor": "I could've just complied and left the bridge concern where it was, or asked for an outright delay, or done what we did—continue moving while pushing the concern up formally.",
+        "eligible_reasoning_segment": true,
+        "ground_truth_bias_present": false,
+        "ground_truth_instance_ids": [],
+        "ground_truth_rationale": "The participant explicitly compares compliance, delay, and parallel escalation, with no source-weighted deference."
+      },
+      {
+        "segment_id": "seg_010",
+        "speaker": "Participant",
+        "segment_type": "communication_choice_rationale",
+        "raw_interview_anchor": "They agreed to it once I put it in writing with the engineer's rationale attached.",
+        "eligible_reasoning_segment": true,
+        "ground_truth_bias_present": false,
+        "ground_truth_instance_ids": [],
+        "ground_truth_rationale": "The statement describes a documented communication and escalation choice, not bias-driven obedience."
+      },
+      {
+        "segment_id": "seg_011",
+        "speaker": "Participant",
+        "segment_type": "planning_evidence_comparison",
+        "raw_interview_anchor": "We went through the reroute option, the ford's unreconned water conditions, and a resequencing option that would stagger loads to stay under the classified threshold.",
+        "eligible_reasoning_segment": true,
+        "ground_truth_bias_present": false,
+        "ground_truth_instance_ids": [],
+        "ground_truth_rationale": "The staff openly compares options and chooses a mitigation based on the classified load and operational constraints; the candidate plan-continuation label is not a hidden ground-truth instance."
+      },
+      {
+        "segment_id": "seg_012",
+        "speaker": "Participant",
+        "segment_type": "disagreement_resolution",
+        "raw_interview_anchor": "Some staff members wanted to at least get a quick recon of the ford in daylight before ruling it out as primary. We didn't have time to do that and still make the window, so we tabled it as a branch.",
+        "eligible_reasoning_segment": true,
+        "ground_truth_bias_present": false,
+        "ground_truth_instance_ids": [],
+        "ground_truth_rationale": "Disagreement is voiced and considered openly; the hidden groupthink occurrence count is zero."
+      },
+      {
+        "segment_id": "seg_013",
+        "speaker": "Participant",
+        "segment_type": "calibrated_retrospective_assessment",
+        "raw_interview_anchor": "It's consistent with the enemy orienting toward the crossing rather than the ridge, but I wouldn't say it made the contact obvious at the time.",
+        "eligible_reasoning_segment": true,
+        "ground_truth_bias_present": false,
+        "ground_truth_instance_ids": [],
+        "ground_truth_rationale": "The retrospective account distinguishes a hindsight-consistent interpretation from what was knowable before the outcome, so the hidden hindsight-bias count is zero."
+      }
+    ]
+  },
+  "segment_level_adjudications": [
+    {"segment_id":"seg_001","ground_truth_status":"negative","ground_truth_instance_ids":[],"rag_identified_occurrence_ids":[],"rag_candidate_ids_counted_at_fourth_threshold":[],"rag_detected_bias_in_segment_by_threshold":{"high_only":false,"high_and_moderate":false,"all_identified_confidence_levels":false,"all_confidence_and_candidates":false},"sdt_outcome_by_threshold":{"high_only":"correct_rejection","high_and_moderate":"correct_rejection","all_identified_confidence_levels":"correct_rejection","all_confidence_and_candidates":"correct_rejection"},"localization_basis":"No RAG finding localizes to this mission-stakes segment.","adjudication_note":"Zero-bias negative segment with no qualifying finding."},
+    {"segment_id":"seg_002","ground_truth_status":"negative","ground_truth_instance_ids":[],"rag_identified_occurrence_ids":[],"rag_candidate_ids_counted_at_fourth_threshold":[],"rag_detected_bias_in_segment_by_threshold":{"high_only":false,"high_and_moderate":false,"all_identified_confidence_levels":false,"all_confidence_and_candidates":false},"sdt_outcome_by_threshold":{"high_only":"correct_rejection","high_and_moderate":"correct_rejection","all_identified_confidence_levels":"correct_rejection","all_confidence_and_candidates":"correct_rejection"},"localization_basis":"No RAG finding localizes to this initial ISR decision segment.","adjudication_note":"Zero-bias negative segment with no qualifying finding."},
+    {"segment_id":"seg_003","ground_truth_status":"negative","ground_truth_instance_ids":[],"rag_identified_occurrence_ids":[],"rag_candidate_ids_counted_at_fourth_threshold":[],"rag_detected_bias_in_segment_by_threshold":{"high_only":false,"high_and_moderate":false,"all_identified_confidence_levels":false,"all_confidence_and_candidates":false},"sdt_outcome_by_threshold":{"high_only":"correct_rejection","high_and_moderate":"correct_rejection","all_identified_confidence_levels":"correct_rejection","all_confidence_and_candidates":"correct_rejection"},"localization_basis":"No RAG finding localizes to this bridge-escalation segment.","adjudication_note":"Zero-bias negative segment with no qualifying finding."},
+    {"segment_id":"seg_004","ground_truth_status":"negative","ground_truth_instance_ids":[],"rag_identified_occurrence_ids":[],"rag_candidate_ids_counted_at_fourth_threshold":[],"rag_detected_bias_in_segment_by_threshold":{"high_only":false,"high_and_moderate":false,"all_identified_confidence_levels":false,"all_confidence_and_candidates":false},"sdt_outcome_by_threshold":{"high_only":"correct_rejection","high_and_moderate":"correct_rejection","all_identified_confidence_levels":"correct_rejection","all_confidence_and_candidates":"correct_rejection"},"localization_basis":"No RAG finding localizes to this initial planning-choice segment.","adjudication_note":"Zero-bias negative segment with no qualifying finding."},
+    {"segment_id":"seg_005","ground_truth_status":"negative","ground_truth_instance_ids":[],"rag_identified_occurrence_ids":[],"rag_candidate_ids_counted_at_fourth_threshold":[],"rag_detected_bias_in_segment_by_threshold":{"high_only":false,"high_and_moderate":false,"all_identified_confidence_levels":false,"all_confidence_and_candidates":false},"sdt_outcome_by_threshold":{"high_only":"correct_rejection","high_and_moderate":"correct_rejection","all_identified_confidence_levels":"correct_rejection","all_confidence_and_candidates":"correct_rejection"},"localization_basis":"No RAG finding localizes to this timeline uncertainty statement.","adjudication_note":"Zero-bias negative segment with no qualifying finding."},
+    {"segment_id":"seg_006","ground_truth_status":"negative","ground_truth_instance_ids":[],"rag_identified_occurrence_ids":[],"rag_candidate_ids_counted_at_fourth_threshold":[],"rag_detected_bias_in_segment_by_threshold":{"high_only":false,"high_and_moderate":false,"all_identified_confidence_levels":false,"all_confidence_and_candidates":false},"sdt_outcome_by_threshold":{"high_only":"correct_rejection","high_and_moderate":"correct_rejection","all_identified_confidence_levels":"correct_rejection","all_confidence_and_candidates":"correct_rejection"},"localization_basis":"No RAG finding localizes to this ISR evidence-quality segment.","adjudication_note":"Zero-bias negative segment with no qualifying finding."},
+    {"segment_id":"seg_007","ground_truth_status":"negative","ground_truth_instance_ids":[],"rag_identified_occurrence_ids":[],"rag_candidate_ids_counted_at_fourth_threshold":["cand_002"],"rag_detected_bias_in_segment_by_threshold":{"high_only":false,"high_and_moderate":false,"all_identified_confidence_levels":false,"all_confidence_and_candidates":true},"sdt_outcome_by_threshold":{"high_only":"correct_rejection","high_and_moderate":"correct_rejection","all_identified_confidence_levels":"correct_rejection","all_confidence_and_candidates":"false_positive"},"localization_basis":"cand_002 quotes and discusses this exact H-48 reasoning span.","adjudication_note":"The candidate is a valid, explicitly rejected possibility, but candidate-inclusive scoring treats it as a false alarm in this negative segment."},
+    {"segment_id":"seg_008","ground_truth_status":"negative","ground_truth_instance_ids":[],"rag_identified_occurrence_ids":[],"rag_candidate_ids_counted_at_fourth_threshold":[],"rag_detected_bias_in_segment_by_threshold":{"high_only":false,"high_and_moderate":false,"all_identified_confidence_levels":false,"all_confidence_and_candidates":false},"sdt_outcome_by_threshold":{"high_only":"correct_rejection","high_and_moderate":"correct_rejection","all_identified_confidence_levels":"correct_rejection","all_confidence_and_candidates":"correct_rejection"},"localization_basis":"No RAG finding localizes to this ISR threshold segment.","adjudication_note":"Zero-bias negative segment with no qualifying finding."},
+    {"segment_id":"seg_009","ground_truth_status":"negative","ground_truth_instance_ids":[],"rag_identified_occurrence_ids":[],"rag_candidate_ids_counted_at_fourth_threshold":[],"rag_detected_bias_in_segment_by_threshold":{"high_only":false,"high_and_moderate":false,"all_identified_confidence_levels":false,"all_confidence_and_candidates":false},"sdt_outcome_by_threshold":{"high_only":"correct_rejection","high_and_moderate":"correct_rejection","all_identified_confidence_levels":"correct_rejection","all_confidence_and_candidates":"correct_rejection"},"localization_basis":"No RAG finding localizes to this alternatives-comparison segment.","adjudication_note":"Zero-bias negative segment with no qualifying finding."},
+    {"segment_id":"seg_010","ground_truth_status":"negative","ground_truth_instance_ids":[],"rag_identified_occurrence_ids":[],"rag_candidate_ids_counted_at_fourth_threshold":[],"rag_detected_bias_in_segment_by_threshold":{"high_only":false,"high_and_moderate":false,"all_identified_confidence_levels":false,"all_confidence_and_candidates":false},"sdt_outcome_by_threshold":{"high_only":"correct_rejection","high_and_moderate":"correct_rejection","all_identified_confidence_levels":"correct_rejection","all_confidence_and_candidates":"correct_rejection"},"localization_basis":"No RAG finding localizes to this formalization segment.","adjudication_note":"Zero-bias negative segment with no qualifying finding."},
+    {"segment_id":"seg_011","ground_truth_status":"negative","ground_truth_instance_ids":[],"rag_identified_occurrence_ids":[],"rag_candidate_ids_counted_at_fourth_threshold":["cand_001"],"rag_detected_bias_in_segment_by_threshold":{"high_only":false,"high_and_moderate":false,"all_identified_confidence_levels":false,"all_confidence_and_candidates":true},"sdt_outcome_by_threshold":{"high_only":"correct_rejection","high_and_moderate":"correct_rejection","all_identified_confidence_levels":"correct_rejection","all_confidence_and_candidates":"false_positive"},"localization_basis":"cand_001 quotes the resequencing and ford-branch rationale expressed in this planning segment.","adjudication_note":"The candidate is a valid, explicitly rejected possibility, but candidate-inclusive scoring treats it as a false alarm in this negative segment."},
+    {"segment_id":"seg_012","ground_truth_status":"negative","ground_truth_instance_ids":[],"rag_identified_occurrence_ids":[],"rag_candidate_ids_counted_at_fourth_threshold":[],"rag_detected_bias_in_segment_by_threshold":{"high_only":false,"high_and_moderate":false,"all_identified_confidence_levels":false,"all_confidence_and_candidates":false},"sdt_outcome_by_threshold":{"high_only":"correct_rejection","high_and_moderate":"correct_rejection","all_identified_confidence_levels":"correct_rejection","all_confidence_and_candidates":"correct_rejection"},"localization_basis":"No RAG finding localizes to this disagreement-resolution segment.","adjudication_note":"Zero-bias negative segment with no qualifying finding."},
+    {"segment_id":"seg_013","ground_truth_status":"negative","ground_truth_instance_ids":[],"rag_identified_occurrence_ids":[],"rag_candidate_ids_counted_at_fourth_threshold":[],"rag_detected_bias_in_segment_by_threshold":{"high_only":false,"high_and_moderate":false,"all_identified_confidence_levels":false,"all_confidence_and_candidates":false},"sdt_outcome_by_threshold":{"high_only":"correct_rejection","high_and_moderate":"correct_rejection","all_identified_confidence_levels":"correct_rejection","all_confidence_and_candidates":"correct_rejection"},"localization_basis":"No RAG finding localizes to this calibrated retrospective segment.","adjudication_note":"Zero-bias negative segment with no qualifying finding."}
+  ],
+  "instance_level_adjudications": [],
+  "unmatched_rag_predictions": [
+    {
+      "rag_occurrence_id": "cand_001",
+      "rag_finding_type": "candidate",
+      "rag_predicted_bias_label": "Plan continuation bias",
+      "rag_confidence": "candidate",
+      "localized_segment_id": "seg_011",
+      "best_related_hidden_instance_id": null,
+      "label_equivalence_result": "different_construct",
+      "mechanism_overlap": "no_mechanism_overlap",
+      "strict_classification": "false_positive",
+      "mechanism_first_classification": "false_positive",
+      "counted_at_thresholds": ["all_confidence_and_candidates"],
+      "why_not_an_exact_strict_match": "The hidden manifest contains no planned instance for any bias. The candidate's quote is valid and its own rationale explains why the possibility was not promoted, but the benchmark still counts a candidate localized to an eligible negative segment as a false positive at the fourth threshold."
+    },
+    {
+      "rag_occurrence_id": "cand_002",
+      "rag_finding_type": "candidate",
+      "rag_predicted_bias_label": "Anchoring bias",
+      "rag_confidence": "candidate",
+      "localized_segment_id": "seg_007",
+      "best_related_hidden_instance_id": null,
+      "label_equivalence_result": "different_construct",
+      "mechanism_overlap": "no_mechanism_overlap",
+      "strict_classification": "false_positive",
+      "mechanism_first_classification": "false_positive",
+      "counted_at_thresholds": ["all_confidence_and_candidates"],
+      "why_not_an_exact_strict_match": "The hidden manifest contains no planned instance for any bias. The candidate's quote is valid and the participant explicitly adjusted away from the baseline, but the benchmark still counts a candidate localized to an eligible negative segment as a false positive at the fourth threshold."
+    }
+  ],
+  "candidate_analysis": {
+    "candidate_count": 2,
+    "candidates": [
+      {
+        "candidate_id": "cand_001",
+        "proposed_bias_label": "Plan continuation bias",
+        "localized_segment_id": "seg_011",
+        "best_related_hidden_instance_id": null,
+        "quote_validity": "valid",
+        "would_match_if_promoted_strict": false,
+        "would_match_if_promoted_mechanism_first": false,
+        "counted_as_detection_at_fourth_threshold": true,
+        "fourth_threshold_outcome": "false_positive",
+        "candidate_assessment": "useful_abstention",
+        "details": "The candidate considers a plausible alternative interpretation but the transcript explicitly documents option comparison, mitigation, and a branch plan, with no hidden target instance present."
+      },
+      {
+        "candidate_id": "cand_002",
+        "proposed_bias_label": "Anchoring bias",
+        "localized_segment_id": "seg_007",
+        "best_related_hidden_instance_id": null,
+        "quote_validity": "valid",
+        "would_match_if_promoted_strict": false,
+        "would_match_if_promoted_mechanism_first": false,
+        "counted_as_detection_at_fourth_threshold": true,
+        "fourth_threshold_outcome": "false_positive",
+        "candidate_assessment": "useful_abstention",
+        "details": "The candidate considers the pattern baseline as a possible anchor, but the participant explicitly recognized the deviation and retasked ISR; no hidden target instance is present."
+      }
+    ]
+  },
+  "signal_detection_summary": {
+    "evaluation_unit": "eligible_reasoning_segment",
+    "high_only": {"positive_segments":0,"negative_segments":13,"hits":0,"misses":0,"false_alarms":0,"correct_rejections":13,"hit_rate":null,"false_alarm_rate":0.0,"accuracy":1.0,"precision":null,"recall":null,"f1":null,"detection_interpretation":"All 13 eligible segments are negative and no high-confidence identified occurrence was reported; all are correct rejections."},
+    "high_and_moderate": {"positive_segments":0,"negative_segments":13,"hits":0,"misses":0,"false_alarms":0,"correct_rejections":13,"hit_rate":null,"false_alarm_rate":0.0,"accuracy":1.0,"precision":null,"recall":null,"f1":null,"detection_interpretation":"All 13 eligible segments are negative and no high- or moderate-confidence identified occurrence was reported; all are correct rejections."},
+    "all_identified_confidence_levels": {"positive_segments":0,"negative_segments":13,"hits":0,"misses":0,"false_alarms":0,"correct_rejections":13,"hit_rate":null,"false_alarm_rate":0.0,"accuracy":1.0,"precision":null,"recall":null,"f1":null,"detection_interpretation":"All 13 eligible segments are negative and no identified occurrence at any confidence level was reported; all are correct rejections."},
+    "all_confidence_and_candidates": {"positive_segments":0,"negative_segments":13,"hits":0,"misses":0,"false_alarms":2,"correct_rejections":11,"hit_rate":null,"false_alarm_rate":0.1538,"accuracy":0.8462,"precision":0.0,"recall":null,"f1":0.0,"detection_interpretation":"Both candidate findings localize to eligible negative segments, creating two false alarms under the candidate-inclusive threshold; the other 11 segments are correct rejections."}
+  },
+  "strict_instance_level_metrics": {
+    "high_only": {"true_positives":0,"false_negatives":0,"false_positives":0,"precision":null,"recall":null,"f1":null,"exact_occurrence_match_rate":null,"occurrence_count_match_rate":null},
+    "high_and_moderate": {"true_positives":0,"false_negatives":0,"false_positives":0,"precision":null,"recall":null,"f1":null,"exact_occurrence_match_rate":null,"occurrence_count_match_rate":null},
+    "all_identified_confidence_levels": {"true_positives":0,"false_negatives":0,"false_positives":0,"precision":null,"recall":null,"f1":null,"exact_occurrence_match_rate":null,"occurrence_count_match_rate":null},
+    "all_confidence_and_candidates": {"true_positives":0,"false_negatives":0,"false_positives":2,"precision":0.0,"recall":null,"f1":0.0,"exact_occurrence_match_rate":null,"occurrence_count_match_rate":null}
+  },
+  "mechanism_first_instance_level_metrics": {
+    "high_only": {"true_positives":0,"false_negatives":0,"false_positives":0,"precision":null,"recall":null,"f1":null,"exact_occurrence_match_rate":null,"occurrence_count_match_rate":null},
+    "high_and_moderate": {"true_positives":0,"false_negatives":0,"false_positives":0,"precision":null,"recall":null,"f1":null,"exact_occurrence_match_rate":null,"occurrence_count_match_rate":null},
+    "all_identified_confidence_levels": {"true_positives":0,"false_negatives":0,"false_positives":0,"precision":null,"recall":null,"f1":null,"occurrence_count_match_rate":null,"exact_occurrence_match_rate":null},
+    "all_confidence_and_candidates": {"true_positives":0,"false_negatives":0,"false_positives":2,"precision":0.0,"recall":null,"f1":0.0,"exact_occurrence_match_rate":null,"occurrence_count_match_rate":null}
+  },
+  "target_bias_performance": [
+    {"hidden_target_bias_label":"Authority Bias or Higher-level prioritization Bias","hidden_requested_occurrences":0,"strict_true_positives_by_threshold":{"high_only":0,"high_and_moderate":0,"all_identified_confidence_levels":0,"all_confidence_and_candidates":0},"mechanism_first_true_positives_by_threshold":{"high_only":0,"high_and_moderate":0,"all_identified_confidence_levels":0,"all_confidence_and_candidates":0},"count_match_status_at_all_confidence_and_candidates":"exact_match"},
+    {"hidden_target_bias_label":"Hindsight Bias","hidden_requested_occurrences":0,"strict_true_positives_by_threshold":{"high_only":0,"high_and_moderate":0,"all_identified_confidence_levels":0,"all_confidence_and_candidates":0},"mechanism_first_true_positives_by_threshold":{"high_only":0,"high_and_moderate":0,"all_identified_confidence_levels":0,"all_confidence_and_candidates":0},"count_match_status_at_all_confidence_and_candidates":"exact_match"},
+    {"hidden_target_bias_label":"Representativeness Heuristic","hidden_requested_occurrences":0,"strict_true_positives_by_threshold":{"high_only":0,"high_and_moderate":0,"all_identified_confidence_levels":0,"all_confidence_and_candidates":0},"mechanism_first_true_positives_by_threshold":{"high_only":0,"high_and_moderate":0,"all_identified_confidence_levels":0,"all_confidence_and_candidates":0},"count_match_status_at_all_confidence_and_candidates":"exact_match"},
+    {"hidden_target_bias_label":"Status Quo Bias","hidden_requested_occurrences":0,"strict_true_positives_by_threshold":{"high_only":0,"high_and_moderate":0,"all_identified_confidence_levels":0,"all_confidence_and_candidates":0},"mechanism_first_true_positives_by_threshold":{"high_only":0,"high_and_moderate":0,"all_identified_confidence_levels":0,"all_confidence_and_candidates":0},"count_match_status_at_all_confidence_and_candidates":"exact_match"},
+    {"hidden_target_bias_label":"Groupthink","hidden_requested_occurrences":0,"strict_true_positives_by_threshold":{"high_only":0,"high_and_moderate":0,"all_identified_confidence_levels":0,"all_confidence_and_candidates":0},"mechanism_first_true_positives_by_threshold":{"high_only":0,"high_and_moderate":0,"all_identified_confidence_levels":0,"all_confidence_and_candidates":0},"count_match_status_at_all_confidence_and_candidates":"exact_match"}
+  ],
+  "rag_label_false_positive_inventory": [
+    {"rag_predicted_bias_label":"Plan continuation bias","finding_type":"candidate","alternative_labels":["normalcy bias"],"occurrence_count":1,"best_related_hidden_target_bias_label":null,"label_relation":"no_related_target","mechanism_overlap_summary":"No hidden target instance exists; the candidate itself explains why the evidence is insufficient for identification.","primary_error_types":["candidate_only_at_fourth_threshold","false_alarm_in_zero_bias_control"]},
+    {"rag_predicted_bias_label":"Anchoring bias","finding_type":"candidate","alternative_labels":["anchoring-and-adjustment"],"occurrence_count":1,"best_related_hidden_target_bias_label":null,"label_relation":"no_related_target","mechanism_overlap_summary":"No hidden target instance exists; the participant explicitly recognized and investigated the deviation from baseline.","primary_error_types":["candidate_only_at_fourth_threshold","false_alarm_in_zero_bias_control"]}
+  ],
+  "diagnostic_error_summary": {
+    "correct_location_wrong_bias_label_count":0,
+    "correct_label_wrong_location_count":0,
+    "correct_label_location_wrong_mechanism_count":0,
+    "mechanism_detected_label_unresolved_count":0,
+    "partial_mechanism_match_count":0,
+    "duplicate_prediction_count":0,
+    "unsupported_prediction_count":0,
+    "fabricated_or_invalid_quote_count":0,
+    "approved_alias_or_equivalence_count":0,
+    "near_neighbor_label_count":0,
+    "different_construct_label_count":2,
+    "candidate_count":2,
+    "candidate_useful_abstention_count":2,
+    "candidate_near_miss_count":0,
+    "candidates_promoted_to_true_positive_at_fourth_threshold_count":0
+  },
+  "corpus_support_audit": {
+    "primary_corpus_fidelity_score_available":false,
+    "rag_occurrences_claiming_retrieved_support":0,
+    "rag_occurrences_with_no_claimed_retrieved_support":0,
+    "rag_occurrences_with_unverifiable_or_internally_inconsistent_citation_metadata":0,
+    "assessment_note":"No identified occurrences were reported and neither candidate claims retrieved support; no retrieved material or logs were supplied, so corpus fidelity is unavailable."
+  },
+  "comparison_ready_summary": {
+    "primary_recommended_comparison_threshold":"high_and_moderate",
+    "segment_detection": {
+      "high_only":{"hits":0,"misses":0,"false_alarms":0,"correct_rejections":13,"hit_rate":null,"false_alarm_rate":0.0,"f1":null},
+      "high_and_moderate":{"hits":0,"misses":0,"false_alarms":0,"correct_rejections":13,"hit_rate":null,"false_alarm_rate":0.0,"f1":null},
+      "all_identified_confidence_levels":{"hits":0,"misses":0,"false_alarms":0,"correct_rejections":13,"hit_rate":null,"false_alarm_rate":0.0,"f1":null},
+      "all_confidence_and_candidates":{"hits":0,"misses":0,"false_alarms":2,"correct_rejections":11,"hit_rate":null,"false_alarm_rate":0.1538,"f1":0.0}
+    },
+    "strict_instance_identification": {
+      "high_only":{"true_positives":0,"false_negatives":0,"false_positives":0,"precision":null,"recall":null,"f1":null},
+      "high_and_moderate":{"true_positives":0,"false_negatives":0,"false_positives":0,"precision":null,"recall":null,"f1":null},
+      "all_identified_confidence_levels":{"true_positives":0,"false_negatives":0,"false_positives":0,"precision":null,"recall":null,"f1":null},
+      "all_confidence_and_candidates":{"true_positives":0,"false_negatives":0,"false_positives":2,"precision":0.0,"recall":null,"f1":0.0}
+    },
+    "mechanism_first_identification": {
+      "high_only":{"true_positives":0,"false_negatives":0,"false_positives":0,"precision":null,"recall":null,"f1":null},
+      "high_and_moderate":{"true_positives":0,"false_negatives":0,"false_positives":0,"precision":null,"recall":null,"f1":null},
+      "all_identified_confidence_levels":{"true_positives":0,"false_negatives":0,"false_positives":0,"precision":null,"recall":null,"f1":null},
+      "all_confidence_and_candidates":{"true_positives":0,"false_negatives":0,"false_positives":2,"precision":0.0,"recall":null,"f1":0.0}
+    },
+    "taxonomy_gap": {
+      "high_only":{"mechanism_first_f1_minus_strict_f1":0.0},
+      "high_and_moderate":{"mechanism_first_f1_minus_strict_f1":0.0},
+      "all_identified_confidence_levels":{"mechanism_first_f1_minus_strict_f1":0.0},
+      "all_confidence_and_candidates":{"mechanism_first_f1_minus_strict_f1":0.0}
+    },
+    "confidence_tradeoff": {
+      "increment_from_high_to_high_and_moderate":"No change: no identified findings occur at either threshold.",
+      "increment_from_high_and_moderate_to_all_confidence":"No change: no low-confidence identified findings occur.",
+      "increment_from_all_confidence_to_all_confidence_and_candidates":"Two candidate false alarms are added, changing segment accuracy from 1.0000 to 0.8462 and false-alarm rate from 0.0000 to 0.1538."
+    }
+  },
+  "overall_evaluation_summary": {
+    "hidden_total_planned_occurrences":0,
+    "rag_total_identified_occurrences":0,
+    "rag_total_candidate_biases":2,
+    "segment_level_primary_result":"The zero-bias control is correctly handled with no identified-bias detections through all identified confidence thresholds; two candidates become false alarms only at the candidate-inclusive threshold.",
+    "strict_label_plus_mechanism_result":"There are no strict true positives or false positives through all identified confidence thresholds; the candidate-inclusive threshold adds two false positives and no true positives.",
+    "mechanism_first_result":"Mechanism-first results are identical to strict results because the hidden manifest has no instances and neither candidate supplies a valid hidden-instance match.",
+    "candidate_tier_value_assessment":"Both candidates are useful abstentions for qualitative review, but the benchmark's fourth threshold counts them as false alarms because they localize to eligible negative segments.",
+    "main_failure_modes":["Candidate-only plan continuation speculation is counted as a false alarm at the fourth threshold.","Candidate-only anchoring speculation is counted as a false alarm at the fourth threshold."],
+    "main_strengths":["No identified occurrences were reported in a zero-bias control.","Both candidate quotes are valid and the candidates transparently state why the evidence is insufficient.","The output is valid, internally consistent, and does not assert an unsupported identified bias."],
+    "benchmark_interpretation":"Strong abstention at all identified confidence tiers; candidate-inclusive scoring exposes conservative speculation as two false alarms, with no hidden bias instances missed because the control manifest is empty."
+  }
+}

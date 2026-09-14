@@ -1,0 +1,560 @@
+{
+  "validator_version": "2.0",
+  "interview_id": "CS_Biased_7_revised_audit",
+  "condition": "biased",
+  "domain_assessment": {
+    "domain": "Financial-services cybersecurity incident response, security governance, vendor management, and remediation budgeting",
+    "role": "Chief Information Security Officer at a mid-sized card and ACH payment-processing firm",
+    "objective": "Contain an intrusion without unnecessarily disrupting payment operations while completing an EDR/threat-intelligence renewal and providing a remediation-budget recommendation to the board",
+    "incident_type": "Suspected compromise of a privileged payment-engineering account, followed by evidence of lateral movement toward the payments database segment and later-discovered limited data exfiltration",
+    "confidence": 0.99
+  },
+  "structure_audit": {
+    "estimated_word_count": 1390,
+    "within_target_range": true,
+    "decision_point_count": 4,
+    "decision_points": [
+      {
+        "id": 1,
+        "summary": "Initial incident triage: the CISO used the SIEM's Medium score as the reference point for urgency and narrowed investigation to the jump-server alert rather than concurrently reviewing a related adjacent authentication-server alert.",
+        "evidence_before": [
+          "An anomalous off-hours login occurred on a jump server used by a payments engineer.",
+          "The login came from a network range not previously seen for that account.",
+          "The affected account was privileged.",
+          "The SIEM scored the event Medium based on behavioral deviation and did not factor account privilege.",
+          "A lower-priority alert occurred nine minutes earlier on an adjacent authentication server.",
+          "Only one analyst was available for triage."
+        ],
+        "evidence_after": [
+          "The authentication-server alert was reviewed only after several hours.",
+          "The two alerts shared a source IP range.",
+          "The combined pattern suggested lateral movement toward the payments database segment."
+        ],
+        "goals_constraints": [
+          "Establish incident urgency and investigation scope quickly.",
+          "Contain potential compromise while protecting payment continuity.",
+          "Allocate a single available analyst under reduced staffing."
+        ],
+        "alternatives": [
+          "Escalate the two alerts jointly.",
+          "Run a correlation sweep across the relevant time window before setting severity.",
+          "Prioritize the jump-server alert and defer the adjacent authentication-server alert."
+        ],
+        "decision_basis": "The displayed Medium score supplied a ready numeric basis for the response and aligned with the CISO's initial intuition; the jump-server alert was considered the most concrete lead under staffing pressure.",
+        "time_pressure": "Immediate triage with only one analyst available and a potentially privileged-account compromise.",
+        "uncertainty": "The scope of compromise, relationship between the alerts, and extent of lateral movement were initially unknown."
+      },
+      {
+        "id": 2,
+        "summary": "Vendor-renewal decision: the CISO favored the incumbent EDR and threat-intelligence platform, overvalued internally built dashboards because they were already owned and familiar, and restricted the practical comparison set to the incumbent and one peer-mentioned competitor.",
+        "evidence_before": [
+          "The organization had used the incumbent EDR and threat-intelligence vendor for six years.",
+          "The security team had built substantial custom detection logic and dashboards on the platform.",
+          "Procurement had identified three additional vendors with comparable bundles.",
+          "The procurement options included transition support described as broadly workable.",
+          "Peer CISOs mentioned the incumbent and the closest competitor."
+        ],
+        "evidence_after": [
+          "The CISO renewed the incumbent vendor.",
+          "The broader procurement-qualified vendor set was not fully evaluated.",
+          "The CISO did not independently test whether the perceived value of existing dashboards matched their current value relative to the alternatives."
+        ],
+        "goals_constraints": [
+          "Avoid disrupting detection operations during a live incident.",
+          "Meet a vendor renewal deadline five business days before auto-renewal.",
+          "Preserve continuity in detection logic and operational workflows."
+        ],
+        "alternatives": [
+          "Conduct a current comparative assessment across procurement's broader qualified list.",
+          "Compare the incumbent with the closest peer-mentioned competitor only.",
+          "Renew the incumbent based on existing customization and perceived switching costs."
+        ],
+        "decision_basis": "The CISO treated internally built dashboards as more valuable because they belonged to the team and had been built over years, despite workable transition support and without validating that subjective valuation against the current alternatives.",
+        "time_pressure": "The renewal deadline coincided with an active security incident.",
+        "uncertainty": "The relative current capability, migration burden, implementation support, and total security value of the alternatives were not formally assessed."
+      },
+      {
+        "id": 3,
+        "summary": "Containment decision: the CISO selected targeted lockout and monitoring over full payment-segment isolation, relying on an unvalidated overnight script as sufficient interim coverage while weighing a certain financial loss against an unquantified security benefit.",
+        "evidence_before": [
+          "The incident-response retainer firm recommended full segment isolation pending forensics.",
+          "The firm characterized isolation as safer but could not prove that it would fully stop the threat.",
+          "The security team wrote an overnight monitoring script for the known compromised account.",
+          "No one had validated whether the script would detect credential reuse on other hosts or parallel sessions.",
+          "The CFO estimated that isolation would create a guaranteed same-day processing-fee impact of approximately $180,000.",
+          "The security upside of isolation was expressed qualitatively as risk reduction rather than as a quantified benefit."
+        ],
+        "evidence_after": [
+          "The same compromised credentials touched a second internal system not monitored by the script.",
+          "Forensics later found limited data exfiltration that occurred before the script was operating."
+        ],
+        "goals_constraints": [
+          "Contain the intrusion.",
+          "Avoid avoidable disruption to payment processing.",
+          "Make a decision before the forensic picture was complete."
+        ],
+        "alternatives": [
+          "Fully isolate the payment segment pending forensics.",
+          "Use targeted credential lockout and monitoring of the known compromised account."
+        ],
+        "decision_basis": "The CISO treated unvalidated visibility into one known account as enough to defer full isolation and treated the certain $180,000 loss as more decisive than an unquantified reduction in security risk.",
+        "time_pressure": "The containment choice had immediate payment-processing and revenue implications after confirmation of lateral movement.",
+        "uncertainty": "The breadth of credential reuse, scope of lateral movement, timing of exfiltration, and comparative effectiveness of isolation versus targeted measures were not fully known."
+      },
+      {
+        "id": 4,
+        "summary": "Board-budget recommendation: the CISO started from an eighteen-month-old $240,000 remediation estimate and made only a small upward adjustment despite current quotes of $310,000 to $340,000.",
+        "evidence_before": [
+          "A privileged-access segmentation project had been scoped eighteen months earlier at $240,000 and was never funded.",
+          "Current vendor quotes for the work were $310,000 to $340,000.",
+          "The current quotes reflected inflation and expanded cloud scope.",
+          "The board requested one budget figure."
+        ],
+        "evidence_after": [
+          "The CISO recommended a figure close to $240,000 with only a modest upward adjustment.",
+          "The chosen recommendation remained below the contemporary quote range."
+        ],
+        "goals_constraints": [
+          "Provide the board with a single remediation-budget recommendation.",
+          "Meet the post-incident board deadline.",
+          "Avoid making a larger budget recommendation without further scope justification."
+        ],
+        "alternatives": [
+          "Base the recommendation on the current vendor quotes.",
+          "Request further scoping before providing a figure.",
+          "Use the legacy estimate as the starting point and adjust it modestly."
+        ],
+        "decision_basis": "The $240,000 estimate remained the CISO's mental reference point, and making a limited adjustment felt easier than explaining a move toward the current $310,000 to $340,000 range.",
+        "time_pressure": "The board figure was due two days after operational stabilization.",
+        "uncertainty": "The exact final scope required further validation, although current market quotes for the stated scope were available."
+      }
+    ]
+  },
+  "target_occurrence_audit": [
+    {
+      "instance_id": "cb_01",
+      "bias": "Adjustment and anchoring",
+      "requested_occurrences_for_bias": 2,
+      "status": "supported",
+      "decision_point": 1,
+      "supporting_quote": "“The score gave me a number to build the response around” and “I knew the score doesn't weigh account privilege. I just didn't push past it that morning.”",
+      "evidence_location": "Decision point 1, the participant's answer to the alternatives and confidence probes.",
+      "mechanism": "The automated Medium severity score became the initial reference point for urgency. The CISO knew that the model omitted privileged-account status, which was materially relevant contrary evidence, but did not sufficiently adjust the response or broaden the investigation.",
+      "strength": "moderate",
+      "confidence": 0.9,
+      "plausible_nonbias_explanation": "A Medium score may be a reasonable operational starting point in a lean SOC, and reduced staffing created a legitimate constraint. The occurrence is supported because the participant explicitly says that the number structured the response despite recognizing a known limitation in the model.",
+      "additional_evidence_needed": "None.",
+      "revision_needed": false,
+      "revision": {
+        "revision_type": "none",
+        "location": "Decision point 1, initial-triage rationale.",
+        "current_defect": "No material defect. The numeric reference point, contrary privileged-account information, and inadequate adjustment are independently observable.",
+        "minimal_change_instruction": "No change required.",
+        "preserve": [
+          "The Medium automated score",
+          "The privileged-account context",
+          "The one-analyst staffing constraint",
+          "The separate adjacent-alert attentional episode"
+        ],
+        "avoid_creating": [
+          "An assertion that automated scoring is inherently authoritative",
+          "A second numeric reference point at the same decision point"
+        ],
+        "expected_post_revision_status": "supported"
+      }
+    },
+    {
+      "instance_id": "cb_02",
+      "bias": "Selective Attention Bias or Inattentional Blindness",
+      "requested_occurrences_for_bias": 1,
+      "status": "supported",
+      "decision_point": 1,
+      "supporting_quote": "“I didn't loop the second alert in as something to check in parallel — the analyst was stretched thin, and the jump server was the concrete lead.”",
+      "evidence_location": "Decision point 1, the CISO's explanation of competing attention during triage, corroborated by later identification of shared source IP activity.",
+      "mechanism": "The investigation narrowed around the salient jump-server alert, causing a concurrent, adjacent, and later-demonstrated relevant authentication-server alert to remain unexamined during the initial response.",
+      "strength": "moderate",
+      "confidence": 0.86,
+      "plausible_nonbias_explanation": "A sole analyst might reasonably prioritize a privileged jump-server alert over a lower-priority alert. The occurrence remains supported because the second alert was known, temporally proximate, and potentially correlatable, but was excluded from the initial investigative scope.",
+      "additional_evidence_needed": "None.",
+      "revision_needed": false,
+      "revision": {
+        "revision_type": "none",
+        "location": "Decision point 1, discussion of the adjacent authentication-server alert.",
+        "current_defect": "No material defect. The attention-narrowing mechanism is distinct from the severity-anchor mechanism.",
+        "minimal_change_instruction": "No change required.",
+        "preserve": [
+          "The nine-minute timing relationship",
+          "The adjacent authentication-server context",
+          "The later source-IP overlap",
+          "The analyst-capacity constraint"
+        ],
+        "avoid_creating": [
+          "Language indicating that the second alert was unavailable or inaccessible",
+          "Additional ignored alerts that would create unintended repeated instances"
+        ],
+        "expected_post_revision_status": "supported"
+      }
+    },
+    {
+      "instance_id": "cb_03",
+      "bias": "Endowment",
+      "requested_occurrences_for_bias": 1,
+      "status": "supported",
+      "decision_point": 2,
+      "supporting_quote": "“Those dashboards just felt more valuable because they were ours — built by my own team over years — and I didn't actually sit down and test whether that feeling matched their current value against what procurement's options offered.”",
+      "evidence_location": "Decision point 2, vendor-renewal rationale immediately after the description of the procurement alternatives.",
+      "mechanism": "The CISO explicitly assigns greater value to the incumbent platform's dashboards because they are already owned and were built by the CISO's team, while acknowledging that this valuation was not tested against the current value offered by procurement's alternatives.",
+      "strength": "strong",
+      "confidence": 0.96,
+      "plausible_nonbias_explanation": "The prior dashboards and detection logic may have genuine migration and continuity value. However, the participant directly distinguishes that practical value from an unvalidated feeling that the dashboards were more valuable because they were the team's own work, which supports an ownership-linked valuation mechanism.",
+      "additional_evidence_needed": "None.",
+      "revision_needed": false,
+      "revision": {
+        "revision_type": "none",
+        "location": "Decision point 2, vendor-renewal rationale.",
+        "current_defect": "No material defect. The ownership-linked valuation inflation is explicit and separate from the restricted comparison set.",
+        "minimal_change_instruction": "No change required.",
+        "preserve": [
+          "The six-year incumbent relationship",
+          "The custom dashboards and detection logic",
+          "The workable transition support offered by procurement alternatives",
+          "The separate limited-alternatives mechanism"
+        ],
+        "avoid_creating": [
+          "A claim that transition had no operational cost",
+          "Additional ownership-based valuation episodes elsewhere in the interview",
+          "A full current-value comparison that would neutralize this occurrence"
+        ],
+        "expected_post_revision_status": "supported"
+      }
+    },
+    {
+      "instance_id": "cb_04",
+      "bias": "Exposure to limited alternatives",
+      "requested_occurrences_for_bias": 1,
+      "status": "supported",
+      "decision_point": 2,
+      "supporting_quote": "“Procurement had actually flagged three other vendors with comparable bundles, including transition support that looked broadly workable, but I didn't work through that list closely” and “my real comparison ended up being just those two.”",
+      "evidence_location": "Decision point 2, vendor-comparison description before the renewal rationale.",
+      "mechanism": "The CISO had access to a broader procurement-qualified vendor set but practically restricted the comparison to the incumbent and one closest competitor mentioned by peers.",
+      "strength": "moderate",
+      "confidence": 0.97,
+      "plausible_nonbias_explanation": "A live incident and imminent auto-renewal could reasonably justify narrowing a review temporarily. The occurrence is supported because the participant acknowledges that qualified, workable alternatives existed but were not considered in the actual decision comparison.",
+      "additional_evidence_needed": "None.",
+      "revision_needed": false,
+      "revision": {
+        "revision_type": "none",
+        "location": "Decision point 2, vendor-comparison-set explanation.",
+        "current_defect": "No material defect. The broader available set and narrower practical comparison are both explicit.",
+        "minimal_change_instruction": "No change required.",
+        "preserve": [
+          "Procurement's three additional comparable options",
+          "The workable transition-support detail",
+          "The incumbent-plus-one-competitor comparison",
+          "The distinction from incumbent valuation"
+        ],
+        "avoid_creating": [
+          "A statement that procurement's options were disqualified",
+          "A complete analysis of every procurement option before renewal"
+        ],
+        "expected_post_revision_status": "supported"
+      }
+    },
+    {
+      "instance_id": "cb_05",
+      "bias": "Illusion of control",
+      "requested_occurrences_for_bias": 1,
+      "status": "supported",
+      "decision_point": 3,
+      "supporting_quote": "“Nobody had actually validated whether that script would catch the same credentials being reused on a different host or opening a parallel session elsewhere — but in the moment, having eyes on that one account felt like enough to hold off on isolation.”",
+      "evidence_location": "Decision point 3, containment-decision account immediately after the description of the overnight monitoring script.",
+      "mechanism": "The CISO recognized that the self-implemented overnight script had not been validated for reuse on other hosts or parallel sessions, yet generalized account-specific visibility into confidence that broader isolation could be deferred.",
+      "strength": "strong",
+      "confidence": 0.96,
+      "plausible_nonbias_explanation": "Targeted monitoring may still be a legitimate interim measure, particularly given payment-service disruption costs. The occurrence is supported because the participant explicitly treats unvalidated local monitoring as sufficient coverage for a broader containment decision.",
+      "additional_evidence_needed": "None.",
+      "revision_needed": false,
+      "revision": {
+        "revision_type": "none",
+        "location": "Decision point 3, description of the overnight script and the decision to defer isolation.",
+        "current_defect": "No material defect. The lack of validation and the unsupported extension from one-account visibility to adequate coverage are explicit.",
+        "minimal_change_instruction": "No change required.",
+        "preserve": [
+          "The script's narrow account-specific monitoring scope",
+          "The absence of validation for credential reuse or parallel sessions",
+          "The full-isolation alternative",
+          "The separate financial-loss-framing mechanism"
+        ],
+        "avoid_creating": [
+          "A claim that the script guaranteed containment",
+          "Additional self-implemented controls that would create separate illusion-of-control occurrences",
+          "New financial details that blur this occurrence into loss framing"
+        ],
+        "expected_post_revision_status": "supported"
+      }
+    },
+    {
+      "instance_id": "cb_06",
+      "bias": "Loss Framing",
+      "requested_occurrences_for_bias": 1,
+      "status": "supported",
+      "decision_point": 3,
+      "supporting_quote": "“The guaranteed dollar figure against an unquantified benefit made isolation feel like the more expensive option, even though I couldn't put a number on the other side.”",
+      "evidence_location": "Decision point 3, response to the interviewer's question about what was decisive.",
+      "mechanism": "The CISO compared a certain, concrete loss from payment-segment isolation with an unquantified security benefit. This asymmetric representation made the isolation option seem decisively more expensive and tilted the choice toward targeted containment.",
+      "strength": "moderate",
+      "confidence": 0.9,
+      "plausible_nonbias_explanation": "The approximately $180,000 processing-fee impact may be a real and highly relevant business cost, while the security benefit was genuinely difficult to quantify. The occurrence is supported because the participant identifies the guaranteed-loss framing itself as what converted the choice into a one-sided cost comparison.",
+      "additional_evidence_needed": "None.",
+      "revision_needed": false,
+      "revision": {
+        "revision_type": "none",
+        "location": "Decision point 3, explanation of the isolation-versus-targeted-monitoring tradeoff.",
+        "current_defect": "No material defect. The certain-loss versus unquantified-benefit framing is explicit and distinct from the script-confidence mechanism.",
+        "minimal_change_instruction": "No change required.",
+        "preserve": [
+          "The CFO's approximately $180,000 estimate",
+          "The IR firm's qualitative risk-reduction statement",
+          "The CISO's acknowledgment that the security benefit was not quantified"
+        ],
+        "avoid_creating": [
+          "A formal expected-loss calculation that would neutralize the framing effect",
+          "A claim that the CFO's estimate was fictitious or arbitrary"
+        ],
+        "expected_post_revision_status": "supported"
+      }
+    },
+    {
+      "instance_id": "cb_07",
+      "bias": "Adjustment and anchoring",
+      "requested_occurrences_for_bias": 2,
+      "status": "supported",
+      "decision_point": 4,
+      "supporting_quote": "“I went with something close to the original $240,000, nudged up a bit” despite “current vendor quotes ... $310,000 to $340,000,” followed by “It was already the reference point in my head.”",
+      "evidence_location": "Decision point 4, board-budget recommendation and follow-up explanation.",
+      "mechanism": "The eighteen-month-old $240,000 estimate operated as the budget anchor. The CISO made only a minor adjustment despite materially higher contemporary quotes that reflected inflation and added cloud scope, because a larger adjustment created justification friction.",
+      "strength": "strong",
+      "confidence": 0.98,
+      "plausible_nonbias_explanation": "The CISO may reasonably have wanted additional scoping validation before committing to the high end of the current quote range. The occurrence remains supported because the old figure is explicitly identified as the mental reference point and the modest adjustment is attributed to ease of justification rather than a fresh scope-based valuation.",
+      "additional_evidence_needed": "None.",
+      "revision_needed": false,
+      "revision": {
+        "revision_type": "none",
+        "location": "Decision point 4, budget-figure selection and retrospective explanation.",
+        "current_defect": "No material defect. The distinct legacy numeric anchor, contrary current evidence, and insufficient adjustment are explicit.",
+        "minimal_change_instruction": "No change required.",
+        "preserve": [
+          "The $240,000 legacy estimate",
+          "The $310,000 to $340,000 current quote range",
+          "Inflation and expanded cloud scope",
+          "The board's request for a single figure"
+        ],
+        "avoid_creating": [
+          "An additional budget reference figure",
+          "A completed fresh-scoping process before the board recommendation"
+        ],
+        "expected_post_revision_status": "supported"
+      }
+    }
+  ],
+  "bias_level_counts": [
+    {
+      "bias": "Adjustment and anchoring",
+      "requested_count": 2,
+      "supported_count": 2,
+      "weak_count": 0,
+      "absent_count": 0,
+      "merged_count": 0,
+      "accidental_count": 0,
+      "count_satisfied": true
+    },
+    {
+      "bias": "Exposure to limited alternatives",
+      "requested_count": 1,
+      "supported_count": 1,
+      "weak_count": 0,
+      "absent_count": 0,
+      "merged_count": 0,
+      "accidental_count": 0,
+      "count_satisfied": true
+    },
+    {
+      "bias": "Illusion of control",
+      "requested_count": 1,
+      "supported_count": 1,
+      "weak_count": 0,
+      "absent_count": 0,
+      "merged_count": 0,
+      "accidental_count": 0,
+      "count_satisfied": true
+    },
+    {
+      "bias": "Selective Attention Bias or Inattentional Blindness",
+      "requested_count": 1,
+      "supported_count": 1,
+      "weak_count": 0,
+      "absent_count": 0,
+      "merged_count": 0,
+      "accidental_count": 0,
+      "count_satisfied": true
+    },
+    {
+      "bias": "Endowment",
+      "requested_count": 1,
+      "supported_count": 1,
+      "weak_count": 0,
+      "absent_count": 0,
+      "merged_count": 0,
+      "accidental_count": 0,
+      "count_satisfied": true
+    },
+    {
+      "bias": "Loss Framing",
+      "requested_count": 1,
+      "supported_count": 1,
+      "weak_count": 0,
+      "absent_count": 0,
+      "merged_count": 0,
+      "accidental_count": 0,
+      "count_satisfied": true
+    }
+  ],
+  "additional_candidate_biases": [
+    {
+      "bias": "Automation bias or automation-induced deference",
+      "decision_point": 1,
+      "supporting_quote": "“I saw Medium and it matched my gut read, so we moved from there” and “The score gave me a number to build the response around.”",
+      "mechanism": "The CISO relies on an automated severity output despite knowing that its model excludes a material feature, account privilege.",
+      "confidence": 0.63,
+      "status": "candidate",
+      "plausible_nonbias_explanation": "The score could be a legitimate triage aid rather than an authority cue. The more specifically established mechanism is anchoring on a numeric reference point.",
+      "revision_recommendation": "none"
+    },
+    {
+      "bias": "Sunk-cost effect or status-quo bias",
+      "decision_point": 2,
+      "supporting_quote": "“The core reasoning was really about the integration work already sunk into it” and “switching felt costly given what we'd already built.”",
+      "mechanism": "Past customization effort supports a preference for retaining the incumbent without a full current comparative assessment.",
+      "confidence": 0.83,
+      "status": "candidate",
+      "plausible_nonbias_explanation": "The prior work may create genuine forward-looking migration costs, continuity concerns, and detection-coverage risk. It is not a separate required occurrence because it is part of the same vendor-valuation episode that supports the endowment mechanism.",
+      "revision_recommendation": "none"
+    },
+    {
+      "bias": "Outcome bias or hindsight bias",
+      "decision_point": 3,
+      "supporting_quote": "“About two hours later, the same compromised credentials touched a second internal system the script wasn't watching.”",
+      "mechanism": "The negative outcome could tempt an evaluator to treat the preceding targeted-containment decision as necessarily irrational or biased.",
+      "confidence": 0.94,
+      "status": "rejected",
+      "plausible_nonbias_explanation": "The interview does not show the participant revising the prior judgment solely because of the later outcome. The later result establishes incomplete script coverage, not that full isolation would certainly have prevented the harm.",
+      "revision_recommendation": "none"
+    }
+  ],
+  "nonbias_cues": [
+    {
+      "cue": "Only one analyst was available because another analyst was on leave.",
+      "location": "Initial incident context and decision point 1.",
+      "why_not_bias": "This is an organizational capacity constraint. It may explain why the CISO favored narrow triage, but limited staffing alone does not establish selective attention or anchoring."
+    },
+    {
+      "cue": "The SIEM model omitted account privilege from its scoring logic.",
+      "location": "Initial incident description.",
+      "why_not_bias": "This is an information-quality and tooling limitation. It supports an anchoring inference only because the participant states that the displayed score remained the response reference despite this known limitation."
+    },
+    {
+      "cue": "Migration from an incumbent EDR platform during a live incident may create real continuity and detection-coverage risks.",
+      "location": "Vendor-renewal decision point.",
+      "why_not_bias": "This is a plausible operational risk-management consideration. The endowment occurrence is supported by the additional ownership-based valuation statement, not by the existence of migration cost itself."
+    },
+    {
+      "cue": "Payment-segment isolation was estimated to impose a same-day processing-fee impact of approximately $180,000.",
+      "location": "Containment decision point.",
+      "why_not_bias": "A material immediate business cost is legitimate decision evidence. The bias-relevant feature is the asymmetric weighting of that certain loss against an unquantified security benefit, not consideration of cost itself."
+    },
+    {
+      "cue": "The monitoring script later failed to observe credential use on a second system.",
+      "location": "Containment outcome.",
+      "why_not_bias": "A bad outcome is not itself evidence that the earlier decision was biased. It corroborates that the script had limited coverage but does not establish that full isolation would have prevented the later activity."
+    },
+    {
+      "cue": "The board demanded one budget figure soon after incident stabilization.",
+      "location": "Board-budget decision point.",
+      "why_not_bias": "Deadline pressure and the need to present a defensible single number are ordinary task constraints. Anchoring is established by the CISO's explicit reliance on the old estimate despite current quotes."
+    }
+  ],
+  "causal_audit": {
+    "causal_claims": [
+      {
+        "claim": "Displaying a Medium SIEM score influenced the CISO's initial urgency assessment and may have delayed attention to the related authentication-server alert.",
+        "evidence": "The CISO states that the score gave them a number around which to build the response and says that, without the score, they might have weighted privilege more heavily and found the overlap sooner.",
+        "assessment": "Supported as a self-reported causal mechanism, but not as a clean causal effect because the jump-server alert's salience and the one-analyst staffing constraint are competing explanations."
+      },
+      {
+        "claim": "The CFO's quantified certain-loss framing influenced the decision to avoid full isolation.",
+        "evidence": "The CISO says the guaranteed dollar figure versus an unquantified benefit made isolation feel more expensive and says that without the quantified figure they would have pressed the IR firm for a more concrete risk explanation.",
+        "assessment": "Strongly supported as a participant-reported influence on the decision framing, while the financial cost remains a legitimate substantive consideration."
+      },
+      {
+        "claim": "The old $240,000 budget estimate influenced the board recommendation despite current higher quotes.",
+        "evidence": "The CISO identifies the legacy estimate as the reference point in their head and explains that a modest adjustment felt easier than justifying a move toward the current quote range.",
+        "assessment": "Strongly supported as a self-reported anchoring mechanism."
+      }
+    ],
+    "correlation_causation_risks": [
+      {
+        "risk": "The later discovery of source-IP overlap does not prove that immediate joint triage would have prevented lateral movement or altered the incident outcome.",
+        "implication": "Use the later discovery only to establish the early alert's relevance, not as proof of a counterfactual security outcome."
+      },
+      {
+        "risk": "The later second-system activity and discovered exfiltration do not prove that full segment isolation would have prevented compromise or loss.",
+        "implication": "Do not infer decision invalidity solely from the adverse outcome."
+      },
+      {
+        "risk": "The presence of workable vendor transition support does not prove that a switch would have been better during the incident.",
+        "implication": "The vendor episode supports a process-level bias in valuation and alternative generation, not a claim about which vendor objectively should have been selected."
+      }
+    ],
+    "counterfactual_present": true,
+    "changed_variable": "Presence and salience of the SIEM's automated Medium severity pre-score at initial triage",
+    "held_constant": [
+      "Company profile and lean-SOC staffing context",
+      "Privileged jump-server compromise and adjacent authentication-server alert",
+      "Incident sequence and technical details",
+      "Vendor-renewal and budget-cycle timing",
+      "CFO's revenue-impact framing at decision point 3",
+      "Four-decision-point interview structure"
+    ],
+    "causal_coherence": "moderate",
+    "explanation": "The counterfactual preserves the intended focal manipulation: the pre-computed Medium score is removed while the incident context remains unchanged. The participant provides a coherent directional prediction that they would have weighted account privilege more heavily and potentially noticed the authentication-server overlap sooner. However, the response remains retrospective and probabilistic, and it does not isolate the score from competing influences such as reduced analyst capacity and the jump-server alert's inherent salience."
+  },
+  "quality_scores": {
+    "occupational_realism": 92,
+    "cta_fidelity": 90,
+    "bias_separability": 88,
+    "bias_subtlety": 78,
+    "control_fidelity": 100,
+    "counterfactual_fidelity": 81,
+    "narrative_coherence": 93,
+    "naturalness": 88,
+    "hidden_label_integrity": 89,
+    "overall_quality": 89
+  },
+  "revision_summary": {
+    "revision_required": false,
+    "supported_occurrence_total": 7,
+    "requested_occurrence_total": 7,
+    "missing_occurrence_total": 0,
+    "accidental_occurrence_total": 0,
+    "priority": "none",
+    "recommended_action": "accept",
+    "global_revision_constraints": [
+      "No substantive revision is required because all seven planned occurrences are independently supported and remain separable across the four intended decision points.",
+      "If future generation aims to preserve greater naturalism, reduce only the explicitness of the ownership-language and unvalidated-script admissions without removing their required mechanism cues.",
+      "Do not eliminate the nonbias operational constraints, including the staffing shortfall, live-incident timing, genuine migration risk, and real payment-impact cost; they provide necessary competing explanations and occupational realism.",
+      "Do not treat later exfiltration or second-system access as proof that the earlier containment decision was biased."
+    ],
+    "revision_order": []
+  },
+  "failure_flags": []
+}

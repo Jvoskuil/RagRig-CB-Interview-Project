@@ -1,0 +1,67 @@
+# Ranker comparison: the default hybrid RRF ranker vs. pure cosine ranking
+# (WeightedFusionRanker alpha = 1.0), on the ragrig default chat backend
+# (Ollama, qwen3.5:9b), varying the context budget (4096 and 8192 tokens).
+# Corpus = the embedded HTML fixture book, default pipeline (full parser
+# registry + MarkdownChunker).
+
+corpus_dirs = ["papers=/mnt/c/Users/Joost/Documents/papers"]
+
+queries = [
+   "Interviewer: Thanks for making time for this. Just to confirm, this conversation is for our instructional practice research and will be handled confidentially. Can you start by telling me your role and how the Bridge Literacy pilot came about? Participant: Sure. I'm the Curriculum Coordinator for K-5, and I also run our instructional coaching cycle across the elementary buildings. I brought Bridge Literacy in after seeing it presented at a state conference last spring. It's a structured literacy approach, more explicit phonics sequencing than what we'd been using. I pitched it to the superintendent, and we set it up as a trimester pilot in six classrooms across our two elementary schools. Interviewer: And what were you trying to accomplish with the checkpoint review you did partway through? Participant: The board needed a scale-up recommendation before the next budget cycle, so I had to look at the trimester oral reading fluency benchmark data, figure out if the pilot was working, and decide what to tell the finance committee. There's real competition for dollars — the math intervention team wants the same PD budget — so whatever I brought needed to be solid. Interviewer: Walk me through what happened when the data actually came in. Participant: The literacy specialist sent me the classroom-level fluency results in early February. Three classrooms were clearly above the expected growth rate, three were flat or just mixed. My first reaction was — okay, this is a real pilot, we're going to have variation. But when I looked closer at the three flat classrooms, I noticed the testing had happened on different days at the two schools because of a scheduling conflict. That felt like something worth flagging. I asked the specialist to check whether that timing gap could explain the flat results. Interviewer: Did you look at the testing conditions in the classrooms that showed gains too? Participant: Not in the same way, no. Those looked like the program was doing what we hoped, so I didn't feel the same urgency to dig into how the testing was administered there. In hindsight, the scheduling issue technically applied across the whole window, not just to certain rooms, but at the time my attention went to the classrooms where the results didn't match what I expected. Interviewer: What did you learn afterward? Participant: The specialist came back about a week later and said the testing conditions were actually pretty similar across all six classrooms — the day-to-day difference wasn't significant. And separately, one of the flat classrooms had unusually high absenteeism that same week, which probably mattered more than timing. Interviewer: When you were deciding how much scrutiny to apply, what alternatives did you consider? Participant: I could have treated all six the same way from the start — same level of questioning regardless of outcome. Or waited for the specialist to audit everything before drawing any conclusions. I didn't do either of those first. I went straight to questioning the ones that weren't showing growth. Interviewer: Let's move to the board meeting prep. What did that involve? Participant: I had fifteen minutes on the agenda, and the math team was presenting right after me. I had the six-classroom fluency numbers plus a walkthrough-observation log the specialist and I had been keeping. I decided to bring a highlights slide with the aggregate trend line rather than all six classrooms individually — mostly a time issue, honestly. Fifteen minutes isn't enough to walk through six separate data profiles and still leave room for questions. Interviewer: Any consequence from that choice? Participant: One board member asked for classroom-by-classroom detail I hadn't included. I had the numbers on hand, just not on the slide, so I was able to answer, but it did mean I was talking through figures I hadn't rehearsed presenting. Interviewer: Around the same time, you had PD feedback to review. What did that look like? Participant: Five of six pilot teachers filled out a survey after the coaching session, rated it helpful or very helpful. One comment mentioned the pacing guide felt rushed for lower-performing students. It's a small sample and it was voluntary, so I noted that caveat when I summarized it — I didn't want to present five responses as if that settled anything about how teachers overall felt. Interviewer: Did you follow up on the one teacher who didn't respond? Participant: Not right away. The specialist later mentioned that two of the non-responses were actually invitations that went to teachers in the flat classrooms, which made me wonder if we were mostly hearing from teachers who were already seeing good results. I flagged that as a limitation rather than treating the survey as fully representative. Interviewer: Let's get to the recommendation memo. How did you explain the fluency gains? Participant: The aggregate number was a modest net gain across all six classrooms. I'd been doing biweekly coaching visits in four of the six rooms all trimester — modeling lessons, giving feedback, that kind of thing. When I wrote the memo, I framed the gains as largely a product of that coaching cycle, and I recommended that if we scale up, we'd need to replicate that same coaching frequency districtwide, which means adding coaching staff. Interviewer: What about the two classrooms that improved without your direct coaching visits? Participant: They did show gains too, yes. I mentioned the new decodable-text materials and the smaller class sizes in a line or two, but the core of the recommendation centered on the coaching model, since that's the piece I could speak to most directly and the piece I think drove the results I was seeing week to week. Interviewer: A board member raised that point later, is that right? Participant: Right, someone pointed out afterward that the two non-visited classrooms also improved, and asked how that fit with a coaching-centered explanation. I said we'd need more study to fully untangle it — with materials, class size, and coaching all overlapping in those rooms, I couldn't say for certain which factor explains what we saw. Interviewer: What would have needed to be different for you to weight materials or class size more heavily in that memo? Participant: Probably if I'd had the detailed classroom-by-classroom comparison — matching each room's growth to whether I'd coached it, plus the materials and class-size notes — pulled together before I drafted, instead of after I'd already sent the memo in. I had the aggregate fluency numbers going into the writing, but that side-by-side breakdown didn't come together until later. I was writing under deadline, and the coaching piece was what I had the most direct visibility into. Interviewer: If someone else had gotten these same results without your involvement, how do you think you'd have explained the gains? Participant: That's fair to ask. I'd probably have looked harder at the materials and class-size differences if I weren't the one who ran the coaching. I don't think I was ignoring those factors on purpose, but they weren't the first thing I reached for. Interviewer: Looking back, what would you do differently if you ran this checkpoint again? Participant: I'd ask the specialist to review testing conditions across every classroom at the same time, before I form an impression of which ones look right. And I'd probably pull together the full classroom-by-classroom comparison before I draft the causal explanation in the memo, not partway through. Interviewer: That's really helpful context. Thank you for walking through this in detail."
+]
+
+[[agents]]
+label = "Gemini Prompt 8192"
+[agents.chat]
+provider = "deepseek"            # "ollama" | "deepseek"
+#model = "qwen2.5:1.5b"         # ignored for deepseek
+context_tokens = 8192          # context budget for retrieved chunks
+deepseek_model = "deepseek-v4-pro"   # deepseek only
+#deepseek_api_key = DEEPSEEK_API_KEY # deepseek only (or DEEPSEEK_API_KEY env)
+# context_size_mode = "Auto"          # "Auto" | "Forced"
+system_prompt_path = "prompt_gemini.md"    # custom system prompt ({context} placeholder)
+# request_timeout_secs = 300          # per-request timeout, None = no timeout
+[agents.chat.params]                # generation overrides (all optional)
+# temperature = 0.7
+# top_p = 0.9
+# max_tokens = 1024
+seed = 42
+
+[[agents]]
+label = "Sonar Prompt 8192"
+[agents.chat]
+provider = "deepseek"            # "ollama" | "deepseek"
+#model = "qwen2.5:1.5b"         # ignored for deepseek
+context_tokens = 8192          # context budget for retrieved chunks
+deepseek_model = "deepseek-v4-pro"   # deepseek only
+#deepseek_api_key = DEEPSEEK_API_KEY # deepseek only (or DEEPSEEK_API_KEY env)
+# context_size_mode = "Auto"          # "Auto" | "Forced"
+system_prompt_path = "prompt_sonar.md"    # custom system prompt ({context} placeholder)
+# request_timeout_secs = 300          # per-request timeout, None = no timeout
+ [agents.chat.params]                # generation overrides (all optional)
+# temperature = 0.7
+# top_p = 0.9
+# max_tokens = 1024
+ seed = 42
+
+[[agents]]
+label = "Sonnet Prompt 8192"
+[agents.chat]
+provider = "deepseek"            # "ollama" | "deepseek"
+#model = "qwen2.5:1.5b"         # ignored for deepseek
+context_tokens = 8192          # context budget for retrieved chunks
+deepseek_model = "deepseek-v4-pro"   # deepseek only
+#deepseek_api_key = DEEPSEEK_API_KEY # deepseek only (or DEEPSEEK_API_KEY env)
+# context_size_mode = "Auto"          # "Auto" | "Forced"
+system_prompt_path = "prompt_sonnet.md"    # custom system prompt ({context} placeholder)
+# request_timeout_secs = 300          # per-request timeout, None = no timeout
+[agents.chat.params]                # generation overrides (all optional)
+# temperature = 0.7
+# top_p = 0.9
+# max_tokens = 1024
+seed = 42
+
+# ---Embed testing ---
+[embed]
+top_k = 0
+#top_k = 50

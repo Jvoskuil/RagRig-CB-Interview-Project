@@ -1,0 +1,67 @@
+# Ranker comparison: the default hybrid RRF ranker vs. pure cosine ranking
+# (WeightedFusionRanker alpha = 1.0), on the ragrig default chat backend
+# (Ollama, qwen3.5:9b), varying the context budget (4096 and 8192 tokens).
+# Corpus = the embedded HTML fixture book, default pipeline (full parser
+# registry + MarkdownChunker).
+
+corpus_dirs = ["papers=/mnt/c/Users/Joost/Documents/papers"]
+
+queries = [
+    "Interviewer: Thanks for making time for this. This is for our case-review research file — I'll ask you to walk through your decision-making on the Riverside apartment case, and it's fine to say you don't recall something exactly. Okay to start? Participant: Sure, go ahead. Interviewer: Can you start with your role and how the case came to you? Participant: I was lead detective, my partner and I caught it together after patrol secured the scene. Apartment homicide, young woman, found by a coworker who came by when she missed a shift. We split canvass and paperwork like usual. Interviewer: Walk me through the scene. Participant: No forced entry, deadbolt engaged from inside. That tells you something — either she let someone in, or it's somebody with access. Pulled her phone, found a breakup with her ex about three weeks back, some heated texts, and he had a prior domestic disturbance call at that same address, maybe eight months earlier. Scene damage was mostly contained to the bedroom. Between the lock, the texts, and his history, that's where my attention went first. We also swabbed the scene and pushed it to an expedited lab track — there was already some media interest building, so we had a faster turnaround than usual, maybe a day instead of two or three. Interviewer: What was the objective at that stage? Participant: Get a working theory solid enough to direct the canvass without locking in before we had more to go on. Same clock as always — witness memory starts fading fast, and if it is someone connected to her, you don't want to give them time to get comfortable or leave town. Interviewer: Let's reconstruct the timeline. Participant: Day one, scene work, the ex's history surfaces, swabs go out on the expedited track. Overnight, the lab actually gets back to us — negative, no DNA match to him at the scene. Day two morning, we walk into the unit briefing already knowing that. Alibi still has a two-hour gap at that point. Day three, a second witness closes that gap, and we finally sit down properly with the rear-entrance witness, who gives us a much sharper description — turns out to match a guy with a burglary record in that block. Day four, we're drafting the referral for the DA liaison. Interviewer: First decision point — naming the ex as primary on day one, before any lab results. Participant: Right, nothing back yet at that point. We could've waited on forensics and the full canvass, or treated the rear-entrance sighting as equally weighted from the start. I named him primary anyway — the domestic history, the breakup timing, the locked door, that's a pattern worth acting on with the manpower we had. The rear entrance was just one line from a passerby at that stage, nothing to build resources around yet. Interviewer: What made that combination feel strong enough to commit to over waiting? Participant: Mostly experience. You don't get to split resources evenly on day one, so you go where the documented history points. That felt like a defensible use of the shift. Interviewer: Second decision point — the unit briefing, and this time you already had the negative DNA result in hand. Participant: Right, that's the part that made that morning different. We walk in already knowing the swab didn't match him. My partner still laid out the domestic-call history pretty forcefully, made the case that the DNA gap didn't mean much on its own. One of the junior guys raised the rear-entrance lead again, said it was worth a real look given the negative result, but it didn't get much traction — people moved on to warrant logistics for the ex fairly quickly. By the end of that meeting the case log still had him as primary, and nobody was formally assigned to run down the loitering report. Interviewer: How did you square keeping him primary with a negative result already sitting in front of the room? Participant: I didn't see it as ignoring it. The domestic history and the locked door were still unexplained either way, and everyone in the room seemed to land in the same place once my partner made the case — the DNA on its own didn't feel like it outweighed that. Reopening it right then would've meant pulling someone off the warrant work we were already moving on, and with the room settled, that didn't feel like the priority. Interviewer: Was there a point where the negative result almost changed the direction of that meeting? Participant: Briefly, when the junior detective brought it up. But once my partner and the lieutenant seemed comfortable holding the line, it didn't really get pushed further. Interviewer: Third decision point — day three, alibi closes and the rear-entrance description sharpens. Participant: That was the harder morning. Second witness closes the two-hour gap completely, and the rear-entrance guy's description gets a lot more specific — matches someone with a burglary record nearby. I still didn't shift the primary theory. The DNA was already a known factor by then, so it wasn't new information exactly — what was new was the alibi and the detailed description, and I kept coming back to the fact that it wasn't enough to undo what we'd already built around him, even though I could see it was chipping away at the case in a way the DNA result alone hadn't. On their own, without independent corroboration, I didn't treat them as decisive enough to flip the case. I logged the alternative as secondary and kept digging on our end. Interviewer: What was the basis for treating the closed alibi and the new description as not yet decisive? Participant: One witness closing a gap and one detailed description aren't the same as physical evidence tying someone to the scene. The domestic history was still sitting there unaddressed if it wasn't him. I didn't want to swing the whole case on two pieces of testimony without corroboration. Interviewer: Fourth decision point — drafting the referral memo. Participant: By day four we had two live threads: the ex, thinner now, and the burglary-record guy, whose statement was the freshest and most detailed thing in the file. When I wrote the summary for the DA liaison, that statement got the most space and read as the strongest piece on the page, more than the older scene notes or the original canvass material. Interviewer: What gave it that weight in the writing itself? Participant: Partly the detail — clearer description, better timing. But honestly, it was also just the last substantial thing that had come in before I sat down to write, so it was what was fresh in my head. I hadn't gone back and stacked it against the earlier material for corroboration, it just carried into the draft that way. The DA liaison ended up asking for supplemental work before filing on either of them. Interviewer: If the DNA result had come back after the briefing instead of before it, do you think the meeting would have gone differently? Participant: Possibly. Walking in without that result already known, the room might have leaned harder into the domestic history with less friction, since there'd have been nothing to explain away yet. Having it already on the table at least got it mentioned, even if it didn't change the outcome much. Interviewer: Had you seen a case before where a negative result early on still didn't shift the team's direction? Participant: A couple times, yeah. It's usually a reminder to keep digging on the alternative rather than treating one result as the final word either way. Interviewer: Looking back, is there a moment you'd want to redo? Participant: Probably assigning someone concretely to the rear-entrance lead right at that second briefing, once the negative result was already in the room. That felt like the moment a small procedural step could've changed the pace of everything after it. Interviewer: Anything else you'd want on record about how the case moved through those points? Participant: Just that nothing felt reckless in the moment. Every step had something behind it. It's only looking at the whole thing end to end now that the gaps stand out more. Interviewer: That's a good place to stop. Thanks for going through it in this detail."
+]
+
+[[agents]]
+label = "Gemini Prompt 8192"
+[agents.chat]
+provider = "deepseek"            # "ollama" | "deepseek"
+#model = "qwen2.5:1.5b"         # ignored for deepseek
+context_tokens = 8192          # context budget for retrieved chunks
+deepseek_model = "deepseek-v4-pro"   # deepseek only
+#deepseek_api_key = DEEPSEEK_API_KEY # deepseek only (or DEEPSEEK_API_KEY env)
+# context_size_mode = "Auto"          # "Auto" | "Forced"
+system_prompt_path = "prompt_gemini.md"    # custom system prompt ({context} placeholder)
+# request_timeout_secs = 300          # per-request timeout, None = no timeout
+[agents.chat.params]                # generation overrides (all optional)
+# temperature = 0.7
+# top_p = 0.9
+# max_tokens = 1024
+seed = 42
+
+[[agents]]
+label = "Sonar Prompt 8192"
+[agents.chat]
+provider = "deepseek"            # "ollama" | "deepseek"
+#model = "qwen2.5:1.5b"         # ignored for deepseek
+context_tokens = 8192          # context budget for retrieved chunks
+deepseek_model = "deepseek-v4-pro"   # deepseek only
+#deepseek_api_key = DEEPSEEK_API_KEY # deepseek only (or DEEPSEEK_API_KEY env)
+# context_size_mode = "Auto"          # "Auto" | "Forced"
+system_prompt_path = "prompt_sonar.md"    # custom system prompt ({context} placeholder)
+# request_timeout_secs = 300          # per-request timeout, None = no timeout
+ [agents.chat.params]                # generation overrides (all optional)
+# temperature = 0.7
+# top_p = 0.9
+# max_tokens = 1024
+ seed = 42
+
+[[agents]]
+label = "Sonnet Prompt 8192"
+[agents.chat]
+provider = "deepseek"            # "ollama" | "deepseek"
+#model = "qwen2.5:1.5b"         # ignored for deepseek
+context_tokens = 8192          # context budget for retrieved chunks
+deepseek_model = "deepseek-v4-pro"   # deepseek only
+#deepseek_api_key = DEEPSEEK_API_KEY # deepseek only (or DEEPSEEK_API_KEY env)
+# context_size_mode = "Auto"          # "Auto" | "Forced"
+system_prompt_path = "prompt_sonnet.md"    # custom system prompt ({context} placeholder)
+# request_timeout_secs = 300          # per-request timeout, None = no timeout
+[agents.chat.params]                # generation overrides (all optional)
+# temperature = 0.7
+# top_p = 0.9
+# max_tokens = 1024
+seed = 42
+
+# ---Embed testing ---
+[embed]
+top_k = 0
+#top_k = 50

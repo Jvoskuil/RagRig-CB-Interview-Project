@@ -1,0 +1,68 @@
+# Ranker comparison: the default hybrid RRF ranker vs. pure cosine ranking
+# (WeightedFusionRanker alpha = 1.0), on the ragrig default chat backend
+# (Ollama, qwen3.5:9b), varying the context budget (4096 and 8192 tokens).
+# Corpus = the embedded HTML fixture book, default pipeline (full parser
+# registry + MarkdownChunker).
+
+corpus_dirs = ["papers=/mnt/c/Users/Joost/Documents/papers"]
+
+queries = [
+    "Interviewer: Thanks for making time for this. Just to confirm before we start — this is being recorded for a research study on how administrators handle nonroutine incidents, your name won't be attached to the write-up, and you can skip any question you'd rather not answer. That okay? Participant: Yes, that's fine. Happy to walk through it. Interviewer: Great. Can you tell me your role and how long you've been in it? Participant: I'm the principal here, going on my sixth year. Before that I was an assistant principal for four years at a different building, so I've handled my share of discipline cases, but this one turned into more than a discipline case by the end of the day. Interviewer: Let's start broad. Can you describe the incident from the beginning? Participant: It started at lunch, around 11:40. Two of my lunch monitors came to get me because there'd been a shoving incident near the cafeteria exit — two students, pretty visible, in front of maybe thirty other kids. By the time I got down there the crowd had scattered, so I didn't see it myself. Within ten minutes, a twelve-second clip of it was already circulating on phones. My first priority was getting the two students separated somewhere safe and figuring out what actually happened. The two monitors gave me quick verbal accounts, but they didn't fully agree on who moved first. I didn't have time to track down every kid who'd been standing there, so I went with what I had — the clip and the two staff accounts — and started questioning the students individually. Honestly, by the time I sat the two of them down, I already had a rough read on who'd started it from that clip and the monitors' accounts, and I figured chasing down another bystander or two wasn't going to change that picture much, so I didn't send anyone looking. That felt like the right move with lunch ending and both kids needing to be away from an audience. Interviewer: What were you weighing in that moment? Participant: Safety first, then figuring out enough of the facts to make a fair call. I remember thinking a full investigation — tracking down every witness — wasn't realistic with the day running the way it does. I had maybe five hours before dismissal and this was already spreading online, so I needed to move. Interviewer: What happened after you separated them? Participant: About an hour later a second, longer video surfaced — different angle, showed more of the lead-up. A teacher also came forward saying she'd overheard one of the boys say something provocative right before the shove. What was interesting is that in that same longer clip, right before the provocative comment, you can actually see the other student — the one with the clean record — step in close and gesture at him first, which on its face reads like he escalated things too. One student already had two minor conduct referrals this year; the other had a clean record. My assistant principal had looked at the same materials and leaned toward the referral kid being primarily at fault. Meanwhile the family of the student with the clean record was already en route, upset. Interviewer: How did you fold that new information in? Participant: I looked at that stepping-in moment for a while, but I didn't weight it that heavily — it's the kind of thing you see in any hallway confrontation without it meaning much. What stood out more was the pattern: he's had two run-ins this year, both times some confrontational language before things escalated, so the provocative comment fit something I'd already seen from him. I finalized in-school suspension for him. There was a third potential witness mentioned, but locating and interviewing her would've taken more time than I had, and the picture I had felt coherent enough to act on. Interviewer: Was there a point where you considered pausing that decision, or applying something more provisional first? Participant: I thought about a short cooling-off removal for both of them instead of a suspension for one, just to buy time. But once the story clicked into place for me — the pattern, the video, the provocation — it felt more honest to act on what I believed happened rather than sit on it. Interviewer: Let's move to the communications piece. What came next? Participant: By early afternoon, rumors were going around that discipline had been applied unevenly — that we'd come down harder on one kid because of the group he's part of. District communications wanted a statement out the same day, and a local reporter had already called twice. At that point I felt I understood the full sequence — I had both videos, the referral history, the AP's account. So I put out a statement laying out what happened and why the discipline decision was made the way it was. Interviewer: When you say you had the full sequence — had you spoken with the school counselor by then, or heard from the third witness? Participant: No, not yet. I hadn't gotten to either. But between the two videos and the referral pattern, I felt confident I had enough of the real story to speak to it publicly. I didn't want to put out something that just said 'we're looking into it' — parents and reporters read that as us hiding something. Interviewer: What did the counselor tell you afterward? Participant: She mentioned there'd been tension between these two kids for weeks — some social media back-and-forth I hadn't known about. That reframed things a little. It wasn't just a one-off shove; there was history I hadn't accounted for when I made the statement. Interviewer: Let's talk about the walkout. What happened there? Participant: Word had spread that students were planning to walk out around 2:45 to protest what they saw as unfair treatment. It happened — a good chunk of the junior and senior classes went out to the front lawn. It lasted about twenty minutes and ended peacefully, no injuries, nobody left the property. There was also a fire drill scheduled at a neighboring building around the same time, and the noise actually helped pull a lot of kids back inside faster than we expected. Interviewer: How did you communicate that outcome to the superintendent? Participant: I sent a same-day summary. I walked through the decisions I'd made — separating the students quickly, finalizing discipline before it could drag on, getting ahead of the narrative with a statement — and how that combination kept things from escalating further. The AP and our resource officer were both out there during the walkout doing good work talking kids down, and I mentioned that, but the summary was really about how the decisions I'd made through the day set the conditions for it to stay peaceful. Interviewer: Did the fire drill timing factor into how you described it? Participant: I noted it in passing, but I don't think it was the deciding factor. I think the kids came back in largely because we'd handled the day the way we did — quick action, clear discipline, a statement that got ahead of the rumors. If I'd sat on my hands all afternoon I don't think it ends as cleanly. Interviewer: Looking back, if you'd had that third witness statement — the one suggesting the provocation came from the other student — before you finalized discipline, would anything have changed? Participant: That's fair. I go back and forth. Two days later, once we fully weighed her statement, we revised part of the discipline decision. So it clearly mattered. At the time, though, what I had felt solid enough to act on, and I stand by needing to make a call rather than let it drag into the next day. Interviewer: What about the walkout — if it had turned confrontational instead of ending peacefully, would you describe today differently? Participant: Probably. If it had gone badly I imagine my summary to the district would've focused more on the resource officer's response and less on the earlier discipline call. It's easier to see the whole day as one thread when it ends well. Interviewer: Last one — anything you'd do differently if a similar incident happened again tomorrow? Participant: I'd try to get the counselor and any additional witnesses into the loop earlier, even under time pressure. But I don't think the core approach — act fast, use what you've got, communicate clearly — was wrong. Some of it is just the nature of the job. You rarely get the full picture before you have to decide. Interviewer: That's really helpful. Thanks for walking through all of that in such detail. Participant: No problem. It was a long day, but not one I'm likely to forget."
+]
+
+[[agents]]
+label = "Gemini Prompt 8192"
+[agents.chat]
+provider = "deepseek"            # "ollama" | "deepseek"
+#model = "qwen2.5:1.5b"         # ignored for deepseek
+context_tokens = 8192          # context budget for retrieved chunks
+deepseek_model = "deepseek-v4-pro"   # deepseek only
+#deepseek_api_key = DEEPSEEK_API_KEY # deepseek only (or DEEPSEEK_API_KEY env)
+# context_size_mode = "Auto"          # "Auto" | "Forced"
+system_prompt_path = "prompt_gemini.md"    # custom system prompt ({context} placeholder)
+# request_timeout_secs = 300          # per-request timeout, None = no timeout
+[agents.chat.params]                # generation overrides (all optional)
+# temperature = 0.7
+# top_p = 0.9
+# max_tokens = 1024
+seed = 42
+
+[[agents]]
+label = "Sonar Prompt 8192"
+[agents.chat]
+provider = "deepseek"            # "ollama" | "deepseek"
+#model = "qwen2.5:1.5b"         # ignored for deepseek
+context_tokens = 8192          # context budget for retrieved chunks
+deepseek_model = "deepseek-v4-pro"   # deepseek only
+#deepseek_api_key = DEEPSEEK_API_KEY # deepseek only (or DEEPSEEK_API_KEY env)
+# context_size_mode = "Auto"          # "Auto" | "Forced"
+system_prompt_path = "prompt_sonar.md"    # custom system prompt ({context} placeholder)
+# request_timeout_secs = 300          # per-request timeout, None = no timeout
+ [agents.chat.params]                # generation overrides (all optional)
+# temperature = 0.7
+# top_p = 0.9
+# max_tokens = 1024
+ seed = 42
+
+[[agents]]
+label = "Sonnet Prompt 8192"
+[agents.chat]
+provider = "deepseek"            # "ollama" | "deepseek"
+#model = "qwen2.5:1.5b"         # ignored for deepseek
+context_tokens = 8192          # context budget for retrieved chunks
+deepseek_model = "deepseek-v4-pro"   # deepseek only
+#deepseek_api_key = DEEPSEEK_API_KEY # deepseek only (or DEEPSEEK_API_KEY env)
+# context_size_mode = "Auto"          # "Auto" | "Forced"
+system_prompt_path = "prompt_sonnet.md"    # custom system prompt ({context} placeholder)
+# request_timeout_secs = 300          # per-request timeout, None = no timeout
+[agents.chat.params]                # generation overrides (all optional)
+# temperature = 0.7
+# top_p = 0.9
+# max_tokens = 1024
+seed = 42
+
+
+# ---Embed testing ---
+[embed]
+#top_k = 0
+top_k = 50

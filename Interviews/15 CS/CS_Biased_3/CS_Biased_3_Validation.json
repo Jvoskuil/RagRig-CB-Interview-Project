@@ -1,0 +1,402 @@
+{
+  "validator_version": "2.0",
+  "interview_id": "CS_Biased_3_unlabeled",
+  "condition": "biased",
+  "domain_assessment": {
+    "domain": "Cybersecurity operations / security operations center (SOC) alert triage and incident response",
+    "role": "Tier 2 SOC analyst on an overnight triage rotation",
+    "objective": "Prioritize and disposition a high-volume alert queue within a 45-minute SLA while identifying and escalating material security incidents.",
+    "incident_type": "A likely endpoint compromise on a finance workstation involving an initially missed suspicious DNS query, periodic outbound connections, later threat-intelligence identification of a C2 rendezvous IP, and confirmed lateral-movement attempts.",
+    "confidence": 0.99
+  },
+  "structure_audit": {
+    "estimated_word_count": 1460,
+    "within_target_range": true,
+    "decision_point_count": 4,
+    "decision_points": [
+      {
+        "id": 1,
+        "summary": "The analyst bulk-closes low-severity alerts during a scheduled vulnerability-scan window, including an out-of-subnet FIN-WK-114 DNS alert.",
+        "evidence_before": [
+          "The queue contains close to 300 alerts in roughly twenty minutes.",
+          "Handoff notes state that an authenticated vulnerability scan is scheduled against 10.14.0.0/16.",
+          "Approximately 92% of alerts are tagged as originating from the scan subnet and resemble expected scanner activity.",
+          "The FIN-WK-114 DNS alert is low severity but is not actually from the scan subnet."
+        ],
+        "evidence_after": [
+          "The FIN-WK-114 alert is bulk-closed with the scan-related batch.",
+          "The analyst does not identify the host as outside 10.14.0.0/16 until hours later.",
+          "IR later finds activity consistent with the original DNS alert."
+        ],
+        "goals_constraints": [
+          "Avoid breaching a 45-minute alert-handling SLA.",
+          "Process a very high alert volume efficiently.",
+          "Distinguish expected scanner noise from potentially material alerts.",
+          "Work under overnight single-analyst operational pressure."
+        ],
+        "alternatives": [
+          "Spot-check a random sample of low-severity alerts outside the scan subnet.",
+          "Create an exception for alerts affecting finance or other non-IT departments.",
+          "Apply the scan-window filter only after validating its subnet boundary."
+        ],
+        "decision_basis": "The analyst visually attends to the dominant scan-related pattern and the low-severity tag, then applies the batch filter across the full set without separately isolating the out-of-subnet finance-host alert.",
+        "time_pressure": "High: nearly 300 alerts arrived in approximately twenty minutes, with a 45-minute SLA.",
+        "uncertainty": "Moderate: most alerts fit the expected scan explanation, but the finance-host DNS alert was anomalous relative to the stated scan subnet."
+      },
+      {
+        "id": 2,
+        "summary": "The analyst declares a phishing cluster contained after a self-authored suppression rule rapidly marks duplicate alerts as handled, without independently checking campaign coverage.",
+        "evidence_before": [
+          "A phishing cluster produces multiple similar alerts across inboxes.",
+          "The analyst had authored and deployed a repeat-sender suppression rule the prior week.",
+          "The rule auto-tags approximately 40 duplicate alerts as handled."
+        ],
+        "evidence_after": [
+          "The analyst tells the shift lead that the cluster appears contained.",
+          "The analyst marks the ticket as contained.",
+          "A sender-domain variant that the rule would not match is noticed only later."
+        ],
+        "goals_constraints": [
+          "Rapidly reduce duplicate-alert workload.",
+          "Provide the shift lead with a timely containment status.",
+          "Continue handling concurrent phishing and queue-management demands."
+        ],
+        "alternatives": [
+          "Check email-delivery or mailbox telemetry.",
+          "Manually inspect a sample of campaign messages.",
+          "Verify that the suppression rule covers sender-domain variants.",
+          "Ask another analyst to independently validate containment."
+        ],
+        "decision_basis": "The analyst interprets the rapid visible decline in alerts as confirmation that the personally authored rule successfully controlled the campaign, despite no verification of inbox-level delivery or rule coverage.",
+        "time_pressure": "Moderate to high: the analyst is handling a phishing cluster while receiving status requests from the shift lead.",
+        "uncertainty": "Moderate: the queue volume declines rapidly, but the analyst has not checked whether the rule covers all phishing variants or whether delivery continued."
+      },
+      {
+        "id": 3,
+        "summary": "The analyst downgrades periodic outbound activity on FIN-WK-114 as a likely backup-agent artifact rather than conducting available process-tree and threat-intelligence checks.",
+        "evidence_before": [
+          "EDR reports periodic outbound connections from FIN-WK-114 at roughly 55-second intervals.",
+          "The analyst personally resolved two recent, superficially similar backup-agent false positives.",
+          "The current alert has no IOC match and no direct process signature tying it to the backup agent.",
+          "Process-tree review and destination-IP threat-intelligence lookup are available options."
+        ],
+        "evidence_after": [
+          "The analyst records the alert as \"likely backup-agent artifact, monitor only.\"",
+          "The analyst returns to phishing follow-up rather than investigating the beacon further.",
+          "A later threat-intelligence update identifies the destination IP as a known C2 rendezvous point."
+        ],
+        "goals_constraints": [
+          "Manage concurrent phishing follow-up and endpoint-triage work.",
+          "Make a timely classification decision under workload pressure.",
+          "Avoid spending disproportionate time on a potentially benign recurring pattern."
+        ],
+        "alternatives": [
+          "Pull the process tree.",
+          "Check the destination IP against threat intelligence.",
+          "Escalate or hold the alert pending corroboration.",
+          "Treat the alert as an ambiguous new pattern rather than a recurrence."
+        ],
+        "decision_basis": "The analyst gives decisive weight to the two most recent backup-agent cases and the familiar interval pattern, while discounting the absent direct signature and foregoing available verification.",
+        "time_pressure": "High: the analyst is juggling two active workstreams and seeks a fast classification.",
+        "uncertainty": "High: the connection cadence resembles recent false positives, but there is no direct backup-agent attribution and no contemporaneous IOC validation."
+      },
+      {
+        "id": 4,
+        "summary": "After threat intelligence flags the destination as C2-related, the analyst escalates directly to incident response rather than waiting for shift-lead sign-off or rebuilding the prior evidence chain.",
+        "evidence_before": [
+          "Threat intelligence flags the destination IP as a known C2 rendezvous point.",
+          "This new information directly conflicts with the earlier backup-agent explanation.",
+          "The alert SLA has already lapsed by twelve minutes.",
+          "The shift lead is unavailable for approximately twenty minutes."
+        ],
+        "evidence_after": [
+          "The analyst escalates immediately to IR with an incomplete write-up.",
+          "IR confirms lateral-movement attempts from FIN-WK-114.",
+          "IR links the activity to the original DNS alert that had been bulk-closed earlier."
+        ],
+        "goals_constraints": [
+          "Limit further risk from a potentially active endpoint compromise.",
+          "Avoid additional delay after an SLA breach.",
+          "Act despite incomplete documentation and unavailable supervisory sign-off."
+        ],
+        "alternatives": [
+          "Escalate directly to IR.",
+          "Wait for the shift lead's sign-off.",
+          "Rebuild the evidence chain before escalating."
+        ],
+        "decision_basis": "The analyst prioritizes rapid escalation because the new intelligence materially raises risk and waiting for sign-off appears more hazardous than escalating with incomplete documentation.",
+        "time_pressure": "High: the SLA is already overdue, and the shift lead is unavailable for the next twenty minutes.",
+        "uncertainty": "Moderate: the full evidence chain is incomplete, but the threat-intelligence update is strong new disconfirming evidence."
+      }
+    ]
+  },
+  "target_occurrence_audit": [
+    {
+      "instance_id": "cb_01",
+      "bias": "Selective Attention Bias or Inattentional Blindness",
+      "requested_occurrences_for_bias": 1,
+      "status": "supported",
+      "decision_point": 1,
+      "supporting_quote": "I didn't clock at the time that it wasn't actually part of the scan subnet — I was scanning for the scan pattern, saw a low-severity tag, and it got swept up.",
+      "evidence_location": "Decision point 1, immediately after the interviewer's question about what happened specifically to FIN-WK-114.",
+      "mechanism": "The expected, high-volume scan-noise category captures attention during bulk triage. The analyst selects evidence consistent with that dominant pattern and fails to individuate a low-severity but out-of-pattern finance-host DNS alert before applying the batch-close action.",
+      "strength": "moderate",
+      "confidence": 0.96,
+      "plausible_nonbias_explanation": "High workload, poor queue design, and the absence of subnet color-coding materially contributed to the miss. Those conditions do not negate the bias because the participant explicitly describes attention being directed to the scan pattern rather than checking whether FIN-WK-114 fit its defining subnet criterion.",
+      "additional_evidence_needed": "None for the requested occurrence. The text already supplies the dominant category, the deviant item, the evidence-selection failure, the bulk action, and a plausible operational alternative.",
+      "revision_needed": false,
+      "revision": {
+        "revision_type": "none",
+        "location": "Decision point 1, FIN-WK-114 bulk-close explanation.",
+        "current_defect": "None material. The mechanism is independently observable and limited to the intended bulk-triage episode.",
+        "minimal_change_instruction": "No change required.",
+        "preserve": [
+          "The high-volume scheduled scan context.",
+          "The fact that FIN-WK-114 is outside the scan subnet.",
+          "The low-severity tag that makes the alert visually easy to assimilate into the batch.",
+          "The participant's explicit statement that they were scanning for the scan pattern."
+        ],
+        "avoid_creating": [
+          "Do not add a second separate missed-alert episode later in the chronology.",
+          "Do not recast the event solely as an interface defect or a generic SLA-driven error, which would obscure the attentional mechanism."
+        ],
+        "expected_post_revision_status": "supported"
+      }
+    },
+    {
+      "instance_id": "cb_02",
+      "bias": "Illusion of control",
+      "requested_occurrences_for_bias": 1,
+      "status": "supported",
+      "decision_point": 2,
+      "supporting_quote": "The rule's been solid since I built it, and seeing the count drop that fast felt like confirmation it was doing its job on this campaign too. I flagged it as contained in the ticket.",
+      "evidence_location": "Decision point 2, response to the question about verification of phishing containment.",
+      "mechanism": "The analyst attributes apparent campaign containment to a personally authored suppression mechanism. The rapid decline in visible duplicate alerts is treated as evidence that the mechanism controlled the campaign, despite no independent test of delivery, coverage, or variant handling.",
+      "strength": "moderate",
+      "confidence": 0.91,
+      "plausible_nonbias_explanation": "The rule may genuinely have reduced duplicate alerting, and rapid alert suppression can be operationally useful. However, a reduction in queue volume does not establish phishing containment, especially when an unmatched sender-domain variant exists and no delivery-log or manual validation occurs.",
+      "additional_evidence_needed": "None for a defensible subtle occurrence. The authorship cue, control attribution, unverified outcome inference, and later coverage gap are all textually present.",
+      "revision_needed": false,
+      "revision": {
+        "revision_type": "none",
+        "location": "Decision point 2, suppression-rule containment assessment.",
+        "current_defect": "None material. The participant's authorship of the rule is causally connected to the confidence judgment rather than merely incidental background.",
+        "minimal_change_instruction": "No change required.",
+        "preserve": [
+          "The participant's authorship and recent deployment of the suppression rule.",
+          "The distinction between duplicate-alert suppression and actual phishing containment.",
+          "The lack of independent inbox-delivery, manual-sample, or coverage verification.",
+          "The later discovery of an unmatched sender-domain variant."
+        ],
+        "avoid_creating": [
+          "Do not add another self-authored-control episode elsewhere in the interview.",
+          "Do not state the label \"illusion of control\" or add textbook self-assessment language.",
+          "Do not make the rule obviously defective from the outset; the current subtlety depends on its plausible usefulness for duplicate suppression."
+        ],
+        "expected_post_revision_status": "supported"
+      }
+    },
+    {
+      "instance_id": "cb_03",
+      "bias": "Recency",
+      "requested_occurrences_for_bias": 1,
+      "status": "supported",
+      "decision_point": 3,
+      "supporting_quote": "Mostly the interval and the fact that backup-agent issues had been the dominant explanation for anything beacon-like lately. If I'd seen this same alert two months ago, before those two tickets, I probably would've pulled the process tree first.",
+      "evidence_location": "Decision point 3, explanation of why the analyst considered the alert safe and closing hypothetical about the prior two shifts.",
+      "mechanism": "Two recently resolved backup-agent false positives disproportionately guide retrieval and classification of an ambiguous new beacon. The recent cases are weighted ahead of the absent direct signature and available IOC or threat-intelligence verification.",
+      "strength": "moderate",
+      "confidence": 0.97,
+      "plausible_nonbias_explanation": "Recent cases can legitimately inform triage priors, particularly when the cadence resembles known benign behavior. The occurrence is nevertheless supported because the analyst acknowledges no direct match, identifies verification options, and states that the recent cases were the decisive reason for foregoing them.",
+      "additional_evidence_needed": "None. The interview provides the recent-memory source, the ambiguous new evidence, the missing corroboration, the available verification path, and a diagnostic temporal counterfactual.",
+      "revision_needed": false,
+      "revision": {
+        "revision_type": "none",
+        "location": "Decision point 3, backup-agent classification and subsequent hypothetical.",
+        "current_defect": "None material. The episode is distinct from the attentional failure at decision point 1 and the self-authored-control attribution at decision point 2.",
+        "minimal_change_instruction": "No change required.",
+        "preserve": [
+          "The two recent backup-agent tickets personally closed by the analyst.",
+          "The similarity cue of the roughly 55-second connection interval.",
+          "The absence of a direct backup-agent signature or IOC match.",
+          "The availability but nonuse of process-tree and IP threat-intelligence checks."
+        ],
+        "avoid_creating": [
+          "Do not add a second recent-case-driven classification decision elsewhere.",
+          "Do not eliminate the plausible base-rate rationale entirely; the episode should remain a subtle overweighting of recency rather than implausibly irrational conduct.",
+          "Do not convert the decision into generic anchoring without preserving the specifically recent memory trace."
+        ],
+        "expected_post_revision_status": "supported"
+      }
+    }
+  ],
+  "bias_level_counts": [
+    {
+      "bias": "Selective Attention Bias or Inattentional Blindness",
+      "requested_count": 1,
+      "supported_count": 1,
+      "weak_count": 0,
+      "absent_count": 0,
+      "merged_count": 0,
+      "accidental_count": 0,
+      "count_satisfied": true
+    },
+    {
+      "bias": "Illusion of control",
+      "requested_count": 1,
+      "supported_count": 1,
+      "weak_count": 0,
+      "absent_count": 0,
+      "merged_count": 0,
+      "accidental_count": 0,
+      "count_satisfied": true
+    },
+    {
+      "bias": "Recency",
+      "requested_count": 1,
+      "supported_count": 1,
+      "weak_count": 0,
+      "absent_count": 0,
+      "merged_count": 0,
+      "accidental_count": 0,
+      "count_satisfied": true
+    }
+  ],
+  "additional_candidate_biases": [
+    {
+      "bias": "Confirmation bias",
+      "decision_point": 2,
+      "supporting_quote": "Seeing the count drop that fast felt like confirmation it was doing its job on this campaign too.",
+      "mechanism": "The analyst treats a favorable and readily visible signal, the decline in alerts, as confirming containment while failing to seek disconfirming information such as delivery logs, manual samples, or rule coverage for sender-domain variants.",
+      "confidence": 0.78,
+      "status": "candidate",
+      "plausible_nonbias_explanation": "The statement is also the evidentiary expression of the intended illusion-of-control episode. It does not provide a sufficiently distinct reasoning operation or decision trace to count as an additional independent bias occurrence.",
+      "revision_recommendation": "none"
+    },
+    {
+      "bias": "Availability heuristic",
+      "decision_point": 3,
+      "supporting_quote": "That was fresh in my mind since I'd closed both of those tickets myself within the last week.",
+      "mechanism": "Personally salient, easily retrieved backup-agent cases influence classification of a new ambiguous alert.",
+      "confidence": 0.74,
+      "status": "candidate",
+      "plausible_nonbias_explanation": "This cue substantially overlaps the specified recency mechanism. It should not be counted as an additional occurrence because the same memory retrieval, evidence source, and downgrade decision support both labels.",
+      "revision_recommendation": "none"
+    },
+    {
+      "bias": "Automation bias / automation complacency",
+      "decision_point": 1,
+      "supporting_quote": "I ran our saved scan-window filter to bulk-close the low-severity scan-tagged alerts.",
+      "mechanism": "The analyst relies on a saved filter in a manner that may have reduced independent verification of its scope and exclusions.",
+      "confidence": 0.38,
+      "status": "weak",
+      "plausible_nonbias_explanation": "Using a batch filter for expected scanner noise is a normal and potentially appropriate SOC workflow. The text does not show that the analyst accepted an automated recommendation as authoritative; it instead more clearly shows selective attention to the dominant category.",
+      "revision_recommendation": "none"
+    }
+  ],
+  "nonbias_cues": [
+    {
+      "cue": "The 45-minute SLA and high alert volume.",
+      "location": "Decision points 1 through 4.",
+      "why_not_bias": "Time pressure and workload are situational constraints. They increase the plausibility and consequences of shortcuts but do not, by themselves, establish a cognitive-bias mechanism."
+    },
+    {
+      "cue": "Using pattern-based triage rather than inspecting every alert individually.",
+      "location": "Decision point 1.",
+      "why_not_bias": "Pattern triage is a standard operational strategy in high-volume SOC work. It becomes bias-relevant here only because the participant explicitly fails to check whether FIN-WK-114 satisfies the scan-subnet pattern before bulk closure."
+    },
+    {
+      "cue": "The absence of an IOC match or direct backup-agent signature.",
+      "location": "Decision point 3.",
+      "why_not_bias": "Missing corroborating information is not itself bias. The bias is the participant's decision to rely primarily on recent analogues rather than obtain available corroboration."
+    },
+    {
+      "cue": "Immediate escalation after the C2 intelligence update.",
+      "location": "Decision point 4.",
+      "why_not_bias": "Escalating in response to materially stronger threat intelligence, an overdue SLA, and an unavailable shift lead is a defensible risk-management response rather than evidence of panic, outcome bias, or hindsight."
+    },
+    {
+      "cue": "The later confirmation of lateral movement and the unfavorable outcome.",
+      "location": "Decision point 4 and retrospective discussion.",
+      "why_not_bias": "The later incident confirmation validates that the alert deserved attention, but it cannot by itself prove a bias at an earlier decision. The supported classifications rest on contemporaneous processing statements, not the bad outcome."
+    },
+    {
+      "cue": "The phrase \"In hindsight it was sitting right there.\"",
+      "location": "Decision point 1 retrospective probe.",
+      "why_not_bias": "This is retrospective awareness and could invite hindsight bias in interpretation, but the interview does not show the participant claiming that the earlier conclusion was obviously knowable at the time. The occurrence should not be coded as hindsight bias."
+    }
+  ],
+  "causal_audit": {
+    "causal_claims": [
+      {
+        "claim": "The rapid drop in visible phishing alerts supported the analyst's conclusion that the self-authored suppression rule had contained the campaign.",
+        "assessment": "Causally under-supported. The observed alert-count reduction can be caused by duplicate suppression without demonstrating that phishing delivery ceased or that all campaign variants were covered."
+      },
+      {
+        "claim": "The two recent backup-agent false positives justified treating the current periodic outbound traffic as a likely backup-agent artifact.",
+        "assessment": "Partially supported as a prior-probability cue but insufficient as a causal attribution. The current alert lacked a direct signature, and available verification was not performed."
+      },
+      {
+        "claim": "The threat-intelligence update changed the risk picture and justified immediate escalation.",
+        "assessment": "Causally coherent. A known-C2 designation is relevant new evidence that directly contradicts the previous benign interpretation, although its operational meaning still warrants evidence-chain documentation."
+      },
+      {
+        "claim": "Without the scan window, the FIN-WK-114 DNS alert would have stood out and received individual review.",
+        "assessment": "Plausible but not certain. Removing the scan would reduce volume and eliminate the dominant expected-noise category, both of which are part of the stated attentional pathway."
+      }
+    ],
+    "correlation_causation_risks": [
+      {
+        "risk": "Alert-volume reduction is treated as equivalent to phishing containment.",
+        "why_it_matters": "Suppression telemetry measures what is displayed or deduplicated, not necessarily message delivery, endpoint compromise, or coverage of sender/domain variants."
+      },
+      {
+        "risk": "Similarity in a 55-second beacon cadence is treated as sufficient attribution to a backup agent.",
+        "why_it_matters": "A recurring interval can be compatible with benign software but is not uniquely diagnostic; cadence similarity alone does not establish process identity or destination legitimacy."
+      },
+      {
+        "risk": "IR's later confirmation is used retrospectively to strengthen the earlier-error narrative.",
+        "why_it_matters": "The interview avoids relying solely on outcome evidence, but audit interpretation should continue to distinguish contemporaneous evidence processing from retrospective outcome knowledge."
+      }
+    ],
+    "counterfactual_present": true,
+    "changed_variable": "Three closing diagnostic counterfactuals change, one at a time, the presence of the scheduled scan window, the analyst's authorship of the suppression rule, and the existence of the two recent backup-agent false positives.",
+    "held_constant": [
+      "The analyst's Tier 2 role and overnight rotation.",
+      "The same general alert environment and operational objective.",
+      "The relevant decision episode for each hypothetical.",
+      "The available queue, rule, and investigative tooling except for the explicitly changed diagnostic factor."
+    ],
+    "causal_coherence": "moderate",
+    "explanation": "Although the hidden specification is not a paired counterfactual condition, the interview contains three useful within-interview diagnostic hypotheticals. Each isolates a psychologically relevant antecedent and elicits the participant's predicted process change. The scan-window hypothetical is somewhat compound because removing the scan also changes alert volume and visual salience; however, those downstream changes are the proposed causal pathway for the selective-attention episode rather than an unrelated confound. The rule-authorship and recent-case hypotheticals are particularly diagnostic because they directly probe the proposed attribution and memory-retrieval mechanisms."
+  },
+  "quality_scores": {
+    "occupational_realism": 93,
+    "cta_fidelity": 94,
+    "bias_separability": 91,
+    "bias_subtlety": 82,
+    "control_fidelity": 100,
+    "counterfactual_fidelity": 88,
+    "narrative_coherence": 95,
+    "naturalness": 91,
+    "hidden_label_integrity": 100,
+    "overall_quality": 93
+  },
+  "revision_summary": {
+    "revision_required": false,
+    "supported_occurrence_total": 3,
+    "requested_occurrence_total": 3,
+    "missing_occurrence_total": 0,
+    "accidental_occurrence_total": 0,
+    "priority": "none",
+    "recommended_action": "accept",
+    "global_revision_constraints": [
+      "Retain the strict one-instance-per-target-bias allocation across decision points 1, 2, and 3.",
+      "Do not separately count the confirmation-bias cue at decision point 2 or the availability cue at decision point 3, because each is nested within the same intended reasoning episode rather than constituting an independent occurrence.",
+      "Keep decision point 4 free of planted bias language or unsupported bias annotation; its current escalation reasoning provides a useful nonbiased contrast and preserves causal clarity.",
+      "Maintain the distinction between the participants' contemporaneous reasoning and the later confirmed security outcome."
+    ],
+    "revision_order": []
+  },
+  "failure_flags": []
+}

@@ -16,8 +16,8 @@ INPUTS
 - Occupational domain: {{High-risk Engineering and Fire Engineering}}
 - Domain ID: {{HE}}
 - Role or seniority: {{Fire Investigator (Origin and Cause)}}
-- Scenario ID: {{HE_Biased_2}}
-- Condition: {{biased}}
+- Scenario ID: {{HE_Ambigious_2}}
+- Condition: {{ambiguous_control}}
 - Exact bias-occurrence manifest: {{
 [
   {
@@ -30,7 +30,7 @@ INPUTS
   }
 ]
 }}
-- Paired/base scenario ID, if applicable: {{NONE}}
+- Paired/base scenario ID, if applicable: {{HE_Biased_2}}
 - Counterfactual variable, if applicable: {{AUTOSELECT}}
 - Required interview length: target 1,350 words; acceptable range 1,215–1,485 words
 - Number of decision points: exactly 4

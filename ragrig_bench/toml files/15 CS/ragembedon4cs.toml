@@ -1,0 +1,68 @@
+# Ranker comparison: the default hybrid RRF ranker vs. pure cosine ranking
+# (WeightedFusionRanker alpha = 1.0), on the ragrig default chat backend
+# (Ollama, qwen3.5:9b), varying the context budget (4096 and 8192 tokens).
+# Corpus = the embedded HTML fixture book, default pipeline (full parser
+# registry + MarkdownChunker).
+
+corpus_dirs = ["papers=/mnt/c/Users/Joost/Documents/papers"]
+
+queries = [
+    "Interviewer: Thanks for making time for this. Just to confirm, this is a debrief on the finance-server incident from a few weeks back, it's being recorded for internal process review, and you're free to skip anything you're not comfortable detailing. Sound okay? Participant: Yeah, that's fine. Happy to walk through it. Interviewer: Great. Can you start with your role that night and what you were responsible for? Participant: I'm the on-call DFIR analyst, so I was solo overnight — it was a Sunday going into quarter-end close, which matters because that file server is basically untouchable without a director sign-off during that window. My senior lead was reachable on chat but not really available to jump on calls. So triage, scoping, containment, remediation — all of it was on me until morning. Interviewer: Walk me through what happened. Participant: Around 1 a.m. I got a SIEM alert for an off-hours process spawning a staging directory on the finance file server. Honestly, my first reaction was 'here we go again' — I'd closed six tickets in the past three weeks that all started exactly like this, staging directory, off-hours process, and every one of those turned out to be ransomware-precursor activity. So the pattern was extremely familiar. There was also a quieter log line underneath it — a single authenticated session copying files in small batches out to an external cloud storage endpoint over a few hours. But no ransom note, no encryption, no mass renaming, so nothing screaming 'this is it' yet. Interviewer: How did you weigh those two signals? Participant: I opened the ticket under the ransomware-precursor category. That staging-directory behavior is just what I've been seeing constantly lately, so it felt like the obvious bucket. The batch-copy line registered, but it felt secondary — slower, quieter, didn't match the urgency of what I'd been dealing with recently. In hindsight, when I actually looked at what was in those batches later, they were finance close spreadsheets, not the file types those recent ransomware precursors usually go after. And the external endpoint had no ransomware C2 history in threat intel. But at 1 a.m. I went with the category that matched what I'd just spent three weeks fighting. Interviewer: Let's reconstruct the rest of the timeline. What came next? Participant: Within the first ten minutes I set the ticket scope at 3 endpoints, based on the initial SIEM correlation window. About 40 minutes later, an EDR sweep came back showing authentication artifacts touching 9 more hosts — lower confidence, but there. Around then, the finance director started pinging for an update ahead of the 6 a.m. close deadline, so there was real pressure to say something concrete. I decided the 9-host signal was probably noise from that same original window and kept the scope close to 3. A later, fuller sweep ended up confirming lateral movement had actually touched 7 of those 9 hosts. Interviewer: What made you treat that second signal as noise rather than expansion? Participant: Partly the confidence rating on it, it wasn't a clean hit. But I'll be honest, I'd already told the director '3 hosts, contained,' and adjusting that number upward with only 40 minutes of new low-confidence data felt like it'd cause more panic than it was worth before I had something firmer. So I stuck close to the original number and figured I'd revisit if something else lit up. Interviewer: Move on to containment. What did you actually do? Participant: I ran my own PowerShell isolation and log-collection script — I wrote that thing two years ago, and it's worked well on plenty of past incidents. My lead pinged me suggesting I use the EDR platform's one-click network isolation feature instead, said it'd be faster and less error-prone, especially now that we were looking at more hosts. That feature's only been live about three months and I've used it maybe twice. Interviewer: What went into sticking with your script over that suggestion? Participant: I know exactly how my script behaves, what it logs, where it's failed before and how I fixed that. The EDR feature, I just don't have the same feel for it yet. My lead's point about the host count was fair, and I didn't really have anything showing my script would hold up better at that scale — I just wanted to give it the benefit of the doubt because it's mine, I built it, I've kept it running this long, and it felt like it deserved the first shot before I'd fall back on the platform's version. So I kept running my script across the hosts, and only tried the EDR isolation on a couple of them after my lead brought it up a second time. In the end, isolating everything with my script took a good 90 minutes longer than the EDR route probably would have at that host count. It wasn't built for a scope that size, honestly, it's more of a one-or-two-host tool. Interviewer: Did the delay change your view of which tool to use for the rest of containment? Participant: Not really in the moment — I was mid-process and switching tools halfway through felt like it'd create more inconsistency in the logs than just finishing what I started. Interviewer: Let's talk remediation. What options were in front of you? Participant: The ticketing system's playbook for that category gave me exactly two actions: reset affected credentials, and reimage the affected endpoints. Neither one said anything about preserving a forensic image of the staging directory first, or checking whether that external cloud endpoint triggered any legal notification requirement. Interviewer: Did you consider anything outside those two? Participant: There's an escalation path to our external IR retainer that could've given a broader set of options, but it's not built into the playbook flow, you have to go looking for it separately. I didn't go down that road. I just worked through the two actions on the screen since that's what the category pointed me to. Interviewer: Was there a point where that choice got revisited? Participant: Two days later, compliance asked whether we'd preserved a forensic image of the staging directory before reimaging, since that affects whether this gets reported as a data exposure. That's when it became clear the playbook's two options hadn't covered that angle at all. Interviewer: Looking back, if the staging-directory pattern hadn't been so common in your recent caseload, do you think you'd have categorized this the same way? Participant: Probably not as quickly. If I hadn't just closed six of those tickets, I think the batch-copy line would've stood out more on its own merits instead of getting overshadowed. Interviewer: If the EDR isolation feature had been the tool you knew best instead of your script, would containment have gone differently? Participant: Almost certainly faster. I think I'd have reached for it first instead of treating it as the backup option. Interviewer: And if the playbook screen had shown four remediation options instead of two? Participant: Hard to say for sure, but I'd like to think the forensic-preservation piece would've been visible instead of something I only heard about after compliance asked. Interviewer: Last question — what's one point where more time or information would have changed your approach? Participant: Probably right after that second EDR sweep. If I'd had another 20 minutes before the director needed an answer, I think I'd have pushed the scope number instead of holding it, and maybe things downstream would've looked a bit different."
+]
+
+[[agents]]
+label = "Gemini Prompt 8192"
+[agents.chat]
+provider = "deepseek"            # "ollama" | "deepseek"
+#model = "qwen2.5:1.5b"         # ignored for deepseek
+context_tokens = 8192          # context budget for retrieved chunks
+deepseek_model = "deepseek-v4-pro"   # deepseek only
+#deepseek_api_key = DEEPSEEK_API_KEY # deepseek only (or DEEPSEEK_API_KEY env)
+# context_size_mode = "Auto"          # "Auto" | "Forced"
+system_prompt_path = "prompt_gemini.md"    # custom system prompt ({context} placeholder)
+# request_timeout_secs = 300          # per-request timeout, None = no timeout
+[agents.chat.params]                # generation overrides (all optional)
+# temperature = 0.7
+# top_p = 0.9
+# max_tokens = 1024
+seed = 42
+
+[[agents]]
+label = "Sonar Prompt 8192"
+[agents.chat]
+provider = "deepseek"            # "ollama" | "deepseek"
+#model = "qwen2.5:1.5b"         # ignored for deepseek
+context_tokens = 8192          # context budget for retrieved chunks
+deepseek_model = "deepseek-v4-pro"   # deepseek only
+#deepseek_api_key = DEEPSEEK_API_KEY # deepseek only (or DEEPSEEK_API_KEY env)
+# context_size_mode = "Auto"          # "Auto" | "Forced"
+system_prompt_path = "prompt_sonar.md"    # custom system prompt ({context} placeholder)
+# request_timeout_secs = 300          # per-request timeout, None = no timeout
+ [agents.chat.params]                # generation overrides (all optional)
+# temperature = 0.7
+# top_p = 0.9
+# max_tokens = 1024
+ seed = 42
+
+[[agents]]
+label = "Sonnet Prompt 8192"
+[agents.chat]
+provider = "deepseek"            # "ollama" | "deepseek"
+#model = "qwen2.5:1.5b"         # ignored for deepseek
+context_tokens = 8192          # context budget for retrieved chunks
+deepseek_model = "deepseek-v4-pro"   # deepseek only
+#deepseek_api_key = DEEPSEEK_API_KEY # deepseek only (or DEEPSEEK_API_KEY env)
+# context_size_mode = "Auto"          # "Auto" | "Forced"
+system_prompt_path = "prompt_sonnet.md"    # custom system prompt ({context} placeholder)
+# request_timeout_secs = 300          # per-request timeout, None = no timeout
+[agents.chat.params]                # generation overrides (all optional)
+# temperature = 0.7
+# top_p = 0.9
+# max_tokens = 1024
+seed = 42
+
+
+# ---Embed testing ---
+[embed]
+#top_k = 0
+top_k = 50

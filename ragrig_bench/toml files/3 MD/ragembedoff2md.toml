@@ -1,0 +1,67 @@
+# Ranker comparison: the default hybrid RRF ranker vs. pure cosine ranking
+# (WeightedFusionRanker alpha = 1.0), on the ragrig default chat backend
+# (Ollama, qwen3.5:9b), varying the context budget (4096 and 8192 tokens).
+# Corpus = the embedded HTML fixture book, default pipeline (full parser
+# registry + MarkdownChunker).
+
+corpus_dirs = ["papers=/mnt/c/Users/Joost/Documents/papers"]
+
+queries = [
+   "Interviewer: Thanks for making time for this. Just to set expectations, this is a cognitive task analysis interview — I'm interested in how you actually reasoned through the District X attack tempo assessment, not in grading the outcome. Nothing here goes in your file, and you can decline any question. That work for you? Participant: Yeah, that's fine. I've done these debriefs before. Interviewer: Great. Can you start by telling me your role and what pulled you into this particular assessment? Participant: I'm the all-source analyst supporting the battalion S2 for District X. I own the SIGACTS tracking and the weekly INTSUM injects for that sector. It came onto my desk because we had a sharp jump in attack reporting and the S2 wanted an assessment fast, since command was already asking questions. Interviewer: What was the overall objective you were working toward? Participant: Figure out what was driving the attack numbers, recommend a response, and eventually judge whether that response worked — because the commander needed something concrete for a regional brief and for deciding where to put checkpoint resources next. Interviewer: Walk me through the incident from the start. Participant: Sure. For about a month, District X was running maybe three attacks a week — small-arms harassment, the occasional IED. Pretty steady. Then in week five we got eleven. That's not a small bump, that's the highest number in our whole dataset for that district. Around the same time, HUMINT was reporting a local festival that was drawing large crowds, some chatter about a resupplied weapons cache, and a tribal land dispute that had flared up. None of that was fully confirmed, but it was in the reporting. I had to decide what to recommend for that week's INTSUM with command already pushing for an answer. Interviewer: What did you land on? Participant: I recommended we not overreact with a full cordon-and-search — we didn't have solid targeting yet — but we did push more ISR onto two suspected cache routes and stood up a limited checkpoint pilot in the highest-traffic area. That felt like the right middle ground: do something, but don't commit to a big posture change before we knew if week five was a one-off or the start of a real trend. Interviewer: What made you choose that over the other options? Participant: Mainly time pressure and thin confirmation. We only had eight weeks of data total for that district, so I didn't want to overcorrect off one bad week. But I also couldn't just sit on it with command asking for something in the INTSUM. The pilot checkpoint let us act without betting the whole resourcing plan on one spike. Interviewer: Okay — what happened after the pilot went in? Participant: S3 liked it enough to expand it battalion-wide starting week six. That became Operation Steady Watch — full checkpoint posture across the district's main routes. Week six came in at six attacks, better than five but still elevated. Then week seven dropped to three, week eight to four. Basically back to where we'd been before the spike. Interviewer: At that point, did anything else come in about what else might have changed? Participant: Yeah, HUMINT caught up a bit. The festival had ended by week six. The tribal dispute got mediated by local elders around the same time. And there were reports the cache that got resupplied before week five had largely been expended in whatever activity drove that spike. So there were a few things resolving in parallel with Steady Watch going in. Interviewer: Your supervisor then asked you for a causal read on that. What did you tell them? Participant: I told them Steady Watch was working. The numbers backed it up — we went from eleven down to three and four within two weeks of putting checkpoints on the main routes. That's a big swing, and it lined up with when we increased presence. I flagged the other stuff — the festival ending, the dispute settling — but I treated those as secondary color, not the main driver. The posture change was the biggest, most visible thing we'd done, and the timing fit. Interviewer: When you were weighing that, did you consider what the numbers might have done without Steady Watch at all? Participant: Not in much depth, honestly. I noted the other factors existed, but I didn't really sit down and ask how much of that drop would've happened on its own just because week five was such an extreme outlier to begin with. The checkpoint explanation was the one command wanted and the one I had the clearest evidence trail for — increased presence, fewer incidents. It felt like a clean story. Interviewer: That assessment then fed into a District Y decision. Tell me about that. Participant: Right, the commander wanted to know if we should extend Steady Watch to District Y. District Y had its own spike — hit nine in week four — then eased down to five or six afterward, no posture change over there. Given what I'd just seen in District X, I recommended rolling Steady Watch out to District Y too, expecting a similar sharp drop. Interviewer: Did you weigh the alternative of running a separate cause analysis for District Y first? Participant: I considered it, but time was short and District X felt like a validated model at that point — we'd just seen checkpoints turn a spike around. The Y handler did mention their spike had a different, still-unresolved driver, which I noted, but I leaned on the District X result as the stronger signal for what to do next. Interviewer: Last decision point — the forecast for the commander's brief. Participant: With the brief three days out and only two weeks of post-implementation data, I presented a forecast of continued low attack tempo, three to four a week, framed as Steady Watch holding. I could have given a wider range and flagged that two weeks isn't much of a track record, but the trend line looked clean and the commander wanted something decisive for the brief, not a hedge. Interviewer: If the tribal dispute hadn't been resolved that week, would your Steady Watch conclusion have looked different to you? Participant: Probably, yeah. If that dispute had still been active and attacks still dropped, I'd have been much more confident it was the checkpoints. With it resolved right alongside our posture change, I probably should have leaned harder into how much of that drop those other threads accounted for on their own. Interviewer: And if District Y's spike had also faded without any posture change at all? Participant: That would've made me second-guess the District X read pretty quickly — it'd suggest spikes like that just settle down on their own sometimes, checkpoints or not. Interviewer: Anything about the week-five spike itself you'd weigh differently now? Participant: Maybe how extreme it was compared to everything before it. Eleven against a baseline of three is a huge jump, and huge jumps like that don't usually stay huge. I focused on what we did in response rather than on how unusual that single week was to begin with."
+]
+
+[[agents]]
+label = "Gemini Prompt 8192"
+[agents.chat]
+provider = "deepseek"            # "ollama" | "deepseek"
+#model = "qwen2.5:1.5b"         # ignored for deepseek
+context_tokens = 8192          # context budget for retrieved chunks
+deepseek_model = "deepseek-v4-pro"   # deepseek only
+# deepseek_api_key = DEEPSEEK_API_KEY # deepseek only (or DEEPSEEK_API_KEY env)
+# context_size_mode = "Auto"          # "Auto" | "Forced"
+system_prompt_path = "prompt_gemini.md"    # custom system prompt ({context} placeholder)
+# request_timeout_secs = 300          # per-request timeout, None = no timeout
+[agents.chat.params]                # generation overrides (all optional)
+# temperature = 0.7
+# top_p = 0.9
+# max_tokens = 1024
+seed = 42
+
+[[agents]]
+label = "Sonar Prompt 8192"
+[agents.chat]
+provider = "deepseek"            # "ollama" | "deepseek"
+#model = "qwen2.5:1.5b"         # ignored for deepseek
+context_tokens = 8192          # context budget for retrieved chunks
+deepseek_model = "deepseek-v4-pro"   # deepseek only
+# deepseek_api_key = DEEPSEEK_API_KEY # deepseek only (or DEEPSEEK_API_KEY env)
+# context_size_mode = "Auto"          # "Auto" | "Forced"
+system_prompt_path = "prompt_sonar.md"    # custom system prompt ({context} placeholder)
+# request_timeout_secs = 300          # per-request timeout, None = no timeout
+[agents.chat.params]                # generation overrides (all optional)
+# temperature = 0.7
+# top_p = 0.9
+# max_tokens = 1024
+seed = 42
+
+[[agents]]
+label = "Sonnet Prompt 8192"
+[agents.chat]
+provider = "deepseek"            # "ollama" | "deepseek"
+#model = "qwen2.5:1.5b"         # ignored for deepseek
+context_tokens = 8192          # context budget for retrieved chunks
+deepseek_model = "deepseek-v4-pro"   # deepseek only
+# deepseek_api_key = DEEPSEEK_API_KEY # deepseek only (or DEEPSEEK_API_KEY env)
+# context_size_mode = "Auto"          # "Auto" | "Forced"
+system_prompt_path = "prompt_sonnet.md"    # custom system prompt ({context} placeholder)
+# request_timeout_secs = 300          # per-request timeout, None = no timeout
+[agents.chat.params]                # generation overrides (all optional)
+# temperature = 0.7
+# top_p = 0.9
+# max_tokens = 1024
+seed = 42
+
+# ---Embed testing ---
+[embed]
+top_k = 0
+#top_k = 50

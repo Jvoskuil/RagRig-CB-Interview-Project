@@ -1,0 +1,68 @@
+# Ranker comparison: the default hybrid RRF ranker vs. pure cosine ranking
+# (WeightedFusionRanker alpha = 1.0), on the ragrig default chat backend
+# (Ollama, qwen3.5:9b), varying the context budget (4096 and 8192 tokens).
+# Corpus = the embedded HTML fixture book, default pipeline (full parser
+# registry + MarkdownChunker).
+
+corpus_dirs = ["papers=/mnt/c/Users/Joost/Documents/papers"]
+
+queries = [
+    "Interviewer: Thanks for taking the time. Just to confirm, this is a cognitive task analysis interview—I'll ask about a specific turnaround you handled, and I'd like you to walk me through your reasoning as it happened, not just the outcome. Nothing here is evaluative of your performance. Can you tell me your role and roughly how long you've been doing it? Participant: Sure. I'm a load controller, been doing it about nine years now, mostly narrow-body combi ops. On a normal day I'm building load sheets, issuing loading instructions to the ramp, checking weight and balance against structural limits, and making sure the NOTOC is accurate before the captain gets it. This particular one was a standard 45-minute turnaround, nothing scheduled to be unusual about it. Interviewer: Walk me through what happened, from when you first got involved. Participant: I got the initial cargo manifest about an hour before departure. Mixed load—regular baggage, some mail, and one item that stood out: a piece of machinery, irregular shape, heavier than what we usually put through, not on a pallet. Our load-control software generates an automatic load instruction—the ALI—and it put that machinery item into hold 3. The system's been solid for us on this fleet for as long as I've used it, so I issued the ALI to the ramp pretty much as generated so they could start loading, because we were already tight on time. About twenty minutes later, after the ramp had loaded per that instruction, they called up and said the aircraft was sitting slightly tail-heavy on the jacks reading—not out of limits, just noticeably aft of where we'd expect for that load. Interviewer: What did you do at that point? Participant: I logged it and kept moving, because we still had the last-minute change to deal with. About that time, an LMC came in—roughly 380 kilos of mail plus six late bags that hadn't made the original manifest. The mail got assigned to hold 5, which is our aft bulk hold, smaller one. I looked at the total weight and it was basically in line with the LMCs we'd been getting all week on this route—we'd had three similar ones, same ballpark, and none of those needed any redistribution. So I cleared it on that basis and moved to finalize the trim sheet. Interviewer: And the trim sheet—what informed that? Participant: I pulled up the dispatch log because I wanted a sanity check before signing off, given the tail-heavy reading from the ramp. I saw that the two previous flights on this same rotation—different tail numbers, one had gone to a different destination—had both needed aft trim adjustments. That, plus what the ramp had just told me, made me think the rotation itself was running tail-heavy that day, so I shifted some of the cargo distribution forward before finalizing, beyond what my own computed index actually called for. Interviewer: Let's slow down and go through each of these moments individually. Starting with the ALI and the machinery item—what specifically told you it was fine to issue as generated? Participant: Mainly just experience with the system. It's been accurate for months on this fleet, and we don't have time in a 45-minute turn to hand-check every ALI. I did register that the item was irregular, non-palletized, heavier than usual—that did cross my mind—but the system's had a good run, so I went with it. Interviewer: Was there a manual limits chart you could have checked against for that item specifically? Participant: There is one, for exactly this kind of non-standard cargo. I know it exists. I just didn't pull it that time. Interviewer: What would have made you stop and check it? Participant: If the system itself had flagged it somehow—like if it had kicked back a warning saying 'verify manually,' I'd have stopped. Since it didn't, I treated it the same as any other ALI. Interviewer: Moving to the LMC decision—what exactly did you compare when the mail and bags came in? Participant: Total weight against the week's pattern. That's the number I had readily in my head from the previous LMCs. Interviewer: Did you look at where hold 5 sits relative to where those earlier LMCs had gone? Participant: Not specifically, no. The earlier ones went into a forward hold, I believe—hold 2 typically. This one went aft into 5. I didn't run the index shift for that specific placement; I just used the weight comparison as my check. Interviewer: What would it have taken to run that index calculation directly instead? Participant: A couple of extra minutes with the trim computer, honestly. It wasn't unavailable—I just didn't feel it was necessary given how the weight lined up. Interviewer: Let's talk about the trim sheet redistribution. What was your reasoning connecting the two previous flights to this one? Participant: They were on the same rotation, back to back, both needed aft correction. Two in a row felt like enough to say something was going on with how this rotation was trending that day, so I built in a forward shift as a margin before I signed off. Interviewer: At the time, what did your own calculated index for this flight actually show? Participant: It was within the normal range on its own, forward of the aft limit with margin. The redistribution wasn't because my numbers were bad—it was more that I didn't fully trust that after seeing two prior aft trims. Interviewer: Did you look into why those two prior flights ran tail-heavy? Participant: Not at the time. I found out afterward one was a fuel imbalance and the other had extra catering loaded late. Different tails, different causes, nothing tying them to each other. Interviewer: Last one—the final sign-off. What was the situation there? Participant: Closeout figures were within limits, looked clean. But the ramp tally was one bag short of what the NOTOC and manifest showed. Small discrepancy, and we were right up against the slot. Interviewer: What did you decide, and what were you weighing? Participant: I signed and released with the figures as they stood. I weighed the delay risk—losing the slot—against a one-bag discrepancy that's usually a clerical miscount, not a safety issue on its own. It resolved itself afterward as a manifest correction; the weight and balance conclusion didn't change. I could see someone making the other call too, holding a few minutes to chase it down. It wasn't an easy one either way. Interviewer: Looking back across the whole sequence, how confident were you in each of those calls at the time versus now? Participant: The ALI and the LMC I was fairly confident on in the moment—maybe more than I'd be now, knowing how it played out. The trim redistribution I was less sure about even then; it felt more like caution than certainty. The final sign-off, I'm still not fully sure I made the 'right' call, but I don't think it was wrong given what I had. Interviewer: If the software had required a manual check for irregular cargo shapes before finalizing the ALI, do you think that changes how this played out? Participant: Probably, yes. If it forced me to open the manual chart, I would have caught the hold 3 placement issue before the ramp ever loaded it. Interviewer: And if the mail had gone into the usual forward hold instead of hold 5? Participant: Then the weight comparison I used would have actually been a fair proxy, because placement wouldn't have mattered much. It was really the aft location that made the comparison misleading, not the comparison itself. Interviewer: If you'd known upfront that the two prior tail-heavy events had unrelated causes, would you have redistributed the cargo the same way? Participant: No, I don't think I would have. I'd have trusted my own numbers for this flight instead of layering in a correction based on what happened to two other tails. Interviewer: Anything you'd do differently if this exact sequence happened again? Participant: Pull the manual chart for anything irregular regardless of the system's history, and separate what the current flight's numbers say from what the last couple of flights did, unless I actually know there's a shared cause. The last-minute change is the one I'd still have to think about—weight alone clearly wasn't the full picture that day."
+]
+
+[[agents]]
+label = "Gemini Prompt 8192"
+[agents.chat]
+provider = "deepseek"            # "ollama" | "deepseek"
+#model = "qwen2.5:1.5b"         # ignored for deepseek
+context_tokens = 8192          # context budget for retrieved chunks
+deepseek_model = "deepseek-v4-pro"   # deepseek only
+# deepseek_api_key = DEEPSEEK_API_KEY # deepseek only (or DEEPSEEK_API_KEY env)
+# context_size_mode = "Auto"          # "Auto" | "Forced"
+system_prompt_path = "prompt_gemini.md"    # custom system prompt ({context} placeholder)
+# request_timeout_secs = 300          # per-request timeout, None = no timeout
+[agents.chat.params]                # generation overrides (all optional)
+# temperature = 0.7
+# top_p = 0.9
+# max_tokens = 1024
+seed = 42
+
+[[agents]]
+label = "Sonar Prompt 8192"
+[agents.chat]
+provider = "deepseek"            # "ollama" | "deepseek"
+#model = "qwen2.5:1.5b"         # ignored for deepseek
+context_tokens = 8192          # context budget for retrieved chunks
+deepseek_model = "deepseek-v4-pro"   # deepseek only
+# deepseek_api_key = DEEPSEEK_API_KEY # deepseek only (or DEEPSEEK_API_KEY env)
+# context_size_mode = "Auto"          # "Auto" | "Forced"
+system_prompt_path = "prompt_sonar.md"    # custom system prompt ({context} placeholder)
+# request_timeout_secs = 300          # per-request timeout, None = no timeout
+ [agents.chat.params]                # generation overrides (all optional)
+# temperature = 0.7
+# top_p = 0.9
+# max_tokens = 1024
+ seed = 42
+
+
+[[agents]]
+label = "Sonnet Prompt 8192"
+[agents.chat]
+provider = "deepseek"            # "ollama" | "deepseek"
+#model = "qwen2.5:1.5b"         # ignored for deepseek
+context_tokens = 8192          # context budget for retrieved chunks
+deepseek_model = "deepseek-v4-pro"   # deepseek only
+# deepseek_api_key = DEEPSEEK_API_KEY # deepseek only (or DEEPSEEK_API_KEY env)
+# context_size_mode = "Auto"          # "Auto" | "Forced"
+system_prompt_path = "prompt_sonnet.md"    # custom system prompt ({context} placeholder)
+# request_timeout_secs = 300          # per-request timeout, None = no timeout
+[agents.chat.params]                # generation overrides (all optional)
+# temperature = 0.7
+# top_p = 0.9
+# max_tokens = 1024
+seed = 42
+
+# ---Embed testing ---
+[embed]
+top_k = 0
+#top_k = 25

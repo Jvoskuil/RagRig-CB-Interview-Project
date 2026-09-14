@@ -7,10 +7,223 @@ Do not assume the generator followed the specification. Do not infer bias merely
 INPUTS
 
 Interview:
-{{INTERVIEW}}
+{{Interviewer: Thanks for making time for this. Just to confirm, this conversation is for a plan-review case study, it's voluntary, and you can skip anything you'd rather not discuss. Can you start by telling me your role and how the Meridian Tower conversion landed on your desk?
+
+Participant: Sure. I'm a plan review official in the building and fire division, mostly permitting and life-safety sign-off. Meridian Tower came to me because it was an adaptive reuse—22-story former office tower going to mixed-use residential and retail. The atrium was the whole complication. It's a big central void running most of the building height, and the geometry didn't fit the prescriptive smoke control provisions in our code. So the design team came in with a performance-based alternative instead.
+
+Interviewer: What was your objective going in?
+
+Participant: Get the project through review correctly and on time. We had a 30-day statutory clock, the department was short-staffed that quarter, and the city council was leaning on us to keep housing projects moving. So there was real pressure, but the job is still to make sure people are safe if there's a fire.
+
+Interviewer: Walk me through what happened, from the beginning.
+
+Participant: The engineering firm on record was Halkirk & Vance—they're a big regional name, they've done dozens of performance-based atrium designs, and a neighboring jurisdiction had approved a very similar design from them the year before. They submitted a CFD-based smoke control model instead of the prescriptive system. We didn't have budget that cycle for an outside peer review of the CFD assumptions, so it was really me evaluating it against the documentation package. After I signed off, we moved to writing commissioning conditions, which is where we had to pick between two verification protocols. Construction got underway, and partway through, our inspector flagged fire-door deficiencies on three floors. Then near occupancy, the developer pushed for an early certificate before full integration testing was done. Later in construction, there was a small trash-chute fire—sprinklers knocked it down fast, nobody was hurt—but it got people looking hard at the atrium smoke system again.
+
+Interviewer: Let's reconstruct the order more precisely. What did you know before the first big decision, and what came in afterward?
+
+Participant: Before approving the design, I had the CFD report, the firm's track record, and the neighboring jurisdiction's prior approval. After I approved it, we moved into commissioning planning—that's when the protocol question came up. After that decision, construction started, and the door issue surfaced maybe six weeks in. The occupancy request came right at the tail end, with the fire happening after that decision, not before.
+
+Interviewer: Let's go through the first decision—approving the performance-based design. What evidence carried the most weight for you?
+
+Participant: Honestly, the firm's name carried a lot of it. Halkirk & Vance has been doing this specific type of atrium work for years, and I knew their stamp had held up under scrutiny elsewhere—that neighboring jurisdiction's sign-off mattered to me. I read through the CFD report, but with the review clock running and no budget for an outside check, I leaned on the fact that this firm doesn't submit sloppy work. If it had been a firm I didn't recognize, I probably would have pushed harder on the input assumptions myself.
+
+Interviewer: Was requiring an outside peer review on the table?
+
+Participant: It was, but it would have added about three weeks, and given who submitted it, that felt like an unnecessary delay for a firm with that reputation.
+
+Interviewer: Second decision—the commissioning protocol. What were you weighing there?
+
+Participant: Two options. Option A was a newer risk-informed test, better matched to this atrium's actual geometry according to the guidance documents, but its pass/fail thresholds were described in fairly qualitative terms. Option B was the old prescriptive smoke test—clear binary pass or fail, easy to defend if anyone questioned it later, but known to be less sensitive to some of the failure modes this particular atrium could have.
+
+Interviewer: Which did you pick, and why?
+
+Participant: Option B. I'll be straight about it—part of the appeal was that I knew exactly what passing looked like and exactly what failing looked like. Option A might have been the better technical fit, the guidance basically said so, but I didn't want to be defending a judgment call on "partially qualitative" thresholds if something went sideways. B gave me a clean line.
+
+Interviewer: Third decision—the door deficiencies. What did you see, and how did you respond?
+
+Participant: Our inspector found bad fire-door installations on floors 8, 11, and 14. Out of the whole building, those three stood out to me, and my read was that we had a problem crew or a bad batch of hardware concentrated there. I redirected our follow-up inspection effort to those three floors specifically.
+
+Interviewer: Were the crews assigned by floor, or rotated?
+
+Participant: Rotated randomly across the building, actually. And it was three deficiencies out of about 150 doors we'd checked at that point, which is close to what you'd expect on a project this size just from ordinary variation. But when you see three flagged floors, it's hard not to read that as meaning something.
+
+Interviewer: Fourth decision—the temporary occupancy request. What was your basis for granting it?
+
+Participant: The developer had a financing deadline, and full integration testing on the alarm and smoke systems was still three weeks out. This contractor has a good record on other city jobs I've handled, so I felt reasonably confident things would come together. A colleague also mentioned a similar building nearby that had gotten early partial occupancy and it worked out fine. I did know our own five-year numbers show something like 15 percent of these atrium smoke-control integration tests need rework citywide, but that felt like a background statistic rather than something specific to this job.
+
+Interviewer: What would have made you deny it instead?
+
+Participant: If the contractor's record had been shakier, or if there'd been an active known defect in the smoke system at that point, I'd have held the line. Nothing like that was flagged to me at the time.
+
+Interviewer: How much uncertainty did you feel at each of these points?
+
+Participant: Honestly, less than maybe I should have on the first and last ones. The door issue felt more certain than it probably was, in hindsight. The protocol choice, I knew I was trading some technical fit for administrative clarity going in.
+
+Interviewer: Looking back now, after the trash-chute fire, how do you view the original design approval?
+
+Participant: It's hard not to think the smoke migration issue should have jumped out at someone reading that CFD report closely. Once you know the atrium didn't handle the smoke the way it was modeled to, the assumptions look shakier than they did at the time. Though I'll say, nothing in the report or the prior approval gave any real warning sign back then—it read as solid.
+
+Interviewer: If you had the same information again, would you change the occupancy call?
+
+Participant: Probably not without new information. It felt like a reasonable bet given the contractor's history at the time.
+
+Interviewer: Last one—what would you tell a newer reviewer handling a similar submittal?
+
+Participant: Don't let a strong firm's name substitute for reading the assumptions line by line, and don't let a small, tidy pattern in inspection data talk you out of checking the actual numbers behind it.}}
 
 Hidden generation specification:
-{{GENERATION_SPECIFICATION}}
+{{"hidden_validation_specification": {
+    "hidden_spec_version": "1.0",
+    "condition": "biased",
+    "exact_occurrence_manifest": [
+      {
+        "bias": "Clustering illusion",
+        "occurrences": 1,
+        "mechanism_constraint": "Must involve inference of a systemic pattern from a small, randomly distributed sample of fire-door deficiencies."
+      },
+      {
+        "bias": "Probability neglect or Base-Rate Neglect",
+        "occurrences": 1,
+        "mechanism_constraint": "Must involve discounting or omitting an available statistical base rate in favor of a vivid anecdote."
+      },
+      {
+        "bias": "Optimism bias",
+        "occurrences": 1,
+        "mechanism_constraint": "Must involve unwarranted confidence in a future project-specific outcome based on general (not case-specific) favorable track record."
+      },
+      {
+        "bias": "Ambiguity effect",
+        "occurrences": 1,
+        "mechanism_constraint": "Must involve preference for an option with clearly defined criteria over a better-matched option with less-defined criteria."
+      },
+      {
+        "bias": "Authority Bias",
+        "occurrences": 1,
+        "mechanism_constraint": "Must involve deference to credentials/reputation as a substitute for independent technical verification."
+      },
+      {
+        "bias": "Hindsight bias",
+        "occurrences": 1,
+        "mechanism_constraint": "Must involve retrospective claim of foreseeability inconsistent with information actually available at the time of the original decision."
+      }
+    ],
+    "target_bias_names": [
+      "Clustering illusion",
+      "Probability neglect or Base-Rate Neglect",
+      "Optimism bias",
+      "Ambiguity effect",
+      "Authority Bias",
+      "Hindsight bias"
+    ],
+    "requested_occurrence_count_for_each_bias": [
+      { "bias": "Clustering illusion", "requested_occurrences": 1 },
+      { "bias": "Probability neglect or Base-Rate Neglect", "requested_occurrences": 1 },
+      { "bias": "Optimism bias", "requested_occurrences": 1 },
+      { "bias": "Ambiguity effect", "requested_occurrences": 1 },
+      { "bias": "Authority Bias", "requested_occurrences": 1 },
+      { "bias": "Hindsight bias", "requested_occurrences": 1 }
+    ],
+    "planned_instance_ids": [
+      { "instance_id": "auth_01", "bias": "Authority Bias" },
+      { "instance_id": "hind_01", "bias": "Hindsight bias" },
+      { "instance_id": "amb_01", "bias": "Ambiguity effect" },
+      { "instance_id": "clu_01", "bias": "Clustering illusion" },
+      { "instance_id": "opt_01", "bias": "Optimism bias" },
+      { "instance_id": "prob_01", "bias": "Probability neglect or Base-Rate Neglect" }
+    ],
+    "intended_decision_points": [
+      { "instance_id": "auth_01", "bias": "Authority Bias", "decision_point": 1 },
+      { "instance_id": "hind_01", "bias": "Hindsight bias", "decision_point": 1 },
+      { "instance_id": "amb_01", "bias": "Ambiguity effect", "decision_point": 2 },
+      { "instance_id": "clu_01", "bias": "Clustering illusion", "decision_point": 3 },
+      { "instance_id": "opt_01", "bias": "Optimism bias", "decision_point": 4 },
+      { "instance_id": "prob_01", "bias": "Probability neglect or Base-Rate Neglect", "decision_point": 4 }
+    ],
+    "intended_mechanisms": [
+      {
+        "instance_id": "auth_01",
+        "bias": "Authority Bias",
+        "mechanism": "Approval decision driven by firm's reputation/credentials rather than independent verification of CFD assumptions.",
+        "affected_reasoning_operation": "Evidence weighting during technical submittal review",
+        "evidence_source": "Firm credentials and peer-jurisdiction precedent",
+        "distinctiveness_requirement": "Must be tied to the Phase 1 approval act itself, not to a later reflection on it."
+      },
+      {
+        "instance_id": "hind_01",
+        "bias": "Hindsight bias",
+        "mechanism": "Post-incident reattribution of the Phase 1 decision as having been obviously flawed, using knowledge unavailable at the time.",
+        "affected_reasoning_operation": "Retrospective causal attribution in response to a closing probe",
+        "evidence_source": "Post-incident knowledge of smoke migration issue, contrasted with original CFD documentation",
+        "distinctiveness_requirement": "Must occur as a retrospective statement about Phase 1, temporally and evidentially distinct from the auth_01 act itself."
+      },
+      {
+        "instance_id": "amb_01",
+        "bias": "Ambiguity effect",
+        "mechanism": "Preference for the protocol with clearer criteria over the better-matched but less-defined protocol.",
+        "affected_reasoning_operation": "Comparative choice between two commissioning protocols",
+        "evidence_source": "Guidance documents on protocol fit versus stated protocol criteria clarity",
+        "distinctiveness_requirement": "Distinct decision point and evidence set from all other instances; unique to Phase 2 protocol selection."
+      },
+      {
+        "instance_id": "clu_01",
+        "bias": "Clustering illusion",
+        "mechanism": "Inference of a systemic crew-level pattern from a small, randomly distributed sample of deficiencies.",
+        "affected_reasoning_operation": "Pattern recognition from inspection sample data",
+        "evidence_source": "Deficiency location data and random crew rotation policy",
+        "distinctiveness_requirement": "Unique to Phase 3 inspection data; not reused in Phase 4 reasoning."
+      },
+      {
+        "instance_id": "opt_01",
+        "bias": "Optimism bias",
+        "mechanism": "Unwarranted confidence that atrium-specific testing will pass, based on general (not case-specific) contractor track record.",
+        "affected_reasoning_operation": "Forward risk forecasting for occupancy decision",
+        "evidence_source": "Contractor's general historical performance across unrelated projects",
+        "distinctiveness_requirement": "Distinguished from prob_01 by relying on the contractor's general reputation, not on statistical base-rate versus anecdote comparison."
+      },
+      {
+        "instance_id": "prob_01",
+        "bias": "Probability neglect or Base-Rate Neglect",
+        "mechanism": "Discounting the department's own citywide statistical base rate in favor of a single salient anecdote about a nearby building.",
+        "affected_reasoning_operation": "Evidence weighting between statistical data and anecdotal precedent",
+        "evidence_source": "Citywide integration-test failure/rework rate data versus colleague's anecdote",
+        "distinctiveness_requirement": "Distinguished from opt_01 by the specific evidentiary contrast between an available base rate and a vivid anecdote, rather than general reputation-based optimism."
+      }
+    ],
+    "intended_strength": [
+      { "instance_id": "auth_01", "bias": "Authority Bias", "strength": "subtle" },
+      { "instance_id": "hind_01", "bias": "Hindsight bias", "strength": "subtle" },
+      { "instance_id": "amb_01", "bias": "Ambiguity effect", "strength": "moderate" },
+      { "instance_id": "clu_01", "bias": "Clustering illusion", "strength": "subtle" },
+      { "instance_id": "opt_01", "bias": "Optimism bias", "strength": "subtle" },
+      { "instance_id": "prob_01", "bias": "Probability neglect or Base-Rate Neglect", "strength": "moderate" }
+    ],
+    "paired_scenario_id": null,
+    "counterfactual_variable": {
+      "name": "engineering_firm_reputation",
+      "original_state": "Nationally recognized, previously-approved fire protection engineering firm (Halkirk & Vance)",
+      "changed_state": "Locally unknown firm with no prior approval history (autoselected candidate; not applied in current biased-condition generation)",
+      "variables_to_hold_constant": [
+        "Atrium geometry and code non-conformance",
+        "Statutory review timeline and staffing constraints",
+        "Developer schedule pressure",
+        "Decision points 2, 3, and 4 and their associated evidence"
+      ]
+    },
+    "scenario_id": "HE_Biased_6",
+    "domain_id": "HE",
+    "total_requested_occurrences": 6,
+    "total_planned_occurrences": 6,
+    "allocation_rule_used": "Automatic allocation per mechanism fit and narrative realism: each bias assigned to the decision point whose evidence-processing operation most naturally instantiates its mechanism; distinct biases permitted to share a decision point (DP1: auth_01+hind_01; DP4: opt_01+prob_01) provided they use different evidence sources and reasoning operations; no bias exceeds one instance per the manifest, so the two-per-decision-point same-bias cap was never approached.",
+    "control_zero_bias_requirement": false,
+    "variables_to_hold_constant": [
+      "Atrium geometry and code non-conformance",
+      "Statutory review timeline and staffing constraints",
+      "Developer schedule pressure",
+      "Contractor identity and general track record",
+      "Sequence and content of the four decision points"
+    ],
+    "generation_warnings": []
+  }}}
 
 The hidden specification may include:
 - condition;

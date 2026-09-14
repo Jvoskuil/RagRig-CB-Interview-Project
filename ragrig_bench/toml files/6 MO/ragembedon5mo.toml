@@ -1,0 +1,68 @@
+# Ranker comparison: the default hybrid RRF ranker vs. pure cosine ranking
+# (WeightedFusionRanker alpha = 1.0), on the ragrig default chat backend
+# (Ollama, qwen3.5:9b), varying the context budget (4096 and 8192 tokens).
+# Corpus = the embedded HTML fixture book, default pipeline (full parser
+# registry + MarkdownChunker).
+
+corpus_dirs = ["papers=/mnt/c/Users/Joost/Documents/papers"]
+
+queries = [
+    "Interviewer: Thanks for making time for this. Before we start, I want to confirm you're comfortable walking through the turbocharger incident from your last contract, and that this is just for internal review purposes—nothing punitive. Participant: Sure, no problem. Happy to go through it. Interviewer: Can you set the scene for me—what vessel, what voyage, and what was your role at the time? Participant: I was Chief Engineer on a geared bulk carrier, mid-size, about 55,000 deadweight. We were on a laden leg, roughly 30 hours out from the discharge port. My job was running the engine room day to day—main engine, auxiliaries, all the monitoring. We'd just come off a turbocharger overhaul on the main engine, done about three weeks prior at a yard stop. It wasn't cheap, and the office had been asking for updates on it, so it was very much front of mind. Interviewer: Take me through what happened, from the first sign of trouble to how it eventually got resolved. Participant: About two days into that leg, I noticed the exhaust gas temperature on one unit was running a touch high, and there was a bit more vibration on the turbocharger casing than I'd expect. Nothing alarming—still inside the normal band, no alarm triggered. Given we'd literally just had that unit stripped and rebuilt, my first read was that it was probably just bedding in, maybe slightly different clearances after the overhaul. I kept an eye on it rather than pulling back on load, because we had a tide-restricted berth waiting for us and reducing speed then would have put that window at risk. The readings actually settled down over the next few hours, so at the time it felt like the right call. A day or so later, the monitoring system was showing everything back in the green—temperatures, scavenge air pressure, all nominal. I didn't have my second engineer pull a lube oil sample at that point. The system was telling me it was fine, and honestly that's what it's there for. We left it at that and planned to look at it properly at the next scheduled maintenance. Then, maybe twelve hours before that, my second engineer had flagged during rounds that the fuel filter differential pressure had crept up a bit. I was pretty focused on the turbocharger numbers at that point given the earlier concern, so I told him to keep an eye on it and we'd deal with it later—there was no fuel consumption issue or anything on the combustion side, so it didn't feel urgent next to what I was already watching. The real event came about ten hours before the tide window closed. We got a sudden exhaust temperature spike and a distinct knock-type vibration—clearly the bearing itself now, not just bedding in. At that point we were deep into it. We jury-rigged a fix, brought the load down, and pushed on to make berth rather than diverting. Interviewer: Let's slow down and reconstruct that in order. What did you observe first, and how did things develop from there? Participant: First was the mild vibration and temperature deviation, day two of the leg. Then it settled, then the system showed clean readings for a good stretch. The filter differential pressure note came in maybe a day and a half after that. Then the temperature spike and vibration event came about ten hours before we were due at the tide window. So there was a real gap—almost three days—between the first hint and the actual failure. Interviewer: Going back to that first deviation—what information did you actually have, and what did you weigh? Participant: I had the raw numbers, both inside the normal band, and I had the fact that this unit had just been fully overhauled. Those two things pulled in different directions a bit—on one hand you could say any deviation after a rebuild deserves a look, but on the other, we'd just paid to have that bearing and the running gear replaced, so a bearing problem three weeks later seemed like a stretch. I remember thinking it made more sense as running-in than as an actual fault. The alternative was to ease off and inspect right there, but with the tide window ahead, and given we'd just sunk real money and yard time into that unit, continuing and monitoring felt like the more reasonable read of the situation. Interviewer: When the system showed everything back in the green band, what led you to skip the manual check? Participant: Mainly that the system readout was clean across the board—no alarms, nothing trending badly. I had the option of pulling a sample; my second engineer wasn't tied up with anything else. But the system existed exactly to tell us this kind of thing, and it was telling me things were fine. Doing a manual check on top of a clean system readout felt like it would've just confirmed what the instruments were already saying. Interviewer: When the fuel filter report came in, how did you decide where to put your attention? Participant: At that moment I was watching the turbocharger closely because of the earlier reading, so that's where my head was. The filter note got acknowledged—I told him we'd track it—but I didn't stop what I was doing to dig into it. There was no fuel or combustion symptom tied to it, so it didn't compete strongly for attention against what I already considered the open item. Interviewer: When the bearing failed with the tide window ten hours out, what options did you consider, and what tipped it? Participant: Two real options: reduce right down and divert to the nearest port for a proper repair, which would've cost us the tide window and probably several days, or jury-rig something at reduced load and make our original berth. We only had a partial bearing kit onboard, not a full replacement. What tipped it, honestly, was that we'd already put so much into this unit—the overhaul cost, the time we'd already spent watching and troubleshooting it—and diverting felt like it would waste all of that on top of the schedule hit. So we went with the jury rig. Interviewer: How much did time pressure factor in across these moments, and how confident were you at each stage? Participant: The tide window was in the back of my mind at every one of these points, more so as we got closer to it. Early on I was fairly confident it was running-in. By the green-band reading I was quite confident there was nothing there. By the fuel filter note I wasn't worried at all—it seemed unrelated. By the failure itself, confidence obviously dropped, but by then options were also narrower. Interviewer: What would have changed your decision at any of these points—what information was missing? Participant: If the system had actually thrown an alarm at that first deviation, or if a manual sample early on had shown metal particulates, I'd have acted immediately. The instruments just never gave me that trigger until the spike itself. Interviewer: Looking back now, how would you characterize that very first vibration reading? Participant: Honestly, looking at it now, it was probably the bearing telling us something from the start—it seems fairly clear in hindsight that that was the early stage of the same failure, not bedding in at all. Interviewer: If the overhaul hadn't just happened, do you think you'd have reacted differently to that first signal? Participant: Probably, yes. Without the overhaul fresh in mind, an elevated reading like that might've gotten a closer look sooner rather than being read as settling-in. Interviewer: And if there'd been no tide window at all—would the decision at the failure point have gone differently? Participant: It's possible. Without that deadline pulling at me, diverting might have felt like a cleaner, more straightforward call rather than one that came with a schedule cost attached. Interviewer: Last one—what would you tell a junior engineer to watch for differently, based on this? Participant: I'd say don't let a recent repair make you assume a component's off the table for new problems, and don't let one system you're watching closely crowd out something else being reported to you, even if it seems minor at the time."
+]
+
+[[agents]]
+label = "Gemini Prompt 8192"
+[agents.chat]
+provider = "deepseek"            # "ollama" | "deepseek"
+#model = "qwen2.5:1.5b"         # ignored for deepseek
+context_tokens = 8192          # context budget for retrieved chunks
+deepseek_model = "deepseek-v4-pro"   # deepseek only
+#deepseek_api_key = DEEPSEEK_API_KEY # deepseek only (or DEEPSEEK_API_KEY env)
+# context_size_mode = "Auto"          # "Auto" | "Forced"
+system_prompt_path = "prompt_gemini.md"    # custom system prompt ({context} placeholder)
+# request_timeout_secs = 300          # per-request timeout, None = no timeout
+[agents.chat.params]                # generation overrides (all optional)
+# temperature = 0.7
+# top_p = 0.9
+# max_tokens = 1024
+seed = 42
+
+[[agents]]
+label = "Sonar Prompt 8192"
+[agents.chat]
+provider = "deepseek"            # "ollama" | "deepseek"
+#model = "qwen2.5:1.5b"         # ignored for deepseek
+context_tokens = 8192          # context budget for retrieved chunks
+deepseek_model = "deepseek-v4-pro"   # deepseek only
+#deepseek_api_key = DEEPSEEK_API_KEY # deepseek only (or DEEPSEEK_API_KEY env)
+# context_size_mode = "Auto"          # "Auto" | "Forced"
+system_prompt_path = "prompt_sonar.md"    # custom system prompt ({context} placeholder)
+# request_timeout_secs = 300          # per-request timeout, None = no timeout
+ [agents.chat.params]                # generation overrides (all optional)
+# temperature = 0.7
+# top_p = 0.9
+# max_tokens = 1024
+ seed = 42
+
+[[agents]]
+label = "Sonnet Prompt 8192"
+[agents.chat]
+provider = "deepseek"            # "ollama" | "deepseek"
+#model = "qwen2.5:1.5b"         # ignored for deepseek
+context_tokens = 8192          # context budget for retrieved chunks
+deepseek_model = "deepseek-v4-pro"   # deepseek only
+#deepseek_api_key = DEEPSEEK_API_KEY # deepseek only (or DEEPSEEK_API_KEY env)
+# context_size_mode = "Auto"          # "Auto" | "Forced"
+system_prompt_path = "prompt_sonnet.md"    # custom system prompt ({context} placeholder)
+# request_timeout_secs = 300          # per-request timeout, None = no timeout
+[agents.chat.params]                # generation overrides (all optional)
+# temperature = 0.7
+# top_p = 0.9
+# max_tokens = 1024
+seed = 42
+
+
+# ---Embed testing ---
+[embed]
+#top_k = 0
+top_k = 50

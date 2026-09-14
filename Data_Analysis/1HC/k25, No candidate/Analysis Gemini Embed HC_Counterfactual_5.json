@@ -1,0 +1,763 @@
+{
+  "evaluation_metadata": {
+    "task": "ontology_free_rag_cognitive_bias_benchmark_evaluation",
+    "benchmark_run_metadata": {
+      "benchmark_run_id": "HC_Counterfactual_5_Gemini_on",
+      "interview_id": "HC_Counterfactual_5",
+      "system_prompt_id": "Gemini",
+      "system_prompt_generator": "Prompt 1_2",
+      "rag_model_id": "v1.0.0",
+      "corpus_condition": "on",
+      "retrieval_configuration_id": "k=25",
+      "decoding_configuration_id": null,
+      "temperature": 1,
+      "replicate_id": null,
+      "segment_map_id": null
+    },
+    "scenario_id": "HC_Counterfactual_5",
+    "domain_id": "HC",
+    "condition": "counterfactual",
+    "segment_map_status": "generated_not_prevalidated",
+    "rag_output_parse_status": "valid_json",
+    "rag_schema_assessment": "conformant"
+  },
+  "input_validation": {
+    "rag_output_schema_violations": [],
+    "rag_summary_count_consistency": {
+      "status": "consistent",
+      "details": "The summary lists five identified labels at one occurrence each, matching the five identified occurrence records; two candidates are separately excluded from primary counts."
+    },
+    "evaluation_limitations": [
+      "No actual retrieved passages, source documents, chunks, or retrieval logs were supplied, so corpus fidelity cannot be independently scored.",
+      "The interview is retrospective self-report without independent clinical records.",
+      "Some RAG narrative fields use masculine pronouns although the raw interview uses feminine pronouns; quoted evidence and speaker attribution remain valid."
+    ]
+  },
+  "evaluation_segment_map": {
+    "segment_mapping_version": "1.0",
+    "segments": [
+      {
+        "segment_id": "seg_001",
+        "speaker": "Participant",
+        "segment_type": "clinical_evidence_assessment",
+        "raw_interview_anchor": "Week-eight assessment: 78% quadriceps index, threshold cited at 80-85%, no pain or swelling, and good movement.",
+        "eligible_reasoning_segment": true,
+        "ground_truth_bias_present": false,
+        "ground_truth_instance_ids": [],
+        "ground_truth_rationale": "Objective near-threshold data and asymptomatic status provide a plausible clinical basis for caution without independently manifesting a hidden bias."
+      },
+      {
+        "segment_id": "seg_002",
+        "speaker": "Participant",
+        "segment_type": "progression_decision_rationale",
+        "raw_interview_anchor": "The prior graft-failure case 'stuck with me'; the PT held progression, said the memory colored the current case, and said it would have tipped the decision even without deadline pressure.",
+        "eligible_reasoning_segment": true,
+        "ground_truth_bias_present": true,
+        "ground_truth_instance_ids": [
+          "cb_01"
+        ],
+        "ground_truth_rationale": "The unrelated vivid prior case was treated as the decisive risk input over the current patient's near-threshold, symptom-free data."
+      },
+      {
+        "segment_id": "seg_003",
+        "speaker": "Participant",
+        "segment_type": "test_scheduling_context",
+        "raw_interview_anchor": "Three clean hopping sessions had occurred; the dynamometer was booked, available only two days weekly, and slots went quickly regardless of authorization.",
+        "eligible_reasoning_segment": true,
+        "ground_truth_bias_present": false,
+        "ground_truth_instance_ids": [],
+        "ground_truth_rationale": "This establishes legitimate resource and scheduling constraints but does not itself express the streak-based prediction used to delay testing."
+      },
+      {
+        "segment_id": "seg_004",
+        "speaker": "Participant",
+        "segment_type": "streak_based_prediction",
+        "raw_interview_anchor": "The PT felt that three good sessions meant they were 'due for something to give,' delayed the test, acknowledged no clinical red flags, and said the delay was purely about the streak.",
+        "eligible_reasoning_segment": true,
+        "ground_truth_bias_present": true,
+        "ground_truth_instance_ids": [
+          "cb_02"
+        ],
+        "ground_truth_rationale": "A short run of successful sessions was treated as making a decline due despite no fatigue, swelling, PROM decline, or authorization urgency."
+      },
+      {
+        "segment_id": "seg_005",
+        "speaker": "Participant",
+        "segment_type": "ambiguous_option_evaluation",
+        "raw_interview_anchor": "At week twelve, approximately 85% of interim milestones were met; the routine case-manager check-in asked about clinic visits versus a home program, and either path was supportable.",
+        "eligible_reasoning_segment": true,
+        "ground_truth_bias_present": false,
+        "ground_truth_instance_ids": [],
+        "ground_truth_rationale": "This is an ambiguous decision boundary and neutral option assessment before the framing choice."
+      },
+      {
+        "segment_id": "seg_006",
+        "speaker": "Participant",
+        "segment_type": "recommendation_framing",
+        "raw_interview_anchor": "The PT led with the risk of losing strength gains, gave little attention to home-program gains, said the loss language drove continued clinic care, and denied insurance pressure as the driver.",
+        "eligible_reasoning_segment": true,
+        "ground_truth_bias_present": true,
+        "ground_truth_instance_ids": [
+          "cb_03"
+        ],
+        "ground_truth_rationale": "Loss-framed presentation measurably tilted the clinic-versus-home recommendation despite ambiguous data and no deadline pressure."
+      },
+      {
+        "segment_id": "seg_007",
+        "speaker": "Participant",
+        "segment_type": "prognosis_and_clearance",
+        "raw_interview_anchor": "With 88% hop symmetry and 91% quadriceps index, the PT said the patient was very likely to return injury-free, acknowledged the confidence exceeded the scores, and chose full clearance.",
+        "eligible_reasoning_segment": true,
+        "ground_truth_bias_present": true,
+        "ground_truth_instance_ids": [
+          "cb_04"
+        ],
+        "ground_truth_rationale": "The PT converted favorable individual scores and personal caseload comparison into an overly confident individual prognosis and unqualified clearance."
+      },
+      {
+        "segment_id": "seg_008",
+        "speaker": "Participant",
+        "segment_type": "risk_communication",
+        "raw_interview_anchor": "When asked about re-injury chances, the PT answered only with the patient's own numbers, omitted general athlete re-injury rates, and acknowledged having time to provide fuller context.",
+        "eligible_reasoning_segment": true,
+        "ground_truth_bias_present": true,
+        "ground_truth_instance_ids": [
+          "cb_05"
+        ],
+        "ground_truth_rationale": "Relevant population-level risk information was available but omitted in favor of individual data."
+      },
+      {
+        "segment_id": "seg_009",
+        "speaker": "Participant",
+        "segment_type": "counterfactual_causal_reflection",
+        "raw_interview_anchor": "The PT said a hard visit cap might have increased stress about the dynamometer delay but would not have changed the core reasoning.",
+        "eligible_reasoning_segment": true,
+        "ground_truth_bias_present": false,
+        "ground_truth_instance_ids": [],
+        "ground_truth_rationale": "This is a counterfactual causal reflection rather than a new hidden bias manifestation."
+      },
+      {
+        "segment_id": "seg_010",
+        "speaker": "Participant",
+        "segment_type": "closing_reflection",
+        "raw_interview_anchor": "The PT advised checking whether a call is driven by the patient or by something carried in from elsewhere.",
+        "eligible_reasoning_segment": true,
+        "ground_truth_bias_present": false,
+        "ground_truth_instance_ids": [],
+        "ground_truth_rationale": "General reflective advice does not add a distinct decision-point manifestation."
+      }
+    ]
+  },
+  "segment_level_adjudications": [
+    {
+      "segment_id": "seg_001",
+      "ground_truth_status": "negative",
+      "ground_truth_instance_ids": [],
+      "rag_identified_occurrence_ids": [],
+      "rag_detected_bias_in_segment": false,
+      "sdt_outcome": "correct_rejection",
+      "localization_basis": "No RAG occurrence localizes to this objective-assessment segment.",
+      "adjudication_note": "The cautious interpretation is clinically plausible on its own."
+    },
+    {
+      "segment_id": "seg_002",
+      "ground_truth_status": "positive",
+      "ground_truth_instance_ids": [
+        "cb_01"
+      ],
+      "rag_identified_occurrence_ids": [
+        "obs_001"
+      ],
+      "rag_detected_bias_in_segment": true,
+      "sdt_outcome": "hit",
+      "localization_basis": "obs_001 quotes the prior graft failure, the holding decision, and the PT's acknowledgment that the memory colored interpretation.",
+      "adjudication_note": "Mechanism is correctly localized, although the predicted label is not the hidden target label."
+    },
+    {
+      "segment_id": "seg_003",
+      "ground_truth_status": "negative",
+      "ground_truth_instance_ids": [],
+      "rag_identified_occurrence_ids": [],
+      "rag_detected_bias_in_segment": false,
+      "sdt_outcome": "correct_rejection",
+      "localization_basis": "No RAG occurrence localizes to the neutral scheduling-context span.",
+      "adjudication_note": "Resource scarcity is a legitimate contextual factor, not itself the hidden bias."
+    },
+    {
+      "segment_id": "seg_004",
+      "ground_truth_status": "positive",
+      "ground_truth_instance_ids": [
+        "cb_02"
+      ],
+      "rag_identified_occurrence_ids": [
+        "obs_002"
+      ],
+      "rag_detected_bias_in_segment": true,
+      "sdt_outcome": "hit",
+      "localization_basis": "obs_002 exactly quotes the 'due for something to give' reasoning and the absence of clinical red flags.",
+      "adjudication_note": "The label and mechanism are correct."
+    },
+    {
+      "segment_id": "seg_005",
+      "ground_truth_status": "negative",
+      "ground_truth_instance_ids": [],
+      "rag_identified_occurrence_ids": [],
+      "rag_detected_bias_in_segment": false,
+      "sdt_outcome": "correct_rejection",
+      "localization_basis": "No RAG occurrence localizes to the pre-framing option-evaluation segment.",
+      "adjudication_note": "The PT explicitly described both paths as supportable."
+    },
+    {
+      "segment_id": "seg_006",
+      "ground_truth_status": "positive",
+      "ground_truth_instance_ids": [
+        "cb_03"
+      ],
+      "rag_identified_occurrence_ids": [
+        "obs_003"
+      ],
+      "rag_detected_bias_in_segment": true,
+      "sdt_outcome": "hit",
+      "localization_basis": "obs_003 exactly quotes the loss framing, omitted gain framing, and acknowledgment that it drove the recommendation.",
+      "adjudication_note": "The predicted framing-effect label is an established equivalent of the hidden loss/gain framing label."
+    },
+    {
+      "segment_id": "seg_007",
+      "ground_truth_status": "positive",
+      "ground_truth_instance_ids": [
+        "cb_04"
+      ],
+      "rag_identified_occurrence_ids": [
+        "obs_004"
+      ],
+      "rag_detected_bias_in_segment": true,
+      "sdt_outcome": "hit",
+      "localization_basis": "obs_004 exactly quotes the individual injury-free prognosis and the admission that it exceeded the scores alone.",
+      "adjudication_note": "Mechanism is correctly localized, but overconfidence bias is a near-neighbor label rather than the hidden optimism-bias label."
+    },
+    {
+      "segment_id": "seg_008",
+      "ground_truth_status": "positive",
+      "ground_truth_instance_ids": [
+        "cb_05"
+      ],
+      "rag_identified_occurrence_ids": [
+        "obs_005"
+      ],
+      "rag_detected_bias_in_segment": true,
+      "sdt_outcome": "hit",
+      "localization_basis": "obs_005 exactly quotes the individual-only answer and omission of general re-injury rates.",
+      "adjudication_note": "The label and mechanism are correct."
+    },
+    {
+      "segment_id": "seg_009",
+      "ground_truth_status": "negative",
+      "ground_truth_instance_ids": [],
+      "rag_identified_occurrence_ids": [],
+      "rag_detected_bias_in_segment": false,
+      "sdt_outcome": "correct_rejection",
+      "localization_basis": "No RAG occurrence localizes to this counterfactual reflection.",
+      "adjudication_note": "The response supports the counterfactual design but is not a new hidden occurrence."
+    },
+    {
+      "segment_id": "seg_010",
+      "ground_truth_status": "negative",
+      "ground_truth_instance_ids": [],
+      "rag_identified_occurrence_ids": [],
+      "rag_detected_bias_in_segment": false,
+      "sdt_outcome": "correct_rejection",
+      "localization_basis": "No RAG occurrence localizes to this general closing reflection.",
+      "adjudication_note": "The reflection is not treated as an additional instance."
+    }
+  ],
+  "instance_level_adjudications": [
+    {
+      "hidden_instance_id": "cb_01",
+      "hidden_target_bias_label": "Risk Tolerance/aversion",
+      "hidden_decision_or_episode": "Week 8 progression decision",
+      "hidden_mechanism": "Progression was driven by an emotionally salient unrelated prior re-injury case rather than this patient's near-threshold strength index and pain-free status, persisting despite absence of deadline pressure.",
+      "matched_rag_occurrence_id": "obs_001",
+      "rag_predicted_bias_label": "availability bias",
+      "rag_confidence": "moderate",
+      "label_equivalence_result": "near_neighbor_label",
+      "localization_match_type": "exact_quote_match",
+      "mechanism_overlap": "full_mechanism_match",
+      "strict_scorecard_outcome": "false_negative",
+      "mechanism_first_scorecard_outcome": "true_positive",
+      "secondary_diagnostic_outcome": "correct_location_wrong_bias_label",
+      "label_equivalence_explanation": "Availability bias is an established salience-based construct, not a scholarly alias for Risk Tolerance/aversion; it is a near-neighbor label here because it describes the specific pathway producing the excessive caution.",
+      "mechanism_overlap_explanation": "The RAG identifies the vivid unrelated graft-failure case as overweighed against current near-threshold, symptom-free data and notes the absence of deadline pressure, fully matching the hidden mechanism.",
+      "evidence_fidelity_assessment": "The quoted spans are verbatim, correctly attributed to the Participant, and directly support the mechanism; some surrounding RAG prose incorrectly uses masculine pronouns."
+    },
+    {
+      "hidden_instance_id": "cb_02",
+      "hidden_target_bias_label": "Gambler's Fallacy",
+      "hidden_decision_or_episode": "Post-week-8 hop-symmetry test scheduling decision",
+      "hidden_mechanism": "Three consecutive pain-free sessions were interpreted as making a decline due soon, absent fatigue indicators, and testing was delayed on that basis independently of authorization pressure.",
+      "matched_rag_occurrence_id": "obs_002",
+      "rag_predicted_bias_label": "gambler's fallacy",
+      "rag_confidence": "high",
+      "label_equivalence_result": "exact_target_label",
+      "localization_match_type": "exact_quote_match",
+      "mechanism_overlap": "full_mechanism_match",
+      "strict_scorecard_outcome": "true_positive",
+      "mechanism_first_scorecard_outcome": "true_positive",
+      "secondary_diagnostic_outcome": "exact_instance_match",
+      "label_equivalence_explanation": "The predicted label exactly matches the hidden target label.",
+      "mechanism_overlap_explanation": "The RAG correctly identifies the short successful streak as being treated as self-correcting and links that reasoning to the test delay despite no clinical red flags.",
+      "evidence_fidelity_assessment": "Both quoted spans are verbatim, correctly attributed, and directly support the hidden mechanism."
+    },
+    {
+      "hidden_instance_id": "cb_03",
+      "hidden_target_bias_label": "Loss/gain Framing effect",
+      "hidden_decision_or_episode": "Week 12 discharge/transition planning recommendation",
+      "hidden_mechanism": "The clinic-versus-home recommendation was tilted by presenting stopping clinic visits as a loss of gains rather than presenting the equally valid gains of independence under ambiguous data and without deadline pressure.",
+      "matched_rag_occurrence_id": "obs_003",
+      "rag_predicted_bias_label": "framing effect",
+      "rag_confidence": "high",
+      "label_equivalence_result": "established_alias_or_equivalent",
+      "localization_match_type": "exact_quote_match",
+      "mechanism_overlap": "full_mechanism_match",
+      "strict_scorecard_outcome": "true_positive",
+      "mechanism_first_scorecard_outcome": "true_positive",
+      "secondary_diagnostic_outcome": "approved_alias_match",
+      "label_equivalence_explanation": "Framing effect is an established scholarly equivalent for the hidden loss/gain framing construct.",
+      "mechanism_overlap_explanation": "The RAG correctly identifies asymmetrical loss-versus-gain presentation as driving continued clinic visits despite ambiguous data and no insurance urgency.",
+      "evidence_fidelity_assessment": "Both quoted spans are verbatim, correctly attributed, and directly support the mechanism."
+    },
+    {
+      "hidden_instance_id": "cb_04",
+      "hidden_target_bias_label": "Optimism Bias",
+      "hidden_decision_or_episode": "Week 16 return-to-sport clearance recommendation",
+      "hidden_mechanism": "The PT overestimated this specific patient's injury-free return based on her scores being among the best personally observed, rather than on calibrated probability from the scores alone, without deadline pressure.",
+      "matched_rag_occurrence_id": "obs_004",
+      "rag_predicted_bias_label": "overconfidence bias",
+      "rag_confidence": "moderate",
+      "label_equivalence_result": "near_neighbor_label",
+      "localization_match_type": "exact_quote_match",
+      "mechanism_overlap": "full_mechanism_match",
+      "strict_scorecard_outcome": "false_negative",
+      "mechanism_first_scorecard_outcome": "true_positive",
+      "secondary_diagnostic_outcome": "correct_location_wrong_bias_label",
+      "label_equivalence_explanation": "Overconfidence bias is not an established alias for Optimism Bias, but it is a near-neighbor label because both concern excessive confidence in a favorable individual outcome.",
+      "mechanism_overlap_explanation": "The RAG captures the personal comparative impression, the categorical injury-free prediction, and the PT's acknowledgment that confidence exceeded what the scores alone supported.",
+      "evidence_fidelity_assessment": "The quoted spans are verbatim, correctly attributed, and directly support the hidden mechanism; surrounding RAG prose again uses incorrect masculine pronouns."
+    },
+    {
+      "hidden_instance_id": "cb_05",
+      "hidden_target_bias_label": "Base-Rate neglect",
+      "hidden_decision_or_episode": "Week 16 patient question about re-injury probability",
+      "hidden_mechanism": "Known population-level ACL re-injury incidence was omitted when the patient directly asked about risk, with the PT relying only on individual thresholds despite ample time to provide fuller context.",
+      "matched_rag_occurrence_id": "obs_005",
+      "rag_predicted_bias_label": "base-rate neglect",
+      "rag_confidence": "moderate",
+      "label_equivalence_result": "exact_target_label",
+      "localization_match_type": "exact_quote_match",
+      "mechanism_overlap": "full_mechanism_match",
+      "strict_scorecard_outcome": "true_positive",
+      "mechanism_first_scorecard_outcome": "true_positive",
+      "secondary_diagnostic_outcome": "exact_instance_match",
+      "label_equivalence_explanation": "The predicted label exactly matches the hidden target label.",
+      "mechanism_overlap_explanation": "The RAG correctly identifies omission of general re-injury rates in favor of individual test data and notes that the information was available and time was not limiting.",
+      "evidence_fidelity_assessment": "Both quoted spans are verbatim, correctly attributed, and directly support the mechanism."
+    }
+  ],
+  "unmatched_rag_predictions": [],
+  "candidate_analysis": {
+    "candidate_count": 2,
+    "candidates": [
+      {
+        "candidate_id": "cand_001",
+        "proposed_bias_label": "anchoring bias",
+        "localized_segment_id": "seg_002",
+        "best_related_hidden_instance_id": "cb_01",
+        "quote_validity": "valid",
+        "would_match_if_promoted_strict": false,
+        "would_match_if_promoted_mechanism_first": false,
+        "candidate_assessment": "useful_abstention",
+        "details": "The candidate was appropriately not promoted because availability/salience is the stronger supported mechanism and the below-threshold score provides a plausible non-bias rationale."
+      },
+      {
+        "candidate_id": "cand_002",
+        "proposed_bias_label": "representativeness heuristic",
+        "localized_segment_id": "seg_007",
+        "best_related_hidden_instance_id": "cb_04",
+        "quote_validity": "valid",
+        "would_match_if_promoted_strict": false,
+        "would_match_if_promoted_mechanism_first": false,
+        "candidate_assessment": "useful_abstention",
+        "details": "The candidate was appropriately not promoted because the transcript does not isolate an independent representativeness mechanism beyond the identified optimism/overconfidence and base-rate pathways."
+      }
+    ]
+  },
+  "signal_detection_summary": {
+    "evaluation_unit": "eligible_reasoning_segment",
+    "high_only": {
+      "positive_segments": 5,
+      "negative_segments": 5,
+      "hits": 2,
+      "misses": 3,
+      "false_alarms": 0,
+      "correct_rejections": 5,
+      "hit_rate": 0.4,
+      "false_alarm_rate": 0.0,
+      "accuracy": 0.7,
+      "precision": 1.0,
+      "recall": 0.4,
+      "f1": 0.5714285714,
+      "detection_interpretation": "High-confidence filtering preserves the two high-confidence positive segments with no false alarms but misses three moderate-confidence hidden instances."
+    },
+    "high_and_moderate": {
+      "positive_segments": 5,
+      "negative_segments": 5,
+      "hits": 5,
+      "misses": 0,
+      "false_alarms": 0,
+      "correct_rejections": 5,
+      "hit_rate": 1.0,
+      "false_alarm_rate": 0.0,
+      "accuracy": 1.0,
+      "precision": 1.0,
+      "recall": 1.0,
+      "f1": 1.0,
+      "detection_interpretation": "Including moderate-confidence findings recovers every positive segment without creating false alarms."
+    },
+    "all_identified_confidence_levels": {
+      "positive_segments": 5,
+      "negative_segments": 5,
+      "hits": 5,
+      "misses": 0,
+      "false_alarms": 0,
+      "correct_rejections": 5,
+      "hit_rate": 1.0,
+      "false_alarm_rate": 0.0,
+      "accuracy": 1.0,
+      "precision": 1.0,
+      "recall": 1.0,
+      "f1": 1.0,
+      "detection_interpretation": "There are no low-confidence identified occurrences; all five hidden positive segments are detected with no false alarms."
+    }
+  },
+  "strict_instance_level_metrics": {
+    "high_only": {
+      "true_positives": 2,
+      "false_negatives": 3,
+      "false_positives": 0,
+      "precision": 1.0,
+      "recall": 0.4,
+      "f1": 0.5714285714,
+      "exact_occurrence_match_rate": 0.4,
+      "occurrence_count_match_rate": 0.4
+    },
+    "high_and_moderate": {
+      "true_positives": 3,
+      "false_negatives": 2,
+      "false_positives": 2,
+      "precision": 0.6,
+      "recall": 0.6,
+      "f1": 0.6,
+      "exact_occurrence_match_rate": 0.6,
+      "occurrence_count_match_rate": 1.0
+    },
+    "all_identified_confidence_levels": {
+      "true_positives": 3,
+      "false_negatives": 2,
+      "false_positives": 2,
+      "precision": 0.6,
+      "recall": 0.6,
+      "f1": 0.6,
+      "exact_occurrence_match_rate": 0.6,
+      "occurrence_count_match_rate": 1.0
+    }
+  },
+  "mechanism_first_instance_level_metrics": {
+    "high_only": {
+      "true_positives": 2,
+      "false_negatives": 3,
+      "false_positives": 0,
+      "precision": 1.0,
+      "recall": 0.4,
+      "f1": 0.5714285714,
+      "exact_occurrence_match_rate": 0.4,
+      "occurrence_count_match_rate": 0.4
+    },
+    "high_and_moderate": {
+      "true_positives": 5,
+      "false_negatives": 0,
+      "false_positives": 0,
+      "precision": 1.0,
+      "recall": 1.0,
+      "f1": 1.0,
+      "exact_occurrence_match_rate": 1.0,
+      "occurrence_count_match_rate": 1.0
+    },
+    "all_identified_confidence_levels": {
+      "true_positives": 5,
+      "false_negatives": 0,
+      "false_positives": 0,
+      "precision": 1.0,
+      "recall": 1.0,
+      "f1": 1.0,
+      "exact_occurrence_match_rate": 1.0,
+      "occurrence_count_match_rate": 1.0
+    }
+  },
+  "target_bias_performance": [
+    {
+      "hidden_target_bias_label": "Risk Tolerance/aversion",
+      "hidden_requested_occurrences": 1,
+      "strict_true_positives": 0,
+      "strict_false_negatives": 1,
+      "strict_false_positives_attributed_to_target": 1,
+      "strict_precision": 0.0,
+      "strict_recall": 0.0,
+      "strict_f1": 0.0,
+      "mechanism_first_true_positives": 1,
+      "mechanism_first_false_negatives": 0,
+      "mechanism_first_false_positives_attributed_to_target": 0,
+      "mechanism_first_precision": 1.0,
+      "mechanism_first_recall": 1.0,
+      "mechanism_first_f1": 1.0,
+      "count_match_status": "exact_match"
+    },
+    {
+      "hidden_target_bias_label": "Gambler's Fallacy",
+      "hidden_requested_occurrences": 1,
+      "strict_true_positives": 1,
+      "strict_false_negatives": 0,
+      "strict_false_positives_attributed_to_target": 0,
+      "strict_precision": 1.0,
+      "strict_recall": 1.0,
+      "strict_f1": 1.0,
+      "mechanism_first_true_positives": 1,
+      "mechanism_first_false_negatives": 0,
+      "mechanism_first_false_positives_attributed_to_target": 0,
+      "mechanism_first_precision": 1.0,
+      "mechanism_first_recall": 1.0,
+      "mechanism_first_f1": 1.0,
+      "count_match_status": "exact_match"
+    },
+    {
+      "hidden_target_bias_label": "Loss/gain Framing effect",
+      "hidden_requested_occurrences": 1,
+      "strict_true_positives": 1,
+      "strict_false_negatives": 0,
+      "strict_false_positives_attributed_to_target": 0,
+      "strict_precision": 1.0,
+      "strict_recall": 1.0,
+      "strict_f1": 1.0,
+      "mechanism_first_true_positives": 1,
+      "mechanism_first_false_negatives": 0,
+      "mechanism_first_false_positives_attributed_to_target": 0,
+      "mechanism_first_precision": 1.0,
+      "mechanism_first_recall": 1.0,
+      "mechanism_first_f1": 1.0,
+      "count_match_status": "exact_match"
+    },
+    {
+      "hidden_target_bias_label": "Optimism Bias",
+      "hidden_requested_occurrences": 1,
+      "strict_true_positives": 0,
+      "strict_false_negatives": 1,
+      "strict_false_positives_attributed_to_target": 1,
+      "strict_precision": 0.0,
+      "strict_recall": 0.0,
+      "strict_f1": 0.0,
+      "mechanism_first_true_positives": 1,
+      "mechanism_first_false_negatives": 0,
+      "mechanism_first_false_positives_attributed_to_target": 0,
+      "mechanism_first_precision": 1.0,
+      "mechanism_first_recall": 1.0,
+      "mechanism_first_f1": 1.0,
+      "count_match_status": "exact_match"
+    },
+    {
+      "hidden_target_bias_label": "Base-Rate neglect",
+      "hidden_requested_occurrences": 1,
+      "strict_true_positives": 1,
+      "strict_false_negatives": 0,
+      "strict_false_positives_attributed_to_target": 0,
+      "strict_precision": 1.0,
+      "strict_recall": 1.0,
+      "strict_f1": 1.0,
+      "mechanism_first_true_positives": 1,
+      "mechanism_first_false_negatives": 0,
+      "mechanism_first_false_positives_attributed_to_target": 0,
+      "mechanism_first_precision": 1.0,
+      "mechanism_first_recall": 1.0,
+      "mechanism_first_f1": 1.0,
+      "count_match_status": "exact_match"
+    }
+  ],
+  "rag_label_false_positive_inventory": [
+    {
+      "rag_predicted_bias_label": "availability bias",
+      "alternative_labels": [
+        "availability heuristic",
+        "salience bias"
+      ],
+      "occurrence_count": 1,
+      "best_related_hidden_target_bias_label": "Risk Tolerance/aversion",
+      "label_relation": "near_neighbor",
+      "mechanism_overlap_summary": "Full overlap on vivid unrelated prior-case salience driving disproportionate caution; the RAG label names the pathway rather than the hidden target label.",
+      "primary_error_types": [
+        "correct_location_wrong_bias_label"
+      ]
+    },
+    {
+      "rag_predicted_bias_label": "overconfidence bias",
+      "alternative_labels": [
+        "overestimation bias",
+        "overconfidence effect"
+      ],
+      "occurrence_count": 1,
+      "best_related_hidden_target_bias_label": "Optimism Bias",
+      "label_relation": "near_neighbor",
+      "mechanism_overlap_summary": "Full overlap on excessive confidence in this patient's favorable outcome based on individual comparative evidence.",
+      "primary_error_types": [
+        "correct_location_wrong_bias_label"
+      ]
+    }
+  ],
+  "diagnostic_error_summary": {
+    "correct_location_wrong_bias_label_count": 2,
+    "correct_label_wrong_location_count": 0,
+    "correct_label_location_wrong_mechanism_count": 0,
+    "mechanism_detected_label_unresolved_count": 0,
+    "partial_mechanism_match_count": 0,
+    "duplicate_prediction_count": 0,
+    "unsupported_prediction_count": 0,
+    "fabricated_or_invalid_quote_count": 0,
+    "approved_alias_or_equivalence_count": 1,
+    "near_neighbor_label_count": 2,
+    "different_construct_label_count": 0,
+    "candidate_count": 2,
+    "candidate_useful_abstention_count": 2,
+    "candidate_near_miss_count": 0
+  },
+  "corpus_support_audit": {
+    "primary_corpus_fidelity_score_available": false,
+    "rag_occurrences_claiming_retrieved_support": 1,
+    "rag_occurrences_with_no_claimed_retrieved_support": 4,
+    "rag_occurrences_with_unverifiable_or_internally_inconsistent_citation_metadata": 1,
+    "assessment_note": "The RAG explicitly claims retrieved support for obs_003 and reports no direct support for the other four. Because no retrieved passages, source documents, or logs were supplied independently, the one claimed citation is unverifiable and corpus fidelity is not scored."
+  },
+  "comparison_ready_summary": {
+    "primary_recommended_comparison_threshold": "high_and_moderate",
+    "segment_detection": {
+      "high_only": {
+        "hits": 2,
+        "misses": 3,
+        "false_alarms": 0,
+        "correct_rejections": 5,
+        "hit_rate": 0.4,
+        "false_alarm_rate": 0.0,
+        "f1": 0.5714285714
+      },
+      "high_and_moderate": {
+        "hits": 5,
+        "misses": 0,
+        "false_alarms": 0,
+        "correct_rejections": 5,
+        "hit_rate": 1.0,
+        "false_alarm_rate": 0.0,
+        "f1": 1.0
+      },
+      "all_identified_confidence_levels": {
+        "hits": 5,
+        "misses": 0,
+        "false_alarms": 0,
+        "correct_rejections": 5,
+        "hit_rate": 1.0,
+        "false_alarm_rate": 0.0,
+        "f1": 1.0
+      }
+    },
+    "strict_instance_identification": {
+      "high_only": {
+        "true_positives": 2,
+        "false_negatives": 3,
+        "false_positives": 0,
+        "precision": 1.0,
+        "recall": 0.4,
+        "f1": 0.5714285714
+      },
+      "high_and_moderate": {
+        "true_positives": 3,
+        "false_negatives": 2,
+        "false_positives": 2,
+        "precision": 0.6,
+        "recall": 0.6,
+        "f1": 0.6
+      },
+      "all_identified_confidence_levels": {
+        "true_positives": 3,
+        "false_negatives": 2,
+        "false_positives": 2,
+        "precision": 0.6,
+        "recall": 0.6,
+        "f1": 0.6
+      }
+    },
+    "mechanism_first_identification": {
+      "high_only": {
+        "true_positives": 2,
+        "false_negatives": 3,
+        "false_positives": 0,
+        "precision": 1.0,
+        "recall": 0.4,
+        "f1": 0.5714285714
+      },
+      "high_and_moderate": {
+        "true_positives": 5,
+        "false_negatives": 0,
+        "false_positives": 0,
+        "precision": 1.0,
+        "recall": 1.0,
+        "f1": 1.0
+      },
+      "all_identified_confidence_levels": {
+        "true_positives": 5,
+        "false_negatives": 0,
+        "false_positives": 0,
+        "precision": 1.0,
+        "recall": 1.0,
+        "f1": 1.0
+      }
+    },
+    "taxonomy_gap": {
+      "high_only": {
+        "mechanism_first_f1_minus_strict_f1": 0.0
+      },
+      "high_and_moderate": {
+        "mechanism_first_f1_minus_strict_f1": 0.4
+      },
+      "all_identified_confidence_levels": {
+        "mechanism_first_f1_minus_strict_f1": 0.4
+      }
+    },
+    "confidence_tradeoff": {
+      "increment_from_high_to_high_and_moderate": "Segment hit rate rises from 0.4 to 1.0; strict F1 rises from 0.5714 to 0.6; mechanism-first F1 rises from 0.5714 to 1.0, with no added false alarms.",
+      "increment_from_high_and_moderate_to_all_confidence": "No change because there are no low-confidence identified occurrences."
+    }
+  },
+  "overall_evaluation_summary": {
+    "hidden_total_planned_occurrences": 5,
+    "rag_total_identified_occurrences": 5,
+    "rag_total_candidate_biases": 2,
+    "segment_level_primary_result": "All five positive and five negative eligible segments are classified correctly when moderate confidence is included; high-only misses the three moderate-confidence positives.",
+    "strict_label_plus_mechanism_result": "At high-and-moderate and all-confidence thresholds, 3 of 5 occurrences are strict true positives; two correctly localized full-mechanism findings use near-neighbor labels.",
+    "mechanism_first_result": "At high-and-moderate and all-confidence thresholds, all five hidden mechanisms are correctly localized and identified.",
+    "main_failure_modes": [
+      "Availability bias and overconfidence bias were used instead of the benchmark's Risk Tolerance/aversion and Optimism Bias labels.",
+      "The two mislabeled occurrences are moderate confidence, causing strict high-threshold sensitivity.",
+      "One claimed corpus-supported occurrence cannot be independently verified from the supplied inputs."
+    ],
+    "main_strengths": [
+      "All five hidden instances have valid, exact interview quotations and correct mechanism localization.",
+      "Gambler's Fallacy, framing effect, and base-rate neglect are correctly labeled, with framing effect accepted as an established equivalent.",
+      "Two plausible additional candidates were appropriately withheld from identified findings."
+    ],
+    "benchmark_interpretation": "This single run shows perfect mechanism-first detection once moderate confidence is retained, while strict ontology matching exposes two near-neighbor label substitutions. No dataset-level or corpus-fidelity conclusion should be drawn from this interview alone."
+  }
+}

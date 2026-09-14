@@ -1,0 +1,68 @@
+# Ranker comparison: the default hybrid RRF ranker vs. pure cosine ranking
+# (WeightedFusionRanker alpha = 1.0), on the ragrig default chat backend
+# (Ollama, qwen3.5:9b), varying the context budget (4096 and 8192 tokens).
+# Corpus = the embedded HTML fixture book, default pipeline (full parser
+# registry + MarkdownChunker).
+
+corpus_dirs = ["papers=/mnt/c/Users/Joost/Documents/papers"]
+
+queries = [
+    "Interviewer: Thanks for taking the time. Before we start, just to confirm—this is a confidential debrief for our internal process-improvement study, not part of any disciplinary or compliance record. Is that okay with you? Participant: Yes, that's fine. I've done these before. Interviewer: Great. Can you tell me your role and what your responsibilities were during this incident? Participant: I'm the Environmental/Safety Compliance Officer at the plant. I own air permit compliance for the whole site, including the Solvent Recovery Unit in Building 3. During this event my job was to figure out what actually happened, decide what needed to be reported to the state, and keep production moving if I could justify it. Interviewer: Walk me through what happened, starting from the beginning. Participant: Sure. It started at 6:40 in the morning—a VOC sensor near the SRU tripped above the action threshold. Nothing else had happened yet, no complaints, nothing. We'd had two drift-related false alarms on that same sensor array in the past month, so that was fresh in my mind. My first read was that it was probably drift again. About half an hour later, before I'd done much else, the hotline got a call from someone near the fenceline complaining about a chemical smell. That obviously raised the stakes, so I sent a technician out with a handheld VOC meter. The readings he brought back were elevated, but not dramatically—kind of a grey zone, not clearly over the permit limit. We were also mid-batch on a large customer order due in two days, so a shutdown wasn't something anyone wanted to trigger without good reason. I decided to hold off on pulling the full continuous emissions monitoring data and just kept an eye on it with recalibration scheduled. That stayed the plan for about two days, until a contractor doing unrelated maintenance work noticed a data logger showing sustained high readings during that exact window. That's when I really dug in. I pulled the maintenance history, and separately, I was thinking about a valve failure that happened at our sister plant in Ohio—I'd just seen a corporate webinar on it two weeks earlier, big fine, made the local news. So initially my draft notes on the incident leaned toward a valve issue. Eventually the teardown showed it was actually a worn gasket seal, which is honestly the most common cause we've had here over the last few years. Once that was confirmed, I had to decide how to calculate the emissions and whether it crossed into reportable territory, given the permit's 24-hour notification clock and our production deadline. Interviewer: Let's reconstruct that timeline a bit more precisely. What did you do in the first thirty minutes after the alarm? Participant: I checked the alarm log, saw the drift history, and made a quick call that we'd treat it as probable drift and schedule recalibration for later in the shift. I didn't dispatch the field team immediately—that came after the odor complaint. Interviewer: And between the odor complaint and the teardown, what new information came in, and when? Participant: The field readings came in that same morning—inconclusive, as I said. Then nothing new for about two days until the contractor flagged the data logger. That's really what forced a fuller investigation. Interviewer: When did the teardown findings become available relative to your draft report? Participant: The teardown happened after I'd already started drafting my incident summary and had briefed the plant manager verbally on what I thought we were dealing with. Interviewer: Let's go back to that very first decision—treating the alarm as probable drift. What cues drove that? Participant: Mainly the history. We'd had two false alarms in a month from that same array, so drift felt like the obvious explanation. It was the first thing that made sense, and honestly once I had that in my head, the readings the technician brought back later didn't strike me as clearly contradicting it—they were ambiguous enough that I read them as consistent with drift rather than as a red flag on their own. Interviewer: Did you consider the possibility of a real release before the odor complaint came in? Participant: Not seriously, no. There was no other reason to at that point. Interviewer: What information sources did you consult before deciding whether to pull the full CEM dataset, and which did you set aside? Participant: I looked at the handheld readings and the recent drift history. I didn't pull the full continuous emissions monitoring data at that stage. I knew that was the more thorough option—it would have given us a much clearer picture—but our analyst time is tight, we're basically a two-person team, and a full data pull plus lab confirmation would have taken hours we didn't have with the production deadline looming. If it had come back showing an exceedance, we'd have been on a 24-hour reporting clock, which would have complicated the week considerably. So I told myself the grey-zone readings weren't conclusive enough to justify pulling everyone off other work yet. Interviewer: What alternatives did you consider when drafting the incident narrative, and why did the Ohio incident come to mind? Participant: I thought about gasket seep, which is genuinely our most common issue based on the maintenance log—three years of data point that way. But the Ohio valve failure was just very present for me. I'd sat through that whole webinar, seen the numbers, the fine, the news coverage. So when I started framing the draft report and thinking about where to send the inspection team first, the valve scenario is what I wrote down and what I asked maintenance to check first, even before the gasket line was inspected. Interviewer: What was your basis for choosing the exceedance calculation methodology at the end? Participant: Once the gasket was confirmed, I had two methodologies I could reasonably apply, and they gave different exceedance outcomes. I went through the permit language and the historical way we'd calculated similar events, and picked the one I felt was most defensible given how our last few audits went. Interviewer: How much time pressure did you feel at each of these moments? Participant: Constant, honestly. The production deadline was hanging over almost every decision, from the initial triage to whether to escalate. Interviewer: How confident were you in your interpretation at each stage, and what would have made you less confident? Participant: Early on, fairly confident it was drift—maybe too confident, looking back. By the time the data logger turned up, I was much less sure of anything. If the field readings that first morning had been sharper, either clearly high or clearly normal, that would have changed how much weight I put on the drift explanation. Interviewer: If the sensor drift history hadn't existed, would your initial triage have gone differently? Participant: Probably. Without that history I think I'd have dispatched the field team right away instead of waiting. Interviewer: If you hadn't attended the webinar about the Ohio incident, do you think your investigation would have started elsewhere? Participant: That's a fair question. I'd like to think the maintenance log would have driven it regardless, but I honestly can't rule out that the webinar shaped where I looked first. Interviewer: Looking back, what single piece of information, if available earlier, would have most changed your approach? Participant: The data logger readings from that first day. If I'd seen those immediately instead of two days later, I think the whole sequence would have moved faster and with less back-and-forth."
+]
+
+[[agents]]
+label = "Gemini Prompt 8192"
+[agents.chat]
+provider = "deepseek"            # "ollama" | "deepseek"
+#model = "qwen2.5:1.5b"         # ignored for deepseek
+context_tokens = 8192          # context budget for retrieved chunks
+deepseek_model = "deepseek-v4-pro"   # deepseek only
+#deepseek_api_key = DEEPSEEK_API_KEY # deepseek only (or DEEPSEEK_API_KEY env)
+# context_size_mode = "Auto"          # "Auto" | "Forced"
+system_prompt_path = "prompt_gemini.md"    # custom system prompt ({context} placeholder)
+# request_timeout_secs = 300          # per-request timeout, None = no timeout
+[agents.chat.params]                # generation overrides (all optional)
+# temperature = 0.7
+# top_p = 0.9
+# max_tokens = 1024
+seed = 42
+
+[[agents]]
+label = "Sonar Prompt 8192"
+[agents.chat]
+provider = "deepseek"            # "ollama" | "deepseek"
+#model = "qwen2.5:1.5b"         # ignored for deepseek
+context_tokens = 8192          # context budget for retrieved chunks
+deepseek_model = "deepseek-v4-pro"   # deepseek only
+#deepseek_api_key = DEEPSEEK_API_KEY # deepseek only (or DEEPSEEK_API_KEY env)
+# context_size_mode = "Auto"          # "Auto" | "Forced"
+system_prompt_path = "prompt_sonar.md"    # custom system prompt ({context} placeholder)
+# request_timeout_secs = 300          # per-request timeout, None = no timeout
+ [agents.chat.params]                # generation overrides (all optional)
+# temperature = 0.7
+# top_p = 0.9
+# max_tokens = 1024
+ seed = 42
+
+[[agents]]
+label = "Sonnet Prompt 8192"
+[agents.chat]
+provider = "deepseek"            # "ollama" | "deepseek"
+#model = "qwen2.5:1.5b"         # ignored for deepseek
+context_tokens = 8192          # context budget for retrieved chunks
+deepseek_model = "deepseek-v4-pro"   # deepseek only
+#deepseek_api_key = DEEPSEEK_API_KEY # deepseek only (or DEEPSEEK_API_KEY env)
+# context_size_mode = "Auto"          # "Auto" | "Forced"
+system_prompt_path = "prompt_sonnet.md"    # custom system prompt ({context} placeholder)
+# request_timeout_secs = 300          # per-request timeout, None = no timeout
+[agents.chat.params]                # generation overrides (all optional)
+# temperature = 0.7
+# top_p = 0.9
+# max_tokens = 1024
+seed = 42
+
+
+# ---Embed testing ---
+[embed]
+#top_k = 0
+top_k = 50

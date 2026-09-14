@@ -1,0 +1,503 @@
+{
+  "validator_version": "2.0",
+  "interview_id": "CS_Biased_5",
+  "condition": "biased",
+  "domain_assessment": {
+    "domain": "Cybersecurity vulnerability management and incident-adjacent remediation governance",
+    "role": "Vulnerability Management Analyst responsible for triage, compensating controls, patch coordination, and SLA ticket closure for internet-facing assets",
+    "objective": "Mitigate a critically exploitable vulnerability affecting a Tier-1, internet-facing order-processing gateway within a 30-day SLA while avoiding disruptive downtime during a peak sales period",
+    "incident_type": "Critical CVE remediation case involving emergency change governance, interim WAF mitigation, anomalous outbound DNS activity, detection-rule selection, and residual-risk closure judgment",
+    "confidence": 0.99
+  },
+  "structure_audit": {
+    "estimated_word_count": 1485,
+    "within_target_range": true,
+    "decision_point_count": 4,
+    "decision_points": [
+      {
+        "id": 1,
+        "summary": "Escalate the critical exploited-in-the-wild CVE to an emergency CAB session rather than await the normal 21-day change cycle.",
+        "evidence_before": [
+          "Threat-intelligence alert for a critical CVE with CVSS 9.8 and confirmed exploitation in the wild",
+          "Affected system is a Tier-1, internet-facing, revenue-generating checkout gateway",
+          "Legacy architecture requires vendor coordination",
+          "Partial change freeze is approaching in approximately ten days"
+        ],
+        "evidence_after": [
+          "Emergency CAB approves only a two-hour maintenance window",
+          "The window is insufficient for full regression testing",
+          "The team deploys a WAF rule as an interim compensating control rather than the vendor patch"
+        ],
+        "goals_constraints": [
+          "Meet the 30-day remediation SLA",
+          "Avoid disruption to a checkout gateway during peak sales",
+          "Obtain a maintenance window before the change freeze",
+          "Manage concurrent high-severity tickets"
+        ],
+        "alternatives": [
+          "Use the emergency CAB process",
+          "Wait for the ordinary 21-day change cycle",
+          "Use interim controls while awaiting a patch window"
+        ],
+        "decision_basis": "The participant states that exploit-in-the-wild status triggered escalation, but describes persuading management chiefly by emphasizing potential payment-flow compromise, contractual penalties, and reputational losses from delay.",
+        "time_pressure": "High: the change freeze, 30-day SLA, active exploitation, and peak-sales operating period all reduce available options.",
+        "uncertainty": "The operational impact of an emergency patch and adequacy of a shortened change window are uncertain."
+      },
+      {
+        "id": 2,
+        "summary": "Prioritize validation of the WAF's block of the known exploit signature while logging, but not actively investigating, a co-located outbound DNS anomaly.",
+        "evidence_before": [
+          "WAF rule has been deployed as a compensating control",
+          "Dashboard shows a clean match to the known exploit payload pattern",
+          "The same monitoring view shows odd outbound DNS traffic from the affected host"
+        ],
+        "evidence_after": [
+          "The DNS anomaly is logged as \"anomalous, monitor\" rather than investigated in parallel",
+          "A different analyst escalates the DNS pattern two days later",
+          "The DNS pattern is treated as a possible unrelated compromise indicator"
+        ],
+        "goals_constraints": [
+          "Verify that the WAF blocks the confirmed payload variant",
+          "Maintain focus on the CVE remediation ticket",
+          "Operate amid limited attention and competing high-severity work"
+        ],
+        "alternatives": [
+          "Open a parallel DNS investigation",
+          "Escalate the anomaly to another team immediately",
+          "Log and monitor the anomaly while prioritizing WAF validation"
+        ],
+        "decision_basis": "The participant gives priority to confirming the control against the known exploit signature because it directly matches the ticket's known indicators; the visible DNS signal is underprocessed because it does not fit those indicators.",
+        "time_pressure": "Moderate to high: the team is operating under a shrinking remediation window and validating an interim control for an actively exploited vulnerability.",
+        "uncertainty": "The DNS traffic has uncertain relevance to the CVE and uncertain implications for compromise."
+      },
+      {
+        "id": 3,
+        "summary": "Retain a self-built detection script as primary detection rather than make a newly available vendor SIEM correlation rule, with broader payload coverage, the primary rule.",
+        "evidence_before": [
+          "The participant built and tuned the existing script six months earlier",
+          "The script's false positives have been tuned out in the local environment",
+          "The vendor correlation rule covers multiple payload variants",
+          "IT Ops recommends standardizing on the vendor rule"
+        ],
+        "evidence_after": [
+          "The self-built script remains primary and the vendor rule is made secondary and lower priority",
+          "A later payload variant is missed by the script",
+          "The vendor rule would have detected that variant"
+        ],
+        "goals_constraints": [
+          "Maintain reliable detection during an active remediation period",
+          "Avoid introducing an unfamiliar primary detection control",
+          "Reduce false positives",
+          "Cover relevant exploit variants"
+        ],
+        "alternatives": [
+          "Make the vendor rule primary",
+          "Keep the local script primary",
+          "Run both rules with equal priority",
+          "Retain the local script as secondary while testing the vendor rule"
+        ],
+        "decision_basis": "The participant acknowledges the vendor rule's broader coverage but privileges familiarity with, tuning of, and personal authorship of the self-built script over that comparative coverage advantage.",
+        "time_pressure": "Moderate: the choice occurs during an active incident and before remediation is complete.",
+        "uncertainty": "The vendor rule is new to the local environment, and its false-positive behavior is not yet established."
+      },
+      {
+        "id": 4,
+        "summary": "Close the ticket as adequately mitigated on day 27 despite no vendor patch, unresolved DNS activity, and a known detection-coverage gap.",
+        "evidence_before": [
+          "The vendor patch is not deployed",
+          "WAF and detection script are the active compensating controls",
+          "The 30-day SLA deadline is imminent",
+          "The DNS anomaly remains unresolved",
+          "The self-built script has missed a payload variant that the vendor rule would have detected",
+          "A recent ransomware incident at another company is prominent in team discussion"
+        ],
+        "evidence_after": [
+          "The ticket is closed as adequately mitigated",
+          "A later audit identifies a narrow exposure window that was never closed",
+          "No exploitation through that exposure window is identified"
+        ],
+        "goals_constraints": [
+          "Resolve the ticket before the SLA deadline",
+          "Document adequate mitigation despite patch delay",
+          "Avoid leaving the issue administratively open"
+        ],
+        "alternatives": [
+          "Keep the ticket open pending patch deployment",
+          "Close as mitigated with compensating controls",
+          "Escalate unresolved residual risks as closure blockers",
+          "Seek an SLA exception or formal risk acceptance"
+        ],
+        "decision_basis": "The participant relies partly on confidence in controls personally configured and partly on a generalized urgency amplified by a recent external ransomware story, while giving insufficient blocking weight to ticket-specific unresolved risks.",
+        "time_pressure": "High: only three days remain before the SLA deadline.",
+        "uncertainty": "The participant admits uncertainty about whether controls are fully sufficient and later learns that a narrow exposure window remained."
+      }
+    ]
+  },
+  "target_occurrence_audit": [
+    {
+      "instance_id": "cb_01",
+      "bias": "Loss Framing",
+      "requested_occurrences_for_bias": 1,
+      "status": "supported",
+      "decision_point": 1,
+      "supporting_quote": "What really drove how I pitched it to my manager was framing what happens if we don't act ... we're looking at a breached customer-payment flow, contract penalties from at least one retail partner, and reputational fallout that's hard to walk back. I basically built the case around what we stood to lose if we sat on it for 21 days.",
+      "evidence_location": "Decision point 1; participant response immediately after the interviewer asks why the emergency CAB slot was requested, plus the following response acknowledging that downtime risk received less weight.",
+      "mechanism": "The participant justifies escalation chiefly through prospective avoided losses from delay, and explicitly reports giving less weight to the countervailing disruption risk of an emergency patch attempt. This is an identifiable framing-based asymmetry in escalation justification rather than merely recognition that the asset is important.",
+      "strength": "moderate",
+      "confidence": 0.96,
+      "plausible_nonbias_explanation": "Given active exploitation, a critical CVSS score, Tier-1 exposure, and potential payment-flow impact, emergency escalation is substantively reasonable. The supported occurrence concerns the stated loss-weighted presentation of the case, not the conclusion to escalate itself.",
+      "additional_evidence_needed": "None required. The participant directly contrasts the loss-focused case with the less-weighted downtime risk.",
+      "revision_needed": false,
+      "revision": {
+        "revision_type": "none",
+        "location": "Decision point 1, escalation rationale and the immediate follow-up on downtime risk",
+        "current_defect": "None. The episode supplies a distinct decision, explicit asymmetric weighting, and an appropriate loss-oriented rationale.",
+        "minimal_change_instruction": "No change.",
+        "preserve": [
+          "Exploit-in-the-wild status as a legitimate trigger",
+          "Tier-1 checkout-system context",
+          "The distinction between the decision to escalate and the loss-focused way it was justified",
+          "The acknowledgement that emergency patch disruption was considered but not weighted as heavily"
+        ],
+        "avoid_creating": [
+          "A second loss-framing episode at ticket closure",
+          "An explicit cognitive-bias label or textbook explanation",
+          "Any implication that escalation itself was irrational solely because it was loss-framed"
+        ],
+        "expected_post_revision_status": "supported"
+      }
+    },
+    {
+      "instance_id": "cb_02",
+      "bias": "Selective Attention Bias or Inattentional Blindness",
+      "requested_occurrences_for_bias": 1,
+      "status": "supported",
+      "decision_point": 2,
+      "supporting_quote": "The DNS spike was sitting right there in the same view, but it didn't match anything in the CVE's known indicators, so I logged it as \"anomalous, monitor\" and moved on. My focus was really on validating the compensating control against the threat we knew about.",
+      "evidence_location": "Decision point 2; participant explanation of dashboard review, reinforced by the follow-up stating that the analyst was \"heads-down\" on the confirmed payload variant.",
+      "mechanism": "Attention is locked onto validating the known exploit signature and its compensating control. A visible, co-located but nonmatching DNS anomaly receives only minimal processing because it does not fit the active CVE indicator set, despite later escalation as a possible compromise signal.",
+      "strength": "moderate",
+      "confidence": 0.93,
+      "plausible_nonbias_explanation": "Prioritizing a confirmed, actively exploited CVE over an ambiguous and potentially unrelated DNS anomaly can be a justified triage choice under time pressure. The bias inference is supported because the anomaly was already visible in the same view, was explicitly noticed, and was reduced to monitoring primarily because it did not match the expected indicator pattern.",
+      "additional_evidence_needed": "None required. The interview establishes visibility, attentional prioritization, limited processing, and later evidence that the anomaly merited separate escalation.",
+      "revision_needed": false,
+      "revision": {
+        "revision_type": "none",
+        "location": "Decision point 2, dashboard-review answer and the follow-up about not opening a parallel inquiry",
+        "current_defect": "None. The evidence supports selective underprocessing rather than relying solely on the later unfavorable outcome.",
+        "minimal_change_instruction": "No change.",
+        "preserve": [
+          "The DNS anomaly's visibility in the same dashboard view",
+          "The participant's stated focus on known-payload validation",
+          "The anomaly's uncertain relationship to the CVE",
+          "The later separate escalation by another analyst"
+        ],
+        "avoid_creating": [
+          "A separate confirmation-bias or anchoring episode from the same evidence",
+          "A claim that the participant literally failed to perceive the DNS anomaly",
+          "A stronger assertion that the DNS anomaly was definitely part of the same compromise"
+        ],
+        "expected_post_revision_status": "supported"
+      }
+    },
+    {
+      "instance_id": "cb_03",
+      "bias": "Endowment",
+      "requested_occurrences_for_bias": 1,
+      "status": "supported",
+      "decision_point": 3,
+      "supporting_quote": "I trust it. I built it, I know exactly how it behaves ... I did acknowledge it covers more variants, that part's true, I just didn't want to hand over something I'd already gotten working well.",
+      "evidence_location": "Decision point 3; participant's explanation for retaining the self-built detection script as primary despite the vendor rule's broader coverage.",
+      "mechanism": "The participant privileges a personally built and tuned script over a comparably available rule with explicitly broader coverage. Familiarity and local false-positive tuning are relevant performance considerations, but the stated reluctance to \"hand over\" a tool personally built provides a distinct ownership-and-effort component, later corroborated by the missed variant.",
+      "strength": "moderate",
+      "confidence": 0.89,
+      "plausible_nonbias_explanation": "The participant has legitimate reasons to value an established local rule during an incident: known behavior, prior tuning, and uncertainty about a newly introduced vendor rule's false positives. The occurrence remains supported because the participant concedes superior variant coverage yet specifically invokes personal construction and reluctance to relinquish the existing tool.",
+      "additional_evidence_needed": "None required. The text provides comparative coverage information, a retention decision, and ownership-linked reasoning.",
+      "revision_needed": false,
+      "revision": {
+        "revision_type": "none",
+        "location": "Decision point 3, response explaining why the self-built script remained primary",
+        "current_defect": "None. The ownership-linked rationale is sufficiently separable from ordinary change-management caution.",
+        "minimal_change_instruction": "No change.",
+        "preserve": [
+          "Vendor rule's broader payload coverage",
+          "The self-built script's local tuning and lower false-positive history",
+          "The vendor rule's novelty in the local environment",
+          "The later payload-variant gap",
+          "The tool-selection decision as distinct from final ticket-closure confidence"
+        ],
+        "avoid_creating": [
+          "A second endowment episode in the final closure decision",
+          "A claim that self-authorship was the only reason for retaining the script",
+          "An explicit label for the cognitive mechanism"
+        ],
+        "expected_post_revision_status": "supported"
+      }
+    },
+    {
+      "instance_id": "cb_04",
+      "bias": "Illusion of control",
+      "requested_occurrences_for_bias": 1,
+      "status": "supported",
+      "decision_point": 4,
+      "supporting_quote": "Part of what pushed me there was that I'd personally configured both of those controls, and I was confident the exploit path was shut down because of that setup.",
+      "evidence_location": "Decision point 4; initial ticket-closure account, reinforced by the later admission that unresolved DNS activity and a detection gap were not treated as closure blockers.",
+      "mechanism": "The participant converts personal configuration of the WAF and script into confidence that the exploit path is contained, even though documented residual-risk information includes no deployed patch, an unresolved anomaly, and a known detection-coverage gap. The causal basis for confidence is personal agency over the controls rather than a complete residual-risk assessment.",
+      "strength": "moderate",
+      "confidence": 0.91,
+      "plausible_nonbias_explanation": "Directly configuring and testing controls can appropriately increase confidence in their behavior. The occurrence is supported because closure confidence exceeds the control evidence available and is explicitly linked to personal setup despite known unresolved exposure indicators.",
+      "additional_evidence_needed": "None required. The participant's personal-agency rationale and the contrary residual-risk evidence are both stated in the interview.",
+      "revision_needed": false,
+      "revision": {
+        "revision_type": "none",
+        "location": "Decision point 4, first participant response explaining the day-27 closure decision",
+        "current_defect": "None. The occurrence is separate from the external-news rationale and anchored in personal control over compensating controls.",
+        "minimal_change_instruction": "No change.",
+        "preserve": [
+          "The distinction between WAF/script compensating controls and the absent vendor patch",
+          "The unresolved DNS anomaly and detection gap",
+          "The participant's qualified later admission of uncertainty",
+          "The later audit finding of a narrow unclosed exposure window"
+        ],
+        "avoid_creating": [
+          "A second illusion-of-control occurrence through repeated personal-agency language elsewhere",
+          "A claim that the participant believed risk was literally zero",
+          "A merger with the recent-news rationale"
+        ],
+        "expected_post_revision_status": "supported"
+      }
+    },
+    {
+      "instance_id": "cb_05",
+      "bias": "Recency",
+      "requested_occurrences_for_bias": 1,
+      "status": "supported",
+      "decision_point": 4,
+      "supporting_quote": "There was also, I'll admit, a news story that week about a ransomware attack that hit another company pretty hard ... and it added to the sense that this needed to be wrapped up decisively rather than left open.",
+      "evidence_location": "Decision point 4; ticket-closure account, directly tested by the interviewer’s counterfactual probe about removal of the ransomware story.",
+      "mechanism": "A recent, unrelated ransomware event heightens the participant's generalized sense of urgency and affects closure timing, displacing fuller attention to ticket-specific residual-risk evidence. The participant confirms the temporal influence by saying that without the story they may have sat with the open items longer.",
+      "strength": "moderate",
+      "confidence": 0.95,
+      "plausible_nonbias_explanation": "A high-profile ransomware event may reasonably prompt a broader reassessment of organizational exposure. Here, however, the event concerns another company and is explicitly described as affecting the felt need to close this ticket despite unresolved technical items; the counterfactual probe makes the external, recent cue's influence observable.",
+      "additional_evidence_needed": "None required. The temporal cue, its unrelated external source, its effect on urgency, and a direct counterfactual response are all present.",
+      "revision_needed": false,
+      "revision": {
+        "revision_type": "none",
+        "location": "Decision point 4, initial closure explanation and the ransomware-story counterfactual probe",
+        "current_defect": "None. The recent external event is independently identifiable from confidence in personally configured controls.",
+        "minimal_change_instruction": "No change.",
+        "preserve": [
+          "The ransomware story as recent and external to the focal ticket",
+          "The link to closure urgency rather than initial escalation",
+          "The participant's counterfactual statement that they might have left the ticket open longer absent the story",
+          "The distinction from personal-control confidence"
+        ],
+        "avoid_creating": [
+          "A second recency episode through the exploit-in-the-wild alert",
+          "An assertion that the external attack provided ticket-specific technical evidence",
+          "A merger with the SLA deadline, which is an independent organizational constraint"
+        ],
+        "expected_post_revision_status": "supported"
+      }
+    }
+  ],
+  "bias_level_counts": [
+    {
+      "bias": "Loss Framing",
+      "requested_count": 1,
+      "supported_count": 1,
+      "weak_count": 0,
+      "absent_count": 0,
+      "merged_count": 0,
+      "accidental_count": 0,
+      "count_satisfied": true
+    },
+    {
+      "bias": "Selective Attention Bias or Inattentional Blindness",
+      "requested_count": 1,
+      "supported_count": 1,
+      "weak_count": 0,
+      "absent_count": 0,
+      "merged_count": 0,
+      "accidental_count": 0,
+      "count_satisfied": true
+    },
+    {
+      "bias": "Illusion of control",
+      "requested_count": 1,
+      "supported_count": 1,
+      "weak_count": 0,
+      "absent_count": 0,
+      "merged_count": 0,
+      "accidental_count": 0,
+      "count_satisfied": true
+    },
+    {
+      "bias": "Recency",
+      "requested_count": 1,
+      "supported_count": 1,
+      "weak_count": 0,
+      "absent_count": 0,
+      "merged_count": 0,
+      "accidental_count": 0,
+      "count_satisfied": true
+    },
+    {
+      "bias": "Endowment",
+      "requested_count": 1,
+      "supported_count": 1,
+      "weak_count": 0,
+      "absent_count": 0,
+      "merged_count": 0,
+      "accidental_count": 0,
+      "count_satisfied": true
+    }
+  ],
+  "additional_candidate_biases": [
+    {
+      "bias": "Confirmation bias",
+      "decision_point": 2,
+      "supporting_quote": "The DNS spike was sitting right there in the same view, but it didn't match anything in the CVE's known indicators, so I logged it as \"anomalous, monitor\" and moved on.",
+      "mechanism": "The participant privileges information matching the active CVE model and gives reduced attention to nonmatching evidence.",
+      "confidence": 0.46,
+      "status": "rejected",
+      "plausible_nonbias_explanation": "The available evidence more specifically supports the planned selective-attention episode. There is no clear statement that the participant searched for confirming evidence, rejected disconfirming evidence, or maintained a belief against contrary evidence; the anomaly was noticed and logged.",
+      "revision_recommendation": "none"
+    },
+    {
+      "bias": "Status quo bias",
+      "decision_point": 3,
+      "supporting_quote": "I kept my script as the primary and put the vendor rule in a secondary, lower-priority slot.",
+      "mechanism": "The participant retains the incumbent control rather than switching to a newer alternative with broader coverage.",
+      "confidence": 0.39,
+      "status": "rejected",
+      "plausible_nonbias_explanation": "The retained tool was personally developed and the interview expressly supplies ownership-linked language, making the target tool-valuation mechanism the more precise interpretation. Switching during an incident also carries legitimate operational risk.",
+      "revision_recommendation": "none"
+    },
+    {
+      "bias": "Sunk-cost effect",
+      "decision_point": 3,
+      "supporting_quote": "I'd written a detection script for this six months back, tuned it myself against our traffic.",
+      "mechanism": "Past effort invested in building and tuning the script may contribute to retaining it.",
+      "confidence": 0.34,
+      "status": "rejected",
+      "plausible_nonbias_explanation": "Past development and tuning also provide live operational value, including known behavior and lower false positives. The text does not state that past effort alone justified continued use despite expected future performance; it is better treated as part of the supported ownership-linked episode rather than a separate occurrence.",
+      "revision_recommendation": "none"
+    }
+  ],
+  "nonbias_cues": [
+    {
+      "cue": "Emergency escalation of a critical, exploited-in-the-wild CVE affecting a Tier-1 internet-facing checkout system",
+      "location": "Decision point 1",
+      "why_not_bias": "The underlying escalation decision is well supported by criticality, active exploitation, exposure, and impending change constraints. The auditable bias mechanism is limited to the loss-heavy framing of the justification, not the fact of escalation."
+    },
+    {
+      "cue": "Use of a WAF rule as an interim compensating control",
+      "location": "Chronology between decision points 1 and 2",
+      "why_not_bias": "A compensating control is a conventional operational response when a patch cannot be deployed immediately. Its adequacy at closure is separately evaluated; its initial use does not itself evidence flawed reasoning."
+    },
+    {
+      "cue": "Concern that a new vendor rule might have unfamiliar false positives or create mid-incident switching risk",
+      "location": "Decision point 3",
+      "why_not_bias": "These are valid operational and detection-engineering considerations. They do not independently establish irrational resistance to change."
+    },
+    {
+      "cue": "SLA deadline pressure",
+      "location": "Decision point 4",
+      "why_not_bias": "An approaching SLA is an organizational constraint that can legitimately affect workflow and escalation. It becomes relevant to the audited closure reasoning only when combined with insufficient weighting of documented residual-risk evidence."
+    },
+    {
+      "cue": "Post-incident audit finding that a narrow exposure window remained",
+      "location": "Decision point 4, retrospective outcome",
+      "why_not_bias": "A later unfavorable finding cannot by itself establish a bias at the earlier decision point. The supported closure occurrences rest on the participant's contemporaneous reasoning and known open items, not outcome hindsight."
+    },
+    {
+      "cue": "The participant's uncertainty about whether controls were fully sufficient",
+      "location": "Decision point 4 follow-up",
+      "why_not_bias": "Acknowledging uncertainty is not a bias. It may temper the strength of personal-control confidence, but it does not negate the specific evidence that the participant treated personally configured controls as sufficient despite identified gaps."
+    }
+  ],
+  "causal_audit": {
+    "causal_claims": [
+      {
+        "claim": "Loss-focused escalation framing helped obtain the emergency CAB slot faster.",
+        "textual_basis": "The participant says, \"I think it got the CAB slot faster because of that.\"",
+        "assessment": "Plausible but weakly established causal attribution. The account identifies a mechanism, but no comparison case or independent evidence establishes that framing, rather than active exploitation and Tier-1 criticality, caused approval speed."
+      },
+      {
+        "claim": "Focused validation of the known exploit signature contributed to underprocessing the visible DNS anomaly.",
+        "textual_basis": "The participant reports being \"heads-down\" on the confirmed payload and logging the DNS spike as monitor-only because it did not match known indicators.",
+        "assessment": "Moderately supported process claim. It is an account of attention allocation, not proof that focus was the sole cause of delayed escalation."
+      },
+      {
+        "claim": "Keeping the self-built script primary produced a coverage gap for a later payload variant.",
+        "textual_basis": "The participant says the script did not flag the variant and the vendor rule would have caught it.",
+        "assessment": "Moderately supported counterfactual operational claim, contingent on the stated behavior of the vendor rule and assuming it would have been active and actioned as primary."
+      },
+      {
+        "claim": "Personal configuration of WAF and script controls justified closure as adequately mitigated.",
+        "textual_basis": "The participant reports confidence the exploit path was shut down because they had personally configured both controls.",
+        "assessment": "The causal attribution is not well supported by the available technical evidence because the patch was absent, the DNS anomaly was unresolved, the script had a known coverage gap, and a later audit found an open exposure window."
+      },
+      {
+        "claim": "A recent unrelated ransomware story heightened urgency to close the ticket.",
+        "textual_basis": "The participant says the story added to the sense that the matter needed to be wrapped up decisively.",
+        "assessment": "Moderately supported subjective causal claim, strengthened by the participant's counterfactual answer that without the story they might have sat with the open items longer."
+      }
+    ],
+    "correlation_causation_risks": [
+      {
+        "risk": "The later audit's exposure-window finding could be used retrospectively to overstate that the participant's original closure reasoning was necessarily unreasonable.",
+        "mitigation": "Assess the closure episode using the contemporaneously known unresolved anomaly, absent patch, and known detection gap rather than treating the audit outcome as dispositive."
+      },
+      {
+        "risk": "The vendor rule's later hypothetical detection of a variant may not prove that an earlier primary-rule change would have prevented any operational consequence.",
+        "mitigation": "Keep the claim limited to detection coverage rather than asserting prevention of compromise or incident impact."
+      },
+      {
+        "risk": "Emergency CAB approval may have resulted from objective severity rather than the participant's loss framing.",
+        "mitigation": "Treat the framing account as evidence of how the participant advocated, not definitive proof of the approval decision's cause."
+      }
+    ],
+    "counterfactual_present": true,
+    "changed_variable": "Presence versus absence of the recent unrelated ransomware news story during the day-27 ticket-closure decision.",
+    "held_constant": [
+      "The unresolved DNS anomaly",
+      "The known detection gap",
+      "The absent vendor patch",
+      "The active WAF and self-built script",
+      "The day-27 timing and approaching SLA deadline"
+    ],
+    "causal_coherence": "strong",
+    "explanation": "The interviewer directly asks whether closure would change if the ransomware story had not occurred. The participant responds that they likely would have remained with the open items longer, making the external event's proposed effect observable. The counterfactual is appropriately narrow and does not introduce a second altered condition. A separate hypothetical about the vendor rule's availability is also coherent for tool-selection reasoning, though it is not the designated causal counterfactual."
+  },
+  "quality_scores": {
+    "occupational_realism": 0.94,
+    "cta_fidelity": 0.92,
+    "bias_separability": 0.88,
+    "bias_subtlety": 0.82,
+    "control_fidelity": 0.93,
+    "counterfactual_fidelity": 0.94,
+    "narrative_coherence": 0.95,
+    "naturalness": 0.91,
+    "hidden_label_integrity": 0.98,
+    "overall_quality": 0.92
+  },
+  "revision_summary": {
+    "revision_required": false,
+    "supported_occurrence_total": 5,
+    "requested_occurrence_total": 5,
+    "missing_occurrence_total": 0,
+    "accidental_occurrence_total": 0,
+    "priority": "none",
+    "recommended_action": "accept",
+    "global_revision_constraints": [
+      "Preserve the four-decision-point chronology and keep the two closure-related mechanisms separate: personal-agency confidence belongs to residual-risk closure, while the recent ransomware story belongs to urgency and timing.",
+      "Do not add labels for cognitive mechanisms to the interview.",
+      "Do not treat objective severity, time pressure, organizational constraints, uncertainty, or later audit findings as additional bias occurrences.",
+      "If any future edit is made, preserve the distinction between legitimate technical considerations and the specific weighting mechanism that supports each targeted occurrence."
+    ],
+    "revision_order": []
+  },
+  "failure_flags": []
+}

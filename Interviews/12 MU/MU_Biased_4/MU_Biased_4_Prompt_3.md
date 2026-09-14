@@ -7,10 +7,184 @@ Do not assume the generator followed the specification. Do not infer bias merely
 INPUTS
 
 Interview:
-{{INTERVIEW}}
+{{Interviewer: Thanks for making time for this. Just to confirm, this is a routine cognitive task analysis interview — I'll ask you to walk me through a specific incident in detail, and there are no right or wrong answers. Everything's for internal learning purposes. Can you tell me your current role and how long you've been in it?
+
+Participant: Sure. I'm the ventilation engineer for the underground section — mainly responsible for the primary and auxiliary fan systems, the VOD setup, and gas monitoring across the active levels. I've been in this role about six years, underground ventilation for closer to eleven overall.
+
+Interviewer: Good. Let's start with the incident itself. What happened?
+
+Participant: This was during a shift where we had a scheduled production blast on 14 Level. Standard round, nothing unusual planned. About thirty minutes after blast clearance time, one of our gas stations — GS-14R, out in the return airway — started reading CO at 280 ppm. Baseline after a blast like that is usually under 50 ppm once the primary fan's had time to clear it. So that number stood out immediately.
+
+Interviewer: What went through your mind when you saw that?
+
+Participant: Honestly, my first thought was that station again. GS-14R sits near a junction we shotcreted a couple months back, and I'd flagged that station twice already for what looked like dust interference throwing off the readings. So my instinct was, here we go again. I pulled the telemetry log to check the trend, and it had spiked pretty sharply rather than climbing gradually, which is more consistent with a dust or particulate interference pattern than a genuine gas buildup, in my experience.
+
+Interviewer: Was there any other information available to you at that point?
+
+Participant: Yes — the gas monitoring technician had taken a handheld multi-gas detector reading out at the return airway around the same time, and that came back at 190 ppm. Lower than the station reading, but still well above baseline. No maintenance ticket had confirmed a fault on GS-14R yet either — that hadn't been checked this shift.
+
+Interviewer: How did you weigh those two numbers against each other?
+
+Participant: I leaned on the station's history more than the handheld number, honestly. We'd had two prior incidents where GS-14R gave us a spike that turned out to be nothing, so that pattern was fresh in my mind. The handheld reading was lower than the station number, and handhelds can have their own calibration drift depending on how they're stored, so I didn't weight it as heavily as maybe I should have. I made the call that this was probably another sensor issue and we could proceed with re-entry on schedule.
+
+Interviewer: Did you consider getting a second confirmatory reading, or requesting a recalibration check before deciding?
+
+Participant: I thought about it, but mine planning was already asking about restart timing for the LHD fleet, and delaying re-entry without hard evidence felt like it'd be hard to justify. So we logged the handheld reading and moved forward.
+
+Interviewer: What happened next?
+
+Participant: Re-entry went ahead. About twenty minutes later, the shift boss called me — one of the crew wanted to hold at the refuge chamber a few extra minutes before heading further in, just as a precaution. Nothing specific triggering it, more a gut feeling.
+
+Interviewer: What was your reasoning at that point?
+
+Participant: That one actually made me more cautious than I expected. A few weeks earlier we'd had a safety briefing that went over a fatality at another operation — underground fire, delayed detection, pretty grim details about smoke filling a drift before anyone realized what was happening. It stuck with me. So when the shift boss raised the hold request, that case was sort of front and center, and I said yes, hold them, and we partially triggered the fire-response protocol just to be safe.
+
+Interviewer: Was there anything in the data at that point pointing toward fire specifically?
+
+Participant: Not really, no. No smoke reports, no heat, and the secondary gas trends weren't showing anything unusual — CO2 was flat. Fume-clearance delays are honestly the far more common explanation for this kind of thing at our site. But given what had just been discussed in that briefing, I didn't want to be the one who waved people through if there was any chance it was something bigger.
+
+Interviewer: How did that play out?
+
+Participant: No fire indicators ever showed up. We eventually put it down to a longer-than-usual round that took a bit more time to clear than normal. The fifteen-minute hold turned out to be unnecessary, though nobody complained about the extra caution.
+
+Interviewer: Let's move to the threshold question. What came up there?
+
+Participant: Later that shift, the mine planning superintendent asked whether we should revise the CO auto-cutoff setpoint on GS-14R before ramping the LHD fleet back up fully. Our commissioning report, from about five years back, had that threshold set at 100 ppm. That was written for a shallower working depth and a smaller diesel fleet than we're running now.
+
+Interviewer: Did you have newer data available?
+
+Participant: We did — recent baseline surveys had shown ambient CO trending noticeably higher under current depth and fleet conditions, and we hadn't done a formal re-baseline since the fleet expanded two years ago. So there was reason to think 100 ppm wasn't really representative anymore.
+
+Interviewer: What did you decide?
+
+Participant: I made a small adjustment but largely kept it close to the original figure. The commissioning number had been through proper review when it was set, and it felt like the sensible starting point to work from rather than throwing it out. I didn't have time that day to commission a full re-survey, so I treated the existing number as basically sound with a minor tweak.
+
+Interviewer: How did that work out afterward?
+
+Participant: Not great, if I'm honest. Over the following shifts the auto-cutoff started tripping more often during normal diesel-heavy periods — nothing hazardous, just operational friction, alarms going off during routine LHD movement. We've since talked about doing the full re-baseline properly.
+
+Interviewer: Last decision point — the incident closeout. Walk me through that.
+
+Participant: The safety officer wanted a closing narrative before full production resumed. By that point we had three things on the table: the sensor's drift history, the LHD fleet idling near the loading point during the relevant window, and the fact that the round itself ran a bit long. None of those had been tested individually — we hadn't isolated the sensor alone, or the fleet alone, to see which one actually explained the spike.
+
+Interviewer: How did you write it up?
+
+Participant: I pulled them together into one explanation — drift-prone sensor plus idling diesel fleet plus a longer round, all compounding to produce the reading we saw. It read as a clean, complete account, and mine planning was waiting on that closure to greenlight full resumption, so I didn't push for a separate follow-up test.
+
+Interviewer: Looking back, is there another explanation that fits those same facts just as well?
+
+Participant: Possibly. It could've been mostly the fleet and barely the sensor, or mostly a clearance delay and the fleet was incidental. We never separated them out, so I can't say for certain the combined story is the accurate one — it's just the one that accounted for everything we'd observed.
+
+Interviewer: If the handheld reading that morning had come back much higher than the station reading, would your first call have changed?
+
+Participant: Probably, yes. If it had matched or exceeded the station number, I'd have taken it more seriously as a real hazard rather than sensor noise.
+
+Interviewer: And if you'd had time to run a full re-baseline before setting the threshold?
+
+Participant: I'd have set it higher, most likely, based on the newer survey data. Time was the constraint there, not confidence in the old number.
+
+Interviewer: How much would you say the schedule pressure from mine planning shaped your decisions that day?
+
+Participant: More than I'd like, probably. It didn't override safety, but it definitely pushed me toward decisions that let production keep moving rather than ones that added delay.}}
 
 Hidden generation specification:
-{{GENERATION_SPECIFICATION}}
+{{"hidden_validation_specification": {
+    "hidden_spec_version": "1.0",
+    "condition": "biased",
+    "exact_occurrence_manifest": [
+      { "bias": "Narrative Fallacy", "occurrences": 1, "mechanism_constraint": "Must occur only at final incident-closure decision as a single overconfident causal synthesis of three loosely related, untested facts" },
+      { "bias": "Confirmation Bias", "occurrences": 1, "mechanism_constraint": "Must occur only at initial sensor-reading interpretation via selective weighting of drift history over corroborating handheld data" },
+      { "bias": "Anchoring Bias", "occurrences": 1, "mechanism_constraint": "Must occur only at threshold-setting decision via insufficient adjustment from the original commissioning figure" },
+      { "bias": "Availability Bias", "occurrences": 1, "mechanism_constraint": "Must occur only at the re-entry/hold decision via overweighting a vivid remembered fire case over local base rates" }
+    ],
+    "target_bias_names": ["Narrative Fallacy", "Confirmation Bias", "Anchoring Bias", "Availability Bias"],
+    "requested_occurrence_count_for_each_bias": [
+      { "bias": "Narrative Fallacy", "requested_occurrences": 1 },
+      { "bias": "Confirmation Bias", "requested_occurrences": 1 },
+      { "bias": "Anchoring Bias", "requested_occurrences": 1 },
+      { "bias": "Availability Bias", "requested_occurrences": 1 }
+    ],
+    "planned_instance_ids": [
+      { "instance_id": "cb_01", "bias": "Confirmation Bias" },
+      { "instance_id": "av_01", "bias": "Availability Bias" },
+      { "instance_id": "an_01", "bias": "Anchoring Bias" },
+      { "instance_id": "nf_01", "bias": "Narrative Fallacy" }
+    ],
+    "intended_decision_points": [
+      { "instance_id": "cb_01", "bias": "Confirmation Bias", "decision_point": 1 },
+      { "instance_id": "av_01", "bias": "Availability Bias", "decision_point": 2 },
+      { "instance_id": "an_01", "bias": "Anchoring Bias", "decision_point": 3 },
+      { "instance_id": "nf_01", "bias": "Narrative Fallacy", "decision_point": 4 }
+    ],
+    "intended_mechanisms": [
+      {
+        "instance_id": "cb_01",
+        "bias": "Confirmation Bias",
+        "mechanism": "Selective weighting of prior sensor-drift history as confirming evidence while discounting an independent corroborating handheld reading",
+        "affected_reasoning_operation": "evidence weighting and selection during hazard interpretation",
+        "evidence_source": "GS-14R drift history vs. handheld multi-gas detector reading",
+        "distinctiveness_requirement": "Must be tied specifically to the sensor-fault interpretation at Decision Point 1; must not overlap with the threshold-anchoring reasoning at Decision Point 3"
+      },
+      {
+        "instance_id": "av_01",
+        "bias": "Availability Bias",
+        "mechanism": "Overweighting a vivid, memorable prior fire incident relative to the actual base rate of mundane fume-clearance delays at this mine",
+        "affected_reasoning_operation": "probability estimation under uncertainty",
+        "evidence_source": "Recalled fatal fire case vs. absence of local smoke/heat/secondary-gas indicators",
+        "distinctiveness_requirement": "Must be tied to the re-entry/hold judgment at Decision Point 2; must not be reused as the causal narrative at Decision Point 4"
+      },
+      {
+        "instance_id": "an_01",
+        "bias": "Anchoring Bias",
+        "mechanism": "Insufficient adjustment of the CO auto-cutoff threshold away from a five-year-old commissioning figure despite new baseline data",
+        "affected_reasoning_operation": "numerical threshold estimation and adjustment",
+        "evidence_source": "Original commissioning report (100 ppm) vs. recent baseline survey data under current depth/fleet conditions",
+        "distinctiveness_requirement": "Must be confined to the threshold-setting decision at Decision Point 3; distinct from the sensor-fault evidence weighting at Decision Point 1"
+      },
+      {
+        "instance_id": "nf_01",
+        "bias": "Narrative Fallacy",
+        "mechanism": "Construction of one coherent, satisfying causal chain linking sensor drift, idling diesel fleet, and round length without any test isolating the true cause",
+        "affected_reasoning_operation": "retrospective causal attribution / incident-report synthesis",
+        "evidence_source": "Three untested candidate causes combined into a single closing account",
+        "distinctiveness_requirement": "Must occur only at final report closure (Decision Point 4); must not restate or repeat the Decision Point 1 sensor-fault reasoning"
+      }
+    ],
+    "intended_strength": [
+      { "instance_id": "cb_01", "bias": "Confirmation Bias", "strength": "subtle" },
+      { "instance_id": "av_01", "bias": "Availability Bias", "strength": "subtle" },
+      { "instance_id": "an_01", "bias": "Anchoring Bias", "strength": "moderate" },
+      { "instance_id": "nf_01", "bias": "Narrative Fallacy", "strength": "subtle" }
+    ],
+    "paired_scenario_id": null,
+    "counterfactual_variable": {
+      "name": "Availability of a second corroborating handheld gas reading before the Decision Point 1 sensor-fault call",
+      "original_state": "Only one handheld cross-check reading available and discounted",
+      "changed_state": "A second independent, spatially distinct handheld reading corroborates elevated CO before the sensor-fault call",
+      "variables_to_hold_constant": [
+        "Blast timing and clearance schedule",
+        "Mine planning production pressure",
+        "GS-14R prior drift history",
+        "Facts available at Decision Points 2 through 4"
+      ]
+    },
+    "scenario_id": "MU_Biased_4",
+    "domain_id": "MU",
+    "total_requested_occurrences": 4,
+    "total_planned_occurrences": 4,
+    "allocation_rule_used": "One occurrence per named bias, each assigned to a distinct decision point selected for best mechanism fit and narrative realism (mechanism-fit-first allocation, no bias sharing a decision point with another bias or with itself)",
+    "control_zero_bias_requirement": false,
+    "variables_to_hold_constant": [
+      "Occupational setting (underground decline gold mine, VOD system)",
+      "Four-decision-point structure",
+      "Moderate difficulty level",
+      "Word count target of 1,350 (range 1,215-1,485)"
+    ],
+    "generation_warnings": [
+      "No manifest-fulfillment problems identified: all four requested occurrences (one each) are plausibly and distinctly embeddable within the four planned decision points without repetition or overlap.",
+      "The counterfactual_specification field was populated via AUTOSELECT for potential future pairing/testing purposes only; it is not activated under the current 'biased' condition and should not be interpreted as an executed counterfactual for this scenario_id."
+    ]
+  }}}
 
 The hidden specification may include:
 - condition;

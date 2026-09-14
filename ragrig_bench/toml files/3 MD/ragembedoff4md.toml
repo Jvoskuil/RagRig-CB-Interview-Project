@@ -1,0 +1,67 @@
+# Ranker comparison: the default hybrid RRF ranker vs. pure cosine ranking
+# (WeightedFusionRanker alpha = 1.0), on the ragrig default chat backend
+# (Ollama, qwen3.5:9b), varying the context budget (4096 and 8192 tokens).
+# Corpus = the embedded HTML fixture book, default pipeline (full parser
+# registry + MarkdownChunker).
+
+corpus_dirs = ["papers=/mnt/c/Users/Joost/Documents/papers"]
+
+queries = [
+"Interviewer: Thanks for taking the time. Just to confirm, this is a voluntary cognitive task analysis debrief—we're reconstructing your decision-making during a specific fire support mission, not evaluating performance for any board or investigation. You can decline any question. Comfortable proceeding? Participant: Yeah, that's fine. I've done these debriefs before. Interviewer: Great. Can you describe your role and the mission? Participant: I was the FSO attached to the company during a daylight clearing operation. We had an enemy 82mm mortar team that had been harassing our forward positions for about two days, and intel flagged a possible staging compound near a village on the objective's north edge. My job was coordinating mortars, then CAS, then artillery, to clear both threats before the company crossed the line of departure. Objective was straightforward—suppress the mortar team, clear the compound, keep it clean for friendlies and the village. Interviewer: What made this mission nonroutine? Participant: Timeline was tight—we had about thirty minutes before the assault window closed, ammo for the 81s was limited since we'd already used a chunk of it earlier that morning, and comms between me and FSCC kept dropping in and out. Plus the compound was close enough to friendly squads that anything there was going to be danger-close. And the only real-time picture we had on the compound was one ISR feed, no second source. Interviewer: Walk me through the sequence as it happened. Participant: First mission was against the mortar position with the 81s. Fired an adjustment round, it landed short. Fired a second one, still short. Section chief checked the gun-line data once, said no fault found. Around that time, I also had two conflicting reports on where the staging activity actually was—our battalion JTAC had one grid, and the partner-force liaison next to us had a grid about three hundred meters off. Then CAS checked in for the compound piece, and finally we had that ISR cue on the compound itself right before the artillery mission. Interviewer: Let's take these one at a time. Start with the mortar adjustment rounds. Participant: Right, so two rounds down, both short. Section chief ran through the data once and didn't find anything wrong. At that point I had a decision—stop and have them do a full re-lay, checking level, deflection, everything from scratch, or fire the next adjustment round and see what happens. Interviewer: What did you decide, and why? Participant: I told them to fire again. Two shorts in a row, statistically we were about due to get one on target, and a full re-lay eats time we didn't have with the window closing. Interviewer: What did that third round do? Participant: Also landed short. Turned out later there was a leveling error on the gun that had nothing to do with the first two rounds—separate issue entirely. We caught it on the fourth check. Interviewer: If the section chief had reported a confirmed fault after the first miss, would your third-round call have gone differently? Participant: Probably, yeah. If there'd been a flagged fault I'd have stopped immediately for the recheck. Without one, I read the pattern as random scatter that would sort itself out on its own. Interviewer: Let's move to the grid discrepancy. What information did you have? Participant: Battalion JTAC—same battalion as me—called in Grid A for the staging activity. Almost at the same time, the partner-force liaison on our flank called Grid B, about three hundred meters away, similar confidence level in both reports, nothing that clearly outranked the other on paper. Interviewer: How did you resolve that? Participant: I went with Grid A, the JTAC's grid. It came through our own FSCC net, format I was used to, and honestly it's the source I'd worked with the whole deployment. The partner-force report came through a different relay and took longer to cross-check. Interviewer: Did you request verification on Grid B? Participant: Not before we acted on Grid A. Follow-on recon actually picked up some indicators near Grid B too, so it wasn't nothing—we just didn't chase it down at the time. Interviewer: If the partner-force liaison's report had come through your own channel instead, do you think you'd have weighted it the same as Grid A? Participant: Honestly, probably would've given it more credit. There's something about hearing it through your own net that makes it feel more solid, even if I can't point to a real reason the information itself was better. Interviewer: Let's talk about the CAS run. What was the situation? Participant: Pilot was on station, ready for a danger-close run supporting the compound clearance. We'd run several strikes with this same squadron over the deployment, all clean, standard margins, no issues. This time the friendly squad's position put us tighter than our usual margin, and we'd had a couple of comms dropouts with the lead squad in the minutes before. Interviewer: What were your options? Participant: Widen the margin, which meant delaying and possibly missing the window, or hold the comms until we got a stable check, versus just clearing it with the tighter margin we had. Interviewer: What did you choose? Participant: I cleared it hot with the tighter margin. This squadron had been reliable every time, so I expected it to go the same way. Interviewer: What happened with comms during the final attack heading confirmation? Participant: Dropped out again for about ten seconds. We got it back before the pilot needed the final call, so it worked out, but it was closer than I'd like on reflection. Interviewer: If this had been the squadron's first-ever danger-close run with you, would you have set the same margin? Participant: No. I'd have wanted the wider margin and a cleaner comms check. The history with them is what made the tighter margin feel acceptable. Interviewer: Last decision point—the artillery mission on the compound. Participant: Right before we committed the 155s, the ISR feed flagged one cue, 'possible enemy activity' at the compound. That sector had been quiet the whole deployment, mostly normal village pattern-of-life, and that particular sensor had a track record of throwing false hits in that terrain. Interviewer: What were the alternatives? Participant: Get a second source to confirm before firing, given how quiet that area had been, or approve the mission off the one cue since the window was closing. Interviewer: What did you decide? Participant: I approved it off the single cue. We were inside the last few minutes before the assault, and the cue matched what we were looking for, so I went with it. Interviewer: What did the post-strike assessment show? Participant: Mixed. Some indicators of prior enemy presence, but also signs it might've been unoccupied by the time we fired. Inconclusive, honestly. Interviewer: If the sector had a recent history of confirmed enemy activity, would that one cue have been enough on its own? Participant: Probably would've felt the same either way at the time—I was focused on the cue itself, not really running the sector's track record against it. Interviewer: Looking back across all four decisions, where do you think time pressure affected you most? Participant: Probably the mortar rounds and the compound call—those felt the most rushed. The grid call and the CAS run felt more like judgment calls based on what I knew about the sources and the squadron. Interviewer: Anything you'd do differently? Participant: Maybe push harder for that re-lay check early, and get a second look at the compound cue. But given the clock we were working against, I think most FSOs would've made similar calls that day. Interviewer: That's helpful. Thanks for walking through it in this much detail."
+]
+
+[[agents]]
+label = "Gemini Prompt 8192"
+[agents.chat]
+provider = "deepseek"            # "ollama" | "deepseek"
+#model = "qwen2.5:1.5b"         # ignored for deepseek
+context_tokens = 8192          # context budget for retrieved chunks
+deepseek_model = "deepseek-v4-pro"   # deepseek only
+# deepseek_api_key = DEEPSEEK_API_KEY # deepseek only (or DEEPSEEK_API_KEY env)
+# context_size_mode = "Auto"          # "Auto" | "Forced"
+system_prompt_path = "prompt_gemini.md"    # custom system prompt ({context} placeholder)
+# request_timeout_secs = 300          # per-request timeout, None = no timeout
+[agents.chat.params]                # generation overrides (all optional)
+# temperature = 0.7
+# top_p = 0.9
+# max_tokens = 1024
+seed = 42
+
+[[agents]]
+label = "Sonar Prompt 8192"
+[agents.chat]
+provider = "deepseek"            # "ollama" | "deepseek"
+#model = "qwen2.5:1.5b"         # ignored for deepseek
+context_tokens = 8192          # context budget for retrieved chunks
+deepseek_model = "deepseek-v4-pro"   # deepseek only
+# deepseek_api_key = DEEPSEEK_API_KEY # deepseek only (or DEEPSEEK_API_KEY env)
+# context_size_mode = "Auto"          # "Auto" | "Forced"
+system_prompt_path = "prompt_sonar.md"    # custom system prompt ({context} placeholder)
+# request_timeout_secs = 300          # per-request timeout, None = no timeout
+[agents.chat.params]                # generation overrides (all optional)
+# temperature = 0.7
+# top_p = 0.9
+# max_tokens = 1024
+seed = 42
+
+[[agents]]
+label = "Sonnet Prompt 8192"
+[agents.chat]
+provider = "deepseek"            # "ollama" | "deepseek"
+#model = "qwen2.5:1.5b"         # ignored for deepseek
+context_tokens = 8192          # context budget for retrieved chunks
+deepseek_model = "deepseek-v4-pro"   # deepseek only
+# deepseek_api_key = DEEPSEEK_API_KEY # deepseek only (or DEEPSEEK_API_KEY env)
+# context_size_mode = "Auto"          # "Auto" | "Forced"
+system_prompt_path = "prompt_sonnet.md"    # custom system prompt ({context} placeholder)
+# request_timeout_secs = 300          # per-request timeout, None = no timeout
+[agents.chat.params]                # generation overrides (all optional)
+# temperature = 0.7
+# top_p = 0.9
+# max_tokens = 1024
+seed = 42
+
+# ---Embed testing ---
+[embed]
+top_k = 0
+#top_k = 50

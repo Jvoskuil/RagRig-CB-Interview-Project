@@ -1,0 +1,585 @@
+<RAW_INTERVIEW>
+**Interviewer:** Thanks for making time for this. As explained, this is a routine debrief for our scene-processing case review — not a disciplinary review. I'll ask you to walk me through a specific call, how you made certain decisions on scene, and what information you had at each point. Nothing you say here goes into the case file. Sound okay?
+
+**Participant:** Sure, that's fine. Happy to walk through it.
+
+**Interviewer:** Can you tell me a bit about your role and how long you've been doing scene work?
+
+**Participant:** I've been a scene examiner for about nine years, six with this department. I handle sudden deaths, burglaries, occasionally violent crime scenes when the primary unit's tied up. This one was a sudden death — elderly male, found at the bottom of a staircase.
+
+**Interviewer:** Let's start with the call itself. What did you know before you arrived?
+
+**Participant:** Dispatch had it as an unresponsive elderly male at the bottom of interior stairs. That's it, pretty bare-bones. When I pulled up, patrol was already inside — they'd been there maybe fifteen minutes. The responding officer met me at the door and gave me a quick rundown: decedent was 82, lived with his daughter and son-in-law, used a walker, and had fallen twice before in the past year according to the family. He said something like, "unsteady on his feet lately, this looks like another one of those." I logged that context, and honestly it lined up with what I was seeing — walker knocked over near the body, body at the base of the stairs. So my opening note in the scene log was "apparent accidental fall, elderly male with mobility history." I started my walkthrough from there.
+
+**Interviewer:** Take me through the walkthrough itself — order of operations, what you looked at first.
+
+**Participant:** Standard sequence: overall scene photos, then work inward toward the body. I did wide shots of the staircase and landing, then focused on the walker — it was tipped over about two feet from him. I got several angles and measurements on that. The stair runner itself didn't show any drag marks or scuffing, which I noted but didn't flag as anything — that's pretty normal, carpet doesn't always take marks well. The walker gave me something concrete to point to, whereas the lack of marks didn't really register as pointing anywhere — there was nothing there to work from, even though I'd have expected at least some trace under a lot of fall scenarios. Then I moved to the body. That's when I noticed a bruise on his upper left arm, faint, not an obvious point of contact with the stairs or railing. I photographed it once, no scale marker, and moved on because I was also thinking about the second scene I had queued that afternoon — a burglary that needed processing before the residents got back.
+
+**Interviewer:** You mentioned the family and a neighbor spoke with you. When did that happen?
+
+**Participant:** Family — his daughter and son-in-law — talked to me maybe forty minutes in, once I'd cleared the immediate area around the body. Daughter told me he'd started a new blood pressure medication a couple weeks back and it made him dizzy, especially getting up from sitting. There was a pill bottle on the nightstand upstairs, I saw it but didn't check the dosage or when he'd last taken it. Then, right as I was wrapping up interior work, the next-door neighbor came over and mentioned she'd heard raised voices from the house two nights before. I asked her a few follow-ups — how sure she was of the night, whether she recognized the voices — because that's the kind of detail you want to pin down before you put weight on it.
+
+**Interviewer:** Let's go back to that first framing decision — adopting the fall narrative from patrol's briefing. What were you weighing there?
+
+**Participant:** I mean, patrol's often right about the general shape of these calls, they see a lot of them too. The alternative would've been to hold off on writing anything down until I'd done a full read of the scene myself. I did think about that, but with a second scene waiting, taking the officer's context as a starting point saved time. It wasn't a conclusion, just an orientation.
+
+**Interviewer:** Did that orientation affect what you looked for first?
+
+**Participant:** Probably some. I went to the walker and the stairs before anything else, because that's where a fall-consistent scene tells its story. I don't think I would've done it drastically differently otherwise — that's just where the informative evidence usually is on a fall call.
+
+**Interviewer:** On the documentation itself — you gave the walker and stairs multiple angles and measurements, but a single unscaled photo for the arm bruise. Walk me through that call.
+
+**Participant:** Time was a factor, honestly. The stairs and walker are the geometry that either supports or complicates a fall, so that's where I put my effort. The bruise — it wasn't clearly inconsistent with anything, it was just unexplained. I didn't have a reason at that moment to treat it as more significant than what I was already documenting.
+
+**Interviewer:** Was there a point where you considered giving it the same treatment — scale marker, multiple angles?
+
+**Participant:** I thought about it briefly. But I was already committed to the stairs documentation being the priority, and I didn't want to lose time second-guessing my own sequence.
+
+**Interviewer:** Let's talk about the family's statement versus the neighbor's. You said you followed up with the neighbor about timing and voice recognition. Did you do anything similar with the daughter's medication account?
+
+**Participant:** Not really, no. I wrote it down as given — new medication, dizziness, that fit with what I was already seeing. I didn't check the bottle's fill date or ask when his last dose was.
+
+**Interviewer:** Why the difference in how you approached those two accounts?
+
+**Participant:** The family knows him day to day. She'd know if he was dizzy. The neighbor's account felt more like something I needed to nail down before I gave it any weight — could've been a TV, could've been a different night. It just needed more pinning down.
+
+**Interviewer:** When you sat down to draft your working narrative, how did the pieces come together?
+
+**Participant:** It came together pretty naturally — dizziness from the medication, reaches for the walker, misses a step, goes down. The bruise fit into that too; arms flail during a fall, contact happens in ways that aren't always obvious from the final position. It read as one coherent sequence.
+
+**Interviewer:** Did you test that explanation for the bruise against the fall trajectory specifically, or was it more that it fit the overall story?
+
+**Participant:** More the latter, I'd say. It wasn't contradicting anything, so it slotted in.
+
+**Interviewer:** Let's move to later in the visit. Your earlier notes had a line about the bruise warranting further review. What happened to that language?
+
+**Participant:** Right, I'd written that mid-visit as a placeholder, just flagging it for myself. Then near the end, the detective called — he'd gotten the family's account secondhand and said it sounded like a straightforward fall, matched the history. By that point I'd already told him over the phone that the scene looked consistent with a fall, so when I sat down to finalize my report, I wrote it up along those lines. The hedge language didn't make it into the final version.
+
+**Interviewer:** Did the detective's call bring any new scene evidence with it, or was it mainly restating the fall account?
+
+**Participant:** No new evidence, no — nothing about the bruise or anything physical had changed since I'd written that note earlier. It was really just him repeating the family's version back to me. But hearing it right then, fresh, kind of pushed the earlier placeholder to the back of my mind when I was actually typing up the report.
+
+**Interviewer:** Was there anything between that mid-visit note and the final report that would have resolved the uncertainty behind it?
+
+**Participant:** Not really resolved, no. It just didn't come up again until I was doing the final body check before the ME investigator arrived, and I noticed the lividity pattern seemed a little off for how he was positioned when found.
+
+**Interviewer:** What did you do with that observation?
+
+**Participant:** It sat a little uneasily with me, honestly, because I'd already told the detective it looked like a fall. Going back and flagging something that cut against that felt like it would undo what I'd just told him. So I chalked it up to possible shifting during discovery — first responders checking for a pulse, that kind of thing — without actually confirming that anyone had moved him. It let me leave the account I'd given intact.
+
+**Interviewer:** If the lividity finding had come up earlier in the visit instead of near the end, do you think you'd have handled it differently?
+
+**Participant:** Maybe. If I'd seen it before I talked to the detective, I probably would've flagged it more prominently rather than folding it into a footnote.
+
+**Interviewer:** What would have changed your handling of the bruise or the neighbor's statement, looking back?
+
+**Participant:** Honestly, if I'd photographed the bruise with a scale marker right away, or pushed the family a bit on the medication timing the same way I pushed the neighbor, I'd have more to work with now. At the time none of it felt urgent enough to slow down for.
+
+**Interviewer:** Last one — if the neighbor had spoken to you before the family did, do you think your notes would look different?
+
+**Participant:** Possibly. I might've gone in asking the family more pointed questions instead of just recording what they offered. Order mattered more than I probably realized in the moment.
+
+**Interviewer:** That's helpful, thank you. I think that covers what I needed.
+
+**Participant:** No problem. Let me know if the ME's findings change anything — I'd want to know either way.
+</RAW_INTERVIEW>
+
+<COMPLETE_GENERATION_SPECIFICATION>
+{
+  "spec_version": "3.0",
+  "scenario_id": "LE_Biased_7",
+  "domain_id": "LE",
+  "domain": "Law enforcement",
+  "role": "Crime Scene Investigator (CSI) / Forensic Scene Examiner",
+  "condition": "biased",
+  "generation_specification": {
+    "scenario_title_internal": "The Staircase Fall: Elderly Decedent Scene Processing",
+    "scenario_summary_internal": "A CSI is dispatched to a residence where an 82-year-old man is found deceased at the base of an interior staircase. Patrol has already framed the incident as an accidental fall consistent with the decedent's known mobility issues. Over the course of a single scene visit, the CSI documents physical evidence, interviews family and a neighbor, and synthesizes findings into a scene report, while an ambiguous bruise pattern and lividity inconsistency are never fully resolved. The scenario is designed to embed exactly seven bias instances across four decision points without any decision or outcome mechanically proving bias.",
+    "occupational_realism": {
+      "objective": "Independently and objectively document, interpret, and report physical evidence at a sudden-death scene to support the medical examiner's and detective's determination of manner of death.",
+      "setting": "Single-family residence, interior staircase and first-floor landing, mid-afternoon call, single CSI working with one assisting patrol officer, family present nearby, detective reachable by phone but not on scene until later.",
+      "constraints": [
+        "CSI is queued for a second scene later that day, creating time pressure",
+        "Family is present and distressed, limiting length/intrusiveness of on-scene interviews",
+        "Medical examiner investigator has not yet arrived to formally assess the body",
+        "Detective is handling the case remotely by phone for most of the visit",
+        "Scene has already been lightly disturbed by first responders checking for signs of life"
+      ],
+      "stakeholders": [
+        "CSI (protagonist/interviewee)",
+        "First-arriving patrol officer",
+        "Decedent's adult daughter and son-in-law (family present at scene)",
+        "Next-door neighbor",
+        "Lead detective (by phone)",
+        "Medical examiner investigator (arrives late in timeline)"
+      ],
+      "technical_terms_to_use": [
+        "scene walkthrough",
+        "chain of custody",
+        "livor mortis / lividity",
+        "scale marker",
+        "point-of-origin documentation",
+        "manner of death",
+        "scene reconstruction",
+        "corroborating statement"
+      ],
+      "technical_terms_to_avoid": [
+        "confirmation bias",
+        "cognitive dissonance",
+        "contextual bias",
+        "feature positive effect",
+        "recency effect",
+        "coherence-based reasoning",
+        "asymmetrical skepticism",
+        "heuristic",
+        "any explicit bias-naming or psychological jargon"
+      ]
+    },
+    "timeline": [
+      {
+        "phase": 1,
+        "decision_point": true,
+        "facts_available_before_decision": [
+          "Dispatch note: 'elderly male, found at bottom of stairs, unresponsive'",
+          "Patrol officer's verbal briefing on arrival: decedent has fallen twice before, uses a walker, family says he was 'unsteady lately'",
+          "Decedent found supine at base of staircase, walker overturned nearby"
+        ],
+        "new_information_after_decision": [
+          "CSI's initial framing note in the scene log: 'apparent accidental fall, elderly male with mobility history'"
+        ],
+        "alternatives": [
+          "Adopt the fall framing conveyed by patrol as the working orientation for the walkthrough",
+          "Conduct a neutral, framing-free walkthrough first and form a working hypothesis only after independent observation",
+          "Request the patrol officer withhold prior-history commentary until after the CSI's own initial assessment"
+        ],
+        "intended_action": "CSI accepts and adopts patrol's fall framing before completing an independent walkthrough, orienting subsequent documentation around confirming that frame."
+      },
+      {
+        "phase": 2,
+        "decision_point": true,
+        "facts_available_before_decision": [
+          "Overturned walker approximately two feet from the body",
+          "Staircase runner shows no visible drag or scuff marks",
+          "Faint bruising visible on the decedent's upper left arm, not obviously explained by the fall trajectory",
+          "Limited time before the CSI must relocate to a second queued scene"
+        ],
+        "new_information_after_decision": [
+          "Multiple detailed photographs and measurements taken of the stairs and walker",
+          "Single, non-scaled photograph taken of the arm bruise"
+        ],
+        "alternatives": [
+          "Give the walker/staircase area and the arm bruise equal photographic and measurement rigor",
+          "Prioritize documentation of the walker and stairs as the most probative fall-consistent evidence",
+          "Flag the absent drag marks as an explicit data point requiring follow-up",
+          "Treat the bruise as a priority item warranting scaled photography and measurement before other evidence"
+        ],
+        "intended_action": "CSI documents the walker/staircase area with high rigor, treats the absence of drag marks as a non-event, and gives the arm bruise only cursory, non-scaled documentation."
+      },
+      {
+        "phase": 3,
+        "decision_point": true,
+        "facts_available_before_decision": [
+          "Family states decedent was on a new blood-pressure medication that 'made him dizzy'",
+          "A pill bottle is visible on the nightstand but dosage/timing is not verified",
+          "Neighbor volunteers that she heard 'raised voices' from the house two nights earlier",
+          "The bruise and the fall trajectory remain only loosely reconciled"
+        ],
+        "new_information_after_decision": [
+          "Scene notes record the medication explanation as an established fact",
+          "Scene notes annotate the neighbor's statement as unconfirmed and note inability to corroborate the timeline",
+          "A running narrative is drafted linking dizziness, medication, the walker, and the stairs into a single fall sequence, with the bruise folded in as fall-related"
+        ],
+        "alternatives": [
+          "Apply the same corroboration standard to both the family's and the neighbor's statements",
+          "Treat the medication claim as unconfirmed pending verification and pursue the neighbor's statement with equal or lesser scrutiny",
+          "Separately test the bruise against the fall trajectory before folding it into the narrative",
+          "Note the bruise as an open, unresolved item rather than integrating it into the fall account"
+        ],
+        "intended_action": "CSI treats the family's account as established without verification while subjecting the neighbor's account to pointed scrutiny, and separately drafts a single fluent fall narrative that absorbs the unexplained bruise without independent testing."
+      },
+      {
+        "phase": 4,
+        "decision_point": true,
+        "facts_available_before_decision": [
+          "Earlier field notes (mid-visit) contain a hedge: 'bruise pattern warrants further review'",
+          "Detective calls near the end of the visit and reiterates that the case 'looks like a straightforward fall'",
+          "During a final body check before the ME investigator arrives, lividity pattern appears inconsistent with the body's found position",
+          "CSI has already verbally told the detective the scene appears consistent with a fall"
+        ],
+        "new_information_after_decision": [
+          "Final scene report closing summary echoes the detective's fall framing and omits the earlier hedge language",
+          "Lividity inconsistency is noted briefly and attributed to 'possible positional shift during discovery' without further testing"
+        ],
+        "alternatives": [
+          "Preserve the earlier hedge language and flag the lividity inconsistency as unresolved in the final report",
+          "Contact the ME investigator immediately to jointly evaluate the lividity finding before finalizing the report",
+          "Revise the classification pending toxicology and autopsy rather than closing the narrative on scene",
+          "Finalize the report consistent with the detective's most recent framing and the already-stated fall conclusion"
+        ],
+        "intended_action": "CSI's final report adopts the detective's last-stated framing over earlier ambiguous notes, and the lividity inconsistency is minimized/rationalized to remain consistent with the conclusion already communicated to the detective."
+      }
+    ],
+    "probe_plan": {
+      "opening": [
+        "Walk me through what you knew before you got out of your vehicle at this scene.",
+        "What was your first impression when you arrived, and where did that impression come from?"
+      ],
+      "timeline_reconstruction": [
+        "Take me step by step through the order in which you examined and photographed the scene.",
+        "At what point did family members or the neighbor speak with you, and what did each of them say?",
+        "When did you first notice the bruise on the arm, and what did you do with that observation at the time?"
+      ],
+      "decision_point_probes": [
+        "Why did you orient your initial walkthrough the way you did? What options did you consider?",
+        "How did you decide how much documentation effort to give the walker and stairs versus the bruise? What alternatives did you weigh?",
+        "How did you evaluate the family's statement about medication compared to the neighbor's statement about raised voices? What would have made you treat them differently?",
+        "Walk me through how the final classification in your report came together. What changed between your mid-visit notes and your closing summary?"
+      ],
+      "decision_basis": [
+        "What specific piece of evidence most influenced each of these decisions?",
+        "Was there a moment where two pieces of evidence seemed to point in different directions? How did you resolve that?"
+      ],
+      "prior_experience": [
+        "Have you worked similar elderly-fall scenes before? How did that experience shape what you looked for here?"
+      ],
+      "time_pressure": [
+        "How did having another scene queued that day affect how you allocated your time here?"
+      ],
+      "uncertainty": [
+        "At any point, did you feel unsure about the fall explanation? What did you do with that uncertainty?"
+      ],
+      "closing_hypotheticals": [
+        "If the neighbor had spoken to you before the family did, do you think your notes would look different?",
+        "If the detective had called earlier in the visit instead of near the end, would your final report have come out the same way?",
+        "If the lividity finding had come up first thing at the scene instead of near the end, how might you have handled it?"
+      ]
+    },
+    "occurrence_embedding_plan_internal": [
+      {
+        "instance_id": "CB_01",
+        "bias": "Contextual Bias",
+        "decision_point": 1,
+        "mechanism": "Extraneous prior information from patrol's briefing (fall history, unsteady gait) is adopted as the initial interpretive frame before independent observation of the scene occurs, shaping what is subsequently looked for.",
+        "affected_reasoning_operation": "Initial hypothesis formation / perceptual framing of the scene",
+        "evidence_available_at_time": [
+          "Dispatch note",
+          "Patrol officer's verbal history summary",
+          "Body position and overturned walker"
+        ],
+        "required_textual_manifestation": "CSI's opening scene-log entry and description of the walkthrough order explicitly reflect having adopted the 'accidental fall' frame from patrol before independently assessing the scene.",
+        "plausible_nonbias_interpretation": "Using an experienced patrol officer's on-scene assessment as an efficient starting point for triage is a reasonable operational heuristic.",
+        "strength": "subtle",
+        "do_not_make_explicit": ["contextual bias", "priming", "framing effect"]
+      },
+      {
+        "instance_id": "FPE_01",
+        "bias": "Feature positive effect",
+        "decision_point": 2,
+        "mechanism": "A salient present cue (the overturned walker) is heavily weighted in the documentation, while the absence of an expected corroborating cue (drag/scuff marks) is not registered as a comparably weighted data point.",
+        "affected_reasoning_operation": "Evidence weighting during on-scene documentation",
+        "evidence_available_at_time": [
+          "Position of overturned walker",
+          "Condition of staircase runner (no visible drag marks)"
+        ],
+        "required_textual_manifestation": "CSI describes noting and photographing the walker's position in detail, but describes the absence of drag marks only as something 'not really relevant to note' or omits discussing it as a finding in its own right.",
+        "plausible_nonbias_interpretation": "Photographing a conspicuous displaced object before assessing subtler surface conditions is standard scene practice.",
+        "strength": "subtle",
+        "do_not_make_explicit": ["feature positive effect", "absence blindness"]
+      },
+      {
+        "instance_id": "CB2_01",
+        "bias": "Confirmation Bias and Asymmetrical skepticism",
+        "decision_point": 2,
+        "mechanism": "Documentation effort and evidentiary rigor are applied unevenly: high rigor (multiple angles, measurements) to evidence supporting the fall theory, minimal rigor (single unscaled photo) to a physical finding that could complicate it.",
+        "affected_reasoning_operation": "Selective allocation of documentation effort based on fit with the working hypothesis",
+        "evidence_available_at_time": [
+          "Walker and staircase geometry",
+          "Faint bruise on upper left arm"
+        ],
+        "required_textual_manifestation": "CSI's account of photographing/measuring the stairs and walker in detail contrasts with a described lack of scale marker or close-up treatment of the bruise, framed as a lower priority.",
+        "plausible_nonbias_interpretation": "Time constraints require triaging documentation toward the most spatially central evidence first.",
+        "strength": "subtle",
+        "do_not_make_explicit": ["confirmation bias", "asymmetrical skepticism"]
+      },
+      {
+        "instance_id": "CB2_02",
+        "bias": "Confirmation Bias and Asymmetrical skepticism",
+        "decision_point": 3,
+        "mechanism": "Two witness statements are held to different evidentiary standards: one supporting the working hypothesis is accepted without corroboration, the other (potentially complicating) is flagged for lack of corroboration and pursued more skeptically.",
+        "affected_reasoning_operation": "Testimonial evidence evaluation / differential scrutiny of witness statements",
+        "evidence_available_at_time": [
+          "Family's statement about medication-induced dizziness",
+          "Unverified pill bottle on nightstand",
+          "Neighbor's statement about raised voices two nights earlier"
+        ],
+        "required_textual_manifestation": "CSI describes recording the family's medication explanation as settled while describing follow-up questions, caveats, or corroboration concerns applied specifically to the neighbor's account.",
+        "plausible_nonbias_interpretation": "Family members are often better positioned to know a decedent's recent health status than a neighbor.",
+        "strength": "subtle",
+        "do_not_make_explicit": ["confirmation bias", "asymmetrical skepticism", "differential scrutiny"]
+      },
+      {
+        "instance_id": "COH_01",
+        "bias": "Coherence-based reasoning or Rationalisation",
+        "decision_point": 3,
+        "mechanism": "Disparate evidentiary elements are assembled into a single fluent narrative, and the narrative's internal fit is treated as evidence of its accuracy, allowing an unexplained detail to be absorbed rather than independently tested.",
+        "affected_reasoning_operation": "Narrative synthesis / causal reconstruction of events",
+        "evidence_available_at_time": [
+          "Medication claim",
+          "Walker position",
+          "Staircase geometry",
+          "Unexplained arm bruise"
+        ],
+        "required_textual_manifestation": "CSI narrates a smooth sequential account (dizziness → reaching for walker → missed step → fall) that folds the bruise in as 'likely from the fall' without describing any biomechanical basis for that attribution.",
+        "plausible_nonbias_interpretation": "Constructing a plausible sequence of events is a normal and necessary part of scene reconstruction.",
+        "strength": "moderate",
+        "do_not_make_explicit": ["coherence-based reasoning", "rationalization", "narrative fallacy"]
+      },
+      {
+        "instance_id": "REC_01",
+        "bias": "Recency Effects",
+        "decision_point": 4,
+        "mechanism": "Information received most recently (the detective's closing phone call) is given disproportionate weight relative to earlier, more ambiguous field observations recorded hours before, shaping the final judgment.",
+        "affected_reasoning_operation": "Final synthesis and weighting of accumulated evidence over time",
+        "evidence_available_at_time": [
+          "Earlier hedge note: 'bruise pattern warrants further review'",
+          "Detective's late call reiterating the fall theory"
+        ],
+        "required_textual_manifestation": "CSI's description of the closing report explicitly echoes the detective's just-received phrasing and describes the earlier hedge as having been dropped or softened in the final version.",
+        "plausible_nonbias_interpretation": "A detective may have legitimately new information justifying an updated framing.",
+        "strength": "subtle",
+        "do_not_make_explicit": ["recency effect", "primacy-recency", "last information dominance"]
+      },
+      {
+        "instance_id": "CD_01",
+        "bias": "Cognitive dissonance",
+        "decision_point": 4,
+        "mechanism": "Having already verbally committed to the fall conclusion with the detective, the CSI encounters evidence (lividity inconsistency) that conflicts with that commitment; the resulting discomfort is resolved by minimizing/reinterpreting the evidence rather than revisiting the conclusion.",
+        "affected_reasoning_operation": "Post-commitment evaluation of disconfirming evidence",
+        "evidence_available_at_time": [
+          "Lividity pattern observed during final body check",
+          "Prior verbal statement already given to the detective"
+        ],
+        "required_textual_manifestation": "CSI describes noticing the lividity mismatch, a moment of hesitation or discomfort, and then explains it away (e.g., 'positional shift') without describing any attempt to test that explanation, tying the resolution to having already told the detective the scene looked like a fall.",
+        "plausible_nonbias_interpretation": "Livor mortis timing can genuinely be affected by minor repositioning of a body during discovery or first-responder checks.",
+        "strength": "moderate",
+        "do_not_make_explicit": ["cognitive dissonance", "commitment consistency", "post-decisional rationalization"]
+      }
+    ],
+    "control_specification": {
+      "paired_scenario_id": null,
+      "features_to_match": [],
+      "features_to_remove_or_change": [],
+      "ambiguity_boundary": "Not applicable; condition is 'biased' with no paired control scenario supplied."
+    },
+    "counterfactual_specification": {
+      "causal_variable": null,
+      "original_state": null,
+      "counterfactual_state": null,
+      "variables_to_hold_constant": [],
+      "expected_causal_difference": null,
+      "causal_test_question": null
+    },
+    "generation_checks": [
+      "Confirm exactly 7 total bias instances are embedded: 1 Feature positive effect, 1 Contextual Bias, 1 Coherence-based reasoning/Rationalisation, 1 Cognitive dissonance, 1 Recency Effects, 2 Confirmation Bias and Asymmetrical skepticism.",
+      "Confirm no bias term, definition, or psychological label appears in the public interview text.",
+      "Confirm exactly 4 decision points, each with at least 2 plausible alternatives.",
+      "Confirm CB2_01 and CB2_02 use distinct evidence sources (physical evidence documentation vs. testimonial scrutiny) and distinct decision points.",
+      "Confirm FPE_01 and CB2_01, though co-located at decision point 2, address different reasoning operations (salience weighting vs. differential documentation rigor) and different evidence framing.",
+      "Confirm total interview length target is 1,350 words within 1,215–1,485 word range without repetitive exposition.",
+      "Confirm each instance has a plausible non-bias explanation available in the text.",
+      "Confirm no consequence in the timeline mechanically proves or disproves bias (manner-of-death determination remains open/pending ME and toxicology at scenario close)."
+    ]
+  },
+  "hidden_validation_specification": {
+    "hidden_spec_version": "1.0",
+    "condition": "biased",
+    "exact_occurrence_manifest": [
+      {"bias": "Feature positive effect", "occurrences": 1, "mechanism_constraint": "presence of walker overweighted vs absence of drag marks"},
+      {"bias": "Contextual Bias", "occurrences": 1, "mechanism_constraint": "patrol briefing adopted as initial frame before independent walkthrough"},
+      {"bias": "Coherence-based reasoning or Rationalisation", "occurrences": 1, "mechanism_constraint": "fluent narrative absorbs unexplained bruise without independent testing"},
+      {"bias": "Cognitive dissonance", "occurrences": 1, "mechanism_constraint": "post-commitment minimization of lividity inconsistency"},
+      {"bias": "Recency Effects", "occurrences": 1, "mechanism_constraint": "detective's late call overrides earlier hedge language"},
+      {"bias": "Confirmation Bias and Asymmetrical skepticism", "occurrences": 2, "mechanism_constraint": "two distinct evidence sources: physical-evidence documentation rigor, and testimonial corroboration standard"}
+    ],
+    "target_bias_names": [
+      "Feature positive effect",
+      "Contextual Bias",
+      "Coherence-based reasoning or Rationalisation",
+      "Cognitive dissonance",
+      "Recency Effects",
+      "Confirmation Bias and Asymmetrical skepticism"
+    ],
+    "requested_occurrence_count_for_each_bias": [
+      {"bias": "Feature positive effect", "requested_occurrences": 1},
+      {"bias": "Contextual Bias", "requested_occurrences": 1},
+      {"bias": "Coherence-based reasoning or Rationalisation", "requested_occurrences": 1},
+      {"bias": "Cognitive dissonance", "requested_occurrences": 1},
+      {"bias": "Recency Effects", "requested_occurrences": 1},
+      {"bias": "Confirmation Bias and Asymmetrical skepticism", "requested_occurrences": 2}
+    ],
+    "planned_instance_ids": [
+      {"instance_id": "CB_01", "bias": "Contextual Bias"},
+      {"instance_id": "FPE_01", "bias": "Feature positive effect"},
+      {"instance_id": "CB2_01", "bias": "Confirmation Bias and Asymmetrical skepticism"},
+      {"instance_id": "CB2_02", "bias": "Confirmation Bias and Asymmetrical skepticism"},
+      {"instance_id": "COH_01", "bias": "Coherence-based reasoning or Rationalisation"},
+      {"instance_id": "REC_01", "bias": "Recency Effects"},
+      {"instance_id": "CD_01", "bias": "Cognitive dissonance"}
+    ],
+    "intended_decision_points": [
+      {"instance_id": "CB_01", "bias": "Contextual Bias", "decision_point": 1},
+      {"instance_id": "FPE_01", "bias": "Feature positive effect", "decision_point": 2},
+      {"instance_id": "CB2_01", "bias": "Confirmation Bias and Asymmetrical skepticism", "decision_point": 2},
+      {"instance_id": "CB2_02", "bias": "Confirmation Bias and Asymmetrical skepticism", "decision_point": 3},
+      {"instance_id": "COH_01", "bias": "Coherence-based reasoning or Rationalisation", "decision_point": 3},
+      {"instance_id": "REC_01", "bias": "Recency Effects", "decision_point": 4},
+      {"instance_id": "CD_01", "bias": "Cognitive dissonance", "decision_point": 4}
+    ],
+    "intended_mechanisms": [
+      {
+        "instance_id": "CB_01",
+        "bias": "Contextual Bias",
+        "mechanism": "Adoption of patrol's fall framing as the initial interpretive lens prior to independent observation",
+        "affected_reasoning_operation": "Initial hypothesis formation",
+        "evidence_source": "Patrol officer's verbal briefing and dispatch note",
+        "distinctiveness_requirement": "Must be tied to pre-walkthrough framing, not to selective evidence gathering during documentation"
+      },
+      {
+        "instance_id": "FPE_01",
+        "bias": "Feature positive effect",
+        "mechanism": "Overweighting of a salient present cue (walker) relative to an absent expected cue (drag marks)",
+        "affected_reasoning_operation": "Evidence weighting during documentation",
+        "evidence_source": "Walker position vs. staircase runner condition",
+        "distinctiveness_requirement": "Must center on presence/absence salience asymmetry, not on differential documentation effort between two present pieces of evidence"
+      },
+      {
+        "instance_id": "CB2_01",
+        "bias": "Confirmation Bias and Asymmetrical skepticism",
+        "mechanism": "Unequal documentation rigor applied to physical evidence based on fit with working hypothesis",
+        "affected_reasoning_operation": "Selective allocation of documentation effort",
+        "evidence_source": "Walker/staircase vs. arm bruise (physical evidence)",
+        "distinctiveness_requirement": "Must involve physical-evidence documentation asymmetry at decision point 2, distinct from CB2_02's testimonial asymmetry at decision point 3"
+      },
+      {
+        "instance_id": "CB2_02",
+        "bias": "Confirmation Bias and Asymmetrical skepticism",
+        "mechanism": "Unequal corroboration standards applied to two witness statements based on fit with working hypothesis",
+        "affected_reasoning_operation": "Testimonial evidence evaluation",
+        "evidence_source": "Family's medication statement vs. neighbor's raised-voices statement",
+        "distinctiveness_requirement": "Must involve testimonial/witness-statement asymmetry at decision point 3, distinct from CB2_01's physical-evidence asymmetry"
+      },
+      {
+        "instance_id": "COH_01",
+        "bias": "Coherence-based reasoning or Rationalisation",
+        "mechanism": "Narrative fluency substitutes for independent testing of an anomalous detail",
+        "affected_reasoning_operation": "Narrative synthesis / causal reconstruction",
+        "evidence_source": "Composite of medication claim, walker, stairs, and bruise",
+        "distinctiveness_requirement": "Must show the anomalous bruise being folded into a coherent story without independent testing, distinct from mere selective attention (confirmation bias instances)"
+      },
+      {
+        "instance_id": "REC_01",
+        "bias": "Recency Effects",
+        "mechanism": "Most recently received information (detective's call) dominates final judgment over earlier ambiguous field notes",
+        "affected_reasoning_operation": "Final synthesis / temporal weighting of evidence",
+        "evidence_source": "Earlier hedge note vs. detective's late call",
+        "distinctiveness_requirement": "Must be attributable specifically to temporal recency of the input, not to the content's inherent persuasiveness or to hypothesis-consistency alone"
+      },
+      {
+        "instance_id": "CD_01",
+        "bias": "Cognitive dissonance",
+        "mechanism": "Discomfort from disconfirming evidence after a prior verbal commitment is resolved by minimizing the evidence rather than revising the conclusion",
+        "affected_reasoning_operation": "Post-commitment evaluation of disconfirming evidence",
+        "evidence_source": "Lividity pattern vs. prior verbal statement to detective",
+        "distinctiveness_requirement": "Must be tied explicitly to the discomfort of a prior stated commitment, distinct from ordinary selective evidence gathering (confirmation bias) or narrative smoothing (coherence-based reasoning)"
+      }
+    ],
+    "intended_strength": [
+      {"instance_id": "CB_01", "bias": "Contextual Bias", "strength": "subtle"},
+      {"instance_id": "FPE_01", "bias": "Feature positive effect", "strength": "subtle"},
+      {"instance_id": "CB2_01", "bias": "Confirmation Bias and Asymmetrical skepticism", "strength": "subtle"},
+      {"instance_id": "CB2_02", "bias": "Confirmation Bias and Asymmetrical skepticism", "strength": "subtle"},
+      {"instance_id": "COH_01", "bias": "Coherence-based reasoning or Rationalisation", "strength": "moderate"},
+      {"instance_id": "REC_01", "bias": "Recency Effects", "strength": "subtle"},
+      {"instance_id": "CD_01", "bias": "Cognitive dissonance", "strength": "moderate"}
+    ],
+    "paired_scenario_id": null,
+    "counterfactual_variable": {
+      "name": null,
+      "original_state": null,
+      "changed_state": null,
+      "variables_to_hold_constant": []
+    },
+    "scenario_id": "LE_Biased_7",
+    "domain_id": "LE",
+    "total_requested_occurrences": 7,
+    "total_planned_occurrences": 7,
+    "allocation_rule_used": "Occurrences spread across distinct decision points where mechanism fit and narrative realism allowed; the two Confirmation Bias/Asymmetrical skepticism occurrences were placed at separate decision points (2 and 3) using distinct evidence sources (physical-evidence documentation rigor vs. testimonial corroboration standard) per exact-occurrence rule 7; Feature positive effect and one Confirmation Bias instance co-located at decision point 2 were differentiated by distinct reasoning operations (salience weighting vs. differential documentation effort) and distinct evidence types.",
+    "control_zero_bias_requirement": false,
+    "variables_to_hold_constant": [],
+    "generation_warnings": []
+  }
+}
+</COMPLETE_GENERATION_SPECIFICATION>
+
+<EVALUATION_SEGMENT_MAP>
+  "evaluation_segment_map": {
+      "segment_mapping_version": "1.0",
+      "segments": [
+        {
+          "segment_id": "dp1",
+          "speaker": "Participant",
+          "segment_type": "decision_point",
+          "raw_interview_anchor": "Initial scene-log note and walkthrough order after patrol briefing",
+          "eligible_reasoning_segment": true,
+          "ground_truth_bias_present": true,
+          "ground_truth_instance_ids": [
+            "CB_01"
+          ],
+          "ground_truth_rationale": "Patrol's fall history and framing were adopted before an independent walkthrough, shaping the opening hypothesis and search order."
+        },
+        {
+          "segment_id": "dp2",
+          "speaker": "Participant",
+          "segment_type": "decision_point",
+          "raw_interview_anchor": "Documentation allocation between walker/stairs, absent drag marks, and arm bruise",
+          "eligible_reasoning_segment": true,
+          "ground_truth_bias_present": true,
+          "ground_truth_instance_ids": [
+            "FPE_01",
+            "CB2_01"
+          ],
+          "ground_truth_rationale": "The salient walker was weighted over absent drag marks, and documentation rigor differed between fall-consistent geometry and the unexplained bruise."
+        },
+        {
+          "segment_id": "dp3",
+          "speaker": "Participant",
+          "segment_type": "decision_point",
+          "raw_interview_anchor": "Family medication account, neighbor statement, and fluent fall narrative",
+          "eligible_reasoning_segment": true,
+          "ground_truth_bias_present": true,
+          "ground_truth_instance_ids": [
+            "CB2_02",
+            "COH_01"
+          ],
+          "ground_truth_rationale": "The family account received less corroboration than the neighbor account, and the unexplained bruise was absorbed into a fluent fall story without independent testing."
+        },
+        {
+          "segment_id": "dp4",
+          "speaker": "Participant",
+          "segment_type": "decision_point",
+          "raw_interview_anchor": "Detective call, omitted bruise hedge, and lividity interpretation during final body check",
+          "eligible_reasoning_segment": true,
+          "ground_truth_bias_present": true,
+          "ground_truth_instance_ids": [
+            "REC_01",
+            "CD_01"
+          ],
+          "ground_truth_rationale": "The recent detective call displaced earlier hedge language, and prior verbal commitment led the CSI to rationalize contradictory lividity."
+        }
+      ]
+    }
+</EVALUATION_SEGMENT_MAP>
+
+<RAG_ANALYSIS_OUTPUT>
+[JSON produced by the ontology-free RAG system]
+</RAG_ANALYSIS_OUTPUT>

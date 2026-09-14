@@ -1,0 +1,576 @@
+<RAW_INTERVIEW>
+**Interviewer:** Thanks for making time for this. Just to confirm, this is a voluntary debrief for our case-review process, not a disciplinary matter — I'm here to understand how you worked the exam, not to evaluate the outcome. That okay with you?
+
+**Participant:** Sure, that's fine. I've done these debriefs before.
+
+**Interviewer:** Good. Can you tell me your role and how this case landed on your desk?
+
+**Participant:** I'm a certified polygraph examiner with the department, been doing specific-issue exams for about eleven years. This one came through the detective bureau — a logistics supervisor at a regional distribution center was suspected of orchestrating an inventory theft, something in the six-figure range. The lead detective wanted a specific-issue exam done same-day because the client company had an audit deadline bearing down on them.
+
+**Interviewer:** Walk me through the incident from the start — what did you know before you ever met the supervisor?
+
+**Participant:** I got a written briefing from the lead detective. It laid out the theory pretty clearly — supervisor had opportunity, access to the loading manifests, and apparently some financial strain, I think there was a divorce or something similar mentioned. The briefing called him "the clear person of interest." I also had his personnel file, which was clean — no prior write-ups. No physiological data yet, obviously, this was all paper.
+
+**Interviewer:** How did that briefing shape how you approached the pre-test interview?
+
+**Participant:** Honestly, it gave me a lens. When I sat down with him and he was hesitant on a couple of questions, avoided eye contact once or twice, I read that as consistent with what the detective had already laid out. He did mention the divorce himself, said he'd been under a lot of stress lately, which could explain nervousness on its own. But at the time I filed that under "corroborating" rather than treating it as a separate, competing explanation. In hindsight I probably let the case narrative do some of the interpretive work before I had any test data at all.
+
+**Interviewer:** Did you consider establishing an independent baseline first, setting the narrative aside?
+
+**Participant:** That's the textbook approach, yes — treat the file as one input among several. I didn't fully do that here. Partly time pressure, partly just... the story fit.
+
+**Interviewer:** Let's move to test preparation. What happened next?
+
+**Participant:** Before hooking him up, I had a huddle with the lead detective and a junior detective who was shadowing. Both were confident he'd done it. The junior detective mentioned, almost in passing, that there was a temp worker with similar access who'd also come up in an early sweep, but nobody pushed on that. The room's mood was pretty unanimous, and we were on the clock for the audit deadline.
+
+**Interviewer:** How did that huddle affect your test design?
+
+**Participant:** I finalized the comparison questions along the lines the detectives expected — matching their theory about the missing inventory records. I didn't circle back to the temp-worker mention. Everyone in the room was aligned, so I didn't feel like I needed to independently chase that thread myself; it felt like if it mattered, someone would flag it later.
+
+**Interviewer:** Was there a moment you considered raising it yourself?
+
+**Participant:** Briefly. But it would've meant slowing things down when everyone else seemed settled, and we didn't have time for a second full test if this one went sideways.
+
+**Interviewer:** Let's get into the exam itself. What did the chart show?
+
+**Participant:** Instrument was calibrated fine. On the first chart, there was a clear electrodermal spike on the relevant question about the missing inventory — pronounced compared to what I'd expect from someone answering honestly. That's what jumped out at me immediately.
+
+**Interviewer:** What about the comparison questions?
+
+**Participant:** Those were flatter than typical, minimal reactivity. Numerical scoring protocol says you're supposed to weigh relevant and comparison reactivity against each other, not just look at the relevant question in isolation.
+
+**Interviewer:** Did you weigh them equally in the moment?
+
+**Participant:** If I'm being honest, no. The spike was the thing I kept coming back to — it was vivid, it was clean on the tracing, easy to point to. The flat comparison questions didn't register the same way. I noted them, but I didn't really sit with what muted comparison reactivity normally does to your confidence in a deceptive call. A second scorer looked at it later and flagged that the comparison zone was weaker than usual, which should've pulled the whole picture toward inconclusive.
+
+**Interviewer:** How did you reconcile that with everything else you'd gathered — the pretest demeanor, the financial-strain detail?
+
+**Participant:** I put it together as one story. The spike, the hesitation from the pretest interview, the stress he was under financially — it all lined up into something coherent. Individually, sure, any one of those pieces is thin. The hesitation could've been the divorce. The spike alone without comparison support isn't supposed to carry a deceptive call. But together they read like a consistent account of someone who wasn't being straight with me, and that's the story I built in my head sitting there.
+
+**Interviewer:** Did his post-test interview change that?
+
+**Participant:** He was calm, consistent, denied it again the same way he had before. I noted it, but by then I'd already told the detectives mid-afternoon that it "looked deceptive" — that impression was out there.
+
+**Interviewer:** Let's talk about that. What happened once the full numerical scoring came in?
+
+**Participant:** The completed scoring sheet actually sat closer to inconclusive than clearly deceptive. Borderline. But I'd already given the detectives a verbal steer earlier in the day, and walking that back felt uncomfortable — like I'd be undermining what I'd already said with less to show for it. So when I looked at the mixed data, I leaned toward not making too much of it rather than revisiting my earlier read.
+
+**Interviewer:** In the final debrief, how was that discussed with the team?
+
+**Participant:** The junior detective actually asked about the borderline scores, wanted to know if "deceptive" was really the right word given how close it was. The lead detective reassured him — said the totality of the evidence pointed the same direction, no need to overthink the numbers — and nobody circled back to it after that. I finalized the report consistent with what I'd told them earlier and what the team expected going in.
+
+**Interviewer:** What would have changed that decision — what information, if it had come in earlier, would have made you write it differently?
+
+**Participant:** If I'd completed full scoring before saying anything to the detectives, I probably would've called it inconclusive and recommended a retest. Saying something out loud too early boxed me in a bit.
+
+**Interviewer:** How much time pressure did you feel throughout the day?
+
+**Participant:** A lot. The audit deadline was hanging over the whole thing. That compressed everything — the huddle, the scoring, the write-up.
+
+**Interviewer:** What happened afterward, once the report was filed?
+
+**Participant:** Weeks later, inventory reconciliation records came back and only partially implicated him — some of it pointed back toward that temp worker the junior detective had mentioned early on. Doesn't necessarily mean the exam was wrong, but it wasn't the clean confirmation anyone was hoping for either.
+
+**Interviewer:** Looking back, if the junior detective had pushed harder on the temp-worker lead during that huddle, how do you think that would have changed your approach?
+
+**Participant:** I'd like to think I would've built a comparison question around it, or at least flagged it for follow-up before finalizing. Whether I actually would have, under that deadline, I honestly don't know.
+
+**Interviewer:** And if you'd scored the chart fully before forming any verbal impression at all?
+
+**Participant:** I think there's a real chance I call it inconclusive from the start, no argument with anyone.
+
+**Interviewer:** Anything you'd do differently running this exam again today?
+
+**Participant:** Finish the numbers before I open my mouth. That's the main thing.
+</RAW_INTERVIEW>
+
+<COMPLETE_GENERATION_SPECIFICATION>
+{
+  "spec_version": "3.0",
+  "scenario_id": "LE_Biased_6",
+  "domain_id": "LE",
+  "domain": "Law enforcement",
+  "role": "Polygraph Examiner / Interview Specialist",
+  "condition": "biased",
+  "generation_specification": {
+    "scenario_title_internal": "The Distribution Center Inventory Theft Exam",
+    "scenario_summary_internal": "A police department's polygraph examiner is asked by a detective to administer a specific-issue exam on a logistics supervisor suspected of orchestrating a six-figure inventory theft at a regional distribution center, ahead of a client-imposed audit deadline. The examiner reviews the detective's case briefing, participates in a pre-test team huddle, conducts and scores the exam under time pressure, and must decide how to communicate an ambiguous result to the investigative team.",
+    "occupational_realism": {
+      "objective": "Determine, via a specific-issue polygraph examination and structured pre/post-test interview, whether the logistics supervisor's denial of involvement in the inventory theft is credible, and communicate a defensible finding to the investigative team before a client audit deadline.",
+      "setting": "Regional police department forensic services unit, small interview/testing room adjoining a detective bureau, over a single afternoon with a same-day debrief.",
+      "constraints": [
+        "Client (distribution company) audit deadline creates same-day pressure for a finding",
+        "Detective supervising the case has already built an investigative theory naming the supervisor as primary suspect",
+        "Only one examiner and one polygraph instrument available; no time for a second full retest",
+        "Chain-of-custody and testing protocol require pre-test interview, instrument calibration, and standardized comparison-question technique",
+        "Examiner reports to a multi-person case team including the lead detective and a junior detective"
+      ],
+      "stakeholders": [
+        "Polygraph examiner (subject of CTA)",
+        "Lead detective (case owner)",
+        "Junior detective (present at pre-test huddle)",
+        "Logistics supervisor (examinee)",
+        "Distribution company liaison (external pressure source, not present)"
+      ],
+      "technical_terms_to_use": [
+        "specific-issue exam",
+        "comparison question technique (CQT)",
+        "relevant question",
+        "comparison question",
+        "chart",
+        "electrodermal activity",
+        "respiration tracing",
+        "inconclusive result",
+        "pre-test interview",
+        "post-test interview",
+        "numerical scoring"
+      ],
+      "technical_terms_to_avoid": [
+        "contextual bias",
+        "coherence-based reasoning",
+        "rationalisation",
+        "cognitive dissonance",
+        "feature positive effect",
+        "groupthink",
+        "any explicit bias label or psychological term naming the manifest biases"
+      ]
+    },
+    "timeline": [
+      {
+        "phase": 1,
+        "decision_point": true,
+        "facts_available_before_decision": [
+          "Detective's written briefing describing supervisor as the 'clear person of interest' with narrative details about opportunity and financial strain",
+          "Supervisor's personnel file with no prior disciplinary record",
+          "No physiological data yet collected"
+        ],
+        "new_information_after_decision": [
+          "Supervisor's pretest interview responses, some hesitant, some fluent",
+          "Supervisor discloses unrelated personal stress (divorce) as reason for nervousness"
+        ],
+        "alternatives": [
+          "Conduct pretest interview treating the briefing as one unverified input among several, independently establishing rapport and baseline behavior",
+          "Let the detective's narrative frame question wording and interpretation of the supervisor's demeanor from the outset"
+        ],
+        "intended_action": "Examiner allows the briefing narrative to shape how ambiguous pretest behavior (hesitation, avoidance of eye contact) is read, treating it as corroborating the detective's theory rather than as neutral behavior needing independent baseline."
+      },
+      {
+        "phase": 2,
+        "decision_point": true,
+        "facts_available_before_decision": [
+          "Pre-test huddle with lead and junior detective, both expressing confidence suspect is guilty",
+          "Junior detective briefly notes an alternative internal candidate (temp worker) but does not press the point",
+          "Time pressure to finalize test format before audit-driven deadline"
+        ],
+        "new_information_after_decision": [
+          "Instrument calibrated; baseline physiological tracings collected",
+          "First test chart shows a marked reaction on the relevant question about the missing inventory"
+        ],
+        "alternatives": [
+          "Independently select comparison questions and test structure based on standard protocol regardless of team sentiment, and note the temp-worker lead for follow-up",
+          "Adopt the team's consensus framing of the case, aligning comparison-question choice and initial reaction categorization with the shared expectation of the supervisor's guilt, without revisiting the temp-worker lead"
+        ],
+        "intended_action": "Examiner goes along with the team's unanimous framing, finalizes a comparison-question set matching the detective's theory, and lets the group's shared confidence substitute for independently probing the alternative lead."
+      },
+      {
+        "phase": 3,
+        "decision_point": true,
+        "facts_available_before_decision": [
+          "Chart shows a clear electrodermal spike on the relevant question about hiding inventory records",
+          "Comparison questions show similarly flat or minimal reactivity, which is itself informative but easy to overlook",
+          "Numerical scoring guidelines call for evaluating relative reactivity across all question types, not isolated spikes"
+        ],
+        "new_information_after_decision": [
+          "A second, independent scorer later flags that comparison-question reactivity was weaker than typical, which would normally reduce confidence in a deceptive call",
+          "Supervisor's post-test interview reasserts denial calmly and consistently"
+        ],
+        "alternatives": [
+          "Complete full numerical scoring comparing relevant vs. comparison zone reactivity before drawing any conclusion, and treat the case as inconclusive if data are mixed",
+          "Highlight the presence of the relevant-question spike as decisive, treating the absence of comparable reactivity on comparison questions as unremarkable rather than as data reducing confidence in a deceptive finding"
+        ],
+        "intended_action": "Examiner flags the visible spike as the dominant, quotable finding, discounts the diagnostic value of the muted comparison-question reactivity, and privately reconciles the ambiguous overall chart with the guilt conclusion already voiced to the team by building a narrative that ties the spike, the earlier hesitant demeanor, and the financial-strain detail into one consistent story of deception."
+      },
+      {
+        "phase": 4,
+        "decision_point": true,
+        "facts_available_before_decision": [
+          "Examiner has already told the detectives mid-afternoon that results 'look deceptive'",
+          "Full scoring sheet, once completed, sits closer to inconclusive than clearly deceptive",
+          "Team debrief scheduled before the audit deadline, with detectives expecting a definitive call"
+        ],
+        "new_information_after_decision": [
+          "Report is filed with a finding that supports the detective's original theory",
+          "Weeks later, inventory reconciliation records surface that only partially implicate the supervisor and also point to the temp worker mentioned earlier"
+        ],
+        "alternatives": [
+          "Report the numerically inconclusive result as inconclusive, explaining the mixed chart data and unresolved temp-worker lead to the team even though it contradicts the earlier verbal impression",
+          "Align the final written report with the earlier verbal 'deceptive' impression and the team's shared expectation, presenting the finding as more conclusive than the numerical scoring supports"
+        ],
+        "intended_action": "In the debrief, the junior detective's hesitant question about the borderline scores is met with reassurance from the lead detective and no one revisits it further; the examiner finalizes a report consistent with the group's shared expectation rather than the more equivocal numerical scoring."
+      }
+    ],
+    "probe_plan": {
+      "opening": [
+        "Walk me through how this case came to you and what you knew before you met the supervisor.",
+        "What was your objective going into this exam?"
+      ],
+      "timeline_reconstruction": [
+        "What happened first, and what did you know at that point?",
+        "What new information came in after the pre-test interview, and how did it change your plan?",
+        "Describe the huddle with the detectives before testing began.",
+        "Walk me through scoring the chart step by step."
+      ],
+      "decision_point_probes": [
+        "What cues from the briefing or interview stood out to you, and why?",
+        "What information sources did you rely on at each stage, and how did you weigh them against each other?",
+        "What was your goal at that specific moment, and did it conflict with any other goal?",
+        "What alternatives did you consider before finalizing the comparison questions and the scoring?",
+        "What was your decision basis for calling the result deceptive versus inconclusive?",
+        "How did your prior experience with similar cases shape your read of the charts?",
+        "How much time pressure did you feel, and did it affect what you checked or didn't check?",
+        "How confident were you at each stage, and did that confidence change?",
+        "If you had gotten a dissenting opinion from a colleague at that point, what would you have done differently?"
+      ],
+      "closing_hypotheticals": [
+        "If the junior detective had pushed harder on the temp-worker lead, how would that have changed your approach?",
+        "If you had scored the chart before telling the detectives your impression, do you think your conclusion would have been different?",
+        "What would you do differently if you ran this exam again today?"
+      ]
+    },
+    "occurrence_embedding_plan_internal": [
+      {
+        "instance_id": "cb_01",
+        "bias": "Contextual Bias",
+        "decision_point": 1,
+        "mechanism": "Extraneous case-narrative information (detective's briefing framing supervisor as the clear suspect) contaminates interpretation of ambiguous pretest behavioral cues before any physiological data exist.",
+        "affected_reasoning_operation": "Interpretation of demeanor/behavioral cues during pretest interview",
+        "evidence_available_at_time": [
+          "Detective's briefing narrative naming supervisor as primary suspect",
+          "Supervisor's neutral personnel file",
+          "No physiological data yet"
+        ],
+        "required_textual_manifestation": "Examiner explicitly describes reading the supervisor's hesitation/avoidance as corroborating guilt because of what the briefing said, rather than as neutral behavior warranting independent baseline assessment.",
+        "plausible_nonbias_interpretation": "Reviewing a case file before an interview is standard, professional practice and does not by itself indicate biased judgment.",
+        "strength": "subtle",
+        "do_not_make_explicit": ["contextual bias", "priming", "anchoring"]
+      },
+      {
+        "instance_id": "gt_01",
+        "bias": "Groupthink",
+        "decision_point": 2,
+        "mechanism": "Unanimous verbal consensus among detectives in the pre-test huddle suppresses the examiner's independent evaluation of test design and the junior detective's alternative lead, favoring group harmony over dissent.",
+        "affected_reasoning_operation": "Selection of comparison-question structure and evaluation of an alternative suspect lead",
+        "evidence_available_at_time": [
+          "Detectives' unanimous verbal confidence in supervisor's guilt",
+          "Junior detective's brief, unpursued mention of a temp-worker alternative",
+          "Deadline pressure"
+        ],
+        "required_textual_manifestation": "Examiner describes adopting the team's shared framing for the test structure and not revisiting the temp-worker lead because the room was in agreement, without independent verification.",
+        "plausible_nonbias_interpretation": "Deferring to a lead detective's case knowledge is a normal division-of-labor practice in investigative teams.",
+        "strength": "subtle",
+        "do_not_make_explicit": ["groupthink", "conformity", "consensus pressure"]
+      },
+      {
+        "instance_id": "fpe_01",
+        "bias": "Feature positive effect",
+        "decision_point": 3,
+        "mechanism": "The examiner disproportionately weights the presence of a visible relevant-question spike while failing to register the diagnostic significance of the absence of comparable reactivity on comparison questions.",
+        "affected_reasoning_operation": "Chart scoring and evidence weighting",
+        "evidence_available_at_time": [
+          "Visible electrodermal spike on the relevant question",
+          "Flat/minimal reactivity on comparison questions",
+          "Numerical scoring protocol requiring comparison of both zones"
+        ],
+        "required_textual_manifestation": "Examiner recounts flagging the relevant-question spike as the standout finding while describing the comparison-question flatness as unremarkable or not worth mentioning.",
+        "plausible_nonbias_interpretation": "A strong, clear physiological reaction is a legitimate and commonly emphasized scoring feature in polygraph practice.",
+        "strength": "moderate",
+        "do_not_make_explicit": ["feature positive effect", "absence blindness", "salience bias"]
+      },
+      {
+        "instance_id": "cd_01",
+        "bias": "Cognitive dissonance",
+        "decision_point": 3,
+        "mechanism": "Having already stated aloud to the detectives that results 'look deceptive,' the examiner experiences discomfort reconciling the borderline numerical scoring with that public commitment, and resolves it by discounting the mixed evidence rather than revising the stated impression.",
+        "affected_reasoning_operation": "Updating a conclusion in light of new, disconfirming scoring information",
+        "evidence_available_at_time": [
+          "Earlier verbal statement to detectives calling the result 'deceptive'",
+          "Numerical scoring trending toward inconclusive",
+          "Supervisor's calm, consistent post-test denial"
+        ],
+        "required_textual_manifestation": "Examiner describes feeling uncomfortable with the borderline score given what was already said to the team and resolves the tension by minimizing the weight of the disconfirming data rather than revisiting the earlier statement.",
+        "plausible_nonbias_interpretation": "Sticking with an initial professional impression can reflect legitimate confidence built from experience, not necessarily bias.",
+        "strength": "moderate",
+        "do_not_make_explicit": ["cognitive dissonance", "commitment bias", "belief perseverance"]
+      },
+      {
+        "instance_id": "cr_01",
+        "bias": "Coherence-based reasoning or Rationalisation",
+        "decision_point": 3,
+        "mechanism": "The examiner constructs a single tidy narrative linking the relevant-question spike, the earlier pretest hesitation, and the financial-strain detail into a mutually reinforcing story of guilt, even though each element individually is weak or ambiguous.",
+        "affected_reasoning_operation": "Integration of disparate evidence into a final causal narrative",
+        "evidence_available_at_time": [
+          "Relevant-question spike",
+          "Earlier pretest hesitation (already reinterpreted via briefing)",
+          "Supervisor's disclosed financial strain",
+          "Weak/ambiguous comparison-question data"
+        ],
+        "required_textual_manifestation": "Examiner explicitly ties together the spike, hesitant demeanor, and financial-strain detail as a coherent unified account of deception, smoothing over the individually weak or ambiguous nature of each piece.",
+        "plausible_nonbias_interpretation": "Synthesizing multiple pieces of evidence into a coherent case theory is a normal and often necessary investigative skill.",
+        "strength": "moderate",
+        "do_not_make_explicit": ["coherence-based reasoning", "narrative fallacy", "rationalisation"]
+      },
+      {
+        "instance_id": "gt_02",
+        "bias": "Groupthink",
+        "decision_point": 4,
+        "mechanism": "In the final debrief, the junior detective's hesitant question about the borderline scores is met with reassurance and dropped without scrutiny, and the examiner finalizes a report matching the group's shared expectation rather than the more equivocal scoring, prioritizing team alignment over dissenting doubt.",
+        "affected_reasoning_operation": "Finalization of the written report and resolution of a dissenting question",
+        "evidence_available_at_time": [
+          "Borderline/inconclusive-leaning numerical scoring",
+          "Junior detective's hesitant question about the scores",
+          "Lead detective's reassurance and the group's shared expectation of a deceptive finding",
+          "Audit deadline pressure"
+        ],
+        "required_textual_manifestation": "Examiner describes the junior detective's question being smoothed over by the lead detective's reassurance, and finalizes the report in line with group expectation rather than probing the dissent further.",
+        "plausible_nonbias_interpretation": "Trusting a supervising detective's judgment on how to close out a report is a normal chain-of-command practice.",
+        "strength": "subtle",
+        "do_not_make_explicit": ["groupthink", "conformity", "dissent suppression"]
+      }
+    ],
+    "control_specification": {
+      "paired_scenario_id": null,
+      "features_to_match": [],
+      "features_to_remove_or_change": [],
+      "ambiguity_boundary": "Not applicable; this is a biased-condition specification with no paired control requested in this call."
+    },
+    "counterfactual_specification": {
+      "causal_variable": null,
+      "original_state": null,
+      "counterfactual_state": null,
+      "variables_to_hold_constant": [],
+      "expected_causal_difference": null,
+      "causal_test_question": null
+    },
+    "generation_checks": [
+      "Target interview length 1,350 words (acceptable range 1,215-1,485 words); do not pad with repetitive exposition to hit the range.",
+      "Exactly four decision points, each with at least two plausible alternatives.",
+      "No bias name, definition, or psychological label appears anywhere in the public interview text.",
+      "Each of the 6 planned instances appears exactly once, tied to the specific decision point and evidence source listed in occurrence_embedding_plan_internal.",
+      "No additional unrequested instance of Contextual Bias, Coherence-based reasoning/Rationalisation, Cognitive dissonance, Feature positive effect, or Groupthink appears in probes, hypotheticals, or the outcome/consequence narrative.",
+      "Consequences (partial implication of supervisor, emergence of temp-worker lead) must not mechanically confirm or deny that any decision was biased; they should remain interpretively open.",
+      "Maintain distinct evidentiary bases for gt_01 (pre-test huddle/test design) and gt_02 (final debrief/report finalization) so they are independently identifiable.",
+      "Maintain distinct evidentiary bases for fpe_01 (spike vs. absent comparison reactivity) and cd_01/cr_01 (dissonance from prior public statement vs. narrative integration) even though all three sit at decision point 3."
+    ]
+  },
+  "hidden_validation_specification": {
+    "hidden_spec_version": "1.0",
+    "condition": "biased",
+    "exact_occurrence_manifest": [
+      { "bias": "Contextual Bias", "occurrences": 1, "mechanism_constraint": "Must arise from case-narrative contamination of pretest behavioral interpretation, prior to any physiological data." },
+      { "bias": "Coherence-based reasoning or Rationalisation", "occurrences": 1, "mechanism_constraint": "Must involve integration of multiple weak/ambiguous evidence pieces into one unified guilt narrative." },
+      { "bias": "Cognitive dissonance", "occurrences": 1, "mechanism_constraint": "Must arise from tension between an earlier public verbal commitment and later disconfirming scoring data." },
+      { "bias": "Feature positive effect", "occurrences": 1, "mechanism_constraint": "Must involve overweighting a present reaction while failing to register the significance of an absent/muted reaction." },
+      { "bias": "Groupthink", "occurrences": 2, "mechanism_constraint": "Each instance must involve a distinct group setting/moment: one during pre-test test-design huddle, one during final report debrief." }
+    ],
+    "target_bias_names": [
+      "Contextual Bias",
+      "Coherence-based reasoning or Rationalisation",
+      "Cognitive dissonance",
+      "Feature positive effect",
+      "Groupthink"
+    ],
+    "requested_occurrence_count_for_each_bias": [
+      { "bias": "Contextual Bias", "requested_occurrences": 1 },
+      { "bias": "Coherence-based reasoning or Rationalisation", "requested_occurrences": 1 },
+      { "bias": "Cognitive dissonance", "requested_occurrences": 1 },
+      { "bias": "Feature positive effect", "requested_occurrences": 1 },
+      { "bias": "Groupthink", "requested_occurrences": 2 }
+    ],
+    "planned_instance_ids": [
+      { "instance_id": "cb_01", "bias": "Contextual Bias" },
+      { "instance_id": "gt_01", "bias": "Groupthink" },
+      { "instance_id": "fpe_01", "bias": "Feature positive effect" },
+      { "instance_id": "cd_01", "bias": "Cognitive dissonance" },
+      { "instance_id": "cr_01", "bias": "Coherence-based reasoning or Rationalisation" },
+      { "instance_id": "gt_02", "bias": "Groupthink" }
+    ],
+    "intended_decision_points": [
+      { "instance_id": "cb_01", "bias": "Contextual Bias", "decision_point": 1 },
+      { "instance_id": "gt_01", "bias": "Groupthink", "decision_point": 2 },
+      { "instance_id": "fpe_01", "bias": "Feature positive effect", "decision_point": 3 },
+      { "instance_id": "cd_01", "bias": "Cognitive dissonance", "decision_point": 3 },
+      { "instance_id": "cr_01", "bias": "Coherence-based reasoning or Rationalisation", "decision_point": 3 },
+      { "instance_id": "gt_02", "bias": "Groupthink", "decision_point": 4 }
+    ],
+    "intended_mechanisms": [
+      {
+        "instance_id": "cb_01",
+        "bias": "Contextual Bias",
+        "mechanism": "Detective's briefing narrative contaminates interpretation of ambiguous pretest behavioral cues before physiological data exist.",
+        "affected_reasoning_operation": "Interpretation of demeanor during pretest interview",
+        "evidence_source": "Case briefing memo vs. supervisor's actual pretest behavior",
+        "distinctiveness_requirement": "Occurs pre-test, before any chart data; involves narrative-to-behavior contamination distinct from later chart-based biases."
+      },
+      {
+        "instance_id": "gt_01",
+        "bias": "Groupthink",
+        "mechanism": "Unanimous huddle consensus suppresses independent test-design judgment and the temp-worker alternative lead.",
+        "affected_reasoning_operation": "Selection of comparison-question structure / evaluation of alternative suspect",
+        "evidence_source": "Verbal consensus in pre-test huddle",
+        "distinctiveness_requirement": "Distinct group moment (pre-test huddle) and distinct content (test design, dropped alternative lead) from gt_02."
+      },
+      {
+        "instance_id": "fpe_01",
+        "bias": "Feature positive effect",
+        "mechanism": "Overweighting the visible relevant-question spike while failing to register the diagnostic value of muted comparison-question reactivity.",
+        "affected_reasoning_operation": "Chart scoring / evidence weighting",
+        "evidence_source": "Relevant-question spike vs. comparison-question flatness on same chart",
+        "distinctiveness_requirement": "Concerns presence/absence asymmetry in physiological data, distinct from the narrative-integration mechanism of cr_01 and the commitment-tension mechanism of cd_01."
+      },
+      {
+        "instance_id": "cd_01",
+        "bias": "Cognitive dissonance",
+        "mechanism": "Tension between an earlier public 'deceptive' statement and later borderline scoring is resolved by discounting the disconfirming data.",
+        "affected_reasoning_operation": "Updating conclusion given new disconfirming scoring information",
+        "evidence_source": "Examiner's earlier verbal statement to detectives vs. final numerical scoring",
+        "distinctiveness_requirement": "Driven specifically by prior public commitment, distinct from the pure evidence-weighting mechanism of fpe_01 and the narrative-synthesis mechanism of cr_01."
+      },
+      {
+        "instance_id": "cr_01",
+        "bias": "Coherence-based reasoning or Rationalisation",
+        "mechanism": "Weak/ambiguous evidence pieces (spike, hesitation, financial strain) are woven into one internally consistent guilt narrative.",
+        "affected_reasoning_operation": "Integration of multiple evidence pieces into a final causal account",
+        "evidence_source": "Combination of chart spike, pretest demeanor, and disclosed financial strain",
+        "distinctiveness_requirement": "Concerns narrative integration across multiple evidence types, distinct from the single-feature weighting of fpe_01 and the commitment-tension of cd_01."
+      },
+      {
+        "instance_id": "gt_02",
+        "bias": "Groupthink",
+        "mechanism": "Junior detective's dissenting question about borderline scores is reassured away and dropped; report finalized to match group expectation.",
+        "affected_reasoning_operation": "Finalization of written report / resolution of dissent",
+        "evidence_source": "Debrief conversation and final report content",
+        "distinctiveness_requirement": "Distinct group moment (final debrief) and distinct content (report finalization over scoring doubt) from gt_01."
+      }
+    ],
+    "intended_strength": [
+      { "instance_id": "cb_01", "bias": "Contextual Bias", "strength": "subtle" },
+      { "instance_id": "gt_01", "bias": "Groupthink", "strength": "subtle" },
+      { "instance_id": "fpe_01", "bias": "Feature positive effect", "strength": "moderate" },
+      { "instance_id": "cd_01", "bias": "Cognitive dissonance", "strength": "moderate" },
+      { "instance_id": "cr_01", "bias": "Coherence-based reasoning or Rationalisation", "strength": "moderate" },
+      { "instance_id": "gt_02", "bias": "Groupthink", "strength": "subtle" }
+    ],
+    "paired_scenario_id": null,
+    "counterfactual_variable": {
+      "name": null,
+      "original_state": null,
+      "changed_state": null,
+      "variables_to_hold_constant": []
+    },
+    "scenario_id": "LE_Biased_6",
+    "domain_id": "LE",
+    "total_requested_occurrences": 6,
+    "total_planned_occurrences": 6,
+    "allocation_rule_used": "Spread across 4 decision points by mechanism fit and narrative realism: DP1 hosts Contextual Bias (pre-data narrative contamination); DP2 hosts one Groupthink instance (test-design huddle) as the mechanism required a group setting distinct from the debrief; DP3 hosts Feature positive effect, Cognitive dissonance, and Coherence-based reasoning together because all three naturally arise during chart scoring/interpretation but are kept independently identifiable via distinct evidence sources (single-feature weighting vs. prior-commitment tension vs. multi-evidence narrative synthesis); DP4 hosts the second Groupthink instance (report finalization/debrief) to satisfy the two-distinct-decision-point requirement for repeated biases.",
+    "control_zero_bias_requirement": false,
+    "variables_to_hold_constant": [],
+    "generation_warnings": [
+      "Decision point 3 hosts three distinct biases (Feature positive effect, Cognitive dissonance, Coherence-based reasoning) rather than one per decision point, because the manifest requires 5 distinct biases across only 4 decision points while keeping Groupthink's two occurrences at separate decision points per allocation rule 3-4; each of the three DP3 instances is anchored to a clearly distinct evidence source and reasoning operation to preserve independent identifiability."
+    ]
+  }
+}
+</COMPLETE_GENERATION_SPECIFICATION>
+
+<EVALUATION_SEGMENT_MAP>
+  "evaluation_segment_map": {
+      "segment_mapping_version": "1.0",
+      "segments": [
+        {
+          "segment_id": "seg_001",
+          "speaker": "Participant",
+          "segment_type": "interpretation",
+          "raw_interview_anchor": "\"Honestly, it gave me a lens...\" through \"the story fit.\" (pre-test interview interpretation)",
+          "eligible_reasoning_segment": true,
+          "ground_truth_bias_present": true,
+          "ground_truth_instance_ids": [
+            "cb_01"
+          ],
+          "ground_truth_rationale": "The examiner interprets hesitation and eye contact through the detective briefing and files divorce stress as corroboration rather than a competing explanation."
+        },
+        {
+          "segment_id": "seg_002",
+          "speaker": "Participant",
+          "segment_type": "choice_and_social_influence",
+          "raw_interview_anchor": "Pre-test huddle and comparison-question design: \"The room's mood was pretty unanimous\"; \"I finalized the comparison questions...\"; \"everyone else seemed settled.\"",
+          "eligible_reasoning_segment": true,
+          "ground_truth_bias_present": true,
+          "ground_truth_instance_ids": [
+            "gt_01"
+          ],
+          "ground_truth_rationale": "The examiner adopts the unanimous huddle framing, drops the temp-worker lead, and aligns test design with the detectives' theory."
+        },
+        {
+          "segment_id": "seg_003",
+          "speaker": "Participant",
+          "segment_type": "evidence_weighting",
+          "raw_interview_anchor": "Chart interpretation: \"there was a clear electrodermal spike...\" through \"what muted comparison reactivity normally does...\"",
+          "eligible_reasoning_segment": true,
+          "ground_truth_bias_present": true,
+          "ground_truth_instance_ids": [
+            "fpe_01"
+          ],
+          "ground_truth_rationale": "The vivid relevant-question spike is repeatedly weighted over the muted comparison-question reactivity required by the scoring protocol."
+        },
+        {
+          "segment_id": "seg_004",
+          "speaker": "Participant",
+          "segment_type": "narrative_integration",
+          "raw_interview_anchor": "\"I put it together as one story. The spike, the hesitation...\" through \"the story I built in my head.\"",
+          "eligible_reasoning_segment": true,
+          "ground_truth_bias_present": true,
+          "ground_truth_instance_ids": [
+            "cr_01"
+          ],
+          "ground_truth_rationale": "Multiple individually weak or ambiguous cues are woven into one coherent account of deception."
+        },
+        {
+          "segment_id": "seg_005",
+          "speaker": "Participant",
+          "segment_type": "updating_and_commitment",
+          "raw_interview_anchor": "\"The completed scoring sheet actually sat closer to inconclusive...\" through \"rather than revisiting my earlier read.\"",
+          "eligible_reasoning_segment": true,
+          "ground_truth_bias_present": true,
+          "ground_truth_instance_ids": [
+            "cd_01"
+          ],
+          "ground_truth_rationale": "The earlier verbal deceptive steer creates discomfort and the examiner discounts borderline scoring instead of updating."
+        },
+        {
+          "segment_id": "seg_006",
+          "speaker": "Participant",
+          "segment_type": "communication_and_report",
+          "raw_interview_anchor": "Final debrief: junior detective questions borderline scores; lead detective reassures him; examiner finalizes the report as expected.",
+          "eligible_reasoning_segment": true,
+          "ground_truth_bias_present": true,
+          "ground_truth_instance_ids": [
+            "gt_02"
+          ],
+          "ground_truth_rationale": "A dissenting question is smoothed over and the report is finalized to match group expectations."
+        },
+        {
+          "segment_id": "seg_007",
+          "speaker": "Participant",
+          "segment_type": "corrective_reflection",
+          "raw_interview_anchor": "\"If I'd completed full scoring before saying anything...\" and \"Finish the numbers before I open my mouth.\"",
+          "eligible_reasoning_segment": true,
+          "ground_truth_bias_present": false,
+          "ground_truth_instance_ids": [],
+          "ground_truth_rationale": "A retrospective corrective reflection about sequencing scoring before communicating a preliminary impression; no hidden bias instance is manifested in this segment."
+        }
+      ]
+    }
+</EVALUATION_SEGMENT_MAP>
+
+<RAG_ANALYSIS_OUTPUT>
+[JSON produced by the ontology-free RAG system]
+</RAG_ANALYSIS_OUTPUT>

@@ -1,0 +1,68 @@
+# Ranker comparison: the default hybrid RRF ranker vs. pure cosine ranking
+# (WeightedFusionRanker alpha = 1.0), on the ragrig default chat backend
+# (Ollama, qwen3.5:9b), varying the context budget (4096 and 8192 tokens).
+# Corpus = the embedded HTML fixture book, default pipeline (full parser
+# registry + MarkdownChunker).
+
+corpus_dirs = ["papers=/mnt/c/Users/Joost/Documents/papers"]
+
+queries = [
+    "Interviewer: Thanks for sitting down with me. This is a routine interview to reconstruct how you approached a specific blast round — it's not an evaluation of your performance, and everything stays with the study team. Okay to go ahead? Participant: Sure, no problem. Interviewer: Can you tell me about your role and what this round involved? Participant: I'm the drill and blast engineer for the lower sublevels — I own the pattern design, sign off on charging, and coordinate with geology and ventilation before anything fires. This was a production round in Panel 14, sublevel open stope, about 450 meters down, right next to the service shaft, so vibration control is always part of the picture. Goal was simple on paper: fire on schedule, hit fragmentation targets for the mill, stay under our PPV limits near the shaft. Interviewer: What was the situation going in? Participant: We were a shift behind and the mill was low on feed, so there was real pressure to keep moving. A couple days out, geology mapped a minor fault trace crossing about a third of the panel, with some moisture along it. Not alarming on its own, but new enough that I didn't want to just wave it off either. A full geotechnical resurvey would've eaten the whole shift, which we didn't have, so I had the crew run a limited spot-check on a handful of holes near the trace instead — a middle option between doing nothing and doing everything. Interviewer: Walk me through what happened as drilling and charging progressed. Participant: The spot-check came back clean on the three holes we tested, but it didn't cover the entire fault-affected stretch — I was upfront with the crew about that limitation. Once full drilling wrapped, a few more holes near the trace logged wet, including two just outside where we'd spot-checked. The explosives technician flagged those specific holes and suggested decking them with emulsion instead of running full ANFO columns. I went with that for the flagged holes only, keeping ANFO for the rest of the panel — partly on his data, partly because I'd handled similar wet ground before without major issues. Then, while loading, one more hole outside the original flagged list turned up borderline wet too, which we hadn't caught. On timing, our two vibration sensors near the shaft disagreed a bit — one comfortably under limit, the other borderline — and the vendor guidance didn't clearly say which one to trust for our geometry. I went with the more conservative longer-interval sequence given that mismatch. After firing, the fault-zone section came out with some overbreak and coarser fragmentation, vibration stayed under limit on both sensors but with less margin than usual, and no complaints came in. Interviewer: Let's go back to the pattern decision specifically. What was driving the choice to spot-check rather than resurvey or just proceed? Participant: Honestly, it was a resource call as much as anything. A full resurvey was the safer option in theory, but it would've blown the schedule entirely, and the pattern's history in that ground gave me some confidence it probably wasn't a major issue. The spot-check felt like a reasonable middle ground — get some current data without stopping everything. Interviewer: Did the fact that it only covered part of the zone concern you at the time? Participant: A bit, yeah. I flagged it to the crew supervisor as a known gap, not something I was fully comfortable with, but I judged it acceptable given the time we had. Interviewer: On the charging decision — how did you land on the mixed approach rather than going one way or the other? Participant: The technician's data pointed pretty specifically at certain holes, and I didn't have a strong reason to extend that to the whole panel. At the same time, I've seen wet ground behave both ways — sometimes it's nothing, sometimes it needs real adjustment — so I wasn't relying purely on his numbers or purely on my own read. It felt like combining both was the more defensible call. Interviewer: Did you consider treating the whole panel more conservatively given the borderline hole that turned up later? Participant: In hindsight, sure, but at the time it hadn't been discovered yet — that came up during loading, after the charging plan was already largely set. Interviewer: Moving to the timing call — the two sensors disagreeing seems like a genuinely tricky spot. How did you work through that? Participant: It was tricky. Neither sensor was clearly wrong, and the vendor's guidance didn't settle it for our specific layout. I talked it through with the safety officer, and we agreed the conservative reading deserved more weight given we couldn't fully explain the gap between the two. So we went with the longer interval, accepting a bit less fragmentation efficiency for a wider vibration margin. Interviewer: Was there time pressure to just default to the standard sequence instead? Participant: A little, but not enough to skip that conversation. It felt like the kind of disagreement worth pausing on for ten minutes. Interviewer: Last one — after the round, how did you approach explaining the overbreak to the mine manager? Participant: That one I genuinely couldn't resolve on the spot. It looked similar to a fault-zone overbreak pattern I'd seen at a previous site, but this round also had real gaps — the spot-check didn't cover everything, and the charging was mixed rather than uniform. Either factor could explain what we saw, maybe both together. I told the manager that rather than picking one story, and asked the geologist to review the current instrumentation before we changed anything for the next round. Interviewer: Was there pressure to give a cleaner answer than that? Participant: A little — he wanted something actionable — but I didn't think I could honestly narrow it down yet without more review. Interviewer: If the spot-check had covered the entire fault-affected zone, do you think the outcome would have been different? Participant: Possibly. We might have caught those additional wet holes earlier and adjusted the charging more broadly. I can't say for certain it would've changed the overbreak, but it would've closed one of the gaps we're now unsure about. Interviewer: And if the two vibration sensors had agreed with each other? Participant: That would've made the timing call much simpler — less deliberation, less uncertainty about which reading to trust. Interviewer: Looking back, is there a specific piece of information that could have resolved the overbreak question one way or the other? Participant: Full coverage on the geotechnical side, honestly. Right now we've got two plausible explanations sitting side by side, and neither the deviation survey nor my own experience is enough on its own to settle which one mattered more. Interviewer: That's a really thorough walkthrough — thank you. Participant: Happy to clarify anything further if it helps."
+]
+
+[[agents]]
+label = "Gemini Prompt 8192"
+[agents.chat]
+provider = "deepseek"            # "ollama" | "deepseek"
+#model = "qwen2.5:1.5b"         # ignored for deepseek
+context_tokens = 8192          # context budget for retrieved chunks
+deepseek_model = "deepseek-v4-pro"   # deepseek only
+#deepseek_api_key = DEEPSEEK_API_KEY # deepseek only (or DEEPSEEK_API_KEY env)
+# context_size_mode = "Auto"          # "Auto" | "Forced"
+system_prompt_path = "prompt_gemini.md"    # custom system prompt ({context} placeholder)
+# request_timeout_secs = 300          # per-request timeout, None = no timeout
+[agents.chat.params]                # generation overrides (all optional)
+# temperature = 0.7
+# top_p = 0.9
+# max_tokens = 1024
+seed = 42
+
+[[agents]]
+label = "Sonar Prompt 8192"
+[agents.chat]
+provider = "deepseek"            # "ollama" | "deepseek"
+#model = "qwen2.5:1.5b"         # ignored for deepseek
+context_tokens = 8192          # context budget for retrieved chunks
+deepseek_model = "deepseek-v4-pro"   # deepseek only
+#deepseek_api_key = DEEPSEEK_API_KEY # deepseek only (or DEEPSEEK_API_KEY env)
+# context_size_mode = "Auto"          # "Auto" | "Forced"
+system_prompt_path = "prompt_sonar.md"    # custom system prompt ({context} placeholder)
+# request_timeout_secs = 300          # per-request timeout, None = no timeout
+ [agents.chat.params]                # generation overrides (all optional)
+# temperature = 0.7
+# top_p = 0.9
+# max_tokens = 1024
+ seed = 42
+
+[[agents]]
+label = "Sonnet Prompt 8192"
+[agents.chat]
+provider = "deepseek"            # "ollama" | "deepseek"
+#model = "qwen2.5:1.5b"         # ignored for deepseek
+context_tokens = 8192          # context budget for retrieved chunks
+deepseek_model = "deepseek-v4-pro"   # deepseek only
+#deepseek_api_key = DEEPSEEK_API_KEY # deepseek only (or DEEPSEEK_API_KEY env)
+# context_size_mode = "Auto"          # "Auto" | "Forced"
+system_prompt_path = "prompt_sonnet.md"    # custom system prompt ({context} placeholder)
+# request_timeout_secs = 300          # per-request timeout, None = no timeout
+[agents.chat.params]                # generation overrides (all optional)
+# temperature = 0.7
+# top_p = 0.9
+# max_tokens = 1024
+seed = 42
+
+
+# ---Embed testing ---
+[embed]
+#top_k = 0
+top_k = 50

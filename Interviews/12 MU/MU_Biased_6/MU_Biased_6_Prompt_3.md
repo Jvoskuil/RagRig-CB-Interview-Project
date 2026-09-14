@@ -7,10 +7,189 @@ Do not assume the generator followed the specification. Do not infer bias merely
 INPUTS
 
 Interview:
-{{INTERVIEW}}
+{{Interviewer: Thanks for making time for this. As we discussed, this is a debrief to understand your reasoning during the Stope 14-East incident, not an audit of the outcome. Everything you share helps us understand how decisions get made in the field. You're comfortable proceeding?
+
+Participant: Yeah, that's fine. I've done these debriefs before after other events. Happy to walk through it.
+
+Interviewer: Great. Can you first tell me a bit about your role and what your objective was that shift?
+
+Participant: I'm the Health and Safety Officer for the site, dayshift. My main job that day was routine — checks, permits, and keeping an eye on the ground conditions in the active stopes, including 14-East, which was mid-cycle in a longhole stope. We were also under a bit of pressure to hit weekly tonnage, so there was always that background tension between keeping things moving and not cutting corners.
+
+Interviewer: Walk me through what happened when you first got word of the noise.
+
+Participant: Around 06:40 one of the miners came up on radio saying he'd heard some cracking, almost like popping, in the back of 14-East. Intermittent, not constant. No alarm had gone off on the microseismic array at that point. Normally that would make me lean toward "let's just check it," but honestly, my mind went straight to what happened at our sister operation two months earlier — that rockburst that made the trade press and had everyone in the region talking. It wasn't identical conditions, but it was the same ore body region, and that event was still very much front of mind for the whole crew. So even without an alarm, I treated that report as something that could be heading toward a similar event, more than I think the instrument data alone would have justified.
+
+Interviewer: What alternatives did you weigh at that point?
+
+Participant: There were really three options — full evacuation and stop work pending a geotech look, allow work to continue with tighter monitoring and a reviewed escape route, or just get the instrument tech to check readings first without restricting anyone. I went with the middle option: enhanced monitoring, limited access, no full evacuation. Partly because the instruments weren't flagging anything, but I'll admit the sister-mine incident weighed heavily on how urgent it felt to me in the moment.
+
+Interviewer: Let's move to later that morning — the extensometer readings.
+
+Participant: Right, so the 05:00 baseline was 0.2mm, which is our normal quiet reading. At 09:40 the tech radioed that it had moved to 0.6mm. That's three times the baseline in about three hours. I looked at it and thought, well, compared to this morning it's still a small number, still sub-millimeter, nothing dramatic. I didn't go back and check it against the rate-of-change table in the GCMP, which is actually the correct way to assess it — that plan cares about how fast it's moving, not just where it sits relative to where it started. In hindsight I was comparing it to the wrong reference.
+
+Interviewer: What made the baseline feel like the right comparison at the time?
+
+Participant: It's just naturally what you have in front of you — you saw it at 0.2 that morning, now it's 0.6, and 0.6 still sounds low in absolute terms. Ventilation had nothing unusual either, no gas, no temperature anomaly, so there was nothing else pulling my attention toward the rate-of-change side of things.
+
+Interviewer: Did anything else factor into that call?
+
+Participant: The mine manager was also asking for a production ETA, so there was some pull to land on "we're fine" rather than dig deeper into the trend math right then.
+
+Interviewer: Let's talk about the conversation with your shift supervisor.
+
+Participant: That was maybe an hour later. He's got twenty-two years underground, most of it at this site. He mentioned he'd heard similar popping back in 2009, and it hadn't come to anything. He was pretty confident it was "nothing." Around that same time the microseismic count for the shift had actually climbed to six events an hour, which is right at — actually just over — the flag threshold in our plan. I didn't push hard on whether the 2009 case actually matched today's rock type, blast pattern, or depth. His track record is strong, so his read carried a lot of weight for me in that moment, maybe more than it should have on its own.
+
+Interviewer: You also looked at a crack in the same panel. Can you describe that?
+
+Participant: Yes — there was a hairline crack, about a millimeter wide, that had been photographed and logged the week before as insignificant. When I looked at today's crack, I compared it side-by-side with that old photo, and it looked about the same width to me, so I read it as "consistent with what we already know is fine." What I didn't do at that point was connect it back to the microseismic number that had just ticked over the threshold — I was judging the crack against the old photo rather than against the newer seismic data.
+
+Interviewer: What alternatives did you consider before allowing continued access?
+
+Participant: Follow the seismic threshold strictly and pull back until the engineer signed off, split the difference and reduce crew size, or trust the supervisor's read and keep going with limited crew. I went with limited access, mostly on the supervisor's confidence and my own read of that crack photo.
+
+Interviewer: What happened next?
+
+Participant: The engineer eventually called back wanting the full event log, and around then someone noticed a second, wider crack near the first one. Then at 13:15 we had a minor spall — no injuries, some equipment damage. Shift change had happened about ninety minutes before that.
+
+Interviewer: When you wrote up the incident report, how did you decide what caused it?
+
+Participant: Looking at everything together — the overnight temperature drop, the shift change happening not long before, and the blasting in the panel next door the prior week — it came together into a pretty clean story: cooling stresses plus the handover timing plus the residual vibration from that blast. It read as a coherent explanation, so that's what I put forward as the primary account, even though the engineer's later note said several factors were plausible and none could really be confirmed as the dominant cause.
+
+Interviewer: And on responsibility — how did you frame that?
+
+Participant: I focused mainly on the miner who first heard the sounds and didn't escalate again after the initial 06:40 report — I felt if he'd flagged it again once the popping continued, we might have caught it sooner. I did note the missing engineer sign-off after the six-events flag, but that came across more as a process footnote than as a central cause in the report.
+
+Interviewer: If the sister-mine rockburst had never happened, do you think your first call would have gone differently?
+
+Participant: Possibly. I think without that fresh in everyone's mind, I might have waited for the instrument tech's check before doing anything, rather than jumping to enhanced monitoring right away.
+
+Interviewer: If the rate-of-change threshold had displayed automatically next to the raw reading, would the second decision have changed?
+
+Participant: Probably, yeah. If it had flagged red rather than just showing a number, I don't think I'd have leaned on the morning comparison the way I did.
+
+Interviewer: What would you tell a newer HSO to watch for in a similar shift?
+
+Participant: To always check the plan's actual thresholds rather than trusting a gut comparison to whatever reading you saw earlier, and to weigh a senior person's read alongside the data, not instead of it.
+
+Interviewer: Last one — how confident are you now that the causes you listed in the report are the real ones?
+
+Participant: Honestly, less than I was when I wrote it. It felt tidy at the time, but there were a few threads I didn't fully chase down.}}
 
 Hidden generation specification:
-{{GENERATION_SPECIFICATION}}
+{{"hidden_validation_specification": {
+    "hidden_spec_version": "1.0",
+    "condition": "biased",
+    "exact_occurrence_manifest": [
+      { "bias": "Availability Bias", "occurrences": 1, "mechanism_constraint": "Must be tied to recall of the specific sister-mine rockburst, not a generic caution statement." },
+      { "bias": "Experience Bias", "occurrences": 1, "mechanism_constraint": "Must be tied to overweighting supervisor tenure without verifying situational similarity." },
+      { "bias": "Anchoring Bias", "occurrences": 2, "mechanism_constraint": "Each instance must reference a distinct evidence source (instrument baseline reading vs. crack photograph) at a distinct decision point." },
+      { "bias": "Narrative Fallacy", "occurrences": 1, "mechanism_constraint": "Must occur only in the post-event causal explanation, not in earlier probes." },
+      { "bias": "Attribution Bias", "occurrences": 1, "mechanism_constraint": "Must contrast individual worker blame against an identifiable systemic/process factor." }
+    ],
+    "target_bias_names": [
+      "Availability Bias",
+      "Experience Bias",
+      "Anchoring Bias",
+      "Narrative Fallacy",
+      "Attribution Bias"
+    ],
+    "requested_occurrence_count_for_each_bias": [
+      { "bias": "Availability Bias", "requested_occurrences": 1 },
+      { "bias": "Experience Bias", "requested_occurrences": 1 },
+      { "bias": "Anchoring Bias", "requested_occurrences": 2 },
+      { "bias": "Narrative Fallacy", "requested_occurrences": 1 },
+      { "bias": "Attribution Bias", "requested_occurrences": 1 }
+    ],
+    "planned_instance_ids": [
+      { "instance_id": "av_01", "bias": "Availability Bias" },
+      { "instance_id": "exp_01", "bias": "Experience Bias" },
+      { "instance_id": "anc_01", "bias": "Anchoring Bias" },
+      { "instance_id": "anc_02", "bias": "Anchoring Bias" },
+      { "instance_id": "narr_01", "bias": "Narrative Fallacy" },
+      { "instance_id": "attr_01", "bias": "Attribution Bias" }
+    ],
+    "intended_decision_points": [
+      { "instance_id": "av_01", "bias": "Availability Bias", "decision_point": 1 },
+      { "instance_id": "anc_01", "bias": "Anchoring Bias", "decision_point": 2 },
+      { "instance_id": "exp_01", "bias": "Experience Bias", "decision_point": 3 },
+      { "instance_id": "anc_02", "bias": "Anchoring Bias", "decision_point": 3 },
+      { "instance_id": "narr_01", "bias": "Narrative Fallacy", "decision_point": 4 },
+      { "instance_id": "attr_01", "bias": "Attribution Bias", "decision_point": 4 }
+    ],
+    "intended_mechanisms": [
+      {
+        "instance_id": "av_01",
+        "bias": "Availability Bias",
+        "mechanism": "Vivid recall of the recent sister-mine rockburst inflates the perceived likelihood of the current ambiguous noise report.",
+        "affected_reasoning_operation": "Risk-likelihood estimation from a verbal cue",
+        "evidence_source": "Memory of a widely publicized recent industry incident",
+        "distinctiveness_requirement": "Occurs only at decision point 1, tied specifically to the sister-mine memory, not repeated later."
+      },
+      {
+        "instance_id": "anc_01",
+        "bias": "Anchoring Bias",
+        "mechanism": "Morning baseline extensometer reading anchors judgment of the later reading as 'still normal' instead of applying the rate-of-change rule.",
+        "affected_reasoning_operation": "Comparative evaluation of updated instrument data against fixed initial reference",
+        "evidence_source": "Extensometer displacement readings (05:00 baseline vs. 09:40 update)",
+        "distinctiveness_requirement": "Uses instrument telemetry evidence at decision point 2; distinct from anc_02's photographic evidence at decision point 3."
+      },
+      {
+        "instance_id": "exp_01",
+        "bias": "Experience Bias",
+        "mechanism": "Supervisor's tenure is treated as sufficient validation of a benign read, without checking situational similarity to today's conditions.",
+        "affected_reasoning_operation": "Credibility weighting of informal expert opinion vs. threshold data",
+        "evidence_source": "Supervisor's verbal recollection of a 2009 event",
+        "distinctiveness_requirement": "Occurs only at decision point 3, distinct reasoning operation (credibility weighting) from anc_02's evidence comparison at the same decision point."
+      },
+      {
+        "instance_id": "anc_02",
+        "bias": "Anchoring Bias",
+        "mechanism": "Prior week's photographed hairline crack anchors judgment of today's crack severity, displacing attention from the newly reached microseismic threshold.",
+        "affected_reasoning_operation": "Visual/photographic comparison against a prior fixed reference",
+        "evidence_source": "Crack-width photographs (last week vs. today)",
+        "distinctiveness_requirement": "Uses photographic evidence at decision point 3; distinct evidence type and moment from anc_01's instrument-baseline anchor at decision point 2."
+      },
+      {
+        "instance_id": "narr_01",
+        "bias": "Narrative Fallacy",
+        "mechanism": "Multiple loosely-related factors are woven into a single tidy causal chain in the post-event report, overstating certainty of the causal linkage.",
+        "affected_reasoning_operation": "Post-hoc causal reconstruction for incident reporting",
+        "evidence_source": "Temperature log, shift-change timing, prior blasting record",
+        "distinctiveness_requirement": "Occurs only in the decision point 4 incident narrative, not in earlier probes or hypotheticals."
+      },
+      {
+        "instance_id": "attr_01",
+        "bias": "Attribution Bias",
+        "mechanism": "Escalation responsibility is assigned mainly to the on-shift miner's reporting delay rather than to the missing systemic GCMP sign-off step.",
+        "affected_reasoning_operation": "Causal attribution of responsibility between individual and systemic factors",
+        "evidence_source": "Miner reporting timeline vs. GCMP sign-off requirement",
+        "distinctiveness_requirement": "Occurs only in the decision point 4 responsibility assessment, distinct reasoning operation from narr_01's causal-chain construction at the same decision point."
+      }
+    ],
+    "intended_strength": [
+      { "instance_id": "av_01", "bias": "Availability Bias", "strength": "subtle" },
+      { "instance_id": "exp_01", "bias": "Experience Bias", "strength": "subtle" },
+      { "instance_id": "anc_01", "bias": "Anchoring Bias", "strength": "subtle" },
+      { "instance_id": "anc_02", "bias": "Anchoring Bias", "strength": "subtle" },
+      { "instance_id": "narr_01", "bias": "Narrative Fallacy", "strength": "subtle" },
+      { "instance_id": "attr_01", "bias": "Attribution Bias", "strength": "subtle" }
+    ],
+    "paired_scenario_id": null,
+    "counterfactual_variable": {
+      "name": null,
+      "original_state": null,
+      "changed_state": null,
+      "variables_to_hold_constant": []
+    },
+    "scenario_id": "MU_Biased_6",
+    "domain_id": "MU",
+    "total_requested_occurrences": 6,
+    "total_planned_occurrences": 6,
+    "allocation_rule_used": "Occurrences distributed across the 4 decision points by mechanism fit and narrative realism: Availability Bias placed at the initial ambiguous-report decision (DP1) where recall of a recent vivid event is most plausible; Anchoring Bias split across DP2 (instrument baseline) and DP3 (photographic reference) using two distinct evidence sources to satisfy the same-decision-point distinctiveness rule; Experience Bias placed at DP3 alongside but reasoning-operation-distinct from the second Anchoring instance; Narrative Fallacy and Attribution Bias both placed at DP4 (post-event review) but targeting different reasoning operations (causal-chain construction vs. responsibility attribution). No bias exceeds two occurrences at a single decision point.",
+    "control_zero_bias_requirement": false,
+    "variables_to_hold_constant": [],
+    "generation_warnings": []
+  }}}
 
 The hidden specification may include:
 - condition;

@@ -1,0 +1,68 @@
+# Ranker comparison: the default hybrid RRF ranker vs. pure cosine ranking
+# (WeightedFusionRanker alpha = 1.0), on the ragrig default chat backend
+# (Ollama, qwen3.5:9b), varying the context budget (4096 and 8192 tokens).
+# Corpus = the embedded HTML fixture book, default pipeline (full parser
+# registry + MarkdownChunker).
+
+corpus_dirs = ["papers=/mnt/c/Users/Joost/Documents/papers"]
+
+queries = [
+    "**Interviewer:** Thanks for making time for this. Just to confirm, this is a cognitive task analysis interview — I'm interested in how you actually reasoned through the incident, not in second-guessing the outcome. Everything's confidential and used for training and research purposes only. You're an Assistant Mine Manager at the site, correct? **Participant:** That's right. I've been in that role about three years, twenty years underground total, mostly hard rock. **Interviewer:** Good. Let's start broad — can you walk me through what was happening in Stope 14 East during that shift? **Participant:** Sure. We were running a stope on the 950 level, standard longhole retreat mining. We'd had three microseismic events overnight — moderate magnitude, above what the array normally logs for that block over a rolling thirty-day average. No visible damage reported by the night shift, though. At the same time, we were two days behind on the monthly tonnage target, so there was some pressure from the production side to keep things moving. **Interviewer:** What was your main objective going into that morning? **Participant:** Keep the crew safe, obviously, but also not create a stoppage we couldn't justify. We'd had false alarms before — events that looked concerning on paper but turned out to be nothing. You don't want to shut a stope every time the array blips, or the crew starts tuning out the real warnings. **Interviewer:** Take me through what you actually decided that morning. **Participant:** The ground support plan for that stope had been signed off about four months earlier, and nothing had changed structurally since then — no fall of ground, nothing visible. So my read was that the plan was still sound, and I didn't see a reason to hold the crew back. We had options — pause entry and get an unscheduled inspection, or drop crew numbers until someone looked at it — but honestly, revising an approved plan on the back of three events felt like more disruption than the situation called for. We let day shift go in and start drilling as scheduled. **Interviewer:** Did anything happen during that shift that stood out? **Participant:** A bit of loose rock came off a rib wall mid-shift. Crew scaled it down, logged it as routine. Nothing that changed my thinking at that point. **Interviewer:** Let's move to later that day — you mentioned a hazard rating came in. **Participant:** Yes, our geotech support is remote most of the week — the engineer's only on-site two days. The model came back with a 2.3 on their five-point scale, tagged 'moderate but manageable.' The Stope 9 situation was actually the first thing that came to mind — it had come up on the shift handover just a few days earlier, almost the exact same rating and event cluster, and it had resolved completely fine, no incident. Between the number and that memory, I felt reasonably comfortable. **Interviewer:** Were there other options at that point? **Participant:** We could have asked for an updated rating that accounted for the blind spot near the intersection — the array doesn't read well there — or just held the blast until the engineer was back on-site the next day. I didn't go pull the broader run of comparable events across other stopes to see how those had generally played out; Stope 9 was just the one that was fresh in my head, so that's what I went with. The 2.3 read as solid enough, and Stope 9 had gone fine under similar numbers, so I authorized the afternoon blast clearance. **Interviewer:** How much weight did that number carry versus other considerations? **Participant:** A fair amount. It came from the model, and it was specific and official-looking, which made it easy to treat as settled rather than something to test against the blind spot we already knew was there. **Interviewer:** What happened after the blast was cleared? **Participant:** About two hours later there was a second event, larger than the first three, and outside what the model's confidence range would have predicted. **Interviewer:** Let's talk about what happened next — the cracking. **Participant:** Right, after the blast, the shift supervisor flagged some hairline cracking in the shotcrete on one rib. Around the same time a junior inspector — one of the geotech contractor's people — sent an email recommending we re-support before doing any more blasting. But two other crew members separately told me it looked like typical post-blast settling, nothing unusual. **Interviewer:** How did you weigh those two views? **Participant:** I leaned toward the crew's read. We'd seen a very similar crack pattern in Stope 9 previously that never led anywhere. So when the reporting went up to the production superintendent, I passed along the crew's 'typical settling' assessments. The inspector's note got filed — I didn't raise it on the shift call, mostly because it felt like it would just muddy a picture that already seemed clear enough from the people who were actually standing there. **Interviewer:** Was there a version of that decision where the inspector's note carried equal weight? **Participant:** Looking back, sure — we could have treated the cracking as inconclusive and brought in an independent check rather than leaning on precedent and the on-the-ground opinions. At the time it didn't feel necessary because the Stope 9 comparison made the pattern seem like something we already understood. **Interviewer:** Let's get to the final decision point — the next scheduled blast. **Participant:** Right before that decision, one of the array nodes had sensor lag, so we didn't have confirmed magnitude data for recent ground movement. Then a small rock fall happened near the access drift — no injuries, minor. The superintendent was pushing to keep the blast on schedule to hit the month-end number. **Interviewer:** What went into your call there? **Participant:** Honestly, that rock fall didn't worry me much. I've personally been through plenty of similar events over twenty years underground, and they almost never escalate. If anything, it read to me as consistent with what we'd already been seeing — minor settling, nothing structural. I authorized the blast. **Interviewer:** Were you uncertain at all in that moment? **Participant:** There was a gap, sure — we didn't have the sensor confirmation we'd normally want. But I was confident in the call. Twenty years gives you a feel for these things that a delayed sensor reading doesn't necessarily add to. **Interviewer:** Could you have suspended the blast pending that data, or escalated to the engineer for a fresh look? **Participant:** Both were on the table. I just didn't think either was warranted given how the shift had gone. **Interviewer:** What happened afterward? **Participant:** The blast went fine. Ground stayed stable through the rest of the shift. We did schedule a post-shift review, though the underlying ground support plan wasn't actually revised. **Interviewer:** Stepping back — if the geotechnical engineer had been on-site the whole time rather than remote, would anything have gone differently? **Participant:** Possibly. Having someone physically there to look at the cracking directly, rather than relying on an email and crew impressions, might have changed how that got weighted. **Interviewer:** And if the hazard rating had come back at 3.5 instead of 2.3? **Participant:** That would have stopped me. A 3.5 doesn't let you lean on a comfortable memory the way a 2.3 does. **Interviewer:** Looking back, would you make the same call on continuing under the existing support plan that first morning? **Participant:** I'd probably want more of a structured comparison next time — actually laying the new seismic readings against the plan's original assumptions, rather than just defaulting to 'nothing's changed, so we haven't changed anything.' At the time, though, it felt like the obvious choice."
+]
+
+[[agents]]
+label = "Gemini Prompt 8192"
+[agents.chat]
+provider = "deepseek"            # "ollama" | "deepseek"
+#model = "qwen2.5:1.5b"         # ignored for deepseek
+context_tokens = 8192          # context budget for retrieved chunks
+deepseek_model = "deepseek-v4-pro"   # deepseek only
+#deepseek_api_key = DEEPSEEK_API_KEY # deepseek only (or DEEPSEEK_API_KEY env)
+# context_size_mode = "Auto"          # "Auto" | "Forced"
+system_prompt_path = "prompt_gemini.md"    # custom system prompt ({context} placeholder)
+# request_timeout_secs = 300          # per-request timeout, None = no timeout
+[agents.chat.params]                # generation overrides (all optional)
+# temperature = 0.7
+# top_p = 0.9
+# max_tokens = 1024
+seed = 42
+
+[[agents]]
+label = "Sonar Prompt 8192"
+[agents.chat]
+provider = "deepseek"            # "ollama" | "deepseek"
+#model = "qwen2.5:1.5b"         # ignored for deepseek
+context_tokens = 8192          # context budget for retrieved chunks
+deepseek_model = "deepseek-v4-pro"   # deepseek only
+#deepseek_api_key = DEEPSEEK_API_KEY # deepseek only (or DEEPSEEK_API_KEY env)
+# context_size_mode = "Auto"          # "Auto" | "Forced"
+system_prompt_path = "prompt_sonar.md"    # custom system prompt ({context} placeholder)
+# request_timeout_secs = 300          # per-request timeout, None = no timeout
+ [agents.chat.params]                # generation overrides (all optional)
+# temperature = 0.7
+# top_p = 0.9
+# max_tokens = 1024
+ seed = 42
+
+[[agents]]
+label = "Sonnet Prompt 8192"
+[agents.chat]
+provider = "deepseek"            # "ollama" | "deepseek"
+#model = "qwen2.5:1.5b"         # ignored for deepseek
+context_tokens = 8192          # context budget for retrieved chunks
+deepseek_model = "deepseek-v4-pro"   # deepseek only
+#deepseek_api_key = DEEPSEEK_API_KEY # deepseek only (or DEEPSEEK_API_KEY env)
+# context_size_mode = "Auto"          # "Auto" | "Forced"
+system_prompt_path = "prompt_sonnet.md"    # custom system prompt ({context} placeholder)
+# request_timeout_secs = 300          # per-request timeout, None = no timeout
+[agents.chat.params]                # generation overrides (all optional)
+# temperature = 0.7
+# top_p = 0.9
+# max_tokens = 1024
+seed = 42
+
+
+# ---Embed testing ---
+[embed]
+#top_k = 0
+top_k = 50

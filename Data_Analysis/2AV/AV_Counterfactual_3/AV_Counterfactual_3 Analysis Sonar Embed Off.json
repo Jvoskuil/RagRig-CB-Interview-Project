@@ -1,0 +1,848 @@
+{
+  "evaluation_metadata": {
+    "task": "ontology_free_rag_cognitive_bias_benchmark_evaluation",
+    "benchmark_run_metadata": {
+      "benchmark_run_id": "AV_Counterfactual_3_Sonar_off",
+      "interview_id": "AV_Counterfactual_3",
+      "system_prompt_id": "Sonar",
+      "system_prompt_generator": "Prompt 1_2",
+      "rag_model_id": "v1.0.0",
+      "corpus_condition": "off",
+      "retrieval_configuration_id": "k=0",
+      "decoding_configuration_id": null,
+      "temperature": 1,
+      "replicate_id": null,
+      "segment_map_id": null
+    },
+    "scenario_id": "AV_Counterfactual_3",
+    "domain_id": "AV",
+    "condition": "counterfactual",
+    "segment_map_status": "prevalidated_provided",
+    "rag_output_parse_status": "valid_json",
+    "rag_schema_assessment": "conformant"
+  },
+  "input_validation": {
+    "rag_output_schema_violations": [
+      {
+        "violation_type": "invalid_or_misattributed_quotation",
+        "details": "The third evidence quote for obs_003 combines an interviewer question with the participant's answer while declaring the evidence speaker to be Participant. Other supporting quotes for obs_003 are valid."
+      }
+    ],
+    "rag_summary_count_consistency": {
+      "status": "consistent",
+      "details": "The identified_bias_summary reports one occurrence for each of three labels, matching the three identified_occurrences records. Candidate records are separate and not included in the identified summary."
+    },
+    "evaluation_limitations": [
+      "The supplied segment map was treated as authoritative.",
+      "No retrieved passages or retrieval logs were supplied; corpus fidelity was therefore not scored."
+    ]
+  },
+  "evaluation_segment_map": {
+    "segment_mapping_version": "1.0",
+    "segments": [
+      {
+        "segment_id": "seg_001",
+        "speaker": "Participant",
+        "segment_type": "context_reasoning",
+        "raw_interview_anchor": "Right away I knew I'd be compressing steps I'd normally spread out a bit more. Nothing about the flight itself was unusual—it was just less time to work with.",
+        "eligible_reasoning_segment": true,
+        "ground_truth_bias_present": false,
+        "ground_truth_instance_ids": [],
+        "ground_truth_rationale": "This explains operational compression caused by the shortened turnaround but does not itself contain a hidden bias instance."
+      },
+      {
+        "segment_id": "seg_002",
+        "speaker": "Participant",
+        "segment_type": "decision_reasoning",
+        "raw_interview_anchor": "The irregular machinery item was assigned to hold 3 by the automatic load instruction, and the participant issued the ALI as generated because the system had been reliable and time was short; follow-up confirms the available manual chart was not used.",
+        "eligible_reasoning_segment": true,
+        "ground_truth_bias_present": true,
+        "ground_truth_instance_ids": [
+          "au_01"
+        ],
+        "ground_truth_rationale": "Decision point 1 contains the intended automation-bias mechanism: an automated output for atypical cargo was accepted without the situation-specific manual cross-check, with system reliability and schedule compression cited as reasons."
+      },
+      {
+        "segment_id": "seg_003",
+        "speaker": "Participant",
+        "segment_type": "decision_reasoning",
+        "raw_interview_anchor": "The participant cleared the 380-kilogram mail and six late bags in aft hold 5 after comparing total weight with three recent LMCs, without calculating the placement-specific index shift.",
+        "eligible_reasoning_segment": true,
+        "ground_truth_bias_present": true,
+        "ground_truth_instance_ids": [
+          "sub_01"
+        ],
+        "ground_truth_rationale": "Decision point 2 contains the intended substitution mechanism: aggregate weight similarity was used as an easier proxy for the harder placement-specific index calculation under time scarcity."
+      },
+      {
+        "segment_id": "seg_004",
+        "speaker": "Participant",
+        "segment_type": "decision_reasoning",
+        "raw_interview_anchor": "The participant inferred that the rotation was running tail-heavy from the ramp report and two prior aft-trim events, then shifted cargo forward beyond what the current flight's own index required.",
+        "eligible_reasoning_segment": true,
+        "ground_truth_bias_present": true,
+        "ground_truth_instance_ids": [
+          "ap_01"
+        ],
+        "ground_truth_rationale": "Decision point 3 contains the intended apophenia/correlation mechanism: a recurring causal pattern was inferred from two temporally adjacent events and used to override valid current-flight data."
+      },
+      {
+        "segment_id": "seg_005",
+        "speaker": "Participant",
+        "segment_type": "decision_reasoning",
+        "raw_interview_anchor": "The participant signed and released with a one-bag discrepancy after weighing delay risk against the possibility of a routine miscount; the discrepancy was later corrected without changing the W&B conclusion.",
+        "eligible_reasoning_segment": true,
+        "ground_truth_bias_present": false,
+        "ground_truth_instance_ids": [],
+        "ground_truth_rationale": "Decision point 4 is deliberately neutral and genuinely ambiguous. The participant made an explicit operational risk tradeoff, and either sign-off or a short hold was professionally defensible."
+      },
+      {
+        "segment_id": "seg_006",
+        "speaker": "Participant",
+        "segment_type": "retrospective_recommendation",
+        "raw_interview_anchor": "The participant recommended pulling the manual chart for irregular cargo and keeping the current flight's numbers separate from prior flights unless a shared cause is known, while remaining uncertain about the LMC issue.",
+        "eligible_reasoning_segment": true,
+        "ground_truth_bias_present": false,
+        "ground_truth_instance_ids": [],
+        "ground_truth_rationale": "This is a retrospective recommendation and uncertainty statement, not an additional hidden occurrence."
+      }
+    ]
+  },
+  "segment_level_adjudications": [
+    {
+      "segment_id": "seg_001",
+      "ground_truth_status": "negative",
+      "ground_truth_instance_ids": [],
+      "rag_identified_occurrence_ids": [],
+      "rag_candidate_ids_counted_at_fourth_threshold": [],
+      "rag_detected_bias_in_segment_by_threshold": {
+        "high_only": false,
+        "high_and_moderate": false,
+        "all_identified_confidence_levels": false,
+        "all_confidence_and_candidates": false
+      },
+      "sdt_outcome_by_threshold": {
+        "high_only": "correct_rejection",
+        "high_and_moderate": "correct_rejection",
+        "all_identified_confidence_levels": "correct_rejection",
+        "all_confidence_and_candidates": "correct_rejection"
+      },
+      "localization_basis": "No RAG finding localized to this segment.",
+      "adjudication_note": "The context-only time-pressure statement was correctly left undetected."
+    },
+    {
+      "segment_id": "seg_002",
+      "ground_truth_status": "positive",
+      "ground_truth_instance_ids": [
+        "au_01"
+      ],
+      "rag_identified_occurrence_ids": [
+        "obs_001"
+      ],
+      "rag_candidate_ids_counted_at_fourth_threshold": [],
+      "rag_detected_bias_in_segment_by_threshold": {
+        "high_only": true,
+        "high_and_moderate": true,
+        "all_identified_confidence_levels": true,
+        "all_confidence_and_candidates": true
+      },
+      "sdt_outcome_by_threshold": {
+        "high_only": "hit",
+        "high_and_moderate": "hit",
+        "all_identified_confidence_levels": "hit",
+        "all_confidence_and_candidates": "hit"
+      },
+      "localization_basis": "obs_001 contains valid direct quotations overlapping the automated ALI decision reasoning.",
+      "adjudication_note": "The occurrence is correctly localized and captures the hidden automation-reliance mechanism."
+    },
+    {
+      "segment_id": "seg_003",
+      "ground_truth_status": "positive",
+      "ground_truth_instance_ids": [
+        "sub_01"
+      ],
+      "rag_identified_occurrence_ids": [
+        "obs_002"
+      ],
+      "rag_candidate_ids_counted_at_fourth_threshold": [],
+      "rag_detected_bias_in_segment_by_threshold": {
+        "high_only": false,
+        "high_and_moderate": true,
+        "all_identified_confidence_levels": true,
+        "all_confidence_and_candidates": true
+      },
+      "sdt_outcome_by_threshold": {
+        "high_only": "miss",
+        "high_and_moderate": "hit",
+        "all_identified_confidence_levels": "hit",
+        "all_confidence_and_candidates": "hit"
+      },
+      "localization_basis": "obs_002 contains valid direct quotations overlapping the LMC clearance reasoning.",
+      "adjudication_note": "The finding is a segment-level hit at thresholds including moderate confidence, although its label is a near-neighbor rather than the hidden substitution-bias label."
+    },
+    {
+      "segment_id": "seg_004",
+      "ground_truth_status": "positive",
+      "ground_truth_instance_ids": [
+        "ap_01"
+      ],
+      "rag_identified_occurrence_ids": [
+        "obs_003"
+      ],
+      "rag_candidate_ids_counted_at_fourth_threshold": [],
+      "rag_detected_bias_in_segment_by_threshold": {
+        "high_only": true,
+        "high_and_moderate": true,
+        "all_identified_confidence_levels": true,
+        "all_confidence_and_candidates": true
+      },
+      "sdt_outcome_by_threshold": {
+        "high_only": "hit",
+        "high_and_moderate": "hit",
+        "all_identified_confidence_levels": "hit",
+        "all_confidence_and_candidates": "hit"
+      },
+      "localization_basis": "obs_003 has valid direct quotations overlapping the rotation-pattern inference and forward-redistribution reasoning.",
+      "adjudication_note": "The finding is correctly localized and uses an approved equivalent label; one additional evidence quote is invalidly attributed but does not remove the valid supporting evidence."
+    },
+    {
+      "segment_id": "seg_005",
+      "ground_truth_status": "negative",
+      "ground_truth_instance_ids": [],
+      "rag_identified_occurrence_ids": [],
+      "rag_candidate_ids_counted_at_fourth_threshold": [
+        "cand_001"
+      ],
+      "rag_detected_bias_in_segment_by_threshold": {
+        "high_only": false,
+        "high_and_moderate": false,
+        "all_identified_confidence_levels": false,
+        "all_confidence_and_candidates": true
+      },
+      "sdt_outcome_by_threshold": {
+        "high_only": "correct_rejection",
+        "high_and_moderate": "correct_rejection",
+        "all_identified_confidence_levels": "correct_rejection",
+        "all_confidence_and_candidates": "false_positive"
+      },
+      "localization_basis": "cand_001 uses a valid quote from the final sign-off reasoning and localizes to this eligible negative segment.",
+      "adjudication_note": "The candidate is not an intended hidden occurrence; its inclusion creates a fourth-threshold false alarm."
+    },
+    {
+      "segment_id": "seg_006",
+      "ground_truth_status": "negative",
+      "ground_truth_instance_ids": [],
+      "rag_identified_occurrence_ids": [],
+      "rag_candidate_ids_counted_at_fourth_threshold": [],
+      "rag_detected_bias_in_segment_by_threshold": {
+        "high_only": false,
+        "high_and_moderate": false,
+        "all_identified_confidence_levels": false,
+        "all_confidence_and_candidates": false
+      },
+      "sdt_outcome_by_threshold": {
+        "high_only": "correct_rejection",
+        "high_and_moderate": "correct_rejection",
+        "all_identified_confidence_levels": "correct_rejection",
+        "all_confidence_and_candidates": "correct_rejection"
+      },
+      "localization_basis": "No RAG finding localized to this segment.",
+      "adjudication_note": "The retrospective recommendation was correctly not treated as an additional hidden occurrence."
+    }
+  ],
+  "instance_level_adjudications": [
+    {
+      "hidden_instance_id": "au_01",
+      "hidden_target_bias_label": "Automaticity or Automation Bias",
+      "hidden_decision_or_episode": "Decision point 1: accepting the automatically generated ALI for irregular machinery cargo without the available manual cross-check",
+      "hidden_mechanism": "Bypassing an independent manual check on an automated output for an atypical case, using general system reliability and compressed schedule pressure as justification.",
+      "matched_finding_by_threshold": {
+        "high_only": {
+          "matched_id": "obs_001",
+          "matched_type": "identified"
+        },
+        "high_and_moderate": {
+          "matched_id": "obs_001",
+          "matched_type": "identified"
+        },
+        "all_identified_confidence_levels": {
+          "matched_id": "obs_001",
+          "matched_type": "identified"
+        },
+        "all_confidence_and_candidates": {
+          "matched_id": "obs_001",
+          "matched_type": "identified"
+        }
+      },
+      "rag_predicted_bias_label": "automation bias",
+      "rag_confidence": "high",
+      "label_equivalence_result": "established_alias_or_equivalent",
+      "localization_match_type": "exact_quote_match",
+      "mechanism_overlap": "full_mechanism_match",
+      "strict_scorecard_outcome_by_threshold": {
+        "high_only": "true_positive",
+        "high_and_moderate": "true_positive",
+        "all_identified_confidence_levels": "true_positive",
+        "all_confidence_and_candidates": "true_positive"
+      },
+      "mechanism_first_scorecard_outcome_by_threshold": {
+        "high_only": "true_positive",
+        "high_and_moderate": "true_positive",
+        "all_identified_confidence_levels": "true_positive",
+        "all_confidence_and_candidates": "true_positive"
+      },
+      "secondary_diagnostic_outcome": "approved_alias_match",
+      "label_equivalence_explanation": "Automation bias is an established scholarly equivalent or shortened form of the hidden Automaticity or Automation Bias target.",
+      "mechanism_overlap_explanation": "The finding captures acceptance of a system-generated hold assignment for atypical cargo without the available manual verification, explicitly linking the choice to system reliability and time pressure.",
+      "evidence_fidelity_assessment": "The quoted evidence is present in the raw interview, correctly attributed to the Participant, and directly supports the mechanism."
+    },
+    {
+      "hidden_instance_id": "sub_01",
+      "hidden_target_bias_label": "Substitution bias",
+      "hidden_decision_or_episode": "Decision point 2: clearing the aft-hold LMC using aggregate weight similarity instead of placement-specific index verification",
+      "hidden_mechanism": "Replacing the harder placement-specific index or moment question with the easier proxy question of whether aggregate LMC weight resembles recent examples, with time scarcity contributing to the shortcut.",
+      "matched_finding_by_threshold": {
+        "high_only": {
+          "matched_id": null,
+          "matched_type": "none"
+        },
+        "high_and_moderate": {
+          "matched_id": "obs_002",
+          "matched_type": "identified"
+        },
+        "all_identified_confidence_levels": {
+          "matched_id": "obs_002",
+          "matched_type": "identified"
+        },
+        "all_confidence_and_candidates": {
+          "matched_id": "obs_002",
+          "matched_type": "identified"
+        }
+      },
+      "rag_predicted_bias_label": "availability heuristic",
+      "rag_confidence": "moderate",
+      "label_equivalence_result": "near_neighbor_label",
+      "localization_match_type": "exact_quote_match",
+      "mechanism_overlap": "full_mechanism_match",
+      "strict_scorecard_outcome_by_threshold": {
+        "high_only": "false_negative",
+        "high_and_moderate": "false_negative",
+        "all_identified_confidence_levels": "false_negative",
+        "all_confidence_and_candidates": "false_negative"
+      },
+      "mechanism_first_scorecard_outcome_by_threshold": {
+        "high_only": "false_negative",
+        "high_and_moderate": "true_positive",
+        "all_identified_confidence_levels": "true_positive",
+        "all_confidence_and_candidates": "true_positive"
+      },
+      "secondary_diagnostic_outcome": "correct_location_wrong_bias_label",
+      "label_equivalence_explanation": "Availability heuristic is a distinct near-neighbor construct involving accessibility of examples. It is not an approved equivalent of substitution bias, even though the finding describes the correct proxy substitution.",
+      "mechanism_overlap_explanation": "The finding fully captures the defining distortion: total-weight similarity to recent LMCs was used instead of calculating the placement-specific index shift for aft hold 5, under time pressure.",
+      "evidence_fidelity_assessment": "All quoted evidence is present in the raw interview, correctly attributed, and supports the weight-proxy mechanism."
+    },
+    {
+      "hidden_instance_id": "ap_01",
+      "hidden_target_bias_label": "Apophenia or Correlation Bias",
+      "hidden_decision_or_episode": "Decision point 3: forward redistribution based on two preceding aft-trim events",
+      "hidden_mechanism": "Inferring a causal recurring rotation-level pattern from two temporally adjacent but causally unrelated prior events and using it to override valid current-flight calculations, with time scarcity limiting further checking.",
+      "matched_finding_by_threshold": {
+        "high_only": {
+          "matched_id": "obs_003",
+          "matched_type": "identified"
+        },
+        "high_and_moderate": {
+          "matched_id": "obs_003",
+          "matched_type": "identified"
+        },
+        "all_identified_confidence_levels": {
+          "matched_id": "obs_003",
+          "matched_type": "identified"
+        },
+        "all_confidence_and_candidates": {
+          "matched_id": "obs_003",
+          "matched_type": "identified"
+        }
+      },
+      "rag_predicted_bias_label": "illusory correlation",
+      "rag_confidence": "high",
+      "label_equivalence_result": "established_alias_or_equivalent",
+      "localization_match_type": "exact_quote_match",
+      "mechanism_overlap": "full_mechanism_match",
+      "strict_scorecard_outcome_by_threshold": {
+        "high_only": "true_positive",
+        "high_and_moderate": "true_positive",
+        "all_identified_confidence_levels": "true_positive",
+        "all_confidence_and_candidates": "true_positive"
+      },
+      "mechanism_first_scorecard_outcome_by_threshold": {
+        "high_only": "true_positive",
+        "high_and_moderate": "true_positive",
+        "all_identified_confidence_levels": "true_positive",
+        "all_confidence_and_candidates": "true_positive"
+      },
+      "secondary_diagnostic_outcome": "approved_alias_match",
+      "label_equivalence_explanation": "Illusory correlation is an established scholarly equivalent of the hidden correlation-bias construct in this context.",
+      "mechanism_overlap_explanation": "The finding captures inferring a meaningful rotation-level relationship from two prior events with different tails and unrelated causes, then overriding the current flight's valid index.",
+      "evidence_fidelity_assessment": "Two supporting quotes are valid, direct Participant quotations. A third quote is invalidly attributed because it combines an interviewer question with the Participant's answer, but the valid quotes independently establish the occurrence."
+    }
+  ],
+  "unmatched_rag_predictions": [
+    {
+      "rag_occurrence_id": "obs_002",
+      "rag_finding_type": "identified",
+      "rag_predicted_bias_label": "availability heuristic",
+      "rag_confidence": "moderate",
+      "localized_segment_id": "seg_003",
+      "best_related_hidden_instance_id": "sub_01",
+      "label_equivalence_result": "near_neighbor_label",
+      "mechanism_overlap": "full_mechanism_match",
+      "strict_classification": "correct_location_wrong_bias_label",
+      "mechanism_first_classification": "not_applicable",
+      "counted_at_thresholds": [
+        "high_and_moderate",
+        "all_identified_confidence_levels",
+        "all_confidence_and_candidates"
+      ],
+      "why_not_an_exact_strict_match": "The finding is correctly localized and fully describes the substitution mechanism, but availability heuristic is not an approved equivalent label for substitution bias."
+    },
+    {
+      "rag_occurrence_id": "cand_001",
+      "rag_finding_type": "candidate",
+      "rag_predicted_bias_label": "normalization of deviance",
+      "rag_confidence": "candidate",
+      "localized_segment_id": "seg_005",
+      "best_related_hidden_instance_id": null,
+      "label_equivalence_result": "different_construct",
+      "mechanism_overlap": "no_mechanism_overlap",
+      "strict_classification": "false_positive",
+      "mechanism_first_classification": "unsupported_prediction",
+      "counted_at_thresholds": [
+        "all_confidence_and_candidates"
+      ],
+      "why_not_an_exact_strict_match": "The candidate concerns a neutral and explicitly ambiguous sign-off tradeoff; no hidden instance remains unmatched, and its proposed normalization mechanism is not supported as a hidden bias occurrence."
+    }
+  ],
+  "candidate_analysis": {
+    "candidate_count": 1,
+    "candidates": [
+      {
+        "candidate_id": "cand_001",
+        "proposed_bias_label": "normalization of deviance",
+        "localized_segment_id": "seg_005",
+        "best_related_hidden_instance_id": null,
+        "quote_validity": "valid",
+        "would_match_if_promoted_strict": false,
+        "would_match_if_promoted_mechanism_first": false,
+        "counted_as_detection_at_fourth_threshold": true,
+        "fourth_threshold_outcome": "not_matched_segment_negative",
+        "candidate_assessment": "useful_abstention",
+        "details": "The RAG system explicitly withheld identification because the interview supports an ordinary operational risk judgment rather than an affirmative bias-specific mechanism. Under the benchmark rule, however, the localized candidate still counts as a fourth-threshold detection and creates a segment-level false alarm."
+      }
+    ]
+  },
+  "signal_detection_summary": {
+    "evaluation_unit": "eligible_reasoning_segment",
+    "high_only": {
+      "positive_segments": 3,
+      "negative_segments": 3,
+      "hits": 2,
+      "misses": 1,
+      "false_alarms": 0,
+      "correct_rejections": 3,
+      "hit_rate": 0.6667,
+      "false_alarm_rate": 0.0000,
+      "accuracy": 0.8333,
+      "precision": 1.0000,
+      "recall": 0.6667,
+      "f1": 0.8000,
+      "detection_interpretation": "Both high-confidence findings detect their positive segments; the moderate-confidence substitution-related finding is excluded, producing one miss and no false alarms."
+    },
+    "high_and_moderate": {
+      "positive_segments": 3,
+      "negative_segments": 3,
+      "hits": 3,
+      "misses": 0,
+      "false_alarms": 0,
+      "correct_rejections": 3,
+      "hit_rate": 1.0000,
+      "false_alarm_rate": 0.0000,
+      "accuracy": 1.0000,
+      "precision": 1.0000,
+      "recall": 1.0000,
+      "f1": 1.0000,
+      "detection_interpretation": "All three positive reasoning segments are detected with no segment-level false alarms."
+    },
+    "all_identified_confidence_levels": {
+      "positive_segments": 3,
+      "negative_segments": 3,
+      "hits": 3,
+      "misses": 0,
+      "false_alarms": 0,
+      "correct_rejections": 3,
+      "hit_rate": 1.0000,
+      "false_alarm_rate": 0.0000,
+      "accuracy": 1.0000,
+      "precision": 1.0000,
+      "recall": 1.0000,
+      "f1": 1.0000,
+      "detection_interpretation": "All three positive reasoning segments are detected with no segment-level false alarms."
+    },
+    "all_confidence_and_candidates": {
+      "positive_segments": 3,
+      "negative_segments": 3,
+      "hits": 3,
+      "misses": 0,
+      "false_alarms": 1,
+      "correct_rejections": 2,
+      "hit_rate": 1.0000,
+      "false_alarm_rate": 0.3333,
+      "accuracy": 0.8333,
+      "precision": 0.7500,
+      "recall": 1.0000,
+      "f1": 0.8571,
+      "detection_interpretation": "The candidate on the neutral final-sign-off segment adds one false alarm while leaving all positive-segment hits intact."
+    }
+  },
+  "strict_instance_level_metrics": {
+    "high_only": {
+      "true_positives": 2,
+      "false_negatives": 1,
+      "false_positives": 0,
+      "precision": 1.0000,
+      "recall": 0.6667,
+      "f1": 0.8000,
+      "exact_occurrence_match_rate": 0.6667,
+      "occurrence_count_match_rate": 0.6667
+    },
+    "high_and_moderate": {
+      "true_positives": 2,
+      "false_negatives": 1,
+      "false_positives": 1,
+      "precision": 0.6667,
+      "recall": 0.6667,
+      "f1": 0.6667,
+      "exact_occurrence_match_rate": 0.6667,
+      "occurrence_count_match_rate": 0.6667
+    },
+    "all_identified_confidence_levels": {
+      "true_positives": 2,
+      "false_negatives": 1,
+      "false_positives": 1,
+      "precision": 0.6667,
+      "recall": 0.6667,
+      "f1": 0.6667,
+      "exact_occurrence_match_rate": 0.6667,
+      "occurrence_count_match_rate": 0.6667
+    },
+    "all_confidence_and_candidates": {
+      "true_positives": 2,
+      "false_negatives": 1,
+      "false_positives": 2,
+      "precision": 0.5000,
+      "recall": 0.6667,
+      "f1": 0.5714,
+      "exact_occurrence_match_rate": 0.6667,
+      "occurrence_count_match_rate": 0.6667
+    }
+  },
+  "mechanism_first_instance_level_metrics": {
+    "high_only": {
+      "true_positives": 2,
+      "false_negatives": 1,
+      "false_positives": 0,
+      "precision": 1.0000,
+      "recall": 0.6667,
+      "f1": 0.8000,
+      "exact_occurrence_match_rate": 0.6667,
+      "occurrence_count_match_rate": 0.6667
+    },
+    "high_and_moderate": {
+      "true_positives": 3,
+      "false_negatives": 0,
+      "false_positives": 0,
+      "precision": 1.0000,
+      "recall": 1.0000,
+      "f1": 1.0000,
+      "exact_occurrence_match_rate": 1.0000,
+      "occurrence_count_match_rate": 1.0000
+    },
+    "all_identified_confidence_levels": {
+      "true_positives": 3,
+      "false_negatives": 0,
+      "false_positives": 0,
+      "precision": 1.0000,
+      "recall": 1.0000,
+      "f1": 1.0000,
+      "exact_occurrence_match_rate": 1.0000,
+      "occurrence_count_match_rate": 1.0000
+    },
+    "all_confidence_and_candidates": {
+      "true_positives": 3,
+      "false_negatives": 0,
+      "false_positives": 1,
+      "precision": 0.7500,
+      "recall": 1.0000,
+      "f1": 0.8571,
+      "exact_occurrence_match_rate": 1.0000,
+      "occurrence_count_match_rate": 1.0000
+    }
+  },
+  "target_bias_performance": [
+    {
+      "hidden_target_bias_label": "Automaticity or Automation Bias",
+      "hidden_requested_occurrences": 1,
+      "strict_true_positives_by_threshold": {
+        "high_only": 1,
+        "high_and_moderate": 1,
+        "all_identified_confidence_levels": 1,
+        "all_confidence_and_candidates": 1
+      },
+      "mechanism_first_true_positives_by_threshold": {
+        "high_only": 1,
+        "high_and_moderate": 1,
+        "all_identified_confidence_levels": 1,
+        "all_confidence_and_candidates": 1
+      },
+      "count_match_status_at_all_confidence_and_candidates": "exact_match"
+    },
+    {
+      "hidden_target_bias_label": "Substitution bias",
+      "hidden_requested_occurrences": 1,
+      "strict_true_positives_by_threshold": {
+        "high_only": 0,
+        "high_and_moderate": 0,
+        "all_identified_confidence_levels": 0,
+        "all_confidence_and_candidates": 0
+      },
+      "mechanism_first_true_positives_by_threshold": {
+        "high_only": 0,
+        "high_and_moderate": 1,
+        "all_identified_confidence_levels": 1,
+        "all_confidence_and_candidates": 1
+      },
+      "count_match_status_at_all_confidence_and_candidates": "underdetected"
+    },
+    {
+      "hidden_target_bias_label": "Apophenia or Correlation Bias",
+      "hidden_requested_occurrences": 1,
+      "strict_true_positives_by_threshold": {
+        "high_only": 1,
+        "high_and_moderate": 1,
+        "all_identified_confidence_levels": 1,
+        "all_confidence_and_candidates": 1
+      },
+      "mechanism_first_true_positives_by_threshold": {
+        "high_only": 1,
+        "high_and_moderate": 1,
+        "all_identified_confidence_levels": 1,
+        "all_confidence_and_candidates": 1
+      },
+      "count_match_status_at_all_confidence_and_candidates": "exact_match"
+    }
+  ],
+  "rag_label_false_positive_inventory": [
+    {
+      "rag_predicted_bias_label": "availability heuristic",
+      "finding_type": "identified",
+      "alternative_labels": [
+        "availability bias"
+      ],
+      "occurrence_count": 1,
+      "best_related_hidden_target_bias_label": "Substitution bias",
+      "label_relation": "near_neighbor",
+      "mechanism_overlap_summary": "The label is distinct, but the stated mechanism fully captures use of aggregate weight similarity as a proxy for the harder placement-specific index calculation.",
+      "primary_error_types": [
+        "correct_location_wrong_bias_label"
+      ]
+    },
+    {
+      "rag_predicted_bias_label": "normalization of deviance",
+      "finding_type": "candidate",
+      "alternative_labels": [
+        "optimism bias"
+      ],
+      "occurrence_count": 1,
+      "best_related_hidden_target_bias_label": null,
+      "label_relation": "no_related_target",
+      "mechanism_overlap_summary": "The candidate proposes a possible normalization mechanism for a neutral, explicitly ambiguous sign-off decision; it does not overlap a hidden instance.",
+      "primary_error_types": [
+        "unsupported_prediction",
+        "candidate_speculation_on_negative_segment"
+      ]
+    }
+  ],
+  "diagnostic_error_summary": {
+    "correct_location_wrong_bias_label_count": 1,
+    "correct_label_wrong_location_count": 0,
+    "correct_label_location_wrong_mechanism_count": 0,
+    "mechanism_detected_label_unresolved_count": 0,
+    "partial_mechanism_match_count": 0,
+    "duplicate_prediction_count": 0,
+    "unsupported_prediction_count": 1,
+    "fabricated_or_invalid_quote_count": 1,
+    "approved_alias_or_equivalence_count": 2,
+    "near_neighbor_label_count": 1,
+    "different_construct_label_count": 0,
+    "candidate_count": 1,
+    "candidate_useful_abstention_count": 1,
+    "candidate_near_miss_count": 0,
+    "candidates_promoted_to_true_positive_at_fourth_threshold_count": 0
+  },
+  "corpus_support_audit": {
+    "primary_corpus_fidelity_score_available": false,
+    "rag_occurrences_claiming_retrieved_support": 0,
+    "rag_occurrences_with_no_claimed_retrieved_support": 3,
+    "rag_occurrences_with_unverifiable_or_internally_inconsistent_citation_metadata": 0,
+    "assessment_note": "The RAG output explicitly states that no retrieved corpus support was used and provides no corpus citations. This is internally consistent; retrieval fidelity is not scored."
+  },
+  "comparison_ready_summary": {
+    "primary_recommended_comparison_threshold": "high_and_moderate",
+    "segment_detection": {
+      "high_only": {
+        "hits": 2,
+        "misses": 1,
+        "false_alarms": 0,
+        "correct_rejections": 3,
+        "hit_rate": 0.6667,
+        "false_alarm_rate": 0.0000,
+        "f1": 0.8000
+      },
+      "high_and_moderate": {
+        "hits": 3,
+        "misses": 0,
+        "false_alarms": 0,
+        "correct_rejections": 3,
+        "hit_rate": 1.0000,
+        "false_alarm_rate": 0.0000,
+        "f1": 1.0000
+      },
+      "all_identified_confidence_levels": {
+        "hits": 3,
+        "misses": 0,
+        "false_alarms": 0,
+        "correct_rejections": 3,
+        "hit_rate": 1.0000,
+        "false_alarm_rate": 0.0000,
+        "f1": 1.0000
+      },
+      "all_confidence_and_candidates": {
+        "hits": 3,
+        "misses": 0,
+        "false_alarms": 1,
+        "correct_rejections": 2,
+        "hit_rate": 1.0000,
+        "false_alarm_rate": 0.3333,
+        "f1": 0.8571
+      }
+    },
+    "strict_instance_identification": {
+      "high_only": {
+        "true_positives": 2,
+        "false_negatives": 1,
+        "false_positives": 0,
+        "precision": 1.0000,
+        "recall": 0.6667,
+        "f1": 0.8000
+      },
+      "high_and_moderate": {
+        "true_positives": 2,
+        "false_negatives": 1,
+        "false_positives": 1,
+        "precision": 0.6667,
+        "recall": 0.6667,
+        "f1": 0.6667
+      },
+      "all_identified_confidence_levels": {
+        "true_positives": 2,
+        "false_negatives": 1,
+        "false_positives": 1,
+        "precision": 0.6667,
+        "recall": 0.6667,
+        "f1": 0.6667
+      },
+      "all_confidence_and_candidates": {
+        "true_positives": 2,
+        "false_negatives": 1,
+        "false_positives": 2,
+        "precision": 0.5000,
+        "recall": 0.6667,
+        "f1": 0.5714
+      }
+    },
+    "mechanism_first_identification": {
+      "high_only": {
+        "true_positives": 2,
+        "false_negatives": 1,
+        "false_positives": 0,
+        "precision": 1.0000,
+        "recall": 0.6667,
+        "f1": 0.8000
+      },
+      "high_and_moderate": {
+        "true_positives": 3,
+        "false_negatives": 0,
+        "false_positives": 0,
+        "precision": 1.0000,
+        "recall": 1.0000,
+        "f1": 1.0000
+      },
+      "all_identified_confidence_levels": {
+        "true_positives": 3,
+        "false_negatives": 0,
+        "false_positives": 0,
+        "precision": 1.0000,
+        "recall": 1.0000,
+        "f1": 1.0000
+      },
+      "all_confidence_and_candidates": {
+        "true_positives": 3,
+        "false_negatives": 0,
+        "false_positives": 1,
+        "precision": 0.7500,
+        "recall": 1.0000,
+        "f1": 0.8571
+      }
+    },
+    "taxonomy_gap": {
+      "high_only": {
+        "mechanism_first_f1_minus_strict_f1": 0.0000
+      },
+      "high_and_moderate": {
+        "mechanism_first_f1_minus_strict_f1": 0.3333
+      },
+      "all_identified_confidence_levels": {
+        "mechanism_first_f1_minus_strict_f1": 0.3333
+      },
+      "all_confidence_and_candidates": {
+        "mechanism_first_f1_minus_strict_f1": 0.2857
+      }
+    },
+    "confidence_tradeoff": {
+      "increment_from_high_to_high_and_moderate": "Adding the moderate-confidence occurrence changes segment detection from 2/3 hits to 3/3 and changes mechanism-first instance F1 from 0.8000 to 1.0000, but strict instance F1 becomes 0.6667 because the added finding has the wrong label.",
+      "increment_from_high_and_moderate_to_all_confidence": "No change; there are no low-confidence identified findings.",
+      "increment_from_all_confidence_to_all_confidence_and_candidates": "Adding the candidate preserves all positive hits but adds one segment-level and mechanism-first instance-level false positive."
+    }
+  },
+  "overall_evaluation_summary": {
+    "hidden_total_planned_occurrences": 3,
+    "rag_total_identified_occurrences": 3,
+    "rag_total_candidate_biases": 1,
+    "segment_level_primary_result": "At the recommended high_and_moderate threshold, all three positive segments are detected with no false alarms.",
+    "strict_label_plus_mechanism_result": "Two of three hidden instances receive strict true positives. The substitution mechanism is correctly localized and fully described but assigned the near-neighbor label availability heuristic, producing one strict false positive and one false negative.",
+    "mechanism_first_result": "All three hidden mechanisms receive mechanism-first true positives at high_and_moderate, with no false positives.",
+    "candidate_tier_value_assessment": "The candidate is a useful abstention from identified status, but it still counts as a fourth-threshold false alarm because it localizes to the eligible neutral sign-off segment.",
+    "main_failure_modes": [
+      "Near-neighbor mislabeling of substitution bias as availability heuristic",
+      "One invalid or misattributed evidence quotation in obs_003",
+      "Candidate-level speculation on the neutral final-sign-off episode"
+    ],
+    "main_strengths": [
+      "Correct localization of all three hidden bias mechanisms",
+      "Correct automation-bias and illusory-correlation detections using approved equivalent labels",
+      "Strong mechanism descriptions and valid supporting evidence for the substantive occurrences",
+      "Appropriate refusal to identify the ambiguous final sign-off as a definite bias"
+    ],
+    "benchmark_interpretation": "This run has perfect segment detection at the recommended threshold and perfect mechanism-first instance identification, while strict label scoring exposes one taxonomy error. Candidate inclusion adds a false alarm without improving hidden-instance recall."
+  }
+}

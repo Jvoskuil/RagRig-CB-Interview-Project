@@ -1,0 +1,67 @@
+# Ranker comparison: the default hybrid RRF ranker vs. pure cosine ranking
+# (WeightedFusionRanker alpha = 1.0), on the ragrig default chat backend
+# (Ollama, qwen3.5:9b), varying the context budget (4096 and 8192 tokens).
+# Corpus = the embedded HTML fixture book, default pipeline (full parser
+# registry + MarkdownChunker).
+
+corpus_dirs = ["papers=/mnt/c/Users/Joost/Documents/papers"]
+
+queries = [
+    "Interviewer: Thanks for making time for this. As a reminder, this session is for the after-action cognitive review, not for attribution of blame—I just want to understand how decisions actually got made. That okay with you? Participant: Yeah, that's fine. I've done these before. Interviewer: Good. Can you start by giving me your role and what the mission was? Participant: I'm the battalion S3 for the task force. Our mission was to secure and hold the Route BLUE crossing so brigade could push their main effort across within a 48-hour window. We had one Mobile Gap-Crossing Bridge, limited float capacity, and weather was closing in on our aerial ISR window. It mattered because if we didn't hold that crossing on schedule, brigade's whole synchronization plan slid. Interviewer: Walk me through how the incident actually unfolded, start to finish. Participant: Sure. About 48 hours out, S2 flagged enemy scout vehicles in a spot that didn't quite match what we'd been seeing—three months of pattern-of-life had them screening consistently off ridge NAI 12, and this sighting was lower, closer to the river. The vehicle types and rough timing matched what we'd tracked before, so it read to me like the same defensive template, and I didn't put much weight on the location itself. S2 actually noted that the river-side position wasn't really consistent with how that unit normally screened, but I still treated it as a variant of the pattern we knew rather than something that needed a second look. So we didn't request additional ISR retasking, we just kept the reconnaissance-in-force plan as built. About six hours after that, brigade S3 called and directed us to continue on Axis BLUE per the original order, citing the synchronization requirement. At that point our engineer had already flagged a preliminary concern about the bridge's load capacity, but it wasn't a hard number yet—no full classification. I mentioned it to brigade informally but didn't push hard. If I'm honest, I thought the concern was enough to justify at least asking for a short pause to get the classification confirmed, but once brigade framed continuation as a synchronization requirement, raising that again felt like second-guessing a decision that had already been made. Then closer to execution, the engineer came back with an actual classification report suggesting overweight risk for our heaviest vehicles. We had a planning session that same day. The plan was already rehearsed, already briefed up to brigade. The report got raised, a couple people nodded at it, but the discussion moved straight to what the plan already had going for it rather than to whether the risk itself changed anything, and nobody proposed rerouting. The session wrapped with everyone agreeing to keep the existing crossing plan. Execution day, we had a partial bridge failure under one of the heavier platforms, and almost simultaneously took contact from dismounts near the crossing site. We ran the branch plan, secured the site, and finished the crossing over the alternate ford instead. Interviewer: Let's slow down and rebuild that timeline with the information you had at each point, not what you know now. Participant: Fair. At H-48, all I had was the scout sighting and the historical pattern. No confirmation either way on intent. At H-30 or so, I had brigade's directive plus an informal, unconfirmed engineer concern. At H-24, I had a real classification number and a rehearsed plan already in brigade's hands. At H-hour, I had the failure and the contact simultaneously. Interviewer: Take me back to that first sighting. What made you read it as consistent with the known template rather than as something new? Participant: The vehicle types matched, the timing matched roughly what we'd seen before, and three months of consistent behavior is a strong baseline. Even with S2 pointing out the location was a little off for that unit's normal screening, it still looked and moved like the same picture we'd been tracking, so I didn't treat the position as something that changed the category. If I chased every deviation with an ISR request, given how constrained our collection was, we'd never finalize anything. Interviewer: Did you consider requesting retasking anyway, just to confirm? Participant: S2 raised it as an option. I didn't prioritize it because the weather window for aerial support was closing and I didn't think the deviation was significant enough to justify pulling that asset off other priorities. Interviewer: When the ground patrol later reported dismounts moving toward the crossing itself rather than the ridge, how did that land? Participant: That's when S2 flagged it as worth another look. But we were already committed to the recon plan by then, so it didn't change what we'd built. Interviewer: Move to brigade's call directing continuation on Axis BLUE. What alternatives did you weigh? Participant: I could have pushed back and asked for a short delay to firm up the bridge picture or scout the alternate ford. Or I could comply and keep the timeline. I went with compliance. Interviewer: What drove that choice specifically? Participant: Brigade had already made the call, and it came with the synchronization argument attached. Honestly, the informal concern was probably enough on its own to justify asking for a short hold pending classification, but by the time brigade framed it as a fixed requirement, pushing that same point again felt like challenging a decision that was already settled above me. It felt like brigade owned that risk calculus at that point more than I did. Interviewer: Did you get any pushback or written response from brigade on the bridge issue? Participant: No, not before we committed. Interviewer: Let's go to the planning session where the classification report came in. How did that discussion actually go? Participant: It was quick. The engineer laid out the overweight risk, a couple of people acknowledged it, and then the conversation moved on to why the current plan was already solid rather than to what the new number actually meant for it. Nobody put a reroute on the table. We closed with agreement to keep the plan. Interviewer: What was the reasoning for keeping the plan rather than shifting to the alternate ford? Participant: Once the classification came in, the room still leaned on the fact that the plan was rehearsed and already briefed to brigade more than it leaned on the number itself. Rerouting would have meant reconning an unfamiliar ford in current water conditions, in daylight, with no rehearsal, and we didn't really stop to weigh a partial fix, like resequencing the heavier vehicles, against just keeping what we had. Interviewer: Did anyone in the room actually voice disagreement with keeping the plan? Participant: Not in the room, no. I found out afterward that one of the company commanders had reservations about the bridge but didn't say anything during the session. Interviewer: Did he ever say why he stayed quiet? Participant: He told me later that by the time the report came up, the room had already settled on keeping the plan, and he didn't want to be the one to reopen something that had already gone up to brigade. Interviewer: Now the crossing itself. What would have changed your decision to keep the original plan, looking back at what you knew before execution? Participant: A hard confirmed number earlier, or if someone had actually put the alternate ford proposal on the table instead of just the report sitting there. If we'd had even a day more, I think we'd have reconned the ford as a real branch option instead of a theoretical one. Interviewer: How do you assess the scout sighting now, knowing what happened at the crossing? Participant: Looking back, I think we should have caught more from that first report than we did. The river-side location was there in the original reporting, and given how it lines up with the patrol and the contact, we probably should have recognized the implication right then instead of waiting for later confirmation. Interviewer: Last one—if the alternate ford had been reconned earlier, do you think the planning session goes differently? Participant: Probably. If it had been a real, validated option sitting next to the bridge option, I think the report would have gotten more than a nod. As it stood, it was theoretical, so keeping the rehearsed plan felt like the lower-risk path in the room that day."
+]
+
+[[agents]]
+label = "Gemini Prompt 8192"
+[agents.chat]
+provider = "deepseek"            # "ollama" | "deepseek"
+#model = "qwen2.5:1.5b"         # ignored for deepseek
+context_tokens = 8192          # context budget for retrieved chunks
+deepseek_model = "deepseek-v4-pro"   # deepseek only
+# deepseek_api_key = DEEPSEEK_API_KEY # deepseek only (or DEEPSEEK_API_KEY env)
+# context_size_mode = "Auto"          # "Auto" | "Forced"
+system_prompt_path = "prompt_gemini.md"    # custom system prompt ({context} placeholder)
+# request_timeout_secs = 300          # per-request timeout, None = no timeout
+[agents.chat.params]                # generation overrides (all optional)
+# temperature = 0.7
+# top_p = 0.9
+# max_tokens = 1024
+seed = 42
+
+[[agents]]
+label = "Sonar Prompt 8192"
+[agents.chat]
+provider = "deepseek"            # "ollama" | "deepseek"
+#model = "qwen2.5:1.5b"         # ignored for deepseek
+context_tokens = 8192          # context budget for retrieved chunks
+deepseek_model = "deepseek-v4-pro"   # deepseek only
+# deepseek_api_key = DEEPSEEK_API_KEY # deepseek only (or DEEPSEEK_API_KEY env)
+# context_size_mode = "Auto"          # "Auto" | "Forced"
+system_prompt_path = "prompt_sonar.md"    # custom system prompt ({context} placeholder)
+# request_timeout_secs = 300          # per-request timeout, None = no timeout
+[agents.chat.params]                # generation overrides (all optional)
+# temperature = 0.7
+# top_p = 0.9
+# max_tokens = 1024
+seed = 42
+
+[[agents]]
+label = "Sonnet Prompt 8192"
+[agents.chat]
+provider = "deepseek"            # "ollama" | "deepseek"
+#model = "qwen2.5:1.5b"         # ignored for deepseek
+context_tokens = 8192          # context budget for retrieved chunks
+deepseek_model = "deepseek-v4-pro"   # deepseek only
+# deepseek_api_key = DEEPSEEK_API_KEY # deepseek only (or DEEPSEEK_API_KEY env)
+# context_size_mode = "Auto"          # "Auto" | "Forced"
+system_prompt_path = "prompt_sonnet.md"    # custom system prompt ({context} placeholder)
+# request_timeout_secs = 300          # per-request timeout, None = no timeout
+[agents.chat.params]                # generation overrides (all optional)
+# temperature = 0.7
+# top_p = 0.9
+# max_tokens = 1024
+seed = 42
+
+# ---Embed testing ---
+[embed]
+#top_k = 0
+top_k = 50

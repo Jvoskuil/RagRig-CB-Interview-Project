@@ -1,0 +1,68 @@
+# Ranker comparison: the default hybrid RRF ranker vs. pure cosine ranking
+# (WeightedFusionRanker alpha = 1.0), on the ragrig default chat backend
+# (Ollama, qwen3.5:9b), varying the context budget (4096 and 8192 tokens).
+# Corpus = the embedded HTML fixture book, default pipeline (full parser
+# registry + MarkdownChunker).
+
+corpus_dirs = ["papers=/mnt/c/Users/Joost/Documents/papers"]
+
+queries = [
+    "Interviewer: Thanks for making time. Before we start, I want to confirm you're okay with me recording this for internal process-improvement purposes, and that we can talk candidly about a project that didn't go entirely to plan. Participant: Sure, that's fine. This one's still fresh for me anyway. Interviewer: Can you describe your role and what the project was meant to accomplish? Participant: I'm the capital projects manager for a corridor interlocking replacement — we were swapping out an aging interlocking and signal system on one of our busiest commuter segments, integrating it with our PTC interface. Federal grant money covered a good chunk of it, which meant a fixed obligation deadline. Miss it, and we risk losing part of the funding. Interviewer: What made this project different from others you'd run? Participant: The combination, really. Live revenue service running through the work zone, so we only had certain possession windows at night and weekends. A fixed-price design-build contract, so change orders were painful. And a hard federal clock ticking the whole time. Interviewer: Walk me through what happened, start to finish. Participant: We kicked off with a baseline schedule and budget. Then during early design we hit a scope question around underground utilities — old conduit, some of it undocumented. We made a call there and moved forward. Mid-construction, that came back to bite us: crews hit an unmapped high-voltage duct and we had a safety stand-down for a couple weeks. Contractor followed that up with a big risk report on cost and schedule impact. Then near the end, we had to decide how to handle systems integration testing with the deadline bearing down on us. We got through commissioning, the system passed, and we hit the funding deadline. But it was tighter than I'd like. Interviewer: Let's go back to that baseline. What information did you have when you set the schedule? Participant: The contractor's proposal assumed pretty efficient crew productivity — their best-case numbers. We also had data from a couple of peer agencies that had done similar interlocking swaps, and those ran 28 to 34 months typically. Leadership wanted to show the board real progress against the grant, so there was pressure to commit to something aggressive. Interviewer: How did you weigh the contractor's numbers against those peer projects? Participant: Honestly, I leaned on the contractor's proposal more. The peer projects weren't identical setups — different signal vendors, different corridor configurations — so I didn't think the comparison held up perfectly. We went with 24 months. I figured our team was sharper on execution than what those other durations reflected. Interviewer: Did you revisit that historical range later, once things started slipping? Participant: Yeah, once productivity started trailing plan, it looked a lot more like those other projects than I'd assumed going in. Interviewer: Let's move to the utility question. What were you facing there, and what were your options? Participant: Our utility maps for that stretch were over five years old, and the contractor flagged a few spots near the bore path where they weren't confident what was actually in the ground. We could pay for an updated survey — about $150,000 and three extra weeks — or proceed on the existing maps and manage anything that came up through our normal process. Interviewer: What tipped it toward proceeding without the survey? Participant: We have a solid weekly risk-review cadence, and a change-order tracking process that's pretty tight. I felt like if something came up, we'd catch it fast and deal with it through that mechanism rather than paying upfront to eliminate the uncertainty. It felt like an acceptable trade — spend the time and money there, or trust the oversight we already had running. Interviewer: And what happened after that decision? Participant: A few months into construction, crews struck a high-voltage duct that wasn't on any of our maps. Full stop on that segment for safety, about two weeks lost, plus the cost of the incident response and re-sequencing. Interviewer: Looking back at that now, how foreseeable does it feel? Participant: Honestly? In hindsight it feels almost obvious — that corridor's old, the utility ownership records were a mess, of course something was going to be down there that we didn't know about. It's the kind of thing you look at now and think, how did we not expect that. Interviewer: At the time, though, how was that risk actually rated? Participant: Our risk register had it logged as low likelihood. The team didn't flag it as a top concern going in. Interviewer: Let's talk about the risk report the contractor sent after the strike. What did that process look like? Participant: It was a substantial document — forty pages, laying out a projected 12 percent cost overrun and about ten weeks of schedule impact. Those numbers were bad enough that I didn't really want to carry them over to the grant side until the next monitoring cycle gave us something a little less ugly to bring forward. I had five business days to sign off. Problem was, that same week I was buried in quarterly board prep. Interviewer: How did you handle the review given that? Participant: I read the executive summary, delegated the detailed analysis to one of my leads, and told the team to keep monitoring things as they came in. I didn't ask my lead for a readout on what the detailed numbers actually showed, and I didn't loop in the grant administrator or escalate it up the chain at that point — I figured we'd get a clearer picture once the monitoring caught up. Interviewer: Did the risk picture change in the following weeks? Participant: It got worse before we brought it back into focus. We ended up escalating later and requesting a schedule accommodation from the grant side, which added its own headache. Interviewer: Let's go to the testing decision near the end. What was the situation? Participant: We had six weeks left before the grant obligation deadline. Standard systems integration testing protocol for this kind of interlocking work is eight weeks. Our signal engineering lead wanted the full eight weeks — no shortcuts. But the grants officer was clear that missing the milestone put around $4 million of funding at risk. Interviewer: What alternatives did you consider? Participant: We could ask the federal administrator for a formal extension and keep the full eight-week protocol, or compress testing to five weeks, trimming some of the redundant verification cycles, and hit the deadline as scheduled. Interviewer: How did you land on compressing it? Participant: We couldn't afford to lose that $4 million. That was really the driver. The engineering lead's case for the full protocol was sound, but against a funding number that size, protecting the grant took priority. Interviewer: If the funding situation had been reversed — say that $4 million wasn't already secured, but finishing on time would have earned you an extra $4 million instead — do you think you'd have made the same call? Participant: Probably not, honestly. If it were more like a bonus we might land versus something we already had in hand, I think we'd have leaned toward keeping the full eight weeks. Protecting money that was already ours felt different than chasing the same amount as upside. Interviewer: How did the testing decision play out? Participant: Testing finished in the compressed window, system passed, we hit the deadline and kept the funding. Whether those trimmed verification cycles matter down the road, I honestly don't know yet — too early to say. Interviewer: If you'd had unlimited time and budget for that survey, would the utility decision have gone differently? Participant: Probably, yeah — I'd have just paid for it and taken the three weeks. It wasn't that much money relative to the project. Interviewer: If the grant deadline had had more flexibility, would the testing call have changed? Participant: Almost certainly. Without that clock, I think we default straight to the full eight weeks, no debate. Interviewer: What would you tell a peer walking into a similar fixed-price, fixed-deadline project? Participant: Get your ground-truth data early, before you're locked into a schedule you can't easily unwind. And build in a real buffer against the funding clock so you're not making testing-scope decisions under that kind of pressure at the very end."
+]
+
+[[agents]]
+label = "Gemini Prompt 8192"
+[agents.chat]
+provider = "deepseek"            # "ollama" | "deepseek"
+#model = "qwen2.5:1.5b"         # ignored for deepseek
+context_tokens = 8192          # context budget for retrieved chunks
+deepseek_model = "deepseek-v4-pro"   # deepseek only
+#deepseek_api_key = DEEPSEEK_API_KEY # deepseek only (or DEEPSEEK_API_KEY env)
+# context_size_mode = "Auto"          # "Auto" | "Forced"
+system_prompt_path = "prompt_gemini.md"    # custom system prompt ({context} placeholder)
+# request_timeout_secs = 300          # per-request timeout, None = no timeout
+[agents.chat.params]                # generation overrides (all optional)
+# temperature = 0.7
+# top_p = 0.9
+# max_tokens = 1024
+seed = 42
+
+[[agents]]
+label = "Sonar Prompt 8192"
+[agents.chat]
+provider = "deepseek"            # "ollama" | "deepseek"
+#model = "qwen2.5:1.5b"         # ignored for deepseek
+context_tokens = 8192          # context budget for retrieved chunks
+deepseek_model = "deepseek-v4-pro"   # deepseek only
+#deepseek_api_key = DEEPSEEK_API_KEY # deepseek only (or DEEPSEEK_API_KEY env)
+# context_size_mode = "Auto"          # "Auto" | "Forced"
+system_prompt_path = "prompt_sonar.md"    # custom system prompt ({context} placeholder)
+# request_timeout_secs = 300          # per-request timeout, None = no timeout
+ [agents.chat.params]                # generation overrides (all optional)
+# temperature = 0.7
+# top_p = 0.9
+# max_tokens = 1024
+ seed = 42
+
+[[agents]]
+label = "Sonnet Prompt 8192"
+[agents.chat]
+provider = "deepseek"            # "ollama" | "deepseek"
+#model = "qwen2.5:1.5b"         # ignored for deepseek
+context_tokens = 8192          # context budget for retrieved chunks
+deepseek_model = "deepseek-v4-pro"   # deepseek only
+#deepseek_api_key = DEEPSEEK_API_KEY # deepseek only (or DEEPSEEK_API_KEY env)
+# context_size_mode = "Auto"          # "Auto" | "Forced"
+system_prompt_path = "prompt_sonnet.md"    # custom system prompt ({context} placeholder)
+# request_timeout_secs = 300          # per-request timeout, None = no timeout
+[agents.chat.params]                # generation overrides (all optional)
+# temperature = 0.7
+# top_p = 0.9
+# max_tokens = 1024
+seed = 42
+
+
+# ---Embed testing ---
+[embed]
+#top_k = 0
+top_k = 50

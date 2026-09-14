@@ -1,0 +1,68 @@
+# Ranker comparison: the default hybrid RRF ranker vs. pure cosine ranking
+# (WeightedFusionRanker alpha = 1.0), on the ragrig default chat backend
+# (Ollama, qwen3.5:9b), varying the context budget (4096 and 8192 tokens).
+# Corpus = the embedded HTML fixture book, default pipeline (full parser
+# registry + MarkdownChunker).
+
+corpus_dirs = ["papers=/mnt/c/Users/Joost/Documents/papers"]
+
+queries = [
+    "Interviewer: Thanks for making time for this. Just to confirm, this is a cognitive task analysis session—I'll be asking about a specific incident you worked through, and I'd like your candid recollection of how you reasoned through it, not a polished after-the-fact summary. Everything stays anonymized. Is that okay with you? Participant: Yeah, that's fine. Happy to walk through it. Interviewer: Great. Can you start by telling me your role and what you were responsible for during this incident? Participant: I lead a five-person team on our internal analytics platform—basically the tooling our support organization uses to look up customer accounts, usage history, that kind of thing. I own delivery for that dashboard and I report into the VP of Engineering. During this period I was accountable for keeping the platform stable and also for a demo we had coming up for leadership. Interviewer: Can you walk me through what first alerted you to a problem? Participant: Load times on the dashboard started creeping up—support tickets came in complaining pages were taking six, seven seconds instead of two. Over about two weeks it basically tripled. We hadn't touched much in that subsystem recently except our caching layer, which we'd built in-house—we call it QuickCache—about eight months earlier. Interviewer: What did you do first? Participant: I had two real options—run broad instrumentation across the whole stack to be safe, or go straight at QuickCache since it was the most recent change and the timing lined up. We were also getting pressure from the support lead because tickets kept climbing, so I didn't want to spend a week doing exhaustive profiling everywhere. I told the team to profile QuickCache specifically first, since it was the most likely suspect given the timing, and if that came back clean we'd widen the net. Interviewer: What came out of that? Participant: Profiling confirmed QuickCache was adding real latency under high load—invalidation was firing more than it should, forcing extra database round-trips. It also surfaced a separate, unrelated issue: a missing index on one of the support tables. Neither of those was hugely surprising, but it did mean two independent things needed fixing, not one. Interviewer: How did the investigation affect team workload? Participant: Priya, who originally built QuickCache, took point on diagnosing the invalidation logic. Dev, one of our other senior engineers, has also worked deep in that code. Everyone else picked up the index fix and other tickets. That's roughly how the two weeks split. Interviewer: Let's step through it chronologically. After profiling confirmed the QuickCache issue, what was the next major decision? Participant: That's where it got harder. QuickCache had taken us about eight months to build and stabilize—three separate patch rounds just to get it production-ready in the first place. Priya was adamant we were close, that one more targeted patch to the invalidation logic would fix it. On the other hand, there's a mature Redis-backed option out there that could probably replace QuickCache in about a sprint, with a track record we could actually point to. Interviewer: What did you decide? Participant: I committed another sprint to patching QuickCache. We'd put so much into that system—Priya and Dev both have deep expertise in it, and honestly, leadership had held it up before as an example of us building smart in-house tooling instead of just buying everything. Ripping it out after all that felt like it would waste the specialized knowledge we'd built up. I figured one more focused patch, with the team that knows it best, would get us there. Interviewer: What information did you rely on most heavily for that call? Participant: Mostly Priya's read on how close the fix was, plus the fact that we'd already sunk so much engineering time into getting QuickCache stable. The profiling data actually suggested the invalidation architecture itself needed rethinking, not just a tweak, but I weighed the history we had with the system pretty heavily. Interviewer: What happened after that decision? Participant: The patch only bought us about fifteen percent improvement. Not enough to hit the demo deadline. And the extra sprint stretched the team thin on top of everything else going on. Interviewer: Third decision point—who owned the urgent fix at that stage? Participant: Right, so at this point we're down to days, not weeks. Dev has the deepest knowledge of QuickCache internals, but Dev had also been at the center of a production outage about three weeks earlier—a rushed deploy under pressure that caused a real incident, though the postmortem showed it was handled well and fixed fast. Marcus was the other option; he's been solid but has missed several deadlines over the past year, nothing dramatic, just a slower, steadier pattern of slipping. Interviewer: What did you decide, and why? Participant: I pulled Dev off primary ownership and gave it to Marcus, with Dev supporting in a reduced capacity. The outage was still fresh, and putting Dev front and center on another high-stakes fix right after that felt like more risk than I wanted heading into a leadership demo. Marcus hadn't had an incident like that, so it felt like the safer bet. Interviewer: How did that play out? Participant: Handoff was messy—Dev had context Marcus didn't, so there was friction getting him up to speed, and the fix took longer than it would have with Dev leading it outright. Interviewer: Looking back, how did you weigh Dev's eighteen months of strong delivery against that one incident? Participant: I mean, I knew his track record was good overall. But that outage was the thing sitting right in front of me when I had to make the call. Marcus's slower pattern didn't have a moment like that attached to it, so it didn't feel as urgent, even though objectively his deadline record isn't great either. Interviewer: With three days left before the demo, what did you decide about reporting status? Participant: Latency was better but not fully resolved. I could've asked to push the demo, shipped quietly and hoped nobody noticed the remaining lag, or just told leadership straight where things stood. I went with transparency—laid out what was fixed, what wasn't, and proposed a follow-up sprint with monitoring in place. They accepted that. Interviewer: What was the reasoning behind choosing that option over delaying the demo? Participant: Delaying felt like it would cost more politically than it would gain technically—the partial fix was real progress, and monitoring would catch anything that slipped. Hiding it wasn't really on the table once I thought about it seriously. Interviewer: If you'd had the profiling data suggesting a structural rework earlier, would that have changed your patch-versus-switch decision? Participant: Possibly. If I'd seen it that clearly before committing the extra sprint, I might have pushed harder for the parallel evaluation option instead. Interviewer: If Dev's outage had happened a year earlier rather than three weeks before this decision, would you have assigned the fix differently? Participant: Probably, yeah. With more distance from it, I likely would have just given it to him outright given his familiarity with the system. Interviewer: Anything you'd tell a peer facing a similar in-house-build-versus-alternative call? Participant: Try to separate how much you've already put into something from what it's actually going to cost you going forward. Easier said than done when your team's pride and expertise are wrapped up in it."
+]
+
+[[agents]]
+label = "Gemini Prompt 8192"
+[agents.chat]
+provider = "deepseek"            # "ollama" | "deepseek"
+#model = "qwen2.5:1.5b"         # ignored for deepseek
+context_tokens = 8192          # context budget for retrieved chunks
+deepseek_model = "deepseek-v4-pro"   # deepseek only
+#deepseek_api_key = DEEPSEEK_API_KEY # deepseek only (or DEEPSEEK_API_KEY env)
+# context_size_mode = "Auto"          # "Auto" | "Forced"
+system_prompt_path = "prompt_gemini.md"    # custom system prompt ({context} placeholder)
+# request_timeout_secs = 300          # per-request timeout, None = no timeout
+[agents.chat.params]                # generation overrides (all optional)
+# temperature = 0.7
+# top_p = 0.9
+# max_tokens = 1024
+seed = 42
+
+[[agents]]
+label = "Sonar Prompt 8192"
+[agents.chat]
+provider = "deepseek"            # "ollama" | "deepseek"
+#model = "qwen2.5:1.5b"         # ignored for deepseek
+context_tokens = 8192          # context budget for retrieved chunks
+deepseek_model = "deepseek-v4-pro"   # deepseek only
+#deepseek_api_key = DEEPSEEK_API_KEY # deepseek only (or DEEPSEEK_API_KEY env)
+# context_size_mode = "Auto"          # "Auto" | "Forced"
+system_prompt_path = "prompt_sonar.md"    # custom system prompt ({context} placeholder)
+# request_timeout_secs = 300          # per-request timeout, None = no timeout
+ [agents.chat.params]                # generation overrides (all optional)
+# temperature = 0.7
+# top_p = 0.9
+# max_tokens = 1024
+ seed = 42
+
+[[agents]]
+label = "Sonnet Prompt 8192"
+[agents.chat]
+provider = "deepseek"            # "ollama" | "deepseek"
+#model = "qwen2.5:1.5b"         # ignored for deepseek
+context_tokens = 8192          # context budget for retrieved chunks
+deepseek_model = "deepseek-v4-pro"   # deepseek only
+#deepseek_api_key = DEEPSEEK_API_KEY # deepseek only (or DEEPSEEK_API_KEY env)
+# context_size_mode = "Auto"          # "Auto" | "Forced"
+system_prompt_path = "prompt_sonnet.md"    # custom system prompt ({context} placeholder)
+# request_timeout_secs = 300          # per-request timeout, None = no timeout
+[agents.chat.params]                # generation overrides (all optional)
+# temperature = 0.7
+# top_p = 0.9
+# max_tokens = 1024
+seed = 42
+
+
+# ---Embed testing ---
+[embed]
+#top_k = 0
+top_k = 50

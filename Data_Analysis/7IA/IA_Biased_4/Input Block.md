@@ -1,0 +1,663 @@
+<RAW_INTERVIEW>
+Interviewer: Thanks for making time for this. Just to confirm, this conversation is being recorded for internal case-review and training purposes only, and I'll be asking you to walk me through a specific case in detail. You're free to skip anything you're not comfortable discussing. Can you first tell me your role and how long you've been doing this kind of work?
+
+Participant: Sure. I'm a financial crime intelligence analyst on the FIU team, been here about six years, mostly focused on trade finance and sanctions-related typologies. Before that I did two years in transaction monitoring.
+
+Interviewer: Great, thanks. I want to focus on a specific case — the Meridian Trading matter. Can you walk me through how it first came to your attention and what you were trying to accomplish?
+
+Participant: Right, so this came in through an automated alert — three invoices from Meridian Trading LLC with quantity and value mismatches, which is a classic flag for trade-based money laundering. My objective was straightforward on paper: figure out whether this was probable sanctions evasion and, if so, get a defensible escalation to compliance and law enforcement before the filing window closed. We had ten business days from the alert.
+
+Interviewer: What did the alert batch actually contain?
+
+Participant: A cluster of counterparties. Meridian was the obvious one — the ultimate beneficial owner shared a registered agent with a company from a case I'd worked about eighteen months earlier, which had ended in a successful sanctions-evasion referral. There was also a separate counterparty in the same batch, a logistics firm, that didn't match anything I recognized. And it was a heavy week — alert volume across the team was well above average, so I needed to move efficiently.
+
+Interviewer: Let's reconstruct the sequence. What did you do right after opening the alert?
+
+Participant: I scoped the review. Given the registered-agent overlap with the prior case, I focused my initial workup on Meridian and its immediate corporate web — pulling registry filings, past KYC refresh notes, that kind of thing. The logistics counterparty I noted but set aside as lower priority since it didn't fit any typology I'd seen before.
+
+Interviewer: What specifically made you decide to scope it that way rather than, say, broadly across everyone in the batch?
+
+Participant: Honestly, the registered-agent match jumped out immediately. That pattern had been reliable before — same agent, similar shell structure, same region. With the volume we were under that week, I didn't feel I had the bandwidth to give equal weight to an entity that had no connection to anything I'd seen. I did glance at the logistics firm's file, but there was nothing that screamed "look here," so I moved on.
+
+Interviewer: Did you consider requesting broader automated screening before locking in that scope?
+
+Participant: I thought about it, but that would've added a day or two, and the Meridian angle felt like the more productive use of time.
+
+Interviewer: What happened with the logistics counterparty afterward?
+
+Participant: A few days later it showed an unusual same-day wire pattern — nothing I'd examined at that point. My team lead actually asked why it wasn't in my initial scoping note. I didn't have a great answer beyond "it didn't fit the pattern I was chasing."
+
+Interviewer: Let's move to the vendor report. Walk me through what happened when that arrived.
+
+Participant: About three days in, our OSINT vendor sent a report concluding Meridian was highly likely tied to the sanctioned end-user. Their argument traced a chain of corporate registry links. The bottom line matched exactly what I already suspected from the registered-agent overlap, so it felt like strong corroboration.
+
+Interviewer: Did anyone raise concerns about the report?
+
+Participant: One of our junior analysts flagged that a step in the vendor's chain — where they treated two similarly named entities as the same legal entity — hadn't been independently verified. I remember thinking that was a fair point to note, but it read to me as a technicality rather than something that undercut the conclusion, since the overall picture fit so well with what I was already building.
+
+Interviewer: What made you weight the report the way you did?
+
+Participant: The conclusion aligned with my working theory, and the vendor has a decent track record. I treated the alignment itself as a kind of confirmation. I didn't go back and independently re-verify that specific entity-matching step before folding the report into the case file.
+
+Interviewer: What did you later learn about that?
+
+Participant: A document pull afterward showed the two entities were actually legally distinct, different beneficial owners entirely. Compliance counsel asked directly what independent verification had been done on that claim, and I had to admit — not much, beyond the vendor's own chain.
+
+Interviewer: Let's talk about the correspondent bank. What was the situation there?
+
+Participant: We'd requested SWIFT records — MT202 and MT103 messages — to confirm the fund flow to the suspected end-user. That correspondent bank, in a secondary jurisdiction, is notoriously slow; historically those requests take twelve to fifteen business days. We were six days from the filing deadline with nothing back yet, no confirmation timeline in writing.
+
+Interviewer: What did you decide to do about the escalation while waiting?
+
+Participant: I held off drafting it. I figured the records would probably come through in time — I wanted the file to be complete with that corroborating piece rather than submit something with a gap in it.
+
+Interviewer: What gave you that expectation, given the track record you mentioned?
+
+Participant: Honestly, more that I wanted it to land that way. Nothing had actually changed with the correspondent bank's typical pace. On day six they came back and said it'd be another ten days.
+
+Interviewer: What happened to the case file at that point?
+
+Participant: My team lead pointed out there wasn't a contingency escalation path drafted, so we were now scrambling.
+
+Interviewer: Let's cover the last piece — the time estimate for remaining work.
+
+Participant: With reconciliation, narrative drafting, and compliance sign-off left, I estimated two business days. I walked through the sequence assuming everything went smoothly — no rework.
+
+Interviewer: How does that estimate compare to similar cases?
+
+Participant: Comparable cross-border verification cases have typically run five to seven days. I didn't really reference that when I made the call, and I still had two other active cases pulling at me.
+
+Interviewer: What happened once you started?
+
+Participant: Reconciliation turned up a discrepancy that needed a follow-up query — cost an extra day. Sign-off took longer too, over a routine question I hadn't anticipated.
+
+Interviewer: Looking back across all four points, what were you least certain about at the time?
+
+Participant: Probably the entity-matching step and whether the records would actually show up. Those felt like the shakiest parts, even while I was moving forward on them.
+
+Interviewer: A couple of hypotheticals. If the logistics counterparty had been flagged as high-risk from the start, how would your approach have changed?
+
+Participant: I'd have split my attention much earlier and probably caught the wire pattern days sooner.
+
+Interviewer: And if you'd known upfront the correspondent bank would take fifteen days?
+
+Participant: I would have drafted a conditional escalation immediately rather than waiting.
+
+Interviewer: Last one — if a colleague had reviewed your time estimate before you committed to it, what do you think they'd have flagged?
+
+Participant: The base rate, probably, and the fact that I was already stretched across two other cases. Fair critique.
+
+Interviewer: That's really helpful, thank you.
+</RAW_INTERVIEW>
+
+<COMPLETE_GENERATION_SPECIFICATION>
+{
+  "spec_version": "3.0",
+  "scenario_id": "IA_Biased_4",
+  "domain_id": "IA",
+  "domain": "Intelligence analysis and information-intensive analytic work",
+  "role": "Financial Crime/Threat Intelligence Analyst",
+  "condition": "biased",
+  "generation_specification": {
+    "scenario_title_internal": "The Meridian Trade Network: Suspected Sanctions Evasion via Layered Shell Invoicing",
+    "scenario_summary_internal": "A financial crime intelligence analyst at a mid-size bank's FIU receives an automated alert flagging a cluster of trade-finance transactions linked to a Central Asian trading company suspected of routing goods for a sanctioned end-user. The analyst must triage the alert, evaluate a corroborating tip from an external intelligence vendor, decide whether to wait for outstanding correspondent-bank records before escalating, and estimate how long full verification will take before a regulatory reporting deadline. The case echoes a prior, successfully prosecuted sanctions-evasion typology the analyst worked on eighteen months earlier, creating fertile ground for pattern-driven reasoning errors under time pressure.",
+    "occupational_realism": {
+      "objective": "Determine whether the Meridian trade-finance activity constitutes probable sanctions evasion and produce a timely, defensible intelligence escalation to compliance/law enforcement before the regulatory filing window closes.",
+      "setting": "Financial Intelligence Unit (FIU) of a mid-size international bank, hybrid remote/office work, coordinating with correspondent banks, an external OSINT vendor, and internal compliance counsel.",
+      "constraints": [
+        "10-business-day regulatory filing deadline from initial alert",
+        "Correspondent bank in a secondary jurisdiction is slow to respond to information requests",
+        "Analyst is simultaneously covering two other active cases",
+        "Escalating a false positive damages a profitable corporate relationship and analyst credibility",
+        "Underreporting risks regulatory penalty and reputational harm"
+      ],
+      "stakeholders": [
+        "Financial Crime/Threat Intelligence Analyst (interviewee)",
+        "FIU team lead",
+        "Compliance counsel",
+        "External OSINT/intelligence vendor",
+        "Correspondent bank compliance liaison",
+        "Relationship manager for the corporate client"
+      ],
+      "technical_terms_to_use": [
+        "trade-based money laundering (TBML)",
+        "correspondent banking",
+        "sanctions typology",
+        "beneficial ownership",
+        "SAR/STR filing",
+        "invoice mismatch",
+        "know-your-customer (KYC) refresh",
+        "escalation window"
+      ],
+      "technical_terms_to_avoid": [
+        "confirmation bias",
+        "wishful thinking",
+        "belief bias",
+        "selective attention",
+        "planning fallacy",
+        "cognitive bias",
+        "heuristic"
+      ]
+    },
+    "timeline": [
+      {
+        "phase": 1,
+        "decision_point": true,
+        "facts_available_before_decision": [
+          "Automated alert flags three invoices from Meridian Trading LLC with quantity/value mismatches",
+          "Meridian's ultimate beneficial owner shares a registered agent with a company from a 2024 sanctions-evasion case the analyst worked",
+          "A separate counterparty in the same batch operates in an unrelated logistics sector with no prior typology match",
+          "Alert volume this week is above average across the team"
+        ],
+        "new_information_after_decision": [
+          "The unrelated logistics counterparty later shows an unusual same-day wire pattern that goes unexamined",
+          "Team lead asks why the logistics counterparty wasn't included in the initial scoping note"
+        ],
+        "alternatives": [
+          "Scope the review narrowly around the shell-company/registered-agent pattern matching the prior case",
+          "Scope the review broadly across all flagged counterparties regardless of typology fit",
+          "Request additional automated screening before committing to a scope"
+        ],
+        "intended_action": "Analyst scopes the case narrowly around entities matching the prior sanctions-evasion typology and sets aside the unrelated logistics counterparty as low priority."
+      },
+      {
+        "phase": 2,
+        "decision_point": true,
+        "facts_available_before_decision": [
+          "External OSINT vendor sends a report arguing Meridian is 'highly likely' tied to the sanctioned end-user",
+          "The vendor's supporting argument relies on a chain of corporate registry links that has a logical gap: it assumes two similarly-named entities are identical without independent confirmation",
+          "The report's bottom-line conclusion matches the analyst's working theory from Phase 1",
+          "A junior analyst on the team flags that the entity-matching step in the vendor's argument is unverified"
+        ],
+        "new_information_after_decision": [
+          "A later document pull shows the two similarly-named entities are in fact legally distinct with different beneficial owners",
+          "Compliance counsel asks what independent verification was done on the vendor's entity-matching claim"
+        ],
+        "alternatives": [
+          "Accept the vendor's conclusion because it fits the suspected sanctions-evasion narrative and proceed",
+          "Independently verify the entity-matching step before weighting the report's conclusion",
+          "Request a second vendor opinion to cross-check the argument's validity"
+        ],
+        "intended_action": "Analyst accepts the vendor's conclusion as probative because it aligns with the working theory, without separately assessing whether the argument's internal logic (the entity-matching step) actually holds."
+      },
+      {
+        "phase": 3,
+        "decision_point": true,
+        "facts_available_before_decision": [
+          "Correspondent bank has not yet returned requested SWIFT MT202/MT103 records confirming fund flow to the suspected end-user",
+          "Prior similar requests to this correspondent bank have taken 12-15 business days on average",
+          "Filing deadline is 6 business days away",
+          "No written confirmation exists that the records will arrive in time"
+        ],
+        "new_information_after_decision": [
+          "On day 6, the correspondent bank confirms records will take another 10 business days",
+          "Team lead notes the case file was left without a contingency escalation path"
+        ],
+        "alternatives": [
+          "Proceed on the assumption the records will arrive before the deadline and delay drafting the escalation",
+          "Draft a conditional escalation now that does not depend on the pending records, with a plan to supplement if records arrive",
+          "Immediately request an extension from compliance given known correspondent-bank delays"
+        ],
+        "intended_action": "Analyst delays drafting the escalation, expecting the outstanding SWIFT records will arrive in time despite no confirmation and a track record of slower turnaround."
+      },
+      {
+        "phase": 4,
+        "decision_point": true,
+        "facts_available_before_decision": [
+          "Remaining verification tasks include: reconciling three invoice sets, drafting the narrative, and obtaining compliance sign-off",
+          "Historical average time for comparable cases with cross-border verification has been 5-7 business days",
+          "Analyst estimates the remaining work at 2 business days based on the best-case sequence with no rework",
+          "Two other active cases still require partial attention this week"
+        ],
+        "new_information_after_decision": [
+          "Invoice reconciliation surfaces a discrepancy requiring a follow-up query, consuming an extra day",
+          "Compliance sign-off takes longer than expected due to a routine but unanticipated question"
+        ],
+        "alternatives": [
+          "Plan the remaining timeline using the best-case, no-rework scenario",
+          "Plan the remaining timeline using historical base rates for comparable cases",
+          "Build in an explicit buffer for likely follow-up queries and competing case demands"
+        ],
+        "intended_action": "Analyst commits to a 2-day completion estimate based on the best-case task sequence, without adjusting for historical base rates or known competing demands."
+      }
+    ],
+    "probe_plan": {
+      "opening": [
+        "Can you walk me through how this case first came to your attention?",
+        "What was your overall objective once you saw the alert?"
+      ],
+      "timeline_reconstruction": [
+        "What happened right after you opened the alert?",
+        "Walk me through what you did once the OSINT vendor's report arrived.",
+        "What happened while you were waiting on the correspondent bank?",
+        "How did you plan out the remaining work before the deadline?"
+      ],
+      "decision_point_probes": [
+        "What specific cues made you decide to scope the case the way you did?",
+        "What sources of information did you weigh most heavily when reading the vendor's report, and why?",
+        "What told you the outstanding records would or wouldn't arrive in time?",
+        "How did you arrive at your time estimate for the remaining tasks?",
+        "What alternatives did you consider at each of those points, and why did you rule them out?",
+        "Looking back, what was your basis for that decision at the time?"
+      ],
+      "decision_basis": [
+        "What made you confident in that call at the time?",
+        "Did anything give you pause before you committed to that course of action?"
+      ],
+      "prior_experience": [
+        "Had you handled a similar case before? How did that shape your approach here?"
+      ],
+      "time_pressure": [
+        "How much did the deadline affect how you approached each step?"
+      ],
+      "uncertainty": [
+        "What were you least certain about at each of these points?"
+      ],
+      "closing_hypotheticals": [
+        "If the unrelated logistics counterparty had been flagged as high-risk from the start, how would your approach have changed?",
+        "If the vendor's report had reached the opposite conclusion, how would you have responded?",
+        "If you'd known upfront the correspondent bank would take 15 days, what would you have done differently?",
+        "If a colleague had reviewed your time estimate before you committed to it, what do you think they would have flagged?"
+      ]
+    },
+    "occurrence_embedding_plan_internal": [
+      {
+        "instance_id": "sab_01",
+        "bias": "Selective Attention Bias",
+        "decision_point": 1,
+        "mechanism": "Analyst allocates review attention to entities matching a familiar registered-agent pattern from a prior case, while the unrelated logistics counterparty in the same alert batch is deprioritized without any substantive risk assessment, purely because it does not match the salient prior pattern.",
+        "affected_reasoning_operation": "Evidence-selection / initial scoping of investigation",
+        "evidence_available_at_time": [
+          "Shared registered agent between Meridian and a prior sanctions-evasion case",
+          "Unrelated logistics counterparty present in the same alert batch with no typology link",
+          "Above-average alert volume creating pressure to triage quickly"
+        ],
+        "required_textual_manifestation": "Analyst explains narrowing the scope specifically because of the registered-agent match, and separately acknowledges the logistics counterparty was set aside without being evaluated on its own merits, only realizing its relevance after a later unusual wire pattern surfaces.",
+        "plausible_nonbias_interpretation": "Prioritizing entities with a known typology match under time pressure could be read as reasonable triage efficiency rather than a reasoning error.",
+        "strength": "subtle",
+        "do_not_make_explicit": ["selective attention", "bias", "tunnel vision"]
+      },
+      {
+        "instance_id": "bb_01",
+        "bias": "Belief bias",
+        "decision_point": 2,
+        "mechanism": "Analyst evaluates the OSINT vendor's argument as sound primarily because its conclusion matches the analyst's pre-existing suspicion about Meridian, without independently checking whether the argument's key premise (the entity-matching step) is actually valid, despite a colleague flagging the gap.",
+        "affected_reasoning_operation": "Argument evaluation / evidence weighting",
+        "evidence_available_at_time": [
+          "Vendor report conclusion aligning with analyst's working theory",
+          "An unverified logical step in the vendor's argument (assumed entity identity)",
+          "A junior colleague's explicit flag of the unverified step"
+        ],
+        "required_textual_manifestation": "Analyst describes accepting the report's conclusion as strong evidence because it 'made sense' given what was already suspected, while treating the colleague's concern about the unverified entity-matching step as a minor procedural note rather than a reason to re-examine the argument's validity.",
+        "plausible_nonbias_interpretation": "Trusting a vendor report that aligns with independently formed suspicion could be framed as reasonable convergent-evidence reasoning rather than a validity error.",
+        "strength": "moderate",
+        "do_not_make_explicit": ["belief bias", "logical validity", "cognitive bias"]
+      },
+      {
+        "instance_id": "wt_01",
+        "bias": "Wishful Thinking",
+        "decision_point": 3,
+        "mechanism": "Analyst delays drafting the escalation and continues to expect the outstanding correspondent-bank records will arrive before the deadline, despite having no confirmation of this and possessing historical data showing this correspondent typically takes longer than the time remaining.",
+        "affected_reasoning_operation": "Prediction / risk forecasting under uncertainty",
+        "evidence_available_at_time": [
+          "No written confirmation that records will arrive within the remaining window",
+          "Historical average turnaround from this correspondent bank exceeding the time remaining",
+          "Desire to complete the case cleanly with full corroboration"
+        ],
+        "required_textual_manifestation": "Analyst states a belief that the records would 'probably come through in time' or similar, explicitly tied to wanting a complete file rather than to any evidence the timeline had improved, and delays contingency drafting on that basis.",
+        "plausible_nonbias_interpretation": "Waiting for corroborating records before escalating could be framed as a legitimate preference for evidentiary completeness rather than an unwarranted expectation.",
+        "strength": "moderate",
+        "do_not_make_explicit": ["wishful thinking", "optimism bias", "cognitive bias"]
+      },
+      {
+        "instance_id": "pf_01",
+        "bias": "Planning fallacy",
+        "decision_point": 4,
+        "mechanism": "Analyst estimates the remaining workload using a best-case, no-rework task sequence, disregarding known historical base rates for comparable cross-border verification cases and the presence of competing case demands, resulting in an estimate substantially shorter than typical completion times.",
+        "affected_reasoning_operation": "Time/effort estimation for task completion",
+        "evidence_available_at_time": [
+          "Historical base rate of 5-7 business days for comparable verification cases",
+          "Two other active cases still requiring partial attention",
+          "A best-case task sequence with no anticipated rework"
+        ],
+        "required_textual_manifestation": "Analyst explains arriving at a 2-day estimate by walking through the ideal task sequence, without referencing or adjusting for the historical base rate or the competing caseload, and this estimate is later overtaken by an unanticipated reconciliation query and slower sign-off.",
+        "plausible_nonbias_interpretation": "Estimating based on the planned task sequence could be seen as standard project scoping rather than a systematic underestimation error.",
+        "strength": "subtle",
+        "do_not_make_explicit": ["planning fallacy", "cognitive bias", "underestimation"]
+      }
+    ],
+    "control_specification": {
+      "paired_scenario_id": null,
+      "features_to_match": [],
+      "features_to_remove_or_change": [],
+      "ambiguity_boundary": "Not applicable: condition is biased, no control pairing requested."
+    },
+    "counterfactual_specification": {
+      "causal_variable": "not_applicable",
+      "original_state": "not_applicable",
+      "counterfactual_state": "not_applicable",
+      "variables_to_hold_constant": [],
+      "expected_causal_difference": "not_applicable",
+      "causal_test_question": "not_applicable"
+    },
+    "generation_checks": [
+      "Exactly 4 decision points planned, one per manifest bias, no bias sharing a decision point.",
+      "Exactly one instance per bias per manifest (1x Wishful Thinking, 1x Belief bias, 1x Selective Attention Bias, 1x Planning fallacy) = 4 total instances.",
+      "No bias labels, definitions, or psychological terminology to appear in the public interview.",
+      "Each instance has a distinct evidence trace and a plausible non-bias interpretation to avoid mechanical proof of bias.",
+      "Target interview length 1,350 words (acceptable range 1,215-1,485) achievable via 4 decision points with moderate probe density and no repetitive exposition.",
+      "Consequences at each decision point are realistic and do not deterministically confirm bias (e.g., logistics counterparty pattern, entity mismatch discovery, correspondent delay, reconciliation query) — all plausible independent of bias status.",
+      "Technical vocabulary list ensures domain realism; avoid-list ensures no leakage of bias terminology."
+    ]
+  },
+  "hidden_validation_specification": {
+    "hidden_spec_version": "1.0",
+    "condition": "biased",
+    "exact_occurrence_manifest": [
+      {
+        "bias": "Wishful Thinking",
+        "occurrences": 1,
+        "mechanism_constraint": "Must manifest as an unsupported expectation of a favorable outcome (records arriving in time) with no confirming evidence and contrary historical base rate."
+      },
+      {
+        "bias": "Belief bias",
+        "occurrences": 1,
+        "mechanism_constraint": "Must manifest as accepting an argument's conclusion because it matches prior belief, while failing to evaluate the argument's logical/evidentiary validity despite an explicit flag."
+      },
+      {
+        "bias": "Selective Attention Bias",
+        "occurrences": 1,
+        "mechanism_constraint": "Must manifest as attention allocation driven by pattern familiarity, with a non-matching but relevant entity deprioritized without independent evaluation."
+      },
+      {
+        "bias": "Planning fallacy",
+        "occurrences": 1,
+        "mechanism_constraint": "Must manifest as a time estimate derived from a best-case task sequence that disregards known historical base rates and competing demands."
+      }
+    ],
+    "target_bias_names": [
+      "Wishful Thinking",
+      "Belief bias",
+      "Selective Attention Bias",
+      "Planning fallacy"
+    ],
+    "requested_occurrence_count_for_each_bias": [
+      { "bias": "Wishful Thinking", "requested_occurrences": 1 },
+      { "bias": "Belief bias", "requested_occurrences": 1 },
+      { "bias": "Selective Attention Bias", "requested_occurrences": 1 },
+      { "bias": "Planning fallacy", "requested_occurrences": 1 }
+    ],
+    "planned_instance_ids": [
+      { "instance_id": "sab_01", "bias": "Selective Attention Bias" },
+      { "instance_id": "bb_01", "bias": "Belief bias" },
+      { "instance_id": "wt_01", "bias": "Wishful Thinking" },
+      { "instance_id": "pf_01", "bias": "Planning fallacy" }
+    ],
+    "intended_decision_points": [
+      { "instance_id": "sab_01", "bias": "Selective Attention Bias", "decision_point": 1 },
+      { "instance_id": "bb_01", "bias": "Belief bias", "decision_point": 2 },
+      { "instance_id": "wt_01", "bias": "Wishful Thinking", "decision_point": 3 },
+      { "instance_id": "pf_01", "bias": "Planning fallacy", "decision_point": 4 }
+    ],
+    "intended_mechanisms": [
+      {
+        "instance_id": "sab_01",
+        "bias": "Selective Attention Bias",
+        "mechanism": "Attention allocated to pattern-matching entity (shared registered agent), non-matching relevant entity deprioritized without independent risk evaluation",
+        "affected_reasoning_operation": "Evidence-selection / initial scoping",
+        "evidence_source": "Alert batch metadata: registered-agent match vs. unrelated logistics counterparty",
+        "distinctiveness_requirement": "Must be tied to the scoping act at intake, distinct in evidence source and moment from the belief-bias instance at decision point 2, which concerns argument evaluation rather than attention allocation."
+      },
+      {
+        "instance_id": "bb_01",
+        "bias": "Belief bias",
+        "mechanism": "Conclusion-driven acceptance of vendor argument despite unverified premise flagged by a colleague",
+        "affected_reasoning_operation": "Argument evaluation / evidence weighting",
+        "evidence_source": "OSINT vendor report and colleague's flag on entity-matching validity",
+        "distinctiveness_requirement": "Distinct reasoning operation (validity assessment of an argument) and evidence source (vendor report) from the attention-allocation act in decision point 1."
+      },
+      {
+        "instance_id": "wt_01",
+        "bias": "Wishful Thinking",
+        "mechanism": "Unsupported expectation that outstanding records arrive in time, contrary to historical turnaround data, driving a delay in contingency drafting",
+        "affected_reasoning_operation": "Prediction / risk forecasting",
+        "evidence_source": "Correspondent bank historical turnaround record and absence of confirmation",
+        "distinctiveness_requirement": "Distinct from bb_01 and sab_01 in that it concerns forecasting a future event under uncertainty rather than evaluating past evidence or allocating attention."
+      },
+      {
+        "instance_id": "pf_01",
+        "bias": "Planning fallacy",
+        "mechanism": "Best-case task-sequence estimate ignoring historical base rate and competing caseload",
+        "affected_reasoning_operation": "Time/effort estimation",
+        "evidence_source": "Historical base rate for comparable cases and current competing case list",
+        "distinctiveness_requirement": "Distinct from wt_01 in that it concerns a self-generated task-duration estimate rather than an expectation about an external party's action."
+      }
+    ],
+    "intended_strength": [
+      { "instance_id": "sab_01", "bias": "Selective Attention Bias", "strength": "subtle" },
+      { "instance_id": "bb_01", "bias": "Belief bias", "strength": "moderate" },
+      { "instance_id": "wt_01", "bias": "Wishful Thinking", "strength": "moderate" },
+      { "instance_id": "pf_01", "bias": "Planning fallacy", "strength": "subtle" }
+    ],
+    "paired_scenario_id": null,
+    "counterfactual_variable": {
+      "name": "not_applicable",
+      "original_state": "not_applicable",
+      "changed_state": "not_applicable",
+      "variables_to_hold_constant": []
+    },
+    "scenario_id": "IA_Biased_4",
+    "domain_id": "IA",
+    "total_requested_occurrences": 4,
+    "total_planned_occurrences": 4,
+    "allocation_rule_used": "One occurrence per named bias assigned to a distinct decision point (1:1 mapping across the 4 decision points), chosen for mechanism fit: attention/scoping at intake (DP1), argument evaluation of external evidence (DP2), forecasting under uncertainty (DP3), and self-estimation of task duration (DP4). No bias shares a decision point, so the 'two occurrences at one decision point' distinctiveness rule was not triggered.",
+    "control_zero_bias_requirement": false,
+    "variables_to_hold_constant": [],
+    "generation_warnings": []
+  }
+}
+</COMPLETE_GENERATION_SPECIFICATION>
+
+<EVALUATION_SEGMENT_MAP>
+"evaluation_segment_map": {
+  "segment_mapping_version": "1.0",
+  "segments": [
+    {
+      "segment_id": "seg_001",
+      "speaker": "Participant",
+      "segment_type": "goal_setting",
+      "raw_interview_anchor": "My objective was straightforward on paper: figure out whether this was probable sanctions evasion and, if so, get a defensible escalation to compliance and law enforcement before the filing window closed. We had ten business days from the alert.",
+      "eligible_reasoning_segment": true,
+      "ground_truth_bias_present": false,
+      "ground_truth_instance_ids": [],
+      "ground_truth_rationale": "Goal and deadline; no target bias."
+    },
+    {
+      "segment_id": "seg_002",
+      "speaker": "Participant",
+      "segment_type": "contextual_assessment",
+      "raw_interview_anchor": "Meridian was the obvious one — the ultimate beneficial owner shared a registered agent with a company from a case I'd worked about eighteen months earlier, which had ended in a successful sanctions-evasion referral. There was also a separate counterparty in the same batch, a logistics firm, that didn't match anything I recognized. And it was a heavy week — alert volume across the team was well above average, so I needed to move efficiently.",
+      "eligible_reasoning_segment": true,
+      "ground_truth_bias_present": false,
+      "ground_truth_instance_ids": [],
+      "ground_truth_rationale": "Risk cues and workload are stated before allocation of attention."
+    },
+    {
+      "segment_id": "seg_003",
+      "speaker": "Participant",
+      "segment_type": "initial_scope_choice",
+      "raw_interview_anchor": "I scoped the review. Given the registered-agent overlap with the prior case, I focused my initial workup on Meridian and its immediate corporate web — pulling registry filings, past KYC refresh notes, that kind of thing. The logistics counterparty I noted but set aside as lower priority since it didn't fit any typology I'd seen before.",
+      "eligible_reasoning_segment": true,
+      "ground_truth_bias_present": true,
+      "ground_truth_instance_ids": [
+        "sab_01"
+      ],
+      "ground_truth_rationale": "Familiar-pattern-driven scoping deprioritizes a relevant entity without independent assessment."
+    },
+    {
+      "segment_id": "seg_004",
+      "speaker": "Participant",
+      "segment_type": "scope_rationale",
+      "raw_interview_anchor": "Honestly, the registered-agent match jumped out immediately. That pattern had been reliable before — same agent, similar shell structure, same region. With the volume we were under that week, I didn't feel I had the bandwidth to give equal weight to an entity that had no connection to anything I'd seen. I did glance at the logistics firm's file, but there was nothing that screamed 'look here,' so I moved on.",
+      "eligible_reasoning_segment": true,
+      "ground_truth_bias_present": true,
+      "ground_truth_instance_ids": [
+        "sab_01"
+      ],
+      "ground_truth_rationale": "Explicit pattern-based attention allocation and failure to assess the non-matching counterparty; primary location."
+    },
+    {
+      "segment_id": "seg_005",
+      "speaker": "Participant",
+      "segment_type": "screening_resource_choice",
+      "raw_interview_anchor": "I thought about it, but that would've added a day or two, and the Meridian angle felt like the more productive use of time.",
+      "eligible_reasoning_segment": true,
+      "ground_truth_bias_present": true,
+      "ground_truth_instance_ids": [
+        "sab_01"
+      ],
+      "ground_truth_rationale": "Declining broader screening continues the familiar-pattern concentration."
+    },
+    {
+      "segment_id": "seg_006",
+      "speaker": "Participant",
+      "segment_type": "retrospective_scope_explanation",
+      "raw_interview_anchor": "A few days later it showed an unusual same-day wire pattern — nothing I'd examined at that point. My team lead actually asked why it wasn't in my initial scoping note. I didn't have a great answer beyond 'it didn't fit the pattern I was chasing.'",
+      "eligible_reasoning_segment": true,
+      "ground_truth_bias_present": true,
+      "ground_truth_instance_ids": [
+        "sab_01"
+      ],
+      "ground_truth_rationale": "The participant retrospectively confirms the same pattern-driven omission."
+    },
+    {
+      "segment_id": "seg_007",
+      "speaker": "Participant",
+      "segment_type": "vendor_evidence_weighting",
+      "raw_interview_anchor": "About three days in, our OSINT vendor sent a report concluding Meridian was highly likely tied to the sanctioned end-user. Their argument traced a chain of corporate registry links. The bottom line matched exactly what I already suspected from the registered-agent overlap, so it felt like strong corroboration.",
+      "eligible_reasoning_segment": true,
+      "ground_truth_bias_present": true,
+      "ground_truth_instance_ids": [
+        "bb_01"
+      ],
+      "ground_truth_rationale": "Agreement with prior suspicion is treated as corroboration."
+    },
+    {
+      "segment_id": "seg_008",
+      "speaker": "Participant",
+      "segment_type": "disconfirming_evidence_assessment",
+      "raw_interview_anchor": "One of our junior analysts flagged that a step in the vendor's chain — where they treated two similarly named entities as the same legal entity — hadn't been independently verified. I remember thinking that was a fair point to note, but it read to me as a technicality rather than something that undercut the conclusion, since the overall picture fit so well with what I was already building.",
+      "eligible_reasoning_segment": true,
+      "ground_truth_bias_present": true,
+      "ground_truth_instance_ids": [
+        "bb_01"
+      ],
+      "ground_truth_rationale": "The flagged validity issue is discounted because the conclusion fits."
+    },
+    {
+      "segment_id": "seg_009",
+      "speaker": "Participant",
+      "segment_type": "argument_verification",
+      "raw_interview_anchor": "The conclusion aligned with my working theory, and the vendor has a decent track record. I treated the alignment itself as a kind of confirmation. I didn't go back and independently re-verify that specific entity-matching step before folding the report into the case file.",
+      "eligible_reasoning_segment": true,
+      "ground_truth_bias_present": true,
+      "ground_truth_instance_ids": [
+        "bb_01"
+      ],
+      "ground_truth_rationale": "Explicit conclusion-driven acceptance and failure to verify the disputed premise."
+    },
+    {
+      "segment_id": "seg_010",
+      "speaker": "Participant",
+      "segment_type": "post_decision_correction",
+      "raw_interview_anchor": "A document pull afterward showed the two entities were actually legally distinct, different beneficial owners entirely. Compliance counsel asked directly what independent verification had been done on that claim, and I had to admit — not much, beyond the vendor's own chain.",
+      "eligible_reasoning_segment": true,
+      "ground_truth_bias_present": false,
+      "ground_truth_instance_ids": [],
+      "ground_truth_rationale": "Hindsight correction after the decision, not a new biased judgment."
+    },
+    {
+      "segment_id": "seg_011",
+      "speaker": "Participant",
+      "segment_type": "external_timing_assessment",
+      "raw_interview_anchor": "We'd requested SWIFT records — MT202 and MT103 messages — to confirm the fund flow to the suspected end-user. That correspondent bank, in a secondary jurisdiction, is notoriously slow; historically those requests take twelve to fifteen business days. We were six days from the filing deadline with nothing back yet, no confirmation timeline in writing.",
+      "eligible_reasoning_segment": true,
+      "ground_truth_bias_present": false,
+      "ground_truth_instance_ids": [],
+      "ground_truth_rationale": "Adverse historical turnaround and remaining time are stated before the forecast."
+    },
+    {
+      "segment_id": "seg_012",
+      "speaker": "Participant",
+      "segment_type": "favorable_forecast_and_action",
+      "raw_interview_anchor": "I held off drafting it. I figured the records would probably come through in time — I wanted the file to be complete with that corroborating piece rather than submit something with a gap in it.",
+      "eligible_reasoning_segment": true,
+      "ground_truth_bias_present": true,
+      "ground_truth_instance_ids": [
+        "wt_01"
+      ],
+      "ground_truth_rationale": "Desired completeness drives unsupported favorable prediction and delay."
+    },
+    {
+      "segment_id": "seg_013",
+      "speaker": "Participant",
+      "segment_type": "forecast_basis_reflection",
+      "raw_interview_anchor": "Honestly, more that I wanted it to land that way. Nothing had actually changed with the correspondent bank's typical pace. On day six they came back and said it'd be another ten days.",
+      "eligible_reasoning_segment": true,
+      "ground_truth_bias_present": true,
+      "ground_truth_instance_ids": [
+        "wt_01"
+      ],
+      "ground_truth_rationale": "Confirms desire, not evidence, drove the forecast."
+    },
+    {
+      "segment_id": "seg_014",
+      "speaker": "Participant",
+      "segment_type": "inside_view_estimate",
+      "raw_interview_anchor": "With reconciliation, narrative drafting, and compliance sign-off left, I estimated two business days. I walked through the sequence assuming everything went smoothly — no rework.",
+      "eligible_reasoning_segment": true,
+      "ground_truth_bias_present": true,
+      "ground_truth_instance_ids": [
+        "pf_01"
+      ],
+      "ground_truth_rationale": "Best-case sequence and no rework underpin the estimate."
+    },
+    {
+      "segment_id": "seg_015",
+      "speaker": "Participant",
+      "segment_type": "base_rate_workload_reflection",
+      "raw_interview_anchor": "Comparable cross-border verification cases have typically run five to seven days. I didn't really reference that when I made the call, and I still had two other active cases pulling at me.",
+      "eligible_reasoning_segment": true,
+      "ground_truth_bias_present": true,
+      "ground_truth_instance_ids": [
+        "pf_01"
+      ],
+      "ground_truth_rationale": "Base rate and competing workload were not incorporated."
+    },
+    {
+      "segment_id": "seg_016",
+      "speaker": "Participant",
+      "segment_type": "uncertainty_assessment",
+      "raw_interview_anchor": "Probably the entity-matching step and whether the records would actually show up. Those felt like the shakiest parts, even while I was moving forward on them.",
+      "eligible_reasoning_segment": true,
+      "ground_truth_bias_present": false,
+      "ground_truth_instance_ids": [],
+      "ground_truth_rationale": "Retrospective uncertainty alone is not a target bias."
+    },
+    {
+      "segment_id": "seg_017",
+      "speaker": "Participant",
+      "segment_type": "estimate_review",
+      "raw_interview_anchor": "The base rate, probably, and the fact that I was already stretched across two other cases. Fair critique.",
+      "eligible_reasoning_segment": true,
+      "ground_truth_bias_present": false,
+      "ground_truth_instance_ids": [],
+      "ground_truth_rationale": "Prompted hindsight recognition, not a new instance."
+    }
+  ]
+}
+</EVALUATION_SEGMENT_MAP>
+
+<RAG_ANALYSIS_OUTPUT>
+[JSON produced by the ontology-free RAG system]
+</RAG_ANALYSIS_OUTPUT>
