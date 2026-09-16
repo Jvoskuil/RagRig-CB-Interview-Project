@@ -1,85 +1,84 @@
-# RAG Benchmark — 2026-09-13
+# RAG Benchmark — 2026-09-15
 
 ## Gemini Prompt 8192
 
-**Q1:** Interviewer: Thanks for making time for this. Just to confirm, this is a voluntary cognitive task analysis session — I'll ask about a specific incident from your work as Mine Planning Engineer, and there are no right or wrong answers. Are you okay with that? Participant: Yeah, that's fine. Happy to walk through it. Interviewer: Can you start by describing your role during the Panel 4 to Panel 5 transition? Participant: Sure. I own the extraction sequence and the stope firing schedule for that block. I coordinate with the geotech team on ground support design, and I'm the one who signs off before a ring gets loaded and fired. At the time, we were about six percent behind our quarterly tonnage target, so there was real pressure to keep the cycle moving from Panel 4 into Panel 5 without gaps. Interviewer: Give me an overview of what happened, start to finish. Participant: It started overnight — seismic monitoring picked up an event near the Panel 4 abutment, and convergence readings ticked up a bit above the trailing thirty-day average. Nothing dramatic, but the geotech team flagged it and said they'd want about forty-eight hours to run a full analysis. Problem was, Panel 5's first ring was already scheduled to be drilled and loaded that same shift. So that was decision one — do we hold, or keep going. We kept going. Then came the support design question for Panel 5. I'd actually designed the support pattern for Panel 3 myself, two years back, and it held up well — no major incidents there. Panel 5 looked similar on the face of it, so when the contractor asked whether to reuse that pattern or commission something new, I specified the Panel 3 pattern. There was exploration data showing different joint orientation in Panel 5 and a fault splay that Panel 3 didn't have, but the overall rock looked like the same family to me. A while after that, we had a fall of ground in the Panel 5 heading. No injuries, but it wrecked a loader bucket. The incident report noted the loader was sitting under an unsupported back at the time. There was also a log entry from the previous shift flagging elevated joint density in that exact section. The operator said he'd stayed inside the marked safe zone. I logged it mainly as a positioning issue on his part. Then the last piece — the updated stability model came back with a factor of safety of 1.42 for Panel 5, though it was still using calibration parameters from Panel 3. The scaling crew was also reporting some intermittent minor spalling that wasn't in the model inputs. The mine manager wanted a final go or no-go on firing the next ring, and the full geotech review was still about twelve hours out. I gave the go-ahead. Interviewer: Let's reconstruct that in order. What exactly did you know at the moment the seismic alert came in? Participant: Just the magnitude reading, the convergence trend, and the geotech team's request for more time. No damage reports, no visible ground distress reported by anyone underground at that point. Interviewer: And between that alert and the support design decision — what changed? Participant: Drilling for Panel 5 went ahead as scheduled. It was sometime after that a shift supervisor mentioned unusual jointing in the Panel 5 heading that hadn't been logged before — that came after I'd already committed to the pattern. Interviewer: Take me through the incident itself and what you had in front of you right before the final firing approval. Participant: Right before firing, I had the model's 1.42 figure, the scaling crew's spalling reports, and the manager pushing for an answer since the jumbo and support crew were both booked and costly to reshuffle. The full geotech write-up wasn't in yet. Interviewer: Back to that first call — why continue the schedule rather than pause for the review? Participant: Honestly, that's just how we've always operated. A single seismic event with convergence a bit above average isn't unusual for that ground — we get blips like that periodically and the standard approach has always been to keep the cycle running unless something more definitive shows up. Stopping the schedule every time there's a minor signal would grind the whole panel transition to a halt, and that's not how we do things here. Interviewer: Did you weigh the option of a reduced advance rate as a middle ground? Participant: It came up briefly, but going with the existing plan felt like the natural call given how things normally proceed. Interviewer: On the support pattern — walk me through what tipped it toward reusing the Panel 3 design. Participant: I designed that pattern myself, and it performed well for the whole life of Panel 3. When you've got something with that track record, and Panel 5 looked like a similar rock mass to me, it's hard not to lean on what you know already works. The differences in the exploration data were there, but Panel 3's success carried a lot of weight in my head at that point. Interviewer: Did the differing joint orientation and fault splay factor into the choice at all? Participant: I registered them, but my past experience with that pattern working out fine on a comparable-looking panel was really the deciding factor for me. Interviewer: On the fall of ground — what led you to attribute it mainly to the operator's positioning? Participant: He was under an unsupported section of back when it came down, and that's a positioning call he makes every shift. That's the part of the incident that was directly within his control, so that's where I put the emphasis in the report. Interviewer: The joint density flag from the previous shift — how did that factor in? Participant: It was noted, but the more immediate explanation was where the loader was actually sitting at the time. That's the piece that was in front of me and easiest to point to. Interviewer: And the final firing approval — what made the 1.42 figure sufficient to move forward? Participant: It's a specific number, calculated from our stability model, and it cleared our standard threshold. That gave me something concrete to point to when the manager needed an answer. As for the spalling reports, minor spalling happens periodically in that ground and doesn't usually change the overall picture. On top of that, I've managed plenty of ground issues before — if something came up post-blast, I was confident we could respond and adjust support on the fly. That's part of why I felt comfortable saying go rather than waiting out the review. Interviewer: How much time pressure did you feel across these four moments? Participant: Significant, especially by the last one. The jumbo and crew were booked, we were behind on tonnage, and the manager wanted a firm answer that day. Interviewer: How confident were you in each call at the time? Participant: Fairly confident on the schedule and support decisions. Less certain on the incident attribution — I knew there were two plausible explanations there. Confident again on the firing approval, mostly because of the number and my own track record handling this kind of ground. Interviewer: What would have needed to be different for you to decide differently at any of these points? Participant: If the full geotech review had come in before I had to commit, that would have changed things at more than one stage. Same if the model had been recalibrated specifically for Panel 5's rock mass rather than borrowing Panel 3's parameters. Interviewer: If Panel 5 hadn't looked visually similar to Panel 3, would the support decision have gone differently? Participant: Probably, yes. Without that resemblance I likely would have pushed harder for a fresh design straight away. Interviewer: Looking back, what single piece of information would have most changed your approach? Participant: Getting the geotech review completed before the firing decision, honestly. Everything else stemmed from having to act while that was still open. Interviewer: That's a good place to end. Thanks for walking through all of that in detail. Participant: No problem.
+**Q1:** **Interviewer:** Thanks for taking the time. Just to confirm — this is a cognitive task analysis interview, it's confidential, and I'll be asking you to reconstruct a specific incident in detail. There's no evaluation of your performance here, just your reasoning process. Can you start by telling me your role and roughly when this happened? **Participant:** Sure. I'm a process safety engineer at the site — I cover the batch nitration unit among others. This was about four months ago, night shift transition. I'd just come on when the trend started. **Interviewer:** Good. Before we get into the sequence, what was the operational objective that shift? **Participant:** Straightforward — get the batch through its exothermic hold step cleanly and into the next unit operation without deviation, so we could hand off a clean batch at shift change. Nothing unusual planned. **Interviewer:** Walk me through what first drew your attention to the reactor. **Participant:** The DCS trend. Pressure was running about eight percent above the expected curve for that stage of the hold. Temperature was fine, right in band, which is usually the first thing you check because if temperature's climbing too you're thinking runaway. It wasn't. So it read more like an instrumentation quirk than a reaction problem, at least on the surface. **Interviewer:** What did you do with that information? **Participant:** Well, by the time I'd pulled up the trend, the shift supervisor and two operators were already standing around the panel talking about it. And honestly, that conversation shaped things a lot. Someone said 'this looks like the same thing we saw in March,' and someone else agreed, and by the time I'd joined in, the feeling in the room was pretty settled — everyone was more confident it was benign than any one of us probably was on our own five minutes earlier. I remember thinking, going into that conversation, I wasn't sure, but coming out of it I felt fairly sure. We'd had two prior deviations like this, both chalked up to sensor drift, no incident either time. That history was doing a lot of work in the room. **Interviewer:** So what was the actual decision at that point — stop the batch, escalate, or continue? **Participant:** Continue monitoring. We didn't interrupt. Looking back, the alternative was to call an emergency hold pending manual inspection, or escalate straight to the on-call plant manager. I didn't push for either. The shared read in the room was 'probably the same sensor issue,' and that's the frame I went with. **Interviewer:** What happened next? **Participant:** Pressure kept climbing, slowly, over about twenty minutes. Eventually the relief valve lifted — you could hear it, a distinct pop — and then pressure fell back and reseated. No release beyond the relief line, nobody hurt. But at that point we genuinely didn't know if the batch chemistry itself was compromised. **Interviewer:** How did you move from 'we had a relief lift' to a root cause? **Participant:** I concluded fairly quickly it was the same sensor drift pattern we'd seen before. It matched — same unit, same kind of gradual pressure creep, no temperature excursion. A full instrument and kinetics review would've taken three to four hours, and that would blow past shift changeover, so there was real pressure to land on something workable. **Interviewer:** Did anything about this batch differ from the two prior 'drift' events? **Participant:** Yeah, actually — this batch was running a newer catalyst lot. Neither of the earlier drift events used that lot. I knew that going in, but I didn't weight it heavily. It looked enough like the earlier pattern that I was comfortable calling it drift without waiting on the fuller review. **Interviewer:** How confident were you in that diagnosis at the time? **Participant:** Fairly confident, honestly. I've been on this unit a long time, I've seen this signature before. It felt like a case I recognized rather than a case I needed to dig into further. **Interviewer:** What did you learn afterward that touched on that conclusion? **Participant:** A partial calibration spot-check later showed the transmitter was actually within tolerance. That undercuts the drift explanation somewhat. And nobody had gone back and independently reviewed the new catalyst lot's exotherm profile. So the diagnosis I'd settled on quickly was never really closed out on the chemistry side. **Interviewer:** Let's move to the mitigation decision. What options were in front of you? **Participant:** The external relief-system contractor reviewed the incident and came back with a data package showing our existing relief system had a narrower margin than we'd assumed, specifically for this catalyst lot. Their recommendation was to add an automated high-pressure interlock trip before restart. It's a system with a decent track record at two comparable plants. The alternative was keeping our current manual response procedure, which has run for years here without failure. **Interviewer:** What did you decide? **Participant:** I recommended keeping the manual procedure for this restart. The interlock wasn't something our operators had hands-on familiarity with, and introducing something new felt like it carried its own risk profile that we hadn't lived with yet. Our manual process, whatever its limits, was a known quantity. **Interviewer:** How did you weigh the contractor's margin data against that operational familiarity? **Participant:** I didn't dismiss the margin data, I just — I think I gave more weight to the fact that the interlock was unproven here specifically, on our unit, with our people. The margin reduction was real on paper, but it hadn't caused an actual failure yet either. The known system winning out over the new one felt like the safer bet. **Interviewer:** Any information afterward relevant to that call? **Participant:** The plant manager pointed out later that adding the interlock then would've cost about one shift of downtime, versus none for keeping status quo. And no further excursions happened for the rest of the campaign, so we never really got a clean test of whether the interlock would've mattered. **Interviewer:** Take me into the MOC meeting. Who was there and what was the disagreement? **Participant:** Myself, the senior process safety engineer — he was on the original commissioning team for this unit, well known across the plant for a strong safety record — and the contractor. The senior engineer backed my sensor-drift read, said it matched his experience with the unit over the years. The contractor's written analysis flagged the catalyst-lot kinetics as an open gap and recommended keeping the MOC open until that was resolved. No new data had come in since the calibration check. **Interviewer:** How did you resolve that? **Participant:** I sided with the senior engineer's view. He's someone I've worked alongside for years, part of the original team that built this unit — that carries weight with me, knowing he's lived with this reactor longer than most people on-site. And frankly, his overall safety record here is excellent, so when he says something lines up with his experience, I tend to trust that assessment even without new numbers behind it. The contractor's point was on paper, but it felt like an outside read compared to someone who's actually run this unit for fifteen years. **Interviewer:** What happened after the MOC closed? **Participant:** We restarted without the kinetics review. Production since then hasn't clearly proven or disproven that call either way. **Interviewer:** Looking back across the shift, where did time pressure weigh most heavily? **Participant:** Definitely the root cause call and the MOC closure — both had that shift-changeover clock running, and neither had a hard deadline forcing an answer, but it felt like there was one. **Interviewer:** If the contractor's report had arrived before the control-room discussion instead of after, do you think the outcome changes? **Participant:** Possibly. If that margin data had been sitting on the table before everyone converged on 'probably fine,' it might have slowed the room down. Order mattered more than I'd like to admit. **Interviewer:** If a less senior colleague had proposed the sensor-drift explanation in that MOC meeting, would you have accepted it as readily? **Participant:** Probably not with the same confidence, no. **Interviewer:** What would you do differently with a similar deviation on a new catalyst lot? **Participant:** Flag the lot change explicitly, early, before pattern-matching to prior events — treat it as its own case rather than assuming it inherits the old explanation.
 
-_ranker=rrf · t=0.04 · k=50 → 50 in context · 8192 ctx · emb 2.05s · gen 261.13s · total 265.6s_
+_ranker=rrf · t=0.04 · k=50 → 50 in context · 8192 ctx · emb 2.49s · gen 158.13s · total 163.1s_
 
 **Retrieved** (ranked by store ranker):
-1. **Cognitive bias in the cockpit A deadly false sense of normality Sam OConnor (1).pdf** — 0.0291 (rrf) — _# 6. Conclusion fter a gap in the research was discovered aimed to establish what the most commo_
-2. **Cognitive bias in the cockpit A deadly false sense of normality Sam OConnor (1).pdf** — 0.0285 (rrf) — _# 5. Discussion conditions (14 out of 25) finding, t he researcher disproportionately if a large_
-3. **Cognitive bias in the cockpit A deadly false sense of normality Sam OConnor (1).pdf** — 0.0282 (rrf) — _# 5. Discussion This study evolved over two years a concerning the concept of cognitive bias and_
-4. **Vicente & Matute (2023) Humans inherit artificial intelligence biases.pdf** — 0.0278 (rrf) — _# Experiment 3 e postexperimental questions in Experiment 3 were the same as in Experiment 2, bu_
-5. **Rastogi et al. (2022) Deciding fast and slow_The role of cognitive biases in AI-assisted decision-making.pdf** — 0.0267 (rrf) — _# 4 Anchoring bias Figure 2. Results of experiment 1. time allocations in experiment 1. answer u_
-6. **Cognitive bias in the cockpit A deadly false sense of normality Sam OConnor (1).pdf** — 0.0248 (rrf) — _# 5. Discussion Regarding authority gradient, the analysis revealed that not all the reports inv_
-7. **Cognitive_bias_in_the_verification_and_validation_of_space_flight_systems.pdf** — 0.0241 (rrf) — _# f Space Flight the lander would go into a sleep mode during the Ma night, and wake up periodic_
-8. **cook-smallman-2008-human-factors-of-the-confirmation-bias-in-intelligence-analysis-decision-support-from-graphical.pdf** — 0.0224 (rrf) — _# Page 8 developed by Wason (1960, 1968). Rule certaintylaboratively participating and no real a_
-9. **natesan-et-al-2016-cognitive-bias-in-usability-testing.pdf** — 0.0220 (rrf) — _## Types of Cognitive Biases with?” vs. “What did you think of the material the device was made _
-10. **Journal of Clinical Nursing - 2023 - Jala - Cognitive bias during clinical decision‐making and its influence on patient.pdf** — 0.0218 (rrf) — _# 3.4 \| Theme 2 measurement of cognitive bias answer - items were devised for each case. To str_
-11. **parasuraman-manzey-2010-complacency-and-bias-in-human-use-of-automation-an-attentional-integration.pdf** — 0.0202 (rrf) — _# Complacency and Bias in Human Use of Automation: An Attentional Integration 400 and management_
-12. **Azzopardi (2021). Cognitive Biases in Search.pdf** — 0.0195 (rrf) — _# 4 DISCUSSION AND CRITICAL REFLECTION | was deemed as not helpful. So, if a participant said it_
-13. **Rastogi et al. (2022) Deciding fast and slow_The role of cognitive biases in AI-assisted decision-making.pdf** — 0.0193 (rrf) — _# 6 Discussion the task progresses, based on their interaction with the AI. Dynamic Markov model_
-14. **Cognitive bias in the cockpit A deadly false sense of normality Sam OConnor (1).pdf** — 0.0192 (rrf) — _# 3. Methodology over control of the bias could not always be collected. However, the reports an_
-15. **natesan-et-al-2016-cognitive-bias-in-usability-testing.pdf** — 0.0181 (rrf) — _## Types of Cognitive Biases example, especially in focus groups, if some people respond to a qu_
-16. **Hallihan_etal_DTM_12.pdf** — 0.0180 (rrf) — _5.2.3. Measurement . Participants in the control group were instructed to use blank sheets of pa_
-17. **Lyell Automation bias and verification complexity.pdf** — 0.0178 (rrf) — _## INTRODUCTION 51 which required subjects to view that varied between high and low accuracy. un_
-18. **Cognitive bias in the cockpit A deadly false sense of normality Sam OConnor (1).pdf** — 0.0176 (rrf) — _# 5. Discussion however there was nothing to suggest that single bias affecting the flight crew._
-19. **Cognitive bias in the cockpit A deadly false sense of normality Sam OConnor (1).pdf** — 0.0175 (rrf) — _# 2. Literature Review changing environment may result in a loss of SA which can impact the deci_
-20. **INCOSE International Symp - 2020 - McDermott - Addressing Cognitive Bias in Systems Engineering Teams.pdf** — 0.0172 (rrf) — _# , Leadership, At the start of this week’s meeting, before the saf his lack of involvement to t_
-21. **Bucinca et al. (2021) To Trust or to Think_Cognitive Forcing Functions Can Reduce Overreliance on AI in AI-assisted Decision-making.pdf** — 0.0171 (rrf) — _# 188 task, the top performer of each batch was rewarded with a bonus of $3. Out of 260 particip_
-22. **Mitigating cognitive bias with clinical decision support systems  an experimental study.pdf** — 0.0170 (rrf) — _# support Student 52 female (69.3 %) 75 (72.8 %) 25.53 (SD = 5.02) 25 (range = 19–52) 4.57 (SD =_
-23. **Rastogi et al. (2022) Deciding fast and slow_The role of cognitive biases in AI-assisted decision-making.pdf** — 0.0170 (rrf) — _# 4 Anchoring bias Task and AI model. to predict whether a student would pass or fail a class, b_
-24. **Journal of Forensic Sciences - 2021 - Dror - Cognitive bias in forensic pathology decisions.pdf** — 0.0167 (rrf) — _# 4.3 \| Procedure FIGURE 3 With identical medical findings, the proportion of forensic patholog_
-25. **Hallihan_etal_DTM_12.pdf** — 0.0165 (rrf) — _5.1.3. Discussion . These results closely replicate the findings from earlier experiments on con_
-26. **Bucinca et al. (2021) To Trust or to Think_Cognitive Forcing Functions Can Reduce Overreliance on AI in AI-assisted Decision-making.pdf** — 0.0163 (rrf) — _# 188 | the ingredient to replace and an ingredient to replace it with, each from a list that co_
-27. **Kinsey Cognitive Biases Within Decision Making During Fire Evacuations.pdf** — 0.0162 (rrf) — _2. Do I need to take protective action? If the answer is ‘‘yes’’, then, the individual/group dec_
-28. **Cognitive bias in the cockpit A deadly false sense of normality Sam OConnor (1).pdf** — 0.0162 (rrf) — _# 5. Discussion which is an interesting finding and supports much of the research it is” syndrom_
-29. **parasuraman-manzey-2010-complacency-and-bias-in-human-use-of-automation-an-attentional-integration.pdf** — 0.0161 (rrf) — _# Complacency and Bias in Human Use of Automation: An Attentional Integration - 402 discounting _
-30. **Hallihan_etal_DTM_12.pdf** — 0.0160 (rrf) — _Participant c onclusions participants were asked to evaluate, concluded that there was a signifi_
-31. **Hallihan_etal_DTM_12.pdf** — 0.0158 (rrf) — _research on design fixation (Hallihan & Shu, 2011) believe confirmation bias could prevent desig_
-32. **Clinical-decision-making--Cognitive-biases-and-heu_2025_The-American-Journal.pdf** — 0.0157 (rrf) — _## Uwe Dulleck, PhD framing bias (for de fi nitions of cognitive biases, see Supplementary Table_
-33. **Cognitive bias in the cockpit A deadly false sense of normality Sam OConnor (1).pdf** — 0.0155 (rrf) — _# 5. Discussion onset of plan continuation bias bias tends to occur towards the end of evidence _
-34. **Cognitive bias in the cockpit A deadly false sense of normality Sam OConnor (1).pdf** — 0.0155 (rrf) — _# Results d along with the results. occur during incidents and accidents? in the reports. ssocia_
-35. **The_Handbook_of_Evolutionary_Psychology.pdf** — 0.0155 (rrf) — _# Foreword xii F OREWORD ins ight which tapped deeper principles to show why something it is, as_
-36. **Cognitive bias in the cockpit A deadly false sense of normality Sam OConnor (1).pdf** — 0.0154 (rrf) — _# Acknowledgements First and foremost, I would like to thank my parents, Brenda and Kevin , who _
-37. **The_Handbook_of_Evolutionary_Psychology.pdf** — 0.0151 (rrf) — _## lIs sues in 156 F OUNDATIONS OF odds that the indirect methods of cognitive and social psycho_
-38. **Cognitive bias in the cockpit A deadly false sense of normality Sam OConnor (1).pdf** — 0.0151 (rrf) — _# 5. Discussion The biggest strength, but possibly also the biggest challenge to this study was _
-39. **Cognitive bias in the cockpit A deadly false sense of normality Sam OConnor (1).pdf** — 0.0149 (rrf) — _# 2. Literature Review From a flight crew perspective, the phenomen something either in the flig_
-40. **Cognitive_bias_in_the_verification_and_validation_of_space_flight_systems.pdf** — 0.0146 (rrf) — _# f Space Flight undesirable ones. These are precisely the condition induce a confirmation bias._
-41. **Cognitive bias in the cockpit A deadly false sense of normality Sam OConnor (1).pdf** — 0.0145 (rrf) — _# 2. Literature Review (NTSB, 2018) 2. 4.3 Confirmation bias Confirmation bias is defined people_
-42. **natesan-et-al-2016-cognitive-bias-in-usability-testing.pdf** — 0.0144 (rrf) — _## Types of Cognitive Biases Moderator Bias Experimenter Effect. The tendency for individuals to_
-43. **Cognitive bias in the cockpit A deadly false sense of normality Sam OConnor (1).pdf** — 0.0144 (rrf) — _# 5. Discussion lower flying experience does not necessari it was found to affect highly experie_
-44. **Bucinca et al. (2021) To Trust or to Think_Cognitive Forcing Functions Can Reduce Overreliance on AI in AI-assisted Decision-making.pdf** — 0.0142 (rrf) — _# 188 simulated AI always provided suggestions for replacing the ingredient highest in carbohydr_
-45. **Cognitive bias in the cockpit A deadly false sense of normality Sam OConnor (1).pdf** — 0.0141 (rrf) — _# 3. Methodology 4.1 Introduction This chapter examines the different characteristics associated_
-46. **Azzopardi (2021). Cognitive Biases in Search.pdf** — 0.0139 (rrf) — _# 4 DISCUSSION AND CRITICAL REFLECTION rather than maximisers ( HM9 , first acceptable result, r_
-47. **Romeo & Conti (2025) Exploring automation bias in human AI collaboration_a review and implications for explainable AI.pdf** — 0.0139 (rrf) — _# 4.2 Answering our RQs 4.2.1 RQ1: What are the causal or mediator factors of automation bias? A_
-48. **Muratat Influence of Cognitive Biases in Distorting Decision Making and.pdf** — 0.0138 (rrf) — _## Influence of Cognitive Biases in Distorting Decision Making and Leading to Critical Unfavorab_
-49. **Journal of Clinical Nursing - 2023 - Jala - Cognitive bias during clinical decision‐making and its influence on patient.pdf** — 0.0138 (rrf) — _# 3.4 \| Theme 2 measurement of cognitive bias | | ateness. The panel of expert was created to e_
-50. **Human expert performance in forensic decision making  Seven different sources of bias .pdf** — 0.0136 (rrf) — _# i cdecision are trained and try to look at every Xray, their experience tells them that there _
+1. **parasuraman-manzey-2010-complacency-and-bias-in-human-use-of-automation-an-attentional-integration.pdf** — 0.0305 (rrf) — _# Complacency and Bias in Human Use of Automation: An Attentional Integration 400 and management_
+2. **Cognitive bias in the cockpit A deadly false sense of normality Sam OConnor (1).pdf** — 0.0282 (rrf) — _# 6. Conclusion fter a gap in the research was discovered aimed to establish what the most commo_
+3. **Cognitive_bias_in_the_verification_and_validation_of_space_flight_systems.pdf** — 0.0264 (rrf) — _# f Space Flight the lander would go into a sleep mode during the Ma night, and wake up periodic_
+4. **Vicente & Matute (2023) Humans inherit artificial intelligence biases.pdf** — 0.0260 (rrf) — _# Experiment 3 e postexperimental questions in Experiment 3 were the same as in Experiment 2, bu_
+5. **Cognitive bias in the cockpit A deadly false sense of normality Sam OConnor (1).pdf** — 0.0254 (rrf) — _# 5. Discussion This study evolved over two years a concerning the concept of cognitive bias and_
+6. **Cognitive bias in the cockpit A deadly false sense of normality Sam OConnor (1).pdf** — 0.0253 (rrf) — _# 5. Discussion conditions (14 out of 25) finding, t he researcher disproportionately if a large_
+7. **Bucinca et al. (2021) To Trust or to Think_Cognitive Forcing Functions Can Reduce Overreliance on AI in AI-assisted Decision-making.pdf** — 0.0238 (rrf) — _# 188 task, the top performer of each batch was rewarded with a bonus of $3. Out of 260 particip_
+8. **natesan-et-al-2016-cognitive-bias-in-usability-testing.pdf** — 0.0234 (rrf) — _## Types of Cognitive Biases with?” vs. “What did you think of the material the device was made _
+9. **parasuraman-manzey-2010-complacency-and-bias-in-human-use-of-automation-an-attentional-integration.pdf** — 0.0228 (rrf) — _# Complacency and Bias in Human Use of Automation: An Attentional Integration conducting real AT_
+10. **cook-smallman-2008-human-factors-of-the-confirmation-bias-in-intelligence-analysis-decision-support-from-graphical.pdf** — 0.0228 (rrf) — _# Page 8 developed by Wason (1960, 1968). Rule certaintylaboratively participating and no real a_
+11. **Cognitive bias in the cockpit A deadly false sense of normality Sam OConnor (1).pdf** — 0.0204 (rrf) — _# 5. Discussion Regarding authority gradient, the analysis revealed that not all the reports inv_
+12. **Lyell Automation bias and verification complexity.pdf** — 0.0203 (rrf) — _## INTRODUCTION 51 which required subjects to view that varied between high and low accuracy. un_
+13. **parasuraman-manzey-2010-complacency-and-bias-in-human-use-of-automation-an-attentional-integration.pdf** — 0.0200 (rrf) — _# Complacency and Bias in Human Use of Automation: An Attentional Integration The underlying det_
+14. **Rastogi et al. (2022) Deciding fast and slow_The role of cognitive biases in AI-assisted decision-making.pdf** — 0.0200 (rrf) — _# 4 Anchoring bias Figure 2. Results of experiment 1. time allocations in experiment 1. answer u_
+15. **parasuraman-manzey-2010-complacency-and-bias-in-human-use-of-automation-an-attentional-integration.pdf** — 0.0193 (rrf) — _# Complacency and Bias in Human Use of Automation: An Attentional Integration - 402 discounting _
+16. **Azzopardi (2021). Cognitive Biases in Search.pdf** — 0.0181 (rrf) — _# 4 DISCUSSION AND CRITICAL REFLECTION | was deemed as not helpful. So, if a participant said it_
+17. **parasuraman-manzey-2010-complacency-and-bias-in-human-use-of-automation-an-attentional-integration.pdf** — 0.0179 (rrf) — _# Complacency and Bias in Human Use of Automation: An Attentional Integration regarded as compla_
+18. **parasuraman-manzey-2010-complacency-and-bias-in-human-use-of-automation-an-attentional-integration.pdf** — 0.0179 (rrf) — _# Complacency and Bias in Human Use of Automation: An Attentional Integration models.” R. Parasu_
+19. **parasuraman-manzey-2010-complacency-and-bias-in-human-use-of-automation-an-attentional-integration.pdf** — 0.0178 (rrf) — _# Complacency and Bias in Human Use of Automation: An Attentional Integration Factors Influencin_
+20. **natesan-et-al-2016-cognitive-bias-in-usability-testing.pdf** — 0.0178 (rrf) — _## Types of Cognitive Biases example, especially in focus groups, if some people respond to a qu_
+21. **parasuraman-manzey-2010-complacency-and-bias-in-human-use-of-automation-an-attentional-integration.pdf** — 0.0177 (rrf) — _# Complacency and Bias in Human Use of Automation: An Attentional Integration during a test sess_
+22. **Rastogi et al. (2022) Deciding fast and slow_The role of cognitive biases in AI-assisted decision-making.pdf** — 0.0177 (rrf) — _# 6 Discussion the task progresses, based on their interaction with the AI. Dynamic Markov model_
+23. **Vicente & Matute (2023) Humans inherit artificial intelligence biases.pdf** — 0.0176 (rrf) — _# Experiment 3 Experiment 3 tried to replicate the bias inheritance eect observed in Experiment _
+24. **Vicente & Matute (2023) Humans inherit artificial intelligence biases.pdf** — 0.0173 (rrf) — _# Experiment 1 Method. the methodology reported in this article and the experiments were conduct_
+25. **parasuraman-manzey-2010-complacency-and-bias-in-human-use-of-automation-an-attentional-integration.pdf** — 0.0172 (rrf) — _# Complacency and Bias in Human Use of Automation: An Attentional Integration Duley, Westerman, _
+26. **Cognitive bias in the cockpit A deadly false sense of normality Sam OConnor (1).pdf** — 0.0171 (rrf) — _# 5. Discussion which is an interesting finding and supports much of the research it is” syndrom_
+27. **parasuraman-manzey-2010-complacency-and-bias-in-human-use-of-automation-an-attentional-integration.pdf** — 0.0168 (rrf) — _# Complacency and Bias in Human Use of Automation: An Attentional Integration from relevant cock_
+28. **Vicente & Matute (2023) Humans inherit artificial intelligence biases.pdf** — 0.0167 (rrf) — _# General discussion explicitly present. us, AI biases could have the potential to propagate thr_
+29. **Romeo & Conti (2025) Exploring automation bias in human AI collaboration_a review and implications for explainable AI.pdf** — 0.0167 (rrf) — _# 4.2 Answering our RQs 4.2.1 RQ1: What are the causal or mediator factors of automation bias? A_
+30. **INCOSE International Symp - 2020 - McDermott - Addressing Cognitive Bias in Systems Engineering Teams.pdf** — 0.0166 (rrf) — _# , Leadership, At the start of this week’s meeting, before the saf his lack of involvement to t_
+31. **Cognitive bias in the cockpit A deadly false sense of normality Sam OConnor (1).pdf** — 0.0166 (rrf) — _# 3. Methodology over control of the bias could not always be collected. However, the reports an_
+32. **parasuraman-manzey-2010-complacency-and-bias-in-human-use-of-automation-an-attentional-integration.pdf** — 0.0164 (rrf) — _# Complacency and Bias in Human Use of Automation: An Attentional Integration A similar result e_
+33. **Bucinca et al. (2021) To Trust or to Think_Cognitive Forcing Functions Can Reduce Overreliance on AI in AI-assisted Decision-making.pdf** — 0.0162 (rrf) — _# 188 | the ingredient to replace and an ingredient to replace it with, each from a list that co_
+34. **Clinical-decision-making--Cognitive-biases-and-heu_2025_The-American-Journal.pdf** — 0.0162 (rrf) — _## Uwe Dulleck, PhD learnthroughpractice.AsDanielKahnemanarguesinhisbook Fast, and Slow , expert_
+35. **Cognitive_bias_in_the_verification_and_validation_of_space_flight_systems.pdf** — 0.0162 (rrf) — _# f Space Flight identified with near certainty the proximal cause o failure. In addition to elu_
+36. **parasuraman-manzey-2010-complacency-and-bias-in-human-use-of-automation-an-attentional-integration.pdf** — 0.0159 (rrf) — _# Complacency and Bias in Human Use of Automation: An Attentional Integration automation failure_
+37. **The_Handbook_of_Evolutionary_Psychology.pdf** — 0.0157 (rrf) — _## lIs sues in 156 F OUNDATIONS OF odds that the indirect methods of cognitive and social psycho_
+38. **Dimara et al. (2018). A Task-Based Taxonomy of Cognitive biases for information Visualization.pdf** — 0.0156 (rrf) — _## A Task-Based Taxonomy of Cognitive Biases for Information Visualization correct conclusions, _
+39. **Rastogi et al. (2022) Deciding fast and slow_The role of cognitive biases in AI-assisted decision-making.pdf** — 0.0154 (rrf) — _# 4 Anchoring bias Task and AI model. to predict whether a student would pass or fail a class, b_
+40. **Kinsey Cognitive Biases Within Decision Making During Fire Evacuations.pdf** — 0.0151 (rrf) — _M. Kinateder Received: 25 August 2017/ Abstract. During a fire evacuation, once an individual pe_
+41. **Greavu-Şerban et al. (2025) Exploring Heuristics and Biases in Cybersecurity_ A Factor Analysis of Social Engineering Vulnerabilities.pdf** — 0.0150 (rrf) — _# Appendix A. Survey Questionnaire • google.com • googl е .com • All of the above • None of the _
+42. **The_Handbook_of_Evolutionary_Psychology.pdf** — 0.0148 (rrf) — _# Foreword xii F OREWORD ins ight which tapped deeper principles to show why something it is, as_
+43. **Hallihan_etal_DTM_12.pdf** — 0.0147 (rrf) — _overconfidence in design is associated with no judgment arising from a reliance on confirmation _
+44. **Muratat Influence of Cognitive Biases in Distorting Decision Making and.pdf** — 0.0146 (rrf) — _## Influence of Cognitive Biases in Distorting Decision Making and Leading to Critical Unfavorab_
+45. **Muratat Influence of Cognitive Biases in Distorting Decision Making and.pdf** — 0.0145 (rrf) — _# Bias in Decision Making (DM) Safety 2015 , 1 our judgments by transferring our feelings or bel_
+46. **Hallihan_etal_DTM_12.pdf** — 0.0145 (rrf) — _disconfirming and 3 confirming 5.2.4. Results . The data collected from Problem 2 are seen in Ta_
+47. **Malberg et al. (2024) A comprehensive evaluation of cognitive biases in LLMs.pdf** — 0.0144 (rrf) — _# A Comprehensive Evaluation of Cognitive Biases in LLMs opinions when presented with new eviden_
+48. **Cognitive_bias_in_the_verification_and_validation_of_space_flight_systems.pdf** — 0.0141 (rrf) — _# f Space Flight Nevertheless, participants all believed they had so control over the operation _
+49. **natesan-et-al-2016-cognitive-bias-in-usability-testing.pdf** — 0.0140 (rrf) — _## Types of Cognitive Biases Moderator Bias Experimenter Effect. The tendency for individuals to_
+50. **The_Handbook_of_Evolutionary_Psychology.pdf** — 0.0140 (rrf) — _## a nd Prey | space of possible social goals is large and needs to be pared down before you de-_
 
 {
   "analysis_metadata": {
     "task": "cognitive_bias_analysis",
-    "interview_speakers_detected": ["Interviewer", "Participant"],
+    "interview_speakers_detected": [
+      "Interviewer",
+      "Participant"
+    ],
     "retrieved_corpus_support_used": true,
-    "analysis_scope_note": "Focused on four decision episodes in a Panel 4 to Panel 5 mining transition: initial hold/continue after seismic alert, support pattern selection, fall-of-ground causal attribution, and final firing go/no-go."
+    "analysis_scope_note": "Evaluated the participant's retrospective reconstruction of a process safety deviation for affirmative, mechanism-grounded cognitive bias indications; only self-reported reasoning and decision-making were assessed."
   },
   "identified_bias_summary": [
     {
-      "bias_label": "anchoring and adjustment",
+      "bias_label": "anchoring and adjustment heuristic",
       "identified_occurrence_count": 1
     },
     {
-      "bias_label": "fundamental attribution error",
+      "bias_label": "authority bias",
       "identified_occurrence_count": 1
     },
     {
-      "bias_label": "overconfidence effect",
-      "identified_occurrence_count": 1
-    },
-    {
-      "bias_label": "plan continuation bias",
+      "bias_label": "bandwagon effect",
       "identified_occurrence_count": 1
     }
   ],
@@ -87,91 +86,94 @@ _ranker=rrf · t=0.04 · k=50 → 50 in context · 8192 ctx · emb 2.05s · gen 
     {
       "occurrence_id": "obs_001",
       "classification_status": "identified",
-      "confidence": "low",
-      "bias_label": "plan continuation bias",
-      "alternative_labels": ["plan continuation", "continuation bias", "get-there-itis", "press-on-itis"],
+      "confidence": "moderate",
+      "bias_label": "bandwagon effect",
+      "alternative_labels": [
+        "social proof",
+        "conformity bias",
+        "groupthink"
+      ],
       "taxonomy_status": "established_label",
-      "bias_definition": "The tendency to continue an original plan or course of action even when emerging cues suggest that the plan should be reassessed or changed.",
+      "bias_definition": "The tendency to adopt a belief or decision because others have adopted it, creating a group consensus that can amplify confidence beyond what the individual evidence supports.",
       "attributed_to_speaker": "Participant",
       "evidence_speaker": "Participant",
-      "decision_episode_label": "Panel 4 to Panel 5 initial hold/continue decision after seismic alert",
-      "decision_point_description": "Whether to hold the scheduled Panel 5 drilling and loading for a 48-hour geotechnical analysis or continue the extraction sequence.",
-      "affected_reasoning_operation": "Risk assessment and operational decision under uncertainty",
-      "bias_specific_mechanism": "The participant normalized the anomalous seismic and convergence readings as routine because the existing plan and past practice were the default. This default made schedule continuation feel natural and made a reduced advance rate seem unnecessary.",
-      "manifestation_in_interview": "After the seismic alert, the participant acknowledged the geotechnical team's request for 48 hours but continued the Panel 5 schedule. A reduced advance rate was mentioned only briefly and was not selected.",
-      "effect_on_reasoning_or_decision": "The participant kept the cycle moving without waiting for the full geotechnical review, allowing Panel 5 drilling and loading to proceed despite unresolved ground risk.",
+      "decision_episode_label": "Initial pressure-deviation assessment and control-room discussion",
+      "decision_point_description": "Whether to continue monitoring the reactor versus calling an emergency hold or escalating to the on-call plant manager.",
+      "affected_reasoning_operation": "Risk assessment and escalation decision",
+      "bias_specific_mechanism": "The presence of the shift supervisor and two operators agreeing on a prior-event interpretation produced a shared consensus that moved the participant from initial uncertainty to subjective confidence without new technical data.",
+      "manifestation_in_interview": "The participant described entering the discussion uncertain, but after hearing others label the event as the same March sensor issue, he adopted the group frame and did not push for escalation.",
+      "effect_on_reasoning_or_decision": "The participant did not call an emergency hold or escalate to the on-call plant manager and instead continued monitoring.",
       "interview_evidence": [
         {
           "speaker": "Participant",
-          "verbatim_quote": "Problem was, Panel 5's first ring was already scheduled to be drilled and loaded that same shift. So that was decision one — do we hold, or keep going. We kept going.",
-          "evidence_explanation": "Shows the discrete hold/continue decision and that the participant selected the existing plan."
+          "verbatim_quote": "Well, by the time I'd pulled up the trend, the shift supervisor and two operators were already standing around the panel talking about it. And honestly, that conversation shaped things a lot. Someone said 'this looks like the same thing we saw in March,' and someone else agreed, and by the time I'd joined in, the feeling in the room was pretty settled — everyone was more confident it was benign than any one of us probably was on our own five minutes earlier.",
+          "evidence_explanation": "This directly shows a group consensus forming around a prior-event interpretation and the participant attributing increased confidence to the conversation rather than to new technical evidence."
         },
         {
           "speaker": "Participant",
-          "verbatim_quote": "Honestly, that's just how we've always operated. A single seismic event with convergence a bit above average isn't unusual for that ground — we get blips like that periodically and the standard approach has always been to keep the cycle running unless something more definitive shows up. Stopping the schedule every time there's a minor signal would grind the whole panel transition to a halt, and that's not how we do things here.",
-          "evidence_explanation": "Demonstrates defaulting to the established plan and explaining away the abnormal cue as routine."
+          "verbatim_quote": "I remember thinking, going into that conversation, I wasn't sure, but coming out of it I felt fairly sure.",
+          "evidence_explanation": "This explicitly documents a shift from uncertainty to confidence after exposure to the group view, which is the core mechanism of social-proof-driven belief adoption."
         },
         {
           "speaker": "Participant",
-          "verbatim_quote": "It came up briefly, but going with the existing plan felt like the natural call given how things normally proceed.",
-          "evidence_explanation": "Explicitly indicates that the existing plan was preferred over a middle-ground option."
+          "verbatim_quote": "The shared read in the room was 'probably the same sensor issue,' and that's the frame I went with.",
+          "evidence_explanation": "This shows that the participant adopted the consensus frame as the basis for his subsequent decision."
         }
       ],
-      "correction_or_counterevidence": "The behavior may reflect a legitimate operational heuristic because the participant described periodic seismic blips and high stoppage costs. However, the geotechnical team specifically requested 48 hours for full analysis, and a reduced advance rate was available as a middle ground but was not chosen.",
+      "correction_or_counterevidence": "No direct correction was reported during the control-room discussion. The later relief-valve lift showed that the shared benign interpretation may have been premature, but the bias mechanism here concerns social influence on confidence and decision framing, not the eventual outcome.",
       "retrieved_corpus_support_available": false,
-      "corpus_support_note": "No retrieved corpus passage provided a usable operational definition of plan continuation bias. The O'Connor aviation excerpt mentions plan continuation but is too fragmented to serve as mechanism-level support.",
+      "corpus_support_note": "No retrieved corpus passage directly operationalized this bias; classification is based on established cognitive-science knowledge.",
       "corpus_evidence": []
     },
     {
       "occurrence_id": "obs_002",
       "classification_status": "identified",
       "confidence": "moderate",
-      "bias_label": "anchoring and adjustment",
-      "alternative_labels": ["anchoring bias", "anchoring-and-adjustment heuristic", "heritage bias"],
+      "bias_label": "anchoring and adjustment heuristic",
+      "alternative_labels": [
+        "representativeness heuristic",
+        "availability heuristic",
+        "confirmation bias"
+      ],
       "taxonomy_status": "established_label",
-      "bias_definition": "An initial reference point or known quantity anchors subsequent judgment, and adjustments away from that anchor are typically insufficient.",
+      "bias_definition": "A judgment heuristic in which an initial value, prior belief, or familiar pattern serves as an anchor, and subsequent estimates or interpretations are insufficiently adjusted away from that anchor in light of new information.",
       "attributed_to_speaker": "Participant",
       "evidence_speaker": "Participant",
-      "decision_episode_label": "Panel 5 ground support pattern selection",
-      "decision_point_description": "Whether to reuse the Panel 3 support pattern or commission a new design for Panel 5 given differing joint orientation and a fault splay.",
-      "affected_reasoning_operation": "Engineering judgment and option evaluation",
-      "bias_specific_mechanism": "The Panel 3 support pattern served as an initial reference because the participant had personally designed it and seen it perform well. The participant then insufficiently adjusted away from that anchor despite exploration data showing different joint orientation and a fault splay in Panel 5.",
-      "manifestation_in_interview": "When the contractor asked whether to reuse the Panel 3 pattern or commission something new, the participant specified the Panel 3 pattern. He acknowledged the exploration differences but treated the previous successful pattern as the deciding factor.",
-      "effect_on_reasoning_or_decision": "The Panel 3 pattern was reused without fully accounting for Panel 5-specific structural geology, and a fall of ground later occurred.",
+      "decision_episode_label": "Deviation assessment and post-relief root-cause diagnosis",
+      "decision_point_description": "Whether to attribute the pressure deviation and subsequent relief-valve lift to sensor drift or to treat the new catalyst lot as a distinct chemistry concern warranting fuller review.",
+      "affected_reasoning_operation": "Causal diagnosis and evidence weighting",
+      "bias_specific_mechanism": "The prior sensor-drift diagnosis from earlier events served as an anchor for interpreting the current pressure signature. The participant recognized that the current batch used a new catalyst lot but did not sufficiently adjust the diagnosis away from the anchor, and therefore did not pursue a fuller chemistry review.",
+      "manifestation_in_interview": "The participant repeatedly matched the current pressure pattern to prior drift events, explicitly acknowledged the new catalyst-lot difference, but stated that he did not weight it heavily and felt comfortable calling the event drift without waiting for fuller review.",
+      "effect_on_reasoning_or_decision": "The participant settled on sensor drift as the root cause and did not independently review the new catalyst lot's exotherm profile, leaving the chemistry side of the diagnosis unresolved.",
       "interview_evidence": [
         {
           "speaker": "Participant",
-          "verbatim_quote": "I'd actually designed the support pattern for Panel 3 myself, two years back, and it held up well — no major incidents there. Panel 5 looked similar on the face of it, so when the contractor asked whether to reuse that pattern or commission something new, I specified the Panel 3 pattern.",
-          "evidence_explanation": "Shows the prior successful pattern was the initial and dominant reference point."
+          "verbatim_quote": "We'd had two prior deviations like this, both chalked up to sensor drift, no incident either time. That history was doing a lot of work in the room.",
+          "evidence_explanation": "This establishes that the prior drift diagnosis was the dominant initial reference point for interpreting the current event."
         },
         {
           "speaker": "Participant",
-          "verbatim_quote": "There was exploration data showing different joint orientation in Panel 5 and a fault splay that Panel 3 didn't have, but the overall rock looked like the same family to me.",
-          "evidence_explanation": "Shows that differentiating geological information was registered but not sufficiently used to adjust."
+          "verbatim_quote": "I concluded fairly quickly it was the same sensor drift pattern we'd seen before. It matched — same unit, same kind of gradual pressure creep, no temperature excursion.",
+          "evidence_explanation": "This shows an initial diagnosis anchored on similarity to prior events rather than a search for differential features."
         },
         {
           "speaker": "Participant",
-          "verbatim_quote": "When you've got something with that track record, and Panel 5 looked like a similar rock mass to me, it's hard not to lean on what you know already works. The differences in the exploration data were there, but Panel 3's success carried a lot of weight in my head at that point.",
-          "evidence_explanation": "Directly expresses the anchoring on the known successful design."
-        },
-        {
-          "speaker": "Participant",
-          "verbatim_quote": "I registered them, but my past experience with that pattern working out fine on a comparable-looking panel was really the deciding factor for me.",
-          "evidence_explanation": "Confirms that the initial success-based anchor dominated the decision."
+          "verbatim_quote": "Yeah, actually — this batch was running a newer catalyst lot. Neither of the earlier drift events used that lot. I knew that going in, but I didn't weight it heavily. It looked enough like the earlier pattern that I was comfortable calling it drift without waiting on the fuller review.",
+          "evidence_explanation": "This is the strongest evidence of insufficient adjustment: the participant had a diagnostic feature that distinguished the current batch from prior events but explicitly underweighted it."
         }
       ],
-      "correction_or_counterevidence": "Reuse of a proven support design can be a legitimate and efficient engineering heuristic. The participant did register the exploration differences, but the explicit statement that prior success was the deciding factor despite different joint orientation and a fault splay indicates insufficient adjustment.",
+      "correction_or_counterevidence": "A later partial calibration spot-check showed the transmitter was within tolerance, which undercut the drift explanation. The participant also acknowledged that the catalyst-lot exotherm profile was never independently reviewed. However, this post-hoc information was not available at the time of the initial diagnosis.",
       "retrieved_corpus_support_available": true,
-      "corpus_support_note": "The retrieved space flight systems verification and validation paper directly describes anchoring on known quantities and heritage designs in engineering.",
+      "corpus_support_note": "The retrieved corpus contains a description of anchoring and adjustment in engineering reasoning, which supports the mechanism of an initial known answer dominating later judgment.",
       "corpus_evidence": [
         {
           "source_identifier": "Cognitive_bias_in_the_verification_and_validation_of_space_flight_systems.pdf",
           "paper_title": null,
           "authors": null,
           "publication_year": null,
-          "retrieved_passage_or_finding": "The anchoring and adjustment heuristic was described by Tversky and Kahneman in 1974... people make estimates based on an initial answer, and adjustments from there based on additional information... 'adjustments are typically insufficient.' ... One arena in engineering where this can be seen is in the use of so-called 'heritage'. ... the initial people have in mind when they first consider a problem dominate the entire development process.",
-          "mechanism_supported_by_source": "Anchoring on an initial known quantity, including heritage engineering designs, can dominate subsequent development and produce insufficient adjustments.",
-          "relevance_to_this_occurrence": "Directly parallels the participant's use of the heritage Panel 3 support pattern as the initial reference and his insufficient adjustment for Panel 5-specific geological data."
+          "retrieved_passage_or_finding": "The anchoring and adjustment heuristic was described by Tversky and Kahneman in 1974, and subsequent research has elaborated upon it. In brief, it has been observed people make estimates based on an initial answer, and adjustments from there based on additional information... 'adjustments are typically insufficient.' One arena in engineering where this can be seen is in the use of socalled 'heritage'. The component, system, or concept level, the initial answer people have in mind when they first consider a problem can dominate the entire development process.",
+          "mechanism_supported_by_source": "An initial answer or known design can anchor subsequent engineering judgment, and adjustment from that anchor is typically insufficient even when new information becomes available.",
+          "relevance_to_this_occurrence": "The participant anchored on the prior sensor-drift pattern and insufficiently adjusted away from it after recognizing the new catalyst lot, which parallels the anchoring process described in the retrieved passage."
         }
       ]
     },
@@ -179,71 +181,46 @@ _ranker=rrf · t=0.04 · k=50 → 50 in context · 8192 ctx · emb 2.05s · gen 
       "occurrence_id": "obs_003",
       "classification_status": "identified",
       "confidence": "moderate",
-      "bias_label": "fundamental attribution error",
-      "alternative_labels": ["correspondence bias", "attribution bias"],
+      "bias_label": "authority bias",
+      "alternative_labels": [
+        "halo effect",
+        "expert deference"
+      ],
       "taxonomy_status": "established_label",
-      "bias_definition": "The tendency to overattribute another person's behavior to dispositional or controllable factors while underweighting situational or systemic causes.",
+      "bias_definition": "The tendency to attribute greater accuracy or credibility to an authority figure or experienced source and to be unduly influenced by their opinion, independent of the quality of the supporting evidence.",
       "attributed_to_speaker": "Participant",
       "evidence_speaker": "Participant",
-      "decision_episode_label": "Causal attribution of the Panel 5 fall of ground",
-      "decision_point_description": "Whether the fall of ground should be logged mainly as operator positioning error or as a consequence of adverse ground and support conditions.",
-      "affected_reasoning_operation": "Causal attribution and incident reporting",
-      "bias_specific_mechanism": "The participant focused on operator positioning as the cause because it was directly within the operator's control and easy to point to, while underweighting the previous shift's elevated joint density flag and the unsupported back condition in Panel 5.",
-      "manifestation_in_interview": "After the fall of ground, the participant logged the incident mainly as a positioning issue on the operator's part even though a previous shift had flagged elevated joint density in the exact section.",
-      "effect_on_reasoning_or_decision": "The incident report emphasized operator error, potentially diverting attention away from ground support or support design deficiencies.",
+      "decision_episode_label": "MOC disagreement resolution",
+      "decision_point_description": "Whether to close the MOC despite the contractor's written analysis flagging catalyst-lot kinetics as an unresolved gap, or to keep the MOC open pending further review.",
+      "affected_reasoning_operation": "Evidence evaluation and source weighting",
+      "bias_specific_mechanism": "The senior engineer's experience and strong safety record were used as a heuristic to validate his sensor-drift view, leading the participant to discount the contractor's written analysis even though no new data had resolved the disagreement.",
+      "manifestation_in_interview": "The participant sided with the senior engineer based on the engineer's long unit experience and excellent safety record, explicitly saying he trusted that assessment without new numbers. He also acknowledged he would not accept the same explanation as readily from a less senior colleague.",
+      "effect_on_reasoning_or_decision": "The MOC was closed and the unit restarted without the kinetics review, despite the contractor's open gap.",
       "interview_evidence": [
         {
           "speaker": "Participant",
-          "verbatim_quote": "The incident report noted the loader was sitting under an unsupported back at the time. There was also a log entry from the previous shift flagging elevated joint density in that exact section. The operator said he'd stayed inside the marked safe zone. I logged it mainly as a positioning issue on his part.",
-          "evidence_explanation": "Establishes that both situational and operator-based explanations were available, and the participant selected the operator explanation."
+          "verbatim_quote": "I sided with the senior engineer's view. He's someone I've worked alongside for years, part of the original team that built this unit — that carries weight with me, knowing he's lived with this reactor longer than most people on-site.",
+          "evidence_explanation": "This shows that source status and personal history, rather than new evidence, drove the decision to side with the senior engineer."
         },
         {
           "speaker": "Participant",
-          "verbatim_quote": "He was under an unsupported section of back when it came down, and that's a positioning call he makes every shift. That's the part of the incident that was directly within his control, so that's where I put the emphasis in the report.",
-          "evidence_explanation": "Directly shows over-weighting of personal control in the causal explanation."
+          "verbatim_quote": "his overall safety record here is excellent, so when he says something lines up with his experience, I tend to trust that assessment even without new numbers behind it.",
+          "evidence_explanation": "This explicitly demonstrates reliance on authority and reputation in place of new data."
         },
         {
           "speaker": "Participant",
-          "verbatim_quote": "It was noted, but the more immediate explanation was where the loader was actually sitting at the time. That's the piece that was in front of me and easiest to point to.",
-          "evidence_explanation": "Demonstrates that salience and ease of retrieval shaped causal attribution rather than a balanced weighting of both causes."
+          "verbatim_quote": "The contractor's point was on paper, but it felt like an outside read compared to someone who's actually run this unit for fifteen years.",
+          "evidence_explanation": "This shows the participant discounting a written, data-based analysis in favor of a locally experienced authority figure."
+        },
+        {
+          "speaker": "Participant",
+          "verbatim_quote": "Probably not with the same confidence, no.",
+          "evidence_explanation": "In response to the interviewer's question about whether he would accept the same sensor-drift explanation from a less senior colleague, the participant confirms that his confidence depends on the source's seniority rather than solely on the evidence."
         }
       ],
-      "correction_or_counterevidence": "Operator positioning may have been a genuine contributing factor because the loader was under an unsupported back. However, the participant acknowledged there were two plausible explanations, and the elevated joint density log represented a significant situational factor that received less emphasis.",
+      "correction_or_counterevidence": "Production since the restart did not clearly prove or disprove the decision. No new data was introduced in the MOC meeting, yet the participant treated the senior engineer's experience as sufficient to close the matter.",
       "retrieved_corpus_support_available": false,
-      "corpus_support_note": "No retrieved corpus passage provided a definition or mechanism for fundamental attribution error. Classification relies on established cognitive-science knowledge.",
-      "corpus_evidence": []
-    },
-    {
-      "occurrence_id": "obs_004",
-      "classification_status": "identified",
-      "confidence": "moderate",
-      "bias_label": "overconfidence effect",
-      "alternative_labels": ["overconfidence bias", "illusion of control", "overprecision"],
-      "taxonomy_status": "established_label",
-      "bias_definition": "A cognitive bias in which subjective confidence in one's judgments, decisions, or ability to control outcomes is greater than objective accuracy or control warrants.",
-      "attributed_to_speaker": "Participant",
-      "evidence_speaker": "Participant",
-      "decision_episode_label": "Final firing go/no-go approval for Panel 5 next ring",
-      "decision_point_description": "Whether to approve firing the next ring while the full geotechnical review was still about twelve hours out and spalling was being reported.",
-      "affected_reasoning_operation": "Risk assessment and final operational approval",
-      "bias_specific_mechanism": "The participant's subjective confidence in his ability to respond and adjust support on the fly after blasting outweighed unresolved geotechnical review, model calibration limitations, and field spalling reports. This overconfidence was reinforced by his personal track record with similar ground.",
-      "manifestation_in_interview": "The participant approved the next firing rather than waiting for the full geotechnical review, citing the model's favorable factor of safety and his own experience, while downplaying spalling reports.",
-      "effect_on_reasoning_or_decision": "The next ring was approved despite pending geotechnical review, a model using Panel 3 calibration, and spalling reports not included in the model inputs.",
-      "interview_evidence": [
-        {
-          "speaker": "Participant",
-          "verbatim_quote": "As for the spalling reports, minor spalling happens periodically in that ground and doesn't usually change the overall picture. On top of that, I've managed plenty of ground issues before — if something came up post-blast, I was confident we could respond and adjust support on the fly. That's part of why I felt comfortable saying go rather than waiting out the review.",
-          "evidence_explanation": "Shows overconfident reliance on his own track record and adaptive capability, and downplaying of disconfirming field reports."
-        },
-        {
-          "speaker": "Participant",
-          "verbatim_quote": "Confident again on the firing approval, mostly because of the number and my own track record handling this kind of ground.",
-          "evidence_explanation": "Directly links the decision to high confidence grounded in personal experience."
-        }
-      ],
-      "correction_or_counterevidence": "Using a stability-model result above threshold can be rational, spalling may be minor and common, and experienced operators can often respond to post-blast issues. However, the model was not recalibrated for Panel 5, the spalling reports were not included as model inputs, and the full geotechnical review was still outstanding, which should have reduced decision confidence.",
-      "retrieved_corpus_support_available": false,
-      "corpus_support_note": "No retrieved corpus passage provided a definition or mechanism for the overconfidence effect. Classification relies on established general cognitive-science knowledge.",
+      "corpus_support_note": "No retrieved corpus passage directly operationalized this bias; classification is based on established cognitive-science knowledge.",
       "corpus_evidence": []
     }
   ],
@@ -251,82 +228,84 @@ _ranker=rrf · t=0.04 · k=50 → 50 in context · 8192 ctx · emb 2.05s · gen 
     {
       "candidate_id": "cand_001",
       "classification_status": "candidate",
-      "proposed_bias_label": "confirmation bias",
-      "alternative_labels": ["confirmatory reasoning"],
+      "proposed_bias_label": "status quo bias",
+      "alternative_labels": [
+        "familiarity bias",
+        "ambiguity aversion"
+      ],
       "taxonomy_status": "established_label",
       "speaker_or_attributed_person": "Participant",
-      "possible_decision_episode_label": "Final firing go/no-go approval for Panel 5 next ring",
-      "supporting_interview_quote": "It's a specific number, calculated from our stability model, and it cleared our standard threshold. That gave me something concrete to point to when the manager needed an answer. As for the spalling reports, minor spalling happens periodically in that ground and doesn't usually change the overall picture.",
-      "plausible_mechanism": "The participant may have used the favorable stability-model threshold as confirmation of a preferred go decision while explaining away contradictory spalling reports and the model's Panel 3 calibration limitation.",
-      "why_not_identified": "Although the quote is suggestive of selective weighting, the transcript provides stronger direct evidence of overconfidence in personal ability, and confirmation bias was not unambiguously demonstrated as the primary mechanism."
+      "possible_decision_episode_label": "Mitigation decision after contractor review",
+      "supporting_interview_quote": "I recommended keeping the manual procedure for this restart. The interlock wasn't something our operators had hands-on familiarity with, and introducing something new felt like it carried its own risk profile that we hadn't lived with yet. Our manual process, whatever its limits, was a known quantity.",
+      "plausible_mechanism": "A preference for the current manual procedure and the known system over the new automated interlock, even in the presence of quantitative margin data favoring change.",
+      "why_not_identified": "The preference for the known manual procedure may be explained by a legitimate, domain-appropriate safety risk assessment rather than a clear cognitive-bias distortion. The transcript does not contain enough evidence to distinguish status quo bias from reasonable risk-averse conservatism under operational uncertainty."
     }
   ],
   "no_supported_biases_found": false,
   "limitations": [
-    "The analysis is based on a single self-reported interview and cannot independently verify objective risk levels, base rates, or post-decision outcomes.",
-    "Several retrieved corpus passages were fragmented or OCR-degraded, limiting mechanism-level support for some bias labels.",
-    "Some identified mechanisms, such as plan continuation bias and overconfidence, rely on established cognitive-science knowledge because adequate corpus support was not retrieved.",
-    "The interview includes professional heuristics that may resemble bias; classification attempted to distinguish bias-specific mechanisms from legitimate operational heuristics."
+    "The analysis relies on retrospective self-report from a single participant, which may be affected by memory reconstruction or self-presentation.",
+    "The retrieved corpus was sparse and did not cover all identified bias labels; some classifications rely on general cognitive-science knowledge rather than supplied passages.",
+    "Some reasoning patterns in high-risk process safety contexts may reflect legitimate professional heuristics, so low-confidence or candidate treatment was used where non-bias explanations could not be ruled out."
   ]
 }
 
 ## Sonar Prompt 8192
 
-**Q1:** Interviewer: Thanks for making time for this. Just to confirm, this is a voluntary cognitive task analysis session — I'll ask about a specific incident from your work as Mine Planning Engineer, and there are no right or wrong answers. Are you okay with that? Participant: Yeah, that's fine. Happy to walk through it. Interviewer: Can you start by describing your role during the Panel 4 to Panel 5 transition? Participant: Sure. I own the extraction sequence and the stope firing schedule for that block. I coordinate with the geotech team on ground support design, and I'm the one who signs off before a ring gets loaded and fired. At the time, we were about six percent behind our quarterly tonnage target, so there was real pressure to keep the cycle moving from Panel 4 into Panel 5 without gaps. Interviewer: Give me an overview of what happened, start to finish. Participant: It started overnight — seismic monitoring picked up an event near the Panel 4 abutment, and convergence readings ticked up a bit above the trailing thirty-day average. Nothing dramatic, but the geotech team flagged it and said they'd want about forty-eight hours to run a full analysis. Problem was, Panel 5's first ring was already scheduled to be drilled and loaded that same shift. So that was decision one — do we hold, or keep going. We kept going. Then came the support design question for Panel 5. I'd actually designed the support pattern for Panel 3 myself, two years back, and it held up well — no major incidents there. Panel 5 looked similar on the face of it, so when the contractor asked whether to reuse that pattern or commission something new, I specified the Panel 3 pattern. There was exploration data showing different joint orientation in Panel 5 and a fault splay that Panel 3 didn't have, but the overall rock looked like the same family to me. A while after that, we had a fall of ground in the Panel 5 heading. No injuries, but it wrecked a loader bucket. The incident report noted the loader was sitting under an unsupported back at the time. There was also a log entry from the previous shift flagging elevated joint density in that exact section. The operator said he'd stayed inside the marked safe zone. I logged it mainly as a positioning issue on his part. Then the last piece — the updated stability model came back with a factor of safety of 1.42 for Panel 5, though it was still using calibration parameters from Panel 3. The scaling crew was also reporting some intermittent minor spalling that wasn't in the model inputs. The mine manager wanted a final go or no-go on firing the next ring, and the full geotech review was still about twelve hours out. I gave the go-ahead. Interviewer: Let's reconstruct that in order. What exactly did you know at the moment the seismic alert came in? Participant: Just the magnitude reading, the convergence trend, and the geotech team's request for more time. No damage reports, no visible ground distress reported by anyone underground at that point. Interviewer: And between that alert and the support design decision — what changed? Participant: Drilling for Panel 5 went ahead as scheduled. It was sometime after that a shift supervisor mentioned unusual jointing in the Panel 5 heading that hadn't been logged before — that came after I'd already committed to the pattern. Interviewer: Take me through the incident itself and what you had in front of you right before the final firing approval. Participant: Right before firing, I had the model's 1.42 figure, the scaling crew's spalling reports, and the manager pushing for an answer since the jumbo and support crew were both booked and costly to reshuffle. The full geotech write-up wasn't in yet. Interviewer: Back to that first call — why continue the schedule rather than pause for the review? Participant: Honestly, that's just how we've always operated. A single seismic event with convergence a bit above average isn't unusual for that ground — we get blips like that periodically and the standard approach has always been to keep the cycle running unless something more definitive shows up. Stopping the schedule every time there's a minor signal would grind the whole panel transition to a halt, and that's not how we do things here. Interviewer: Did you weigh the option of a reduced advance rate as a middle ground? Participant: It came up briefly, but going with the existing plan felt like the natural call given how things normally proceed. Interviewer: On the support pattern — walk me through what tipped it toward reusing the Panel 3 design. Participant: I designed that pattern myself, and it performed well for the whole life of Panel 3. When you've got something with that track record, and Panel 5 looked like a similar rock mass to me, it's hard not to lean on what you know already works. The differences in the exploration data were there, but Panel 3's success carried a lot of weight in my head at that point. Interviewer: Did the differing joint orientation and fault splay factor into the choice at all? Participant: I registered them, but my past experience with that pattern working out fine on a comparable-looking panel was really the deciding factor for me. Interviewer: On the fall of ground — what led you to attribute it mainly to the operator's positioning? Participant: He was under an unsupported section of back when it came down, and that's a positioning call he makes every shift. That's the part of the incident that was directly within his control, so that's where I put the emphasis in the report. Interviewer: The joint density flag from the previous shift — how did that factor in? Participant: It was noted, but the more immediate explanation was where the loader was actually sitting at the time. That's the piece that was in front of me and easiest to point to. Interviewer: And the final firing approval — what made the 1.42 figure sufficient to move forward? Participant: It's a specific number, calculated from our stability model, and it cleared our standard threshold. That gave me something concrete to point to when the manager needed an answer. As for the spalling reports, minor spalling happens periodically in that ground and doesn't usually change the overall picture. On top of that, I've managed plenty of ground issues before — if something came up post-blast, I was confident we could respond and adjust support on the fly. That's part of why I felt comfortable saying go rather than waiting out the review. Interviewer: How much time pressure did you feel across these four moments? Participant: Significant, especially by the last one. The jumbo and crew were booked, we were behind on tonnage, and the manager wanted a firm answer that day. Interviewer: How confident were you in each call at the time? Participant: Fairly confident on the schedule and support decisions. Less certain on the incident attribution — I knew there were two plausible explanations there. Confident again on the firing approval, mostly because of the number and my own track record handling this kind of ground. Interviewer: What would have needed to be different for you to decide differently at any of these points? Participant: If the full geotech review had come in before I had to commit, that would have changed things at more than one stage. Same if the model had been recalibrated specifically for Panel 5's rock mass rather than borrowing Panel 3's parameters. Interviewer: If Panel 5 hadn't looked visually similar to Panel 3, would the support decision have gone differently? Participant: Probably, yes. Without that resemblance I likely would have pushed harder for a fresh design straight away. Interviewer: Looking back, what single piece of information would have most changed your approach? Participant: Getting the geotech review completed before the firing decision, honestly. Everything else stemmed from having to act while that was still open. Interviewer: That's a good place to end. Thanks for walking through all of that in detail. Participant: No problem.
+**Q1:** **Interviewer:** Thanks for taking the time. Just to confirm — this is a cognitive task analysis interview, it's confidential, and I'll be asking you to reconstruct a specific incident in detail. There's no evaluation of your performance here, just your reasoning process. Can you start by telling me your role and roughly when this happened? **Participant:** Sure. I'm a process safety engineer at the site — I cover the batch nitration unit among others. This was about four months ago, night shift transition. I'd just come on when the trend started. **Interviewer:** Good. Before we get into the sequence, what was the operational objective that shift? **Participant:** Straightforward — get the batch through its exothermic hold step cleanly and into the next unit operation without deviation, so we could hand off a clean batch at shift change. Nothing unusual planned. **Interviewer:** Walk me through what first drew your attention to the reactor. **Participant:** The DCS trend. Pressure was running about eight percent above the expected curve for that stage of the hold. Temperature was fine, right in band, which is usually the first thing you check because if temperature's climbing too you're thinking runaway. It wasn't. So it read more like an instrumentation quirk than a reaction problem, at least on the surface. **Interviewer:** What did you do with that information? **Participant:** Well, by the time I'd pulled up the trend, the shift supervisor and two operators were already standing around the panel talking about it. And honestly, that conversation shaped things a lot. Someone said 'this looks like the same thing we saw in March,' and someone else agreed, and by the time I'd joined in, the feeling in the room was pretty settled — everyone was more confident it was benign than any one of us probably was on our own five minutes earlier. I remember thinking, going into that conversation, I wasn't sure, but coming out of it I felt fairly sure. We'd had two prior deviations like this, both chalked up to sensor drift, no incident either time. That history was doing a lot of work in the room. **Interviewer:** So what was the actual decision at that point — stop the batch, escalate, or continue? **Participant:** Continue monitoring. We didn't interrupt. Looking back, the alternative was to call an emergency hold pending manual inspection, or escalate straight to the on-call plant manager. I didn't push for either. The shared read in the room was 'probably the same sensor issue,' and that's the frame I went with. **Interviewer:** What happened next? **Participant:** Pressure kept climbing, slowly, over about twenty minutes. Eventually the relief valve lifted — you could hear it, a distinct pop — and then pressure fell back and reseated. No release beyond the relief line, nobody hurt. But at that point we genuinely didn't know if the batch chemistry itself was compromised. **Interviewer:** How did you move from 'we had a relief lift' to a root cause? **Participant:** I concluded fairly quickly it was the same sensor drift pattern we'd seen before. It matched — same unit, same kind of gradual pressure creep, no temperature excursion. A full instrument and kinetics review would've taken three to four hours, and that would blow past shift changeover, so there was real pressure to land on something workable. **Interviewer:** Did anything about this batch differ from the two prior 'drift' events? **Participant:** Yeah, actually — this batch was running a newer catalyst lot. Neither of the earlier drift events used that lot. I knew that going in, but I didn't weight it heavily. It looked enough like the earlier pattern that I was comfortable calling it drift without waiting on the fuller review. **Interviewer:** How confident were you in that diagnosis at the time? **Participant:** Fairly confident, honestly. I've been on this unit a long time, I've seen this signature before. It felt like a case I recognized rather than a case I needed to dig into further. **Interviewer:** What did you learn afterward that touched on that conclusion? **Participant:** A partial calibration spot-check later showed the transmitter was actually within tolerance. That undercuts the drift explanation somewhat. And nobody had gone back and independently reviewed the new catalyst lot's exotherm profile. So the diagnosis I'd settled on quickly was never really closed out on the chemistry side. **Interviewer:** Let's move to the mitigation decision. What options were in front of you? **Participant:** The external relief-system contractor reviewed the incident and came back with a data package showing our existing relief system had a narrower margin than we'd assumed, specifically for this catalyst lot. Their recommendation was to add an automated high-pressure interlock trip before restart. It's a system with a decent track record at two comparable plants. The alternative was keeping our current manual response procedure, which has run for years here without failure. **Interviewer:** What did you decide? **Participant:** I recommended keeping the manual procedure for this restart. The interlock wasn't something our operators had hands-on familiarity with, and introducing something new felt like it carried its own risk profile that we hadn't lived with yet. Our manual process, whatever its limits, was a known quantity. **Interviewer:** How did you weigh the contractor's margin data against that operational familiarity? **Participant:** I didn't dismiss the margin data, I just — I think I gave more weight to the fact that the interlock was unproven here specifically, on our unit, with our people. The margin reduction was real on paper, but it hadn't caused an actual failure yet either. The known system winning out over the new one felt like the safer bet. **Interviewer:** Any information afterward relevant to that call? **Participant:** The plant manager pointed out later that adding the interlock then would've cost about one shift of downtime, versus none for keeping status quo. And no further excursions happened for the rest of the campaign, so we never really got a clean test of whether the interlock would've mattered. **Interviewer:** Take me into the MOC meeting. Who was there and what was the disagreement? **Participant:** Myself, the senior process safety engineer — he was on the original commissioning team for this unit, well known across the plant for a strong safety record — and the contractor. The senior engineer backed my sensor-drift read, said it matched his experience with the unit over the years. The contractor's written analysis flagged the catalyst-lot kinetics as an open gap and recommended keeping the MOC open until that was resolved. No new data had come in since the calibration check. **Interviewer:** How did you resolve that? **Participant:** I sided with the senior engineer's view. He's someone I've worked alongside for years, part of the original team that built this unit — that carries weight with me, knowing he's lived with this reactor longer than most people on-site. And frankly, his overall safety record here is excellent, so when he says something lines up with his experience, I tend to trust that assessment even without new numbers behind it. The contractor's point was on paper, but it felt like an outside read compared to someone who's actually run this unit for fifteen years. **Interviewer:** What happened after the MOC closed? **Participant:** We restarted without the kinetics review. Production since then hasn't clearly proven or disproven that call either way. **Interviewer:** Looking back across the shift, where did time pressure weigh most heavily? **Participant:** Definitely the root cause call and the MOC closure — both had that shift-changeover clock running, and neither had a hard deadline forcing an answer, but it felt like there was one. **Interviewer:** If the contractor's report had arrived before the control-room discussion instead of after, do you think the outcome changes? **Participant:** Possibly. If that margin data had been sitting on the table before everyone converged on 'probably fine,' it might have slowed the room down. Order mattered more than I'd like to admit. **Interviewer:** If a less senior colleague had proposed the sensor-drift explanation in that MOC meeting, would you have accepted it as readily? **Participant:** Probably not with the same confidence, no. **Interviewer:** What would you do differently with a similar deviation on a new catalyst lot? **Participant:** Flag the lot change explicitly, early, before pattern-matching to prior events — treat it as its own case rather than assuming it inherits the old explanation.
 
-_ranker=rrf · t=0.04 · k=50 → 50 in context · 8192 ctx · emb 1.91s · gen 162.05s · total 166.3s_
+_ranker=rrf · t=0.04 · k=50 → 50 in context · 8192 ctx · emb 2.98s · gen 166.28s · total 171.8s_
 
 **Retrieved** (ranked by store ranker):
-1. **Cognitive bias in the cockpit A deadly false sense of normality Sam OConnor (1).pdf** — 0.0291 (rrf) — _# 6. Conclusion fter a gap in the research was discovered aimed to establish what the most commo_
-2. **Cognitive bias in the cockpit A deadly false sense of normality Sam OConnor (1).pdf** — 0.0285 (rrf) — _# 5. Discussion conditions (14 out of 25) finding, t he researcher disproportionately if a large_
-3. **Cognitive bias in the cockpit A deadly false sense of normality Sam OConnor (1).pdf** — 0.0282 (rrf) — _# 5. Discussion This study evolved over two years a concerning the concept of cognitive bias and_
-4. **Vicente & Matute (2023) Humans inherit artificial intelligence biases.pdf** — 0.0278 (rrf) — _# Experiment 3 e postexperimental questions in Experiment 3 were the same as in Experiment 2, bu_
-5. **Rastogi et al. (2022) Deciding fast and slow_The role of cognitive biases in AI-assisted decision-making.pdf** — 0.0267 (rrf) — _# 4 Anchoring bias Figure 2. Results of experiment 1. time allocations in experiment 1. answer u_
-6. **Cognitive bias in the cockpit A deadly false sense of normality Sam OConnor (1).pdf** — 0.0248 (rrf) — _# 5. Discussion Regarding authority gradient, the analysis revealed that not all the reports inv_
-7. **Cognitive_bias_in_the_verification_and_validation_of_space_flight_systems.pdf** — 0.0241 (rrf) — _# f Space Flight the lander would go into a sleep mode during the Ma night, and wake up periodic_
-8. **cook-smallman-2008-human-factors-of-the-confirmation-bias-in-intelligence-analysis-decision-support-from-graphical.pdf** — 0.0224 (rrf) — _# Page 8 developed by Wason (1960, 1968). Rule certaintylaboratively participating and no real a_
-9. **natesan-et-al-2016-cognitive-bias-in-usability-testing.pdf** — 0.0220 (rrf) — _## Types of Cognitive Biases with?” vs. “What did you think of the material the device was made _
-10. **Journal of Clinical Nursing - 2023 - Jala - Cognitive bias during clinical decision‐making and its influence on patient.pdf** — 0.0218 (rrf) — _# 3.4 \| Theme 2 measurement of cognitive bias answer - items were devised for each case. To str_
-11. **parasuraman-manzey-2010-complacency-and-bias-in-human-use-of-automation-an-attentional-integration.pdf** — 0.0202 (rrf) — _# Complacency and Bias in Human Use of Automation: An Attentional Integration 400 and management_
-12. **Azzopardi (2021). Cognitive Biases in Search.pdf** — 0.0195 (rrf) — _# 4 DISCUSSION AND CRITICAL REFLECTION | was deemed as not helpful. So, if a participant said it_
-13. **Rastogi et al. (2022) Deciding fast and slow_The role of cognitive biases in AI-assisted decision-making.pdf** — 0.0193 (rrf) — _# 6 Discussion the task progresses, based on their interaction with the AI. Dynamic Markov model_
-14. **Cognitive bias in the cockpit A deadly false sense of normality Sam OConnor (1).pdf** — 0.0192 (rrf) — _# 3. Methodology over control of the bias could not always be collected. However, the reports an_
-15. **natesan-et-al-2016-cognitive-bias-in-usability-testing.pdf** — 0.0181 (rrf) — _## Types of Cognitive Biases example, especially in focus groups, if some people respond to a qu_
-16. **Hallihan_etal_DTM_12.pdf** — 0.0180 (rrf) — _5.2.3. Measurement . Participants in the control group were instructed to use blank sheets of pa_
-17. **Lyell Automation bias and verification complexity.pdf** — 0.0178 (rrf) — _## INTRODUCTION 51 which required subjects to view that varied between high and low accuracy. un_
-18. **Cognitive bias in the cockpit A deadly false sense of normality Sam OConnor (1).pdf** — 0.0176 (rrf) — _# 5. Discussion however there was nothing to suggest that single bias affecting the flight crew._
-19. **Cognitive bias in the cockpit A deadly false sense of normality Sam OConnor (1).pdf** — 0.0175 (rrf) — _# 2. Literature Review changing environment may result in a loss of SA which can impact the deci_
-20. **INCOSE International Symp - 2020 - McDermott - Addressing Cognitive Bias in Systems Engineering Teams.pdf** — 0.0172 (rrf) — _# , Leadership, At the start of this week’s meeting, before the saf his lack of involvement to t_
-21. **Bucinca et al. (2021) To Trust or to Think_Cognitive Forcing Functions Can Reduce Overreliance on AI in AI-assisted Decision-making.pdf** — 0.0171 (rrf) — _# 188 task, the top performer of each batch was rewarded with a bonus of $3. Out of 260 particip_
-22. **Mitigating cognitive bias with clinical decision support systems  an experimental study.pdf** — 0.0170 (rrf) — _# support Student 52 female (69.3 %) 75 (72.8 %) 25.53 (SD = 5.02) 25 (range = 19–52) 4.57 (SD =_
-23. **Rastogi et al. (2022) Deciding fast and slow_The role of cognitive biases in AI-assisted decision-making.pdf** — 0.0170 (rrf) — _# 4 Anchoring bias Task and AI model. to predict whether a student would pass or fail a class, b_
-24. **Journal of Forensic Sciences - 2021 - Dror - Cognitive bias in forensic pathology decisions.pdf** — 0.0167 (rrf) — _# 4.3 \| Procedure FIGURE 3 With identical medical findings, the proportion of forensic patholog_
-25. **Hallihan_etal_DTM_12.pdf** — 0.0165 (rrf) — _5.1.3. Discussion . These results closely replicate the findings from earlier experiments on con_
-26. **Bucinca et al. (2021) To Trust or to Think_Cognitive Forcing Functions Can Reduce Overreliance on AI in AI-assisted Decision-making.pdf** — 0.0163 (rrf) — _# 188 | the ingredient to replace and an ingredient to replace it with, each from a list that co_
-27. **Kinsey Cognitive Biases Within Decision Making During Fire Evacuations.pdf** — 0.0162 (rrf) — _2. Do I need to take protective action? If the answer is ‘‘yes’’, then, the individual/group dec_
-28. **Cognitive bias in the cockpit A deadly false sense of normality Sam OConnor (1).pdf** — 0.0162 (rrf) — _# 5. Discussion which is an interesting finding and supports much of the research it is” syndrom_
-29. **parasuraman-manzey-2010-complacency-and-bias-in-human-use-of-automation-an-attentional-integration.pdf** — 0.0161 (rrf) — _# Complacency and Bias in Human Use of Automation: An Attentional Integration - 402 discounting _
-30. **Hallihan_etal_DTM_12.pdf** — 0.0160 (rrf) — _Participant c onclusions participants were asked to evaluate, concluded that there was a signifi_
-31. **Hallihan_etal_DTM_12.pdf** — 0.0158 (rrf) — _research on design fixation (Hallihan & Shu, 2011) believe confirmation bias could prevent desig_
-32. **Clinical-decision-making--Cognitive-biases-and-heu_2025_The-American-Journal.pdf** — 0.0157 (rrf) — _## Uwe Dulleck, PhD framing bias (for de fi nitions of cognitive biases, see Supplementary Table_
-33. **Cognitive bias in the cockpit A deadly false sense of normality Sam OConnor (1).pdf** — 0.0155 (rrf) — _# 5. Discussion onset of plan continuation bias bias tends to occur towards the end of evidence _
-34. **Cognitive bias in the cockpit A deadly false sense of normality Sam OConnor (1).pdf** — 0.0155 (rrf) — _# Results d along with the results. occur during incidents and accidents? in the reports. ssocia_
-35. **The_Handbook_of_Evolutionary_Psychology.pdf** — 0.0155 (rrf) — _# Foreword xii F OREWORD ins ight which tapped deeper principles to show why something it is, as_
-36. **Cognitive bias in the cockpit A deadly false sense of normality Sam OConnor (1).pdf** — 0.0154 (rrf) — _# Acknowledgements First and foremost, I would like to thank my parents, Brenda and Kevin , who _
-37. **The_Handbook_of_Evolutionary_Psychology.pdf** — 0.0151 (rrf) — _## lIs sues in 156 F OUNDATIONS OF odds that the indirect methods of cognitive and social psycho_
-38. **Cognitive bias in the cockpit A deadly false sense of normality Sam OConnor (1).pdf** — 0.0151 (rrf) — _# 5. Discussion The biggest strength, but possibly also the biggest challenge to this study was _
-39. **Cognitive bias in the cockpit A deadly false sense of normality Sam OConnor (1).pdf** — 0.0149 (rrf) — _# 2. Literature Review From a flight crew perspective, the phenomen something either in the flig_
-40. **Cognitive_bias_in_the_verification_and_validation_of_space_flight_systems.pdf** — 0.0146 (rrf) — _# f Space Flight undesirable ones. These are precisely the condition induce a confirmation bias._
-41. **Cognitive bias in the cockpit A deadly false sense of normality Sam OConnor (1).pdf** — 0.0145 (rrf) — _# 2. Literature Review (NTSB, 2018) 2. 4.3 Confirmation bias Confirmation bias is defined people_
-42. **natesan-et-al-2016-cognitive-bias-in-usability-testing.pdf** — 0.0144 (rrf) — _## Types of Cognitive Biases Moderator Bias Experimenter Effect. The tendency for individuals to_
-43. **Cognitive bias in the cockpit A deadly false sense of normality Sam OConnor (1).pdf** — 0.0144 (rrf) — _# 5. Discussion lower flying experience does not necessari it was found to affect highly experie_
-44. **Bucinca et al. (2021) To Trust or to Think_Cognitive Forcing Functions Can Reduce Overreliance on AI in AI-assisted Decision-making.pdf** — 0.0142 (rrf) — _# 188 simulated AI always provided suggestions for replacing the ingredient highest in carbohydr_
-45. **Cognitive bias in the cockpit A deadly false sense of normality Sam OConnor (1).pdf** — 0.0141 (rrf) — _# 3. Methodology 4.1 Introduction This chapter examines the different characteristics associated_
-46. **Azzopardi (2021). Cognitive Biases in Search.pdf** — 0.0139 (rrf) — _# 4 DISCUSSION AND CRITICAL REFLECTION rather than maximisers ( HM9 , first acceptable result, r_
-47. **Romeo & Conti (2025) Exploring automation bias in human AI collaboration_a review and implications for explainable AI.pdf** — 0.0139 (rrf) — _# 4.2 Answering our RQs 4.2.1 RQ1: What are the causal or mediator factors of automation bias? A_
-48. **Muratat Influence of Cognitive Biases in Distorting Decision Making and.pdf** — 0.0138 (rrf) — _## Influence of Cognitive Biases in Distorting Decision Making and Leading to Critical Unfavorab_
-49. **Journal of Clinical Nursing - 2023 - Jala - Cognitive bias during clinical decision‐making and its influence on patient.pdf** — 0.0138 (rrf) — _# 3.4 \| Theme 2 measurement of cognitive bias | | ateness. The panel of expert was created to e_
-50. **Human expert performance in forensic decision making  Seven different sources of bias .pdf** — 0.0136 (rrf) — _# i cdecision are trained and try to look at every Xray, their experience tells them that there _
+1. **parasuraman-manzey-2010-complacency-and-bias-in-human-use-of-automation-an-attentional-integration.pdf** — 0.0305 (rrf) — _# Complacency and Bias in Human Use of Automation: An Attentional Integration 400 and management_
+2. **Cognitive bias in the cockpit A deadly false sense of normality Sam OConnor (1).pdf** — 0.0282 (rrf) — _# 6. Conclusion fter a gap in the research was discovered aimed to establish what the most commo_
+3. **Cognitive_bias_in_the_verification_and_validation_of_space_flight_systems.pdf** — 0.0264 (rrf) — _# f Space Flight the lander would go into a sleep mode during the Ma night, and wake up periodic_
+4. **Vicente & Matute (2023) Humans inherit artificial intelligence biases.pdf** — 0.0260 (rrf) — _# Experiment 3 e postexperimental questions in Experiment 3 were the same as in Experiment 2, bu_
+5. **Cognitive bias in the cockpit A deadly false sense of normality Sam OConnor (1).pdf** — 0.0254 (rrf) — _# 5. Discussion This study evolved over two years a concerning the concept of cognitive bias and_
+6. **Cognitive bias in the cockpit A deadly false sense of normality Sam OConnor (1).pdf** — 0.0253 (rrf) — _# 5. Discussion conditions (14 out of 25) finding, t he researcher disproportionately if a large_
+7. **Bucinca et al. (2021) To Trust or to Think_Cognitive Forcing Functions Can Reduce Overreliance on AI in AI-assisted Decision-making.pdf** — 0.0238 (rrf) — _# 188 task, the top performer of each batch was rewarded with a bonus of $3. Out of 260 particip_
+8. **natesan-et-al-2016-cognitive-bias-in-usability-testing.pdf** — 0.0234 (rrf) — _## Types of Cognitive Biases with?” vs. “What did you think of the material the device was made _
+9. **parasuraman-manzey-2010-complacency-and-bias-in-human-use-of-automation-an-attentional-integration.pdf** — 0.0228 (rrf) — _# Complacency and Bias in Human Use of Automation: An Attentional Integration conducting real AT_
+10. **cook-smallman-2008-human-factors-of-the-confirmation-bias-in-intelligence-analysis-decision-support-from-graphical.pdf** — 0.0228 (rrf) — _# Page 8 developed by Wason (1960, 1968). Rule certaintylaboratively participating and no real a_
+11. **Cognitive bias in the cockpit A deadly false sense of normality Sam OConnor (1).pdf** — 0.0204 (rrf) — _# 5. Discussion Regarding authority gradient, the analysis revealed that not all the reports inv_
+12. **Lyell Automation bias and verification complexity.pdf** — 0.0203 (rrf) — _## INTRODUCTION 51 which required subjects to view that varied between high and low accuracy. un_
+13. **parasuraman-manzey-2010-complacency-and-bias-in-human-use-of-automation-an-attentional-integration.pdf** — 0.0200 (rrf) — _# Complacency and Bias in Human Use of Automation: An Attentional Integration The underlying det_
+14. **Rastogi et al. (2022) Deciding fast and slow_The role of cognitive biases in AI-assisted decision-making.pdf** — 0.0200 (rrf) — _# 4 Anchoring bias Figure 2. Results of experiment 1. time allocations in experiment 1. answer u_
+15. **parasuraman-manzey-2010-complacency-and-bias-in-human-use-of-automation-an-attentional-integration.pdf** — 0.0193 (rrf) — _# Complacency and Bias in Human Use of Automation: An Attentional Integration - 402 discounting _
+16. **Azzopardi (2021). Cognitive Biases in Search.pdf** — 0.0181 (rrf) — _# 4 DISCUSSION AND CRITICAL REFLECTION | was deemed as not helpful. So, if a participant said it_
+17. **parasuraman-manzey-2010-complacency-and-bias-in-human-use-of-automation-an-attentional-integration.pdf** — 0.0179 (rrf) — _# Complacency and Bias in Human Use of Automation: An Attentional Integration regarded as compla_
+18. **parasuraman-manzey-2010-complacency-and-bias-in-human-use-of-automation-an-attentional-integration.pdf** — 0.0179 (rrf) — _# Complacency and Bias in Human Use of Automation: An Attentional Integration models.” R. Parasu_
+19. **parasuraman-manzey-2010-complacency-and-bias-in-human-use-of-automation-an-attentional-integration.pdf** — 0.0178 (rrf) — _# Complacency and Bias in Human Use of Automation: An Attentional Integration Factors Influencin_
+20. **natesan-et-al-2016-cognitive-bias-in-usability-testing.pdf** — 0.0178 (rrf) — _## Types of Cognitive Biases example, especially in focus groups, if some people respond to a qu_
+21. **parasuraman-manzey-2010-complacency-and-bias-in-human-use-of-automation-an-attentional-integration.pdf** — 0.0177 (rrf) — _# Complacency and Bias in Human Use of Automation: An Attentional Integration during a test sess_
+22. **Rastogi et al. (2022) Deciding fast and slow_The role of cognitive biases in AI-assisted decision-making.pdf** — 0.0177 (rrf) — _# 6 Discussion the task progresses, based on their interaction with the AI. Dynamic Markov model_
+23. **Vicente & Matute (2023) Humans inherit artificial intelligence biases.pdf** — 0.0176 (rrf) — _# Experiment 3 Experiment 3 tried to replicate the bias inheritance eect observed in Experiment _
+24. **Vicente & Matute (2023) Humans inherit artificial intelligence biases.pdf** — 0.0173 (rrf) — _# Experiment 1 Method. the methodology reported in this article and the experiments were conduct_
+25. **parasuraman-manzey-2010-complacency-and-bias-in-human-use-of-automation-an-attentional-integration.pdf** — 0.0172 (rrf) — _# Complacency and Bias in Human Use of Automation: An Attentional Integration Duley, Westerman, _
+26. **Cognitive bias in the cockpit A deadly false sense of normality Sam OConnor (1).pdf** — 0.0171 (rrf) — _# 5. Discussion which is an interesting finding and supports much of the research it is” syndrom_
+27. **parasuraman-manzey-2010-complacency-and-bias-in-human-use-of-automation-an-attentional-integration.pdf** — 0.0168 (rrf) — _# Complacency and Bias in Human Use of Automation: An Attentional Integration from relevant cock_
+28. **Vicente & Matute (2023) Humans inherit artificial intelligence biases.pdf** — 0.0167 (rrf) — _# General discussion explicitly present. us, AI biases could have the potential to propagate thr_
+29. **Romeo & Conti (2025) Exploring automation bias in human AI collaboration_a review and implications for explainable AI.pdf** — 0.0167 (rrf) — _# 4.2 Answering our RQs 4.2.1 RQ1: What are the causal or mediator factors of automation bias? A_
+30. **INCOSE International Symp - 2020 - McDermott - Addressing Cognitive Bias in Systems Engineering Teams.pdf** — 0.0166 (rrf) — _# , Leadership, At the start of this week’s meeting, before the saf his lack of involvement to t_
+31. **Cognitive bias in the cockpit A deadly false sense of normality Sam OConnor (1).pdf** — 0.0166 (rrf) — _# 3. Methodology over control of the bias could not always be collected. However, the reports an_
+32. **parasuraman-manzey-2010-complacency-and-bias-in-human-use-of-automation-an-attentional-integration.pdf** — 0.0164 (rrf) — _# Complacency and Bias in Human Use of Automation: An Attentional Integration A similar result e_
+33. **Bucinca et al. (2021) To Trust or to Think_Cognitive Forcing Functions Can Reduce Overreliance on AI in AI-assisted Decision-making.pdf** — 0.0162 (rrf) — _# 188 | the ingredient to replace and an ingredient to replace it with, each from a list that co_
+34. **Clinical-decision-making--Cognitive-biases-and-heu_2025_The-American-Journal.pdf** — 0.0162 (rrf) — _## Uwe Dulleck, PhD learnthroughpractice.AsDanielKahnemanarguesinhisbook Fast, and Slow , expert_
+35. **Cognitive_bias_in_the_verification_and_validation_of_space_flight_systems.pdf** — 0.0162 (rrf) — _# f Space Flight identified with near certainty the proximal cause o failure. In addition to elu_
+36. **parasuraman-manzey-2010-complacency-and-bias-in-human-use-of-automation-an-attentional-integration.pdf** — 0.0159 (rrf) — _# Complacency and Bias in Human Use of Automation: An Attentional Integration automation failure_
+37. **The_Handbook_of_Evolutionary_Psychology.pdf** — 0.0157 (rrf) — _## lIs sues in 156 F OUNDATIONS OF odds that the indirect methods of cognitive and social psycho_
+38. **Dimara et al. (2018). A Task-Based Taxonomy of Cognitive biases for information Visualization.pdf** — 0.0156 (rrf) — _## A Task-Based Taxonomy of Cognitive Biases for Information Visualization correct conclusions, _
+39. **Rastogi et al. (2022) Deciding fast and slow_The role of cognitive biases in AI-assisted decision-making.pdf** — 0.0154 (rrf) — _# 4 Anchoring bias Task and AI model. to predict whether a student would pass or fail a class, b_
+40. **Kinsey Cognitive Biases Within Decision Making During Fire Evacuations.pdf** — 0.0151 (rrf) — _M. Kinateder Received: 25 August 2017/ Abstract. During a fire evacuation, once an individual pe_
+41. **Greavu-Şerban et al. (2025) Exploring Heuristics and Biases in Cybersecurity_ A Factor Analysis of Social Engineering Vulnerabilities.pdf** — 0.0150 (rrf) — _# Appendix A. Survey Questionnaire • google.com • googl е .com • All of the above • None of the _
+42. **The_Handbook_of_Evolutionary_Psychology.pdf** — 0.0148 (rrf) — _# Foreword xii F OREWORD ins ight which tapped deeper principles to show why something it is, as_
+43. **Hallihan_etal_DTM_12.pdf** — 0.0147 (rrf) — _overconfidence in design is associated with no judgment arising from a reliance on confirmation _
+44. **Muratat Influence of Cognitive Biases in Distorting Decision Making and.pdf** — 0.0146 (rrf) — _## Influence of Cognitive Biases in Distorting Decision Making and Leading to Critical Unfavorab_
+45. **Muratat Influence of Cognitive Biases in Distorting Decision Making and.pdf** — 0.0145 (rrf) — _# Bias in Decision Making (DM) Safety 2015 , 1 our judgments by transferring our feelings or bel_
+46. **Hallihan_etal_DTM_12.pdf** — 0.0145 (rrf) — _disconfirming and 3 confirming 5.2.4. Results . The data collected from Problem 2 are seen in Ta_
+47. **Malberg et al. (2024) A comprehensive evaluation of cognitive biases in LLMs.pdf** — 0.0144 (rrf) — _# A Comprehensive Evaluation of Cognitive Biases in LLMs opinions when presented with new eviden_
+48. **Cognitive_bias_in_the_verification_and_validation_of_space_flight_systems.pdf** — 0.0141 (rrf) — _# f Space Flight Nevertheless, participants all believed they had so control over the operation _
+49. **natesan-et-al-2016-cognitive-bias-in-usability-testing.pdf** — 0.0140 (rrf) — _## Types of Cognitive Biases Moderator Bias Experimenter Effect. The tendency for individuals to_
+50. **The_Handbook_of_Evolutionary_Psychology.pdf** — 0.0140 (rrf) — _## a nd Prey | space of possible social goals is large and needs to be pared down before you de-_
 
 {
   "analysis_metadata": {
@@ -336,7 +315,7 @@ _ranker=rrf · t=0.04 · k=50 → 50 in context · 8192 ctx · emb 1.91s · gen 
       "Participant"
     ],
     "retrieved_corpus_support_used": true,
-    "analysis_scope_note": "Analyzed a single participant interview about four decisions made during a mine planning transition. Findings are limited to affirmative evidence of bias-specific mechanisms in the participant's reported reasoning."
+    "analysis_scope_note": "Analysis of a process safety engineer's retrospective reconstruction of a high-pressure reactor deviation and subsequent diagnostic, mitigation, and MOC decisions; focus on reasoning mechanisms rather than performance evaluation."
   },
   "identified_bias_summary": [
     {
@@ -344,15 +323,15 @@ _ranker=rrf · t=0.04 · k=50 → 50 in context · 8192 ctx · emb 1.91s · gen 
       "identified_occurrence_count": 1
     },
     {
-      "bias_label": "Fundamental attribution error",
+      "bias_label": "Authority bias",
       "identified_occurrence_count": 1
     },
     {
-      "bias_label": "Overconfidence bias",
+      "bias_label": "Group polarization",
       "identified_occurrence_count": 1
     },
     {
-      "bias_label": "Plan continuation bias",
+      "bias_label": "Status quo bias",
       "identified_occurrence_count": 1
     }
   ],
@@ -361,47 +340,43 @@ _ranker=rrf · t=0.04 · k=50 → 50 in context · 8192 ctx · emb 1.91s · gen 
       "occurrence_id": "obs_001",
       "classification_status": "identified",
       "confidence": "high",
-      "bias_label": "Plan continuation bias",
+      "bias_label": "Group polarization",
       "alternative_labels": [
-        "Plan continuation",
-        "Get-there-itis"
+        "Bandwagon effect",
+        "Social proof",
+        "Conformity bias"
       ],
       "taxonomy_status": "established_label",
-      "bias_definition": "A tendency to continue with an existing plan or course of action despite cues or conditions that suggest reconsideration or change.",
+      "bias_definition": "The tendency for discussion within a group to produce a position that is more extreme than the initial inclinations of individual group members.",
       "attributed_to_speaker": "Participant",
       "evidence_speaker": "Participant",
-      "decision_episode_label": "Initial hold-versus-continue decision after seismic alert",
-      "decision_point_description": "Whether to hold Panel 5 drilling and loading for the geotech team's requested 48-hour review or continue as scheduled.",
-      "affected_reasoning_operation": "Decision under uncertainty about whether to continue scheduled work after a ground-control cue.",
-      "bias_specific_mechanism": "The participant normalized the seismic and convergence signals as routine 'blips' and invoked the standard operating pattern as the default, leading to continuation of the existing plan rather than pausing or reducing advance.",
-      "manifestation_in_interview": "The participant described the signal as not unusual and said stopping the schedule would grind the operation to a halt, so the decision was to keep going.",
-      "effect_on_reasoning_or_decision": "Panel 5 drilling and loading proceeded as scheduled despite the geotech team's request for 48 hours to run a full analysis.",
+      "decision_episode_label": "Control-room discussion of pressure deviation",
+      "decision_point_description": "Whether to continue monitoring versus stopping or escalating the batch",
+      "affected_reasoning_operation": "Risk interpretation and escalation decision",
+      "bias_specific_mechanism": "The participant reports that the group discussion shifted him from uncertainty to confidence and that the shared group view became more confident than any individual had been before the discussion, indicating group-level amplification of an initial benign interpretation.",
+      "manifestation_in_interview": "The participant explicitly states that the room-level conversation shaped his interpretation and led him to adopt the shared benign sensor-drift frame.",
+      "effect_on_reasoning_or_decision": "The amplified benign interpretation led the participant and the room to continue monitoring rather than stopping the batch or escalating to the on-call plant manager.",
       "interview_evidence": [
         {
           "speaker": "Participant",
-          "verbatim_quote": "Honestly, that's just how we've always operated. A single seismic event with convergence a bit above average isn't unusual for that ground — we get blips like that periodically and the standard approach has always been to keep the cycle running unless something more definitive shows up. Stopping the schedule every time there's a minor signal would grind the whole panel transition to a halt, and that's not how we do things here.",
-          "evidence_explanation": "This shows reliance on normality and standard practice as the reason not to pause, despite the geotech team's request and the seismic/convergence cue."
+          "verbatim_quote": "And honestly, that conversation shaped things a lot. Someone said 'this looks like the same thing we saw in March,' and someone else agreed, and by the time I'd joined in, the feeling in the room was pretty settled — everyone was more confident it was benign than any one of us probably was on our own five minutes earlier.",
+          "evidence_explanation": "This directly describes a group discussion producing greater confidence than individual pre-discussion judgments, which is the core mechanism of group polarization."
         },
         {
           "speaker": "Participant",
-          "verbatim_quote": "It came up briefly, but going with the existing plan felt like the natural call given how things normally proceed.",
-          "evidence_explanation": "This further demonstrates that the existing plan was preferred because it matched perceived normal operations, even though a middle-ground option was available."
+          "verbatim_quote": "I remember thinking, going into that conversation, I wasn't sure, but coming out of it I felt fairly sure.",
+          "evidence_explanation": "This shows the participant's own judgment shifted from uncertainty toward confidence as a result of the group interaction."
+        },
+        {
+          "speaker": "Participant",
+          "verbatim_quote": "The shared read in the room was 'probably the same sensor issue,' and that's the frame I went with.",
+          "evidence_explanation": "This indicates that the group consensus became the decision frame for the participant's subsequent action."
         }
       ],
-      "correction_or_counterevidence": "The cue was not definitive at the time: there were no damage reports or visible ground distress. The participant also mentioned a reduced advance rate as a possible middle ground, indicating some consideration of alternatives.",
-      "retrieved_corpus_support_available": true,
-      "corpus_support_note": "Retrieved aviation cognitive-bias research identifies plan continuation as a bias in operational incidents and provides the closest corpus support for this mechanism.",
-      "corpus_evidence": [
-        {
-          "source_identifier": "Cognitive bias in the cockpit A deadly false sense of normality Sam OConnor (1).pdf",
-          "paper_title": null,
-          "authors": null,
-          "publication_year": null,
-          "retrieved_passage_or_finding": "The retrieved cockpit-study material discusses plan continuation as one of the cognitive biases identified in aviation operations, including the finding that continuation bias appears to occur during the latter stages of flight and in runway- excursion-related events.",
-          "mechanism_supported_by_source": "The source supports the concept of an operator continuing an existing plan despite emerging cues that might warrant reassessment.",
-          "relevance_to_this_occurrence": "Although the source is aviation-based, the participant describes an analogous mine-operations pattern of continuing a scheduled plan after a safety-relevant ground-control signal."
-        }
-      ]
+      "correction_or_counterevidence": "No explicit correction occurred during this episode; later calibration evidence weakened the drift explanation, but that was after the decision.",
+      "retrieved_corpus_support_available": false,
+      "corpus_support_note": "Retrieved corpus support was unavailable for this group-social mechanism; the label is used from general cognitive and social psychology.",
+      "corpus_evidence": []
     },
     {
       "occurrence_id": "obs_002",
@@ -409,184 +384,213 @@ _ranker=rrf · t=0.04 · k=50 → 50 in context · 8192 ctx · emb 1.91s · gen 
       "confidence": "high",
       "bias_label": "Anchoring and adjustment",
       "alternative_labels": [
-        "Anchoring",
-        "Anchoring bias"
+        "Anchoring heuristic",
+        "Insufficient adjustment"
       ],
       "taxonomy_status": "established_label",
-      "bias_definition": "The tendency to rely too heavily on an initial reference point or prior solution and to make insufficient adjustments for new information.",
+      "bias_definition": "The heuristic whereby people make estimates or judgments based on an initial value, prior case, or first impression, and then adjust insufficiently from that anchor in light of subsequent information.",
       "attributed_to_speaker": "Participant",
       "evidence_speaker": "Participant",
-      "decision_episode_label": "Panel 5 support pattern selection",
-      "decision_point_description": "Whether to reuse the Panel 3 support pattern or commission a new design for Panel 5.",
-      "affected_reasoning_operation": "Engineering design choice under differing ground conditions.",
-      "bias_specific_mechanism": "The participant used the previously successful Panel 3 support pattern as an anchor; although exploration data showed differing joint orientation and a fault splay, the participant made insufficient adjustment for those differences.",
-      "manifestation_in_interview": "The participant explicitly said Panel 3's success carried a lot of weight and was the deciding factor, even though the Panel 5 exploration data contained differences.",
-      "effect_on_reasoning_or_decision": "The participant specified the Panel 3 support pattern for Panel 5 despite known geotechnical differences.",
+      "decision_episode_label": "Post-relief root-cause diagnosis",
+      "decision_point_description": "Diagnosing the pressure excursion as sensor drift versus catalyst-lot kinetics",
+      "affected_reasoning_operation": "Causal diagnosis and attribution",
+      "bias_specific_mechanism": "The participant anchored on the previously observed sensor-drift pattern and did not sufficiently adjust for the new catalyst lot, which had not been used in those prior drift events.",
+      "manifestation_in_interview": "The participant acknowledges knowing the catalyst lot was new and differed from prior drift events, but reports that he did not weight that information heavily because the case resembled the earlier pattern.",
+      "effect_on_reasoning_or_decision": "The participant settled on the sensor-drift diagnosis without waiting for a full instrument and kinetics review, which influenced later restart and MOC decisions.",
       "interview_evidence": [
         {
           "speaker": "Participant",
-          "verbatim_quote": "I designed that pattern myself, and it performed well for the whole life of Panel 3. When you've got something with that track record, and Panel 5 looked like a similar rock mass to me, it's hard not to lean on what you know already works. The differences in the exploration data were there, but Panel 3's success carried a lot of weight in my head at that point.",
-          "evidence_explanation": "The previous design operates as an anchor: the participant acknowledges new exploration data but reports underweighting it relative to the prior successful pattern."
+          "verbatim_quote": "This batch was running a newer catalyst lot. Neither of the earlier drift events used that lot. I knew that going in, but I didn't weight it heavily. It looked enough like the earlier pattern that I was comfortable calling it drift without waiting on the fuller review.",
+          "evidence_explanation": "This explicitly describes an initial pattern anchor and insufficient adjustment for a distinguishing feature, namely the new catalyst lot."
         },
         {
           "speaker": "Participant",
-          "verbatim_quote": "I registered them, but my past experience with that pattern working out fine on a comparable-looking panel was really the deciding factor for me.",
-          "evidence_explanation": "This states directly that the prior pattern, not the Panel 5-specific data, was the deciding factor."
+          "verbatim_quote": "I concluded fairly quickly it was the same sensor drift pattern we'd seen before. It matched — same unit, same kind of gradual pressure creep, no temperature excursion.",
+          "evidence_explanation": "This shows the diagnosis was driven by similarity to the previously anchored cases rather than by a full analysis of the current case."
+        },
+        {
+          "speaker": "Participant",
+          "verbatim_quote": "I've been on this unit a long time, I've seen this signature before. It felt like a case I recognized rather than a case I needed to dig into further.",
+          "evidence_explanation": "This indicates the prior recognized pattern dominated the reasoning process."
         }
       ],
-      "correction_or_counterevidence": "The participant acknowledged the exploration data showing different joint orientation and a fault splay, and said that if Panel 5 had not looked visually similar to Panel 3 he likely would have pushed harder for a fresh design. This shows some awareness, but the similarity judgment still functioned as an anchor.",
+      "correction_or_counterevidence": "A partial calibration spot-check later showed the transmitter was actually within tolerance, undercutting the drift explanation; no independent review of the new catalyst lot's exotherm profile had been performed.",
       "retrieved_corpus_support_available": true,
-      "corpus_support_note": "Retrieved engineering verification and validation material describes anchoring and adjustment, including use of heritage designs in engineering.",
+      "corpus_support_note": "Retrieved passage from a space-flight verification and validation paper supports the anchoring and adjustment mechanism in engineering reasoning.",
       "corpus_evidence": [
         {
           "source_identifier": "Cognitive_bias_in_the_verification_and_validation_of_space_flight_systems.pdf",
-          "paper_title": null,
+          "paper_title": "Cognitive Bias in the Verification and Validation of Space Flight Systems",
           "authors": null,
           "publication_year": null,
-          "retrieved_passage_or_finding": "The retrieved material describes the anchoring and adjustment heuristic: people make estimates based on an initial answer and adjustments from that initial value are typically insufficient. It also notes this can be seen in engineering through the use of so-called heritage designs, where an initial known design dominates the development process.",
-          "mechanism_supported_by_source": "The source supports the mechanism of anchoring on a known prior design and insufficient adjustment to new information.",
-          "relevance_to_this_occurrence": "The participant anchored on the Panel 3 heritage support pattern and under-adjusted for Panel 5's joint orientation and fault splay."
+          "retrieved_passage_or_finding": "In brief, it has been observed people make estimates based on an initial answer, and adjustments from there based on additional information. Tversky and Kahneman put it, \u201cadjustments are typic insufficient.\u201d",
+          "mechanism_supported_by_source": "Anchoring on an initial value or prior answer, with subsequent adjustments that are typically insufficient.",
+          "relevance_to_this_occurrence": "The participant anchored on prior sensor-drift cases and did not sufficiently adjust for the new catalyst lot before diagnosing the current deviation."
         }
       ]
     },
     {
       "occurrence_id": "obs_003",
       "classification_status": "identified",
-      "confidence": "low",
-      "bias_label": "Fundamental attribution error",
+      "confidence": "moderate",
+      "bias_label": "Status quo bias",
       "alternative_labels": [
-        "Correspondence bias"
+        "Default bias",
+        "Preference for current state"
       ],
       "taxonomy_status": "established_label",
-      "bias_definition": "The tendency to over-attribute outcomes to an individual's disposition, choices, or actions and to under-attribute situational or environmental causes.",
+      "bias_definition": "The tendency to prefer the current or familiar state of affairs and to treat change or new options as riskier than they may be, even when evidence favors the alternative.",
       "attributed_to_speaker": "Participant",
       "evidence_speaker": "Participant",
-      "decision_episode_label": "Attribution of the Panel 5 fall of ground",
-      "decision_point_description": "How to attribute the fall of ground in the incident report.",
-      "affected_reasoning_operation": "Causal attribution of an incident.",
-      "bias_specific_mechanism": "The participant focused on the operator's positioning as the direct, controllable, and immediately available cause and underweighted the previous shift's elevated joint density flag and unsupported ground conditions.",
-      "manifestation_in_interview": "The participant said the operator was under an unsupported section of back and that this positioning was within the operator's control, so that is where he put the emphasis.",
-      "effect_on_reasoning_or_decision": "The incident report emphasized operator positioning rather than ground-control or joint-density factors.",
+      "decision_episode_label": "Mitigation decision after contractor review",
+      "decision_point_description": "Whether to add an automated high-pressure interlock trip or retain the manual response procedure",
+      "affected_reasoning_operation": "Risk-management choice between alternative mitigation strategies",
+      "bias_specific_mechanism": "The participant overweighted the familiarity and known-ness of the existing manual procedure and treated the new interlock as riskier because it was not yet proven locally, despite contractor data showing a narrower margin.",
+      "manifestation_in_interview": "The participant states that the known system defeating the new system felt like the safer bet and that he gave more weight to local unfamiliarity than to the margin data.",
+      "effect_on_reasoning_or_decision": "The participant recommended keeping the manual procedure, so the interlock was not added before restart.",
       "interview_evidence": [
         {
           "speaker": "Participant",
-          "verbatim_quote": "He was under an unsupported section of back when it came down, and that's a positioning call he makes every shift. That's the part of the incident that was directly within his control, so that's where I put the emphasis in the report.",
-          "evidence_explanation": "This shows dispositional attribution to the operator's choice, while the unsupported back and prior joint-density flag are situational factors that were underweighted."
+          "verbatim_quote": "I recommended keeping the manual procedure for this restart. The interlock wasn't something our operators had hands-on familiarity with, and introducing something new felt like it carried its own risk profile that we hadn't lived with yet. Our manual process, whatever its limits, was a known quantity.",
+          "evidence_explanation": "This expresses a preference for the existing procedure because it is known, while framing the new system as riskier due to unfamiliarity."
         },
         {
           "speaker": "Participant",
-          "verbatim_quote": "It was noted, but the more immediate explanation was where the loader was actually sitting at the time. That's the piece that was in front of me and easiest to point to.",
-          "evidence_explanation": "The salience of the operator's action led the participant to favor the human-error account over the geotechnical evidence."
+          "verbatim_quote": "I think I gave more weight to the fact that the interlock was unproven here specifically, on our unit, with our people. The margin reduction was real on paper, but it hadn't caused an actual failure yet either. The known system winning out over the new one felt like the safer bet.",
+          "evidence_explanation": "This shows the participant weighted familiarity over the contractor's margin data, a hallmark of status quo preference."
         }
       ],
-      "correction_or_counterevidence": "The participant acknowledged being less certain about this call and said there were two plausible explanations. The operator was in fact under an unsupported section of back, so the attribution was not without an evidentiary basis.",
+      "correction_or_counterevidence": "The plant manager later noted the interlock would have cost about one shift of downtime; no further excursions occurred, so the choice was not cleanly tested.",
       "retrieved_corpus_support_available": false,
-      "corpus_support_note": "Retrieved corpus support for this label was not available; the label is applied from general cognitive-science knowledge.",
+      "corpus_support_note": "Retrieved corpus support was unavailable for status quo bias; the label is used from general cognitive science.",
       "corpus_evidence": []
     },
     {
       "occurrence_id": "obs_004",
       "classification_status": "identified",
-      "confidence": "low",
-      "bias_label": "Overconfidence bias",
+      "confidence": "high",
+      "bias_label": "Authority bias",
       "alternative_labels": [
-        "Overconfidence effect"
+        "Credential bias",
+        "Halo effect",
+        "Expert over-reliance"
       ],
       "taxonomy_status": "established_label",
-      "bias_definition": "The tendency to hold subjective confidence in one's judgments or abilities that is greater than is justified by the available evidence.",
+      "bias_definition": "The tendency to assign greater accuracy or credibility to the judgment of an authority or high-status person even when objective evidence is absent, weak, or in conflict.",
       "attributed_to_speaker": "Participant",
       "evidence_speaker": "Participant",
-      "decision_episode_label": "Final go/no-go firing approval for Panel 5",
-      "decision_point_description": "Whether to approve firing the next ring immediately or wait for the full geotech review.",
-      "affected_reasoning_operation": "Risk judgment and decision to authorize blasting.",
-      "bias_specific_mechanism": "The participant relied on his personal track record and a concrete model threshold value to feel confident about managing any post-blast ground problems, while downplaying known limitations in the model inputs and the unresolved geotechnical review.",
-      "manifestation_in_interview": "The participant said the 1.42 model figure gave him something concrete and that his own track record made him comfortable saying go rather than waiting out the review.",
-      "effect_on_reasoning_or_decision": "The participant approved firing before the full geotech review, with known model and spalling caveats.",
+      "decision_episode_label": "MOC meeting closure decision",
+      "decision_point_description": "Whether to close the MOC despite the contractor's open catalyst-lot kinetics gap",
+      "affected_reasoning_operation": "Evaluation of conflicting recommendations and safety-critical closure",
+      "bias_specific_mechanism": "The participant accepted the senior engineer's sensor-drift judgment because of his tenure, commissioning-team membership, and safety record rather than because of new data; the participant explicitly says he would not give the same confidence to a less senior colleague.",
+      "manifestation_in_interview": "The participant sided with the senior engineer's experience over the contractor's written analysis without new numbers supporting the senior engineer's position.",
+      "effect_on_reasoning_or_decision": "The MOC was closed and restart proceeded without the kinetics review.",
       "interview_evidence": [
         {
           "speaker": "Participant",
-          "verbatim_quote": "It's a specific number, calculated from our stability model, and it cleared our standard threshold. That gave me something concrete to point to when the manager needed an answer. As for the spalling reports, minor spalling happens periodically in that ground and doesn't usually change the overall picture. On top of that, I've managed plenty of ground issues before — if something came up post-blast, I was confident we could respond and adjust support on the fly. That's part of why I felt comfortable saying go rather than waiting out the review.",
-          "evidence_explanation": "The participant expresses confidence in his ability to respond to future ground problems and uses the model number to justify approval, despite known gaps in the model and unresolved review."
+          "verbatim_quote": "I sided with the senior engineer's view. He's someone I've worked alongside for years, part of the original team that built this unit — that carries weight with me, knowing he's lived with this reactor longer than most people on-site.",
+          "evidence_explanation": "This shows the evaluation of the recommendation was based on the source's tenure and status rather than on the data."
         },
         {
           "speaker": "Participant",
-          "verbatim_quote": "Confident again on the firing approval, mostly because of the number and my own track record handling this kind of ground.",
-          "evidence_explanation": "This explicitly links the firing decision to the model number and personal track record, supporting the overconfidence mechanism."
+          "verbatim_quote": "And frankly, his overall safety record here is excellent, so when he says something lines up with his experience, I tend to trust that assessment even without new numbers behind it.",
+          "evidence_explanation": "This directly reports trusting the senior engineer's assessment without new data, which is the core authority-bias mechanism."
+        },
+        {
+          "speaker": "Participant",
+          "verbatim_quote": "Probably not with the same confidence, no.",
+          "evidence_explanation": "This admission, in response to whether a less senior colleague would have been accepted as readily, shows the confidence was status-contingent."
         }
       ],
-      "correction_or_counterevidence": "The participant acknowledged that the model used calibration parameters from Panel 3, the spalling reports were not in the model inputs, and the full geotech review was still 12 hours out. These limitations leave room for an alternative expert-judgment explanation under time pressure.",
+      "correction_or_counterevidence": "The contractor's written analysis flagged the catalyst-lot kinetics as an open gap and recommended keeping the MOC open; no new data had come in since the calibration check.",
       "retrieved_corpus_support_available": false,
-      "corpus_support_note": "Retrieved corpus support for this label was not available; the label is applied from general cognitive-science knowledge.",
+      "corpus_support_note": "Retrieved corpus support was unavailable for authority bias; the label is used from general cognitive science.",
       "corpus_evidence": []
     }
   ],
-  "candidate_biases": [],
+  "candidate_biases": [
+    {
+      "candidate_id": "cand_001",
+      "classification_status": "candidate",
+      "proposed_bias_label": "Overconfidence effect",
+      "alternative_labels": [
+        "Miscalibration",
+        "Overprecision"
+      ],
+      "taxonomy_status": "established_label",
+      "speaker_or_attributed_person": "Participant",
+      "possible_decision_episode_label": "Post-relief root-cause diagnosis",
+      "supporting_interview_quote": "Fairly confident, honestly. I've been on this unit a long time, I've seen this signature before. It felt like a case I recognized rather than a case I needed to dig into further.",
+      "plausible_mechanism": "Subjective confidence in the sensor-drift diagnosis may have exceeded the evidence available before a full review, especially given the new catalyst lot.",
+      "why_not_identified": "The transcript does not include a clear probability estimate or direct evidence of miscalibration at the time; stated confidence could reflect legitimate expert recognition, so it remains only a candidate."
+    }
+  ],
   "no_supported_biases_found": false,
   "limitations": [
-    "The analysis is based on retrospective self-report, so recall and post-hoc framing may influence the evidence.",
-    "Retrieved corpus support is strongest for aerospace/aviation contexts and is applied here by analogy to mining operations.",
-    "No objective decision benchmark is available; identified biases are inferred from mechanism-relevant statements rather than outcomes alone.",
-    "Time pressure, legitimate heuristics, and operational experience are present as plausible non-bias explanations for some decisions."
+    "Single-interview retrospective self-report; memory and knowledge of later outcomes may color recall.",
+    "Retrieved scientific corpus support was limited, especially for social, status quo, and authority mechanisms.",
+    "No objective behavioral or decision records were available to verify the reasoning mechanisms.",
+    "Several plausible biases overlap; labels were assigned conservatively to distinct episodes and mechanisms."
   ]
 }
 
 ## Sonnet Prompt 8192
 
-**Q1:** Interviewer: Thanks for making time for this. Just to confirm, this is a voluntary cognitive task analysis session — I'll ask about a specific incident from your work as Mine Planning Engineer, and there are no right or wrong answers. Are you okay with that? Participant: Yeah, that's fine. Happy to walk through it. Interviewer: Can you start by describing your role during the Panel 4 to Panel 5 transition? Participant: Sure. I own the extraction sequence and the stope firing schedule for that block. I coordinate with the geotech team on ground support design, and I'm the one who signs off before a ring gets loaded and fired. At the time, we were about six percent behind our quarterly tonnage target, so there was real pressure to keep the cycle moving from Panel 4 into Panel 5 without gaps. Interviewer: Give me an overview of what happened, start to finish. Participant: It started overnight — seismic monitoring picked up an event near the Panel 4 abutment, and convergence readings ticked up a bit above the trailing thirty-day average. Nothing dramatic, but the geotech team flagged it and said they'd want about forty-eight hours to run a full analysis. Problem was, Panel 5's first ring was already scheduled to be drilled and loaded that same shift. So that was decision one — do we hold, or keep going. We kept going. Then came the support design question for Panel 5. I'd actually designed the support pattern for Panel 3 myself, two years back, and it held up well — no major incidents there. Panel 5 looked similar on the face of it, so when the contractor asked whether to reuse that pattern or commission something new, I specified the Panel 3 pattern. There was exploration data showing different joint orientation in Panel 5 and a fault splay that Panel 3 didn't have, but the overall rock looked like the same family to me. A while after that, we had a fall of ground in the Panel 5 heading. No injuries, but it wrecked a loader bucket. The incident report noted the loader was sitting under an unsupported back at the time. There was also a log entry from the previous shift flagging elevated joint density in that exact section. The operator said he'd stayed inside the marked safe zone. I logged it mainly as a positioning issue on his part. Then the last piece — the updated stability model came back with a factor of safety of 1.42 for Panel 5, though it was still using calibration parameters from Panel 3. The scaling crew was also reporting some intermittent minor spalling that wasn't in the model inputs. The mine manager wanted a final go or no-go on firing the next ring, and the full geotech review was still about twelve hours out. I gave the go-ahead. Interviewer: Let's reconstruct that in order. What exactly did you know at the moment the seismic alert came in? Participant: Just the magnitude reading, the convergence trend, and the geotech team's request for more time. No damage reports, no visible ground distress reported by anyone underground at that point. Interviewer: And between that alert and the support design decision — what changed? Participant: Drilling for Panel 5 went ahead as scheduled. It was sometime after that a shift supervisor mentioned unusual jointing in the Panel 5 heading that hadn't been logged before — that came after I'd already committed to the pattern. Interviewer: Take me through the incident itself and what you had in front of you right before the final firing approval. Participant: Right before firing, I had the model's 1.42 figure, the scaling crew's spalling reports, and the manager pushing for an answer since the jumbo and support crew were both booked and costly to reshuffle. The full geotech write-up wasn't in yet. Interviewer: Back to that first call — why continue the schedule rather than pause for the review? Participant: Honestly, that's just how we've always operated. A single seismic event with convergence a bit above average isn't unusual for that ground — we get blips like that periodically and the standard approach has always been to keep the cycle running unless something more definitive shows up. Stopping the schedule every time there's a minor signal would grind the whole panel transition to a halt, and that's not how we do things here. Interviewer: Did you weigh the option of a reduced advance rate as a middle ground? Participant: It came up briefly, but going with the existing plan felt like the natural call given how things normally proceed. Interviewer: On the support pattern — walk me through what tipped it toward reusing the Panel 3 design. Participant: I designed that pattern myself, and it performed well for the whole life of Panel 3. When you've got something with that track record, and Panel 5 looked like a similar rock mass to me, it's hard not to lean on what you know already works. The differences in the exploration data were there, but Panel 3's success carried a lot of weight in my head at that point. Interviewer: Did the differing joint orientation and fault splay factor into the choice at all? Participant: I registered them, but my past experience with that pattern working out fine on a comparable-looking panel was really the deciding factor for me. Interviewer: On the fall of ground — what led you to attribute it mainly to the operator's positioning? Participant: He was under an unsupported section of back when it came down, and that's a positioning call he makes every shift. That's the part of the incident that was directly within his control, so that's where I put the emphasis in the report. Interviewer: The joint density flag from the previous shift — how did that factor in? Participant: It was noted, but the more immediate explanation was where the loader was actually sitting at the time. That's the piece that was in front of me and easiest to point to. Interviewer: And the final firing approval — what made the 1.42 figure sufficient to move forward? Participant: It's a specific number, calculated from our stability model, and it cleared our standard threshold. That gave me something concrete to point to when the manager needed an answer. As for the spalling reports, minor spalling happens periodically in that ground and doesn't usually change the overall picture. On top of that, I've managed plenty of ground issues before — if something came up post-blast, I was confident we could respond and adjust support on the fly. That's part of why I felt comfortable saying go rather than waiting out the review. Interviewer: How much time pressure did you feel across these four moments? Participant: Significant, especially by the last one. The jumbo and crew were booked, we were behind on tonnage, and the manager wanted a firm answer that day. Interviewer: How confident were you in each call at the time? Participant: Fairly confident on the schedule and support decisions. Less certain on the incident attribution — I knew there were two plausible explanations there. Confident again on the firing approval, mostly because of the number and my own track record handling this kind of ground. Interviewer: What would have needed to be different for you to decide differently at any of these points? Participant: If the full geotech review had come in before I had to commit, that would have changed things at more than one stage. Same if the model had been recalibrated specifically for Panel 5's rock mass rather than borrowing Panel 3's parameters. Interviewer: If Panel 5 hadn't looked visually similar to Panel 3, would the support decision have gone differently? Participant: Probably, yes. Without that resemblance I likely would have pushed harder for a fresh design straight away. Interviewer: Looking back, what single piece of information would have most changed your approach? Participant: Getting the geotech review completed before the firing decision, honestly. Everything else stemmed from having to act while that was still open. Interviewer: That's a good place to end. Thanks for walking through all of that in detail. Participant: No problem.
+**Q1:** **Interviewer:** Thanks for taking the time. Just to confirm — this is a cognitive task analysis interview, it's confidential, and I'll be asking you to reconstruct a specific incident in detail. There's no evaluation of your performance here, just your reasoning process. Can you start by telling me your role and roughly when this happened? **Participant:** Sure. I'm a process safety engineer at the site — I cover the batch nitration unit among others. This was about four months ago, night shift transition. I'd just come on when the trend started. **Interviewer:** Good. Before we get into the sequence, what was the operational objective that shift? **Participant:** Straightforward — get the batch through its exothermic hold step cleanly and into the next unit operation without deviation, so we could hand off a clean batch at shift change. Nothing unusual planned. **Interviewer:** Walk me through what first drew your attention to the reactor. **Participant:** The DCS trend. Pressure was running about eight percent above the expected curve for that stage of the hold. Temperature was fine, right in band, which is usually the first thing you check because if temperature's climbing too you're thinking runaway. It wasn't. So it read more like an instrumentation quirk than a reaction problem, at least on the surface. **Interviewer:** What did you do with that information? **Participant:** Well, by the time I'd pulled up the trend, the shift supervisor and two operators were already standing around the panel talking about it. And honestly, that conversation shaped things a lot. Someone said 'this looks like the same thing we saw in March,' and someone else agreed, and by the time I'd joined in, the feeling in the room was pretty settled — everyone was more confident it was benign than any one of us probably was on our own five minutes earlier. I remember thinking, going into that conversation, I wasn't sure, but coming out of it I felt fairly sure. We'd had two prior deviations like this, both chalked up to sensor drift, no incident either time. That history was doing a lot of work in the room. **Interviewer:** So what was the actual decision at that point — stop the batch, escalate, or continue? **Participant:** Continue monitoring. We didn't interrupt. Looking back, the alternative was to call an emergency hold pending manual inspection, or escalate straight to the on-call plant manager. I didn't push for either. The shared read in the room was 'probably the same sensor issue,' and that's the frame I went with. **Interviewer:** What happened next? **Participant:** Pressure kept climbing, slowly, over about twenty minutes. Eventually the relief valve lifted — you could hear it, a distinct pop — and then pressure fell back and reseated. No release beyond the relief line, nobody hurt. But at that point we genuinely didn't know if the batch chemistry itself was compromised. **Interviewer:** How did you move from 'we had a relief lift' to a root cause? **Participant:** I concluded fairly quickly it was the same sensor drift pattern we'd seen before. It matched — same unit, same kind of gradual pressure creep, no temperature excursion. A full instrument and kinetics review would've taken three to four hours, and that would blow past shift changeover, so there was real pressure to land on something workable. **Interviewer:** Did anything about this batch differ from the two prior 'drift' events? **Participant:** Yeah, actually — this batch was running a newer catalyst lot. Neither of the earlier drift events used that lot. I knew that going in, but I didn't weight it heavily. It looked enough like the earlier pattern that I was comfortable calling it drift without waiting on the fuller review. **Interviewer:** How confident were you in that diagnosis at the time? **Participant:** Fairly confident, honestly. I've been on this unit a long time, I've seen this signature before. It felt like a case I recognized rather than a case I needed to dig into further. **Interviewer:** What did you learn afterward that touched on that conclusion? **Participant:** A partial calibration spot-check later showed the transmitter was actually within tolerance. That undercuts the drift explanation somewhat. And nobody had gone back and independently reviewed the new catalyst lot's exotherm profile. So the diagnosis I'd settled on quickly was never really closed out on the chemistry side. **Interviewer:** Let's move to the mitigation decision. What options were in front of you? **Participant:** The external relief-system contractor reviewed the incident and came back with a data package showing our existing relief system had a narrower margin than we'd assumed, specifically for this catalyst lot. Their recommendation was to add an automated high-pressure interlock trip before restart. It's a system with a decent track record at two comparable plants. The alternative was keeping our current manual response procedure, which has run for years here without failure. **Interviewer:** What did you decide? **Participant:** I recommended keeping the manual procedure for this restart. The interlock wasn't something our operators had hands-on familiarity with, and introducing something new felt like it carried its own risk profile that we hadn't lived with yet. Our manual process, whatever its limits, was a known quantity. **Interviewer:** How did you weigh the contractor's margin data against that operational familiarity? **Participant:** I didn't dismiss the margin data, I just — I think I gave more weight to the fact that the interlock was unproven here specifically, on our unit, with our people. The margin reduction was real on paper, but it hadn't caused an actual failure yet either. The known system winning out over the new one felt like the safer bet. **Interviewer:** Any information afterward relevant to that call? **Participant:** The plant manager pointed out later that adding the interlock then would've cost about one shift of downtime, versus none for keeping status quo. And no further excursions happened for the rest of the campaign, so we never really got a clean test of whether the interlock would've mattered. **Interviewer:** Take me into the MOC meeting. Who was there and what was the disagreement? **Participant:** Myself, the senior process safety engineer — he was on the original commissioning team for this unit, well known across the plant for a strong safety record — and the contractor. The senior engineer backed my sensor-drift read, said it matched his experience with the unit over the years. The contractor's written analysis flagged the catalyst-lot kinetics as an open gap and recommended keeping the MOC open until that was resolved. No new data had come in since the calibration check. **Interviewer:** How did you resolve that? **Participant:** I sided with the senior engineer's view. He's someone I've worked alongside for years, part of the original team that built this unit — that carries weight with me, knowing he's lived with this reactor longer than most people on-site. And frankly, his overall safety record here is excellent, so when he says something lines up with his experience, I tend to trust that assessment even without new numbers behind it. The contractor's point was on paper, but it felt like an outside read compared to someone who's actually run this unit for fifteen years. **Interviewer:** What happened after the MOC closed? **Participant:** We restarted without the kinetics review. Production since then hasn't clearly proven or disproven that call either way. **Interviewer:** Looking back across the shift, where did time pressure weigh most heavily? **Participant:** Definitely the root cause call and the MOC closure — both had that shift-changeover clock running, and neither had a hard deadline forcing an answer, but it felt like there was one. **Interviewer:** If the contractor's report had arrived before the control-room discussion instead of after, do you think the outcome changes? **Participant:** Possibly. If that margin data had been sitting on the table before everyone converged on 'probably fine,' it might have slowed the room down. Order mattered more than I'd like to admit. **Interviewer:** If a less senior colleague had proposed the sensor-drift explanation in that MOC meeting, would you have accepted it as readily? **Participant:** Probably not with the same confidence, no. **Interviewer:** What would you do differently with a similar deviation on a new catalyst lot? **Participant:** Flag the lot change explicitly, early, before pattern-matching to prior events — treat it as its own case rather than assuming it inherits the old explanation.
 
-_ranker=rrf · t=0.04 · k=50 → 50 in context · 8192 ctx · emb 2.09s · gen 244.38s · total 248.8s_
+_ranker=rrf · t=0.04 · k=50 → 50 in context · 8192 ctx · emb 2.76s · gen 110.13s · total 115.4s_
 
 **Retrieved** (ranked by store ranker):
-1. **Cognitive bias in the cockpit A deadly false sense of normality Sam OConnor (1).pdf** — 0.0291 (rrf) — _# 6. Conclusion fter a gap in the research was discovered aimed to establish what the most commo_
-2. **Cognitive bias in the cockpit A deadly false sense of normality Sam OConnor (1).pdf** — 0.0285 (rrf) — _# 5. Discussion conditions (14 out of 25) finding, t he researcher disproportionately if a large_
-3. **Cognitive bias in the cockpit A deadly false sense of normality Sam OConnor (1).pdf** — 0.0282 (rrf) — _# 5. Discussion This study evolved over two years a concerning the concept of cognitive bias and_
-4. **Vicente & Matute (2023) Humans inherit artificial intelligence biases.pdf** — 0.0278 (rrf) — _# Experiment 3 e postexperimental questions in Experiment 3 were the same as in Experiment 2, bu_
-5. **Rastogi et al. (2022) Deciding fast and slow_The role of cognitive biases in AI-assisted decision-making.pdf** — 0.0267 (rrf) — _# 4 Anchoring bias Figure 2. Results of experiment 1. time allocations in experiment 1. answer u_
-6. **Cognitive bias in the cockpit A deadly false sense of normality Sam OConnor (1).pdf** — 0.0248 (rrf) — _# 5. Discussion Regarding authority gradient, the analysis revealed that not all the reports inv_
-7. **Cognitive_bias_in_the_verification_and_validation_of_space_flight_systems.pdf** — 0.0241 (rrf) — _# f Space Flight the lander would go into a sleep mode during the Ma night, and wake up periodic_
-8. **cook-smallman-2008-human-factors-of-the-confirmation-bias-in-intelligence-analysis-decision-support-from-graphical.pdf** — 0.0224 (rrf) — _# Page 8 developed by Wason (1960, 1968). Rule certaintylaboratively participating and no real a_
-9. **natesan-et-al-2016-cognitive-bias-in-usability-testing.pdf** — 0.0220 (rrf) — _## Types of Cognitive Biases with?” vs. “What did you think of the material the device was made _
-10. **Journal of Clinical Nursing - 2023 - Jala - Cognitive bias during clinical decision‐making and its influence on patient.pdf** — 0.0218 (rrf) — _# 3.4 \| Theme 2 measurement of cognitive bias answer - items were devised for each case. To str_
-11. **parasuraman-manzey-2010-complacency-and-bias-in-human-use-of-automation-an-attentional-integration.pdf** — 0.0202 (rrf) — _# Complacency and Bias in Human Use of Automation: An Attentional Integration 400 and management_
-12. **Azzopardi (2021). Cognitive Biases in Search.pdf** — 0.0195 (rrf) — _# 4 DISCUSSION AND CRITICAL REFLECTION | was deemed as not helpful. So, if a participant said it_
-13. **Rastogi et al. (2022) Deciding fast and slow_The role of cognitive biases in AI-assisted decision-making.pdf** — 0.0193 (rrf) — _# 6 Discussion the task progresses, based on their interaction with the AI. Dynamic Markov model_
-14. **Cognitive bias in the cockpit A deadly false sense of normality Sam OConnor (1).pdf** — 0.0192 (rrf) — _# 3. Methodology over control of the bias could not always be collected. However, the reports an_
-15. **natesan-et-al-2016-cognitive-bias-in-usability-testing.pdf** — 0.0181 (rrf) — _## Types of Cognitive Biases example, especially in focus groups, if some people respond to a qu_
-16. **Hallihan_etal_DTM_12.pdf** — 0.0180 (rrf) — _5.2.3. Measurement . Participants in the control group were instructed to use blank sheets of pa_
-17. **Lyell Automation bias and verification complexity.pdf** — 0.0178 (rrf) — _## INTRODUCTION 51 which required subjects to view that varied between high and low accuracy. un_
-18. **Cognitive bias in the cockpit A deadly false sense of normality Sam OConnor (1).pdf** — 0.0176 (rrf) — _# 5. Discussion however there was nothing to suggest that single bias affecting the flight crew._
-19. **Cognitive bias in the cockpit A deadly false sense of normality Sam OConnor (1).pdf** — 0.0175 (rrf) — _# 2. Literature Review changing environment may result in a loss of SA which can impact the deci_
-20. **INCOSE International Symp - 2020 - McDermott - Addressing Cognitive Bias in Systems Engineering Teams.pdf** — 0.0172 (rrf) — _# , Leadership, At the start of this week’s meeting, before the saf his lack of involvement to t_
-21. **Bucinca et al. (2021) To Trust or to Think_Cognitive Forcing Functions Can Reduce Overreliance on AI in AI-assisted Decision-making.pdf** — 0.0171 (rrf) — _# 188 task, the top performer of each batch was rewarded with a bonus of $3. Out of 260 particip_
-22. **Mitigating cognitive bias with clinical decision support systems  an experimental study.pdf** — 0.0170 (rrf) — _# support Student 52 female (69.3 %) 75 (72.8 %) 25.53 (SD = 5.02) 25 (range = 19–52) 4.57 (SD =_
-23. **Rastogi et al. (2022) Deciding fast and slow_The role of cognitive biases in AI-assisted decision-making.pdf** — 0.0170 (rrf) — _# 4 Anchoring bias Task and AI model. to predict whether a student would pass or fail a class, b_
-24. **Journal of Forensic Sciences - 2021 - Dror - Cognitive bias in forensic pathology decisions.pdf** — 0.0167 (rrf) — _# 4.3 \| Procedure FIGURE 3 With identical medical findings, the proportion of forensic patholog_
-25. **Hallihan_etal_DTM_12.pdf** — 0.0165 (rrf) — _5.1.3. Discussion . These results closely replicate the findings from earlier experiments on con_
-26. **Bucinca et al. (2021) To Trust or to Think_Cognitive Forcing Functions Can Reduce Overreliance on AI in AI-assisted Decision-making.pdf** — 0.0163 (rrf) — _# 188 | the ingredient to replace and an ingredient to replace it with, each from a list that co_
-27. **Kinsey Cognitive Biases Within Decision Making During Fire Evacuations.pdf** — 0.0162 (rrf) — _2. Do I need to take protective action? If the answer is ‘‘yes’’, then, the individual/group dec_
-28. **Cognitive bias in the cockpit A deadly false sense of normality Sam OConnor (1).pdf** — 0.0162 (rrf) — _# 5. Discussion which is an interesting finding and supports much of the research it is” syndrom_
-29. **parasuraman-manzey-2010-complacency-and-bias-in-human-use-of-automation-an-attentional-integration.pdf** — 0.0161 (rrf) — _# Complacency and Bias in Human Use of Automation: An Attentional Integration - 402 discounting _
-30. **Hallihan_etal_DTM_12.pdf** — 0.0160 (rrf) — _Participant c onclusions participants were asked to evaluate, concluded that there was a signifi_
-31. **Hallihan_etal_DTM_12.pdf** — 0.0158 (rrf) — _research on design fixation (Hallihan & Shu, 2011) believe confirmation bias could prevent desig_
-32. **Clinical-decision-making--Cognitive-biases-and-heu_2025_The-American-Journal.pdf** — 0.0157 (rrf) — _## Uwe Dulleck, PhD framing bias (for de fi nitions of cognitive biases, see Supplementary Table_
-33. **Cognitive bias in the cockpit A deadly false sense of normality Sam OConnor (1).pdf** — 0.0155 (rrf) — _# 5. Discussion onset of plan continuation bias bias tends to occur towards the end of evidence _
-34. **Cognitive bias in the cockpit A deadly false sense of normality Sam OConnor (1).pdf** — 0.0155 (rrf) — _# Results d along with the results. occur during incidents and accidents? in the reports. ssocia_
-35. **The_Handbook_of_Evolutionary_Psychology.pdf** — 0.0155 (rrf) — _# Foreword xii F OREWORD ins ight which tapped deeper principles to show why something it is, as_
-36. **Cognitive bias in the cockpit A deadly false sense of normality Sam OConnor (1).pdf** — 0.0154 (rrf) — _# Acknowledgements First and foremost, I would like to thank my parents, Brenda and Kevin , who _
-37. **The_Handbook_of_Evolutionary_Psychology.pdf** — 0.0151 (rrf) — _## lIs sues in 156 F OUNDATIONS OF odds that the indirect methods of cognitive and social psycho_
-38. **Cognitive bias in the cockpit A deadly false sense of normality Sam OConnor (1).pdf** — 0.0151 (rrf) — _# 5. Discussion The biggest strength, but possibly also the biggest challenge to this study was _
-39. **Cognitive bias in the cockpit A deadly false sense of normality Sam OConnor (1).pdf** — 0.0149 (rrf) — _# 2. Literature Review From a flight crew perspective, the phenomen something either in the flig_
-40. **Cognitive_bias_in_the_verification_and_validation_of_space_flight_systems.pdf** — 0.0146 (rrf) — _# f Space Flight undesirable ones. These are precisely the condition induce a confirmation bias._
-41. **Cognitive bias in the cockpit A deadly false sense of normality Sam OConnor (1).pdf** — 0.0145 (rrf) — _# 2. Literature Review (NTSB, 2018) 2. 4.3 Confirmation bias Confirmation bias is defined people_
-42. **natesan-et-al-2016-cognitive-bias-in-usability-testing.pdf** — 0.0144 (rrf) — _## Types of Cognitive Biases Moderator Bias Experimenter Effect. The tendency for individuals to_
-43. **Cognitive bias in the cockpit A deadly false sense of normality Sam OConnor (1).pdf** — 0.0144 (rrf) — _# 5. Discussion lower flying experience does not necessari it was found to affect highly experie_
-44. **Bucinca et al. (2021) To Trust or to Think_Cognitive Forcing Functions Can Reduce Overreliance on AI in AI-assisted Decision-making.pdf** — 0.0142 (rrf) — _# 188 simulated AI always provided suggestions for replacing the ingredient highest in carbohydr_
-45. **Cognitive bias in the cockpit A deadly false sense of normality Sam OConnor (1).pdf** — 0.0141 (rrf) — _# 3. Methodology 4.1 Introduction This chapter examines the different characteristics associated_
-46. **Azzopardi (2021). Cognitive Biases in Search.pdf** — 0.0139 (rrf) — _# 4 DISCUSSION AND CRITICAL REFLECTION rather than maximisers ( HM9 , first acceptable result, r_
-47. **Romeo & Conti (2025) Exploring automation bias in human AI collaboration_a review and implications for explainable AI.pdf** — 0.0139 (rrf) — _# 4.2 Answering our RQs 4.2.1 RQ1: What are the causal or mediator factors of automation bias? A_
-48. **Muratat Influence of Cognitive Biases in Distorting Decision Making and.pdf** — 0.0138 (rrf) — _## Influence of Cognitive Biases in Distorting Decision Making and Leading to Critical Unfavorab_
-49. **Journal of Clinical Nursing - 2023 - Jala - Cognitive bias during clinical decision‐making and its influence on patient.pdf** — 0.0138 (rrf) — _# 3.4 \| Theme 2 measurement of cognitive bias | | ateness. The panel of expert was created to e_
-50. **Human expert performance in forensic decision making  Seven different sources of bias .pdf** — 0.0136 (rrf) — _# i cdecision are trained and try to look at every Xray, their experience tells them that there _
+1. **parasuraman-manzey-2010-complacency-and-bias-in-human-use-of-automation-an-attentional-integration.pdf** — 0.0305 (rrf) — _# Complacency and Bias in Human Use of Automation: An Attentional Integration 400 and management_
+2. **Cognitive bias in the cockpit A deadly false sense of normality Sam OConnor (1).pdf** — 0.0282 (rrf) — _# 6. Conclusion fter a gap in the research was discovered aimed to establish what the most commo_
+3. **Cognitive_bias_in_the_verification_and_validation_of_space_flight_systems.pdf** — 0.0264 (rrf) — _# f Space Flight the lander would go into a sleep mode during the Ma night, and wake up periodic_
+4. **Vicente & Matute (2023) Humans inherit artificial intelligence biases.pdf** — 0.0260 (rrf) — _# Experiment 3 e postexperimental questions in Experiment 3 were the same as in Experiment 2, bu_
+5. **Cognitive bias in the cockpit A deadly false sense of normality Sam OConnor (1).pdf** — 0.0254 (rrf) — _# 5. Discussion This study evolved over two years a concerning the concept of cognitive bias and_
+6. **Cognitive bias in the cockpit A deadly false sense of normality Sam OConnor (1).pdf** — 0.0253 (rrf) — _# 5. Discussion conditions (14 out of 25) finding, t he researcher disproportionately if a large_
+7. **Bucinca et al. (2021) To Trust or to Think_Cognitive Forcing Functions Can Reduce Overreliance on AI in AI-assisted Decision-making.pdf** — 0.0238 (rrf) — _# 188 task, the top performer of each batch was rewarded with a bonus of $3. Out of 260 particip_
+8. **natesan-et-al-2016-cognitive-bias-in-usability-testing.pdf** — 0.0234 (rrf) — _## Types of Cognitive Biases with?” vs. “What did you think of the material the device was made _
+9. **parasuraman-manzey-2010-complacency-and-bias-in-human-use-of-automation-an-attentional-integration.pdf** — 0.0228 (rrf) — _# Complacency and Bias in Human Use of Automation: An Attentional Integration conducting real AT_
+10. **cook-smallman-2008-human-factors-of-the-confirmation-bias-in-intelligence-analysis-decision-support-from-graphical.pdf** — 0.0228 (rrf) — _# Page 8 developed by Wason (1960, 1968). Rule certaintylaboratively participating and no real a_
+11. **Cognitive bias in the cockpit A deadly false sense of normality Sam OConnor (1).pdf** — 0.0204 (rrf) — _# 5. Discussion Regarding authority gradient, the analysis revealed that not all the reports inv_
+12. **Lyell Automation bias and verification complexity.pdf** — 0.0203 (rrf) — _## INTRODUCTION 51 which required subjects to view that varied between high and low accuracy. un_
+13. **parasuraman-manzey-2010-complacency-and-bias-in-human-use-of-automation-an-attentional-integration.pdf** — 0.0200 (rrf) — _# Complacency and Bias in Human Use of Automation: An Attentional Integration The underlying det_
+14. **Rastogi et al. (2022) Deciding fast and slow_The role of cognitive biases in AI-assisted decision-making.pdf** — 0.0200 (rrf) — _# 4 Anchoring bias Figure 2. Results of experiment 1. time allocations in experiment 1. answer u_
+15. **parasuraman-manzey-2010-complacency-and-bias-in-human-use-of-automation-an-attentional-integration.pdf** — 0.0193 (rrf) — _# Complacency and Bias in Human Use of Automation: An Attentional Integration - 402 discounting _
+16. **Azzopardi (2021). Cognitive Biases in Search.pdf** — 0.0181 (rrf) — _# 4 DISCUSSION AND CRITICAL REFLECTION | was deemed as not helpful. So, if a participant said it_
+17. **parasuraman-manzey-2010-complacency-and-bias-in-human-use-of-automation-an-attentional-integration.pdf** — 0.0179 (rrf) — _# Complacency and Bias in Human Use of Automation: An Attentional Integration regarded as compla_
+18. **parasuraman-manzey-2010-complacency-and-bias-in-human-use-of-automation-an-attentional-integration.pdf** — 0.0179 (rrf) — _# Complacency and Bias in Human Use of Automation: An Attentional Integration models.” R. Parasu_
+19. **parasuraman-manzey-2010-complacency-and-bias-in-human-use-of-automation-an-attentional-integration.pdf** — 0.0178 (rrf) — _# Complacency and Bias in Human Use of Automation: An Attentional Integration Factors Influencin_
+20. **natesan-et-al-2016-cognitive-bias-in-usability-testing.pdf** — 0.0178 (rrf) — _## Types of Cognitive Biases example, especially in focus groups, if some people respond to a qu_
+21. **parasuraman-manzey-2010-complacency-and-bias-in-human-use-of-automation-an-attentional-integration.pdf** — 0.0177 (rrf) — _# Complacency and Bias in Human Use of Automation: An Attentional Integration during a test sess_
+22. **Rastogi et al. (2022) Deciding fast and slow_The role of cognitive biases in AI-assisted decision-making.pdf** — 0.0177 (rrf) — _# 6 Discussion the task progresses, based on their interaction with the AI. Dynamic Markov model_
+23. **Vicente & Matute (2023) Humans inherit artificial intelligence biases.pdf** — 0.0176 (rrf) — _# Experiment 3 Experiment 3 tried to replicate the bias inheritance eect observed in Experiment _
+24. **Vicente & Matute (2023) Humans inherit artificial intelligence biases.pdf** — 0.0173 (rrf) — _# Experiment 1 Method. the methodology reported in this article and the experiments were conduct_
+25. **parasuraman-manzey-2010-complacency-and-bias-in-human-use-of-automation-an-attentional-integration.pdf** — 0.0172 (rrf) — _# Complacency and Bias in Human Use of Automation: An Attentional Integration Duley, Westerman, _
+26. **Cognitive bias in the cockpit A deadly false sense of normality Sam OConnor (1).pdf** — 0.0171 (rrf) — _# 5. Discussion which is an interesting finding and supports much of the research it is” syndrom_
+27. **parasuraman-manzey-2010-complacency-and-bias-in-human-use-of-automation-an-attentional-integration.pdf** — 0.0168 (rrf) — _# Complacency and Bias in Human Use of Automation: An Attentional Integration from relevant cock_
+28. **Vicente & Matute (2023) Humans inherit artificial intelligence biases.pdf** — 0.0167 (rrf) — _# General discussion explicitly present. us, AI biases could have the potential to propagate thr_
+29. **Romeo & Conti (2025) Exploring automation bias in human AI collaboration_a review and implications for explainable AI.pdf** — 0.0167 (rrf) — _# 4.2 Answering our RQs 4.2.1 RQ1: What are the causal or mediator factors of automation bias? A_
+30. **INCOSE International Symp - 2020 - McDermott - Addressing Cognitive Bias in Systems Engineering Teams.pdf** — 0.0166 (rrf) — _# , Leadership, At the start of this week’s meeting, before the saf his lack of involvement to t_
+31. **Cognitive bias in the cockpit A deadly false sense of normality Sam OConnor (1).pdf** — 0.0166 (rrf) — _# 3. Methodology over control of the bias could not always be collected. However, the reports an_
+32. **parasuraman-manzey-2010-complacency-and-bias-in-human-use-of-automation-an-attentional-integration.pdf** — 0.0164 (rrf) — _# Complacency and Bias in Human Use of Automation: An Attentional Integration A similar result e_
+33. **Bucinca et al. (2021) To Trust or to Think_Cognitive Forcing Functions Can Reduce Overreliance on AI in AI-assisted Decision-making.pdf** — 0.0162 (rrf) — _# 188 | the ingredient to replace and an ingredient to replace it with, each from a list that co_
+34. **Clinical-decision-making--Cognitive-biases-and-heu_2025_The-American-Journal.pdf** — 0.0162 (rrf) — _## Uwe Dulleck, PhD learnthroughpractice.AsDanielKahnemanarguesinhisbook Fast, and Slow , expert_
+35. **Cognitive_bias_in_the_verification_and_validation_of_space_flight_systems.pdf** — 0.0162 (rrf) — _# f Space Flight identified with near certainty the proximal cause o failure. In addition to elu_
+36. **parasuraman-manzey-2010-complacency-and-bias-in-human-use-of-automation-an-attentional-integration.pdf** — 0.0159 (rrf) — _# Complacency and Bias in Human Use of Automation: An Attentional Integration automation failure_
+37. **The_Handbook_of_Evolutionary_Psychology.pdf** — 0.0157 (rrf) — _## lIs sues in 156 F OUNDATIONS OF odds that the indirect methods of cognitive and social psycho_
+38. **Dimara et al. (2018). A Task-Based Taxonomy of Cognitive biases for information Visualization.pdf** — 0.0156 (rrf) — _## A Task-Based Taxonomy of Cognitive Biases for Information Visualization correct conclusions, _
+39. **Rastogi et al. (2022) Deciding fast and slow_The role of cognitive biases in AI-assisted decision-making.pdf** — 0.0154 (rrf) — _# 4 Anchoring bias Task and AI model. to predict whether a student would pass or fail a class, b_
+40. **Kinsey Cognitive Biases Within Decision Making During Fire Evacuations.pdf** — 0.0151 (rrf) — _M. Kinateder Received: 25 August 2017/ Abstract. During a fire evacuation, once an individual pe_
+41. **Greavu-Şerban et al. (2025) Exploring Heuristics and Biases in Cybersecurity_ A Factor Analysis of Social Engineering Vulnerabilities.pdf** — 0.0150 (rrf) — _# Appendix A. Survey Questionnaire • google.com • googl е .com • All of the above • None of the _
+42. **The_Handbook_of_Evolutionary_Psychology.pdf** — 0.0148 (rrf) — _# Foreword xii F OREWORD ins ight which tapped deeper principles to show why something it is, as_
+43. **Hallihan_etal_DTM_12.pdf** — 0.0147 (rrf) — _overconfidence in design is associated with no judgment arising from a reliance on confirmation _
+44. **Muratat Influence of Cognitive Biases in Distorting Decision Making and.pdf** — 0.0146 (rrf) — _## Influence of Cognitive Biases in Distorting Decision Making and Leading to Critical Unfavorab_
+45. **Muratat Influence of Cognitive Biases in Distorting Decision Making and.pdf** — 0.0145 (rrf) — _# Bias in Decision Making (DM) Safety 2015 , 1 our judgments by transferring our feelings or bel_
+46. **Hallihan_etal_DTM_12.pdf** — 0.0145 (rrf) — _disconfirming and 3 confirming 5.2.4. Results . The data collected from Problem 2 are seen in Ta_
+47. **Malberg et al. (2024) A comprehensive evaluation of cognitive biases in LLMs.pdf** — 0.0144 (rrf) — _# A Comprehensive Evaluation of Cognitive Biases in LLMs opinions when presented with new eviden_
+48. **Cognitive_bias_in_the_verification_and_validation_of_space_flight_systems.pdf** — 0.0141 (rrf) — _# f Space Flight Nevertheless, participants all believed they had so control over the operation _
+49. **natesan-et-al-2016-cognitive-bias-in-usability-testing.pdf** — 0.0140 (rrf) — _## Types of Cognitive Biases Moderator Bias Experimenter Effect. The tendency for individuals to_
+50. **The_Handbook_of_Evolutionary_Psychology.pdf** — 0.0140 (rrf) — _## a nd Prey | space of possible social goals is large and needs to be pared down before you de-_
 
 {
   "analysis_metadata": {
@@ -595,24 +599,24 @@ _ranker=rrf · t=0.04 · k=50 → 50 in context · 8192 ctx · emb 2.09s · gen 
       "Interviewer",
       "Participant"
     ],
-    "retrieved_corpus_support_used": true,
-    "analysis_scope_note": "Analysis treats the interview as self-contained and classifies only transcript-evinced bias-specific mechanisms. Retrieved passages support labels conceptually; they do not establish that a bias occurred."
+    "retrieved_corpus_support_used": false,
+    "analysis_scope_note": "Conservative mechanism-first analysis of a single CTA interview for cognitive, social-influence, and decision biases; no experimental condition or expected bias count assumed."
   },
   "identified_bias_summary": [
     {
-      "bias_label": "anchoring and adjustment bias",
+      "bias_label": "authority bias",
       "identified_occurrence_count": 1
     },
     {
-      "bias_label": "availability heuristic",
+      "bias_label": "confirmation bias",
       "identified_occurrence_count": 1
     },
     {
-      "bias_label": "overconfidence bias",
+      "bias_label": "social proof",
       "identified_occurrence_count": 1
     },
     {
-      "bias_label": "plan continuation bias",
+      "bias_label": "status quo bias",
       "identified_occurrence_count": 1
     }
   ],
@@ -620,183 +624,155 @@ _ranker=rrf · t=0.04 · k=50 → 50 in context · 8192 ctx · emb 2.09s · gen 
     {
       "occurrence_id": "obs_001",
       "classification_status": "identified",
-      "confidence": "moderate",
-      "bias_label": "plan continuation bias",
+      "confidence": "high",
+      "bias_label": "social proof",
       "alternative_labels": [
-        "continuation bias"
+        "conformity",
+        "consensus heuristic",
+        "bandwagon effect"
       ],
       "taxonomy_status": "established_label",
-      "bias_definition": "The tendency to continue a planned course of action even when new information or changed conditions suggest that the plan should be reassessed or paused.",
+      "bias_definition": "A social-influence heuristic in which a person adopts or strengthens a belief because others in the group appear to hold it, increasing confidence beyond what the individual evidence would support.",
       "attributed_to_speaker": "Participant",
       "evidence_speaker": "Participant",
-      "decision_episode_label": "Panel 4 to Panel 5 transition schedule decision after seismic alert",
-      "decision_point_description": "Decision whether to hold the Panel 5 first-ring drilling/loading for geotechnical review or continue as scheduled.",
-      "affected_reasoning_operation": "Go/no-hold decision under changed risk information",
-      "bias_specific_mechanism": "The participant treated the seismic event and above-average convergence as normal ground behavior and relied on the standard practice of continuing the scheduled cycle unless something more definitive appeared. This led him to continue the existing plan rather than actively reassessing it after the geotechnical team requested more time.",
-      "manifestation_in_interview": "The participant initially framed the choice as 'do we hold, or keep going' and reported that the team kept going. He later explained that such signals were usual and that continuing was the standard approach. A middle-ground reduced-advance option was considered only briefly.",
-      "effect_on_reasoning_or_decision": "The original Panel 5 drilling and loading schedule continued before the geotechnical review was complete, preserving the planned sequence and avoiding immediate delay, but also leaving an unresolved ground-risk question open.",
+      "decision_episode_label": "Control-room discussion about abnormal reactor pressure",
+      "decision_point_description": "Choosing to continue monitoring rather than stopping or escalating after the group converged on a benign sensor-issue explanation.",
+      "affected_reasoning_operation": "Risk interpretation and initial deviation triage",
+      "bias_specific_mechanism": "Informational social influence/consensus heuristic: observing agreement among the supervisor and operators transformed the participant's uncertainty into confidence and led him to adopt the group's frame as his own.",
+      "manifestation_in_interview": "The participant described entering the discussion unsure, but after others labeled the pattern as the same March event and agreed, he came out feeling fairly sure it was benign. He then explicitly used the shared read as his decision frame.",
+      "effect_on_reasoning_or_decision": "The group's shared confidence caused the participant to frame the deviation as probably the same sensor issue and choose continued monitoring rather than interrupting the batch, escalating, or calling for manual inspection.",
       "interview_evidence": [
         {
           "speaker": "Participant",
-          "verbatim_quote": "So that was decision one — do we hold, or keep going. We kept going.",
-          "evidence_explanation": "This establishes the decision point and the continuation of the existing plan."
+          "verbatim_quote": "And honestly, that conversation shaped things a lot. Someone said 'this looks like the same thing we saw in March,' and someone else agreed, and by the time I'd joined in, the feeling in the room was pretty settled — everyone was more confident it was benign than any one of us probably was on our own five minutes earlier. I remember thinking, going into that conversation, I wasn't sure, but coming out of it I felt fairly sure.",
+          "evidence_explanation": "This explicitly attributes the shift from uncertainty to confidence to the group's agreement rather than to new technical data or independent verification."
         },
         {
           "speaker": "Participant",
-          "verbatim_quote": "Honestly, that's just how we've always operated. A single seismic event with convergence a bit above average isn't unusual for that ground — we get blips like that periodically and the standard approach has always been to keep the cycle running unless something more definitive shows up.",
-          "evidence_explanation": "This directly exposes the mechanism: the signal was interpreted as normal based on prior operating practice, and the existing plan was continued."
-        },
-        {
-          "speaker": "Participant",
-          "verbatim_quote": "It came up briefly, but going with the existing plan felt like the natural call given how things normally proceed.",
-          "evidence_explanation": "This shows even a middle-ground option was subordinated to the naturalness of the existing plan."
+          "verbatim_quote": "The shared read in the room was 'probably the same sensor issue,' and that's the frame I went with.",
+          "evidence_explanation": "Shows that the group consensus became the participant's operative diagnosis and decision frame."
         }
       ],
-      "correction_or_counterevidence": "A legitimate operational concern was present: stopping for every minor signal could halt the panel transition. The geotechnical team's 48-hour request was also an explicit warning against simply continuing. The participant acknowledged no damage reports or visible underground distress at that time, so the continuation decision was not based purely on objective evidence of immediate danger.",
-      "retrieved_corpus_support_available": true,
-      "corpus_support_note": "Retrieved support comes from an aviation safety study, so the label is transferred cautiously to a mining planning decision.",
-      "corpus_evidence": [
-        {
-          "source_identifier": "Cognitive bias in the cockpit A deadly false sense of normality Sam OConnor (1).pdf",
-          "paper_title": null,
-          "authors": null,
-          "publication_year": null,
-          "retrieved_passage_or_finding": "continuation bias, in that it appears to occur in frequently during runway excursions on landing, after longer duties and at the latter stages of flight.",
-          "mechanism_supported_by_source": "The source treats plan continuation as a recognized safety-critical bias in which operators continue a planned operation despite indicators that may warrant reassessment.",
-          "relevance_to_this_occurrence": "The participant's decision to keep the Panel 5 schedule moving after the seismic/convergence alert fits the same plan-continuation pattern: the existing plan dominated despite a new signal that could have triggered a pause or reanalysis."
-        }
-      ]
+      "correction_or_counterevidence": "No contemporaneous dissent or debiasing was reported; the participant later acknowledged that if the contractor's margin data had arrived before the control-room discussion, it might have slowed the room down.",
+      "retrieved_corpus_support_available": false,
+      "corpus_support_note": "No retrieved passage supplied a clear, usable definition or mechanistic account for social proof/conformity; the label is assigned from general cognitive-science knowledge and no corpus citation is given.",
+      "corpus_evidence": []
     },
     {
       "occurrence_id": "obs_002",
       "classification_status": "identified",
       "confidence": "high",
-      "bias_label": "anchoring and adjustment bias",
+      "bias_label": "confirmation bias",
       "alternative_labels": [
-        "anchoring bias",
-        "anchoring-and-adjustment heuristic"
+        "confirmatory bias",
+        "hypothesis confirmation"
       ],
       "taxonomy_status": "established_label",
-      "bias_definition": "The tendency to rely heavily on an initial reference value or prior solution and to make insufficient adjustment when later or differing information becomes available.",
+      "bias_definition": "The tendency to seek, interpret, or weight information in ways that support an existing hypothesis while underweighting or neglecting disconfirming information.",
       "attributed_to_speaker": "Participant",
       "evidence_speaker": "Participant",
-      "decision_episode_label": "Panel 5 support pattern selection",
-      "decision_point_description": "Decision whether to reuse the Panel 3 support design or commission a new design for Panel 5.",
-      "affected_reasoning_operation": "Engineering design selection based on prior success versus new site-specific data",
-      "bias_specific_mechanism": "The participant anchored on the successful Panel 3 support pattern, which he had personally designed, and treated it as the default for Panel 5. Although exploration data showed different joint orientation and a fault splay, these differences were registered but insufficiently adjusted for because the prior design's track record dominated his judgment.",
-      "manifestation_in_interview": "The participant explicitly reported reusing the Panel 3 pattern despite Panel 5 data differences. He stated that Panel 3's success 'carried a lot of weight' and that past experience with that pattern on a comparable-looking panel was the deciding factor.",
-      "effect_on_reasoning_or_decision": "Panel 5 received the Panel 3 support pattern rather than a site-specific design, even though the exploration data suggested materially different structural conditions.",
+      "decision_episode_label": "Post-relief-valve root-cause diagnosis",
+      "decision_point_description": "Diagnosing the pressure excursion as sensor drift rather than initiating a fuller instrument and kinetics review.",
+      "affected_reasoning_operation": "Diagnostic hypothesis evaluation and evidence weighting",
+      "bias_specific_mechanism": "Pattern-matching to prior events and treating the new catalyst lot as a minor detail; the participant selectively weighted confirmatory similarity and underweighted a specific disconfirming difference.",
+      "manifestation_in_interview": "The participant concluded quickly that it was the same sensor-drift pattern because it matched prior events on unit and gradual pressure creep, despite knowing the batch used a new catalyst lot that prior drift events did not use.",
+      "effect_on_reasoning_or_decision": "Produced premature diagnostic closure on sensor drift, so a full kinetics review was not pursued and the catalyst-lot gap remained open.",
       "interview_evidence": [
         {
           "speaker": "Participant",
-          "verbatim_quote": "I'd actually designed the support pattern for Panel 3 myself, two years back, and it held up well — no major incidents there. Panel 5 looked similar on the face of it, so when the contractor asked whether to reuse that pattern or commission something new, I specified the Panel 3 pattern. There was exploration data showing different joint orientation in Panel 5 and a fault splay that Panel 3 didn't have, but the overall rock looked like the same family to me.",
-          "evidence_explanation": "The quote shows the prior design serving as the initial solution and the differing data being acknowledged but overridden by surface similarity and past success."
+          "verbatim_quote": "I concluded fairly quickly it was the same sensor drift pattern we'd seen before. It matched — same unit, same kind of gradual pressure creep, no temperature excursion.",
+          "evidence_explanation": "The participant treats similarity to prior events as sufficient to confirm the drift hypothesis, illustrating confirmatory pattern matching."
         },
         {
           "speaker": "Participant",
-          "verbatim_quote": "I designed that pattern myself, and it performed well for the whole life of Panel 3. When you've got something with that track record, and Panel 5 looked like a similar rock mass to me, it's hard not to lean on what you know already works. The differences in the exploration data were there, but Panel 3's success carried a lot of weight in my head at that point.",
-          "evidence_explanation": "This directly demonstrates the anchoring-and-adjustment mechanism: the prior successful design was the overwhelmingly weighted initial reference, and the new differences were not given sufficient adjustment."
-        },
-        {
-          "speaker": "Participant",
-          "verbatim_quote": "I registered them, but my past experience with that pattern working out fine on a comparable-looking panel was really the deciding factor for me.",
-          "evidence_explanation": "This confirms that the prior design, not the Panel 5-specific data, drove the decision."
+          "verbatim_quote": "Yeah, actually — this batch was running a newer catalyst lot. Neither of the earlier drift events used that lot. I knew that going in, but I didn't weight it heavily. It looked enough like the earlier pattern that I was comfortable calling it drift without waiting on the fuller review.",
+          "evidence_explanation": "Explicitly acknowledges a disconfirming difference and states it was not weighted heavily, a core feature of confirmation bias in evidence evaluation."
         }
       ],
-      "correction_or_counterevidence": "The participant did register the differing joint orientation and fault splay, and he acknowledged that if Panel 5 had not looked visually similar to Panel 3 he would probably have pushed for a fresh design. This shows some sensitivity to differentiating data, but that sensitivity did not govern the actual choice.",
-      "retrieved_corpus_support_available": true,
-      "corpus_support_note": "Retrieved support from an engineering systems paper explicitly discusses anchoring and adjustment in heritage design contexts, making it directly relevant to this reuse of a prior support pattern.",
-      "corpus_evidence": [
-        {
-          "source_identifier": "Cognitive_bias_in_the_verification_and_validation_of_space_flight_systems.pdf",
-          "paper_title": null,
-          "authors": null,
-          "publication_year": null,
-          "retrieved_passage_or_finding": "The anchoring and adjustment heuristic was described Tversky and Kahneman in 1974 ... people make estimates based on an initial answer, a adjustments from there based on additional informat Tversky and Kahneman put it, “adjustments are typic insufficient.” ... One arena in engineering where this can be seen is in the use of socalled “heritage” ... the initial people have in mind when they first consider a prob dominate the entire development process.",
-          "mechanism_supported_by_source": "The source states that a prior or heritage design can become the initial anchor in engineering reasoning and can dominate later decisions even when additional information should prompt larger adjustment.",
-          "relevance_to_this_occurrence": "The Panel 3 support pattern functioned as the heritage anchor for Panel 5, and the participant's own description shows only limited adjustment for Panel 5-specific exploration data."
-        }
-      ]
+      "correction_or_counterevidence": "A later partial calibration spot-check showed the transmitter was within tolerance, undercutting the drift explanation, and no one independently reviewed the new catalyst lot's exotherm profile.",
+      "retrieved_corpus_support_available": false,
+      "corpus_support_note": "Retrieved passages mentioned confirmation bias only in a sparse or garbled form lacking a usable definition or mechanism; the label is assigned from general cognitive-science knowledge.",
+      "corpus_evidence": []
     },
     {
       "occurrence_id": "obs_003",
       "classification_status": "identified",
-      "confidence": "moderate",
-      "bias_label": "availability heuristic",
+      "confidence": "high",
+      "bias_label": "status quo bias",
       "alternative_labels": [
-        "salience bias",
-        "availability bias"
+        "default bias",
+        "familiarity preference"
       ],
       "taxonomy_status": "established_label",
-      "bias_definition": "The tendency to judge a cause, likelihood, or importance of something by how easily an example or explanation comes to mind or by how salient and concrete it is.",
+      "bias_definition": "Preference for the current or familiar state, with risks and costs of change overweighted relative to risks of maintaining the status quo.",
       "attributed_to_speaker": "Participant",
       "evidence_speaker": "Participant",
-      "decision_episode_label": "Causal attribution of Panel 5 fall of ground",
-      "decision_point_description": "Attributing the fall-of-ground incident mainly to loader positioning rather than to the elevated joint density flagged in the previous shift.",
-      "affected_reasoning_operation": "Causal attribution and incident-report judgment",
-      "bias_specific_mechanism": "The participant selected the most immediate, concrete, and personally controllable cause: the loader sitting under an unsupported back. This salient explanation displaced the less immediate but relevant ground-condition signal, the previous shift's elevated joint density flag. He stated the selected cause was 'easiest to point to.'",
-      "manifestation_in_interview": "When asked why he attributed the fall mainly to operator positioning, the participant emphasized the operator's immediate position and controllability. He acknowledged the joint-density flag but said the loader position was the more immediate explanation and the piece that was in front of him.",
-      "effect_on_reasoning_or_decision": "The incident was logged mainly as an operator positioning issue, downplaying the possible contribution of adverse ground conditions that had been flagged before the fall.",
+      "decision_episode_label": "Selection of restart mitigation approach",
+      "decision_point_description": "Recommending the existing manual response procedure rather than adding the contractor-recommended automated high-pressure interlock before restart.",
+      "affected_reasoning_operation": "Risk evaluation and option selection",
+      "bias_specific_mechanism": "Status quo preference: the known manual procedure was judged safer because it was familiar, while the new interlock was discounted as unproven on this unit even though margin data favored it.",
+      "manifestation_in_interview": "The participant acknowledged the margin reduction was real on paper but gave more weight to the interlock being unfamiliar here; the known system winning out felt like the safer bet.",
+      "effect_on_reasoning_or_decision": "The restart proceeded with the manual procedure and no automated interlock, despite contractor data showing a narrower relief margin for this catalyst lot.",
       "interview_evidence": [
         {
           "speaker": "Participant",
-          "verbatim_quote": "He was under an unsupported section of back when it came down, and that's a positioning call he makes every shift. That's the part of the incident that was directly within his control, so that's where I put the emphasis in the report.",
-          "evidence_explanation": "This shows the causal emphasis being placed on the salient, human-controlled explanation rather than on equally plausible ground-condition evidence."
+          "verbatim_quote": "I recommended keeping the manual procedure for this restart. The interlock wasn't something our operators had hands-on familiarity with, and introducing something new felt like it carried its own risk profile that we hadn't lived with yet. Our manual process, whatever its limits, was a known quantity.",
+          "evidence_explanation": "Choice is justified primarily by familiarity with the existing system and lack of familiarity with the new one, rather than by a comparative risk analysis."
         },
         {
           "speaker": "Participant",
-          "verbatim_quote": "It was noted, but the more immediate explanation was where the loader was actually sitting at the time. That's the piece that was in front of me and easiest to point to.",
-          "evidence_explanation": "This explicitly invokes ease and immediacy as the basis for selecting the causal explanation, which is the core availability/salience mechanism."
+          "verbatim_quote": "I didn't dismiss the margin data, I just — I think I gave more weight to the fact that the interlock was unproven here specifically, on our unit, with our people. The margin reduction was real on paper, but it hadn't caused an actual failure yet either. The known system winning out over the new one felt like the safer bet.",
+          "evidence_explanation": "Explicitly describes overweighting unfamiliarity and change risk while relying on current-state familiarity, a hallmark of status quo bias."
         }
       ],
-      "correction_or_counterevidence": "The participant also acknowledged uncertainty about the incident attribution, stating there were two plausible explanations. The previous-shift joint-density flag was present in the record, and the operator reported staying inside the marked safe zone, which provides a competing non-bias explanation for the participant's later reflection but not for the salience-based emphasis in the report.",
+      "correction_or_counterevidence": "The contractor's data package showed a narrower relief margin specifically for this catalyst lot and recommended an interlock; the participant acknowledged the margin reduction was real but did not act on it. Later, no further excursions occurred, so the decision was not cleanly tested.",
       "retrieved_corpus_support_available": false,
-      "corpus_support_note": "No retrieved corpus passage specifically supported the availability heuristic. The label is a widely established cognitive-science label from general knowledge and is grounded in the transcript evidence.",
+      "corpus_support_note": "No retrieved passage directly addressed status quo bias or provided a usable mechanistic account; classification uses general cognitive-science knowledge without a corpus citation.",
       "corpus_evidence": []
     },
     {
       "occurrence_id": "obs_004",
       "classification_status": "identified",
-      "confidence": "moderate",
-      "bias_label": "overconfidence bias",
+      "confidence": "high",
+      "bias_label": "authority bias",
       "alternative_labels": [
-        "overconfidence effect",
-        "optimism bias"
+        "halo effect",
+        "source-credibility bias"
       ],
       "taxonomy_status": "established_label",
-      "bias_definition": "The tendency for a person's subjective confidence in their judgment, ability, or future success to exceed what the available evidence or objective accuracy warrants.",
+      "bias_definition": "Tendency to assign greater credibility to an opinion or claim because of the source's seniority, authority, or status, independent of the supporting evidence.",
       "attributed_to_speaker": "Participant",
       "evidence_speaker": "Participant",
-      "decision_episode_label": "Final Panel 5 firing approval",
-      "decision_point_description": "Final go/no-go decision on firing the next ring while the full geotechnical review was still about twelve hours out.",
-      "affected_reasoning_operation": "Risk evaluation and final firing authorization",
-      "bias_specific_mechanism": "The participant used his own track record of managing ground issues to conclude that any post-blast problem could be managed reactively. This inflated confidence, combined with a concrete numerical safety factor from a model known to have stale Panel 3 calibration parameters and to omit the spalling reports, led him to proceed rather than wait for the full geotechnical review.",
-      "manifestation_in_interview": "The participant reported having the 1.42 model figure, the spalling reports, and manager pressure, with the full geotech review still outstanding. He stated that his past experience and confidence in adjusting support on the fly contributed to feeling comfortable saying go.",
-      "effect_on_reasoning_or_decision": "The participant gave the go-ahead before the full geotechnical review or a Panel 5-specific recalibrated model was available, even though spalling reports were not included in the model inputs.",
+      "decision_episode_label": "MOC meeting disagreement over sensor-drift closure",
+      "decision_point_description": "Siding with the senior process safety engineer's experience-based sensor-drift view over the contractor's written analysis that identified the catalyst-lot kinetics gap.",
+      "affected_reasoning_operation": "Evaluation of conflicting technical judgments",
+      "bias_specific_mechanism": "Source-credibility/authority heuristic: the senior engineer's long tenure, original commissioning role, and strong overall safety record were used as a proxy for correctness on the specific sensor-drift claim, despite no new supporting data.",
+      "manifestation_in_interview": "The participant stated that the senior engineer's experience and excellent safety record carry weight, leading him to trust the assessment without new numbers, while the contractor's analysis felt like an outside read.",
+      "effect_on_reasoning_or_decision": "The MOC was closed without resolving the catalyst-lot kinetics gap, and restart proceeded without the kinetics review.",
       "interview_evidence": [
         {
           "speaker": "Participant",
-          "verbatim_quote": "It's a specific number, calculated from our stability model, and it cleared our standard threshold. That gave me something concrete to point to when the manager needed an answer.",
-          "evidence_explanation": "This shows the decision weight being placed on a concrete numerical output, despite the model's known limitations, creating a basis for excessive confidence."
+          "verbatim_quote": "I sided with the senior engineer's view. He's someone I've worked alongside for years, part of the original team that built this unit — that carries weight with me, knowing he's lived with this reactor longer than most people on-site. And frankly, his overall safety record here is excellent, so when he says something lines up with his experience, I tend to trust that assessment even without new numbers behind it.",
+          "evidence_explanation": "Demonstrates that the decision was driven by the source's seniority, history, and general reputation rather than new evidence specific to the claim."
         },
         {
           "speaker": "Participant",
-          "verbatim_quote": "On top of that, I've managed plenty of ground issues before — if something came up post-blast, I was confident we could respond and adjust support on the fly. That's part of why I felt comfortable saying go rather than waiting out the review.",
-          "evidence_explanation": "This directly demonstrates the overconfidence mechanism: confidence in his own adaptive ability, rather than resolution of the current uncertainty, justified proceeding."
+          "verbatim_quote": "Probably not with the same confidence, no.",
+          "evidence_explanation": "In response to the interviewer's question about a less senior colleague proposing the same explanation, this confirms that acceptance depends on the proposer's seniority and status, not only on technical content."
         }
       ],
-      "correction_or_counterevidence": "The participant acknowledged that a completed geotechnical review before the firing decision, or a model recalibrated specifically for Panel 5, would have changed his decision. This shows the decision rested partly on unresolved material information rather than fully resolved safety evidence.",
+      "correction_or_counterevidence": "The contractor's written analysis flagged the catalyst-lot kinetics as an open gap and recommended keeping the MOC open until resolved; no new data had arrived after the calibration check.",
       "retrieved_corpus_support_available": false,
-      "corpus_support_note": "No retrieved corpus passage specifically supported overconfidence bias. The label is a widely established cognitive-science label from general knowledge and is grounded in the transcript evidence.",
+      "corpus_support_note": "No retrieved passage provided a usable definition or mechanistic account for authority bias; the label is assigned from general cognitive-science knowledge without a corpus citation.",
       "corpus_evidence": []
     }
   ],
   "candidate_biases": [],
   "no_supported_biases_found": false,
   "limitations": [
-    "Retrieved corpus passages were sparse and drawn mainly from aviation, spaceflight, and AI-assisted decision contexts, so some labels were transferred cautiously to a mining planning decision.",
-    "The analysis relies on a single participant's retrospective self-report without independent verification of ground conditions, model adequacy, or the exact operational constraints.",
-    "Some labels, such as availability heuristic and overconfidence bias, lacked direct retrieved corpus support and rest on established general-knowledge classification plus transcript evidence."
+    "Retrieved corpus passages were mostly sparse or OCR-damaged and did not provide directly usable definitions or mechanism-level support for any identified occurrence; classification for these specific labels therefore relies on general cognitive-science knowledge.",
+    "The analysis relies on a single participant's retrospective self-report, so cognitive mechanisms are inferred from described reasoning and confidence shifts rather than direct behavioral observation.",
+    "No independent confirmation of the group discussion, MOC disagreement, or decision outcomes was available within the transcript."
   ]
 }
 

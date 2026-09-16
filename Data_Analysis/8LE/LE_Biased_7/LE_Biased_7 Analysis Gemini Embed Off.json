@@ -1,0 +1,672 @@
+{
+  "evaluation_metadata": {
+    "task": "ontology_free_rag_cognitive_bias_benchmark_evaluation",
+    "benchmark_run_metadata": {
+      "benchmark_run_id": "LE_Biased_7_Gemini_off",
+      "interview_id": "LE_Biased_7",
+      "system_prompt_id": "Gemini",
+      "system_prompt_generator": "Prompt 1_2",
+      "rag_model_id": "v1.0.0",
+      "corpus_condition": "off",
+      "retrieval_configuration_id": "k=0",
+      "decoding_configuration_id": "null",
+      "temperature": 1,
+      "replicate_id": "null",
+      "segment_map_id": null
+    },
+    "scenario_id": "LE_Biased_7",
+    "domain_id": "LE",
+    "condition": "biased",
+    "segment_map_status": "prevalidated_provided",
+    "rag_output_parse_status": "valid_json",
+    "rag_schema_assessment": "conformant"
+  },
+  "input_validation": {
+    "rag_output_schema_violations": [],
+    "rag_summary_count_consistency": {
+      "status": "consistent",
+      "details": "The identified_bias_summary counts equal the five identified occurrences: anchoring bias 1, confirmation bias 3, and escalation of commitment 1. The candidate is separately listed and is not included in the identified total."
+    },
+    "evaluation_limitations": [
+      "No retrieved chunks, source passages, or retrieval logs were supplied, so corpus fidelity is not scored.",
+      "The RAG output uses broad or near-neighbor labels, so strict label matching understates the mechanisms it captured.",
+      "The interview is self-reported and contains plausible non-bias explanations for some decisions, as acknowledged by the RAG output."
+    ]
+  },
+  "evaluation_segment_map": {
+    "segment_mapping_version": "1.0",
+    "segments": [
+      {
+        "segment_id": "dp1",
+        "speaker": "Participant",
+        "segment_type": "decision_point",
+        "raw_interview_anchor": "Initial scene-log note and walkthrough order after patrol briefing",
+        "eligible_reasoning_segment": true,
+        "ground_truth_bias_present": true,
+        "ground_truth_instance_ids": ["CB_01"],
+        "ground_truth_rationale": "Patrol's fall history and framing were adopted before an independent walkthrough, shaping the opening hypothesis and search order."
+      },
+      {
+        "segment_id": "dp2",
+        "speaker": "Participant",
+        "segment_type": "decision_point",
+        "raw_interview_anchor": "Documentation allocation between walker/stairs, absent drag marks, and arm bruise",
+        "eligible_reasoning_segment": true,
+        "ground_truth_bias_present": true,
+        "ground_truth_instance_ids": ["FPE_01", "CB2_01"],
+        "ground_truth_rationale": "The salient walker was weighted over absent drag marks, and documentation rigor differed between fall-consistent geometry and the unexplained bruise."
+      },
+      {
+        "segment_id": "dp3",
+        "speaker": "Participant",
+        "segment_type": "decision_point",
+        "raw_interview_anchor": "Family medication account, neighbor statement, and fluent fall narrative",
+        "eligible_reasoning_segment": true,
+        "ground_truth_bias_present": true,
+        "ground_truth_instance_ids": ["CB2_02", "COH_01"],
+        "ground_truth_rationale": "The family account received less corroboration than the neighbor account, and the unexplained bruise was absorbed into a fluent fall story without independent testing."
+      },
+      {
+        "segment_id": "dp4",
+        "speaker": "Participant",
+        "segment_type": "decision_point",
+        "raw_interview_anchor": "Detective call, omitted bruise hedge, and lividity interpretation during final body check",
+        "eligible_reasoning_segment": true,
+        "ground_truth_bias_present": true,
+        "ground_truth_instance_ids": ["REC_01", "CD_01"],
+        "ground_truth_rationale": "The recent detective call displaced earlier hedge language, and prior verbal commitment led the CSI to rationalize contradictory lividity."
+      }
+    ]
+  },
+  "segment_level_adjudications": [
+    {
+      "segment_id": "dp1",
+      "ground_truth_status": "positive",
+      "ground_truth_instance_ids": ["CB_01"],
+      "rag_identified_occurrence_ids": ["obs_001"],
+      "rag_candidate_ids_counted_at_fourth_threshold": [],
+      "rag_detected_bias_in_segment_by_threshold": {
+        "high_only": false,
+        "high_and_moderate": false,
+        "all_identified_confidence_levels": true,
+        "all_confidence_and_candidates": true
+      },
+      "sdt_outcome_by_threshold": {
+        "high_only": "miss",
+        "high_and_moderate": "miss",
+        "all_identified_confidence_levels": "hit",
+        "all_confidence_and_candidates": "hit"
+      },
+      "localization_basis": "obs_001 quotes the participant's initial scene framing and walkthrough order, which are the mapped dp1 evidence span.",
+      "adjudication_note": "The finding is correctly localized and mechanismally captures the pre-walkthrough patrol framing, but it is low confidence and uses anchoring bias rather than the hidden Contextual Bias label."
+    },
+    {
+      "segment_id": "dp2",
+      "ground_truth_status": "positive",
+      "ground_truth_instance_ids": ["FPE_01", "CB2_01"],
+      "rag_identified_occurrence_ids": ["obs_002"],
+      "rag_candidate_ids_counted_at_fourth_threshold": [],
+      "rag_detected_bias_in_segment_by_threshold": {
+        "high_only": false,
+        "high_and_moderate": true,
+        "all_identified_confidence_levels": true,
+        "all_confidence_and_candidates": true
+      },
+      "sdt_outcome_by_threshold": {
+        "high_only": "miss",
+        "high_and_moderate": "hit",
+        "all_identified_confidence_levels": "hit",
+        "all_confidence_and_candidates": "hit"
+      },
+      "localization_basis": "obs_002 uses valid quotes about the absent drag marks, overturned walker, and cursory bruise documentation within the dp2 documentation episode.",
+      "adjudication_note": "The occurrence is assigned to CB2_01 under one-to-one matching because its primary mechanism is unequal physical-evidence documentation rigor; its presence-versus-absence discussion is insufficient to create a second match to FPE_01."
+    },
+    {
+      "segment_id": "dp3",
+      "ground_truth_status": "positive",
+      "ground_truth_instance_ids": ["CB2_02", "COH_01"],
+      "rag_identified_occurrence_ids": ["obs_003", "obs_004"],
+      "rag_candidate_ids_counted_at_fourth_threshold": [],
+      "rag_detected_bias_in_segment_by_threshold": {
+        "high_only": false,
+        "high_and_moderate": true,
+        "all_identified_confidence_levels": true,
+        "all_confidence_and_candidates": true
+      },
+      "sdt_outcome_by_threshold": {
+        "high_only": "miss",
+        "high_and_moderate": "hit",
+        "all_identified_confidence_levels": "hit",
+        "all_confidence_and_candidates": "hit"
+      },
+      "localization_basis": "obs_003 addresses the family-versus-neighbor corroboration episode and obs_004 addresses the bruise's integration into the fall narrative, both in dp3.",
+      "adjudication_note": "obs_003 is low confidence; obs_004 is moderate confidence. Both are correctly localized and provide full mechanisms for their assigned hidden instances, but both use confirmation bias as the primary label."
+    },
+    {
+      "segment_id": "dp4",
+      "ground_truth_status": "positive",
+      "ground_truth_instance_ids": ["REC_01", "CD_01"],
+      "rag_identified_occurrence_ids": ["obs_005"],
+      "rag_candidate_ids_counted_at_fourth_threshold": ["cand_001"],
+      "rag_detected_bias_in_segment_by_threshold": {
+        "high_only": true,
+        "high_and_moderate": true,
+        "all_identified_confidence_levels": true,
+        "all_confidence_and_candidates": true
+      },
+      "sdt_outcome_by_threshold": {
+        "high_only": "hit",
+        "high_and_moderate": "hit",
+        "all_identified_confidence_levels": "hit",
+        "all_confidence_and_candidates": "hit"
+      },
+      "localization_basis": "obs_005 and cand_001 use valid evidence from the detective-call and final-lividity episode mapped to dp4.",
+      "adjudication_note": "obs_005 captures the prior-commitment minimization mechanism for CD_01. cand_001 is a related but insufficient social-proof explanation and adds no new segment hit."
+    }
+  ],
+  "instance_level_adjudications": [
+    {
+      "hidden_instance_id": "CB_01",
+      "hidden_target_bias_label": "Contextual Bias",
+      "hidden_decision_or_episode": "Initial scene framing and scene-log entry",
+      "hidden_mechanism": "Adoption of patrol's fall framing as the initial interpretive lens prior to independent observation.",
+      "matched_finding_by_threshold": {
+        "high_only": {"matched_id": null, "matched_type": "none"},
+        "high_and_moderate": {"matched_id": null, "matched_type": "none"},
+        "all_identified_confidence_levels": {"matched_id": "obs_001", "matched_type": "identified"},
+        "all_confidence_and_candidates": {"matched_id": "obs_001", "matched_type": "identified"}
+      },
+      "rag_predicted_bias_label": "anchoring bias",
+      "rag_confidence": "low",
+      "label_equivalence_result": "near_neighbor_label",
+      "localization_match_type": "exact_quote_match",
+      "mechanism_overlap": "full_mechanism_match",
+      "strict_scorecard_outcome_by_threshold": {
+        "high_only": "false_negative",
+        "high_and_moderate": "false_negative",
+        "all_identified_confidence_levels": "false_negative",
+        "all_confidence_and_candidates": "false_negative"
+      },
+      "mechanism_first_scorecard_outcome_by_threshold": {
+        "high_only": "false_negative",
+        "high_and_moderate": "false_negative",
+        "all_identified_confidence_levels": "true_positive",
+        "all_confidence_and_candidates": "true_positive"
+      },
+      "secondary_diagnostic_outcome": "correct_location_wrong_bias_label",
+      "label_equivalence_explanation": "Anchoring bias is a near-neighbor construct for the same initial-framing episode, but it is not an approved equivalent of the hidden Contextual Bias label.",
+      "mechanism_overlap_explanation": "The finding explicitly describes patrol's early fall interpretation being adopted before an independent walkthrough and shaping the search order.",
+      "evidence_fidelity_assessment": "The quoted scene-log and walkthrough statements are materially faithful to the interview."
+    },
+    {
+      "hidden_instance_id": "FPE_01",
+      "hidden_target_bias_label": "Feature positive effect",
+      "hidden_decision_or_episode": "Walker and staircase evidence weighting",
+      "hidden_mechanism": "Overweighting of a salient present cue, the walker, relative to the absent expected cue of drag marks.",
+      "matched_finding_by_threshold": {
+        "high_only": {"matched_id": null, "matched_type": "none"},
+        "high_and_moderate": {"matched_id": null, "matched_type": "none"},
+        "all_identified_confidence_levels": {"matched_id": null, "matched_type": "none"},
+        "all_confidence_and_candidates": {"matched_id": null, "matched_type": "none"}
+      },
+      "rag_predicted_bias_label": null,
+      "rag_confidence": null,
+      "label_equivalence_result": "no_prediction",
+      "localization_match_type": "no_prediction",
+      "mechanism_overlap": "no_prediction",
+      "strict_scorecard_outcome_by_threshold": {
+        "high_only": "false_negative",
+        "high_and_moderate": "false_negative",
+        "all_identified_confidence_levels": "false_negative",
+        "all_confidence_and_candidates": "false_negative"
+      },
+      "mechanism_first_scorecard_outcome_by_threshold": {
+        "high_only": "false_negative",
+        "high_and_moderate": "false_negative",
+        "all_identified_confidence_levels": "false_negative",
+        "all_confidence_and_candidates": "false_negative"
+      },
+      "secondary_diagnostic_outcome": "no_matching_prediction",
+      "label_equivalence_explanation": "No RAG finding was matched to the hidden feature-positive mechanism after one-to-one matching assigned obs_002 to the more direct physical-documentation asymmetry instance CB2_01.",
+      "mechanism_overlap_explanation": "obs_002 mentions absent drag marks, but it is not separately matchable because one finding cannot receive credit for both hidden dp2 instances.",
+      "evidence_fidelity_assessment": "No prediction to assess."
+    },
+    {
+      "hidden_instance_id": "CB2_01",
+      "hidden_target_bias_label": "Confirmation Bias and Asymmetrical skepticism",
+      "hidden_decision_or_episode": "Physical-evidence documentation allocation",
+      "hidden_mechanism": "Unequal documentation rigor applied to physical evidence based on fit with the working hypothesis.",
+      "matched_finding_by_threshold": {
+        "high_only": {"matched_id": null, "matched_type": "none"},
+        "high_and_moderate": {"matched_id": "obs_002", "matched_type": "identified"},
+        "all_identified_confidence_levels": {"matched_id": "obs_002", "matched_type": "identified"},
+        "all_confidence_and_candidates": {"matched_id": "obs_002", "matched_type": "identified"}
+      },
+      "rag_predicted_bias_label": "confirmation bias",
+      "rag_confidence": "moderate",
+      "label_equivalence_result": "near_neighbor_label",
+      "localization_match_type": "exact_quote_match",
+      "mechanism_overlap": "full_mechanism_match",
+      "strict_scorecard_outcome_by_threshold": {
+        "high_only": "false_negative",
+        "high_and_moderate": "false_negative",
+        "all_identified_confidence_levels": "false_negative",
+        "all_confidence_and_candidates": "false_negative"
+      },
+      "mechanism_first_scorecard_outcome_by_threshold": {
+        "high_only": "false_negative",
+        "high_and_moderate": "true_positive",
+        "all_identified_confidence_levels": "true_positive",
+        "all_confidence_and_candidates": "true_positive"
+      },
+      "secondary_diagnostic_outcome": "correct_location_wrong_bias_label",
+      "label_equivalence_explanation": "Confirmation bias is closely related and captures the hypothesis-consistent direction, but the hidden target explicitly requires the named asymmetrical-skepticism construct for this physical-evidence episode.",
+      "mechanism_overlap_explanation": "obs_002 directly contrasts detailed walker/stair documentation with cursory bruise documentation and the dismissal of absent marks.",
+      "evidence_fidelity_assessment": "The quoted physical-documentation evidence is valid and materially faithful."
+    },
+    {
+      "hidden_instance_id": "CB2_02",
+      "hidden_target_bias_label": "Confirmation Bias and Asymmetrical skepticism",
+      "hidden_decision_or_episode": "Differential corroboration of family and neighbor statements",
+      "hidden_mechanism": "Unequal corroboration standards applied to two witness statements based on fit with the working hypothesis.",
+      "matched_finding_by_threshold": {
+        "high_only": {"matched_id": null, "matched_type": "none"},
+        "high_and_moderate": {"matched_id": null, "matched_type": "none"},
+        "all_identified_confidence_levels": {"matched_id": "obs_003", "matched_type": "identified"},
+        "all_confidence_and_candidates": {"matched_id": "obs_003", "matched_type": "identified"}
+      },
+      "rag_predicted_bias_label": "confirmation bias",
+      "rag_confidence": "low",
+      "label_equivalence_result": "near_neighbor_label",
+      "localization_match_type": "exact_quote_match",
+      "mechanism_overlap": "full_mechanism_match",
+      "strict_scorecard_outcome_by_threshold": {
+        "high_only": "false_negative",
+        "high_and_moderate": "false_negative",
+        "all_identified_confidence_levels": "false_negative",
+        "all_confidence_and_candidates": "false_negative"
+      },
+      "mechanism_first_scorecard_outcome_by_threshold": {
+        "high_only": "false_negative",
+        "high_and_moderate": "false_negative",
+        "all_identified_confidence_levels": "true_positive",
+        "all_confidence_and_candidates": "true_positive"
+      },
+      "secondary_diagnostic_outcome": "correct_location_wrong_bias_label",
+      "label_equivalence_explanation": "The generic confirmation-bias label is a near neighbor, not an approved equivalent of the hidden combined confirmation/asymmetrical-skepticism target.",
+      "mechanism_overlap_explanation": "obs_003 explicitly contrasts accepting the family's medication account with probing the neighbor's raised-voices account.",
+      "evidence_fidelity_assessment": "The quoted witness-evaluation evidence is valid and materially faithful."
+    },
+    {
+      "hidden_instance_id": "COH_01",
+      "hidden_target_bias_label": "Coherence-based reasoning or Rationalisation",
+      "hidden_decision_or_episode": "Working narrative assembly and explanation of the arm bruise",
+      "hidden_mechanism": "Narrative fluency substitutes for independent testing of an anomalous detail.",
+      "matched_finding_by_threshold": {
+        "high_only": {"matched_id": null, "matched_type": "none"},
+        "high_and_moderate": {"matched_id": "obs_004", "matched_type": "identified"},
+        "all_identified_confidence_levels": {"matched_id": "obs_004", "matched_type": "identified"},
+        "all_confidence_and_candidates": {"matched_id": "obs_004", "matched_type": "identified"}
+      },
+      "rag_predicted_bias_label": "confirmation bias",
+      "rag_confidence": "moderate",
+      "label_equivalence_result": "near_neighbor_label",
+      "localization_match_type": "exact_quote_match",
+      "mechanism_overlap": "full_mechanism_match",
+      "strict_scorecard_outcome_by_threshold": {
+        "high_only": "false_negative",
+        "high_and_moderate": "false_negative",
+        "all_identified_confidence_levels": "false_negative",
+        "all_confidence_and_candidates": "false_negative"
+      },
+      "mechanism_first_scorecard_outcome_by_threshold": {
+        "high_only": "false_negative",
+        "high_and_moderate": "true_positive",
+        "all_identified_confidence_levels": "true_positive",
+        "all_confidence_and_candidates": "true_positive"
+      },
+      "secondary_diagnostic_outcome": "correct_location_wrong_bias_label",
+      "label_equivalence_explanation": "The primary label is confirmation bias, although the alternative labels and mechanism point toward the distinct coherence-based target; the primary label is not treated as an approved equivalent.",
+      "mechanism_overlap_explanation": "obs_004 states that the bruise was accepted because it fit a coherent fall sequence and was not independently tested against the trajectory.",
+      "evidence_fidelity_assessment": "The narrative-assembly quotations are valid and materially faithful."
+    },
+    {
+      "hidden_instance_id": "REC_01",
+      "hidden_target_bias_label": "Recency Effects",
+      "hidden_decision_or_episode": "Final report synthesis after the detective's late call",
+      "hidden_mechanism": "The most recently received information dominates final judgment over earlier ambiguous field notes.",
+      "matched_finding_by_threshold": {
+        "high_only": {"matched_id": null, "matched_type": "none"},
+        "high_and_moderate": {"matched_id": null, "matched_type": "none"},
+        "all_identified_confidence_levels": {"matched_id": null, "matched_type": "none"},
+        "all_confidence_and_candidates": {"matched_id": null, "matched_type": "none"}
+      },
+      "rag_predicted_bias_label": "social proof",
+      "rag_confidence": "candidate",
+      "label_equivalence_result": "near_neighbor_label",
+      "localization_match_type": "exact_quote_match",
+      "mechanism_overlap": "substantial_mechanism_overlap",
+      "strict_scorecard_outcome_by_threshold": {
+        "high_only": "false_negative",
+        "high_and_moderate": "false_negative",
+        "all_identified_confidence_levels": "false_negative",
+        "all_confidence_and_candidates": "false_negative"
+      },
+      "mechanism_first_scorecard_outcome_by_threshold": {
+        "high_only": "false_negative",
+        "high_and_moderate": "false_negative",
+        "all_identified_confidence_levels": "false_negative",
+        "all_confidence_and_candidates": "false_negative"
+      },
+      "secondary_diagnostic_outcome": "candidate_only_near_miss",
+      "label_equivalence_explanation": "The candidate's social-proof label is not an approved equivalent of Recency Effects, though it is related to the same detective-call episode.",
+      "mechanism_overlap_explanation": "The candidate mentions the fresh detective statement pushing the earlier placeholder aside, but centers social validation rather than the hidden temporal-recency mechanism.",
+      "evidence_fidelity_assessment": "The candidate quote is valid; the issue is insufficient construct-specific mechanism, not fabricated evidence."
+    },
+    {
+      "hidden_instance_id": "CD_01",
+      "hidden_target_bias_label": "Cognitive dissonance",
+      "hidden_decision_or_episode": "Interpretation of lividity pattern before ME handoff",
+      "hidden_mechanism": "Discomfort from disconfirming evidence after a prior verbal commitment is resolved by minimizing the evidence rather than revising the conclusion.",
+      "matched_finding_by_threshold": {
+        "high_only": {"matched_id": "obs_005", "matched_type": "identified"},
+        "high_and_moderate": {"matched_id": "obs_005", "matched_type": "identified"},
+        "all_identified_confidence_levels": {"matched_id": "obs_005", "matched_type": "identified"},
+        "all_confidence_and_candidates": {"matched_id": "obs_005", "matched_type": "identified"}
+      },
+      "rag_predicted_bias_label": "escalation of commitment",
+      "rag_confidence": "high",
+      "label_equivalence_result": "near_neighbor_label",
+      "localization_match_type": "exact_quote_match",
+      "mechanism_overlap": "full_mechanism_match",
+      "strict_scorecard_outcome_by_threshold": {
+        "high_only": "false_negative",
+        "high_and_moderate": "false_negative",
+        "all_identified_confidence_levels": "false_negative",
+        "all_confidence_and_candidates": "false_negative"
+      },
+      "mechanism_first_scorecard_outcome_by_threshold": {
+        "high_only": "true_positive",
+        "high_and_moderate": "true_positive",
+        "all_identified_confidence_levels": "true_positive",
+        "all_confidence_and_candidates": "true_positive"
+      },
+      "secondary_diagnostic_outcome": "correct_location_wrong_bias_label",
+      "label_equivalence_explanation": "Escalation of commitment is a near-neighbor construct, but it is not an approved equivalent of Cognitive dissonance under the hidden taxonomy.",
+      "mechanism_overlap_explanation": "obs_005 directly links unease about contradictory lividity to the prior statement made to the detective and describes an unconfirmed rationalization preserving that commitment.",
+      "evidence_fidelity_assessment": "The quoted commitment and lividity evidence is valid and materially faithful."
+    }
+  ],
+  "unmatched_rag_predictions": [
+    {
+      "rag_occurrence_id": "cand_001",
+      "rag_finding_type": "candidate",
+      "rag_predicted_bias_label": "social proof",
+      "rag_confidence": "candidate",
+      "localized_segment_id": "dp4",
+      "best_related_hidden_instance_id": "REC_01",
+      "label_equivalence_result": "near_neighbor_label",
+      "mechanism_overlap": "substantial_mechanism_overlap",
+      "strict_classification": "partial_mechanism_match",
+      "mechanism_first_classification": "partial_mechanism_match",
+      "counted_at_thresholds": ["all_confidence_and_candidates"],
+      "why_not_an_exact_strict_match": "The quote is valid and localized to dp4, but social proof is not the hidden Recency Effects label and the candidate's mechanism emphasizes social validation rather than showing that temporal recency itself dominated the earlier hedge."
+    }
+  ],
+  "candidate_analysis": {
+    "candidate_count": 1,
+    "candidates": [
+      {
+        "candidate_id": "cand_001",
+        "proposed_bias_label": "social proof",
+        "localized_segment_id": "dp4",
+        "best_related_hidden_instance_id": "REC_01",
+        "quote_validity": "valid",
+        "would_match_if_promoted_strict": false,
+        "would_match_if_promoted_mechanism_first": false,
+        "counted_as_detection_at_fourth_threshold": true,
+        "fourth_threshold_outcome": "false_positive",
+        "candidate_assessment": "candidate_near_miss",
+        "details": "It identifies a plausible social-validation interpretation of the detective's call, but does not meet the hidden construct-specific recency mechanism and does not add unique segment coverage."
+      }
+    ]
+  },
+  "signal_detection_summary": {
+    "evaluation_unit": "eligible_reasoning_segment",
+    "high_only": {
+      "positive_segments": 4,
+      "negative_segments": 0,
+      "hits": 1,
+      "misses": 3,
+      "false_alarms": 0,
+      "correct_rejections": 0,
+      "hit_rate": 0.25,
+      "false_alarm_rate": null,
+      "accuracy": 0.25,
+      "precision": 1,
+      "recall": 0.25,
+      "f1": 0.4,
+      "detection_interpretation": "Only dp4 has a high-confidence identified finding; three positive segments are missed."
+    },
+    "high_and_moderate": {
+      "positive_segments": 4,
+      "negative_segments": 0,
+      "hits": 3,
+      "misses": 1,
+      "false_alarms": 0,
+      "correct_rejections": 0,
+      "hit_rate": 0.75,
+      "false_alarm_rate": null,
+      "accuracy": 0.75,
+      "precision": 1,
+      "recall": 0.75,
+      "f1": 0.8571,
+      "detection_interpretation": "Moderate-confidence findings detect dp2, dp3, and dp4; low-confidence dp1 remains missed."
+    },
+    "all_identified_confidence_levels": {
+      "positive_segments": 4,
+      "negative_segments": 0,
+      "hits": 4,
+      "misses": 0,
+      "false_alarms": 0,
+      "correct_rejections": 0,
+      "hit_rate": 1,
+      "false_alarm_rate": null,
+      "accuracy": 1,
+      "precision": 1,
+      "recall": 1,
+      "f1": 1,
+      "detection_interpretation": "All four positive segments receive at least one identified finding; no negative segments are available in the supplied map."
+    },
+    "all_confidence_and_candidates": {
+      "positive_segments": 4,
+      "negative_segments": 0,
+      "hits": 4,
+      "misses": 0,
+      "false_alarms": 0,
+      "correct_rejections": 0,
+      "hit_rate": 1,
+      "false_alarm_rate": null,
+      "accuracy": 1,
+      "precision": 1,
+      "recall": 1,
+      "f1": 1,
+      "detection_interpretation": "The candidate does not change segment detection because dp4 was already detected by the high-confidence identified occurrence."
+    }
+  },
+  "strict_instance_level_metrics": {
+    "high_only": {"true_positives": 0, "false_negatives": 7, "false_positives": 1, "precision": 0, "recall": 0, "f1": 0, "exact_occurrence_match_rate": 0, "occurrence_count_match_rate": 0},
+    "high_and_moderate": {"true_positives": 0, "false_negatives": 7, "false_positives": 3, "precision": 0, "recall": 0, "f1": 0, "exact_occurrence_match_rate": 0, "occurrence_count_match_rate": 0},
+    "all_identified_confidence_levels": {"true_positives": 0, "false_negatives": 7, "false_positives": 5, "precision": 0, "recall": 0, "f1": 0, "exact_occurrence_match_rate": 0, "occurrence_count_match_rate": 0},
+    "all_confidence_and_candidates": {"true_positives": 0, "false_negatives": 7, "false_positives": 6, "precision": 0, "recall": 0, "f1": 0, "exact_occurrence_match_rate": 0, "occurrence_count_match_rate": 0}
+  },
+  "mechanism_first_instance_level_metrics": {
+    "high_only": {"true_positives": 1, "false_negatives": 6, "false_positives": 0, "precision": 1, "recall": 0.1429, "f1": 0.25, "exact_occurrence_match_rate": 0.1429, "occurrence_count_match_rate": 0.1667},
+    "high_and_moderate": {"true_positives": 3, "false_negatives": 4, "false_positives": 0, "precision": 1, "recall": 0.4286, "f1": 0.6, "exact_occurrence_match_rate": 0.4286, "occurrence_count_match_rate": 0.3333},
+    "all_identified_confidence_levels": {"true_positives": 5, "false_negatives": 2, "false_positives": 0, "precision": 1, "recall": 0.7143, "f1": 0.8333, "exact_occurrence_match_rate": 0.7143, "occurrence_count_match_rate": 0.6667},
+    "all_confidence_and_candidates": {"true_positives": 5, "false_negatives": 2, "false_positives": 1, "precision": 0.8333, "recall": 0.7143, "f1": 0.7692, "exact_occurrence_match_rate": 0.7143, "occurrence_count_match_rate": 0.6667}
+  },
+  "target_bias_performance": [
+    {
+      "hidden_target_bias_label": "Feature positive effect",
+      "hidden_requested_occurrences": 1,
+      "strict_true_positives_by_threshold": {"high_only": 0, "high_and_moderate": 0, "all_identified_confidence_levels": 0, "all_confidence_and_candidates": 0},
+      "mechanism_first_true_positives_by_threshold": {"high_only": 0, "high_and_moderate": 0, "all_identified_confidence_levels": 0, "all_confidence_and_candidates": 0},
+      "count_match_status_at_all_confidence_and_candidates": "underdetected"
+    },
+    {
+      "hidden_target_bias_label": "Contextual Bias",
+      "hidden_requested_occurrences": 1,
+      "strict_true_positives_by_threshold": {"high_only": 0, "high_and_moderate": 0, "all_identified_confidence_levels": 0, "all_confidence_and_candidates": 0},
+      "mechanism_first_true_positives_by_threshold": {"high_only": 0, "high_and_moderate": 0, "all_identified_confidence_levels": 1, "all_confidence_and_candidates": 1},
+      "count_match_status_at_all_confidence_and_candidates": "exact_match"
+    },
+    {
+      "hidden_target_bias_label": "Confirmation Bias and Asymmetrical skepticism",
+      "hidden_requested_occurrences": 2,
+      "strict_true_positives_by_threshold": {"high_only": 0, "high_and_moderate": 0, "all_identified_confidence_levels": 0, "all_confidence_and_candidates": 0},
+      "mechanism_first_true_positives_by_threshold": {"high_only": 0, "high_and_moderate": 1, "all_identified_confidence_levels": 2, "all_confidence_and_candidates": 2},
+      "count_match_status_at_all_confidence_and_candidates": "exact_match"
+    },
+    {
+      "hidden_target_bias_label": "Coherence-based reasoning or Rationalisation",
+      "hidden_requested_occurrences": 1,
+      "strict_true_positives_by_threshold": {"high_only": 0, "high_and_moderate": 0, "all_identified_confidence_levels": 0, "all_confidence_and_candidates": 0},
+      "mechanism_first_true_positives_by_threshold": {"high_only": 0, "high_and_moderate": 1, "all_identified_confidence_levels": 1, "all_confidence_and_candidates": 1},
+      "count_match_status_at_all_confidence_and_candidates": "exact_match"
+    },
+    {
+      "hidden_target_bias_label": "Recency Effects",
+      "hidden_requested_occurrences": 1,
+      "strict_true_positives_by_threshold": {"high_only": 0, "high_and_moderate": 0, "all_identified_confidence_levels": 0, "all_confidence_and_candidates": 0},
+      "mechanism_first_true_positives_by_threshold": {"high_only": 0, "high_and_moderate": 0, "all_identified_confidence_levels": 0, "all_confidence_and_candidates": 0},
+      "count_match_status_at_all_confidence_and_candidates": "underdetected"
+    },
+    {
+      "hidden_target_bias_label": "Cognitive dissonance",
+      "hidden_requested_occurrences": 1,
+      "strict_true_positives_by_threshold": {"high_only": 0, "high_and_moderate": 0, "all_identified_confidence_levels": 0, "all_confidence_and_candidates": 0},
+      "mechanism_first_true_positives_by_threshold": {"high_only": 1, "high_and_moderate": 1, "all_identified_confidence_levels": 1, "all_confidence_and_candidates": 1},
+      "count_match_status_at_all_confidence_and_candidates": "exact_match"
+    }
+  ],
+  "rag_label_false_positive_inventory": [
+    {
+      "rag_predicted_bias_label": "anchoring bias",
+      "finding_type": "identified",
+      "alternative_labels": ["anchoring and adjustment", "focalism"],
+      "occurrence_count": 1,
+      "best_related_hidden_target_bias_label": "Contextual Bias",
+      "label_relation": "near_neighbor",
+      "mechanism_overlap_summary": "Full mechanism overlap for the pre-walkthrough patrol-framing episode, but the label is not an approved equivalent.",
+      "primary_error_types": ["correct_location_wrong_bias_label"]
+    },
+    {
+      "rag_predicted_bias_label": "confirmation bias",
+      "finding_type": "identified",
+      "alternative_labels": ["confirmatory bias", "selective information search", "selective scrutiny", "asymmetric skepticism", "narrative fallacy", "coherence bias"],
+      "occurrence_count": 3,
+      "best_related_hidden_target_bias_label": "Confirmation Bias and Asymmetrical skepticism",
+      "label_relation": "near_neighbor",
+      "mechanism_overlap_summary": "Two occurrences fully capture the physical and testimonial asymmetries; the third fully captures the coherence mechanism but retains the confirmation-bias primary label.",
+      "primary_error_types": ["correct_location_wrong_bias_label"]
+    },
+    {
+      "rag_predicted_bias_label": "escalation of commitment",
+      "finding_type": "identified",
+      "alternative_labels": ["commitment bias", "belief perseverance"],
+      "occurrence_count": 1,
+      "best_related_hidden_target_bias_label": "Cognitive dissonance",
+      "label_relation": "near_neighbor",
+      "mechanism_overlap_summary": "Full post-commitment minimization mechanism overlap, but the escalation-of-commitment label is not an approved equivalent of Cognitive dissonance.",
+      "primary_error_types": ["correct_location_wrong_bias_label"]
+    },
+    {
+      "rag_predicted_bias_label": "social proof",
+      "finding_type": "candidate",
+      "alternative_labels": ["conformity bias", "informational social influence", "bandwagon effect"],
+      "occurrence_count": 1,
+      "best_related_hidden_target_bias_label": "Recency Effects",
+      "label_relation": "different_construct",
+      "mechanism_overlap_summary": "Substantial episode overlap, but the candidate centers social validation and does not establish temporal recency as the defining distortion.",
+      "primary_error_types": ["candidate_near_miss", "partial_mechanism_match"]
+    }
+  ],
+  "diagnostic_error_summary": {
+    "correct_location_wrong_bias_label_count": 5,
+    "correct_label_wrong_location_count": 0,
+    "correct_label_location_wrong_mechanism_count": 0,
+    "mechanism_detected_label_unresolved_count": 0,
+    "partial_mechanism_match_count": 1,
+    "duplicate_prediction_count": 0,
+    "unsupported_prediction_count": 0,
+    "fabricated_or_invalid_quote_count": 0,
+    "approved_alias_or_equivalence_count": 0,
+    "near_neighbor_label_count": 6,
+    "different_construct_label_count": 1,
+    "candidate_count": 1,
+    "candidate_useful_abstention_count": 0,
+    "candidate_near_miss_count": 1,
+    "candidates_promoted_to_true_positive_at_fourth_threshold_count": 0
+  },
+  "corpus_support_audit": {
+    "primary_corpus_fidelity_score_available": false,
+    "rag_occurrences_claiming_retrieved_support": 0,
+    "rag_occurrences_with_no_claimed_retrieved_support": 6,
+    "rag_occurrences_with_unverifiable_or_internally_inconsistent_citation_metadata": 0,
+    "assessment_note": "The RAG explicitly reports that no retrieved corpus support was used, and it supplies no citation metadata. This is consistent with corpus_condition off and does not affect detection or classification scores."
+  },
+  "comparison_ready_summary": {
+    "primary_recommended_comparison_threshold": "high_and_moderate",
+    "segment_detection": {
+      "high_only": {"hits": 1, "misses": 3, "false_alarms": 0, "correct_rejections": 0, "hit_rate": 0.25, "false_alarm_rate": null, "f1": 0.4},
+      "high_and_moderate": {"hits": 3, "misses": 1, "false_alarms": 0, "correct_rejections": 0, "hit_rate": 0.75, "false_alarm_rate": null, "f1": 0.8571},
+      "all_identified_confidence_levels": {"hits": 4, "misses": 0, "false_alarms": 0, "correct_rejections": 0, "hit_rate": 1, "false_alarm_rate": null, "f1": 1},
+      "all_confidence_and_candidates": {"hits": 4, "misses": 0, "false_alarms": 0, "correct_rejections": 0, "hit_rate": 1, "false_alarm_rate": null, "f1": 1}
+    },
+    "strict_instance_identification": {
+      "high_only": {"true_positives": 0, "false_negatives": 7, "false_positives": 1, "precision": 0, "recall": 0, "f1": 0},
+      "high_and_moderate": {"true_positives": 0, "false_negatives": 7, "false_positives": 3, "precision": 0, "recall": 0, "f1": 0},
+      "all_identified_confidence_levels": {"true_positives": 0, "false_negatives": 7, "false_positives": 5, "precision": 0, "recall": 0, "f1": 0},
+      "all_confidence_and_candidates": {"true_positives": 0, "false_negatives": 7, "false_positives": 6, "precision": 0, "recall": 0, "f1": 0}
+    },
+    "mechanism_first_identification": {
+      "high_only": {"true_positives": 1, "false_negatives": 6, "false_positives": 0, "precision": 1, "recall": 0.1429, "f1": 0.25},
+      "high_and_moderate": {"true_positives": 3, "false_negatives": 4, "false_positives": 0, "precision": 1, "recall": 0.4286, "f1": 0.6},
+      "all_identified_confidence_levels": {"true_positives": 5, "false_negatives": 2, "false_positives": 0, "precision": 1, "recall": 0.7143, "f1": 0.8333},
+      "all_confidence_and_candidates": {"true_positives": 5, "false_negatives": 2, "false_positives": 1, "precision": 0.8333, "recall": 0.7143, "f1": 0.7692}
+    },
+    "taxonomy_gap": {
+      "high_only": {"mechanism_first_f1_minus_strict_f1": 0.25},
+      "high_and_moderate": {"mechanism_first_f1_minus_strict_f1": 0.6},
+      "all_identified_confidence_levels": {"mechanism_first_f1_minus_strict_f1": 0.8333},
+      "all_confidence_and_candidates": {"mechanism_first_f1_minus_strict_f1": 0.7692}
+    },
+    "confidence_tradeoff": {
+      "increment_from_high_to_high_and_moderate": "Segment hits increase from 1 to 3; mechanism-first true positives increase from 1 to 3, while strict false positives increase from 1 to 3.",
+      "increment_from_high_and_moderate_to_all_confidence": "The low-confidence findings add one segment hit and two mechanism-first instance hits, but strict false positives increase from 3 to 5.",
+      "increment_from_all_confidence_to_all_confidence_and_candidates": "The candidate adds no segment or instance true positive and adds one mechanism-first and strict false positive."
+    }
+  },
+  "overall_evaluation_summary": {
+    "hidden_total_planned_occurrences": 7,
+    "rag_total_identified_occurrences": 5,
+    "rag_total_candidate_biases": 1,
+    "segment_level_primary_result": "At the recommended high_and_moderate threshold, the RAG detects 3 of 4 positive reasoning segments with no false alarms; all four are detected when low-confidence identified findings are included.",
+    "strict_label_plus_mechanism_result": "There are 0 strict true positives at every threshold because every identified label is a non-equivalent near-neighbor or different construct, despite valid localization and evidence.",
+    "mechanism_first_result": "The RAG captures 1 of 7 mechanisms at high confidence, 3 of 7 at high_and_moderate, and 5 of 7 at all identified confidence levels; the candidate tier lowers precision without adding coverage.",
+    "candidate_tier_value_assessment": "cand_001 is a plausible candidate near miss, but it does not satisfy the hidden recency mechanism and adds no unique segment coverage; it is correctly scored as a fourth-threshold false positive.",
+    "main_failure_modes": [
+      "Systematic taxonomy mismatch: anchoring, confirmation, escalation of commitment, and confirmation used instead of the hidden target labels.",
+      "No separate detection of Feature positive effect after one-to-one matching.",
+      "No identified Recency Effects occurrence; the social-proof candidate remains mechanistically insufficient.",
+      "Candidate inclusion introduces a false positive without improving instance recall."
+    ],
+    "main_strengths": [
+      "All identified findings and the candidate use valid, correctly localized interview evidence.",
+      "Five hidden mechanisms are captured under the mechanism-first scorecard at the all-identified threshold.",
+      "Confidence levels distinguish strong, moderate, and tentative claims, and the output discloses that no corpus support was available."
+    ],
+    "benchmark_interpretation": "This run has strong segment-level coverage but a substantial taxonomy gap: mechanism-first F1 is 0.6000 at the recommended threshold versus strict F1 of 0.0000. The result should be compared with other runs using the same frozen segment map and threshold definitions."
+  }
+}

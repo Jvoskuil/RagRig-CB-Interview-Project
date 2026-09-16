@@ -1,0 +1,508 @@
+<RAW_INTERVIEW>
+Interviewer: Thanks for sitting down with me. This is part of a research review on design decision-making, it's recorded, nothing gets tied to your name, and you can pass on anything you'd rather not get into. Okay?
+
+Participant: Sure, no problem.
+
+Interviewer: Tell me about your role on this project and what it involved.
+
+Participant: I was lead design engineer on a sprinkler retrofit for a distribution warehouse, 140,000 square feet, tilt-up concrete. The owner was bringing in a new third-party logistics tenant who needed part of the floor converted to high-piled rack storage, double-row selective rack up to 32 feet. I had to redesign the existing system, which was sized for a lighter occupancy, get it through plan review, and get it installed before the tenant's lease started.
+
+Interviewer: How did the schedule on this one compare to a typical retrofit?
+
+Participant: Actually pretty comfortable, for once. We had six weeks from kickoff to permit submission, which is more breathing room than I usually get. The existing water supply and riser sizing were still set up for the old, lower-hazard use, so that part of the challenge was still there, but I wasn't fighting the calendar the way I sometimes am.
+
+Interviewer: Walk me through the incident from the start.
+
+Participant: Early on I needed to settle the commodity classification, since that drives the density, the rack sprinkler requirements, everything downstream. I didn't have a finalized SKU or packaging list from the tenant yet, they were still working that out on their end, and the owner wanted the classification locked so he could fix the retrofit budget. There wasn't really a schedule reason it had to happen that week, I could have waited and asked for a sample of their packaging list, but I'd done two other jobs for similar 3PL operators and had a good sense of what that kind of tenant typically stores. I went with Class III based on that pattern and moved on. Then I pulled the NFPA density and area curves for that classification at 32 feet, picked a point that cleared the code minimum, and built the hydraulic calculations. There was still plenty of runway before submission, so I could have run a few more combinations against the actual rack layout, but I didn't loop back to compare. That package went to the owner, who wanted a value-engineering pass since it came in over budget, and we talked about trimming the in-rack sprinkler allowance. Once the system was installed, we got to commissioning, and with the schedule no longer tight, we did the full witnessed flow test without any rush.
+
+Interviewer: Let's reconstruct that in order. What happened first?
+
+Participant: Classification, in the first week or so. Density and area selection maybe two and a half weeks in. Value engineering came after plan review comments, around week four. Commissioning was near the end, but we still had days to spare before move-in.
+
+Interviewer: What did you learn after the classification that you didn't know when you made it?
+
+Participant: A partial inventory list came in later and showed more exposed unexpanded plastics mixed with the cartoned goods than I'd assumed, closer to a plastics classification than straight Class III.
+
+Interviewer: Going back to that first call, what did you actually have in hand, and how much time did you have to get more?
+
+Participant: I had the tenant's general business type and my history with two comparable clients. I didn't have their SKU list, but with six weeks on the clock, I probably had time to ask for a preliminary sample and wait a bit.
+
+Interviewer: Did you consider requesting that data before finalizing?
+
+Participant: I thought about it briefly. But in my experience, this type of tenant runs cartoned retail goods, maybe some mixed packaging, and both of the prior jobs landed at Class III. I went with that pattern instead of waiting on their list.
+
+Interviewer: If you'd had the SKU list before classifying, would you have done anything differently?
+
+Participant: Probably, yeah, if the plastics share had been visible upfront I'd have leaned more conservative from the start.
+
+Interviewer: What would have made you press for that data given you had the time?
+
+Participant: Something specific standing out, like if they'd mentioned electronics or aerosols. Nothing in the early conversations flagged that, so it didn't feel urgent to chase down.
+
+Interviewer: Moving to the density selection. What alternatives were actually available to you?
+
+Participant: Several density and area points would have satisfied code minimum for Class III at that height, some needing more in-rack sprinklers. I could have compared those against the specific rack configuration and aisle widths, or checked the manufacturer's guide for something tailored to the layout.
+
+Interviewer: With several weeks still on the calendar, what determined which one you picked?
+
+Participant: I took the first point that cleared the minimum for the assumed classification and built the calc package around it. I had the time to run more comparisons, honestly, I just didn't loop back once I had something that worked.
+
+Interviewer: Did the plan reviewer comment on that later?
+
+Participant: Yeah, flagged that the point I'd chosen was close to the edge of the applicable curve for the actual rack configuration. Not a rejection, just a note to be aware of.
+
+Interviewer: What went through your mind when the owner asked for value engineering?
+
+Participant: He wanted the number under budget, and the in-rack allowance was the biggest thing I could trim. Keeping it would've given more margin against the classification uncertainty I already knew about. But we've got two more retrofit jobs pending with him, and I didn't want friction over one line item, so I recommended pulling the allowance to hit his number.
+
+Interviewer: Did you walk him through the classification uncertainty as part of that?
+
+Participant: Not in much depth. I mentioned it, but I framed the removal as a reasonable trade rather than spelling out how much margin we'd be giving up.
+
+Interviewer: If there'd been no ongoing relationship with the owner, would that conversation have gone differently?
+
+Participant: Possibly. I'd like to think I'd have pushed harder to keep the allowance, but I can't say for sure.
+
+Interviewer: Last decision point, commissioning. What determined the testing you pursued?
+
+Participant: The AHJ requires the witnessed flow test regardless, and with days to spare before move-in, there wasn't a reason to cut corners. I did the full test.
+
+Interviewer: How did it turn out?
+
+Participant: Passed comfortably, well above the required minimum. No concerns there.
+
+Interviewer: Looking back, given that schedule wasn't really the constraint here, is there a decision you'd make differently?
+
+Participant: The classification, still. Everything downstream followed from that first call, and I had the time to ask for more data before locking it in. I just didn't use it that way.
+</RAW_INTERVIEW>
+
+<COMPLETE_GENERATION_SPECIFICATION>
+{
+  "spec_version": "3.0",
+  "scenario_id": "HE_Counterfactual_3",
+  "domain_id": "HE",
+  "domain": "High-risk Engineering and Fire Engineering",
+  "role": "Fire Protection System Designer (Sprinkler/Suppression Design Engineer)",
+  "condition": "counterfactual",
+  "generation_specification": {
+    "scenario_title_internal": "Rack Storage Retrofit: Same Trade-offs Under an Extended Schedule",
+    "scenario_summary_internal": "This is the causal counterfactual of HE_Biased_3. The same fire protection design engineer is retained for the same sprinkler retrofit on the same warehouse, for the same 3PL tenant conversion, with the same budget, water-supply constraints, and ongoing multi-project relationship with the building owner. The single material change is that the design window is extended from three weeks to six weeks before the permit submission deadline, removing the severe schedule compression present in the base scenario. All other facts, decision structure, and stakes are held constant. The purpose is to test whether the classification shortcut, the density selection shortcut, and the relationship-driven value-engineering recommendation are attributable to schedule pressure alone, or whether they persist even when the engineer has materially more time available to gather tenant-specific data, compare design alternatives, and present a fuller risk picture to the owner.",
+    "occupational_realism": {
+      "objective": "Design a code-compliant automatic sprinkler system for a new high-piled combustible storage racking layout inside an existing distribution warehouse, now with a six-week design window rather than three weeks before the permit submission deadline.",
+      "setting": "Existing 140,000 sq ft tilt-up concrete distribution warehouse being subdivided for a new 3PL tenant storing palletized retail goods on double-row selective rack up to 32 feet; retrofit must be designed, permitted, and installed before the tenant's lease start date, with a six-week runway to permit submission.",
+      "constraints": [
+        "Six-week design window before permit submission deadline (extended from the three-week baseline)",
+        "Fixed retrofit budget set by the building owner before final commodity classification was confirmed",
+        "Limited access to the tenant's actual SKU list before design must be finalized, despite the additional time available",
+        "Ongoing multi-project relationship between the engineer's firm and the building owner",
+        "Existing water supply and riser infrastructure sized for a prior, lower-hazard occupancy",
+        "Local AHJ requires hydraulic calculations and a witnessed flow test before occupancy"
+      ],
+      "stakeholders": [
+        "Fire Protection Design Engineer (interviewee)",
+        "Building owner / developer",
+        "Incoming 3PL tenant operations manager",
+        "Sprinkler installation contractor",
+        "Local Authority Having Jurisdiction (AHJ) plan reviewer",
+        "Engineer's firm principal"
+      ],
+      "technical_terms_to_use": [
+        "commodity classification",
+        "high-piled storage",
+        "design density/area curve",
+        "in-rack sprinklers (IRAS)",
+        "ESFR (early suppression fast response)",
+        "hydraulic calculation",
+        "K-factor",
+        "value engineering",
+        "witnessed flow test",
+        "AHJ plan review"
+      ],
+      "technical_terms_to_avoid": [
+        "cognitive bias",
+        "heuristic",
+        "anchoring",
+        "confirmation bias",
+        "stereotype",
+        "incentive bias",
+        "satisficing"
+      ]
+    },
+    "timeline": [
+      {
+        "phase": 1,
+        "decision_point": true,
+        "facts_available_before_decision": [
+          "Tenant is a 3PL company similar in profile to two prior clients the engineer has designed for",
+          "No finalized SKU or packaging list from the incoming tenant yet, though the six-week window would allow time to request and wait for one",
+          "Building owner still wants classification finalized early to lock the budget, but there is no hard schedule reason it could not wait a week or two"
+        ],
+        "new_information_after_decision": [
+          "Partial tenant inventory list later shows a meaningful share of exposed unexpanded plastics mixed with cartoned goods, closer to Class IV/plastics than assumed"
+        ],
+        "alternatives": [
+          "Classify commodity based on general similarity to prior 3PL tenants' storage profile",
+          "Request a preliminary SKU/packaging sample list from the tenant, which the extended schedule could accommodate",
+          "Classify conservatively as worst-case plastics until tenant data is confirmed"
+        ],
+        "intended_action": "Engineer classifies the commodity as Class III based on its resemblance to two previous 3PL clients he has designed for, without requesting tenant-specific packaging data, even though the six-week window left time to obtain it."
+      },
+      {
+        "phase": 2,
+        "decision_point": true,
+        "facts_available_before_decision": [
+          "NFPA design density/area curves for the assumed Class III classification and 32-ft rack height",
+          "Multiple density/area combinations satisfy code minimums, some requiring additional in-rack sprinklers",
+          "Permit submission is still several weeks out, leaving time to compare alternatives against the specific rack configuration"
+        ],
+        "new_information_after_decision": [
+          "AHJ plan reviewer later flags that the chosen density/area point is at the marginal edge of the applicable curve given the actual rack configuration"
+        ],
+        "alternatives": [
+          "Select the first density/area point on the curve that meets the minimum code requirement for the assumed classification",
+          "Evaluate multiple density/area combinations against the specific rack configuration and aisle widths before selecting, which the remaining schedule allowed",
+          "Consult the sprinkler manufacturer's design guide for a configuration-specific recommendation"
+        ],
+        "intended_action": "Engineer selects the first tabulated density/area combination that technically satisfies the code minimum for the assumed classification, without comparing it against alternate points better suited to the specific rack geometry, despite having calendar time remaining before the deadline."
+      },
+      {
+        "phase": 3,
+        "decision_point": true,
+        "facts_available_before_decision": [
+          "Building owner requests a value-engineering pass to bring the design under the fixed retrofit budget",
+          "In-rack sprinkler upgrade would add cost but reduce sensitivity to commodity classification uncertainty",
+          "Engineer's firm has two additional retrofit projects pending with this same building owner"
+        ],
+        "new_information_after_decision": [
+          "Removing the in-rack sprinkler allowance leaves the design with less margin against the commodity classification uncertainty identified in Phase 1"
+        ],
+        "alternatives": [
+          "Recommend retaining the in-rack sprinkler allowance despite the added cost, citing classification uncertainty",
+          "Recommend removing the in-rack sprinkler allowance to meet the owner's budget target",
+          "Present both options with risk trade-offs and let the owner decide with full information"
+        ],
+        "intended_action": "Engineer recommends removing the in-rack sprinkler allowance to meet the owner's budget target, favoring the option likely to keep the ongoing multi-project relationship with the owner smooth, without fully surfacing the classification uncertainty risk in the recommendation."
+      },
+      {
+        "phase": 4,
+        "decision_point": true,
+        "facts_available_before_decision": [
+          "Contractor's certification paperwork shows the system installed per approved drawings",
+          "AHJ requires a witnessed flow test before final sign-off",
+          "With the extended schedule, there is adequate time remaining to complete testing before the tenant move-in date"
+        ],
+        "new_information_after_decision": [
+          "Flow test performed with adequate time available passes comfortably above the required minimum"
+        ],
+        "alternatives": [
+          "Proceed with a full witnessed flow test as required before sign-off",
+          "Accept contractor certification alone and expedite paperwork to save time",
+          "Schedule a partial test covering only the modified risers"
+        ],
+        "intended_action": "Engineer proceeds with the full witnessed flow test as required, with no meaningful time pressure at this stage, and documents the result before sign-off."
+      }
+    ],
+    "probe_plan": {
+      "opening": [
+        "Can you walk me through what this retrofit project was for and what your role was?",
+        "How did the six-week design window compare to how you'd normally schedule a project like this?"
+      ],
+      "timeline_reconstruction": [
+        "What happened first, and what information did you have at that point?",
+        "Walk me through how the commodity classification decision came about.",
+        "What happened after the density/area selection was submitted for plan review?",
+        "How did the value-engineering conversation with the building owner unfold?",
+        "What happened during commissioning and sign-off?"
+      ],
+      "decision_point_probes": [
+        "At the point you classified the commodity, what specific information did you have about this tenant's actual inventory, and how much time did you have to get more?",
+        "What other classification approaches did you consider, and why did you rule them out given the time you had?",
+        "When you selected the density/area combination, what alternatives were on the table and how did you compare them?",
+        "With several weeks still on the calendar, what was your basis for choosing that particular design point over the others available?",
+        "When the owner asked for value engineering, what options did you consider and how did you weigh them?",
+        "How did your relationship with the building owner factor into how you presented the options?",
+        "At commissioning, what made you decide on the level of testing you pursued?"
+      ],
+      "cues": [
+        "What specific cues told you the commodity classification was appropriate?",
+        "What cues, if any, suggested you should get more tenant-specific data before finalizing the design, and did the extra time change how you weighed those cues?"
+      ],
+      "information_sources": [
+        "What sources of information did you rely on most heavily at each stage?",
+        "Was there information you didn't seek out that, given the schedule you had, would have been feasible to obtain?"
+      ],
+      "goals": [
+        "What were you personally trying to achieve or protect at each of these points?",
+        "With more schedule slack than usual, were there still competing goals between the budget and code compliance?"
+      ],
+      "alternatives": [
+        "What other courses of action did you seriously consider at each decision point?",
+        "Why didn't you pursue those alternatives, given that time wasn't the limiting factor here?"
+      ],
+      "decision_basis": [
+        "What ultimately tipped your decision one way over another?",
+        "How confident were you in that decision at the time you made it?"
+      ],
+      "prior_experience": [
+        "How did your experience with similar past projects or clients shape your approach here?"
+      ],
+      "time_pressure": [
+        "Given the longer runway on this project, how did you decide how much time to spend on each decision?"
+      ],
+      "uncertainty": [
+        "What were you most uncertain about at each stage, and how did you handle that uncertainty?"
+      ],
+      "closing_hypotheticals": [
+        "If you had had the tenant's full SKU list before classifying the commodity, would you have done anything differently?",
+        "If there had been no ongoing relationship with the building owner, would the value-engineering conversation have gone differently?",
+        "Looking back, given that schedule wasn't the constraint here, is there a point where you'd make a different call?"
+      ]
+    },
+    "occurrence_embedding_plan_internal": [
+      {
+        "instance_id": "st_01",
+        "bias": "Stereotyping",
+        "decision_point": 1,
+        "mechanism": "Engineer categorizes the incoming tenant's storage hazard based on surface similarity to a category of past clients rather than verifying tenant-specific inventory characteristics, even though the extended schedule left ample time to request that data.",
+        "affected_reasoning_operation": "Category-based inference substituting for case-specific evidence gathering during commodity classification",
+        "evidence_available_at_time": [
+          "No finalized SKU/packaging list from the tenant",
+          "General resemblance of tenant type to two prior 3PL clients",
+          "Six-week window leaving practical time to request and wait for tenant data"
+        ],
+        "required_textual_manifestation": "Interviewee attributes the classification choice to the tenant fitting the general pattern of prior 3PL clients rather than to tenant-specific data, and explicitly acknowledges that time was not the reason data wasn't requested.",
+        "plausible_nonbias_interpretation": "Using base rates from experience with similar occupancies is a legitimate engineering heuristic; the account must show the classification was treated as settled by category resemblance despite feasible opportunity to verify, distinguishing it from a time-constrained judgment call.",
+        "strength": "subtle",
+        "do_not_make_explicit": ["stereotyping", "generalization", "category bias", "assumption based on client type"]
+      },
+      {
+        "instance_id": "sf_01",
+        "bias": "Satisficing",
+        "decision_point": 2,
+        "mechanism": "Engineer accepts the first density/area combination that clears the minimum code threshold for the assumed classification instead of evaluating configuration-specific alternatives, despite calendar time remaining before the deadline.",
+        "affected_reasoning_operation": "Premature termination of the alternative-generation and comparison process during hydraulic design selection",
+        "evidence_available_at_time": [
+          "Multiple density/area curve points available for the assumed classification",
+          "Rack height and aisle configuration data on hand",
+          "Several weeks remaining before the permit submission deadline"
+        ],
+        "required_textual_manifestation": "Interviewee describes stopping at the first design point that 'met the minimum' without comparing it against other viable points or manufacturer guidance, and frames the stopping point as adequate rather than attributing it to lack of available time.",
+        "plausible_nonbias_interpretation": "Selecting a code-compliant minimum is a valid engineering practice; the account must show the stopping point was driven by adequacy-seeking rather than genuine time scarcity, since the schedule was no longer the binding constraint.",
+        "strength": "moderate",
+        "do_not_make_explicit": ["satisficing", "settling", "good enough", "minimum viable"]
+      },
+      {
+        "instance_id": "ib_01",
+        "bias": "Incentive bias",
+        "decision_point": 3,
+        "mechanism": "Engineer's recommendation on removing the in-rack sprinkler allowance is shaped by the desire to preserve a smooth, ongoing multi-project relationship with the building owner, rather than by a neutral weighing of the classification-uncertainty risk this removal introduces.",
+        "affected_reasoning_operation": "Selective emphasis and information-presentation during a risk-tradeoff recommendation to a client on whom future business depends",
+        "evidence_available_at_time": [
+          "Owner's budget constraint and request for value engineering",
+          "Known classification uncertainty from Phase 1 not yet resolved",
+          "Two additional pending projects with the same building owner"
+        ],
+        "required_textual_manifestation": "Interviewee acknowledges factoring in the ongoing relationship with the owner when deciding how to present the in-rack sprinkler trade-off, and describes downplaying or not fully surfacing the classification-uncertainty risk in the recommendation given to the owner.",
+        "plausible_nonbias_interpretation": "Cost-conscious value engineering is a routine and legitimate part of design practice; the account must show the recommendation was tilted by the engineer's stake in the client relationship rather than purely by a neutral risk assessment. This instance is held constant from the base scenario since the causal variable being tested is schedule duration, not the client relationship.",
+        "strength": "moderate",
+        "do_not_make_explicit": ["incentive bias", "conflict of interest", "self-interest", "relationship preservation"]
+      }
+    ],
+    "control_specification": {
+      "paired_scenario_id": "HE_Biased_3",
+      "features_to_match": [],
+      "features_to_remove_or_change": [],
+      "ambiguity_boundary": "Not applicable; this is a counterfactual scenario, not a vocabulary or ambiguous control."
+    },
+    "counterfactual_specification": {
+      "causal_variable": "Length of the design schedule before permit submission deadline",
+      "original_state": "Three-week compressed design window (HE_Biased_3), creating tight schedule pressure at every decision point",
+      "counterfactual_state": "Six-week design window before permit submission deadline, removing severe schedule compression while holding budget, relationship, and infrastructure constraints constant",
+      "variables_to_hold_constant": [
+        "Building, tenant type, and rack configuration",
+        "Fixed retrofit budget set before classification confirmation",
+        "Ongoing multi-project relationship between the engineer's firm and the building owner",
+        "Existing water supply and riser infrastructure limitations",
+        "AHJ requirement for hydraulic calculations and witnessed flow test",
+        "The four decision points, their alternatives, and their sequencing",
+        "The three targeted bias instances and their assigned decision points and mechanisms"
+      ],
+      "expected_causal_difference": "If the classification shortcut and density-selection shortcut in the base scenario were purely artifacts of schedule compression, the extended six-week window should be accompanied by fuller information-gathering and alternative comparison at Decision Points 1 and 2. If those patterns persist despite the additional time, this indicates the shortcuts are not solely schedule-driven. The relationship-driven value-engineering recommendation at Decision Point 3 is expected to persist unchanged, since the causal variable manipulated here is schedule length, not the client relationship.",
+      "causal_test_question": "Does relaxing the design schedule from three weeks to six weeks change how the engineer gathers tenant data and compares design alternatives, or do the same reasoning shortcuts appear even with materially more time available?"
+    },
+    "generation_checks": [
+      "Confirm exactly 4 decision points appear in the timeline, with Decision Point 4 free of intentionally embedded named-bias instances.",
+      "Confirm exactly one Stereotyping instance is embedded at Decision Point 1 only, and that the account explicitly shows time was not the limiting factor.",
+      "Confirm exactly one Satisficing instance is embedded at Decision Point 2 only, and that the account explicitly shows calendar time remained available.",
+      "Confirm exactly one Incentive bias instance is embedded at Decision Point 3 only, held materially unchanged from the base scenario.",
+      "Confirm no bias labels, definitions, or psychological terminology appear in the public interview text.",
+      "Confirm each decision point includes at least two plausible alternatives and both pre- and post-decision information.",
+      "Confirm probes cover cues, information sources, goals, alternatives, decision basis, prior experience, time pressure, uncertainty, and hypotheticals, including at least one probe on what information would have changed the decision and one on what would happen if a key feature were different.",
+      "Confirm only the schedule-length variable is changed relative to HE_Biased_3, and all other material facts, wording patterns, and decision structure are preserved as far as possible.",
+      "Confirm total word count target of 1,350 words (acceptable range 1,215-1,485) is achievable given the four decision points and probe density without repetitive exposition.",
+      "Confirm consequences described (comfortable flow test margin, plan reviewer flag, unresolved classification uncertainty) do not mechanically prove any decision was biased."
+    ]
+  },
+  "hidden_validation_specification": {
+    "hidden_spec_version": "1.0",
+    "condition": "counterfactual",
+    "exact_occurrence_manifest": [
+      {
+        "bias": "Incentive bias",
+        "occurrences": 1,
+        "mechanism_constraint": "Must be held constant relative to HE_Biased_3, unaffected by the schedule-length manipulation"
+      },
+      {
+        "bias": "Satisficing",
+        "occurrences": 1,
+        "mechanism_constraint": "Must be shown to occur despite calendar time remaining, not attributable to schedule scarcity"
+      },
+      {
+        "bias": "Stereotyping",
+        "occurrences": 1,
+        "mechanism_constraint": "Must be shown to occur despite feasible opportunity to obtain tenant-specific data within the extended window"
+      }
+    ],
+    "target_bias_names": ["Incentive bias", "Satisficing", "Stereotyping"],
+    "requested_occurrence_count_for_each_bias": [
+      {"bias": "Incentive bias", "requested_occurrences": 1},
+      {"bias": "Satisficing", "requested_occurrences": 1},
+      {"bias": "Stereotyping", "requested_occurrences": 1}
+    ],
+    "planned_instance_ids": [
+      {"instance_id": "st_01", "bias": "Stereotyping"},
+      {"instance_id": "sf_01", "bias": "Satisficing"},
+      {"instance_id": "ib_01", "bias": "Incentive bias"}
+    ],
+    "intended_decision_points": [
+      {"instance_id": "st_01", "bias": "Stereotyping", "decision_point": 1},
+      {"instance_id": "sf_01", "bias": "Satisficing", "decision_point": 2},
+      {"instance_id": "ib_01", "bias": "Incentive bias", "decision_point": 3}
+    ],
+    "intended_mechanisms": [
+      {
+        "instance_id": "st_01",
+        "bias": "Stereotyping",
+        "mechanism": "Category-based inference about tenant storage hazard substituted for case-specific inventory verification, persisting despite feasible time to verify",
+        "affected_reasoning_operation": "Evidence-selection/classification during commodity classification",
+        "evidence_source": "Similarity to two prior 3PL clients vs. absent tenant-specific SKU/packaging data, with six-week schedule allowing time to request it",
+        "distinctiveness_requirement": "Only stereotyping instance in the scenario; occurs solely at Decision Point 1 tied to classification; distinguished from the paired base scenario by the explicit absence of schedule pressure as an available justification."
+      },
+      {
+        "instance_id": "sf_01",
+        "bias": "Satisficing",
+        "mechanism": "Premature stopping at the first code-minimum-satisfying design option instead of comparing configuration-specific alternatives, despite remaining calendar time",
+        "affected_reasoning_operation": "Alternative-generation and comparison during hydraulic density/area selection",
+        "evidence_source": "Multiple available density/area curve points and manufacturer guidance vs. several weeks of schedule slack remaining",
+        "distinctiveness_requirement": "Only satisficing instance in the scenario; occurs solely at Decision Point 2 tied to density/area selection; distinguished from the paired base scenario by removing the time-scarcity justification available in HE_Biased_3."
+      },
+      {
+        "instance_id": "ib_01",
+        "bias": "Incentive bias",
+        "mechanism": "Recommendation shaped by desire to preserve an ongoing multi-project client relationship rather than neutral risk weighing; unaffected by the schedule-length manipulation",
+        "affected_reasoning_operation": "Selective emphasis in risk-tradeoff communication during value-engineering recommendation",
+        "evidence_source": "Owner's budget request and pending future projects vs. unresolved classification-uncertainty risk from Decision Point 1",
+        "distinctiveness_requirement": "Only incentive-bias instance in the scenario; occurs solely at Decision Point 3 tied to the value-engineering recommendation; held constant across base and counterfactual scenarios since the manipulated causal variable is schedule length, not the client relationship."
+      }
+    ],
+    "intended_strength": [
+      {"instance_id": "st_01", "bias": "Stereotyping", "strength": "subtle"},
+      {"instance_id": "sf_01", "bias": "Satisficing", "strength": "moderate"},
+      {"instance_id": "ib_01", "bias": "Incentive bias", "strength": "moderate"}
+    ],
+    "paired_scenario_id": "HE_Biased_3",
+    "counterfactual_variable": {
+      "name": "Length of the design schedule before permit submission deadline",
+      "original_state": "Three-week compressed design window",
+      "changed_state": "Six-week design window before permit submission deadline",
+      "variables_to_hold_constant": [
+        "Building, tenant type, and rack configuration",
+        "Fixed retrofit budget set before classification confirmation",
+        "Ongoing multi-project relationship between the engineer's firm and the building owner",
+        "Existing water supply and riser infrastructure limitations",
+        "AHJ requirement for hydraulic calculations and witnessed flow test",
+        "The four decision points, their alternatives, and their sequencing",
+        "The three targeted bias instances and their assigned decision points and mechanisms"
+      ]
+    },
+    "scenario_id": "HE_Counterfactual_3",
+    "domain_id": "HE",
+    "total_requested_occurrences": 3,
+    "total_planned_occurrences": 3,
+    "allocation_rule_used": "Occurrences spread one-per-bias across three distinct, mechanism-fitting decision points, mirroring the base scenario's allocation (Stereotyping at Decision Point 1, Satisficing at Decision Point 2, Incentive bias at Decision Point 3), with Decision Point 4 left free of intentional bias instances. The schedule-length causal variable is manipulated to strip away the time-pressure justification available at Decision Points 1 and 2 in the base scenario, while the relationship-driven mechanism at Decision Point 3 is deliberately held constant as it is orthogonal to the manipulated variable.",
+    "control_zero_bias_requirement": false,
+    "variables_to_hold_constant": [
+      "Building, tenant type, and rack configuration",
+      "Fixed retrofit budget set before classification confirmation",
+      "Ongoing multi-project relationship between the engineer's firm and the building owner",
+      "Existing water supply and riser infrastructure limitations",
+      "AHJ requirement for hydraulic calculations and witnessed flow test",
+      "The four decision points, their alternatives, and their sequencing",
+      "The three targeted bias instances and their assigned decision points and mechanisms"
+    ],
+    "generation_warnings": []
+  }
+}
+</COMPLETE_GENERATION_SPECIFICATION>
+
+<EVALUATION_SEGMENT_MAP>
+  "evaluation_segment_map": {
+      "segment_mapping_version": "1.0",
+      "segments": [
+        {
+          "segment_id": "seg_001",
+          "speaker": "Participant",
+          "segment_type": "schedule_assessment",
+          "raw_interview_anchor": "Actually pretty comfortable, for once. We had six weeks from kickoff to permit submission... I wasn't fighting the calendar the way I sometimes am.",
+          "eligible_reasoning_segment": true,
+          "ground_truth_bias_present": false,
+          "ground_truth_instance_ids": [],
+          "ground_truth_rationale": "The participant explicitly characterizes the schedule as comfortable and non-constraining; this is contextual reasoning and contains no hidden bias instance."
+        },
+        {
+          "segment_id": "seg_002",
+          "speaker": "Participant",
+          "segment_type": "commodity_classification_and_information_search",
+          "raw_interview_anchor": "There wasn't really a schedule reason it had to happen that week... I'd done two other jobs for similar 3PL operators... I went with Class III based on that pattern and moved on... I went with that pattern instead of waiting on their list.",
+          "eligible_reasoning_segment": true,
+          "ground_truth_bias_present": true,
+          "ground_truth_instance_ids": ["st_01"],
+          "ground_truth_rationale": "The classification was inferred from a tenant-type category and two prior exemplars instead of tenant-specific packaging data, despite feasible time to obtain it."
+        },
+        {
+          "segment_id": "seg_003",
+          "speaker": "Participant",
+          "segment_type": "hydraulic_density_area_selection",
+          "raw_interview_anchor": "Several density and area points would have satisfied code minimum... I took the first point that cleared the minimum... I had the time to run more comparisons, honestly, I just didn't loop back once I had something that worked.",
+          "eligible_reasoning_segment": true,
+          "ground_truth_bias_present": true,
+          "ground_truth_instance_ids": ["sf_01"],
+          "ground_truth_rationale": "The participant stopped at the first technically acceptable design point without comparing configuration-specific alternatives, although several weeks remained."
+        },
+        {
+          "segment_id": "seg_004",
+          "speaker": "Participant",
+          "segment_type": "value_engineering_risk_communication",
+          "raw_interview_anchor": "Keeping it would've given more margin against the classification uncertainty I already knew about. But we've got two more retrofit jobs pending with him... so I recommended pulling the allowance to hit his number... I framed the removal as a reasonable trade rather than spelling out how much margin we'd be giving up.",
+          "eligible_reasoning_segment": true,
+          "ground_truth_bias_present": true,
+          "ground_truth_instance_ids": ["ib_01"],
+          "ground_truth_rationale": "The recommendation and selective framing were shaped by preserving an ongoing owner relationship while reducing a known safety margin."
+        },
+        {
+          "segment_id": "seg_005",
+          "speaker": "Participant",
+          "segment_type": "commissioning_testing_decision",
+          "raw_interview_anchor": "The AHJ requires the witnessed flow test regardless, and with days to spare before move-in, there wasn't a reason to cut corners. I did the full test.",
+          "eligible_reasoning_segment": true,
+          "ground_truth_bias_present": false,
+          "ground_truth_instance_ids": [],
+          "ground_truth_rationale": "The participant followed the required full testing process with adequate schedule slack; the generation specification embeds no bias at Decision Point 4."
+        }
+      ]
+    }
+</EVALUATION_SEGMENT_MAP>
+
+<RAG_ANALYSIS_OUTPUT>
+[JSON produced by the ontology-free RAG system]
+</RAG_ANALYSIS_OUTPUT>

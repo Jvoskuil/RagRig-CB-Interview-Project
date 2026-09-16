@@ -1,0 +1,650 @@
+{
+  "evaluation_metadata": {
+    "task": "ontology_free_rag_cognitive_bias_benchmark_evaluation",
+    "benchmark_run_metadata": {
+      "benchmark_run_id": "CS_Biased_7_Sonar_off",
+      "interview_id": "CS_Biased_7",
+      "system_prompt_id": "Sonar",
+      "system_prompt_generator": "Prompt 1_2",
+      "rag_model_id": "v1.0.0",
+      "corpus_condition": "off",
+      "retrieval_configuration_id": "k=0",
+      "decoding_configuration_id": null,
+      "temperature": 1,
+      "replicate_id": null,
+      "segment_map_id": null
+    },
+    "scenario_id": "CS_Biased_7",
+    "domain_id": "CS",
+    "condition": "biased",
+    "segment_map_status": "prevalidated_provided",
+    "rag_output_parse_status": "valid_json",
+    "rag_schema_assessment": "conformant"
+  },
+  "input_validation": {
+    "rag_output_schema_violations": [],
+    "rag_summary_count_consistency": {
+      "status": "consistent",
+      "details": "The summary reports 6 identified occurrences: Anchoring bias (3), Availability heuristic (1), Overconfidence bias (1), and Sunk cost fallacy (1), matching the six occurrence records."
+    },
+    "evaluation_limitations": [
+      "No retrieved chunks, source passages, or retrieval logs were supplied; corpus fidelity is therefore not scored.",
+      "The supplied metadata encoded unavailable values as the strings \"null\" and \"1\"; these were normalized to JSON null and numeric 1 where required by the output schema."
+    ]
+  },
+  "evaluation_segment_map": {
+    "segment_mapping_version": "1.0",
+    "segments": [
+      {
+        "segment_id": "seg_001",
+        "speaker": "Participant",
+        "segment_type": "decision_rationale",
+        "raw_interview_anchor": "I remember looking at it and thinking, okay, Medium, that tracks with what I'm seeing, and we went from there.",
+        "eligible_reasoning_segment": true,
+        "ground_truth_bias_present": true,
+        "ground_truth_instance_ids": ["cb_01"],
+        "ground_truth_rationale": "The participant adopts the SIEM's pre-existing Medium score as the reference point and fails to adjust sufficiently for the privileged account context."
+      },
+      {
+        "segment_id": "seg_002",
+        "speaker": "Participant",
+        "segment_type": "evidence_selection_and_scope",
+        "raw_interview_anchor": "I didn't pull in the second alert as something to check in parallel; the analyst was already stretched, and the jump server was the concrete lead.",
+        "eligible_reasoning_segment": true,
+        "ground_truth_bias_present": true,
+        "ground_truth_instance_ids": ["cb_02"],
+        "ground_truth_rationale": "The investigation is narrowed to the flagged jump server while a concurrent, relevant auth-server alert remains unexamined."
+      },
+      {
+        "segment_id": "seg_003",
+        "speaker": "Participant",
+        "segment_type": "alternative_generation",
+        "raw_interview_anchor": "Procurement had actually flagged three other vendors as offering comparable bundles this cycle, but I didn't go through that list closely. A couple of peer CISOs mentioned they use either this vendor or one close competitor, so my real comparison ended up being just those two.",
+        "eligible_reasoning_segment": true,
+        "ground_truth_bias_present": true,
+        "ground_truth_instance_ids": ["cb_04"],
+        "ground_truth_rationale": "The participant restricts the vendor comparison to the incumbent and one peer-mentioned competitor despite procurement's broader qualified list."
+      },
+      {
+        "segment_id": "seg_004",
+        "speaker": "Participant",
+        "segment_type": "valuation_and_choice_rationale",
+        "raw_interview_anchor": "Having built all of that ourselves on top of their platform just made the incumbent feel like the stronger product outright, even though I didn't have a current benchmark or a comparable bid on file that actually backed that up.",
+        "eligible_reasoning_segment": true,
+        "ground_truth_bias_present": true,
+        "ground_truth_instance_ids": ["cb_03"],
+        "ground_truth_rationale": "Prior customization effort inflates the perceived value of the incumbent without an independent current-value comparison."
+      },
+      {
+        "segment_id": "seg_005",
+        "speaker": "Participant",
+        "segment_type": "risk_tradeoff_evaluation",
+        "raw_interview_anchor": "The guaranteed dollar figure against an unquantified benefit made the isolation option feel like the more expensive one, dollar for dollar, even though I couldn't put a number on the other side.",
+        "eligible_reasoning_segment": true,
+        "ground_truth_instance_ids": ["cb_06"],
+        "ground_truth_bias_present": true,
+        "ground_truth_rationale": "The containment tradeoff is tilted by framing isolation as a guaranteed monetary loss against an unquantified security benefit."
+      },
+      {
+        "segment_id": "seg_006",
+        "speaker": "Participant",
+        "segment_type": "confidence_assessment",
+        "raw_interview_anchor": "I didn't have the team specifically test whether it would catch token reuse from a different host or a parallel session somewhere else in the environment — I more or less assumed that shutting down that one account's avenues was enough to hold the line while forensics caught up.",
+        "eligible_reasoning_segment": true,
+        "ground_truth_instance_ids": ["cb_05"],
+        "ground_truth_bias_present": true,
+        "ground_truth_rationale": "The participant expresses unwarranted confidence in an untested self-implemented monitoring script as sufficient containment coverage."
+      },
+      {
+        "segment_id": "seg_007",
+        "speaker": "Participant",
+        "segment_type": "budget_estimation_and_recommendation",
+        "raw_interview_anchor": "It was already the reference point I had in my head from planning cycles past. Adjusting it felt like less friction than justifying a jump straight to $340,000 without more scoping work.",
+        "eligible_reasoning_segment": true,
+        "ground_truth_instance_ids": ["cb_07"],
+        "ground_truth_rationale": "The old $240,000 estimate remains the reference point and receives only a modest adjustment despite current quotes of $310,000-$340,000."
+      }
+    ]
+  },
+  "segment_level_adjudications": [
+    {
+      "segment_id": "seg_001",
+      "ground_truth_status": "positive",
+      "ground_truth_instance_ids": ["cb_01"],
+      "rag_identified_occurrence_ids": ["obs_001"],
+      "rag_candidate_ids_counted_at_fourth_threshold": [],
+      "rag_detected_bias_in_segment_by_threshold": {"high_only": true, "high_and_moderate": true, "all_identified_confidence_levels": true, "all_confidence_and_candidates": true},
+      "sdt_outcome_by_threshold": {"high_only": "hit", "high_and_moderate": "hit", "all_identified_confidence_levels": "hit", "all_confidence_and_candidates": "hit"},
+      "localization_basis": "obs_001 contains a valid verbatim quote directly overlapping the seg_001 anchor.",
+      "adjudication_note": "High-confidence finding localizes correctly; its Anchoring bias label is an established equivalent of the hidden Adjustment and anchoring target and its mechanism is full."
+    },
+    {
+      "segment_id": "seg_002",
+      "ground_truth_status": "positive",
+      "ground_truth_instance_ids": ["cb_02"],
+      "rag_identified_occurrence_ids": [],
+      "rag_candidate_ids_counted_at_fourth_threshold": [],
+      "rag_detected_bias_in_segment_by_threshold": {"high_only": false, "high_and_moderate": false, "all_identified_confidence_levels": false, "all_confidence_and_candidates": false},
+      "sdt_outcome_by_threshold": {"high_only": "miss", "high_and_moderate": "miss", "all_identified_confidence_levels": "miss", "all_confidence_and_candidates": "miss"},
+      "localization_basis": "No RAG finding is assigned to the concurrent-alert scope-narrowing segment.",
+      "adjudication_note": "The RAG describes narrowed focus within obs_001 but uses that finding for the separate numeric-anchor instance; one-to-one matching does not credit it again for cb_02."
+    },
+    {
+      "segment_id": "seg_003",
+      "ground_truth_status": "positive",
+      "ground_truth_instance_ids": ["cb_04"],
+      "rag_identified_occurrence_ids": ["obs_002"],
+      "rag_candidate_ids_counted_at_fourth_threshold": [],
+      "rag_detected_bias_in_segment_by_threshold": {"high_only": false, "high_and_moderate": true, "all_identified_confidence_levels": true, "all_confidence_and_candidates": true},
+      "sdt_outcome_by_threshold": {"high_only": "miss", "high_and_moderate": "hit", "all_identified_confidence_levels": "hit", "all_confidence_and_candidates": "hit"},
+      "localization_basis": "obs_002 quotes the procurement list and peer-CISO comparison directly.",
+      "adjudication_note": "Moderate-confidence finding localizes to the positive segment and captures the narrow option set, but uses Availability heuristic rather than the hidden target label."
+    },
+    {
+      "segment_id": "seg_004",
+      "ground_truth_status": "positive",
+      "ground_truth_instance_ids": ["cb_03"],
+      "rag_identified_occurrence_ids": ["obs_003"],
+      "rag_candidate_ids_counted_at_fourth_threshold": [],
+      "rag_detected_bias_in_segment_by_threshold": {"high_only": false, "high_and_moderate": true, "all_identified_confidence_levels": true, "all_confidence_and_candidates": true},
+      "sdt_outcome_by_threshold": {"high_only": "miss", "high_and_moderate": "hit", "all_identified_confidence_levels": "hit", "all_confidence_and_candidates": "hit"},
+      "localization_basis": "obs_003 includes a valid verbatim quote directly overlapping the seg_004 anchor.",
+      "adjudication_note": "Moderate-confidence finding captures valuation inflation from prior customization and localizes correctly, but labels it Sunk cost fallacy rather than Endowment."
+    },
+    {
+      "segment_id": "seg_005",
+      "ground_truth_status": "positive",
+      "ground_truth_instance_ids": ["cb_06"],
+      "rag_identified_occurrence_ids": ["obs_004"],
+      "rag_candidate_ids_counted_at_fourth_threshold": [],
+      "rag_detected_bias_in_segment_by_threshold": {"high_only": false, "high_and_moderate": true, "all_identified_confidence_levels": true, "all_confidence_and_candidates": true},
+      "sdt_outcome_by_threshold": {"high_only": "miss", "high_and_moderate": "hit", "all_identified_confidence_levels": "hit", "all_confidence_and_candidates": "hit"},
+      "localization_basis": "obs_004 quotes the guaranteed dollar figure versus the unquantified benefit directly.",
+      "adjudication_note": "Moderate-confidence finding localizes correctly and states the defining certain-loss versus uncertain-benefit mechanism, but labels it Anchoring bias rather than Loss Framing."
+    },
+    {
+      "segment_id": "seg_006",
+      "ground_truth_status": "positive",
+      "ground_truth_instance_ids": ["cb_05"],
+      "rag_identified_occurrence_ids": ["obs_005"],
+      "rag_candidate_ids_counted_at_fourth_threshold": [],
+      "rag_detected_bias_in_segment_by_threshold": {"high_only": false, "high_and_moderate": true, "all_identified_confidence_levels": true, "all_confidence_and_candidates": true},
+      "sdt_outcome_by_threshold": {"high_only": "miss", "high_and_moderate": "hit", "all_identified_confidence_levels": "hit", "all_confidence_and_candidates": "hit"},
+      "localization_basis": "obs_005 quotes the untested token-reuse coverage assumption directly.",
+      "adjudication_note": "Moderate-confidence finding captures the full untested-control-confidence mechanism, but labels it Overconfidence bias rather than Illusion of control."
+    },
+    {
+      "segment_id": "seg_007",
+      "ground_truth_status": "positive",
+      "ground_truth_instance_ids": ["cb_07"],
+      "rag_identified_occurrence_ids": ["obs_006"],
+      "rag_candidate_ids_counted_at_fourth_threshold": [],
+      "rag_detected_bias_in_segment_by_threshold": {"high_only": true, "high_and_moderate": true, "all_identified_confidence_levels": true, "all_confidence_and_candidates": true},
+      "sdt_outcome_by_threshold": {"high_only": "hit", "high_and_moderate": "hit", "all_identified_confidence_levels": "hit", "all_confidence_and_candidates": "hit"},
+      "localization_basis": "obs_006 contains valid verbatim quotes directly overlapping the seg_007 anchor.",
+      "adjudication_note": "High-confidence finding correctly identifies the stale-estimate anchor with an established equivalent label and full mechanism."
+    }
+  ],
+  "instance_level_adjudications": [
+    {
+      "hidden_instance_id": "cb_01",
+      "hidden_target_bias_label": "Adjustment and anchoring",
+      "hidden_decision_or_episode": "Initial triage of SIEM jump-server alert",
+      "hidden_mechanism": "Adopts SIEM's automated Medium severity score as reference point; only minor upward adjustment despite privileged-account context.",
+      "matched_finding_by_threshold": {
+        "high_only": {"matched_id": "obs_001", "matched_type": "identified"},
+        "high_and_moderate": {"matched_id": "obs_001", "matched_type": "identified"},
+        "all_identified_confidence_levels": {"matched_id": "obs_001", "matched_type": "identified"},
+        "all_confidence_and_candidates": {"matched_id": "obs_001", "matched_type": "identified"}
+      },
+      "rag_predicted_bias_label": "Anchoring bias",
+      "rag_confidence": "high",
+      "label_equivalence_result": "established_alias_or_equivalent",
+      "localization_match_type": "exact_quote_match",
+      "mechanism_overlap": "full_mechanism_match",
+      "strict_scorecard_outcome_by_threshold": {"high_only": "true_positive", "high_and_moderate": "true_positive", "all_identified_confidence_levels": "true_positive", "all_confidence_and_candidates": "true_positive"},
+      "mechanism_first_scorecard_outcome_by_threshold": {"high_only": "true_positive", "high_and_moderate": "true_positive", "all_identified_confidence_levels": "true_positive", "all_confidence_and_candidates": "true_positive"},
+      "secondary_diagnostic_outcome": "approved_alias_match",
+      "label_equivalence_explanation": "Anchoring bias is an established equivalent label for the hidden Adjustment and anchoring construct in this instance.",
+      "mechanism_overlap_explanation": "The finding identifies the SIEM Medium score as the reference point, notes the privileged-account contrary evidence, and describes insufficient adjustment in the urgency decision.",
+      "evidence_fidelity_assessment": "Quotes are valid, participant-attributed, and substantively support the hidden mechanism."
+    },
+    {
+      "hidden_instance_id": "cb_02",
+      "hidden_target_bias_label": "Selective Attention Bias or Inattentional Blindness",
+      "hidden_decision_or_episode": "Initial triage of SIEM jump-server alert",
+      "hidden_mechanism": "Narrowed investigative focus on the flagged jump server causes the concurrent adjacent-server alert to go unexamined.",
+      "matched_finding_by_threshold": {
+        "high_only": {"matched_id": null, "matched_type": "none"},
+        "high_and_moderate": {"matched_id": null, "matched_type": "none"},
+        "all_identified_confidence_levels": {"matched_id": null, "matched_type": "none"},
+        "all_confidence_and_candidates": {"matched_id": null, "matched_type": "none"}
+      },
+      "rag_predicted_bias_label": null,
+      "rag_confidence": null,
+      "label_equivalence_result": "no_prediction",
+      "localization_match_type": "no_prediction",
+      "mechanism_overlap": "no_prediction",
+      "strict_scorecard_outcome_by_threshold": {"high_only": "false_negative", "high_and_moderate": "false_negative", "all_identified_confidence_levels": "false_negative", "all_confidence_and_candidates": "false_negative"},
+      "mechanism_first_scorecard_outcome_by_threshold": {"high_only": "false_negative", "high_and_moderate": "false_negative", "all_identified_confidence_levels": "false_negative", "all_confidence_and_candidates": "false_negative"},
+      "secondary_diagnostic_outcome": "no_matching_prediction",
+      "label_equivalence_explanation": "No RAG finding remains available for this hidden instance after one-to-one matching of obs_001 to cb_01.",
+      "mechanism_overlap_explanation": "No prediction was separately made for attentional scope-narrowing and the unexamined concurrent alert.",
+      "evidence_fidelity_assessment": "No applicable RAG evidence."
+    },
+    {
+      "hidden_instance_id": "cb_03",
+      "hidden_target_bias_label": "Endowment",
+      "hidden_decision_or_episode": "Incumbent EDR and threat-intel vendor renewal decision",
+      "hidden_mechanism": "Overvalues incumbent vendor due to sunk customization effort rather than independent capability comparison.",
+      "matched_finding_by_threshold": {
+        "high_only": {"matched_id": null, "matched_type": "none"},
+        "high_and_moderate": {"matched_id": "obs_003", "matched_type": "identified"},
+        "all_identified_confidence_levels": {"matched_id": "obs_003", "matched_type": "identified"},
+        "all_confidence_and_candidates": {"matched_id": "obs_003", "matched_type": "identified"}
+      },
+      "rag_predicted_bias_label": "Sunk cost fallacy",
+      "rag_confidence": "moderate",
+      "label_equivalence_result": "near_neighbor_label",
+      "localization_match_type": "exact_quote_match",
+      "mechanism_overlap": "full_mechanism_match",
+      "strict_scorecard_outcome_by_threshold": {"high_only": "false_negative", "high_and_moderate": "false_negative", "all_identified_confidence_levels": "false_negative", "all_confidence_and_candidates": "false_negative"},
+      "mechanism_first_scorecard_outcome_by_threshold": {"high_only": "false_negative", "high_and_moderate": "true_positive", "all_identified_confidence_levels": "true_positive", "all_confidence_and_candidates": "true_positive"},
+      "secondary_diagnostic_outcome": "correct_location_wrong_bias_label",
+      "label_equivalence_explanation": "Sunk cost fallacy is a related near-neighbor, not an approved equivalent of the hidden Endowment label.",
+      "mechanism_overlap_explanation": "The finding fully captures valuation inflation from prior custom rules and dashboards, the incumbent-vendor context, and the lack of an independent current comparison.",
+      "evidence_fidelity_assessment": "Quotes are valid and directly support the prior-investment valuation rationale."
+    },
+    {
+      "hidden_instance_id": "cb_04",
+      "hidden_target_bias_label": "Exposure to limited alternatives",
+      "hidden_decision_or_episode": "Vendor comparison set selection for EDR and threat-intel renewal",
+      "hidden_mechanism": "Comparison set restricted to incumbent plus one peer-mentioned competitor, excluding procurement's broader qualified vendor list.",
+      "matched_finding_by_threshold": {
+        "high_only": {"matched_id": null, "matched_type": "none"},
+        "high_and_moderate": {"matched_id": "obs_002", "matched_type": "identified"},
+        "all_identified_confidence_levels": {"matched_id": "obs_002", "matched_type": "identified"},
+        "all_confidence_and_candidates": {"matched_id": "obs_002", "matched_type": "identified"}
+      },
+      "rag_predicted_bias_label": "Availability heuristic",
+      "rag_confidence": "moderate",
+      "label_equivalence_result": "near_neighbor_label",
+      "localization_match_type": "exact_quote_match",
+      "mechanism_overlap": "full_mechanism_match",
+      "strict_scorecard_outcome_by_threshold": {"high_only": "false_negative", "high_and_moderate": "false_negative", "all_identified_confidence_levels": "false_negative", "all_confidence_and_candidates": "false_negative"},
+      "mechanism_first_scorecard_outcome_by_threshold": {"high_only": "false_negative", "high_and_moderate": "true_positive", "all_identified_confidence_levels": "true_positive", "all_confidence_and_candidates": "true_positive"},
+      "secondary_diagnostic_outcome": "correct_location_wrong_bias_label",
+      "label_equivalence_explanation": "Availability heuristic is a related near-neighbor explanation for why the comparison set narrowed, but it is not an approved equivalent of Exposure to limited alternatives.",
+      "mechanism_overlap_explanation": "The finding fully captures the restricted incumbent-plus-one comparison set, procurement's excluded alternatives, and the option-generation operation.",
+      "evidence_fidelity_assessment": "Quotes are valid, participant-attributed, and support the narrowed comparison set."
+    },
+    {
+      "hidden_instance_id": "cb_05",
+      "hidden_target_bias_label": "Illusion of control",
+      "hidden_decision_or_episode": "Assessment of targeted lockout and monitoring script adequacy",
+      "hidden_mechanism": "Unwarranted confidence that an untested overnight monitoring script provides adequate containment coverage.",
+      "matched_finding_by_threshold": {
+        "high_only": {"matched_id": null, "matched_type": "none"},
+        "high_and_moderate": {"matched_id": "obs_005", "matched_type": "identified"},
+        "all_identified_confidence_levels": {"matched_id": "obs_005", "matched_type": "identified"},
+        "all_confidence_and_candidates": {"matched_id": "obs_005", "matched_type": "identified"}
+      },
+      "rag_predicted_bias_label": "Overconfidence bias",
+      "rag_confidence": "moderate",
+      "label_equivalence_result": "near_neighbor_label",
+      "localization_match_type": "exact_quote_match",
+      "mechanism_overlap": "full_mechanism_match",
+      "strict_scorecard_outcome_by_threshold": {"high_only": "false_negative", "high_and_moderate": "false_negative", "all_identified_confidence_levels": "false_negative", "all_confidence_and_candidates": "false_negative"},
+      "mechanism_first_scorecard_outcome_by_threshold": {"high_only": "false_negative", "high_and_moderate": "true_positive", "all_identified_confidence_levels": "true_positive", "all_confidence_and_candidates": "true_positive"},
+      "secondary_diagnostic_outcome": "correct_location_wrong_bias_label",
+      "label_equivalence_explanation": "Overconfidence bias is a related near-neighbor, but it is not treated as an approved equivalent of the hidden Illusion of control label.",
+      "mechanism_overlap_explanation": "The finding fully captures confidence in an untested, narrow monitoring script as sufficient control coverage and identifies the confidence-calibration operation.",
+      "evidence_fidelity_assessment": "Quotes are valid and directly support the contemporaneous untested-coverage assumption."
+    },
+    {
+      "hidden_instance_id": "cb_06",
+      "hidden_target_bias_label": "Loss Framing",
+      "hidden_decision_or_episode": "Containment response after lateral movement confirmation",
+      "hidden_mechanism": "CFO's guaranteed-loss framing of isolation cost outweighs unquantified security benefit in the tradeoff evaluation.",
+      "matched_finding_by_threshold": {
+        "high_only": {"matched_id": null, "matched_type": "none"},
+        "high_and_moderate": {"matched_id": "obs_004", "matched_type": "identified"},
+        "all_identified_confidence_levels": {"matched_id": "obs_004", "matched_type": "identified"},
+        "all_confidence_and_candidates": {"matched_id": "obs_004", "matched_type": "identified"}
+      },
+      "rag_predicted_bias_label": "Anchoring bias",
+      "rag_confidence": "moderate",
+      "label_equivalence_result": "near_neighbor_label",
+      "localization_match_type": "exact_quote_match",
+      "mechanism_overlap": "full_mechanism_match",
+      "strict_scorecard_outcome_by_threshold": {"high_only": "false_negative", "high_and_moderate": "false_negative", "all_identified_confidence_levels": "false_negative", "all_confidence_and_candidates": "false_negative"},
+      "mechanism_first_scorecard_outcome_by_threshold": {"high_only": "false_negative", "high_and_moderate": "true_positive", "all_identified_confidence_levels": "true_positive", "all_confidence_and_candidates": "true_positive"},
+      "secondary_diagnostic_outcome": "correct_location_wrong_bias_label",
+      "label_equivalence_explanation": "Anchoring bias is related to the numerical salience of the $180,000 figure, but it is not an approved equivalent of the hidden Loss Framing label.",
+      "mechanism_overlap_explanation": "The finding fully states the guaranteed monetary loss versus unquantified security-benefit comparison and its effect on the risk-tradeoff operation.",
+      "evidence_fidelity_assessment": "Quotes are valid and support the asymmetric guaranteed-loss framing."
+    },
+    {
+      "hidden_instance_id": "cb_07",
+      "hidden_target_bias_label": "Adjustment and anchoring",
+      "hidden_decision_or_episode": "Board remediation budget recommendation",
+      "hidden_mechanism": "Starts from an 18-month-old $240,000 estimate and makes only a modest adjustment despite current quotes running $70k-$100k higher.",
+      "matched_finding_by_threshold": {
+        "high_only": {"matched_id": "obs_006", "matched_type": "identified"},
+        "high_and_moderate": {"matched_id": "obs_006", "matched_type": "identified"},
+        "all_identified_confidence_levels": {"matched_id": "obs_006", "matched_type": "identified"},
+        "all_confidence_and_candidates": {"matched_id": "obs_006", "matched_type": "identified"}
+      },
+      "rag_predicted_bias_label": "Anchoring bias",
+      "rag_confidence": "high",
+      "label_equivalence_result": "established_alias_or_equivalent",
+      "localization_match_type": "exact_quote_match",
+      "mechanism_overlap": "full_mechanism_match",
+      "strict_scorecard_outcome_by_threshold": {"high_only": "true_positive", "high_and_moderate": "true_positive", "all_identified_confidence_levels": "true_positive", "all_confidence_and_candidates": "true_positive"},
+      "mechanism_first_scorecard_outcome_by_threshold": {"high_only": "true_positive", "high_and_moderate": "true_positive", "all_identified_confidence_levels": "true_positive", "all_confidence_and_candidates": "true_positive"},
+      "secondary_diagnostic_outcome": "approved_alias_match",
+      "label_equivalence_explanation": "Anchoring bias is an established equivalent label for the hidden Adjustment and anchoring construct in this budget-estimation instance.",
+      "mechanism_overlap_explanation": "The finding identifies the stale $240,000 reference point, the substantially higher current quotes, and the insufficient adjustment in the board recommendation.",
+      "evidence_fidelity_assessment": "Quotes are valid, participant-attributed, and directly support the hidden mechanism."
+    }
+  ],
+  "unmatched_rag_predictions": [
+    {
+      "rag_occurrence_id": "obs_002",
+      "rag_finding_type": "identified",
+      "rag_predicted_bias_label": "Availability heuristic",
+      "rag_confidence": "moderate",
+      "localized_segment_id": "seg_003",
+      "best_related_hidden_instance_id": "cb_04",
+      "label_equivalence_result": "near_neighbor_label",
+      "mechanism_overlap": "full_mechanism_match",
+      "strict_classification": "correct_location_wrong_bias_label",
+      "mechanism_first_classification": "not_applicable",
+      "counted_at_thresholds": ["high_and_moderate", "all_identified_confidence_levels", "all_confidence_and_candidates"],
+      "why_not_an_exact_strict_match": "The quote and mechanism match the limited comparison set, but Availability heuristic is not the hidden target label Exposure to limited alternatives."
+    },
+    {
+      "rag_occurrence_id": "obs_003",
+      "rag_finding_type": "identified",
+      "rag_predicted_bias_label": "Sunk cost fallacy",
+      "rag_confidence": "moderate",
+      "localized_segment_id": "seg_004",
+      "best_related_hidden_instance_id": "cb_03",
+      "label_equivalence_result": "near_neighbor_label",
+      "mechanism_overlap": "full_mechanism_match",
+      "strict_classification": "correct_location_wrong_bias_label",
+      "mechanism_first_classification": "not_applicable",
+      "counted_at_thresholds": ["high_and_moderate", "all_identified_confidence_levels", "all_confidence_and_candidates"],
+      "why_not_an_exact_strict_match": "The finding correctly captures prior customization inflating incumbent value, but Sunk cost fallacy is not the hidden target label Endowment."
+    },
+    {
+      "rag_occurrence_id": "obs_004",
+      "rag_finding_type": "identified",
+      "rag_predicted_bias_label": "Anchoring bias",
+      "rag_confidence": "moderate",
+      "localized_segment_id": "seg_005",
+      "best_related_hidden_instance_id": "cb_06",
+      "label_equivalence_result": "near_neighbor_label",
+      "mechanism_overlap": "full_mechanism_match",
+      "strict_classification": "correct_location_wrong_bias_label",
+      "mechanism_first_classification": "not_applicable",
+      "counted_at_thresholds": ["high_and_moderate", "all_identified_confidence_levels", "all_confidence_and_candidates"],
+      "why_not_an_exact_strict_match": "The evidence supports the guaranteed-loss versus unquantified-benefit mechanism, but Anchoring bias is not the hidden target label Loss Framing."
+    },
+    {
+      "rag_occurrence_id": "obs_005",
+      "rag_finding_type": "identified",
+      "rag_predicted_bias_label": "Overconfidence bias",
+      "rag_confidence": "moderate",
+      "localized_segment_id": "seg_006",
+      "best_related_hidden_instance_id": "cb_05",
+      "label_equivalence_result": "near_neighbor_label",
+      "mechanism_overlap": "full_mechanism_match",
+      "strict_classification": "correct_location_wrong_bias_label",
+      "mechanism_first_classification": "not_applicable",
+      "counted_at_thresholds": ["high_and_moderate", "all_identified_confidence_levels", "all_confidence_and_candidates"],
+      "why_not_an_exact_strict_match": "The evidence supports confidence in an untested containment control, but Overconfidence bias is not the hidden target label Illusion of control."
+    }
+  ],
+  "candidate_analysis": {
+    "candidate_count": 0,
+    "candidates": []
+  },
+  "signal_detection_summary": {
+    "evaluation_unit": "eligible_reasoning_segment",
+    "high_only": {
+      "positive_segments": 7,
+      "negative_segments": 0,
+      "hits": 2,
+      "misses": 5,
+      "false_alarms": 0,
+      "correct_rejections": 0,
+      "hit_rate": 0.2857,
+      "false_alarm_rate": null,
+      "accuracy": 0.2857,
+      "precision": 1.0,
+      "recall": 0.2857,
+      "f1": 0.4444,
+      "detection_interpretation": "Only the two high-confidence anchoring findings are detected; five positive segments are missed and there are no negative segments to assess false alarms."
+    },
+    "high_and_moderate": {
+      "positive_segments": 7,
+      "negative_segments": 0,
+      "hits": 6,
+      "misses": 1,
+      "false_alarms": 0,
+      "correct_rejections": 0,
+      "hit_rate": 0.8571,
+      "false_alarm_rate": null,
+      "accuracy": 0.8571,
+      "precision": 1.0,
+      "recall": 0.8571,
+      "f1": 0.9231,
+      "detection_interpretation": "All findings except the unreported selective-attention instance are moderate or high confidence and localize to positive segments."
+    },
+    "all_identified_confidence_levels": {
+      "positive_segments": 7,
+      "negative_segments": 0,
+      "hits": 6,
+      "misses": 1,
+      "false_alarms": 0,
+      "correct_rejections": 0,
+      "hit_rate": 0.8571,
+      "false_alarm_rate": null,
+      "accuracy": 0.8571,
+      "precision": 1.0,
+      "recall": 0.8571,
+      "f1": 0.9231,
+      "detection_interpretation": "Identified findings are unchanged from the high-and-moderate threshold because no low-confidence occurrences were supplied."
+    },
+    "all_confidence_and_candidates": {
+      "positive_segments": 7,
+      "negative_segments": 0,
+      "hits": 6,
+      "misses": 1,
+      "false_alarms": 0,
+      "correct_rejections": 0,
+      "hit_rate": 0.8571,
+      "false_alarm_rate": null,
+      "accuracy": 0.8571,
+      "precision": 1.0,
+      "recall": 0.8571,
+      "f1": 0.9231,
+      "detection_interpretation": "No candidates were supplied, so the fourth threshold is identical to the all-identified threshold."
+    }
+  },
+  "strict_instance_level_metrics": {
+    "high_only": {"true_positives": 2, "false_negatives": 5, "false_positives": 0, "precision": 1.0, "recall": 0.2857, "f1": 0.4444, "exact_occurrence_match_rate": 0.2857, "occurrence_count_match_rate": 0.1667},
+    "high_and_moderate": {"true_positives": 2, "false_negatives": 5, "false_positives": 4, "precision": 0.3333, "recall": 0.2857, "f1": 0.3077, "exact_occurrence_match_rate": 0.2857, "occurrence_count_match_rate": 0.1667},
+    "all_identified_confidence_levels": {"true_positives": 2, "false_negatives": 5, "false_positives": 4, "precision": 0.3333, "recall": 0.2857, "f1": 0.3077, "exact_occurrence_match_rate": 0.2857, "occurrence_count_match_rate": 0.1667},
+    "all_confidence_and_candidates": {"true_positives": 2, "false_negatives": 5, "false_positives": 4, "precision": 0.3333, "recall": 0.2857, "f1": 0.3077, "exact_occurrence_match_rate": 0.2857, "occurrence_count_match_rate": 0.1667}
+  },
+  "mechanism_first_instance_level_metrics": {
+    "high_only": {"true_positives": 2, "false_negatives": 5, "false_positives": 0, "precision": 1.0, "recall": 0.2857, "f1": 0.4444, "exact_occurrence_match_rate": 0.2857, "occurrence_count_match_rate": 0.1667},
+    "high_and_moderate": {"true_positives": 6, "false_negatives": 1, "false_positives": 0, "precision": 1.0, "recall": 0.8571, "f1": 0.9231, "exact_occurrence_match_rate": 0.8571, "occurrence_count_match_rate": 1.0},
+    "all_identified_confidence_levels": {"true_positives": 6, "false_negatives": 1, "false_positives": 0, "precision": 1.0, "recall": 0.8571, "f1": 0.9231, "exact_occurrence_match_rate": 0.8571, "occurrence_count_match_rate": 1.0},
+    "all_confidence_and_candidates": {"true_positives": 6, "false_negatives": 1, "false_positives": 0, "precision": 1.0, "recall": 0.8571, "f1": 0.9231, "exact_occurrence_match_rate": 0.8571, "occurrence_count_match_rate": 1.0}
+  },
+  "target_bias_performance": [
+    {
+      "hidden_target_bias_label": "Adjustment and anchoring",
+      "hidden_requested_occurrences": 2,
+      "strict_true_positives_by_threshold": {"high_only": 2, "high_and_moderate": 2, "all_identified_confidence_levels": 2, "all_confidence_and_candidates": 2},
+      "mechanism_first_true_positives_by_threshold": {"high_only": 2, "high_and_moderate": 2, "all_identified_confidence_levels": 2, "all_confidence_and_candidates": 2},
+      "count_match_status_at_all_confidence_and_candidates": "exact_match"
+    },
+    {
+      "hidden_target_bias_label": "Selective Attention Bias or Inattentional Blindness",
+      "hidden_requested_occurrences": 1,
+      "strict_true_positives_by_threshold": {"high_only": 0, "high_and_moderate": 0, "all_identified_confidence_levels": 0, "all_confidence_and_candidates": 0},
+      "mechanism_first_true_positives_by_threshold": {"high_only": 0, "high_and_moderate": 0, "all_identified_confidence_levels": 0, "all_confidence_and_candidates": 0},
+      "count_match_status_at_all_confidence_and_candidates": "underdetected"
+    },
+    {
+      "hidden_target_bias_label": "Endowment",
+      "hidden_requested_occurrences": 1,
+      "strict_true_positives_by_threshold": {"high_only": 0, "high_and_moderate": 0, "all_identified_confidence_levels": 0, "all_confidence_and_candidates": 0},
+      "mechanism_first_true_positives_by_threshold": {"high_only": 0, "high_and_moderate": 1, "all_identified_confidence_levels": 1, "all_confidence_and_candidates": 1},
+      "count_match_status_at_all_confidence_and_candidates": "underdetected"
+    },
+    {
+      "hidden_target_bias_label": "Exposure to limited alternatives",
+      "hidden_requested_occurrences": 1,
+      "strict_true_positives_by_threshold": {"high_only": 0, "high_and_moderate": 0, "all_identified_confidence_levels": 0, "all_confidence_and_candidates": 0},
+      "mechanism_first_true_positives_by_threshold": {"high_only": 0, "high_and_moderate": 1, "all_identified_confidence_levels": 1, "all_confidence_and_candidates": 1},
+      "count_match_status_at_all_confidence_and_candidates": "underdetected"
+    },
+    {
+      "hidden_target_bias_label": "Illusion of control",
+      "hidden_requested_occurrences": 1,
+      "strict_true_positives_by_threshold": {"high_only": 0, "high_and_moderate": 0, "all_identified_confidence_levels": 0, "all_confidence_and_candidates": 0},
+      "mechanism_first_true_positives_by_threshold": {"high_only": 0, "high_and_moderate": 1, "all_identified_confidence_levels": 1, "all_confidence_and_candidates": 1},
+      "count_match_status_at_all_confidence_and_candidates": "underdetected"
+    },
+    {
+      "hidden_target_bias_label": "Loss Framing",
+      "hidden_requested_occurrences": 1,
+      "strict_true_positives_by_threshold": {"high_only": 0, "high_and_moderate": 0, "all_identified_confidence_levels": 0, "all_confidence_and_candidates": 0},
+      "mechanism_first_true_positives_by_threshold": {"high_only": 0, "high_and_moderate": 1, "all_identified_confidence_levels": 1, "all_confidence_and_candidates": 1},
+      "count_match_status_at_all_confidence_and_candidates": "underdetected"
+    }
+  ],
+  "rag_label_false_positive_inventory": [
+    {
+      "rag_predicted_bias_label": "Availability heuristic",
+      "finding_type": "identified",
+      "alternative_labels": ["Availability bias"],
+      "occurrence_count": 1,
+      "best_related_hidden_target_bias_label": "Exposure to limited alternatives",
+      "label_relation": "near_neighbor",
+      "mechanism_overlap_summary": "Full overlap with the narrow comparison-set mechanism, but the label names salience-driven recall rather than the target's restricted-alternatives construct.",
+      "primary_error_types": ["correct_location_wrong_bias_label"]
+    },
+    {
+      "rag_predicted_bias_label": "Sunk cost fallacy",
+      "finding_type": "identified",
+      "alternative_labels": ["Sunk cost effect", "Escalation of commitment"],
+      "occurrence_count": 1,
+      "best_related_hidden_target_bias_label": "Endowment",
+      "label_relation": "near_neighbor",
+      "mechanism_overlap_summary": "Full overlap with prior-investment-driven incumbent valuation, but the label emphasizes irrecoverable investment rather than the hidden endowment construct.",
+      "primary_error_types": ["correct_location_wrong_bias_label"]
+    },
+    {
+      "rag_predicted_bias_label": "Anchoring bias",
+      "finding_type": "identified",
+      "alternative_labels": ["Numeric anchoring", "Insufficient adjustment"],
+      "occurrence_count": 1,
+      "best_related_hidden_target_bias_label": "Loss Framing",
+      "label_relation": "near_neighbor",
+      "mechanism_overlap_summary": "Full overlap with the guaranteed-loss versus unquantified-benefit weighting in the containment tradeoff, although the RAG names numeric anchoring rather than loss framing.",
+      "primary_error_types": ["correct_location_wrong_bias_label"]
+    },
+    {
+      "rag_predicted_bias_label": "Overconfidence bias",
+      "finding_type": "identified",
+      "alternative_labels": ["Overprecision", "Illusion of control"],
+      "occurrence_count": 1,
+      "best_related_hidden_target_bias_label": "Illusion of control",
+      "label_relation": "near_neighbor",
+      "mechanism_overlap_summary": "Full overlap with unwarranted confidence in an untested monitoring control, while the primary label is broader than the hidden illusion-of-control construct.",
+      "primary_error_types": ["correct_location_wrong_bias_label"]
+    }
+  ],
+  "diagnostic_error_summary": {
+    "correct_location_wrong_bias_label_count": 4,
+    "correct_label_wrong_location_count": 0,
+    "correct_label_location_wrong_mechanism_count": 0,
+    "mechanism_detected_label_unresolved_count": 0,
+    "partial_mechanism_match_count": 0,
+    "duplicate_prediction_count": 0,
+    "unsupported_prediction_count": 0,
+    "fabricated_or_invalid_quote_count": 0,
+    "approved_alias_or_equivalence_count": 2,
+    "near_neighbor_label_count": 4,
+    "different_construct_label_count": 0,
+    "candidate_count": 0,
+    "candidate_useful_abstention_count": 0,
+    "candidate_near_miss_count": 0,
+    "candidates_promoted_to_true_positive_at_fourth_threshold_count": 0
+  },
+  "corpus_support_audit": {
+    "primary_corpus_fidelity_score_available": false,
+    "rag_occurrences_claiming_retrieved_support": 0,
+    "rag_occurrences_with_no_claimed_retrieved_support": 6,
+    "rag_occurrences_with_unverifiable_or_internally_inconsistent_citation_metadata": 0,
+    "assessment_note": "The RAG explicitly states that no retrieved scientific-paper passages were provided and supplies no citation metadata; primary corpus fidelity is unavailable and does not affect detection scores."
+  },
+  "comparison_ready_summary": {
+    "primary_recommended_comparison_threshold": "high_and_moderate",
+    "segment_detection": {
+      "high_only": {"hits": 2, "misses": 5, "false_alarms": 0, "correct_rejections": 0, "hit_rate": 0.2857, "false_alarm_rate": null, "f1": 0.4444},
+      "high_and_moderate": {"hits": 6, "misses": 1, "false_alarms": 0, "correct_rejections": 0, "hit_rate": 0.8571, "false_alarm_rate": null, "f1": 0.9231},
+      "all_identified_confidence_levels": {"hits": 6, "misses": 1, "false_alarms": 0, "correct_rejections": 0, "hit_rate": 0.8571, "false_alarm_rate": null, "f1": 0.9231},
+      "all_confidence_and_candidates": {"hits": 6, "misses": 1, "false_alarms": 0, "correct_rejections": 0, "hit_rate": 0.8571, "false_alarm_rate": null, "f1": 0.9231}
+    },
+    "strict_instance_identification": {
+      "high_only": {"true_positives": 2, "false_negatives": 5, "false_positives": 0, "precision": 1.0, "recall": 0.2857, "f1": 0.4444},
+      "high_and_moderate": {"true_positives": 2, "false_negatives": 5, "false_positives": 4, "precision": 0.3333, "recall": 0.2857, "f1": 0.3077},
+      "all_identified_confidence_levels": {"true_positives": 2, "false_negatives": 5, "false_positives": 4, "precision": 0.3333, "recall": 0.2857, "f1": 0.3077},
+      "all_confidence_and_candidates": {"true_positives": 2, "false_negatives": 5, "false_positives": 4, "precision": 0.3333, "recall": 0.2857, "f1": 0.3077}
+    },
+    "mechanism_first_identification": {
+      "high_only": {"true_positives": 2, "false_negatives": 5, "false_positives": 0, "precision": 1.0, "recall": 0.2857, "f1": 0.4444},
+      "high_and_moderate": {"true_positives": 6, "false_negatives": 1, "false_positives": 0, "precision": 1.0, "recall": 0.8571, "f1": 0.9231},
+      "all_identified_confidence_levels": {"true_positives": 6, "false_negatives": 1, "false_positives": 0, "precision": 1.0, "recall": 0.8571, "f1": 0.9231},
+      "all_confidence_and_candidates": {"true_positives": 6, "false_negatives": 1, "false_positives": 0, "precision": 1.0, "recall": 0.8571, "f1": 0.9231}
+    },
+    "taxonomy_gap": {
+      "high_only": {"mechanism_first_f1_minus_strict_f1": 0.0},
+      "high_and_moderate": {"mechanism_first_f1_minus_strict_f1": 0.6154},
+      "all_identified_confidence_levels": {"mechanism_first_f1_minus_strict_f1": 0.6154},
+      "all_confidence_and_candidates": {"mechanism_first_f1_minus_strict_f1": 0.6154}
+    },
+    "confidence_tradeoff": {
+      "increment_from_high_to_high_and_moderate": "Segment hit rate increases from 0.2857 to 0.8571; strict F1 decreases from 0.4444 to 0.3077 because four moderate findings are correctly localized but use non-equivalent labels; mechanism-first F1 increases to 0.9231.",
+      "increment_from_high_and_moderate_to_all_confidence": "No change; no low-confidence identified findings were supplied.",
+      "increment_from_all_confidence_to_all_confidence_and_candidates": "No change; no candidates were supplied."
+    }
+  },
+  "overall_evaluation_summary": {
+    "hidden_total_planned_occurrences": 7,
+    "rag_total_identified_occurrences": 6,
+    "rag_total_candidate_biases": 0,
+    "segment_level_primary_result": "At the recommended high_and_moderate threshold, 6 of 7 positive reasoning segments are detected (hit rate 0.8571), with no false alarms because the supplied map contains no negative segments.",
+    "strict_label_plus_mechanism_result": "2 of 7 hidden instances are strict true positives (precision 0.3333, recall 0.2857, F1 0.3077) at high_and_moderate; four additional findings have correct locations and full mechanisms but non-equivalent labels.",
+    "mechanism_first_result": "6 of 7 hidden mechanisms are matched at high_and_moderate (precision 1.0000, recall 0.8571, F1 0.9231); only the selective-attention instance is missed.",
+    "candidate_tier_value_assessment": "No candidates were supplied, so the candidate tier adds no detections and does not change any metric.",
+    "main_failure_modes": [
+      "Four correctly localized full-mechanism findings use near-neighbor labels instead of the hidden target labels.",
+      "The concurrent-alert selective-attention instance is not separately identified.",
+      "The moderate-confidence findings are omitted at the high-only threshold."
+    ],
+    "main_strengths": [
+      "All six identified findings use valid participant-attributed interview evidence.",
+      "All six findings localize to the correct positive segments and capture their hidden mechanisms.",
+      "The output is valid JSON, internally consistent, and transparently discloses that retrieval support was unavailable."
+    ],
+    "benchmark_interpretation": "This run has strong mechanism-level detection but a substantial taxonomy mismatch under the strict label-plus-mechanism scorecard. It is useful for comparing ontology sensitivity: the system recovers nearly all manifested mechanisms at moderate confidence, but strict performance is limited by four near-neighbor label substitutions and one missed instance."
+  }
+}

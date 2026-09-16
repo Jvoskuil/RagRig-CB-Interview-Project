@@ -1,279 +1,10 @@
-# RAG Benchmark — 2026-09-13
+# RAG Benchmark — 2026-09-15
 
 ## Gemini Prompt 8192
 
-**Q1:** Interviewer: Thanks for making time for this. Just to confirm, this is a routine cognitive task analysis interview — I'll ask you to walk me through a specific incident in detail, and there are no right or wrong answers. Everything's for internal learning purposes. Can you tell me your current role and how long you've been in it? Participant: Sure. I'm the ventilation engineer for the underground section — mainly responsible for the primary and auxiliary fan systems, the VOD setup, and gas monitoring across the active levels. I've been in this role about six years, underground ventilation for closer to eleven overall. Interviewer: Good. Let's start with the incident itself. What happened? Participant: This was during a shift where we had a scheduled production blast on 14 Level. Standard round, nothing unusual planned. About thirty minutes after blast clearance time, one of our gas stations — GS-14R, out in the return airway — started reading CO at 280 ppm. Baseline after a blast like that is usually under 50 ppm once the primary fan's had time to clear it. So that number stood out immediately. Interviewer: What went through your mind when you saw that? Participant: Honestly, my first thought was that station again. GS-14R sits near a junction we shotcreted a couple months back, and I'd flagged that station twice already for what looked like dust interference throwing off the readings. So my instinct was, here we go again. I pulled the telemetry log to check the trend, and it had spiked pretty sharply rather than climbing gradually, which is more consistent with a dust or particulate interference pattern than a genuine gas buildup, in my experience. Interviewer: Was there any other information available to you at that point? Participant: Yes — the gas monitoring technician had taken a handheld multi-gas detector reading out at the return airway around the same time, and that came back at 190 ppm. Lower than the station reading, but still well above baseline. No maintenance ticket had confirmed a fault on GS-14R yet either — that hadn't been checked this shift. Interviewer: How did you weigh those two numbers against each other? Participant: I leaned on the station's history more than the handheld number, honestly. We'd had two prior incidents where GS-14R gave us a spike that turned out to be nothing, so that pattern was fresh in my mind. The handheld reading was lower than the station number, and handhelds can have their own calibration drift depending on how they're stored, so I didn't weight it as heavily as maybe I should have. I made the call that this was probably another sensor issue and we could proceed with re-entry on schedule. Interviewer: Did you consider getting a second confirmatory reading, or requesting a recalibration check before deciding? Participant: I thought about it, but mine planning was already asking about restart timing for the LHD fleet, and delaying re-entry without hard evidence felt like it'd be hard to justify. So we logged the handheld reading and moved forward. Interviewer: What happened next? Participant: Re-entry went ahead. About twenty minutes later, the shift boss called me — one of the crew wanted to hold at the refuge chamber a few extra minutes before heading further in, just as a precaution. Nothing specific triggering it, more a gut feeling. Interviewer: What was your reasoning at that point? Participant: That one actually made me more cautious than I expected. A few weeks earlier we'd had a safety briefing that went over a fatality at another operation — underground fire, delayed detection, pretty grim details about smoke filling a drift before anyone realized what was happening. It stuck with me. So when the shift boss raised the hold request, that case was sort of front and center, and I said yes, hold them, and we partially triggered the fire-response protocol just to be safe. Interviewer: Was there anything in the data at that point pointing toward fire specifically? Participant: Not really, no. No smoke reports, no heat, and the secondary gas trends weren't showing anything unusual — CO2 was flat. Fume-clearance delays are honestly the far more common explanation for this kind of thing at our site, and I knew that going in. But with that briefing still sitting in the back of my mind, a fire scenario felt more plausible right then than it probably should have, given what the data actually showed. I didn't want to be the one who waved people through if there was any chance it was something bigger. Interviewer: How did that play out? Participant: No fire indicators ever showed up. We eventually put it down to a longer-than-usual round that took a bit more time to clear than normal. The fifteen-minute hold turned out to be unnecessary, though nobody complained about the extra caution. Interviewer: Let's move to the threshold question. What came up there? Participant: Later that shift, the mine planning superintendent asked whether we should revise the CO auto-cutoff setpoint on GS-14R before ramping the LHD fleet back up fully. Our commissioning report, from about five years back, had that threshold set at 100 ppm. That was written for a shallower working depth and a smaller diesel fleet than we're running now. Interviewer: Did you have newer data available? Participant: We did, and it was actually pretty usable. The recent baseline surveys had shown ambient CO trending noticeably higher under current depth and fleet conditions — enough that during normal diesel-heavy periods we were regularly running close to or past the old setting without anything else flagging as hazardous. A couple of us had even talked informally about a materially higher interim figure being more realistic given those numbers. We hadn't done a formal re-baseline since the fleet expanded two years ago, but the recent surveys were solid enough to work from for an interim call. Interviewer: What did you decide? Participant: I made a small adjustment but largely kept it close to the original figure. The commissioning number had been through proper review when it was set, and it just felt like the number to stay near, even with the newer data pointing higher. I didn't have time that day to commission a full re-survey, so I treated the existing figure as basically sound with a minor tweak rather than moving it to where the interim numbers suggested. Interviewer: How did that work out afterward? Participant: Not great, if I'm honest. Over the following shifts the auto-cutoff started tripping more often during normal diesel-heavy periods — nothing hazardous, just operational friction, alarms going off during routine LHD movement. We've since talked about doing the full re-baseline properly. Interviewer: Last decision point — the incident closeout. Walk me through that. Participant: The safety officer wanted a closing narrative before full production resumed. By that point we had three things on the table: the sensor's drift history, the LHD fleet idling near the loading point during the relevant window, and the fact that the round itself ran a bit long. None of those had been tested individually — we hadn't isolated the sensor alone, or the fleet alone, to see which one actually explained the spike. Interviewer: How did you write it up? Participant: I pulled them together into one explanation — drift-prone sensor plus idling diesel fleet plus a longer round, all compounding to produce the reading we saw. It read as a clean, complete account, it covered everything we'd logged, and that's what I put down as the operative cause for the closure. Mine planning was waiting on that closure to greenlight full resumption, so I didn't push for a separate follow-up test. Interviewer: Looking back, is there another explanation that fits those same facts just as well? Participant: In principle, sure — it could've leaned more on the fleet, or more on the clearance delay, and the sensor could've been almost incidental. We never separated them out to check. But at the time, the combined account was what went into the record, and it's what mine planning worked from. Interviewer: If the handheld reading that morning had come back much higher than the station reading, would your first call have changed? Participant: Probably, yes. If it had matched or exceeded the station number, I'd have taken it more seriously as a real hazard rather than sensor noise. Interviewer: And if you'd had time to run a full re-baseline before setting the threshold? Participant: I'd have set it higher, most likely, based on the newer survey data. Time was the constraint there, not confidence in the old number. Interviewer: How much would you say the schedule pressure from mine planning shaped your decisions that day? Participant: More than I'd like, probably. It didn't override safety, but it definitely pushed me toward decisions that let production keep moving rather than ones that added delay.
+**Q1:** **Interviewer:** Thanks for making time this week. Just to confirm, this is a voluntary conversation about your recent work verifying the fire engineering package on the tower project—I'll be asking about a specific sequence of decisions, and there's no need to reference anything confidential like commercial terms. That work for you? **Participant:** Sure, that's fine. I led the performance-based design verification on the 42-story mixed-use tower—office floors, residential above, and an assembly space at podium level. My job was to close out the fire strategy sign-off before the developer's occupancy certificate deadline. **Interviewer:** Can you give me a general account of what happened in that final stretch? **Participant:** It was a compressed week. We had four things converging: a late glazing substitution from the contractor, a smoke-control model that came back borderline, a punch list that wasn't fully closed, and a final egress run we needed clean before submission. Normally these would be spaced out, but the contract had liquidated damages tied to the occupancy date, so everything landed at once. The contractor proposed swapping the specified glazing for a cheaper product from another supplier—call them Vendor B—because the original product had a lead-time problem. Around the same time, our CFD smoke model for the atrium showed a visibility result at the escape stair door that was right at the edge of the tenability threshold. Then, with about two inspection days left, our QA reviewer flagged some open punch-list items across cladding fire-stopping, stair pressurization, and signage. And finally, we had to finalize the egress modeling parameters before submitting to building control. **Interviewer:** Let's reconstruct that in order. What came first? **Participant:** The glazing issue surfaced first, maybe ten days out. Vendor B sent their technical bulletin, and their rep followed up by email restating the same fire resistance figure, and then I found the same number again in their product brochure. The CFD result came in a few days later, right when we were prepping for fan commissioning. The punch-list conversation happened after that, once the QA reviewer did a walk-through. The egress modeling was the last piece, done in the final two days before submission. **Interviewer:** Let's take the glazing decision first. What did you have in front of you? **Participant:** The original spec had a UL-tested 90-minute integrity rating, properly documented. Vendor B's material said their product also achieved '90 minutes, independently verified.' I saw that phrase in their bulletin, then again in the cover email, then again in their brochure. **Interviewer:** What made you comfortable with that? **Participant:** Honestly, seeing it stated the same way three times across three different documents gave me a level of confidence I probably wouldn't have had from just one. It felt corroborated—like it wasn't just marketing spin, because the same number kept showing up consistently. **Interviewer:** Did you look at whether those three statements were drawing on the same underlying test? **Participant:** Not at that stage, no. It didn't occur to me to check whether the bulletin, the email, and the brochure were all citing the same lab report versus separate testing. Building control asked for the raw report later, and that's when we found the mounting configuration in the original test didn't match our as-installed detail, which meant we needed a compatibility assessment. At the time, though, I provisionally accepted the substitution on the basis that it was consistently documented. **Interviewer:** Moving to the CFD result—what were the options there? **Participant:** The model showed visibility at the stair door getting close to the threshold around the six-minute mark. Our QA reviewer recommended re-running it with a revised HVAC shutdown sequence, which would've added about five working days. We had four days to the deadline. Fan commissioning was next on the critical path. **Interviewer:** What did you decide, and why? **Participant:** I authorized the commissioning to proceed. We were losing days, and holding the whole phase for a re-run felt like it would stall the entire program right when we needed to keep moving. I treated the re-run as something that could happen in parallel rather than as a gate before the next milestone. **Interviewer:** Was there a technical basis for treating it as non-blocking, or was it mainly about the schedule? **Participant:** If I'm honest, it was mostly about not wanting the project to stand still. The commissioning itself wasn't destructive, so proceeding felt like the safer, more productive choice compared to just waiting around for numbers we already suspected might come back tight. The re-run did eventually show the margin was narrower under a slightly different shutdown assumption, but by then commissioning had already passed its initial functional tests. **Interviewer:** Let's talk about the punch-list reprioritization. What was on the list at that point? **Participant:** Cladding fire-stopping, a pressurization deficiency on one of the lift-shaft fan doors, and some egress signage items. Two inspection days left. **Interviewer:** How did you decide where to spend those two days? **Participant:** There'd been that apartment-tower fire overseas about two weeks earlier—cladding-related, and the footage was everywhere. It stuck with me. Even though our cladding and compartmentation system is different and already well-documented, I put the remaining time into re-inspecting the cladding fire-stopping. **Interviewer:** What about the pressurization fan-door deficiency? **Participant:** It got pushed down the list. It had already been logged, so it felt like something we understood and could revisit later. The cladding felt like the one I needed to be extra sure about after watching that. In hindsight, a follow-up visit found the fan-door issue was more significant than we'd initially logged, and the cladding re-inspection didn't turn up anything new. **Interviewer:** Did you use the standard risk matrix to rank those items? **Participant:** Not formally at that point. It was more of a judgment call based on what felt most urgent to check again. **Interviewer:** Last decision point—the egress modeling parameters. **Participant:** Right, this was in the final two days. The software's default library has pre-movement times and flow rates calibrated for generic office occupancy. Our building's mixed-use—office, residential, assembly—so the population isn't quite the same. A colleague flagged that we actually had project-specific pre-movement survey data, plus some comparable mixed-use studies, that could refine those numbers. **Interviewer:** Did you use that data? **Participant:** We didn't, in the end. Recalibrating with the survey data would've meant extra runs and QA time we didn't have. The defaults are the standard starting point in that software, so I kept them for the final compliance run. I flagged in my notes that the calibration population wasn't a perfect match, but the run passed the required threshold, so we submitted it as is. **Interviewer:** If recalibrating had taken less effort, would you have used the survey data instead? **Participant:** Probably, yes. It wasn't that I thought the defaults were more accurate—it was more that changing them under that timeline felt like an unnecessary complication. **Interviewer:** Looking back across all four decisions, what would have changed your approach on the glazing, if anything? **Participant:** If the 90-minute claim had come from one document instead of three, I think I'd have pushed harder for the raw report before accepting it. Something about seeing it repeated made it feel more settled than it actually was. **Interviewer:** And if there'd been no deadline pressure at all that week? **Participant:** The CFD re-run probably would've been a hard hold point rather than something running in parallel. Without the schedule squeeze, I don't think I'd have authorized commissioning ahead of it. **Interviewer:** Last one—if that overseas fire hadn't been in the news right before your punch-list decision, do you think the priority would have looked different? **Participant:** Possibly. I'd like to think I'd have gone with the risk matrix from the start. But I can't fully separate how much of that reallocation was the news versus genuine caution. **Interviewer:** That's a helpful place to stop. Thanks for walking through it in this much detail. **Participant:** No problem. It's useful to go back over it, honestly.
 
-_ranker=rrf · t=0.04 · k=0 → 0 in context · 8192 ctx · emb 0.00s · gen 204.89s · total 210.1s_
-
-_No chunks passed the similarity threshold._
-
-{
-  "analysis_metadata": {
-    "task": "cognitive_bias_analysis",
-    "interview_speakers_detected": [
-      "Interviewer",
-      "Participant"
-    ],
-    "retrieved_corpus_support_used": false,
-    "analysis_scope_note": "Transcript-only evaluation; no retrieved corpus passages were supplied in the RAG context. Bias labels and mechanisms are based on established cognitive-science definitions and diagnostic criteria."
-  },
-  "identified_bias_summary": [
-    {
-      "bias_label": "Anchoring bias",
-      "identified_occurrence_count": 1
-    },
-    {
-      "bias_label": "Availability heuristic",
-      "identified_occurrence_count": 2
-    },
-    {
-      "bias_label": "Confirmation bias",
-      "identified_occurrence_count": 1
-    },
-    {
-      "bias_label": "Narrative fallacy",
-      "identified_occurrence_count": 1
-    }
-  ],
-  "identified_occurrences": [
-    {
-      "occurrence_id": "obs_001",
-      "classification_status": "identified",
-      "confidence": "moderate",
-      "bias_label": "Availability heuristic",
-      "alternative_labels": [
-        "Availability bias"
-      ],
-      "taxonomy_status": "established_label",
-      "bias_definition": "A cognitive shortcut in which judgments about likelihood or frequency are influenced by how easily examples or instances come to mind.",
-      "attributed_to_speaker": "Participant",
-      "evidence_speaker": "Participant",
-      "decision_episode_label": "Initial interpretation of elevated CO reading from GS-14R and re-entry call",
-      "decision_point_description": "Whether to treat the GS-14R 280 ppm CO reading as another sensor fault and permit normal re-entry, or to pause re-entry and obtain further confirmatory checks.",
-      "affected_reasoning_operation": "Probabilistic judgment and diagnostic likelihood assessment",
-      "bias_specific_mechanism": "Readily recalled prior false-positive alarms from GS-14R made the sensor-fault explanation feel more probable than a genuine gas buildup, leading the participant to interpret the sharp telemetry spike as dust interference and proceed with re-entry.",
-      "manifestation_in_interview": "The participant immediately thought 'that station again' and later stated that the prior false alarms were 'fresh in my mind' when weighing the current reading.",
-      "effect_on_reasoning_or_decision": "Reduced the subjective probability of a genuine gas hazard and supported normal re-entry despite an independent handheld reading of 190 ppm.",
-      "interview_evidence": [
-        {
-          "speaker": "Participant",
-          "verbatim_quote": "Honestly, my first thought was that station again. GS-14R sits near a junction we shotcreted a couple months back, and I'd flagged that station twice already for what looked like dust interference throwing off the readings. So my instinct was, here we go again.",
-          "evidence_explanation": "Shows immediate retrieval of prior sensor false alarms, which shaped the initial diagnostic frame."
-        },
-        {
-          "speaker": "Participant",
-          "verbatim_quote": "We'd had two prior incidents where GS-14R gave us a spike that turned out to be nothing, so that pattern was fresh in my mind.",
-          "evidence_explanation": "Directly states that ease of recall of previous false alarms guided his probability judgment."
-        }
-      ],
-      "correction_or_counterevidence": "The participant also cited a sharp spike pattern as more consistent with dust than gas, which could be a legitimate diagnostic cue. However, the explicit 'fresh in my mind' statement supports availability as a distorting factor.",
-      "retrieved_corpus_support_available": false,
-      "corpus_support_note": "No retrieved corpus evidence was supplied in the RAG context; classification relies on established cognitive-science definitions and mechanisms.",
-      "corpus_evidence": []
-    },
-    {
-      "occurrence_id": "obs_002",
-      "classification_status": "identified",
-      "confidence": "low",
-      "bias_label": "Confirmation bias",
-      "alternative_labels": [
-        "Confirmatory bias",
-        "Selective evidence weighting"
-      ],
-      "taxonomy_status": "established_label",
-      "bias_definition": "The tendency to search for, interpret, favor, and recall information in ways that confirm one's preexisting beliefs or hypotheses.",
-      "attributed_to_speaker": "Participant",
-      "evidence_speaker": "Participant",
-      "decision_episode_label": "Initial interpretation of elevated CO reading from GS-14R and re-entry call",
-      "decision_point_description": "Whether to treat the GS-14R 280 ppm CO reading as another sensor fault and permit normal re-entry, or to pause re-entry and obtain further confirmatory checks.",
-      "affected_reasoning_operation": "Evidence weighting and hypothesis testing",
-      "bias_specific_mechanism": "After forming the sensor-fault hypothesis, the participant treated station-history and telemetry-pattern information as confirmatory while discounting the independent handheld reading as possible calibration drift, without obtaining a confirmatory maintenance check before re-entry.",
-      "manifestation_in_interview": "He explicitly says he leaned on station history more than the handheld number and did not weight the handheld as heavily as he should have.",
-      "effect_on_reasoning_or_decision": "Allowed the sensor-fault hypothesis to remain dominant and supported re-entry rather than pausing or testing the contradicting handheld reading.",
-      "interview_evidence": [
-        {
-          "speaker": "Participant",
-          "verbatim_quote": "I leaned on the station's history more than the handheld number, honestly.",
-          "evidence_explanation": "Demonstrates asymmetric weighting in favor of the existing sensor-fault hypothesis."
-        },
-        {
-          "speaker": "Participant",
-          "verbatim_quote": "The handheld reading was lower than the station number, and handhelds can have their own calibration drift depending on how they're stored, so I didn't weight it as heavily as maybe I should have.",
-          "evidence_explanation": "Shows discounting of disconfirmatory evidence and retrospective acknowledgment of the underweighting."
-        }
-      ],
-      "correction_or_counterevidence": "Handheld calibration drift is a legitimate real-world concern, and the participant did log the handheld reading. The bias label reflects the unbalanced weighting and absence of a confirmatory check, not the consideration of calibration drift itself.",
-      "retrieved_corpus_support_available": false,
-      "corpus_support_note": "No retrieved corpus evidence was supplied in the RAG context; classification relies on established cognitive-science definitions and mechanisms.",
-      "corpus_evidence": []
-    },
-    {
-      "occurrence_id": "obs_003",
-      "classification_status": "identified",
-      "confidence": "high",
-      "bias_label": "Availability heuristic",
-      "alternative_labels": [
-        "Availability bias"
-      ],
-      "taxonomy_status": "established_label",
-      "bias_definition": "A cognitive shortcut in which judgments about likelihood or frequency are influenced by how easily examples or instances come to mind.",
-      "attributed_to_speaker": "Participant",
-      "evidence_speaker": "Participant",
-      "decision_episode_label": "Decision to hold crew and partially trigger fire-response protocol",
-      "decision_point_description": "Whether to allow the crew to proceed after the shift boss requested a precautionary hold, or to hold and escalate fire-response despite absence of fire indicators.",
-      "affected_reasoning_operation": "Risk assessment and probability judgment about a fire scenario",
-      "bias_specific_mechanism": "A recent vivid safety briefing about a fatal underground fire became highly accessible and inflated the judged plausibility of a fire, causing precautionary escalation beyond what current data supported.",
-      "manifestation_in_interview": "The participant acknowledges the briefing was 'front and center' and that a fire scenario felt more plausible than it should have given the data.",
-      "effect_on_reasoning_or_decision": "Led to a precautionary hold and partial fire-response protocol even though no smoke, heat, CO2 rise, or other fire indicators were present.",
-      "interview_evidence": [
-        {
-          "speaker": "Participant",
-          "verbatim_quote": "A few weeks earlier we'd had a safety briefing that went over a fatality at another operation — underground fire, delayed detection, pretty grim details about smoke filling a drift before anyone realized what was happening. It stuck with me.",
-          "evidence_explanation": "Demonstrates a salient, easily recalled safety event that became mentally available during the risk judgment."
-        },
-        {
-          "speaker": "Participant",
-          "verbatim_quote": "with that briefing still sitting in the back of my mind, a fire scenario felt more plausible right then than it probably should have, given what the data actually showed.",
-          "evidence_explanation": "Explicitly links the recalled briefing to an inflated fire-probability judgment."
-        }
-      ],
-      "correction_or_counterevidence": "The decision was precautionary and caused no harm; the participant also knew fume-clearance delays were more common. The bias is in the probability judgment, not necessarily the protective action.",
-      "retrieved_corpus_support_available": false,
-      "corpus_support_note": "No retrieved corpus evidence was supplied in the RAG context; classification relies on established cognitive-science definitions and mechanisms.",
-      "corpus_evidence": []
-    },
-    {
-      "occurrence_id": "obs_004",
-      "classification_status": "identified",
-      "confidence": "moderate",
-      "bias_label": "Anchoring bias",
-      "alternative_labels": [
-        "Anchoring and adjustment",
-        "Status quo bias"
-      ],
-      "taxonomy_status": "established_label",
-      "bias_definition": "A tendency to rely too heavily on an initial numeric reference value when making subsequent estimates or decisions, with insufficient adjustment away from that anchor.",
-      "attributed_to_speaker": "Participant",
-      "evidence_speaker": "Participant",
-      "decision_episode_label": "Revision of CO auto-cutoff setpoint for GS-14R",
-      "decision_point_description": "Whether to revise the CO auto-cutoff setpoint upward based on recent baseline surveys, or to remain close to the original 100 ppm commissioning figure.",
-      "affected_reasoning_operation": "Numeric estimation and threshold setting",
-      "bias_specific_mechanism": "The original commissioning value of 100 ppm served as an anchor; despite newer baseline surveys indicating materially higher operational CO levels, the participant made only a small adjustment and stayed close to the original figure.",
-      "manifestation_in_interview": "The participant said the commissioning number 'just felt like the number to stay near' even with newer data pointing higher.",
-      "effect_on_reasoning_or_decision": "Produced a threshold that was too low for current diesel-heavy operating conditions, leading to recurring auto-cutoff trips during normal operations.",
-      "interview_evidence": [
-        {
-          "speaker": "Participant",
-          "verbatim_quote": "The recent baseline surveys had shown ambient CO trending noticeably higher under current depth and fleet conditions — enough that during normal diesel-heavy periods we were regularly running close to or past the old setting without anything else flagging as hazardous.",
-          "evidence_explanation": "Establishes that new information warranted a materially higher threshold."
-        },
-        {
-          "speaker": "Participant",
-          "verbatim_quote": "I made a small adjustment but largely kept it close to the original figure. The commissioning number had been through proper review when it was set, and it just felt like the number to stay near, even with the newer data pointing higher.",
-          "evidence_explanation": "Shows insufficient adjustment from the original 100 ppm anchor despite newer evidence."
-        }
-      ],
-      "correction_or_counterevidence": "There was a legitimate concern that no formal re-baseline had been completed and limited time that day. However, the interview states usable recent surveys existed and the participant retrospectively would set it higher with time, so the anchoring distortion is credible.",
-      "retrieved_corpus_support_available": false,
-      "corpus_support_note": "No retrieved corpus evidence was supplied in the RAG context; classification relies on established cognitive-science definitions and mechanisms.",
-      "corpus_evidence": []
-    },
-    {
-      "occurrence_id": "obs_005",
-      "classification_status": "identified",
-      "confidence": "moderate",
-      "bias_label": "Narrative fallacy",
-      "alternative_labels": [
-        "Narrative bias",
-        "Story bias"
-      ],
-      "taxonomy_status": "established_label",
-      "bias_definition": "A tendency to assemble facts into a coherent, satisfying story that may overstate causal understanding and reduce perceived uncertainty even when key causes have not been tested.",
-      "attributed_to_speaker": "Participant",
-      "evidence_speaker": "Participant",
-      "decision_episode_label": "Incident closeout causal assignment",
-      "decision_point_description": "Whether to assign the cause in the closing narrative based on a combined untested account, or to postpone closure and conduct follow-up isolation testing.",
-      "affected_reasoning_operation": "Causal inference and post-incident explanation",
-      "bias_specific_mechanism": "The participant constructed a clean, complete causal narrative combining sensor drift, diesel fleet idling, and longer round duration; because it covered all logged facts, it felt like the operative cause even though no individual cause had been isolated.",
-      "manifestation_in_interview": "He literally states the combined account 'read as a clean, complete account' and was put down as operative cause despite saying they never separated the causes out to check.",
-      "effect_on_reasoning_or_decision": "Produced an overconfident causal closure that was used by mine planning to greenlight full resumption, without follow-up testing to validate the explanatory weights.",
-      "interview_evidence": [
-        {
-          "speaker": "Participant",
-          "verbatim_quote": "I pulled them together into one explanation — drift-prone sensor plus idling diesel fleet plus a longer round, all compounding to produce the reading we saw. It read as a clean, complete account, it covered everything we'd logged, and that's what I put down as the operative cause for the closure.",
-          "evidence_explanation": "Shows preference for a coherent narrative as the causal account."
-        },
-        {
-          "speaker": "Participant",
-          "verbatim_quote": "We never separated them out to check.",
-          "evidence_explanation": "Confirms the causal story was accepted without isolating the alternative causes."
-        }
-      ],
-      "correction_or_counterevidence": "The narrative may still have been partially correct, and the participant acknowledges alternative explanations after the fact. The bias is not fabrication but overconfidence in an untested compound causal story.",
-      "retrieved_corpus_support_available": false,
-      "corpus_support_note": "No retrieved corpus evidence was supplied in the RAG context; classification relies on established cognitive-science definitions and mechanisms.",
-      "corpus_evidence": []
-    }
-  ],
-  "candidate_biases": [
-    {
-      "candidate_id": "cand_001",
-      "classification_status": "candidate",
-      "proposed_bias_label": "Motivated reasoning",
-      "alternative_labels": [
-        "Production-pressure bias",
-        "Desirability bias"
-      ],
-      "taxonomy_status": "established_label",
-      "speaker_or_attributed_person": "Participant",
-      "possible_decision_episode_label": "Initial re-entry decision and threshold adjustment",
-      "supporting_interview_quote": "More than I'd like, probably. It didn't override safety, but it definitely pushed me toward decisions that let production keep moving rather than ones that added delay.",
-      "plausible_mechanism": "Schedule and restart pressure may have motivated accepting the sensor-fault hypothesis and avoiding confirmatory delay.",
-      "why_not_identified": "The transcript clearly shows schedule pressure, but it does not demonstrate a distinct motivated-reasoning distortion independent of the already identified availability, confirmation, and anchoring mechanisms; it may reflect organizational constraint rather than a specific motivational bias."
-    },
-    {
-      "candidate_id": "cand_002",
-      "classification_status": "candidate",
-      "proposed_bias_label": "Affect heuristic",
-      "alternative_labels": [
-        "Emotional salience bias"
-      ],
-      "taxonomy_status": "established_label",
-      "speaker_or_attributed_person": "Participant",
-      "possible_decision_episode_label": "Fire-protocol hold decision",
-      "supporting_interview_quote": "underground fire, delayed detection, pretty grim details about smoke filling a drift before anyone realized what was happening. It stuck with me.",
-      "plausible_mechanism": "Vivid emotional content of the safety briefing may have driven the risk judgment through felt risk rather than analytical data.",
-      "why_not_identified": "The available evidence is clearer for availability of the recent briefing than for a distinct affect-driven risk appraisal; affect is plausible but not independently observable."
-    },
-    {
-      "candidate_id": "cand_003",
-      "classification_status": "candidate",
-      "proposed_bias_label": "Status quo bias",
-      "alternative_labels": [
-        "Default bias"
-      ],
-      "taxonomy_status": "established_label",
-      "speaker_or_attributed_person": "Participant",
-      "possible_decision_episode_label": "Revision of CO auto-cutoff setpoint",
-      "supporting_interview_quote": "The commissioning number had been through proper review when it was set, and it just felt like the number to stay near, even with the newer data pointing higher.",
-      "plausible_mechanism": "Preference for the existing approved setting may have reinforced the decision to keep the threshold close to its original value.",
-      "why_not_identified": "The more specific numeric mechanism is anchoring and insufficient adjustment; status quo preference is entangled with that anchor and is not separately evidenced."
-    }
-  ],
-  "no_supported_biases_found": false,
-  "limitations": [
-    "No retrieved corpus passages were provided in the RAG context; bias classifications rely on general cognitive-science knowledge rather than source-specific validation.",
-    "The analysis is based on a single self-reported account; retrospective statements can be contaminated by post-hoc rationalization, though findings were grounded in specific reported reasoning.",
-    "Production-pressure and time-constraint factors are present in the interview, but they were treated as contextual factors rather than distinct biases unless a specific mechanism was evidenced."
-  ]
-}
-
-## Sonar Prompt 8192
-
-**Q1:** Interviewer: Thanks for making time for this. Just to confirm, this is a routine cognitive task analysis interview — I'll ask you to walk me through a specific incident in detail, and there are no right or wrong answers. Everything's for internal learning purposes. Can you tell me your current role and how long you've been in it? Participant: Sure. I'm the ventilation engineer for the underground section — mainly responsible for the primary and auxiliary fan systems, the VOD setup, and gas monitoring across the active levels. I've been in this role about six years, underground ventilation for closer to eleven overall. Interviewer: Good. Let's start with the incident itself. What happened? Participant: This was during a shift where we had a scheduled production blast on 14 Level. Standard round, nothing unusual planned. About thirty minutes after blast clearance time, one of our gas stations — GS-14R, out in the return airway — started reading CO at 280 ppm. Baseline after a blast like that is usually under 50 ppm once the primary fan's had time to clear it. So that number stood out immediately. Interviewer: What went through your mind when you saw that? Participant: Honestly, my first thought was that station again. GS-14R sits near a junction we shotcreted a couple months back, and I'd flagged that station twice already for what looked like dust interference throwing off the readings. So my instinct was, here we go again. I pulled the telemetry log to check the trend, and it had spiked pretty sharply rather than climbing gradually, which is more consistent with a dust or particulate interference pattern than a genuine gas buildup, in my experience. Interviewer: Was there any other information available to you at that point? Participant: Yes — the gas monitoring technician had taken a handheld multi-gas detector reading out at the return airway around the same time, and that came back at 190 ppm. Lower than the station reading, but still well above baseline. No maintenance ticket had confirmed a fault on GS-14R yet either — that hadn't been checked this shift. Interviewer: How did you weigh those two numbers against each other? Participant: I leaned on the station's history more than the handheld number, honestly. We'd had two prior incidents where GS-14R gave us a spike that turned out to be nothing, so that pattern was fresh in my mind. The handheld reading was lower than the station number, and handhelds can have their own calibration drift depending on how they're stored, so I didn't weight it as heavily as maybe I should have. I made the call that this was probably another sensor issue and we could proceed with re-entry on schedule. Interviewer: Did you consider getting a second confirmatory reading, or requesting a recalibration check before deciding? Participant: I thought about it, but mine planning was already asking about restart timing for the LHD fleet, and delaying re-entry without hard evidence felt like it'd be hard to justify. So we logged the handheld reading and moved forward. Interviewer: What happened next? Participant: Re-entry went ahead. About twenty minutes later, the shift boss called me — one of the crew wanted to hold at the refuge chamber a few extra minutes before heading further in, just as a precaution. Nothing specific triggering it, more a gut feeling. Interviewer: What was your reasoning at that point? Participant: That one actually made me more cautious than I expected. A few weeks earlier we'd had a safety briefing that went over a fatality at another operation — underground fire, delayed detection, pretty grim details about smoke filling a drift before anyone realized what was happening. It stuck with me. So when the shift boss raised the hold request, that case was sort of front and center, and I said yes, hold them, and we partially triggered the fire-response protocol just to be safe. Interviewer: Was there anything in the data at that point pointing toward fire specifically? Participant: Not really, no. No smoke reports, no heat, and the secondary gas trends weren't showing anything unusual — CO2 was flat. Fume-clearance delays are honestly the far more common explanation for this kind of thing at our site, and I knew that going in. But with that briefing still sitting in the back of my mind, a fire scenario felt more plausible right then than it probably should have, given what the data actually showed. I didn't want to be the one who waved people through if there was any chance it was something bigger. Interviewer: How did that play out? Participant: No fire indicators ever showed up. We eventually put it down to a longer-than-usual round that took a bit more time to clear than normal. The fifteen-minute hold turned out to be unnecessary, though nobody complained about the extra caution. Interviewer: Let's move to the threshold question. What came up there? Participant: Later that shift, the mine planning superintendent asked whether we should revise the CO auto-cutoff setpoint on GS-14R before ramping the LHD fleet back up fully. Our commissioning report, from about five years back, had that threshold set at 100 ppm. That was written for a shallower working depth and a smaller diesel fleet than we're running now. Interviewer: Did you have newer data available? Participant: We did, and it was actually pretty usable. The recent baseline surveys had shown ambient CO trending noticeably higher under current depth and fleet conditions — enough that during normal diesel-heavy periods we were regularly running close to or past the old setting without anything else flagging as hazardous. A couple of us had even talked informally about a materially higher interim figure being more realistic given those numbers. We hadn't done a formal re-baseline since the fleet expanded two years ago, but the recent surveys were solid enough to work from for an interim call. Interviewer: What did you decide? Participant: I made a small adjustment but largely kept it close to the original figure. The commissioning number had been through proper review when it was set, and it just felt like the number to stay near, even with the newer data pointing higher. I didn't have time that day to commission a full re-survey, so I treated the existing figure as basically sound with a minor tweak rather than moving it to where the interim numbers suggested. Interviewer: How did that work out afterward? Participant: Not great, if I'm honest. Over the following shifts the auto-cutoff started tripping more often during normal diesel-heavy periods — nothing hazardous, just operational friction, alarms going off during routine LHD movement. We've since talked about doing the full re-baseline properly. Interviewer: Last decision point — the incident closeout. Walk me through that. Participant: The safety officer wanted a closing narrative before full production resumed. By that point we had three things on the table: the sensor's drift history, the LHD fleet idling near the loading point during the relevant window, and the fact that the round itself ran a bit long. None of those had been tested individually — we hadn't isolated the sensor alone, or the fleet alone, to see which one actually explained the spike. Interviewer: How did you write it up? Participant: I pulled them together into one explanation — drift-prone sensor plus idling diesel fleet plus a longer round, all compounding to produce the reading we saw. It read as a clean, complete account, it covered everything we'd logged, and that's what I put down as the operative cause for the closure. Mine planning was waiting on that closure to greenlight full resumption, so I didn't push for a separate follow-up test. Interviewer: Looking back, is there another explanation that fits those same facts just as well? Participant: In principle, sure — it could've leaned more on the fleet, or more on the clearance delay, and the sensor could've been almost incidental. We never separated them out to check. But at the time, the combined account was what went into the record, and it's what mine planning worked from. Interviewer: If the handheld reading that morning had come back much higher than the station reading, would your first call have changed? Participant: Probably, yes. If it had matched or exceeded the station number, I'd have taken it more seriously as a real hazard rather than sensor noise. Interviewer: And if you'd had time to run a full re-baseline before setting the threshold? Participant: I'd have set it higher, most likely, based on the newer survey data. Time was the constraint there, not confidence in the old number. Interviewer: How much would you say the schedule pressure from mine planning shaped your decisions that day? Participant: More than I'd like, probably. It didn't override safety, but it definitely pushed me toward decisions that let production keep moving rather than ones that added delay.
-
-_ranker=rrf · t=0.04 · k=0 → 0 in context · 8192 ctx · emb 0.00s · gen 191.38s · total 196.0s_
+_ranker=rrf · t=0.04 · k=0 → 0 in context · 8192 ctx · emb 0.00s · gen 98.24s · total 104.6s_
 
 _No chunks passed the similarity threshold._
 
@@ -285,23 +16,23 @@ _No chunks passed the similarity threshold._
       "Participant"
     ],
     "retrieved_corpus_support_used": false,
-    "analysis_scope_note": "Analysis of the participant's retrospective descriptions for bias-specific reasoning mechanisms. No retrieved scientific-paper corpus passages were supplied, so bias labels are applied from widely established general cognitive-science knowledge."
+    "analysis_scope_note": "Evaluated four decision episodes: glazing substitution acceptance, CFD smoke model re-run/commissioning, punch-list reprioritisation, and egress modeling parameter selection."
   },
   "identified_bias_summary": [
     {
-      "bias_label": "availability_heuristic",
-      "identified_occurrence_count": 2
-    },
-    {
-      "bias_label": "confirmation_bias",
+      "bias_label": "action bias",
       "identified_occurrence_count": 1
     },
     {
-      "bias_label": "narrative_fallacy",
+      "bias_label": "availability heuristic",
       "identified_occurrence_count": 1
     },
     {
-      "bias_label": "status_quo_bias",
+      "bias_label": "illusory truth effect",
+      "identified_occurrence_count": 1
+    },
+    {
+      "bias_label": "status quo bias",
       "identified_occurrence_count": 1
     }
   ],
@@ -310,201 +41,161 @@ _No chunks passed the similarity threshold._
       "occurrence_id": "obs_001",
       "classification_status": "identified",
       "confidence": "high",
-      "bias_label": "availability_heuristic",
+      "bias_label": "illusory truth effect",
       "alternative_labels": [
-        "availability_bias",
-        "recency_effect",
-        "salience_bias"
+        "reiteration effect",
+        "truth effect"
       ],
       "taxonomy_status": "established_label",
-      "bias_definition": "A heuristic in which the perceived probability or frequency of an event is influenced by how easily instances or similar events come to mind.",
+      "bias_definition": "The tendency for repeated exposure to a statement to increase its perceived truth or credibility, even when the repetitions do not provide independent evidence.",
       "attributed_to_speaker": "Participant",
       "evidence_speaker": "Participant",
-      "decision_episode_label": "Interpreting GS-14R CO reading and deciding re-entry",
-      "decision_point_description": "Whether to proceed with re-entry after an elevated CO reading on GS-14R despite a conflicting handheld reading.",
-      "affected_reasoning_operation": "Cause attribution and probability judgment for the elevated gas reading",
-      "bias_specific_mechanism": "Recent false-alarm instances involving GS-14R were easily recalled, making the sensor-error explanation seem more likely and leading the participant to de-weight a conflicting handheld measurement.",
-      "manifestation_in_interview": "The participant states that his first thought was 'that station again' because he had flagged GS-14R twice before for dust interference, and that the prior false-alarm pattern was fresh in his mind.",
-      "effect_on_reasoning_or_decision": "He judged the reading as probably another sensor issue and proceeded with re-entry on schedule without obtaining a second confirmatory reading or recalibration check.",
+      "decision_episode_label": "Glazing substitution acceptance",
+      "decision_point_description": "Whether to accept Vendor B's 90-minute fire-rated glazing substitution based on product documentation before receiving the raw test report.",
+      "affected_reasoning_operation": "Evidence weighting and credibility assessment",
+      "bias_specific_mechanism": "Repeated exposure to the same 90-minute claim across three vendor documents created a subjective impression of corroboration and increased confidence, even though the sources were not verified as independent tests.",
+      "manifestation_in_interview": "The participant accepted the substitution provisionally because the 90-minute statement appeared consistently in the bulletin, email, and brochure, without checking whether they cited the same underlying test.",
+      "effect_on_reasoning_or_decision": "It inflated confidence in the product claim and led to provisional acceptance of a substitution whose mounting configuration later proved incompatible, requiring a compatibility assessment.",
       "interview_evidence": [
         {
           "speaker": "Participant",
-          "verbatim_quote": "Honestly, my first thought was that station again. GS-14R sits near a junction we shotcreted a couple months back, and I'd flagged that station twice already for what looked like dust interference throwing off the readings. So my instinct was, here we go again.",
-          "evidence_explanation": "This shows that readily recalled prior false alarms shaped the initial diagnosis."
+          "verbatim_quote": "Honestly, seeing it stated the same way three times across three different documents gave me a level of confidence I probably wouldn't have had from just one. It felt corroborated—like it wasn't just marketing spin, because the same number kept showing up consistently.",
+          "evidence_explanation": "This quote directly links repeated exposure to the claim with increased subjective confidence and a feeling of corroboration, which is the core mechanism of the illusory truth effect."
         },
         {
           "speaker": "Participant",
-          "verbatim_quote": "We'd had two prior incidents where GS-14R gave us a spike that turned out to be nothing, so that pattern was fresh in my mind. The handheld reading was lower than the station number, and handhelds can have their own calibration drift depending on how they're stored, so I didn't weight it as heavily as maybe I should have.",
-          "evidence_explanation": "This explicitly ties the availability of prior false positives to underweighting the current handheld evidence."
+          "verbatim_quote": "Not at that stage, no. It didn't occur to me to check whether the bulletin, the email, and the brochure were all citing the same lab report versus separate testing. Building control asked for the raw report later, and that's when we found the mounting configuration in the original test didn't match our as-installed detail, which meant we needed a compatibility assessment. At the time, though, I provisionally accepted the substitution on the basis that it was consistently documented.",
+          "evidence_explanation": "The participant did not test for source independence, and the later raw report revealed the technical basis was inadequate, showing that repetition-based confidence had distorted the acceptance decision."
         }
       ],
-      "correction_or_counterevidence": "The handheld reading was still 190 ppm, well above baseline, and no maintenance ticket had confirmed a fault on GS-14R; a genuine gas buildup could plausibly explain both readings.",
+      "correction_or_counterevidence": "The participant later acknowledged that a single document would not have produced the same confidence. Building control subsequently required the raw report, which revealed the mounting-configuration mismatch. The counterevidence emerged only after provisional acceptance.",
       "retrieved_corpus_support_available": false,
-      "corpus_support_note": "No retrieved corpus passages were available for this analysis; the label 'availability_heuristic' is applied from established general cognitive-science knowledge.",
+      "corpus_support_note": "No retrieved passages were supplied in the RAG context; the classification relies on established cognitive-science knowledge of repetition-induced truth effects.",
       "corpus_evidence": []
     },
     {
       "occurrence_id": "obs_002",
       "classification_status": "identified",
-      "confidence": "low",
-      "bias_label": "confirmation_bias",
+      "confidence": "moderate",
+      "bias_label": "action bias",
       "alternative_labels": [
-        "myside_bias",
-        "confirmatory_bias"
+        "bias for action",
+        "action preference"
       ],
       "taxonomy_status": "established_label",
-      "bias_definition": "The tendency to seek, interpret, favor, and recall information in ways that support one's pre-existing beliefs or hypotheses.",
+      "bias_definition": "The tendency to select an action or intervention over waiting or inaction even when the available evidence does not show that acting improves the outcome.",
       "attributed_to_speaker": "Participant",
       "evidence_speaker": "Participant",
-      "decision_episode_label": "Interpreting GS-14R CO reading and deciding re-entry",
-      "decision_point_description": "Whether to proceed with re-entry after an elevated CO reading on GS-14R despite a conflicting handheld reading.",
-      "affected_reasoning_operation": "Evaluation and integration of conflicting evidence for sensor fault versus gas buildup",
-      "bias_specific_mechanism": "After forming the sensor-error hypothesis, the participant interpreted the sharp telemetry spike as dust/particulate interference and rationalized the elevated handheld reading as possible calibration drift without verification, thereby favoring the pre-existing hypothesis.",
-      "manifestation_in_interview": "The participant pulled the telemetry log and categorized the pattern as consistent with dust interference, then said he did not weight the handheld reading as heavily as he perhaps should have.",
-      "effect_on_reasoning_or_decision": "This strengthened the sensor-error explanation and contributed to the decision to proceed with re-entry without checking or re-calibrating the instrument.",
+      "decision_episode_label": "CFD smoke model re-run and commissioning sequence",
+      "decision_point_description": "Whether to delay fan commissioning until a recommended CFD re-run was complete, or to proceed with commissioning and treat the re-run as parallel work.",
+      "affected_reasoning_operation": "Risk assessment and sequencing decision under uncertainty",
+      "bias_specific_mechanism": "A preference for visible progress and action over waiting was framed as the safer, more productive choice, downweighting the risk of proceeding before the re-run could refine the safety margin.",
+      "manifestation_in_interview": "The participant recognized the QA reviewer recommended a re-run before the next milestone, but authorized commissioning to proceed, explicitly citing a desire not to stall the program.",
+      "effect_on_reasoning_or_decision": "The CFD re-run was treated as non-blocking; commissioning proceeded before the revised shutdown assumption showed an even narrower safety margin.",
       "interview_evidence": [
         {
           "speaker": "Participant",
-          "verbatim_quote": "I pulled the telemetry log to check the trend, and it had spiked pretty sharply rather than climbing gradually, which is more consistent with a dust or particulate interference pattern than a genuine gas buildup, in my experience.",
-          "evidence_explanation": "The ambiguous telemetry pattern was interpreted as consistent with the pre-existing sensor-error hypothesis."
+          "verbatim_quote": "The model showed visibility at the stair door getting close to the threshold around the six-minute mark. Our QA reviewer recommended re-running it with a revised HVAC shutdown sequence, which would've added about five working days. We had four days to the deadline. Fan commissioning was next on the critical path.",
+          "evidence_explanation": "The quote establishes that a boundary-level result existed and a re-run was recommended before the next commissioning step, setting up the decision point."
         },
         {
           "speaker": "Participant",
-          "verbatim_quote": "The handheld reading was lower than the station number, and handhelds can have their own calibration drift depending on how they're stored, so I didn't weight it as heavily as maybe I should have.",
-          "evidence_explanation": "Evidence that conflicted with the sensor-error hypothesis was discounted using an untested alternative explanation."
+          "verbatim_quote": "If I'm honest, it was mostly about not wanting the project to stand still. The commissioning itself wasn't destructive, so proceeding felt like the safer, more productive choice compared to just waiting around for numbers we already suspected might come back tight. The re-run did eventually show the margin was narrower under a slightly different shutdown assumption, but by then commissioning had already passed its initial functional tests.",
+          "evidence_explanation": "The participant explicitly grounds the decision in preferring action over waiting, rather than a technical judgment that the re-run was unnecessary. This is the defining feature of action bias."
         }
       ],
-      "correction_or_counterevidence": "Sharp spikes and elevated handheld readings could also reflect a genuine gas buildup; no fault had been confirmed on the station, and the participant's domain experience could also support a non-biased judgment about common sensor behavior.",
+      "correction_or_counterevidence": "Time pressure and the non-destructive nature of commissioning are legitimate contextual factors. However, the participant's own statement indicates the decisive mechanism was a preference for action over waiting, and the later re-run confirmed the residual uncertainty was material.",
       "retrieved_corpus_support_available": false,
-      "corpus_support_note": "No retrieved corpus passages were available for this analysis; the label 'confirmation_bias' is applied from established general cognitive-science knowledge.",
+      "corpus_support_note": "No retrieved passages were supplied in the RAG context; the classification relies on established cognitive-science knowledge of action bias.",
       "corpus_evidence": []
     },
     {
       "occurrence_id": "obs_003",
       "classification_status": "identified",
       "confidence": "high",
-      "bias_label": "availability_heuristic",
+      "bias_label": "availability heuristic",
       "alternative_labels": [
-        "availability_bias",
-        "salience_bias",
-        "affect_heuristic"
+        "availability bias"
       ],
       "taxonomy_status": "established_label",
-      "bias_definition": "A heuristic in which the perceived probability or frequency of an event is influenced by how easily instances or similar events come to mind.",
+      "bias_definition": "The tendency to judge likelihood, risk, or importance based on the ease with which salient examples come to mind, rather than on a systematic analysis of objective evidence.",
       "attributed_to_speaker": "Participant",
       "evidence_speaker": "Participant",
-      "decision_episode_label": "Responding to shift boss's hold request and deciding whether to trigger fire-response protocol",
-      "decision_point_description": "Whether to hold the crew and partially trigger the fire-response protocol despite no fire-specific data.",
-      "affected_reasoning_operation": "Judgment of fire likelihood versus more common fume-clearance delay",
-      "bias_specific_mechanism": "A vivid, emotionally salient recent safety briefing about a fatal underground fire was easily brought to mind and made the fire scenario feel more plausible than the current data supported.",
-      "manifestation_in_interview": "The participant said the fatality case was 'front and center' when he approved the hold, and that the fire scenario felt more plausible than it probably should have given the data.",
-      "effect_on_reasoning_or_decision": "He held the crew and partially triggered the fire-response protocol; no fire indicators developed and the extra hold was later deemed unnecessary.",
+      "decision_episode_label": "Punch-list reprioritisation",
+      "decision_point_description": "How to allocate the final two inspection days among cladding fire-stopping, lift-shaft fan-door pressurization, and egress signage items.",
+      "affected_reasoning_operation": "Risk prioritisation and resource allocation",
+      "bias_specific_mechanism": "A vivid, recent overseas cladding fire made cladding risk disproportionately salient, causing the participant to re-inspect cladding despite its being well-documented and to demote the logged fan-door deficiency without a formal risk-matrix comparison.",
+      "manifestation_in_interview": "The participant explicitly linked the news footage to the decision to re-inspect cladding and reported that the standard risk matrix was not used at that point.",
+      "effect_on_reasoning_or_decision": "Inspection resources were misallocated relative to subsequent evidence: the cladding re-inspection found nothing new, while the fan-door issue proved more significant than initially logged.",
       "interview_evidence": [
         {
           "speaker": "Participant",
-          "verbatim_quote": "A few weeks earlier we'd had a safety briefing that went over a fatality at another operation — underground fire, delayed detection, pretty grim details about smoke filling a drift before anyone realized what was happening. It stuck with me. So when the shift boss raised the hold request, that case was sort of front and center, and I said yes, hold them, and we partially triggered the fire-response protocol just to be safe.",
-          "evidence_explanation": "A recent, vivid case was readily recalled and directly shaped the precautionary response."
+          "verbatim_quote": "There'd been that apartment-tower fire overseas about two weeks earlier—cladding-related, and the footage was everywhere. It stuck with me. Even though our cladding and compartmentation system is different and already well-documented, I put the remaining time into re-inspecting the cladding fire-stopping.",
+          "evidence_explanation": "The participant identifies a salient recent event as the reason for prioritizing cladding inspection, even while acknowledging the local cladding system was different and already well-documented, a pattern characteristic of the availability heuristic."
         },
         {
           "speaker": "Participant",
-          "verbatim_quote": "But with that briefing still sitting in the back of my mind, a fire scenario felt more plausible right then than it probably should have, given what the data actually showed.",
-          "evidence_explanation": "The participant explicitly acknowledges that the salient briefing increased subjective fire plausibility beyond the current data."
+          "verbatim_quote": "Not formally at that point. It was more of a judgment call based on what felt most urgent to check again.",
+          "evidence_explanation": "The absence of a formal risk-matrix ranking shows the prioritization was driven by subjective salience and judged urgency rather than a structured analysis, supporting the availability-heuristic mechanism."
         }
       ],
-      "correction_or_counterevidence": "The participant knew at the time that there were no smoke or heat reports, secondary gas trends were flat, and fume-clearance delays were far more common at the site.",
+      "correction_or_counterevidence": "The participant noted in hindsight that the fan-door issue was more significant and the cladding inspection found nothing new, and he could not fully separate news influence from genuine caution. This later evidence indicates the salience-driven allocation was not well calibrated.",
       "retrieved_corpus_support_available": false,
-      "corpus_support_note": "No retrieved corpus passages were available for this analysis; the label 'availability_heuristic' is applied from established general cognitive-science knowledge.",
+      "corpus_support_note": "No retrieved passages were supplied in the RAG context; the classification relies on established cognitive-science knowledge of the availability heuristic.",
       "corpus_evidence": []
     },
     {
       "occurrence_id": "obs_004",
       "classification_status": "identified",
-      "confidence": "high",
-      "bias_label": "status_quo_bias",
+      "confidence": "low",
+      "bias_label": "status quo bias",
       "alternative_labels": [
-        "default_bias",
-        "anchoring_bias"
+        "default effect",
+        "default bias"
       ],
       "taxonomy_status": "established_label",
-      "bias_definition": "Preference for the current or previous state, resulting in under-adjustment away from an existing baseline even when new information supports change.",
+      "bias_definition": "The tendency to stick with an existing or default option even when a different option may be better suited, particularly when changing requires additional effort or uncertainty.",
       "attributed_to_speaker": "Participant",
       "evidence_speaker": "Participant",
-      "decision_episode_label": "Revising GS-14R CO auto-cutoff setpoint before LHD fleet ramp-up",
-      "decision_point_description": "Whether to adjust the existing 100 ppm setpoint toward newer interim survey-based values.",
-      "affected_reasoning_operation": "Threshold-setting judgment using recent baseline data",
-      "bias_specific_mechanism": "The original commissioning value served as a protected default/reference; despite newer survey data supporting a materially higher interim setting, the participant kept close to the old value partly because it had been through formal review and felt like the number to stay near.",
-      "manifestation_in_interview": "The participant made only a minor tweak and said the commissioning number 'just felt like the number to stay near' despite newer data.",
-      "effect_on_reasoning_or_decision": "The setpoint was left close to the old 100 ppm value and later generated repeated operational alarms during normal diesel-heavy periods.",
+      "decision_episode_label": "Egress modeling parameter selection",
+      "decision_point_description": "Whether to retain the software's default occupancy pre-movement and flow parameters or to recalibrate using project-specific survey data and comparable mixed-use studies.",
+      "affected_reasoning_operation": "Parameter selection and model calibration under time constraints",
+      "bias_specific_mechanism": "The participant retained the default parameters because changing them felt like a complication under deadline pressure, despite acknowledging the defaults were not a perfect match for the mixed-use population and not more accurate than the available survey data.",
+      "manifestation_in_interview": "The participant stated the defaults were kept mainly because recalibration required extra runs and QA time, and that with less effort he would have used the survey data.",
+      "effect_on_reasoning_or_decision": "The final compliance run used less appropriate generic office parameters rather than the available project-specific calibration data, although the run still passed the required threshold.",
       "interview_evidence": [
         {
           "speaker": "Participant",
-          "verbatim_quote": "The commissioning number had been through proper review when it was set, and it just felt like the number to stay near, even with the newer data pointing higher.",
-          "evidence_explanation": "This shows a preference for the existing formally reviewed threshold despite new information supporting change."
+          "verbatim_quote": "We didn't, in the end. Recalibrating with the survey data would've meant extra runs and QA time we didn't have. The defaults are the standard starting point in that software, so I kept them for the final compliance run. I flagged in my notes that the calibration population wasn't a perfect match, but the run passed the required threshold, so we submitted it as is.",
+          "evidence_explanation": "The participant retained the default option while recognizing its population was not a perfect match, citing added effort rather than superior accuracy as the reason."
         },
         {
           "speaker": "Participant",
-          "verbatim_quote": "I didn't have time that day to commission a full re-survey, so I treated the existing figure as basically sound with a minor tweak rather than moving it to where the interim numbers suggested.",
-          "evidence_explanation": "The adjustment was kept close to the existing status quo rather than aligned with the newer data."
+          "verbatim_quote": "Probably, yes. It wasn't that I thought the defaults were more accurate—it was more that changing them under that timeline felt like an unnecessary complication.",
+          "evidence_explanation": "This directly states that the default was not selected because it was better; it was selected because changing it felt like a complication, which is consistent with a status quo or default-driven mechanism."
         }
       ],
-      "correction_or_counterevidence": "The participant also stated that time pressure constrained a formal re-baseline and later said time, not confidence in the old number, was the constraint; caution about changing limits without formal re-survey may have been partly legitimate.",
+      "correction_or_counterevidence": "There is a plausible non-bias explanation: the extra runs and QA time were genuinely constrained by the submission deadline. However, the stated reasoning that changing the defaults felt like an unnecessary complication, rather than a considered accuracy trade-off, supports a status quo bias mechanism at low confidence.",
       "retrieved_corpus_support_available": false,
-      "corpus_support_note": "No retrieved corpus passages were available for this analysis; the label 'status_quo_bias' is applied from established general cognitive-science knowledge.",
-      "corpus_evidence": []
-    },
-    {
-      "occurrence_id": "obs_005",
-      "classification_status": "identified",
-      "confidence": "moderate",
-      "bias_label": "narrative_fallacy",
-      "alternative_labels": [
-        "coherence_bias",
-        "story_bias",
-        "explanatory_coherence_bias"
-      ],
-      "taxonomy_status": "established_label",
-      "bias_definition": "The tendency to accept a coherent, story-like causal account as true or operative merely because it is complete and plausible, without testing its components.",
-      "attributed_to_speaker": "Participant",
-      "evidence_speaker": "Participant",
-      "decision_episode_label": "Writing incident closeout causal account before full production resumption",
-      "decision_point_description": "Whether to attribute the GS-14R spike to a combined sensor/fleet/round explanation without isolating individual causes.",
-      "affected_reasoning_operation": "Causal attribution and explanatory certainty in the closeout narrative",
-      "bias_specific_mechanism": "The participant combined three unverified factors into one clean account; the narrative coherence of the account served as a sufficient basis to record it as the operative cause and not push for separate follow-up testing.",
-      "manifestation_in_interview": "The participant said the combined explanation 'read as a clean, complete account,' covered everything logged, and became the operative cause for closure even though the factors were never separated out to check.",
-      "effect_on_reasoning_or_decision": "The closeout record presented a combined explanation as operative cause, and no follow-up test was requested to discriminate among causes.",
-      "interview_evidence": [
-        {
-          "speaker": "Participant",
-          "verbatim_quote": "I pulled them together into one explanation — drift-prone sensor plus idling diesel fleet plus a longer round, all compounding to produce the reading we saw. It read as a clean, complete account, it covered everything we'd logged, and that's what I put down as the operative cause for the closure.",
-          "evidence_explanation": "The coherence and completeness of the narrative were treated as sufficient for causal closure."
-        },
-        {
-          "speaker": "Participant",
-          "verbatim_quote": "In principle, sure — it could've leaned more on the fleet, or more on the clearance delay, and the sensor could've been almost incidental. We never separated them out to check. But at the time, the combined account was what went into the record, and it's what mine planning worked from.",
-          "evidence_explanation": "The participant later acknowledges that the coherent account was accepted without component testing."
-        }
-      ],
-      "correction_or_counterevidence": "The three factors were all present in the logs, so combining them was plausible; with no individual tests and production waiting, a provisional combined account may have been a practical closure choice rather than a purely cognitive bias.",
-      "retrieved_corpus_support_available": false,
-      "corpus_support_note": "No retrieved corpus passages were available for this analysis; the label 'narrative_fallacy' is applied from widely established general cognitive-science knowledge.",
+      "corpus_support_note": "No retrieved passages were supplied in the RAG context; the classification relies on established cognitive-science knowledge of status quo bias and default effects.",
       "corpus_evidence": []
     }
   ],
   "candidate_biases": [],
   "no_supported_biases_found": false,
   "limitations": [
-    "The analysis is based on a single retrospective self-report interview without external verification or objective baseline data.",
-    "No retrieved corpus passages were supplied, so bias labels and mechanisms draw on general cognitive-science knowledge rather than provided scientific-paper support.",
-    "Some apparent biases may overlap with legitimate domain heuristics or practical constraints such as schedule pressure, limited time for re-surveys, and lack of confirmatory tests.",
-    "The distinction between bias and reasonable operational judgment under uncertainty is based on the participant's own description of the reasoning process."
+    "No retrieved scientific passages were supplied in the RAG context, so corpus support was unavailable for all classified biases.",
+    "The analysis relies on a single self-report interview; participants may retrospectively rationalize decisions or underreport technical constraints.",
+    "Several decisions occurred under strong deadline and resource constraints, making it difficult to fully isolate cognitive bias from legitimate schedule-driven prioritization.",
+    "Confidence ratings are based on transcript evidence alone and do not include independent verification of the technical details."
   ]
 }
 
-## Sonnet Prompt 8192
+## Sonar Prompt 8192
 
-**Q1:** Interviewer: Thanks for making time for this. Just to confirm, this is a routine cognitive task analysis interview — I'll ask you to walk me through a specific incident in detail, and there are no right or wrong answers. Everything's for internal learning purposes. Can you tell me your current role and how long you've been in it? Participant: Sure. I'm the ventilation engineer for the underground section — mainly responsible for the primary and auxiliary fan systems, the VOD setup, and gas monitoring across the active levels. I've been in this role about six years, underground ventilation for closer to eleven overall. Interviewer: Good. Let's start with the incident itself. What happened? Participant: This was during a shift where we had a scheduled production blast on 14 Level. Standard round, nothing unusual planned. About thirty minutes after blast clearance time, one of our gas stations — GS-14R, out in the return airway — started reading CO at 280 ppm. Baseline after a blast like that is usually under 50 ppm once the primary fan's had time to clear it. So that number stood out immediately. Interviewer: What went through your mind when you saw that? Participant: Honestly, my first thought was that station again. GS-14R sits near a junction we shotcreted a couple months back, and I'd flagged that station twice already for what looked like dust interference throwing off the readings. So my instinct was, here we go again. I pulled the telemetry log to check the trend, and it had spiked pretty sharply rather than climbing gradually, which is more consistent with a dust or particulate interference pattern than a genuine gas buildup, in my experience. Interviewer: Was there any other information available to you at that point? Participant: Yes — the gas monitoring technician had taken a handheld multi-gas detector reading out at the return airway around the same time, and that came back at 190 ppm. Lower than the station reading, but still well above baseline. No maintenance ticket had confirmed a fault on GS-14R yet either — that hadn't been checked this shift. Interviewer: How did you weigh those two numbers against each other? Participant: I leaned on the station's history more than the handheld number, honestly. We'd had two prior incidents where GS-14R gave us a spike that turned out to be nothing, so that pattern was fresh in my mind. The handheld reading was lower than the station number, and handhelds can have their own calibration drift depending on how they're stored, so I didn't weight it as heavily as maybe I should have. I made the call that this was probably another sensor issue and we could proceed with re-entry on schedule. Interviewer: Did you consider getting a second confirmatory reading, or requesting a recalibration check before deciding? Participant: I thought about it, but mine planning was already asking about restart timing for the LHD fleet, and delaying re-entry without hard evidence felt like it'd be hard to justify. So we logged the handheld reading and moved forward. Interviewer: What happened next? Participant: Re-entry went ahead. About twenty minutes later, the shift boss called me — one of the crew wanted to hold at the refuge chamber a few extra minutes before heading further in, just as a precaution. Nothing specific triggering it, more a gut feeling. Interviewer: What was your reasoning at that point? Participant: That one actually made me more cautious than I expected. A few weeks earlier we'd had a safety briefing that went over a fatality at another operation — underground fire, delayed detection, pretty grim details about smoke filling a drift before anyone realized what was happening. It stuck with me. So when the shift boss raised the hold request, that case was sort of front and center, and I said yes, hold them, and we partially triggered the fire-response protocol just to be safe. Interviewer: Was there anything in the data at that point pointing toward fire specifically? Participant: Not really, no. No smoke reports, no heat, and the secondary gas trends weren't showing anything unusual — CO2 was flat. Fume-clearance delays are honestly the far more common explanation for this kind of thing at our site, and I knew that going in. But with that briefing still sitting in the back of my mind, a fire scenario felt more plausible right then than it probably should have, given what the data actually showed. I didn't want to be the one who waved people through if there was any chance it was something bigger. Interviewer: How did that play out? Participant: No fire indicators ever showed up. We eventually put it down to a longer-than-usual round that took a bit more time to clear than normal. The fifteen-minute hold turned out to be unnecessary, though nobody complained about the extra caution. Interviewer: Let's move to the threshold question. What came up there? Participant: Later that shift, the mine planning superintendent asked whether we should revise the CO auto-cutoff setpoint on GS-14R before ramping the LHD fleet back up fully. Our commissioning report, from about five years back, had that threshold set at 100 ppm. That was written for a shallower working depth and a smaller diesel fleet than we're running now. Interviewer: Did you have newer data available? Participant: We did, and it was actually pretty usable. The recent baseline surveys had shown ambient CO trending noticeably higher under current depth and fleet conditions — enough that during normal diesel-heavy periods we were regularly running close to or past the old setting without anything else flagging as hazardous. A couple of us had even talked informally about a materially higher interim figure being more realistic given those numbers. We hadn't done a formal re-baseline since the fleet expanded two years ago, but the recent surveys were solid enough to work from for an interim call. Interviewer: What did you decide? Participant: I made a small adjustment but largely kept it close to the original figure. The commissioning number had been through proper review when it was set, and it just felt like the number to stay near, even with the newer data pointing higher. I didn't have time that day to commission a full re-survey, so I treated the existing figure as basically sound with a minor tweak rather than moving it to where the interim numbers suggested. Interviewer: How did that work out afterward? Participant: Not great, if I'm honest. Over the following shifts the auto-cutoff started tripping more often during normal diesel-heavy periods — nothing hazardous, just operational friction, alarms going off during routine LHD movement. We've since talked about doing the full re-baseline properly. Interviewer: Last decision point — the incident closeout. Walk me through that. Participant: The safety officer wanted a closing narrative before full production resumed. By that point we had three things on the table: the sensor's drift history, the LHD fleet idling near the loading point during the relevant window, and the fact that the round itself ran a bit long. None of those had been tested individually — we hadn't isolated the sensor alone, or the fleet alone, to see which one actually explained the spike. Interviewer: How did you write it up? Participant: I pulled them together into one explanation — drift-prone sensor plus idling diesel fleet plus a longer round, all compounding to produce the reading we saw. It read as a clean, complete account, it covered everything we'd logged, and that's what I put down as the operative cause for the closure. Mine planning was waiting on that closure to greenlight full resumption, so I didn't push for a separate follow-up test. Interviewer: Looking back, is there another explanation that fits those same facts just as well? Participant: In principle, sure — it could've leaned more on the fleet, or more on the clearance delay, and the sensor could've been almost incidental. We never separated them out to check. But at the time, the combined account was what went into the record, and it's what mine planning worked from. Interviewer: If the handheld reading that morning had come back much higher than the station reading, would your first call have changed? Participant: Probably, yes. If it had matched or exceeded the station number, I'd have taken it more seriously as a real hazard rather than sensor noise. Interviewer: And if you'd had time to run a full re-baseline before setting the threshold? Participant: I'd have set it higher, most likely, based on the newer survey data. Time was the constraint there, not confidence in the old number. Interviewer: How much would you say the schedule pressure from mine planning shaped your decisions that day? Participant: More than I'd like, probably. It didn't override safety, but it definitely pushed me toward decisions that let production keep moving rather than ones that added delay.
+**Q1:** **Interviewer:** Thanks for making time this week. Just to confirm, this is a voluntary conversation about your recent work verifying the fire engineering package on the tower project—I'll be asking about a specific sequence of decisions, and there's no need to reference anything confidential like commercial terms. That work for you? **Participant:** Sure, that's fine. I led the performance-based design verification on the 42-story mixed-use tower—office floors, residential above, and an assembly space at podium level. My job was to close out the fire strategy sign-off before the developer's occupancy certificate deadline. **Interviewer:** Can you give me a general account of what happened in that final stretch? **Participant:** It was a compressed week. We had four things converging: a late glazing substitution from the contractor, a smoke-control model that came back borderline, a punch list that wasn't fully closed, and a final egress run we needed clean before submission. Normally these would be spaced out, but the contract had liquidated damages tied to the occupancy date, so everything landed at once. The contractor proposed swapping the specified glazing for a cheaper product from another supplier—call them Vendor B—because the original product had a lead-time problem. Around the same time, our CFD smoke model for the atrium showed a visibility result at the escape stair door that was right at the edge of the tenability threshold. Then, with about two inspection days left, our QA reviewer flagged some open punch-list items across cladding fire-stopping, stair pressurization, and signage. And finally, we had to finalize the egress modeling parameters before submitting to building control. **Interviewer:** Let's reconstruct that in order. What came first? **Participant:** The glazing issue surfaced first, maybe ten days out. Vendor B sent their technical bulletin, and their rep followed up by email restating the same fire resistance figure, and then I found the same number again in their product brochure. The CFD result came in a few days later, right when we were prepping for fan commissioning. The punch-list conversation happened after that, once the QA reviewer did a walk-through. The egress modeling was the last piece, done in the final two days before submission. **Interviewer:** Let's take the glazing decision first. What did you have in front of you? **Participant:** The original spec had a UL-tested 90-minute integrity rating, properly documented. Vendor B's material said their product also achieved '90 minutes, independently verified.' I saw that phrase in their bulletin, then again in the cover email, then again in their brochure. **Interviewer:** What made you comfortable with that? **Participant:** Honestly, seeing it stated the same way three times across three different documents gave me a level of confidence I probably wouldn't have had from just one. It felt corroborated—like it wasn't just marketing spin, because the same number kept showing up consistently. **Interviewer:** Did you look at whether those three statements were drawing on the same underlying test? **Participant:** Not at that stage, no. It didn't occur to me to check whether the bulletin, the email, and the brochure were all citing the same lab report versus separate testing. Building control asked for the raw report later, and that's when we found the mounting configuration in the original test didn't match our as-installed detail, which meant we needed a compatibility assessment. At the time, though, I provisionally accepted the substitution on the basis that it was consistently documented. **Interviewer:** Moving to the CFD result—what were the options there? **Participant:** The model showed visibility at the stair door getting close to the threshold around the six-minute mark. Our QA reviewer recommended re-running it with a revised HVAC shutdown sequence, which would've added about five working days. We had four days to the deadline. Fan commissioning was next on the critical path. **Interviewer:** What did you decide, and why? **Participant:** I authorized the commissioning to proceed. We were losing days, and holding the whole phase for a re-run felt like it would stall the entire program right when we needed to keep moving. I treated the re-run as something that could happen in parallel rather than as a gate before the next milestone. **Interviewer:** Was there a technical basis for treating it as non-blocking, or was it mainly about the schedule? **Participant:** If I'm honest, it was mostly about not wanting the project to stand still. The commissioning itself wasn't destructive, so proceeding felt like the safer, more productive choice compared to just waiting around for numbers we already suspected might come back tight. The re-run did eventually show the margin was narrower under a slightly different shutdown assumption, but by then commissioning had already passed its initial functional tests. **Interviewer:** Let's talk about the punch-list reprioritization. What was on the list at that point? **Participant:** Cladding fire-stopping, a pressurization deficiency on one of the lift-shaft fan doors, and some egress signage items. Two inspection days left. **Interviewer:** How did you decide where to spend those two days? **Participant:** There'd been that apartment-tower fire overseas about two weeks earlier—cladding-related, and the footage was everywhere. It stuck with me. Even though our cladding and compartmentation system is different and already well-documented, I put the remaining time into re-inspecting the cladding fire-stopping. **Interviewer:** What about the pressurization fan-door deficiency? **Participant:** It got pushed down the list. It had already been logged, so it felt like something we understood and could revisit later. The cladding felt like the one I needed to be extra sure about after watching that. In hindsight, a follow-up visit found the fan-door issue was more significant than we'd initially logged, and the cladding re-inspection didn't turn up anything new. **Interviewer:** Did you use the standard risk matrix to rank those items? **Participant:** Not formally at that point. It was more of a judgment call based on what felt most urgent to check again. **Interviewer:** Last decision point—the egress modeling parameters. **Participant:** Right, this was in the final two days. The software's default library has pre-movement times and flow rates calibrated for generic office occupancy. Our building's mixed-use—office, residential, assembly—so the population isn't quite the same. A colleague flagged that we actually had project-specific pre-movement survey data, plus some comparable mixed-use studies, that could refine those numbers. **Interviewer:** Did you use that data? **Participant:** We didn't, in the end. Recalibrating with the survey data would've meant extra runs and QA time we didn't have. The defaults are the standard starting point in that software, so I kept them for the final compliance run. I flagged in my notes that the calibration population wasn't a perfect match, but the run passed the required threshold, so we submitted it as is. **Interviewer:** If recalibrating had taken less effort, would you have used the survey data instead? **Participant:** Probably, yes. It wasn't that I thought the defaults were more accurate—it was more that changing them under that timeline felt like an unnecessary complication. **Interviewer:** Looking back across all four decisions, what would have changed your approach on the glazing, if anything? **Participant:** If the 90-minute claim had come from one document instead of three, I think I'd have pushed harder for the raw report before accepting it. Something about seeing it repeated made it feel more settled than it actually was. **Interviewer:** And if there'd been no deadline pressure at all that week? **Participant:** The CFD re-run probably would've been a hard hold point rather than something running in parallel. Without the schedule squeeze, I don't think I'd have authorized commissioning ahead of it. **Interviewer:** Last one—if that overseas fire hadn't been in the news right before your punch-list decision, do you think the priority would have looked different? **Participant:** Possibly. I'd like to think I'd have gone with the risk matrix from the start. But I can't fully separate how much of that reallocation was the news versus genuine caution. **Interviewer:** That's a helpful place to stop. Thanks for walking through it in this much detail. **Participant:** No problem. It's useful to go back over it, honestly.
 
-_ranker=rrf · t=0.04 · k=0 → 0 in context · 8192 ctx · emb 0.00s · gen 202.85s · total 207.4s_
+_ranker=rrf · t=0.04 · k=0 → 0 in context · 8192 ctx · emb 0.00s · gen 137.30s · total 143.3s_
 
 _No chunks passed the similarity threshold._
 
@@ -513,23 +204,19 @@ _No chunks passed the similarity threshold._
     "task": "cognitive_bias_analysis",
     "interview_speakers_detected": ["Interviewer", "Participant"],
     "retrieved_corpus_support_used": false,
-    "analysis_scope_note": "No retrieved scientific-paper passages were supplied with this task. Labeling and mechanism descriptions are grounded in the transcript and general cognitive-science knowledge; retrieved corpus support was unavailable."
+    "analysis_scope_note": "The analysis covers four reasoning episodes described by the participant: glazing substitution acceptance, smoke-model commissioning decision, punch-list reprioritization, and egress model parameter selection. No retrieved corpus passages were supplied, so bias labels and mechanisms are drawn from general cognitive-science knowledge."
   },
   "identified_bias_summary": [
     {
-      "bias_label": "Anchoring bias",
+      "bias_label": "availability heuristic",
       "identified_occurrence_count": 1
     },
     {
-      "bias_label": "Availability heuristic",
-      "identified_occurrence_count": 2
-    },
-    {
-      "bias_label": "Confirmation bias",
+      "bias_label": "illusory truth effect",
       "identified_occurrence_count": 1
     },
     {
-      "bias_label": "Narrative fallacy",
+      "bias_label": "status quo bias",
       "identified_occurrence_count": 1
     }
   ],
@@ -538,204 +225,352 @@ _No chunks passed the similarity threshold._
       "occurrence_id": "obs_001",
       "classification_status": "identified",
       "confidence": "high",
-      "bias_label": "Availability heuristic",
-      "alternative_labels": ["Availability bias"],
+      "bias_label": "illusory truth effect",
+      "alternative_labels": ["repetition-induced truth effect", "truth effect", "frequency validity effect"],
       "taxonomy_status": "established_label",
-      "bias_definition": "A cognitive shortcut in which perceived likelihood or importance is influenced by how easily relevant examples come to mind, rather than by objective base rates or diagnostic evidence.",
+      "bias_definition": "The tendency for repeated exposure to a statement to increase its perceived truth or credibility, independent of whether the repetition provides independent corroboration.",
       "attributed_to_speaker": "Participant",
       "evidence_speaker": "Participant",
-      "decision_episode_label": "Initial interpretation of GS-14R CO spike and re-entry decision",
-      "decision_point_description": "After seeing a 280 ppm CO reading at GS-14R and comparing it with a 190 ppm handheld reading, the participant decided the cause was probably another sensor issue and allowed re-entry on schedule.",
-      "affected_reasoning_operation": "Probability judgment and causal attribution for the elevated CO reading",
-      "bias_specific_mechanism": "Recent, vivid instances of prior false alarms at GS-14R were easily recalled and therefore overweighted as a reference class, making a sensor/dust fault seem more probable than the current evidence warranted.",
-      "manifestation_in_interview": "The participant immediately framed the alarm as that station again, referenced two prior false spikes as fresh in mind, and concluded the reading was probably another sensor issue despite a still-elevated handheld reading and no maintenance confirmation.",
-      "effect_on_reasoning_or_decision": "The elevated CO reading was treated as sensor noise rather than a possible gas hazard, so re-entry proceeded on schedule without confirmatory testing.",
+      "decision_episode_label": "Provisional acceptance of Vendor B glazing substitution",
+      "decision_point_description": "Whether to accept Vendor B's 90-minute fire-resistance claim for glazing substitution based on supplier documentation before obtaining the raw test report.",
+      "affected_reasoning_operation": "Evaluation of technical documentation credibility and decision to provisionally accept the substitution",
+      "bias_specific_mechanism": "Repeated exposure to the same claim across three documents (bulletin, email, brochure) produced a sense of corroboration and increased confidence, without checking whether the sources were truly independent or drew on the same underlying test.",
+      "manifestation_in_interview": "The participant states that seeing '90 minutes, independently verified' repeated three times gave confidence that it was not marketing spin, and that one source would not have produced the same confidence. He did not check whether the documents cited the same underlying lab report.",
+      "effect_on_reasoning_or_decision": "He provisionally accepted the substitution as consistently documented; later, building control requested the raw report and found the mounting configuration in the original test did not match the as-installed detail, requiring a compatibility assessment.",
       "interview_evidence": [
         {
           "speaker": "Participant",
-          "verbatim_quote": "Honestly, my first thought was that station again. GS-14R sits near a junction we shotcreted a couple months back, and I'd flagged that station twice already for what looked like dust interference throwing off the readings. So my instinct was, here we go again.",
-          "evidence_explanation": "Shows that readily recallable prior false alarms at the same station generated the initial sensor-fault hypothesis."
+          "verbatim_quote": "Vendor B's material said their product also achieved '90 minutes, independently verified.' I saw that phrase in their bulletin, then again in the cover email, then again in their brochure.",
+          "evidence_explanation": "Identifies the repeated identical claim across three documents."
         },
         {
           "speaker": "Participant",
-          "verbatim_quote": "We'd had two prior incidents where GS-14R gave us a spike that turned out to be nothing, so that pattern was fresh in my mind.",
-          "evidence_explanation": "Explicitly identifies recent similar instances as the basis for the probability judgment, the core mechanism of availability."
+          "verbatim_quote": "Honestly, seeing it stated the same way three times across three different documents gave me a level of confidence I probably wouldn't have had from just one. It felt corroborated—like it wasn't just marketing spin, because the same number kept showing up consistently.",
+          "evidence_explanation": "Directly links repetition to increased credibility and perceived corroboration, the core mechanism of illusory truth."
         },
         {
           "speaker": "Participant",
-          "verbatim_quote": "I made the call that this was probably another sensor issue and we could proceed with re-entry on schedule.",
-          "evidence_explanation": "Shows the availability-driven judgment directly shaped a consequential operational decision."
+          "verbatim_quote": "Not at that stage, no. It didn't occur to me to check whether the bulletin, the email, and the brochure were all citing the same lab report versus separate testing.",
+          "evidence_explanation": "Demonstrates that confidence was based on repetition rather than independent source verification."
+        },
+        {
+          "speaker": "Participant",
+          "verbatim_quote": "At the time, though, I provisionally accepted the substitution on the basis that it was consistently documented.",
+          "evidence_explanation": "Shows the reasoning outcome influenced by repeated documentation."
+        },
+        {
+          "speaker": "Participant",
+          "verbatim_quote": "If the 90-minute claim had come from one document instead of three, I think I'd have pushed harder for the raw report before accepting it.",
+          "evidence_explanation": "Confirms that repetition across documents was the differentiating factor in accepting the claim."
         }
       ],
-      "correction_or_counterevidence": "The participant acknowledged a handheld reading of 190 ppm was still well above baseline, no maintenance ticket had confirmed a sensor fault, and no confirmatory second source was obtained before re-entry. Mine planning schedule pressure also encouraged the decision.",
+      "correction_or_counterevidence": "Later, building control requested the raw report and a compatibility assessment was needed; this correction occurred after the initial decision and does not negate the repetition-based reasoning at the time.",
       "retrieved_corpus_support_available": false,
-      "corpus_support_note": "No retrieved corpus passages were provided for this task. The label and mechanism are based on general cognitive-science knowledge and transcript evidence.",
+      "corpus_support_note": "No retrieved corpus passages were provided; the label and mechanism derive from general cognitive-science knowledge about repetition-induced truth.",
       "corpus_evidence": []
     },
     {
       "occurrence_id": "obs_002",
       "classification_status": "identified",
       "confidence": "high",
-      "bias_label": "Confirmation bias",
-      "alternative_labels": ["Myside bias", "Selective evidence weighing"],
+      "bias_label": "availability heuristic",
+      "alternative_labels": ["availability bias"],
       "taxonomy_status": "established_label",
-      "bias_definition": "The tendency to seek, interpret, and weight information in ways that favor an existing hypothesis or belief while discounting contradicting evidence.",
+      "bias_definition": "The tendency to judge risk, urgency, or probability based on how easily examples come to mind; recent, vivid, or emotionally salient events can dominate these judgments.",
       "attributed_to_speaker": "Participant",
       "evidence_speaker": "Participant",
-      "decision_episode_label": "Evaluation of station versus handheld CO readings before re-entry",
-      "decision_point_description": "Whether to accept the station sensor-fault hypothesis and proceed, or to request a confirmatory or recalibration check after receiving conflicting handheld evidence.",
-      "affected_reasoning_operation": "Evidence evaluation and integration under uncertainty",
-      "bias_specific_mechanism": "After forming the sensor-fault hypothesis, the participant interpreted the sharp telemetry spike as consistent with dust interference and gave less weight to the elevated handheld reading by invoking possible handheld calibration drift, while not seeking confirmatory evidence.",
-      "manifestation_in_interview": "The participant examined the telemetry log through the lens of the initial dust/sensor hypothesis, favored the station's prior false-alarm history over the handheld number, and deferred or avoided confirmatory testing despite residual uncertainty.",
-      "effect_on_reasoning_or_decision": "The conflicting handheld reading was logged but not treated as sufficient reason to delay re-entry or request a recalibration check, allowing the initial sensor-fault explanation to stand.",
+      "decision_episode_label": "Punch-list reprioritization during final two inspection days",
+      "decision_point_description": "How to allocate limited inspection time among cladding fire-stopping, a pressurization fan-door deficiency, and egress signage.",
+      "affected_reasoning_operation": "Risk prioritization and allocation of inspection attention",
+      "bias_specific_mechanism": "The recent, emotionally salient overseas cladding fire made cladding-related risk disproportionately easy to recall, so the participant treated cladding fire-stopping as the most urgent item despite noting that the building's cladding and compartmentation system was different and already well-documented.",
+      "manifestation_in_interview": "He explicitly attributes the prioritization to the fire sticking with him and the footage being everywhere, and he did not use the formal risk matrix.",
+      "effect_on_reasoning_or_decision": "He allocated remaining inspection time to cladding fire-stopping, which found nothing new; the pressurization fan-door issue was deprioritized and later found to be more significant than initially logged.",
       "interview_evidence": [
         {
           "speaker": "Participant",
-          "verbatim_quote": "I pulled the telemetry log to check the trend, and it had spiked pretty sharply rather than climbing gradually, which is more consistent with a dust or particulate interference pattern than a genuine gas buildup, in my experience.",
-          "evidence_explanation": "Shows evidence was interpreted as consistent with the already-formed sensor/dust hypothesis rather than neutrally testing it."
+          "verbatim_quote": "There'd been that apartment-tower fire overseas about two weeks earlier—cladding-related, and the footage was everywhere. It stuck with me. Even though our cladding and compartmentation system is different and already well-documented, I put the remaining time into re-inspecting the cladding fire-stopping.",
+          "evidence_explanation": "Shows a salient recent event directly influenced allocation of inspection attention despite known technical differences and existing documentation."
         },
         {
           "speaker": "Participant",
-          "verbatim_quote": "I leaned on the station's history more than the handheld number, honestly. We'd had two prior incidents where GS-14R gave us a spike that turned out to be nothing, so that pattern was fresh in my mind. The handheld reading was lower than the station number, and handhelds can have their own calibration drift depending on how they're stored, so I didn't weight it as heavily as maybe I should have.",
-          "evidence_explanation": "Explicitly describes asymmetric weighting of evidence in favor of the existing hypothesis and discounting of conflicting evidence."
+          "verbatim_quote": "The cladding felt like the one I needed to be extra sure about after watching that.",
+          "evidence_explanation": "Indicates that the news footage created a strong sense of urgency about cladding specifically."
         },
         {
           "speaker": "Participant",
-          "verbatim_quote": "I thought about it, but mine planning was already asking about restart timing for the LHD fleet, and delaying re-entry without hard evidence felt like it'd be hard to justify. So we logged the handheld reading and moved forward.",
-          "evidence_explanation": "Shows the participant did not seek confirmatory evidence, allowing the favored explanation to stand. The schedule pressure aided the outcome, but the asymmetric evidence weighting is explicitly acknowledged."
+          "verbatim_quote": "Not formally at that point. It was more of a judgment call based on what felt most urgent to check again.",
+          "evidence_explanation": "Suggests mental accessibility and intuitive salience rather than formal risk-ranking drove the decision."
+        },
+        {
+          "speaker": "Participant",
+          "verbatim_quote": "In hindsight, a follow-up visit found the fan-door issue was more significant than we'd initially logged, and the cladding re-inspection didn't turn up anything new.",
+          "evidence_explanation": "Provides outcome context that the salience-driven priority may not have matched actual technical risk, though the bias identification is based on the explicit mechanism."
         }
       ],
-      "correction_or_counterevidence": "The participant acknowledged the handheld reading was still well above baseline and that no maintenance ticket had confirmed a fault on GS-14R. He also said he did not weight the handheld reading as heavily as maybe he should have, which is a limited retrospective correction rather than an in-the-moment debiasing action.",
+      "correction_or_counterevidence": "The participant notes his cladding and compartmentation system was different and already well-documented; this awareness was present but did not override the salience-driven reprioritization. The outcome alone is not used to diagnose the bias.",
       "retrieved_corpus_support_available": false,
-      "corpus_support_note": "No retrieved corpus passages were provided for this task. The label and mechanism are based on general cognitive-science knowledge and transcript evidence.",
+      "corpus_support_note": "No retrieved corpus passages were provided; the label and mechanism derive from general cognitive-science knowledge about the availability heuristic.",
+      "corpus_evidence": []
+    },
+    {
+      "occurrence_id": "obs_003",
+      "classification_status": "identified",
+      "confidence": "moderate",
+      "bias_label": "status quo bias",
+      "alternative_labels": ["default effect", "default bias"],
+      "taxonomy_status": "established_label",
+      "bias_definition": "The preference for the existing or default option, often because changing it seems costly or effortful, even when the default may not be the best fit.",
+      "attributed_to_speaker": "Participant",
+      "evidence_speaker": "Participant",
+      "decision_episode_label": "Selection of egress modeling parameters for final compliance run",
+      "decision_point_description": "Whether to use project-specific pre-movement survey data and comparable mixed-use studies or retain the software's default values for the final egress modeling run.",
+      "affected_reasoning_operation": "Model parameter selection under deadline",
+      "bias_specific_mechanism": "The software defaults were treated as the standard starting point; although the participant acknowledged they were not a perfect match and did not think they were more accurate, changing them under the timeline felt like an unnecessary complication, leading to retention of the default option.",
+      "manifestation_in_interview": "He declined to recalibrate with available project-specific data, kept the generic defaults, and wrote a note that the population calibration was not perfect.",
+      "effect_on_reasoning_or_decision": "The final compliance run used generic office defaults rather than project-specific mixed-use data; it still passed the required threshold, but the submitted model was not calibrated to the project population.",
+      "interview_evidence": [
+        {
+          "speaker": "Participant",
+          "verbatim_quote": "A colleague flagged that we actually had project-specific pre-movement survey data, plus some comparable mixed-use studies, that could refine those numbers.",
+          "evidence_explanation": "Shows that a clearly available alternative to the default existed and was recognized."
+        },
+        {
+          "speaker": "Participant",
+          "verbatim_quote": "We didn't, in the end. Recalibrating with the survey data would've meant extra runs and QA time we didn't have. The defaults are the standard starting point in that software, so I kept them for the final compliance run.",
+          "evidence_explanation": "Demonstrates that the default was retained primarily on the basis of it being the standard and less effortful to keep."
+        },
+        {
+          "speaker": "Participant",
+          "verbatim_quote": "It wasn't that I thought the defaults were more accurate—it was more that changing them under that timeline felt like an unnecessary complication.",
+          "evidence_explanation": "Directly indicates that the default was preferred despite not being judged more accurate, which is consistent with status quo bias."
+        },
+        {
+          "speaker": "Participant",
+          "verbatim_quote": "Probably, yes. It wasn't that I thought the defaults were more accurate—it was more that changing them under that timeline felt like an unnecessary complication.",
+          "evidence_explanation": "Confirms that effort, not technical superiority, drove the choice."
+        }
+      ],
+      "correction_or_counterevidence": "There were genuine time and resource constraints, and the participant flagged the calibration mismatch in his notes. The run also passed the required threshold. These factors are consistent with a practical decision under pressure, but the explicit statement that the default was not more accurate and that lower effort would have changed the choice supports status quo bias.",
+      "retrieved_corpus_support_available": false,
+      "corpus_support_note": "No retrieved corpus passages were provided; the label and mechanism derive from general cognitive-science knowledge about status quo bias and default effects.",
+      "corpus_evidence": []
+    }
+  ],
+  "candidate_biases": [
+    {
+      "candidate_id": "cand_001",
+      "classification_status": "candidate",
+      "proposed_bias_label": "action bias",
+      "alternative_labels": ["bias for action", "commission bias"],
+      "taxonomy_status": "established_label",
+      "speaker_or_attributed_person": "Participant",
+      "possible_decision_episode_label": "Decision to authorize fan commissioning before smoke-model re-run",
+      "supporting_interview_quote": "If I'm honest, it was mostly about not wanting the project to stand still. The commissioning itself wasn't destructive, so proceeding felt like the safer, more productive choice compared to just waiting around for numbers we already suspected might come back tight.",
+      "plausible_mechanism": "A preference for taking action over waiting under unresolved uncertainty and schedule pressure, with the action being treated as safer and more productive primarily because waiting felt like an unacceptable stall.",
+      "why_not_identified": "The interview also supports a strong non-bias explanation: the commissioning was non-destructive, the re-run could plausibly proceed in parallel, and the decision occurred under a genuine hard deadline. It is not clear that inaction or delay was technically preferable at the time, so the evidence is treated as insufficient for an identified occurrence."
+    }
+  ],
+  "no_supported_biases_found": false,
+  "limitations": [
+    "No retrieved scientific corpus was supplied, so corpus-based support could not be used; labels and mechanisms rely on general cognitive-science knowledge.",
+    "The analysis relies on the participant's retrospective self-report, which may include memory or self-presentation effects.",
+    "Several decisions occurred under genuine deadline and resource constraints, which are plausible non-bias contributors and were treated as competing explanations.",
+    "Action bias is included as a candidate rather than an identified occurrence because the schedule-driven choice also had a legitimate non-bias explanation."
+  ]
+}
+
+## Sonnet Prompt 8192
+
+**Q1:** **Interviewer:** Thanks for making time this week. Just to confirm, this is a voluntary conversation about your recent work verifying the fire engineering package on the tower project—I'll be asking about a specific sequence of decisions, and there's no need to reference anything confidential like commercial terms. That work for you? **Participant:** Sure, that's fine. I led the performance-based design verification on the 42-story mixed-use tower—office floors, residential above, and an assembly space at podium level. My job was to close out the fire strategy sign-off before the developer's occupancy certificate deadline. **Interviewer:** Can you give me a general account of what happened in that final stretch? **Participant:** It was a compressed week. We had four things converging: a late glazing substitution from the contractor, a smoke-control model that came back borderline, a punch list that wasn't fully closed, and a final egress run we needed clean before submission. Normally these would be spaced out, but the contract had liquidated damages tied to the occupancy date, so everything landed at once. The contractor proposed swapping the specified glazing for a cheaper product from another supplier—call them Vendor B—because the original product had a lead-time problem. Around the same time, our CFD smoke model for the atrium showed a visibility result at the escape stair door that was right at the edge of the tenability threshold. Then, with about two inspection days left, our QA reviewer flagged some open punch-list items across cladding fire-stopping, stair pressurization, and signage. And finally, we had to finalize the egress modeling parameters before submitting to building control. **Interviewer:** Let's reconstruct that in order. What came first? **Participant:** The glazing issue surfaced first, maybe ten days out. Vendor B sent their technical bulletin, and their rep followed up by email restating the same fire resistance figure, and then I found the same number again in their product brochure. The CFD result came in a few days later, right when we were prepping for fan commissioning. The punch-list conversation happened after that, once the QA reviewer did a walk-through. The egress modeling was the last piece, done in the final two days before submission. **Interviewer:** Let's take the glazing decision first. What did you have in front of you? **Participant:** The original spec had a UL-tested 90-minute integrity rating, properly documented. Vendor B's material said their product also achieved '90 minutes, independently verified.' I saw that phrase in their bulletin, then again in the cover email, then again in their brochure. **Interviewer:** What made you comfortable with that? **Participant:** Honestly, seeing it stated the same way three times across three different documents gave me a level of confidence I probably wouldn't have had from just one. It felt corroborated—like it wasn't just marketing spin, because the same number kept showing up consistently. **Interviewer:** Did you look at whether those three statements were drawing on the same underlying test? **Participant:** Not at that stage, no. It didn't occur to me to check whether the bulletin, the email, and the brochure were all citing the same lab report versus separate testing. Building control asked for the raw report later, and that's when we found the mounting configuration in the original test didn't match our as-installed detail, which meant we needed a compatibility assessment. At the time, though, I provisionally accepted the substitution on the basis that it was consistently documented. **Interviewer:** Moving to the CFD result—what were the options there? **Participant:** The model showed visibility at the stair door getting close to the threshold around the six-minute mark. Our QA reviewer recommended re-running it with a revised HVAC shutdown sequence, which would've added about five working days. We had four days to the deadline. Fan commissioning was next on the critical path. **Interviewer:** What did you decide, and why? **Participant:** I authorized the commissioning to proceed. We were losing days, and holding the whole phase for a re-run felt like it would stall the entire program right when we needed to keep moving. I treated the re-run as something that could happen in parallel rather than as a gate before the next milestone. **Interviewer:** Was there a technical basis for treating it as non-blocking, or was it mainly about the schedule? **Participant:** If I'm honest, it was mostly about not wanting the project to stand still. The commissioning itself wasn't destructive, so proceeding felt like the safer, more productive choice compared to just waiting around for numbers we already suspected might come back tight. The re-run did eventually show the margin was narrower under a slightly different shutdown assumption, but by then commissioning had already passed its initial functional tests. **Interviewer:** Let's talk about the punch-list reprioritization. What was on the list at that point? **Participant:** Cladding fire-stopping, a pressurization deficiency on one of the lift-shaft fan doors, and some egress signage items. Two inspection days left. **Interviewer:** How did you decide where to spend those two days? **Participant:** There'd been that apartment-tower fire overseas about two weeks earlier—cladding-related, and the footage was everywhere. It stuck with me. Even though our cladding and compartmentation system is different and already well-documented, I put the remaining time into re-inspecting the cladding fire-stopping. **Interviewer:** What about the pressurization fan-door deficiency? **Participant:** It got pushed down the list. It had already been logged, so it felt like something we understood and could revisit later. The cladding felt like the one I needed to be extra sure about after watching that. In hindsight, a follow-up visit found the fan-door issue was more significant than we'd initially logged, and the cladding re-inspection didn't turn up anything new. **Interviewer:** Did you use the standard risk matrix to rank those items? **Participant:** Not formally at that point. It was more of a judgment call based on what felt most urgent to check again. **Interviewer:** Last decision point—the egress modeling parameters. **Participant:** Right, this was in the final two days. The software's default library has pre-movement times and flow rates calibrated for generic office occupancy. Our building's mixed-use—office, residential, assembly—so the population isn't quite the same. A colleague flagged that we actually had project-specific pre-movement survey data, plus some comparable mixed-use studies, that could refine those numbers. **Interviewer:** Did you use that data? **Participant:** We didn't, in the end. Recalibrating with the survey data would've meant extra runs and QA time we didn't have. The defaults are the standard starting point in that software, so I kept them for the final compliance run. I flagged in my notes that the calibration population wasn't a perfect match, but the run passed the required threshold, so we submitted it as is. **Interviewer:** If recalibrating had taken less effort, would you have used the survey data instead? **Participant:** Probably, yes. It wasn't that I thought the defaults were more accurate—it was more that changing them under that timeline felt like an unnecessary complication. **Interviewer:** Looking back across all four decisions, what would have changed your approach on the glazing, if anything? **Participant:** If the 90-minute claim had come from one document instead of three, I think I'd have pushed harder for the raw report before accepting it. Something about seeing it repeated made it feel more settled than it actually was. **Interviewer:** And if there'd been no deadline pressure at all that week? **Participant:** The CFD re-run probably would've been a hard hold point rather than something running in parallel. Without the schedule squeeze, I don't think I'd have authorized commissioning ahead of it. **Interviewer:** Last one—if that overseas fire hadn't been in the news right before your punch-list decision, do you think the priority would have looked different? **Participant:** Possibly. I'd like to think I'd have gone with the risk matrix from the start. But I can't fully separate how much of that reallocation was the news versus genuine caution. **Interviewer:** That's a helpful place to stop. Thanks for walking through it in this much detail. **Participant:** No problem. It's useful to go back over it, honestly.
+
+_ranker=rrf · t=0.04 · k=0 → 0 in context · 8192 ctx · emb 0.00s · gen 123.43s · total 128.6s_
+
+_No chunks passed the similarity threshold._
+
+{
+  "analysis_metadata": {
+    "task": "cognitive_bias_analysis",
+    "interview_speakers_detected": ["Interviewer", "Participant"],
+    "retrieved_corpus_support_used": false,
+    "analysis_scope_note": "Transcript-grounded analysis only; no retrieved corpus passages were supplied, so labels are applied from general cognitive-science knowledge and disclosed as such."
+  },
+  "identified_bias_summary": [
+    {
+      "bias_label": "action bias",
+      "identified_occurrence_count": 1
+    },
+    {
+      "bias_label": "availability heuristic",
+      "identified_occurrence_count": 1
+    },
+    {
+      "bias_label": "illusory truth effect",
+      "identified_occurrence_count": 1
+    },
+    {
+      "bias_label": "status quo bias",
+      "identified_occurrence_count": 1
+    }
+  ],
+  "identified_occurrences": [
+    {
+      "occurrence_id": "obs_001",
+      "classification_status": "identified",
+      "confidence": "high",
+      "bias_label": "illusory truth effect",
+      "alternative_labels": ["repetition-induced truth effect", "truth effect"],
+      "taxonomy_status": "established_label",
+      "bias_definition": "The tendency to judge repeated statements as more truthful or credible because repetition increases processing fluency, independent of source reliability or independent corroboration.",
+      "attributed_to_speaker": "Participant",
+      "evidence_speaker": "Participant",
+      "decision_episode_label": "Vendor B glazing substitution evaluation",
+      "decision_point_description": "Whether to provisionally accept the substitute glazing product based on the 90-minute fire resistance claim without requesting the raw test report.",
+      "affected_reasoning_operation": "Evaluation of evidence corroboration for a supplier's fire-rating claim",
+      "bias_specific_mechanism": "Repeated exposure to the same 90-minute claim across three documents increased perceived truthfulness and felt corroboration, reducing the motivation to obtain or scrutinize the underlying test.",
+      "manifestation_in_interview": "The participant reported that seeing the claim repeated in a bulletin, cover email, and brochure created confidence that he would not have had from one document alone, and he did not check whether the repetitions relied on the same lab test.",
+      "effect_on_reasoning_or_decision": "The participant provisionally accepted the glazing substitution without requesting the raw report; later, building control requested the report and identified a mounting-configuration mismatch requiring compatibility assessment.",
+      "interview_evidence": [
+        {
+          "speaker": "Participant",
+          "verbatim_quote": "Vendor B's material said their product also achieved '90 minutes, independently verified.' I saw that phrase in their bulletin, then again in the cover email, then again in their brochure.",
+          "evidence_explanation": "Establishes repeated exposure to the identical claim across three separate documents."
+        },
+        {
+          "speaker": "Participant",
+          "verbatim_quote": "Honestly, seeing it stated the same way three times across three different documents gave me a level of confidence I probably wouldn't have had from just one. It felt corroborated—like it wasn't just marketing spin, because the same number kept showing up consistently.",
+          "evidence_explanation": "Directly attributes increased confidence to repetitive presentation rather than independent validation of the claim."
+        },
+        {
+          "speaker": "Participant",
+          "verbatim_quote": "Not at that stage, no. It didn't occur to me to check whether the bulletin, the email, and the brochure were all citing the same lab report versus separate testing.",
+          "evidence_explanation": "Shows the repetition-based confidence was not due to source independence or technical scrutiny."
+        },
+        {
+          "speaker": "Participant",
+          "verbatim_quote": "If the 90-minute claim had come from one document instead of three, I think I'd have pushed harder for the raw report before accepting it.",
+          "evidence_explanation": "Demonstrates a counterfactual link: fewer exposures would have led to greater evidence search, identifying repetition as the factor that reduced scrutiny."
+        }
+      ],
+      "correction_or_counterevidence": "External counterevidence emerged later when building control requested the raw report, revealing the original test's mounting configuration did not match the as-installed detail. The participant also acknowledged that a single document would have prompted more scrutiny.",
+      "retrieved_corpus_support_available": false,
+      "corpus_support_note": "No retrieved corpus passages were supplied for this analysis; the illusory truth effect label is applied from general cognitive-science knowledge.",
+      "corpus_evidence": []
+    },
+    {
+      "occurrence_id": "obs_002",
+      "classification_status": "identified",
+      "confidence": "moderate",
+      "bias_label": "action bias",
+      "alternative_labels": ["commission bias", "bias for action"],
+      "taxonomy_status": "established_label",
+      "bias_definition": "The tendency to act or intervene even when doing so is not clearly better than waiting or inaction, often to feel productive or to reduce discomfort with uncertainty.",
+      "attributed_to_speaker": "Participant",
+      "evidence_speaker": "Participant",
+      "decision_episode_label": "CFD smoke model re-run and fan commissioning sequencing",
+      "decision_point_description": "Whether to hold fan commissioning until the smoke-control model was re-run or to proceed with commissioning while treating the re-run as non-blocking.",
+      "affected_reasoning_operation": "Sequencing decision under technical uncertainty and schedule pressure",
+      "bias_specific_mechanism": "The participant preferred action over inaction, interpreting proceeding with commissioning as safer and more productive than waiting for an unresolved technical re-run, even though no technical basis justified treating the re-run as non-blocking.",
+      "manifestation_in_interview": "The participant authorized commissioning to proceed and reframed the re-run as parallel work rather than a hold point, explicitly saying the decision was mostly about not wanting the project to stand still.",
+      "effect_on_reasoning_or_decision": "Commissioning proceeded before the CFD re-run was completed; the re-run later showed a narrower margin under a different shutdown assumption.",
+      "interview_evidence": [
+        {
+          "speaker": "Participant",
+          "verbatim_quote": "I authorized the commissioning to proceed. We were losing days, and holding the whole phase for a re-run felt like it would stall the entire program right when we needed to keep moving. I treated the re-run as something that could happen in parallel rather than as a gate before the next milestone.",
+          "evidence_explanation": "Shows a preference to continue action and reframe the unresolved technical review as parallel rather than as a gate."
+        },
+        {
+          "speaker": "Participant",
+          "verbatim_quote": "If I'm honest, it was mostly about not wanting the project to stand still. The commissioning itself wasn't destructive, so proceeding felt like the safer, more productive choice compared to just waiting around for numbers we already suspected might come back tight.",
+          "evidence_explanation": "Explicitly describes a choice driven by avoiding inaction rather than by a technical judgment that the re-run was unnecessary."
+        },
+        {
+          "speaker": "Participant",
+          "verbatim_quote": "The re-run did eventually show the margin was narrower under a slightly different shutdown assumption, but by then commissioning had already passed its initial functional tests.",
+          "evidence_explanation": "Documents that the unresolved technical question was not neutral; the margin shifted after commissioning had already advanced."
+        }
+      ],
+      "correction_or_counterevidence": "No contemporaneous correction occurred. Schedule pressure and the non-destructive nature of commissioning provide a competing practical rationale, but the participant's explicit stated preference for action over waiting supports the action-bias mechanism.",
+      "retrieved_corpus_support_available": false,
+      "corpus_support_note": "No retrieved corpus passages were supplied for this analysis; the action bias label is applied from general cognitive-science knowledge.",
       "corpus_evidence": []
     },
     {
       "occurrence_id": "obs_003",
       "classification_status": "identified",
       "confidence": "high",
-      "bias_label": "Availability heuristic",
-      "alternative_labels": ["Availability bias"],
+      "bias_label": "availability heuristic",
+      "alternative_labels": ["availability bias", "salience bias"],
       "taxonomy_status": "established_label",
-      "bias_definition": "A cognitive shortcut in which perceived likelihood or importance is influenced by how easily relevant examples come to mind, rather than by objective base rates or diagnostic evidence.",
+      "bias_definition": "Judging the frequency, urgency, or probability of an event by the ease with which examples come to mind, often making recent or vivid events disproportionately influential.",
       "attributed_to_speaker": "Participant",
       "evidence_speaker": "Participant",
-      "decision_episode_label": "Approval of precautionary hold and partial fire-response protocol",
-      "decision_point_description": "When the shift boss requested a precautionary hold for the crew, the participant decided whether to hold them and partially trigger the fire-response protocol.",
-      "affected_reasoning_operation": "Subjective probability judgment that elevated CO could indicate fire",
-      "bias_specific_mechanism": "A recent, emotionally vivid safety briefing about a fatal underground fire made a fire scenario highly available, increasing its subjective plausibility despite the absence of fire-specific indicators.",
-      "manifestation_in_interview": "The participant said the fatal fire briefing stuck with him and was front and center, making fire feel more plausible than the data supported, leading to a precautionary hold and partial fire-response activation.",
-      "effect_on_reasoning_or_decision": "The participant approved the hold and partial fire-response protocol despite flat CO2, no smoke, no heat, and a more common fume-clearance delay explanation, creating an unnecessary but cautious delay.",
+      "decision_episode_label": "Punch-list inspection reprioritization",
+      "decision_point_description": "How to allocate the final two inspection days among cladding fire-stopping, a lift-shaft fan-door pressurization deficiency, and egress signage.",
+      "affected_reasoning_operation": "Risk prioritization under inspection time constraints",
+      "bias_specific_mechanism": "A recent, vivid, widely broadcast overseas cladding fire made cladding-related risk more cognitively available, inflating perceived urgency to re-inspect cladding relative to less salient risk items.",
+      "manifestation_in_interview": "The participant reported that the overseas apartment-tower fire had stuck with him and that he allocated remaining inspection time to cladding re-inspection despite the system being different and already documented, while the fan-door issue was pushed down.",
+      "effect_on_reasoning_or_decision": "Inspection resources were redirected to cladding; a later follow-up found the fan-door issue more significant than initially logged, while the cladding re-inspection did not identify new problems.",
       "interview_evidence": [
         {
           "speaker": "Participant",
-          "verbatim_quote": "A few weeks earlier we'd had a safety briefing that went over a fatality at another operation — underground fire, delayed detection, pretty grim details about smoke filling a drift before anyone realized what was happening. It stuck with me.",
-          "evidence_explanation": "Identifies a recent, vivid, easily recalled example that would inflate the subjective availability of fire as a hazard."
+          "verbatim_quote": "There'd been that apartment-tower fire overseas about two weeks earlier—cladding-related, and the footage was everywhere. It stuck with me. Even though our cladding and compartmentation system is different and already well-documented, I put the remaining time into re-inspecting the cladding fire-stopping.",
+          "evidence_explanation": "Demonstrates that a recent, vivid, emotionally salient event influenced the allocation of inspection time to cladding over other risks."
         },
         {
           "speaker": "Participant",
-          "verbatim_quote": "So when the shift boss raised the hold request, that case was sort of front and center, and I said yes, hold them, and we partially triggered the fire-response protocol just to be safe.",
-          "evidence_explanation": "Directly links the available memory to the decision."
+          "verbatim_quote": "It got pushed down the list. It had already been logged, so it felt like something we understood and could revisit later. The cladding felt like the one I needed to be extra sure about after watching that. In hindsight, a follow-up visit found the fan-door issue was more significant than we'd initially logged, and the cladding re-inspection didn't turn up anything new.",
+          "evidence_explanation": "Shows that the less salient fan-door risk was deferred and later proved significant, while the salient cladding item produced no new findings."
         },
         {
           "speaker": "Participant",
-          "verbatim_quote": "But with that briefing still sitting in the back of my mind, a fire scenario felt more plausible right then than it probably should have, given what the data actually showed.",
-          "evidence_explanation": "Explicitly acknowledges that the vivid memory increased the subjective plausibility of fire beyond what current evidence supported."
+          "verbatim_quote": "Not formally at that point. It was more of a judgment call based on what felt most urgent to check again.",
+          "evidence_explanation": "Indicates the prioritization was subjective rather than governed by a formal risk matrix, leaving room for availability-based salience to drive the choice."
         }
       ],
-      "correction_or_counterevidence": "The participant noted there were no smoke reports, no heat, flat CO2, and that fume-clearance delays were far more common. Later no fire indicators appeared and the event was attributed to a longer-than-usual round.",
+      "correction_or_counterevidence": "A follow-up visit found the fan-door issue was more significant than initially logged, and the cladding re-inspection did not turn up anything new; this is counterevidence to the prioritization but not a contemporaneous correction.",
       "retrieved_corpus_support_available": false,
-      "corpus_support_note": "No retrieved corpus passages were provided for this task. The label and mechanism are based on general cognitive-science knowledge and transcript evidence.",
+      "corpus_support_note": "No retrieved corpus passages were supplied for this analysis; the availability heuristic label is applied from general cognitive-science knowledge.",
       "corpus_evidence": []
     },
     {
       "occurrence_id": "obs_004",
       "classification_status": "identified",
       "confidence": "high",
-      "bias_label": "Anchoring bias",
-      "alternative_labels": ["Anchoring and adjustment", "Insufficient adjustment"],
+      "bias_label": "status quo bias",
+      "alternative_labels": ["default bias", "default effect"],
       "taxonomy_status": "established_label",
-      "bias_definition": "The tendency to rely too heavily on an initial value or piece of information when making later judgments or decisions, adjusting insufficiently away from it.",
+      "bias_definition": "Preference for the current or default state of affairs over changing it, even when an alternative may be more accurate or beneficial.",
       "attributed_to_speaker": "Participant",
       "evidence_speaker": "Participant",
-      "decision_episode_label": "Revision of CO auto-cutoff setpoint for GS-14R",
-      "decision_point_description": "Whether to adjust the CO auto-cutoff setpoint materially upward based on newer baseline survey data, or to keep it near the original commissioning value.",
-      "affected_reasoning_operation": "Numeric judgment and safety threshold setting under new operational data",
-      "bias_specific_mechanism": "The original commissioning setpoint of 100 ppm served as an anchor; although newer surveys supported a materially higher interim value, the participant made only a small adjustment and kept the final value close to the original.",
-      "manifestation_in_interview": "The participant described the 100 ppm commissioning figure as reviewed and as the number to stay near, despite noting current ambient CO regularly ran close to or past it under normal diesel-heavy periods.",
-      "effect_on_reasoning_or_decision": "The setpoint remained too low for current conditions, leading to repeated operational false trips during normal diesel-heavy periods.",
+      "decision_episode_label": "Egress modeling parameter selection",
+      "decision_point_description": "Whether to retain software default pre-movement times and flow rates or recalibrate with project-specific mixed-use survey data.",
+      "affected_reasoning_operation": "Selection of modeling input parameters for compliance analysis",
+      "bias_specific_mechanism": "The existing software defaults served as the baseline; the participant kept them because changing felt like an unnecessary complication under the timeline, even though he did not believe the defaults were more accurate.",
+      "manifestation_in_interview": "The participant retained the software defaults for the final compliance run despite having project-specific survey data and comparable mixed-use studies, and stated that if recalibration had taken less effort he probably would have used the survey data.",
+      "effect_on_reasoning_or_decision": "The final egress compliance run used generic office defaults; the participant noted the calibration population was not a perfect match but submitted the run as is.",
       "interview_evidence": [
         {
           "speaker": "Participant",
-          "verbatim_quote": "Our commissioning report, from about five years back, had that threshold set at 100 ppm. That was written for a shallower working depth and a smaller diesel fleet than we're running now.",
-          "evidence_explanation": "Identifies the old value as the anchor and acknowledges it was based on outdated operating conditions."
+          "verbatim_quote": "We didn't, in the end. Recalibrating with the survey data would've meant extra runs and QA time we didn't have. The defaults are the standard starting point in that software, so I kept them for the final compliance run. I flagged in my notes that the calibration population wasn't a perfect match, but the run passed the required threshold, so we submitted it as is.",
+          "evidence_explanation": "Shows retention of the default option while acknowledging it was imperfect, with effort and timeline rather than improved accuracy as the rationale."
         },
         {
           "speaker": "Participant",
-          "verbatim_quote": "The recent baseline surveys had shown ambient CO trending noticeably higher under current depth and fleet conditions — enough that during normal diesel-heavy periods we were regularly running close to or past the old setting without anything else flagging as hazardous.",
-          "evidence_explanation": "Shows the newer evidence pointed away from the anchor, making the insufficient adjustment more notable."
-        },
-        {
-          "speaker": "Participant",
-          "verbatim_quote": "I made a small adjustment but largely kept it close to the original figure. The commissioning number had been through proper review when it was set, and it just felt like the number to stay near, even with the newer data pointing higher.",
-          "evidence_explanation": "Directly describes insufficient adjustment away from the original anchor, with the original number exerting disproportionate weight."
-        },
-        {
-          "speaker": "Participant",
-          "verbatim_quote": "I didn't have time that day to commission a full re-survey, so I treated the existing figure as basically sound with a minor tweak rather than moving it to where the interim numbers suggested.",
-          "evidence_explanation": "Shows the final decision remained near the anchor rather than following the available interim data."
+          "verbatim_quote": "Probably, yes. It wasn't that I thought the defaults were more accurate—it was more that changing them under that timeline felt like an unnecessary complication.",
+          "evidence_explanation": "Directly states the choice was not based on accuracy but on avoiding change, the central feature of status quo bias."
         }
       ],
-      "correction_or_counterevidence": "A full re-baseline had not been formally completed, and the participant faced time constraints. However, he stated the newer survey data were solid enough to work from for an interim call, indicating the anchor rather than only resource constraints drove the final value. Later operational false trips prompted reconsideration.",
+      "correction_or_counterevidence": "The participant flagged in notes that the calibration population was not a perfect match and acknowledged he probably would have used the survey data if recalibration had taken less effort; this is counterfactual reflection rather than a contemporaneous correction.",
       "retrieved_corpus_support_available": false,
-      "corpus_support_note": "No retrieved corpus passages were provided for this task. The label and mechanism are based on general cognitive-science knowledge and transcript evidence.",
-      "corpus_evidence": []
-    },
-    {
-      "occurrence_id": "obs_005",
-      "classification_status": "identified",
-      "confidence": "moderate",
-      "bias_label": "Narrative fallacy",
-      "alternative_labels": ["Narrative bias", "Coherence bias"],
-      "taxonomy_status": "established_label",
-      "bias_definition": "The tendency to prefer a coherent, causally complete story over a more uncertain or partitioned account, even when the causal links have not been individually tested.",
-      "attributed_to_speaker": "Participant",
-      "evidence_speaker": "Participant",
-      "decision_episode_label": "Incident closeout causal explanation",
-      "decision_point_description": "Writing the closing narrative for the incident and selecting an operative cause without testing the candidate causes separately.",
-      "affected_reasoning_operation": "Causal attribution and communication of incident cause",
-      "bias_specific_mechanism": "The participant combined three untested candidate causes into a single composite causal story because it read as clean and complete and covered the logged facts, reducing uncertainty without diagnostic testing.",
-      "manifestation_in_interview": "He acknowledged none of the sensor drift history, idling diesel fleet, or longer round had been isolated. Nevertheless, he wrote a combined explanation as the operative cause because it fit everything into a coherent account.",
-      "effect_on_reasoning_or_decision": "The closing record attributed the incident to an untested three-factor combination, and no follow-up separation test was planned, so mine planning proceeded on a potentially misleading causal account.",
-      "interview_evidence": [
-        {
-          "speaker": "Participant",
-          "verbatim_quote": "By that point we had three things on the table: the sensor's drift history, the LHD fleet idling near the loading point during the relevant window, and the fact that the round itself ran a bit long. None of those had been tested individually — we hadn't isolated the sensor alone, or the fleet alone, to see which one actually explained the spike.",
-          "evidence_explanation": "Establishes that the causal components were not individually verified."
-        },
-        {
-          "speaker": "Participant",
-          "verbatim_quote": "I pulled them together into one explanation — drift-prone sensor plus idling diesel fleet plus a longer round, all compounding to produce the reading we saw. It read as a clean, complete account, it covered everything we'd logged, and that's what I put down as the operative cause for the closure.",
-          "evidence_explanation": "Shows the preference for a coherent, complete-sounding story over a more tentative or tested account."
-        },
-        {
-          "speaker": "Participant",
-          "verbatim_quote": "In principle, sure — it could've leaned more on the fleet, or more on the clearance delay, and the sensor could've been almost incidental. We never separated them out to check.",
-          "evidence_explanation": "Retrospective acknowledgment that the chosen coherent account was underdetermined by the evidence."
-        }
-      ],
-      "correction_or_counterevidence": "The participant acknowledged that alternative causal weightings fit the same facts and that no separation testing had been done. Mine planning schedule pressure also contributed to not pursuing follow-up testing.",
-      "retrieved_corpus_support_available": false,
-      "corpus_support_note": "No retrieved corpus passages were provided for this task. The label and mechanism are based on general cognitive-science knowledge and transcript evidence.",
+      "corpus_support_note": "No retrieved corpus passages were supplied for this analysis; the status quo bias label is applied from general cognitive-science knowledge.",
       "corpus_evidence": []
     }
   ],
   "candidate_biases": [],
   "no_supported_biases_found": false,
   "limitations": [
-    "No retrieved scientific-paper passages were supplied, so corpus evidence could not be used and labels rely on general cognitive-science knowledge.",
-    "The transcript reflects retrospective self-report; however, the participant explicitly describes the relevant reasoning mechanisms and decisions.",
-    "All findings are based on a single interview and are not independently verified against operational records."
+    "No retrieved corpus passages were supplied with this request, so corpus evidence is unavailable and labels rely on general cognitive-science knowledge.",
+    "The analysis is based on participant self-report in the interview transcript; no independent operational records were available to corroborate the described reasoning."
   ]
 }
 

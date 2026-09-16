@@ -1,0 +1,479 @@
+{
+  "evaluation_metadata": {
+    "task": "ontology_free_rag_cognitive_bias_benchmark_evaluation",
+    "benchmark_run_metadata": {
+      "benchmark_run_id": "CS_Biased_6_Gemini_on",
+      "interview_id": "CS_Biased_6",
+      "system_prompt_id": "Gemini",
+      "system_prompt_generator": "Prompt 1_2",
+      "rag_model_id": "v1.0.0",
+      "corpus_condition": "on",
+      "retrieval_configuration_id": "k=50",
+      "decoding_configuration_id": null,
+      "temperature": 1,
+      "replicate_id": null,
+      "segment_map_id": null
+    },
+    "scenario_id": "CS_Biased_6",
+    "domain_id": "CS",
+    "condition": "biased",
+    "segment_map_status": "generated_not_prevalidated",
+    "rag_output_parse_status": "valid_json",
+    "rag_schema_assessment": "conformant"
+  },
+  "input_validation": {
+    "rag_output_schema_violations": [],
+    "rag_summary_count_consistency": {
+      "status": "consistent",
+      "details": "The identified_bias_summary totals four occurrences, matching the four identified_occurrences records; all listed labels have count one. The single candidate is separately represented in candidate_biases."
+    },
+    "evaluation_limitations": [
+      "The supplied evaluation segment map is null, so the four decision-point segments were generated from the raw interview and generation specification rather than prevalidated.",
+      "The actual retrieved corpus chunks or retrieval logs were not supplied; corpus fidelity cannot be independently scored.",
+      "Retrospective self-report and operational time pressure can support non-bias interpretations, so ambiguous alert-triage evidence is retained as a candidate rather than promoted to an identified occurrence."
+    ]
+  },
+  "evaluation_segment_map": {
+    "segment_mapping_version": "1.0",
+    "segments": [
+      {
+        "segment_id": "dp_01",
+        "speaker": "Participant",
+        "segment_type": "decision_point",
+        "raw_interview_anchor": "The new CVE was moved to the top of the queue and routed to the usual web-application remediation queue while the older database finding remained in place; the participant cited the fresh breach and the frequent injection-ticket pattern.",
+        "eligible_reasoning_segment": true,
+        "ground_truth_bias_present": true,
+        "ground_truth_instance_ids": ["cb_01", "cb_02"],
+        "ground_truth_rationale": "The segment contains comparative prioritization influenced by the recent breach (Recency) and initial categorization influenced by the frequently encountered web-application ticket pattern (Availability Frequency)."
+      },
+      {
+        "segment_id": "dp_02",
+        "speaker": "Participant",
+        "segment_type": "decision_point",
+        "raw_interview_anchor": "While cross-referencing assets, the participant saw a low-confidence privilege-escalation alert, relied on its historically benign resolution pattern, and did not consciously register the adjacent anomalous outbound-traffic entry.",
+        "eligible_reasoning_segment": true,
+        "ground_truth_bias_present": true,
+        "ground_truth_instance_ids": ["cb_03", "cb_04"],
+        "ground_truth_rationale": "The segment contains memory-based weighting of a familiar alert label (Availability Frequency) and failure to register a visually available cue during a competing task (Selective Attention Bias or Inattentional Blindness)."
+      },
+      {
+        "segment_id": "dp_03",
+        "speaker": "Participant",
+        "segment_type": "decision_point",
+        "raw_interview_anchor": "The emergency change-window justification emphasized contract exposure, reputational fallout, and audit risk, even though the EPSS probability was moderate and comparable to findings handled in the normal weekend cycle.",
+        "eligible_reasoning_segment": true,
+        "ground_truth_bias_present": true,
+        "ground_truth_instance_ids": ["cb_05"],
+        "ground_truth_rationale": "The participant explicitly said that loss-oriented framing changed the felt urgency while the underlying EPSS score and disruption remained constant (Loss Framing)."
+      },
+      {
+        "segment_id": "dp_04",
+        "speaker": "Participant",
+        "segment_type": "decision_point",
+        "raw_interview_anchor": "The participant scoped the patch ticket to the two hosts shown in the scanner's default view, treated that list as complete, and did not manually cross-check the inventory containing three additional affected hosts.",
+        "eligible_reasoning_segment": true,
+        "ground_truth_bias_present": true,
+        "ground_truth_instance_ids": ["cb_06"],
+        "ground_truth_rationale": "The available option set was implicitly limited to the scanner's default-view hosts, without checking the alternative inventory view (Exposure to limited alternatives)."
+      }
+    ]
+  },
+  "segment_level_adjudications": [
+    {
+      "segment_id": "dp_01",
+      "ground_truth_status": "positive",
+      "ground_truth_instance_ids": ["cb_01", "cb_02"],
+      "rag_identified_occurrence_ids": ["obs_001", "obs_002"],
+      "rag_candidate_ids_counted_at_fourth_threshold": [],
+      "rag_detected_bias_in_segment_by_threshold": {"high_only": false, "high_and_moderate": true, "all_identified_confidence_levels": true, "all_confidence_and_candidates": true},
+      "sdt_outcome_by_threshold": {"high_only": "miss", "high_and_moderate": "hit", "all_identified_confidence_levels": "hit", "all_confidence_and_candidates": "hit"},
+      "localization_basis": "Both identified findings quote or substantively describe the CVE prioritization and routing episode in this segment.",
+      "adjudication_note": "The segment is detected at moderate confidence through two identified findings, although only the recency finding has a full mechanism match and both recency and categorization labels are neighboring rather than exact target labels."
+    },
+    {
+      "segment_id": "dp_02",
+      "ground_truth_status": "positive",
+      "ground_truth_instance_ids": ["cb_03", "cb_04"],
+      "rag_identified_occurrence_ids": [],
+      "rag_candidate_ids_counted_at_fourth_threshold": ["cand_001"],
+      "rag_detected_bias_in_segment_by_threshold": {"high_only": false, "high_and_moderate": false, "all_identified_confidence_levels": false, "all_confidence_and_candidates": true},
+      "sdt_outcome_by_threshold": {"high_only": "miss", "high_and_moderate": "miss", "all_identified_confidence_levels": "miss", "all_confidence_and_candidates": "hit"},
+      "localization_basis": "The candidate quote directly addresses the low-confidence SIEM alert and is localized to the same alert-triage episode; no identified occurrence is localized here.",
+      "adjudication_note": "The candidate preserves a plausible Availability Frequency mechanism for cb_03 but does not establish the attentional failure in cb_04 and is not promoted to an identified strict match."
+    },
+    {
+      "segment_id": "dp_03",
+      "ground_truth_status": "positive",
+      "ground_truth_instance_ids": ["cb_05"],
+      "rag_identified_occurrence_ids": ["obs_003"],
+      "rag_candidate_ids_counted_at_fourth_threshold": [],
+      "rag_detected_bias_in_segment_by_threshold": {"high_only": false, "high_and_moderate": true, "all_identified_confidence_levels": true, "all_confidence_and_candidates": true},
+      "sdt_outcome_by_threshold": {"high_only": "miss", "high_and_moderate": "hit", "all_identified_confidence_levels": "hit", "all_confidence_and_candidates": "hit"},
+      "localization_basis": "The identified occurrence uses exact participant quotations about the change-window justification and the unchanged EPSS score and disruption.",
+      "adjudication_note": "This is an exact or established-equivalent label, location, and mechanism match at moderate confidence."
+    },
+    {
+      "segment_id": "dp_04",
+      "ground_truth_status": "positive",
+      "ground_truth_instance_ids": ["cb_06"],
+      "rag_identified_occurrence_ids": ["obs_004"],
+      "rag_candidate_ids_counted_at_fourth_threshold": [],
+      "rag_detected_bias_in_segment_by_threshold": {"high_only": false, "high_and_moderate": true, "all_identified_confidence_levels": true, "all_confidence_and_candidates": true},
+      "sdt_outcome_by_threshold": {"high_only": "miss", "high_and_moderate": "hit", "all_identified_confidence_levels": "hit", "all_confidence_and_candidates": "hit"},
+      "localization_basis": "The identified occurrence quotes the scanner default-view decision, the absence of a manual inventory check, and the missed host.",
+      "adjudication_note": "The episode is correctly localized, but automation complacency is a neighboring/different construct from the hidden limited-alternatives target and the stated causal mechanism is not full."
+    }
+  ],
+  "instance_level_adjudications": [
+    {
+      "hidden_instance_id": "cb_01",
+      "hidden_target_bias_label": "Recency",
+      "hidden_decision_or_episode": "Prioritization of the new CVE over the older database finding",
+      "hidden_mechanism": "A recent, vivid breach report primes a matching category and makes the new CVE seem more urgent than the older objectively severe finding.",
+      "matched_finding_by_threshold": {"high_only": {"matched_id": null, "matched_type": "none"}, "high_and_moderate": {"matched_id": "obs_001", "matched_type": "identified"}, "all_identified_confidence_levels": {"matched_id": "obs_001", "matched_type": "identified"}, "all_confidence_and_candidates": {"matched_id": "obs_001", "matched_type": "identified"}},
+      "rag_predicted_bias_label": "availability heuristic",
+      "rag_confidence": "moderate",
+      "label_equivalence_result": "near_neighbor_label",
+      "localization_match_type": "exact_quote_match",
+      "mechanism_overlap": "full_mechanism_match",
+      "strict_scorecard_outcome_by_threshold": {"high_only": "false_negative", "high_and_moderate": "false_negative", "all_identified_confidence_levels": "false_negative", "all_confidence_and_candidates": "false_negative"},
+      "mechanism_first_scorecard_outcome_by_threshold": {"high_only": "false_negative", "high_and_moderate": "true_positive", "all_identified_confidence_levels": "true_positive", "all_confidence_and_candidates": "true_positive"},
+      "secondary_diagnostic_outcome": "correct_location_wrong_bias_label",
+      "label_equivalence_explanation": "Availability heuristic is a near-neighbor label: the reported mechanism is specifically temporal salience of the recent breach, which is the hidden Recency target.",
+      "mechanism_overlap_explanation": "The occurrence explicitly links the fresh breach, its similarity to the CVE, and the resulting urgency differential over the older finding.",
+      "evidence_fidelity_assessment": "Evidence is faithfully quoted and localized to the prioritization episode; hindsight is used only as counterevidence, not as the basis for credit."
+    },
+    {
+      "hidden_instance_id": "cb_02",
+      "hidden_target_bias_label": "Availability Frequency",
+      "hidden_decision_or_episode": "Initial routing of the new CVE to a remediation queue",
+      "hidden_mechanism": "High historical frequency of web-application tickets makes that category easiest to recall and causes miscategorization of a technically distinct CVE.",
+      "matched_finding_by_threshold": {"high_only": {"matched_id": null, "matched_type": "none"}, "high_and_moderate": {"matched_id": "obs_002", "matched_type": "identified"}, "all_identified_confidence_levels": {"matched_id": "obs_002", "matched_type": "identified"}, "all_confidence_and_candidates": {"matched_id": "obs_002", "matched_type": "identified"}},
+      "rag_predicted_bias_label": "representativeness heuristic",
+      "rag_confidence": "moderate",
+      "label_equivalence_result": "near_neighbor_label",
+      "localization_match_type": "exact_quote_match",
+      "mechanism_overlap": "full_mechanism_match",
+      "strict_scorecard_outcome_by_threshold": {"high_only": "false_negative", "high_and_moderate": "false_negative", "all_identified_confidence_levels": "false_negative", "all_confidence_and_candidates": "false_negative"},
+      "mechanism_first_scorecard_outcome_by_threshold": {"high_only": "false_negative", "high_and_moderate": "true_positive", "all_identified_confidence_levels": "true_positive", "all_confidence_and_candidates": "true_positive"},
+      "secondary_diagnostic_outcome": "correct_location_wrong_bias_label",
+      "label_equivalence_explanation": "Representativeness heuristic is a neighboring categorization label, but the quoted evidence and occurrence description explicitly rely on the frequent ticket pattern and its ease of recall.",
+      "mechanism_overlap_explanation": "The finding captures the high-frequency familiar category, the first-to-mind effect, the ignored diagnostic advisory cue, and the resulting misrouting.",
+      "evidence_fidelity_assessment": "The quoted evidence is accurate and supports the mechanism at the intake decision point."
+    },
+    {
+      "hidden_instance_id": "cb_03",
+      "hidden_target_bias_label": "Availability Frequency",
+      "hidden_decision_or_episode": "Disposition of the low-confidence privilege-escalation SIEM alert",
+      "hidden_mechanism": "Frequent benign resolution of the alert label makes benign the easiest-recalled outcome and overrides specific diagnostic evidence of an active threat.",
+      "matched_finding_by_threshold": {"high_only": {"matched_id": null, "matched_type": "none"}, "high_and_moderate": {"matched_id": null, "matched_type": "none"}, "all_identified_confidence_levels": {"matched_id": null, "matched_type": "none"}, "all_confidence_and_candidates": {"matched_id": "cand_001", "matched_type": "candidate"}},
+      "rag_predicted_bias_label": "automation complacency",
+      "rag_confidence": "candidate",
+      "label_equivalence_result": "different_construct",
+      "localization_match_type": "substantive_span_match",
+      "mechanism_overlap": "full_mechanism_match",
+      "strict_scorecard_outcome_by_threshold": {"high_only": "false_negative", "high_and_moderate": "false_negative", "all_identified_confidence_levels": "false_negative", "all_confidence_and_candidates": "false_negative"},
+      "mechanism_first_scorecard_outcome_by_threshold": {"high_only": "false_negative", "high_and_moderate": "false_negative", "all_identified_confidence_levels": "false_negative", "all_confidence_and_candidates": "true_positive"},
+      "secondary_diagnostic_outcome": "candidate_only_near_miss",
+      "label_equivalence_explanation": "The proposed automation-complacency label is not the target label; the candidate's cry-wolf alternative is a near-neighbor interpretation of the frequency-based mechanism.",
+      "mechanism_overlap_explanation": "The candidate directly describes repeated false-positive history making the benign outcome easiest to recall, but its own uncertainty prevents identified-level credit.",
+      "evidence_fidelity_assessment": "The candidate quote is faithful and correctly localized; the transcript also contains a specific unusual timestamp and competing-task explanation, so promotion to identified status would overstate certainty."
+    },
+    {
+      "hidden_instance_id": "cb_04",
+      "hidden_target_bias_label": "Selective Attention Bias or Inattentional Blindness",
+      "hidden_decision_or_episode": "Failure to register the anomalous outbound-traffic entry during asset cross-referencing",
+      "hidden_mechanism": "Narrow focus on the inventory task prevents conscious registration of a visually available cue in the same dashboard view.",
+      "matched_finding_by_threshold": {"high_only": {"matched_id": null, "matched_type": "none"}, "high_and_moderate": {"matched_id": null, "matched_type": "none"}, "all_identified_confidence_levels": {"matched_id": null, "matched_type": "none"}, "all_confidence_and_candidates": {"matched_id": null, "matched_type": "none"}},
+      "rag_predicted_bias_label": null,
+      "rag_confidence": null,
+      "label_equivalence_result": "no_prediction",
+      "localization_match_type": "no_prediction",
+      "mechanism_overlap": "no_prediction",
+      "strict_scorecard_outcome_by_threshold": {"high_only": "false_negative", "high_and_moderate": "false_negative", "all_identified_confidence_levels": "false_negative", "all_confidence_and_candidates": "false_negative"},
+      "mechanism_first_scorecard_outcome_by_threshold": {"high_only": "false_negative", "high_and_moderate": "false_negative", "all_identified_confidence_levels": "false_negative", "all_confidence_and_candidates": "false_negative"},
+      "secondary_diagnostic_outcome": "no_matching_prediction",
+      "label_equivalence_explanation": "No RAG finding identifies the failure to register the adjacent outbound-traffic cue.",
+      "mechanism_overlap_explanation": "No RAG finding supplies the required visual-attention mechanism.",
+      "evidence_fidelity_assessment": "No prediction was made; the raw interview supports the hidden instance through the participant's explicit uncertainty and task-focused account."
+    },
+    {
+      "hidden_instance_id": "cb_05",
+      "hidden_target_bias_label": "Loss Framing",
+      "hidden_decision_or_episode": "Emergency change-window justification",
+      "hidden_mechanism": "Loss-oriented representation of equivalent risk information increases urgency relative to a gain or routine-maintenance frame.",
+      "matched_finding_by_threshold": {"high_only": {"matched_id": null, "matched_type": "none"}, "high_and_moderate": {"matched_id": "obs_003", "matched_type": "identified"}, "all_identified_confidence_levels": {"matched_id": "obs_003", "matched_type": "identified"}, "all_confidence_and_candidates": {"matched_id": "obs_003", "matched_type": "identified"}},
+      "rag_predicted_bias_label": "framing effect",
+      "rag_confidence": "moderate",
+      "label_equivalence_result": "established_alias_or_equivalent",
+      "localization_match_type": "exact_quote_match",
+      "mechanism_overlap": "full_mechanism_match",
+      "strict_scorecard_outcome_by_threshold": {"high_only": "false_negative", "high_and_moderate": "true_positive", "all_identified_confidence_levels": "true_positive", "all_confidence_and_candidates": "true_positive"},
+      "mechanism_first_scorecard_outcome_by_threshold": {"high_only": "false_negative", "high_and_moderate": "true_positive", "all_identified_confidence_levels": "true_positive", "all_confidence_and_candidates": "true_positive"},
+      "secondary_diagnostic_outcome": "approved_alias_match",
+      "label_equivalence_explanation": "Framing effect is an established broader label that covers the explicitly described loss-versus-gain framing manipulation.",
+      "mechanism_overlap_explanation": "The finding preserves the same EPSS probability and disruption while showing that loss language changed the participant's urgency judgment.",
+      "evidence_fidelity_assessment": "The finding uses exact quotations and appropriately notes the organizational approval incentive as counterevidence without eliminating the self-reported framing effect."
+    },
+    {
+      "hidden_instance_id": "cb_06",
+      "hidden_target_bias_label": "Exposure to limited alternatives",
+      "hidden_decision_or_episode": "Final scope confirmation for the patch target list",
+      "hidden_mechanism": "The scanner's default-view host list is treated as exhaustive, so alternatives visible only after a manual inventory filter change are not generated or considered.",
+      "matched_finding_by_threshold": {"high_only": {"matched_id": null, "matched_type": "none"}, "high_and_moderate": {"matched_id": "obs_004", "matched_type": "identified"}, "all_identified_confidence_levels": {"matched_id": "obs_004", "matched_type": "identified"}, "all_confidence_and_candidates": {"matched_id": "obs_004", "matched_type": "identified"}},
+      "rag_predicted_bias_label": "automation complacency",
+      "rag_confidence": "moderate",
+      "label_equivalence_result": "different_construct",
+      "localization_match_type": "exact_quote_match",
+      "mechanism_overlap": "substantial_mechanism_overlap",
+      "strict_scorecard_outcome_by_threshold": {"high_only": "false_negative", "high_and_moderate": "false_negative", "all_identified_confidence_levels": "false_negative", "all_confidence_and_candidates": "false_negative"},
+      "mechanism_first_scorecard_outcome_by_threshold": {"high_only": "false_negative", "high_and_moderate": "false_negative", "all_identified_confidence_levels": "false_negative", "all_confidence_and_candidates": "false_negative"},
+      "secondary_diagnostic_outcome": "correct_location_wrong_bias_label",
+      "label_equivalence_explanation": "Automation complacency is a related explanation for failing to verify the scanner, but it is not equivalent to the hidden option-set/limited-alternatives construct.",
+      "mechanism_overlap_explanation": "The same omission and missed hosts are captured, but the RAG explanation centers on overtrust in automation rather than failure to generate the alternative inventory view; therefore overlap is substantial, not full.",
+      "evidence_fidelity_assessment": "The quoted evidence is accurate and correctly localized; the later audit result is used as outcome context rather than hindsight proof of the bias."
+    }
+  ],
+  "unmatched_rag_predictions": [
+    {
+      "rag_occurrence_id": "obs_001",
+      "rag_finding_type": "identified",
+      "rag_predicted_bias_label": "availability heuristic",
+      "rag_confidence": "moderate",
+      "localized_segment_id": "dp_01",
+      "best_related_hidden_instance_id": "cb_01",
+      "label_equivalence_result": "near_neighbor_label",
+      "mechanism_overlap": "full_mechanism_match",
+      "strict_classification": "correct_location_wrong_bias_label",
+      "mechanism_first_classification": "correct_location_wrong_bias_label",
+      "counted_at_thresholds": ["high_and_moderate", "all_identified_confidence_levels", "all_confidence_and_candidates"],
+      "why_not_an_exact_strict_match": "The occurrence is moderate confidence and uses availability heuristic rather than the hidden Recency label; its temporal-salience mechanism is nevertheless a full mechanism match."
+    },
+    {
+      "rag_occurrence_id": "obs_002",
+      "rag_finding_type": "identified",
+      "rag_predicted_bias_label": "representativeness heuristic",
+      "rag_confidence": "moderate",
+      "localized_segment_id": "dp_01",
+      "best_related_hidden_instance_id": "cb_02",
+      "label_equivalence_result": "near_neighbor_label",
+      "mechanism_overlap": "full_mechanism_match",
+      "strict_classification": "correct_location_wrong_bias_label",
+      "mechanism_first_classification": "correct_location_wrong_bias_label",
+      "counted_at_thresholds": ["high_and_moderate", "all_identified_confidence_levels", "all_confidence_and_candidates"],
+      "why_not_an_exact_strict_match": "The occurrence uses representativeness heuristic rather than Availability Frequency, although its evidence explicitly describes the frequent familiar category becoming first to mind."
+    },
+    {
+      "rag_occurrence_id": "obs_004",
+      "rag_finding_type": "identified",
+      "rag_predicted_bias_label": "automation complacency",
+      "rag_confidence": "moderate",
+      "localized_segment_id": "dp_04",
+      "best_related_hidden_instance_id": "cb_06",
+      "label_equivalence_result": "different_construct",
+      "mechanism_overlap": "substantial_mechanism_overlap",
+      "strict_classification": "correct_location_wrong_bias_label",
+      "mechanism_first_classification": "correct_label_location_wrong_mechanism",
+      "counted_at_thresholds": ["high_and_moderate", "all_identified_confidence_levels", "all_confidence_and_candidates"],
+      "why_not_an_exact_strict_match": "The finding correctly describes the default scanner output and missed inventory hosts, but automation overtrust is not the same causal construct as exposure to a limited set of alternatives."
+    },
+    {
+      "rag_occurrence_id": "cand_001",
+      "rag_finding_type": "candidate",
+      "rag_predicted_bias_label": "automation complacency",
+      "rag_confidence": "candidate",
+      "localized_segment_id": "dp_02",
+      "best_related_hidden_instance_id": "cb_03",
+      "label_equivalence_result": "different_construct",
+      "mechanism_overlap": "full_mechanism_match",
+      "strict_classification": "correct_location_wrong_bias_label",
+      "mechanism_first_classification": "not_applicable",
+      "counted_at_thresholds": ["all_confidence_and_candidates"],
+      "why_not_an_exact_strict_match": "It is explicitly retained as a candidate, not an identified occurrence, and its proposed automation-complacency label is not the target Availability Frequency label; its alternative cry-wolf explanation captures the frequency mechanism."
+    }
+  ],
+  "candidate_analysis": {
+    "candidate_count": 1,
+    "candidates": [
+      {
+        "candidate_id": "cand_001",
+        "proposed_bias_label": "automation complacency",
+        "localized_segment_id": "dp_02",
+        "best_related_hidden_instance_id": "cb_03",
+        "quote_validity": "valid",
+        "would_match_if_promoted_strict": false,
+        "would_match_if_promoted_mechanism_first": true,
+        "counted_as_detection_at_fourth_threshold": true,
+        "fourth_threshold_outcome": "true_positive_mechanism_first_only",
+        "candidate_assessment": "useful_abstention",
+        "details": "The candidate correctly preserves the repeated-benign-history mechanism for cb_03, but the transcript supports a reasonable non-bias triage interpretation and does not establish the claim at identified confidence."
+      }
+    ]
+  },
+  "signal_detection_summary": {
+    "evaluation_unit": "eligible_reasoning_segment",
+    "high_only": {
+      "positive_segments": 4,
+      "negative_segments": 0,
+      "hits": 0,
+      "misses": 4,
+      "false_alarms": 0,
+      "correct_rejections": 0,
+      "hit_rate": 0,
+      "false_alarm_rate": null,
+      "accuracy": 0,
+      "precision": null,
+      "recall": 0,
+      "f1": null,
+      "detection_interpretation": "No findings met the high-confidence threshold; all four positive segments were missed."
+    },
+    "high_and_moderate": {
+      "positive_segments": 4,
+      "negative_segments": 0,
+      "hits": 3,
+      "misses": 1,
+      "false_alarms": 0,
+      "correct_rejections": 0,
+      "hit_rate": 0.75,
+      "false_alarm_rate": null,
+      "accuracy": 0.75,
+      "precision": 1,
+      "recall": 0.75,
+      "f1": 0.8571,
+      "detection_interpretation": "Moderate-confidence identified findings detect the prioritization, framing, and scoping segments but miss the alert-triage segment."
+    },
+    "all_identified_confidence_levels": {
+      "positive_segments": 4,
+      "negative_segments": 0,
+      "hits": 3,
+      "misses": 1,
+      "false_alarms": 0,
+      "correct_rejections": 0,
+      "hit_rate": 0.75,
+      "false_alarm_rate": null,
+      "accuracy": 0.75,
+      "precision": 1,
+      "recall": 0.75,
+      "f1": 0.8571,
+      "detection_interpretation": "Including all identified confidence levels changes nothing because every identified occurrence is moderate confidence."
+    },
+    "all_confidence_and_candidates": {
+      "positive_segments": 4,
+      "negative_segments": 0,
+      "hits": 4,
+      "misses": 0,
+      "false_alarms": 0,
+      "correct_rejections": 0,
+      "hit_rate": 1,
+      "false_alarm_rate": null,
+      "accuracy": 1,
+      "precision": 1,
+      "recall": 1,
+      "f1": 1,
+      "detection_interpretation": "Counting the useful candidate tier adds a detection in the alert-triage segment, with no negative segments available in this four-segment map."
+    }
+  },
+  "strict_instance_level_metrics": {
+    "high_only": {"true_positives": 0, "false_negatives": 6, "false_positives": 0, "precision": null, "recall": 0, "f1": null, "exact_occurrence_match_rate": 0, "occurrence_count_match_rate": 0},
+    "high_and_moderate": {"true_positives": 1, "false_negatives": 5, "false_positives": 3, "precision": 0.25, "recall": 0.1667, "f1": 0.2, "exact_occurrence_match_rate": 0.1667, "occurrence_count_match_rate": 0.2},
+    "all_identified_confidence_levels": {"true_positives": 1, "false_negatives": 5, "false_positives": 3, "precision": 0.25, "recall": 0.1667, "f1": 0.2, "exact_occurrence_match_rate": 0.1667, "occurrence_count_match_rate": 0.2},
+    "all_confidence_and_candidates": {"true_positives": 1, "false_negatives": 5, "false_positives": 4, "precision": 0.2, "recall": 0.1667, "f1": 0.1818, "exact_occurrence_match_rate": 0.1667, "occurrence_count_match_rate": 0.2}
+  },
+  "mechanism_first_instance_level_metrics": {
+    "high_only": {"true_positives": 0, "false_negatives": 6, "false_positives": 0, "precision": null, "recall": 0, "f1": null, "exact_occurrence_match_rate": 0, "occurrence_count_match_rate": 0},
+    "high_and_moderate": {"true_positives": 3, "false_negatives": 3, "false_positives": 1, "precision": 0.75, "recall": 0.5, "f1": 0.6, "exact_occurrence_match_rate": 0.5, "occurrence_count_match_rate": 0.4},
+    "all_identified_confidence_levels": {"true_positives": 3, "false_negatives": 3, "false_positives": 1, "precision": 0.75, "recall": 0.5, "f1": 0.6, "exact_occurrence_match_rate": 0.5, "occurrence_count_match_rate": 0.4},
+    "all_confidence_and_candidates": {"true_positives": 4, "false_negatives": 2, "false_positives": 1, "precision": 0.8, "recall": 0.6667, "f1": 0.7273, "exact_occurrence_match_rate": 0.6667, "occurrence_count_match_rate": 0.6}
+  },
+  "target_bias_performance": [
+    {"hidden_target_bias_label": "Recency", "hidden_requested_occurrences": 1, "strict_true_positives_by_threshold": {"high_only": 0, "high_and_moderate": 0, "all_identified_confidence_levels": 0, "all_confidence_and_candidates": 0}, "mechanism_first_true_positives_by_threshold": {"high_only": 0, "high_and_moderate": 1, "all_identified_confidence_levels": 1, "all_confidence_and_candidates": 1}, "count_match_status_at_all_confidence_and_candidates": "under-detected"},
+    {"hidden_target_bias_label": "Availability Frequency", "hidden_requested_occurrences": 2, "strict_true_positives_by_threshold": {"high_only": 0, "high_and_moderate": 0, "all_identified_confidence_levels": 0, "all_confidence_and_candidates": 0}, "mechanism_first_true_positives_by_threshold": {"high_only": 0, "high_and_moderate": 1, "all_identified_confidence_levels": 1, "all_confidence_and_candidates": 2}, "count_match_status_at_all_confidence_and_candidates": "exact_match"},
+    {"hidden_target_bias_label": "Exposure to limited alternatives", "hidden_requested_occurrences": 1, "strict_true_positives_by_threshold": {"high_only": 0, "high_and_moderate": 0, "all_identified_confidence_levels": 0, "all_confidence_and_candidates": 0}, "mechanism_first_true_positives_by_threshold": {"high_only": 0, "high_and_moderate": 0, "all_identified_confidence_levels": 0, "all_confidence_and_candidates": 0}, "count_match_status_at_all_confidence_and_candidates": "underdetected"},
+    {"hidden_target_bias_label": "Loss Framing", "hidden_requested_occurrences": 1, "strict_true_positives_by_threshold": {"high_only": 0, "high_and_moderate": 1, "all_identified_confidence_levels": 1, "all_confidence_and_candidates": 1}, "mechanism_first_true_positives_by_threshold": {"high_only": 0, "high_and_moderate": 1, "all_identified_confidence_levels": 1, "all_confidence_and_candidates": 1}, "count_match_status_at_all_confidence_and_candidates": "exact_match"},
+    {"hidden_target_bias_label": "Selective Attention Bias or Inattentional Blindness", "hidden_requested_occurrences": 1, "strict_true_positives_by_threshold": {"high_only": 0, "high_and_moderate": 0, "all_identified_confidence_levels": 0, "all_confidence_and_candidates": 0}, "mechanism_first_true_positives_by_threshold": {"high_only": 0, "high_and_moderate": 0, "all_identified_confidence_levels": 0, "all_confidence_and_candidates": 0}, "count_match_status_at_all_confidence_and_candidates": "underdetected"}
+  ],
+  "rag_label_false_positive_inventory": [
+    {"rag_predicted_bias_label": "availability heuristic", "finding_type": "identified", "alternative_labels": ["availability bias"], "occurrence_count": 1, "best_related_hidden_target_bias_label": "Recency", "label_relation": "near_neighbor", "mechanism_overlap_summary": "Full temporal-salience mechanism match despite neighboring label.", "primary_error_types": ["correct_location_wrong_bias_label"]},
+    {"rag_predicted_bias_label": "representativeness heuristic", "finding_type": "identified", "alternative_labels": ["representativeness bias", "prototype bias"], "occurrence_count": 1, "best_related_hidden_target_bias_label": "Availability Frequency", "label_relation": "near_neighbor", "mechanism_overlap_summary": "Full frequency/ease-of-recall categorization mechanism is present in the evidence.", "primary_error_types": ["correct_location_wrong_bias_label"]},
+    {"rag_predicted_bias_label": "automation complacency", "finding_type": "identified", "alternative_labels": ["complacency effect", "automation bias"], "occurrence_count": 1, "best_related_hidden_target_bias_label": "Exposure to limited alternatives", "label_relation": "different_construct", "mechanism_overlap_summary": "Substantial overlap in failure to verify the default output, but the causal construct differs.", "primary_error_types": ["correct_location_wrong_bias_label", "partial_mechanism_match"]},
+    {"rag_predicted_bias_label": "automation complacency", "finding_type": "candidate", "alternative_labels": ["cry-wolf effect", "inattentional blindness"], "occurrence_count": 1, "best_related_hidden_target_bias_label": "Availability Frequency", "label_relation": "near_neighbor", "mechanism_overlap_summary": "Candidate alternative label and mechanism closely track frequency-based benign-history reasoning.", "primary_error_types": ["candidate_useful_abstention"]}
+  ],
+  "diagnostic_error_summary": {
+    "correct_location_wrong_bias_label_count": 3,
+    "correct_label_wrong_location_count": 0,
+    "correct_label_location_wrong_mechanism_count": 1,
+    "mechanism_detected_label_unresolved_count": 0,
+    "partial_mechanism_match_count": 1,
+    "duplicate_prediction_count": 0,
+    "unsupported_prediction_count": 0,
+    "fabricated_or_invalid_quote_count": 0,
+    "approved_alias_or_equivalence_count": 1,
+    "near_neighbor_label_count": 2,
+    "different_construct_label_count": 2,
+    "candidate_count": 1,
+    "candidate_useful_abstention_count": 1,
+    "candidate_near_miss_count": 0,
+    "candidates_promoted_to_true_positive_at_fourth_threshold_count": 1
+  },
+  "corpus_support_audit": {
+    "primary_corpus_fidelity_score_available": false,
+    "rag_occurrences_claiming_retrieved_support": 1,
+    "rag_occurrences_with_no_claimed_retrieved_support": 3,
+    "rag_occurrences_with_unverifiable_or_internally_inconsistent_citation_metadata": 1,
+    "assessment_note": "The RAG claims corpus support for obs_004 and supplies one source passage, while obs_001 through obs_003 disclose no retrieved support. Because the actual retrieved material and logs are absent, the supplied citation cannot be independently verified and no primary corpus-fidelity score is calculated."
+  },
+  "comparison_ready_summary": {
+    "primary_recommended_comparison_threshold": "high_and_moderate",
+    "segment_detection": {
+      "high_only": {"hits": 0, "misses": 4, "false_alarms": 0, "correct_rejections": 0, "hit_rate": 0, "false_alarm_rate": null, "f1": null},
+      "high_and_moderate": {"hits": 3, "misses": 1, "false_alarms": 0, "correct_rejections": 0, "hit_rate": 0.75, "false_alarm_rate": null, "f1": 0.8571},
+      "all_identified_confidence_levels": {"hits": 3, "misses": 1, "false_alarms": 0, "correct_rejections": 0, "hit_rate": 0.75, "false_alarm_rate": null, "f1": 0.8571},
+      "all_confidence_and_candidates": {"hits": 4, "misses": 0, "false_alarms": 0, "correct_rejections": 0, "hit_rate": 1, "false_alarm_rate": null, "f1": 1}
+    },
+    "strict_instance_identification": {
+      "high_only": {"true_positives": 0, "false_negatives": 6, "false_positives": 0, "precision": null, "recall": 0, "f1": null},
+      "high_and_moderate": {"true_positives": 1, "false_negatives": 5, "false_positives": 3, "precision": 0.25, "recall": 0.1667, "f1": 0.2},
+      "all_identified_confidence_levels": {"true_positives": 1, "false_negatives": 5, "false_positives": 3, "precision": 0.25, "recall": 0.1667, "f1": 0.2},
+      "all_confidence_and_candidates": {"true_positives": 1, "false_negatives": 5, "false_positives": 4, "precision": 0.2, "recall": 0.1667, "f1": 0.1818}
+    },
+    "mechanism_first_identification": {
+      "high_only": {"true_positives": 0, "false_negatives": 6, "false_positives": 0, "precision": null, "recall": 0, "f1": null},
+      "high_and_moderate": {"true_positives": 3, "false_negatives": 3, "false_positives": 1, "precision": 0.75, "recall": 0.5, "f1": 0.6},
+      "all_identified_confidence_levels": {"true_positives": 3, "false_negatives": 3, "false_positives": 1, "precision": 0.75, "recall": 0.5, "f1": 0.6},
+      "all_confidence_and_candidates": {"true_positives": 4, "false_negatives": 2, "false_positives": 1, "precision": 0.8, "recall": 0.6667, "f1": 0.7273}
+    },
+    "taxonomy_gap": {
+      "high_only": {"mechanism_first_f1_minus_strict_f1": null},
+      "high_and_moderate": {"mechanism_first_f1_minus_strict_f1": 0.4},
+      "all_identified_confidence_levels": {"mechanism_first_f1_minus_strict_f1": 0.4},
+      "all_confidence_and_candidates": {"mechanism_first_f1_minus_strict_f1": 0.5455}
+    },
+    "confidence_tradeoff": {
+      "increment_from_high_to_high_and_moderate": "At the recommended threshold, segment detection rises from 0/4 to 3/4; strict instance F1 rises from undefined to 0.2000, while mechanism-first F1 rises from undefined to 0.6000.",
+      "increment_from_high_and_moderate_to_all_confidence": "No change: all four identified occurrences are moderate confidence.",
+      "increment_from_all_confidence_to_all_confidence_and_candidates": "The candidate tier adds one segment hit and one mechanism-first instance true positive, but adds one strict false positive; strict F1 decreases to 0.1818 and mechanism-first F1 rises to 0.7273."
+    }
+  },
+  "overall_evaluation_summary": {
+    "hidden_total_planned_occurrences": 6,
+    "rag_total_identified_occurrences": 4,
+    "rag_total_candidate_biases": 1,
+    "segment_level_primary_result": "At high_and_moderate, the RAG detects 3 of 4 positive reasoning segments with no false alarms (hit rate 0.7500; F1 0.8571).",
+    "strict_label_plus_mechanism_result": "At high_and_moderate, strict scoring yields 1 true positive, 5 false negatives, and 3 false positives (precision 0.2500; recall 0.1667; F1 0.2000).",
+    "mechanism_first_result": "At high_and_moderate, mechanism-first scoring yields 3 true positives, 3 false negatives, and 1 false positive (precision 0.7500; recall 0.5000; F1 0.6000).",
+    "candidate_tier_value_assessment": "The candidate is a useful abstention: at the fourth threshold it recovers the alert-triage segment and the cb_03 mechanism under mechanism-first scoring, but it is not a strict identified match.",
+    "main_failure_modes": [
+      "Two identified findings use neighboring labels rather than the hidden Recency and Availability Frequency labels.",
+      "The RAG does not identify the selective-attention/inattentional-blindness instance.",
+      "The automation-complacency finding is correctly localized to the scoping episode but does not capture the hidden limited-alternatives construct as a full mechanism.",
+      "The candidate does not distinguish the alert-history mechanism from the concurrent-task attentional failure."
+    ],
+    "main_strengths": [
+      "All four identified findings are faithfully localized to real interview episodes.",
+      "The loss-framing finding is an exact or established-equivalent match with strong evidence.",
+      "Three identified findings preserve mechanisms that are more informative than their strict taxonomy labels suggest.",
+      "The candidate tier appropriately expresses uncertainty rather than overstating ambiguous evidence."
+    ],
+    "benchmark_interpretation": "This run shows strong segment-level coverage at moderate confidence but substantially weaker strict instance-level performance because the RAG taxonomy diverges from the hidden labels. Mechanism-first scoring materially improves identification, and the candidate tier recovers one additional mechanism without falsely converting the ambiguous alert evidence into a fully identified strict bias."
+  }
+}

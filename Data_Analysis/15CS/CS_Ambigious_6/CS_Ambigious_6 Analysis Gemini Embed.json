@@ -1,0 +1,534 @@
+{
+  "evaluation_metadata": {
+    "task": "ontology_free_rag_cognitive_bias_benchmark_evaluation",
+    "benchmark_run_metadata": {
+      "benchmark_run_id": "CS_Ambigious_6_Gemini_on",
+      "interview_id": "CS_Ambigious_6",
+      "system_prompt_id": "Gemini",
+      "system_prompt_generator": "Prompt 1_2",
+      "rag_model_id": "v1.0.0",
+      "corpus_condition": "on",
+      "retrieval_configuration_id": "k=50",
+      "decoding_configuration_id": null,
+      "temperature": 1,
+      "replicate_id": null,
+      "segment_map_id": null
+    },
+    "scenario_id": "CS_Ambigious_6",
+    "domain_id": "CS",
+    "condition": "ambiguous_control",
+    "segment_map_status": "generated_not_prevalidated",
+    "rag_output_parse_status": "valid_json",
+    "rag_schema_assessment": "conformant"
+  },
+  "input_validation": {
+    "rag_output_schema_violations": [],
+    "rag_summary_count_consistency": {
+      "status": "consistent",
+      "details": "The identified_bias_summary reports one identified occurrence, matching the single item in identified_occurrences; the two candidate items are separately represented in candidate_biases."
+    },
+    "evaluation_limitations": [
+      "The supplied evaluation segment map is null, so the evaluator generated four eligible reasoning segments from the four decision points.",
+      "No retrieved passages or retrieval logs were supplied beyond the RAG output's citation claims; corpus fidelity cannot be independently scored."
+    ]
+  },
+  "evaluation_segment_map": {
+    "segment_mapping_version": "1.0",
+    "segments": [
+      {
+        "segment_id": "seg_001",
+        "speaker": "Participant",
+        "segment_type": "decision_point_1_prioritization",
+        "raw_interview_anchor": "When the new CVE came in, what did you do first? ... I decided it needed to jump ahead of the backlog.",
+        "eligible_reasoning_segment": true,
+        "ground_truth_bias_present": false,
+        "ground_truth_instance_ids": [],
+        "ground_truth_rationale": "Zero-bias ambiguous-control segment. The prioritization is supported by CVSS, internet-facing exposure, and lack of compensating controls; the ambient industry breach is explicitly disclaimed as a decision factor."
+      },
+      {
+        "segment_id": "seg_002",
+        "speaker": "Participant",
+        "segment_type": "decision_point_2_siem_triage",
+        "raw_interview_anchor": "The SIEM threw an alert — privilege escalation, low confidence ... I made a note to loop back once the CVE work was further along and kept going.",
+        "eligible_reasoning_segment": true,
+        "ground_truth_bias_present": false,
+        "ground_truth_instance_ids": [],
+        "ground_truth_rationale": "Zero-bias ambiguous-control segment. The participant reviewed both signals and sought corroboration before deferring investigation; limited diagnostic detail and competing triage demands provide plausible non-bias explanations."
+      },
+      {
+        "segment_id": "seg_003",
+        "speaker": "Participant",
+        "segment_type": "decision_point_3_change_window",
+        "raw_interview_anchor": "Patching the API gateway meant an emergency change window ... I put in both the EPSS number ... and what the exposure meant in practical terms.",
+        "eligible_reasoning_segment": true,
+        "ground_truth_bias_present": false,
+        "ground_truth_instance_ids": [],
+        "ground_truth_rationale": "Zero-bias ambiguous-control segment. The justification presented probability and business consequences together, and the interview does not establish that either framing drove the outcome."
+      },
+      {
+        "segment_id": "seg_004",
+        "speaker": "Participant",
+        "segment_type": "decision_point_4_patch_scoping",
+        "raw_interview_anchor": "The scanner's default view showed two hosts ... I also flagged a follow-up sweep of the broader asset inventory.",
+        "eligible_reasoning_segment": true,
+        "ground_truth_bias_present": false,
+        "ground_truth_instance_ids": [],
+        "ground_truth_rationale": "Zero-bias ambiguous-control segment. Scoping the visible hosts while scheduling broader verification is an explicit time-constrained trade-off, not a hidden bias instance."
+      }
+    ]
+  },
+  "segment_level_adjudications": [
+    {
+      "segment_id": "seg_001",
+      "ground_truth_status": "negative",
+      "ground_truth_instance_ids": [],
+      "rag_identified_occurrence_ids": [],
+      "rag_candidate_ids_counted_at_fourth_threshold": ["cand_002"],
+      "rag_detected_bias_in_segment_by_threshold": {
+        "high_only": false,
+        "high_and_moderate": false,
+        "all_identified_confidence_levels": false,
+        "all_confidence_and_candidates": true
+      },
+      "sdt_outcome_by_threshold": {
+        "high_only": "correct_rejection",
+        "high_and_moderate": "correct_rejection",
+        "all_identified_confidence_levels": "correct_rejection",
+        "all_confidence_and_candidates": "false_positive"
+      },
+      "localization_basis": "Candidate cand_002 quotes the participant's ambient industry-breach remark and assigns it to the CVE-versus-database prioritization episode.",
+      "adjudication_note": "The candidate is not counted before the candidate-inclusive threshold. At that threshold it is a false alarm because the participant explicitly denied using the breach as a decision factor and the objective risk cues independently support the prioritization."
+    },
+    {
+      "segment_id": "seg_002",
+      "ground_truth_status": "negative",
+      "ground_truth_instance_ids": [],
+      "rag_identified_occurrence_ids": [],
+      "rag_candidate_ids_counted_at_fourth_threshold": ["cand_001"],
+      "rag_detected_bias_in_segment_by_threshold": {
+        "high_only": false,
+        "high_and_moderate": false,
+        "all_identified_confidence_levels": false,
+        "all_confidence_and_candidates": true
+      },
+      "sdt_outcome_by_threshold": {
+        "high_only": "correct_rejection",
+        "high_and_moderate": "correct_rejection",
+        "all_identified_confidence_levels": "correct_rejection",
+        "all_confidence_and_candidates": "false_positive"
+      },
+      "localization_basis": "Candidate cand_001 localizes to the participant's review and deferral of the low-confidence SIEM alert and outbound traffic entry.",
+      "adjudication_note": "The candidate is not counted before the candidate-inclusive threshold. At that threshold it is a false alarm because the participant examined both signals and multiple corroborating sources, and the deferral is compatible with ordinary triage under uncertainty."
+    },
+    {
+      "segment_id": "seg_003",
+      "ground_truth_status": "negative",
+      "ground_truth_instance_ids": [],
+      "rag_identified_occurrence_ids": [],
+      "rag_candidate_ids_counted_at_fourth_threshold": [],
+      "rag_detected_bias_in_segment_by_threshold": {
+        "high_only": false,
+        "high_and_moderate": false,
+        "all_identified_confidence_levels": false,
+        "all_confidence_and_candidates": false
+      },
+      "sdt_outcome_by_threshold": {
+        "high_only": "correct_rejection",
+        "high_and_moderate": "correct_rejection",
+        "all_identified_confidence_levels": "correct_rejection",
+        "all_confidence_and_candidates": "correct_rejection"
+      },
+      "localization_basis": "No RAG occurrence or candidate localizes to the change-window justification episode.",
+      "adjudication_note": "No prediction was made for this negative segment."
+    },
+    {
+      "segment_id": "seg_004",
+      "ground_truth_status": "negative",
+      "ground_truth_instance_ids": [],
+      "rag_identified_occurrence_ids": ["obs_001"],
+      "rag_candidate_ids_counted_at_fourth_threshold": [],
+      "rag_detected_bias_in_segment_by_threshold": {
+        "high_only": false,
+        "high_and_moderate": false,
+        "all_identified_confidence_levels": true,
+        "all_confidence_and_candidates": true
+      },
+      "sdt_outcome_by_threshold": {
+        "high_only": "correct_rejection",
+        "high_and_moderate": "correct_rejection",
+        "all_identified_confidence_levels": "false_positive",
+        "all_confidence_and_candidates": "false_positive"
+      },
+      "localization_basis": "Occurrence obs_001 exactly quotes the patch-scoping decision and its follow-up sweep.",
+      "adjudication_note": "The low-confidence identified automation-complacency finding is localized correctly but is unsupported as a ground-truth bias instance in this zero-bias control. The participant knowingly scheduled broader verification and described a reasonable deadline trade-off."
+    }
+  ],
+  "instance_level_adjudications": [],
+  "unmatched_rag_predictions": [
+    {
+      "rag_occurrence_id": "obs_001",
+      "rag_finding_type": "identified",
+      "rag_predicted_bias_label": "Automation complacency",
+      "rag_confidence": "low",
+      "localized_segment_id": "seg_004",
+      "best_related_hidden_instance_id": null,
+      "label_equivalence_result": "different_construct",
+      "mechanism_overlap": "minimal_mechanism_overlap",
+      "strict_classification": "false_positive",
+      "mechanism_first_classification": "false_positive",
+      "counted_at_thresholds": ["all_identified_confidence_levels", "all_confidence_and_candidates"],
+      "why_not_an_exact_strict_match": "The quote is accurate and the mechanism is plausible in the abstract, but the hidden manifest contains zero instances. The participant explicitly recognized the scanner's limits and scheduled a follow-up, leaving a reasonable non-bias explanation."
+    },
+    {
+      "rag_occurrence_id": "cand_001",
+      "rag_finding_type": "candidate",
+      "rag_predicted_bias_label": "Automation complacency",
+      "rag_confidence": "candidate",
+      "localized_segment_id": "seg_002",
+      "best_related_hidden_instance_id": null,
+      "label_equivalence_result": "different_construct",
+      "mechanism_overlap": "minimal_mechanism_overlap",
+      "strict_classification": "false_positive",
+      "mechanism_first_classification": "false_positive",
+      "counted_at_thresholds": ["all_confidence_and_candidates"],
+      "why_not_an_exact_strict_match": "The participant reviewed both alert-related signals and searched for corroboration. Deferring a low-confidence alert while completing a critical CVE triage is compatible with ordinary signal detection and does not establish automation-specific distortion."
+    },
+    {
+      "rag_occurrence_id": "cand_002",
+      "rag_finding_type": "candidate",
+      "rag_predicted_bias_label": "Availability heuristic",
+      "rag_confidence": "candidate",
+      "localized_segment_id": "seg_001",
+      "best_related_hidden_instance_id": null,
+      "label_equivalence_result": "near_neighbor_label",
+      "mechanism_overlap": "minimal_mechanism_overlap",
+      "strict_classification": "false_positive",
+      "mechanism_first_classification": "false_positive",
+      "counted_at_thresholds": ["all_confidence_and_candidates"],
+      "why_not_an_exact_strict_match": "The candidate relies on a nearby availability concept, but the participant explicitly said the breach news was not a direct decision factor. The prioritization is independently explained by CVSS, exposure, and lack of compensating controls."
+    }
+  ],
+  "candidate_analysis": {
+    "candidate_count": 2,
+    "candidates": [
+      {
+        "candidate_id": "cand_001",
+        "proposed_bias_label": "Automation complacency",
+        "localized_segment_id": "seg_002",
+        "best_related_hidden_instance_id": null,
+        "quote_validity": "valid",
+        "would_match_if_promoted_strict": false,
+        "would_match_if_promoted_mechanism_first": false,
+        "counted_as_detection_at_fourth_threshold": true,
+        "fourth_threshold_outcome": "false_positive",
+        "candidate_assessment": "candidate_near_miss",
+        "details": "The candidate identifies a plausible concern but the interview supplies active review and corroboration checks plus a reasonable triage explanation; no affirmative automation-specific distortion is established."
+      },
+      {
+        "candidate_id": "cand_002",
+        "proposed_bias_label": "Availability heuristic",
+        "localized_segment_id": "seg_001",
+        "best_related_hidden_instance_id": null,
+        "quote_validity": "valid",
+        "would_match_if_promoted_strict": false,
+        "would_match_if_promoted_mechanism_first": false,
+        "counted_as_detection_at_fourth_threshold": true,
+        "fourth_threshold_outcome": "false_positive",
+        "candidate_assessment": "unsupported_speculation",
+        "details": "The quoted breach reference is explicitly characterized as background noise rather than a reason for the decision, and objective risk information explains the prioritization."
+      }
+    ]
+  },
+  "signal_detection_summary": {
+    "evaluation_unit": "eligible_reasoning_segment",
+    "high_only": {
+      "positive_segments": 0,
+      "negative_segments": 4,
+      "hits": 0,
+      "misses": 0,
+      "false_alarms": 0,
+      "correct_rejections": 4,
+      "hit_rate": null,
+      "false_alarm_rate": 0.0,
+      "accuracy": 1.0,
+      "precision": null,
+      "recall": null,
+      "f1": null,
+      "detection_interpretation": "No high-confidence findings were produced; all four negative segments were correctly rejected."
+    },
+    "high_and_moderate": {
+      "positive_segments": 0,
+      "negative_segments": 4,
+      "hits": 0,
+      "misses": 0,
+      "false_alarms": 0,
+      "correct_rejections": 4,
+      "hit_rate": null,
+      "false_alarm_rate": 0.0,
+      "accuracy": 1.0,
+      "precision": null,
+      "recall": null,
+      "f1": null,
+      "detection_interpretation": "No high- or moderate-confidence findings were produced; all four negative segments were correctly rejected."
+    },
+    "all_identified_confidence_levels": {
+      "positive_segments": 0,
+      "negative_segments": 4,
+      "hits": 0,
+      "misses": 0,
+      "false_alarms": 1,
+      "correct_rejections": 3,
+      "hit_rate": null,
+      "false_alarm_rate": 0.25,
+      "accuracy": 0.75,
+      "precision": 0.0,
+      "recall": null,
+      "f1": 0.0,
+      "detection_interpretation": "The low-confidence identified scoping finding is a false alarm in a zero-bias control, while the other three negative segments are correctly rejected."
+    },
+    "all_confidence_and_candidates": {
+      "positive_segments": 0,
+      "negative_segments": 4,
+      "hits": 0,
+      "misses": 0,
+      "false_alarms": 3,
+      "correct_rejections": 1,
+      "hit_rate": null,
+      "false_alarm_rate": 0.75,
+      "accuracy": 0.25,
+      "precision": 0.0,
+      "recall": null,
+      "f1": 0.0,
+      "detection_interpretation": "Including candidates turns the two cautious, unsupported candidates into additional false alarms; only the entirely unpredicted change-window segment remains a correct rejection."
+    }
+  },
+  "strict_instance_level_metrics": {
+    "high_only": {
+      "true_positives": 0,
+      "false_negatives": 0,
+      "false_positives": 0,
+      "precision": null,
+      "recall": null,
+      "f1": null,
+      "exact_occurrence_match_rate": null,
+      "occurrence_count_match_rate": 1.0
+    },
+    "high_and_moderate": {
+      "true_positives": 0,
+      "false_negatives": 0,
+      "false_positives": 0,
+      "precision": null,
+      "recall": null,
+      "f1": null,
+      "exact_occurrence_match_rate": null,
+      "occurrence_count_match_rate": 1.0
+    },
+    "all_identified_confidence_levels": {
+      "true_positives": 0,
+      "false_negatives": 0,
+      "false_positives": 1,
+      "precision": 0.0,
+      "recall": null,
+      "f1": 0.0,
+      "exact_occurrence_match_rate": null,
+      "occurrence_count_match_rate": 1.0
+    },
+    "all_confidence_and_candidates": {
+      "true_positives": 0,
+      "false_negatives": 0,
+      "false_positives": 3,
+      "precision": 0.0,
+      "recall": null,
+      "f1": 0.0,
+      "exact_occurrence_match_rate": null,
+      "occurrence_count_match_rate": 1.0
+    }
+  },
+  "mechanism_first_instance_level_metrics": {
+    "high_only": {
+      "true_positives": 0,
+      "false_negatives": 0,
+      "false_positives": 0,
+      "precision": null,
+      "recall": null,
+      "f1": null,
+      "exact_occurrence_match_rate": null,
+      "occurrence_count_match_rate": 1.0
+    },
+    "high_and_moderate": {
+      "true_positives": 0,
+      "false_negatives": 0,
+      "false_positives": 0,
+      "precision": null,
+      "recall": null,
+      "f1": null,
+      "exact_occurrence_match_rate": null,
+      "occurrence_count_match_rate": 1.0
+    },
+    "all_identified_confidence_levels": {
+      "true_positives": 0,
+      "false_negatives": 0,
+      "false_positives": 1,
+      "precision": 0.0,
+      "recall": null,
+      "f1": 0.0,
+      "exact_occurrence_match_rate": null,
+      "occurrence_count_match_rate": 1.0
+    },
+    "all_confidence_and_candidates": {
+      "true_positives": 0,
+      "false_negatives": 0,
+      "false_positives": 3,
+      "precision": 0.0,
+      "recall": null,
+      "f1": 0.0,
+      "exact_occurrence_match_rate": null,
+      "occurrence_count_match_rate": 1.0
+    }
+  },
+  "target_bias_performance": [
+    {
+      "hidden_target_bias_label": "Recency",
+      "hidden_requested_occurrences": 0,
+      "strict_true_positives_by_threshold": {"high_only": 0, "high_and_moderate": 0, "all_identified_confidence_levels": 0, "all_confidence_and_candidates": 0},
+      "mechanism_first_true_positives_by_threshold": {"high_only": 0, "high_and_moderate": 0, "all_identified_confidence_levels": 0, "all_confidence_and_candidates": 0},
+      "count_match_status_at_all_confidence_and_candidates": "exact_match"
+    },
+    {
+      "hidden_target_bias_label": "Availability Frequency",
+      "hidden_requested_occurrences": 0,
+      "strict_true_positives_by_threshold": {"high_only": 0, "high_and_moderate": 0, "all_identified_confidence_levels": 0, "all_confidence_and_candidates": 0},
+      "mechanism_first_true_positives_by_threshold": {"high_only": 0, "high_and_moderate": 0, "all_identified_confidence_levels": 0, "all_confidence_and_candidates": 0},
+      "count_match_status_at_all_confidence_and_candidates": "exact_match"
+    },
+    {
+      "hidden_target_bias_label": "Exposure to limited alternatives",
+      "hidden_requested_occurrences": 0,
+      "strict_true_positives_by_threshold": {"high_only": 0, "high_and_moderate": 0, "all_identified_confidence_levels": 0, "all_confidence_and_candidates": 0},
+      "mechanism_first_true_positives_by_threshold": {"high_only": 0, "high_and_moderate": 0, "all_identified_confidence_levels": 0, "all_confidence_and_candidates": 0},
+      "count_match_status_at_all_confidence_and_candidates": "exact_match"
+    },
+    {
+      "hidden_target_bias_label": "Loss Framing",
+      "hidden_requested_occurrences": 0,
+      "strict_true_positives_by_threshold": {"high_only": 0, "high_and_moderate": 0, "all_identified_confidence_levels": 0, "all_confidence_and_candidates": 0},
+      "mechanism_first_true_positives_by_threshold": {"high_only": 0, "high_and_moderate": 0, "all_identified_confidence_levels": 0, "all_confidence_and_candidates": 0},
+      "count_match_status_at_all_confidence_and_candidates": "exact_match"
+    },
+    {
+      "hidden_target_bias_label": "Selective Attention Bias or Inattentional Blindness",
+      "hidden_requested_occurrences": 0,
+      "strict_true_positives_by_threshold": {"high_only": 0, "high_and_moderate": 0, "all_identified_confidence_levels": 0, "all_confidence_and_candidates": 0},
+      "mechanism_first_true_positives_by_threshold": {"high_only": 0, "high_and_moderate": 0, "all_identified_confidence_levels": 0, "all_confidence_and_candidates": 0},
+      "count_match_status_at_all_confidence_and_candidates": "exact_match"
+    }
+  ],
+  "rag_label_false_positive_inventory": [
+    {
+      "rag_predicted_bias_label": "Automation complacency",
+      "finding_type": "identified",
+      "alternative_labels": ["Complacency", "Overreliance on automation"],
+      "occurrence_count": 1,
+      "best_related_hidden_target_bias_label": null,
+      "label_relation": "different_construct",
+      "mechanism_overlap_summary": "The finding concerns incomplete verification of automated output, but no hidden instance exists and the interview provides a reasonable deadline-based explanation.",
+      "primary_error_types": ["unsupported_prediction"]
+    },
+    {
+      "rag_predicted_bias_label": "Automation complacency",
+      "finding_type": "candidate",
+      "alternative_labels": ["Complacency"],
+      "occurrence_count": 1,
+      "best_related_hidden_target_bias_label": null,
+      "label_relation": "different_construct",
+      "mechanism_overlap_summary": "The candidate speculates about under-investigation of an automated alert, but the participant reviewed both signals and sought corroboration.",
+      "primary_error_types": ["unsupported_prediction"]
+    },
+    {
+      "rag_predicted_bias_label": "Availability heuristic",
+      "finding_type": "candidate",
+      "alternative_labels": ["Availability bias"],
+      "occurrence_count": 1,
+      "best_related_hidden_target_bias_label": "Availability Frequency",
+      "label_relation": "near_neighbor",
+      "mechanism_overlap_summary": "The candidate invokes salience or ease of recall, but the interview explicitly denies that the breach news drove the choice and the hidden target has zero instances.",
+      "primary_error_types": ["unsupported_prediction"]
+    }
+  ],
+  "diagnostic_error_summary": {
+    "correct_location_wrong_bias_label_count": 0,
+    "correct_label_wrong_location_count": 0,
+    "correct_label_location_wrong_mechanism_count": 0,
+    "mechanism_detected_label_unresolved_count": 0,
+    "partial_mechanism_match_count": 0,
+    "duplicate_prediction_count": 0,
+    "unsupported_prediction_count": 3,
+    "fabricated_or_invalid_quote_count": 0,
+    "approved_alias_or_equivalence_count": 0,
+    "near_neighbor_label_count": 1,
+    "different_construct_label_count": 2,
+    "candidate_count": 2,
+    "candidate_useful_abstention_count": 0,
+    "candidate_near_miss_count": 1,
+    "candidates_promoted_to_true_positive_at_fourth_threshold_count": 0
+  },
+  "corpus_support_audit": {
+    "primary_corpus_fidelity_score_available": false,
+    "rag_occurrences_claiming_retrieved_support": 1,
+    "rag_occurrences_with_no_claimed_retrieved_support": 2,
+    "rag_occurrences_with_unverifiable_or_internally_inconsistent_citation_metadata": 1,
+    "assessment_note": "The identified occurrence claims retrieved support and supplies citation metadata, but no retrieved passages or retrieval logs were provided to verify it. The two candidates make no claimed retrieved-support citation. Corpus support does not alter detection or classification scores."
+  },
+  "comparison_ready_summary": {
+    "primary_recommended_comparison_threshold": "high_and_moderate",
+    "segment_detection": {
+      "high_only": {"hits": 0, "misses": 0, "false_alarms": 0, "correct_rejections": 4, "hit_rate": null, "false_alarm_rate": 0.0, "f1": null},
+      "high_and_moderate": {"hits": 0, "misses": 0, "false_alarms": 0, "correct_rejections": 4, "hit_rate": null, "false_alarm_rate": 0.0, "f1": null},
+      "all_identified_confidence_levels": {"hits": 0, "misses": 0, "false_alarms": 1, "correct_rejections": 3, "hit_rate": null, "false_alarm_rate": 0.25, "f1": 0.0},
+      "all_confidence_and_candidates": {"hits": 0, "misses": 0, "false_alarms": 3, "correct_rejections": 1, "hit_rate": null, "false_alarm_rate": 0.75, "f1": 0.0}
+    },
+    "strict_instance_identification": {
+      "high_only": {"true_positives": 0, "false_negatives": 0, "false_positives": 0, "precision": null, "recall": null, "f1": null},
+      "high_and_moderate": {"true_positives": 0, "false_negatives": 0, "false_positives": 0, "precision": null, "recall": null, "f1": null},
+      "all_identified_confidence_levels": {"true_positives": 0, "false_negatives": 0, "false_positives": 1, "precision": 0.0, "recall": null, "f1": 0.0},
+      "all_confidence_and_candidates": {"true_positives": 0, "false_negatives": 0, "false_positives": 3, "precision": 0.0, "recall": null, "f1": 0.0}
+    },
+    "mechanism_first_identification": {
+      "high_only": {"true_positives": 0, "false_negatives": 0, "false_positives": 0, "precision": null, "recall": null, "f1": null},
+      "high_and_moderate": {"true_positives": 0, "false_negatives": 0, "false_positives": 0, "precision": null, "recall": null, "f1": null},
+      "all_identified_confidence_levels": {"true_positives": 0, "false_negatives": 0, "false_positives": 1, "precision": 0.0, "recall": null, "f1": 0.0},
+      "all_confidence_and_candidates": {"true_positives": 0, "false_negatives": 0, "false_positives": 3, "precision": 0.0, "recall": null, "f1": 0.0}
+    },
+    "taxonomy_gap": {
+      "high_only": {"mechanism_first_f1_minus_strict_f1": null},
+      "high_and_moderate": {"mechanism_first_f1_minus_strict_f1": null},
+      "all_identified_confidence_levels": {"mechanism_first_f1_minus_strict_f1": 0.0},
+      "all_confidence_and_candidates": {"mechanism_first_f1_minus_strict_f1": 0.0}
+    },
+    "confidence_tradeoff": {
+      "increment_from_high_to_high_and_moderate": "No change: both thresholds yield 0 findings, 4 correct rejections, and no defined positive-class rates.",
+      "increment_from_high_and_moderate_to_all_confidence": "The low-confidence identified occurrence adds one false alarm, reducing segment accuracy from 1.0 to 0.75 and instance precision/F1 to 0.0.",
+      "increment_from_all_confidence_to_all_confidence_and_candidates": "The two candidates add two false alarms, increasing segment false-alarm rate from 0.25 to 0.75 and reducing accuracy to 0.25; no candidate becomes a true positive."
+    }
+  },
+  "overall_evaluation_summary": {
+    "hidden_total_planned_occurrences": 0,
+    "rag_total_identified_occurrences": 1,
+    "rag_total_candidate_biases": 2,
+    "segment_level_primary_result": "Zero-bias control: high-only and high-and-moderate thresholds produce perfect rejection of all four negative segments; the low-confidence identified finding creates one false alarm, and candidate inclusion creates two additional false alarms.",
+    "strict_label_plus_mechanism_result": "No hidden instances were detected. Strict instance-level false positives are 0, 0, 1, and 3 across the four thresholds respectively; no recall is defined because the hidden instance set is empty.",
+    "mechanism_first_result": "Identical to the strict result because none of the three predictions maps to a hidden instance and no taxonomy gap is present.",
+    "candidate_tier_value_assessment": "Candidates preserve uncertainty but add false alarms in this zero-bias control when counted; cand_001 is a plausible near-miss, while cand_002 is unsupported speculation contradicted by the participant's account.",
+    "main_failure_modes": [
+      "Overcalling automation complacency from a time-constrained but explicitly acknowledged partial verification trade-off.",
+      "Speculating about availability heuristic from ambient breach context despite the participant's explicit denial that it drove the prioritization.",
+      "Counting plausible candidates as detections at the candidate-inclusive threshold without affirmative mechanism evidence."
+    ],
+    "main_strengths": [
+      "All quoted evidence is localized to the relevant interview episodes.",
+      "The identified finding includes counterevidence and reduced confidence rather than presenting the interpretation as certain.",
+      "Candidates are separated from identified occurrences and include reasons they were not promoted."
+    ],
+    "benchmark_interpretation": "This is an ambiguous-control, zero-bias interview. The RAG system shows appropriate abstention at high and moderate confidence, but its low-confidence identified finding and two candidates demonstrate false-alarm risk when permissive thresholds are used."
+  }
+}

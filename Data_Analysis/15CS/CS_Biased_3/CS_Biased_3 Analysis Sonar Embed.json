@@ -1,0 +1,522 @@
+{
+  "evaluation_metadata": {
+    "task": "ontology_free_rag_cognitive_bias_benchmark_evaluation",
+    "benchmark_run_metadata": {
+      "benchmark_run_id": "CS_Biased_3_Sonar_on",
+      "interview_id": "CS_Biased_3",
+      "system_prompt_id": "Sonar",
+      "system_prompt_generator": "Prompt 1_2",
+      "rag_model_id": "v1.0.0",
+      "corpus_condition": "on",
+      "retrieval_configuration_id": "k=50",
+      "decoding_configuration_id": "null",
+      "temperature": 1,
+      "replicate_id": "null",
+      "segment_map_id": "null"
+    },
+    "scenario_id": "CS_Biased_3",
+    "domain_id": "CS",
+    "condition": "biased",
+    "segment_map_status": "prevalidated_provided",
+    "rag_output_parse_status": "valid_json",
+    "rag_schema_assessment": "conformant"
+  },
+  "input_validation": {
+    "rag_output_schema_violations": [],
+    "rag_summary_count_consistency": {
+      "status": "consistent",
+      "details": "The identified_bias_summary lists three labels with one occurrence each, matching the three identified_occurrences and their IDs. candidate_biases is empty and no_supported_biases_found is false."
+    },
+    "evaluation_limitations": [
+      "The RAG output claims retrieved corpus support, but the actual retrieval chunks and retrieval logs were not supplied; corpus fidelity therefore cannot be scored.",
+      "The segment_map_id metadata value is the literal string \"null\" in the supplied run metadata and was preserved as provided."
+    ]
+  },
+  "evaluation_segment_map": {
+    "segment_mapping_version": "1.0",
+    "segments": [
+      {
+        "segment_id": "seg_p1",
+        "speaker": "Participant",
+        "segment_type": "decision_point",
+        "raw_interview_anchor": "Initial queue triage: the analyst bulk-closes the low-severity batch and later says the FIN-WK-114 alert was swept up while scanning for the scan pattern.",
+        "eligible_reasoning_segment": true,
+        "ground_truth_bias_present": true,
+        "ground_truth_instance_ids": ["cb_01"],
+        "ground_truth_rationale": "Dominant scan-noise volume captures attention and causes the out-of-subnet finance alert to be processed as part of the bulk batch without individual notice."
+      },
+      {
+        "segment_id": "seg_p2",
+        "speaker": "Participant",
+        "segment_type": "decision_point",
+        "raw_interview_anchor": "Phishing containment: the analyst relies on the self-authored suppression rule and the rapid count drop, without checking delivery logs or a manual sample.",
+        "eligible_reasoning_segment": true,
+        "ground_truth_bias_present": true,
+        "ground_truth_instance_ids": ["cb_02"],
+        "ground_truth_rationale": "The analyst overattributes apparent containment to a personally authored suppression rule without independent verification of full campaign coverage."
+      },
+      {
+        "segment_id": "seg_p3",
+        "speaker": "Participant",
+        "segment_type": "decision_point",
+        "raw_interview_anchor": "Beacon classification: the analyst downgrades FIN-WK-114 mainly because the interval resembles backup-agent false positives from the previous two shifts, despite no direct IOC match.",
+        "eligible_reasoning_segment": true,
+        "ground_truth_bias_present": true,
+        "ground_truth_instance_ids": ["cb_03"],
+        "ground_truth_rationale": "Recent prior-shift cases are weighted disproportionately ahead of available IOC or threat-intelligence verification when classifying ambiguous new evidence."
+      },
+      {
+        "segment_id": "seg_p4",
+        "speaker": "Participant",
+        "segment_type": "decision_point_negative",
+        "raw_interview_anchor": "After the threat-intel update and SLA breach, the analyst escalates immediately to IR while the shift lead is unavailable.",
+        "eligible_reasoning_segment": true,
+        "ground_truth_bias_present": false,
+        "ground_truth_instance_ids": [],
+        "ground_truth_rationale": "Phase 4 is intentionally unplanted and serves as a clean escalation decision point."
+      }
+    ]
+  },
+  "segment_level_adjudications": [
+    {
+      "segment_id": "seg_p1",
+      "ground_truth_status": "positive",
+      "ground_truth_instance_ids": ["cb_01"],
+      "rag_identified_occurrence_ids": ["obs_001"],
+      "rag_candidate_ids_counted_at_fourth_threshold": [],
+      "rag_detected_bias_in_segment_by_threshold": {
+        "high_only": false,
+        "high_and_moderate": false,
+        "all_identified_confidence_levels": true,
+        "all_confidence_and_candidates": true
+      },
+      "sdt_outcome_by_threshold": {
+        "high_only": "miss",
+        "high_and_moderate": "miss",
+        "all_identified_confidence_levels": "hit",
+        "all_confidence_and_candidates": "hit"
+      },
+      "localization_basis": "obs_001 is low-confidence but uses valid direct participant quotations from the bulk-closing episode, including the statement that the analyst was scanning for the scan pattern and swept up the finance alert.",
+      "adjudication_note": "The occurrence is a segment-level hit at thresholds that include low confidence. Its expectation-bias label is a near neighbor rather than the hidden target label, so it is not a strict instance-level match; its stated mechanism fully captures attentional capture by the dominant scan-noise category."
+    },
+    {
+      "segment_id": "seg_p2",
+      "ground_truth_status": "positive",
+      "ground_truth_instance_ids": ["cb_02"],
+      "rag_identified_occurrence_ids": ["obs_002"],
+      "rag_candidate_ids_counted_at_fourth_threshold": [],
+      "rag_detected_bias_in_segment_by_threshold": {
+        "high_only": false,
+        "high_and_moderate": true,
+        "all_identified_confidence_levels": true,
+        "all_confidence_and_candidates": true
+      },
+      "sdt_outcome_by_threshold": {
+        "high_only": "miss",
+        "high_and_moderate": "hit",
+        "all_identified_confidence_levels": "hit",
+        "all_confidence_and_candidates": "hit"
+      },
+      "localization_basis": "obs_002 directly quotes the participant's reliance on the suppression rule, rapid visible-queue reduction, and lack of independent verification during the phishing-containment episode.",
+      "adjudication_note": "The occurrence is correctly localized and qualifies for segment-level detection from the moderate tier onward. Automation complacency is a near-neighbor construct; the stated mechanism captures unverified reliance on automation but not the hidden instance's defining authorship/control attribution strongly enough for a full mechanism match."
+    },
+    {
+      "segment_id": "seg_p3",
+      "ground_truth_status": "positive",
+      "ground_truth_instance_ids": ["cb_03"],
+      "rag_identified_occurrence_ids": ["obs_003"],
+      "rag_candidate_ids_counted_at_fourth_threshold": [],
+      "rag_detected_bias_in_segment_by_threshold": {
+        "high_only": false,
+        "high_and_moderate": true,
+        "all_identified_confidence_levels": true,
+        "all_confidence_and_candidates": true
+      },
+      "sdt_outcome_by_threshold": {
+        "high_only": "miss",
+        "high_and_moderate": "hit",
+        "all_identified_confidence_levels": "hit",
+        "all_confidence_and_candidates": "hit"
+      },
+      "localization_basis": "obs_003 directly quotes the participant's comparison with the previous two shifts, the absent IOC match, and the resulting monitor-only classification.",
+      "adjudication_note": "The occurrence is correctly localized and captures the hidden recency mechanism, but the predicted anchoring-and-adjustment label is a near neighbor rather than an exact or approved equivalent for Recency."
+    },
+    {
+      "segment_id": "seg_p4",
+      "ground_truth_status": "negative",
+      "ground_truth_instance_ids": [],
+      "rag_identified_occurrence_ids": [],
+      "rag_candidate_ids_counted_at_fourth_threshold": [],
+      "rag_detected_bias_in_segment_by_threshold": {
+        "high_only": false,
+        "high_and_moderate": false,
+        "all_identified_confidence_levels": false,
+        "all_confidence_and_candidates": false
+      },
+      "sdt_outcome_by_threshold": {
+        "high_only": "correct_rejection",
+        "high_and_moderate": "correct_rejection",
+        "all_identified_confidence_levels": "correct_rejection",
+        "all_confidence_and_candidates": "correct_rejection"
+      },
+      "localization_basis": "No RAG finding localizes to the clean escalation decision point.",
+      "adjudication_note": "The intentionally unplanted phase-4 decision remains a correct rejection at every threshold."
+    }
+  ],
+  "instance_level_adjudications": [
+    {
+      "hidden_instance_id": "cb_01",
+      "hidden_target_bias_label": "Selective Attention Bias or Inattentional Blindness",
+      "hidden_decision_or_episode": "Bulk-closing scan-window alerts",
+      "hidden_mechanism": "Attentional capture by high-volume expected scan-noise category causes an out-of-subnet, low-severity DNS alert to be bulk-closed without individual review.",
+      "matched_finding_by_threshold": {
+        "high_only": {"matched_id": null, "matched_type": "none"},
+        "high_and_moderate": {"matched_id": null, "matched_type": "none"},
+        "all_identified_confidence_levels": {"matched_id": "obs_001", "matched_type": "identified"},
+        "all_confidence_and_candidates": {"matched_id": "obs_001", "matched_type": "identified"}
+      },
+      "rag_predicted_bias_label": "expectation bias",
+      "rag_confidence": "low",
+      "label_equivalence_result": "near_neighbor_label",
+      "localization_match_type": "exact_quote_match",
+      "mechanism_overlap": "full_mechanism_match",
+      "strict_scorecard_outcome_by_threshold": {
+        "high_only": "false_negative",
+        "high_and_moderate": "false_negative",
+        "all_identified_confidence_levels": "false_negative",
+        "all_confidence_and_candidates": "false_negative"
+      },
+      "mechanism_first_scorecard_outcome_by_threshold": {
+        "high_only": "false_negative",
+        "high_and_moderate": "false_negative",
+        "all_identified_confidence_levels": "true_positive",
+        "all_confidence_and_candidates": "true_positive"
+      },
+      "secondary_diagnostic_outcome": "correct_location_wrong_bias_label",
+      "label_equivalence_explanation": "Expectation bias is related to expectation-driven perception, but it is not an approved equivalent of the hidden Selective Attention Bias or Inattentional Blindness label.",
+      "mechanism_overlap_explanation": "The finding explicitly describes the expected scan-noise pattern capturing attention and causing an out-of-subnet finance alert to be swept into the bulk close, including the relevant evidence-selection operation.",
+      "evidence_fidelity_assessment": "Valid participant quotations accurately support the episode and mechanism; the finding also appropriately records the workload-driven non-bias interpretation as counterevidence."
+    },
+    {
+      "hidden_instance_id": "cb_02",
+      "hidden_target_bias_label": "Illusion of control",
+      "hidden_decision_or_episode": "Declaring phishing cluster contained after suppression-rule auto-tagging",
+      "hidden_mechanism": "Analyst credits a self-authored suppression rule with full containment of the phishing wave without verifying coverage of all campaign variants.",
+      "matched_finding_by_threshold": {
+        "high_only": {"matched_id": null, "matched_type": "none"},
+        "high_and_moderate": {"matched_id": null, "matched_type": "none"},
+        "all_identified_confidence_levels": {"matched_id": null, "matched_type": "none"},
+        "all_confidence_and_candidates": {"matched_id": null, "matched_type": "none"}
+      },
+      "rag_predicted_bias_label": "automation complacency",
+      "rag_confidence": "moderate",
+      "label_equivalence_result": "near_neighbor_label",
+      "localization_match_type": "exact_quote_match",
+      "mechanism_overlap": "partial_mechanism_overlap",
+      "strict_scorecard_outcome_by_threshold": {
+        "high_only": "false_negative",
+        "high_and_moderate": "false_negative",
+        "all_identified_confidence_levels": "false_negative",
+        "all_confidence_and_candidates": "false_negative"
+      },
+      "mechanism_first_scorecard_outcome_by_threshold": {
+        "high_only": "false_negative",
+        "high_and_moderate": "false_negative",
+        "all_identified_confidence_levels": "false_negative",
+        "all_confidence_and_candidates": "false_negative"
+      },
+      "secondary_diagnostic_outcome": "correct_location_wrong_bias_label",
+      "label_equivalence_explanation": "Automation complacency is a related but distinct construct: it concerns insufficient verification of an automated aid, whereas the hidden instance requires overattribution of containment to a personally authored control and its implied coverage/control.",
+      "mechanism_overlap_explanation": "The finding captures reliance on automated tagging and failure to verify delivery or variants, but it does not fully capture the defining self-authorship/control attribution required by the hidden mechanism.",
+      "evidence_fidelity_assessment": "Valid participant quotations accurately support the automation-reliance episode and the absence of independent verification."
+    },
+    {
+      "hidden_instance_id": "cb_03",
+      "hidden_target_bias_label": "Recency",
+      "hidden_decision_or_episode": "Classifying EDR beacon on FIN-WK-114 as likely backup-agent artifact",
+      "hidden_mechanism": "Classification of an ambiguous new beacon is driven primarily by memory of the two most recent prior shifts' false-positive pattern, ahead of available IOC/threat-intel verification.",
+      "matched_finding_by_threshold": {
+        "high_only": {"matched_id": null, "matched_type": "none"},
+        "high_and_moderate": {"matched_id": "obs_003", "matched_type": "identified"},
+        "all_identified_confidence_levels": {"matched_id": "obs_003", "matched_type": "identified"},
+        "all_confidence_and_candidates": {"matched_id": "obs_003", "matched_type": "identified"}
+      },
+      "rag_predicted_bias_label": "anchoring and adjustment",
+      "rag_confidence": "moderate",
+      "label_equivalence_result": "near_neighbor_label",
+      "localization_match_type": "exact_quote_match",
+      "mechanism_overlap": "full_mechanism_match",
+      "strict_scorecard_outcome_by_threshold": {
+        "high_only": "false_negative",
+        "high_and_moderate": "false_negative",
+        "all_identified_confidence_levels": "false_negative",
+        "all_confidence_and_candidates": "false_negative"
+      },
+      "mechanism_first_scorecard_outcome_by_threshold": {
+        "high_only": "false_negative",
+        "high_and_moderate": "true_positive",
+        "all_identified_confidence_levels": "true_positive",
+        "all_confidence_and_candidates": "true_positive"
+      },
+      "secondary_diagnostic_outcome": "correct_location_wrong_bias_label",
+      "label_equivalence_explanation": "Anchoring and adjustment is a near-neighbor explanation for the same classification error, but it is not an approved equivalent of the hidden Recency label.",
+      "mechanism_overlap_explanation": "The finding explicitly identifies the two recent shifts as the primary diagnostic anchor, notes the absent IOC match, and explains the insufficient adjustment before downgrading the new beacon.",
+      "evidence_fidelity_assessment": "Valid participant quotations accurately support the recent-history weighting, the missing IOC verification, and the resulting monitor-only decision."
+    }
+  ],
+  "unmatched_rag_predictions": [
+    {
+      "rag_occurrence_id": "obs_001",
+      "rag_finding_type": "identified",
+      "rag_predicted_bias_label": "expectation bias",
+      "rag_confidence": "low",
+      "localized_segment_id": "seg_p1",
+      "best_related_hidden_instance_id": "cb_01",
+      "label_equivalence_result": "near_neighbor_label",
+      "mechanism_overlap": "full_mechanism_match",
+      "strict_classification": "correct_location_wrong_bias_label",
+      "mechanism_first_classification": "not_applicable",
+      "counted_at_thresholds": ["all_identified_confidence_levels", "all_confidence_and_candidates"],
+      "why_not_an_exact_strict_match": "The finding is correctly localized and mechanistically complete, but expectation bias is not the exact or approved-equivalent hidden target label."
+    },
+    {
+      "rag_occurrence_id": "obs_002",
+      "rag_finding_type": "identified",
+      "rag_predicted_bias_label": "automation complacency",
+      "rag_confidence": "moderate",
+      "localized_segment_id": "seg_p2",
+      "best_related_hidden_instance_id": "cb_02",
+      "label_equivalence_result": "near_neighbor_label",
+      "mechanism_overlap": "partial_mechanism_overlap",
+      "strict_classification": "correct_location_wrong_bias_label",
+      "mechanism_first_classification": "false_positive",
+      "counted_at_thresholds": ["high_and_moderate", "all_identified_confidence_levels", "all_confidence_and_candidates"],
+      "why_not_an_exact_strict_match": "The finding is correctly localized, but automation complacency is a distinct label and its mechanism emphasizes trust in automation rather than the hidden self-authored-control attribution."
+    },
+    {
+      "rag_occurrence_id": "obs_003",
+      "rag_finding_type": "identified",
+      "rag_predicted_bias_label": "anchoring and adjustment",
+      "rag_confidence": "moderate",
+      "localized_segment_id": "seg_p3",
+      "best_related_hidden_instance_id": "cb_03",
+      "label_equivalence_result": "near_neighbor_label",
+      "mechanism_overlap": "full_mechanism_match",
+      "strict_classification": "correct_location_wrong_bias_label",
+      "mechanism_first_classification": "not_applicable",
+      "counted_at_thresholds": ["high_and_moderate", "all_identified_confidence_levels", "all_confidence_and_candidates"],
+      "why_not_an_exact_strict_match": "The finding is correctly localized and mechanistically complete, but anchoring and adjustment is not the exact or approved-equivalent hidden Recency label."
+    }
+  ],
+  "candidate_analysis": {
+    "candidate_count": 0,
+    "candidates": []
+  },
+  "signal_detection_summary": {
+    "evaluation_unit": "eligible_reasoning_segment",
+    "high_only": {
+      "positive_segments": 3,
+      "negative_segments": 1,
+      "hits": 0,
+      "misses": 3,
+      "false_alarms": 0,
+      "correct_rejections": 1,
+      "hit_rate": 0,
+      "false_alarm_rate": 0,
+      "accuracy": 0.25,
+      "precision": null,
+      "recall": 0,
+      "f1": 0,
+      "detection_interpretation": "No identified occurrence has high confidence; all three positive segments are missed and the clean negative segment is correctly rejected."
+    },
+    "high_and_moderate": {
+      "positive_segments": 3,
+      "negative_segments": 1,
+      "hits": 2,
+      "misses": 1,
+      "false_alarms": 0,
+      "correct_rejections": 1,
+      "hit_rate": 0.6667,
+      "false_alarm_rate": 0,
+      "accuracy": 0.75,
+      "precision": 1,
+      "recall": 0.6667,
+      "f1": 0.8,
+      "detection_interpretation": "The two moderate-confidence findings detect the phishing and beacon segments, while the low-confidence queue-triage finding remains a miss; there are no false alarms."
+    },
+    "all_identified_confidence_levels": {
+      "positive_segments": 3,
+      "negative_segments": 1,
+      "hits": 3,
+      "misses": 0,
+      "false_alarms": 0,
+      "correct_rejections": 1,
+      "hit_rate": 1,
+      "false_alarm_rate": 0,
+      "accuracy": 1,
+      "precision": 1,
+      "recall": 1,
+      "f1": 1,
+      "detection_interpretation": "All three planted instances are localized to their positive segments, with no detection on the negative escalation segment."
+    },
+    "all_confidence_and_candidates": {
+      "positive_segments": 3,
+      "negative_segments": 1,
+      "hits": 3,
+      "misses": 0,
+      "false_alarms": 0,
+      "correct_rejections": 1,
+      "hit_rate": 1,
+      "false_alarm_rate": 0,
+      "accuracy": 1,
+      "precision": 1,
+      "recall": 1,
+      "f1": 1,
+      "detection_interpretation": "No candidates were supplied, so this threshold is identical to all identified confidence levels."
+    }
+  },
+  "strict_instance_level_metrics": {
+    "high_only": {"true_positives": 0, "false_negatives": 3, "false_positives": 0, "precision": null, "recall": 0, "f1": 0, "exact_occurrence_match_rate": 0, "occurrence_count_match_rate": 0},
+    "high_and_moderate": {"true_positives": 0, "false_negatives": 3, "false_positives": 2, "precision": 0, "recall": 0, "f1": 0, "exact_occurrence_match_rate": 0, "occurrence_count_match_rate": 0},
+    "all_identified_confidence_levels": {"true_positives": 0, "false_negatives": 3, "false_positives": 3, "precision": 0, "recall": 0, "f1": 0, "exact_occurrence_match_rate": 0, "occurrence_count_match_rate": 0},
+    "all_confidence_and_candidates": {"true_positives": 0, "false_negatives": 3, "false_positives": 3, "precision": 0, "recall": 0, "f1": 0, "exact_occurrence_match_rate": 0, "occurrence_count_match_rate": 0}
+  },
+  "mechanism_first_instance_level_metrics": {
+    "high_only": {"true_positives": 0, "false_negatives": 3, "false_positives": 0, "precision": null, "recall": 0, "f1": 0, "exact_occurrence_match_rate": 0, "occurrence_count_match_rate": 0},
+    "high_and_moderate": {"true_positives": 1, "false_negatives": 2, "false_positives": 1, "precision": 0.5, "recall": 0.3333, "f1": 0.4, "exact_occurrence_match_rate": 0.3333, "occurrence_count_match_rate": 0.3333},
+    "all_identified_confidence_levels": {"true_positives": 2, "false_negatives": 1, "false_positives": 1, "precision": 0.6667, "recall": 0.6667, "f1": 0.6667, "exact_occurrence_match_rate": 0.6667, "occurrence_count_match_rate": 0.6667},
+    "all_confidence_and_candidates": {"true_positives": 2, "false_negatives": 1, "false_positives": 1, "precision": 0.6667, "recall": 0.6667, "f1": 0.6667, "exact_occurrence_match_rate": 0.6667, "occurrence_count_match_rate": 0.6667}
+  },
+  "target_bias_performance": [
+    {
+      "hidden_target_bias_label": "Selective Attention Bias or Inattentional Blindness",
+      "hidden_requested_occurrences": 1,
+      "strict_true_positives_by_threshold": {"high_only": 0, "high_and_moderate": 0, "all_identified_confidence_levels": 0, "all_confidence_and_candidates": 0},
+      "mechanism_first_true_positives_by_threshold": {"high_only": 0, "high_and_moderate": 0, "all_identified_confidence_levels": 1, "all_confidence_and_candidates": 1},
+      "count_match_status_at_all_confidence_and_candidates": "exact_match"
+    },
+    {
+      "hidden_target_bias_label": "Illusion of control",
+      "hidden_requested_occurrences": 1,
+      "strict_true_positives_by_threshold": {"high_only": 0, "high_and_moderate": 0, "all_identified_confidence_levels": 0, "all_confidence_and_candidates": 0},
+      "mechanism_first_true_positives_by_threshold": {"high_only": 0, "high_and_moderate": 0, "all_identified_confidence_levels": 0, "all_confidence_and_candidates": 0},
+      "count_match_status_at_all_confidence_and_candidates": "underdetected"
+    },
+    {
+      "hidden_target_bias_label": "Recency",
+      "hidden_requested_occurrences": 1,
+      "strict_true_positives_by_threshold": {"high_only": 0, "high_and_moderate": 0, "all_identified_confidence_levels": 0, "all_confidence_and_candidates": 0},
+      "mechanism_first_true_positives_by_threshold": {"high_only": 0, "high_and_moderate": 1, "all_identified_confidence_levels": 1, "all_confidence_and_candidates": 1},
+      "count_match_status_at_all_confidence_and_candidates": "exact_match"
+    }
+  ],
+  "rag_label_false_positive_inventory": [
+    {
+      "rag_predicted_bias_label": "expectation bias",
+      "finding_type": "identified",
+      "alternative_labels": ["confirmation bias", "expectation-driven selective attention"],
+      "occurrence_count": 1,
+      "best_related_hidden_target_bias_label": "Selective Attention Bias or Inattentional Blindness",
+      "label_relation": "near_neighbor",
+      "mechanism_overlap_summary": "Full overlap with the hidden attentional-capture mechanism, but the predicted taxonomy names expectation shaping rather than the hidden selective-attention/inattentional-blindness construct.",
+      "primary_error_types": ["correct_location_wrong_bias_label", "low_confidence"]
+    },
+    {
+      "rag_predicted_bias_label": "automation complacency",
+      "finding_type": "identified",
+      "alternative_labels": ["complacency bias", "automation-induced complacency"],
+      "occurrence_count": 1,
+      "best_related_hidden_target_bias_label": "Illusion of control",
+      "label_relation": "near_neighbor",
+      "mechanism_overlap_summary": "Partial overlap through reliance on a self-deployed automated rule and absent verification; the defining self-authored-control attribution is not fully stated.",
+      "primary_error_types": ["correct_location_wrong_bias_label", "partial_mechanism_match"]
+    },
+    {
+      "rag_predicted_bias_label": "anchoring and adjustment",
+      "finding_type": "identified",
+      "alternative_labels": ["availability heuristic", "representativeness heuristic"],
+      "occurrence_count": 1,
+      "best_related_hidden_target_bias_label": "Recency",
+      "label_relation": "near_neighbor",
+      "mechanism_overlap_summary": "Full overlap with the hidden recent-history weighting mechanism, but the predicted taxonomy names anchoring and insufficient adjustment rather than Recency.",
+      "primary_error_types": ["correct_location_wrong_bias_label"]
+    }
+  ],
+  "diagnostic_error_summary": {
+    "correct_location_wrong_bias_label_count": 3,
+    "correct_label_wrong_location_count": 0,
+    "correct_label_location_wrong_mechanism_count": 0,
+    "mechanism_detected_label_unresolved_count": 0,
+    "partial_mechanism_match_count": 1,
+    "duplicate_prediction_count": 0,
+    "unsupported_prediction_count": 0,
+    "fabricated_or_invalid_quote_count": 0,
+    "approved_alias_or_equivalence_count": 0,
+    "near_neighbor_label_count": 3,
+    "different_construct_label_count": 0,
+    "candidate_count": 0,
+    "candidate_useful_abstention_count": 0,
+    "candidate_near_miss_count": 0,
+    "candidates_promoted_to_true_positive_at_fourth_threshold_count": 0
+  },
+  "corpus_support_audit": {
+    "primary_corpus_fidelity_score_available": false,
+    "rag_occurrences_claiming_retrieved_support": 2,
+    "rag_occurrences_with_no_claimed_retrieved_support": 1,
+    "rag_occurrences_with_unverifiable_or_internally_inconsistent_citation_metadata": 0,
+    "assessment_note": "The RAG marks corpus support as used and supplies citation metadata for obs_002 and obs_003, while explicitly disclosing no usable retrieved support for obs_001. Because the actual retrieved material and logs are absent, these claims cannot be independently verified and no corpus-fidelity score is calculated."
+  },
+  "comparison_ready_summary": {
+    "primary_recommended_comparison_threshold": "high_and_moderate",
+    "segment_detection": {
+      "high_only": {"hits": 0, "misses": 3, "false_alarms": 0, "correct_rejections": 1, "hit_rate": 0, "false_alarm_rate": 0, "f1": 0},
+      "high_and_moderate": {"hits": 2, "misses": 1, "false_alarms": 0, "correct_rejections": 1, "hit_rate": 0.6667, "false_alarm_rate": 0, "f1": 0.8},
+      "all_identified_confidence_levels": {"hits": 3, "misses": 0, "false_alarms": 0, "correct_rejections": 1, "hit_rate": 1, "false_alarm_rate": 0, "f1": 1},
+      "all_confidence_and_candidates": {"hits": 3, "misses": 0, "false_alarms": 0, "correct_rejections": 1, "hit_rate": 1, "false_alarm_rate": 0, "f1": 1}
+    },
+    "strict_instance_identification": {
+      "high_only": {"true_positives": 0, "false_negatives": 3, "false_positives": 0, "precision": null, "recall": 0, "f1": 0},
+      "high_and_moderate": {"true_positives": 0, "false_negatives": 3, "false_positives": 2, "precision": 0, "recall": 0, "f1": 0},
+      "all_identified_confidence_levels": {"true_positives": 0, "false_negatives": 3, "false_positives": 3, "precision": 0, "recall": 0, "f1": 0},
+      "all_confidence_and_candidates": {"true_positives": 0, "false_negatives": 3, "false_positives": 3, "precision": 0, "recall": 0, "f1": 0}
+    },
+    "mechanism_first_identification": {
+      "high_only": {"true_positives": 0, "false_negatives": 3, "false_positives": 0, "precision": null, "recall": 0, "f1": 0},
+      "high_and_moderate": {"true_positives": 1, "false_negatives": 2, "false_positives": 1, "precision": 0.5, "recall": 0.3333, "f1": 0.4},
+      "all_identified_confidence_levels": {"true_positives": 2, "false_negatives": 1, "false_positives": 1, "precision": 0.6667, "recall": 0.6667, "f1": 0.6667},
+      "all_confidence_and_candidates": {"true_positives": 2, "false_negatives": 1, "false_positives": 1, "precision": 0.6667, "recall": 0.6667, "f1": 0.6667}
+    },
+    "taxonomy_gap": {
+      "high_only": {"mechanism_first_f1_minus_strict_f1": 0},
+      "high_and_moderate": {"mechanism_first_f1_minus_strict_f1": 0.4},
+      "all_identified_confidence_levels": {"mechanism_first_f1_minus_strict_f1": 0.6667},
+      "all_confidence_and_candidates": {"mechanism_first_f1_minus_strict_f1": 0.6667}
+    },
+    "confidence_tradeoff": {
+      "increment_from_high_to_high_and_moderate": "Segment hit rate rises from 0 to 0.6667; mechanism-first instance F1 rises from 0 to 0.4000, while strict F1 remains 0.",
+      "increment_from_high_and_moderate_to_all_confidence": "Including low-confidence findings raises segment hit rate from 0.6667 to 1.0000 and mechanism-first F1 from 0.4000 to 0.6667; strict F1 remains 0.",
+      "increment_from_all_confidence_to_all_confidence_and_candidates": "No change: the RAG supplied zero candidate biases."
+    }
+  },
+  "overall_evaluation_summary": {
+    "hidden_total_planned_occurrences": 3,
+    "rag_total_identified_occurrences": 3,
+    "rag_total_candidate_biases": 0,
+    "segment_level_primary_result": "At the recommended high_and_moderate threshold, the RAG detects 2 of 3 positive segments with no false alarms. Including low confidence yields 3 of 3 positive segments detected.",
+    "strict_label_plus_mechanism_result": "The RAG obtains 0 strict instance-level true positives at every threshold because all three predicted labels are near neighbors rather than exact or approved-equivalent target labels.",
+    "mechanism_first_result": "The RAG obtains 1 of 3 mechanism-first true positives at high_and_moderate and 2 of 3 when low confidence is included; the queue-triage and beacon mechanisms are fully captured, while the suppression-rule finding is only partial.",
+    "candidate_tier_value_assessment": "No candidates were supplied, so the candidate tier adds no detections, errors, or metric changes.",
+    "main_failure_modes": [
+      "All three findings use near-neighbor taxonomy labels instead of the hidden target labels, producing strict false positives and false negatives.",
+      "The suppression-rule finding describes automation complacency but does not fully identify the hidden illusion-of-control mechanism.",
+      "The queue-triage finding is low confidence, so it is missed at the recommended high_and_moderate threshold."
+    ],
+    "main_strengths": [
+      "All three identified findings are localized to the correct positive decision-point segments.",
+      "The queue-triage and beacon findings state mechanisms that fully match their hidden instances under the mechanism-first scorecard.",
+      "Interview quotations are valid, accurately attributed, and tied to the participant's actual reasoning rather than interviewer prompts or hindsight alone.",
+      "The negative escalation segment is correctly left undetected, with no false alarms."
+    ],
+    "benchmark_interpretation": "This run shows strong segment localization and meaningful mechanism recovery but poor strict taxonomy alignment. The gap between strict and mechanism-first scores is therefore diagnostic of label selection rather than failure to find the relevant reasoning episodes."
+  }
+}

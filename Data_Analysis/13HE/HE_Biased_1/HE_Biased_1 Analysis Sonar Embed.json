@@ -1,0 +1,399 @@
+{
+  "evaluation_metadata": {
+    "task": "ontology_free_rag_cognitive_bias_benchmark_evaluation",
+    "benchmark_run_metadata": {
+      "benchmark_run_id": "HE_Biased_1_Sonar_on",
+      "interview_id": "HE_Biased_1",
+      "system_prompt_id": "Sonar",
+      "system_prompt_generator": "Prompt 1_2",
+      "rag_model_id": "v1.0.0",
+      "corpus_condition": "on",
+      "retrieval_configuration_id": "k=50",
+      "decoding_configuration_id": "null",
+      "temperature": 1,
+      "replicate_id": "null",
+      "segment_map_id": "null"
+    },
+    "scenario_id": "HE_Biased_1",
+    "domain_id": "HE",
+    "condition": "biased",
+    "segment_map_status": "prevalidated_provided",
+    "rag_output_parse_status": "valid_json",
+    "rag_schema_assessment": "conformant"
+  },
+  "input_validation": {
+    "rag_output_schema_violations": [],
+    "rag_summary_count_consistency": {
+      "status": "consistent",
+      "details": "The identified_bias_summary reports one halo effect occurrence, matching the single identified_occurrences entry; candidate_biases is empty and no_supported_biases_found is false."
+    },
+    "evaluation_limitations": [
+      "The supplied segment map is treated as frozen and prevalidated.",
+      "The RAG output claims retrieved corpus support, but retrieved passages or retrieval logs were not supplied, so corpus fidelity cannot be scored.",
+      "The hidden target label is Courtesy Bias; the RAG uses the ontology-free near-neighbor label halo effect."
+    ]
+  },
+  "evaluation_segment_map": {
+    "segment_mapping_version": "1.0",
+    "segments": [
+      {
+        "segment_id": "seg_001",
+        "speaker": "Participant",
+        "segment_type": "decision_rationale",
+        "raw_interview_anchor": "I measured it anyway — clear width was under the code minimum with the pallets there. I wrote that up as a formal minor violation with a short correction window, regardless of what he said about the timing.",
+        "eligible_reasoning_segment": true,
+        "ground_truth_bias_present": false,
+        "ground_truth_instance_ids": [],
+        "ground_truth_rationale": "The participant bases the egress classification on an objective measurement and explicitly separates it from the manager's explanation."
+      },
+      {
+        "segment_id": "seg_002",
+        "speaker": "Participant",
+        "segment_type": "decision_rationale",
+        "raw_interview_anchor": "After four years of him being straight with me on other properties, going in hard with a formal citation over something he was already fixing on the spot felt like more friction than the moment called for. So I logged it as an advisory note instead — get it corrected, follow up next visit, no formal paperwork trail.",
+        "eligible_reasoning_segment": true,
+        "ground_truth_bias_present": true,
+        "ground_truth_instance_ids": ["cb_01"],
+        "ground_truth_rationale": "This is the narrowest primary span for the hidden occurrence: a significant fire-door deficiency is softened to an advisory note because of the manager's apologetic, cooperative presentation and the desire to avoid friction with a familiar contact."
+      },
+      {
+        "segment_id": "seg_003",
+        "speaker": "Participant",
+        "segment_type": "evidence_review",
+        "raw_interview_anchor": "Not in the moment, no. I didn't pull the ticket timestamp, and I didn't cross-check last year's report right there. In hindsight I probably should have — turned out the ticket was only logged that morning, not the week before like he said, and there'd actually been a near-identical closer issue flagged and marked corrected in last year's inspection.",
+        "eligible_reasoning_segment": true,
+        "ground_truth_bias_present": false,
+        "ground_truth_instance_ids": [],
+        "ground_truth_rationale": "This is retrospective evidence about omitted verification and hindsight-only information, not a separate hidden occurrence."
+      },
+      {
+        "segment_id": "seg_004",
+        "speaker": "Participant",
+        "segment_type": "verification_rationale",
+        "raw_interview_anchor": "I didn't take that at face value. I asked for the monitoring company's records instead of just accepting the verbal explanation, and I flagged the gap as an open documentation item pending that verification.",
+        "eligible_reasoning_segment": true,
+        "ground_truth_bias_present": false,
+        "ground_truth_instance_ids": [],
+        "ground_truth_rationale": "The participant requests independent verification of the alarm-log claim rather than accepting the manager's assurance; no hidden bias instance is planned here."
+      },
+      {
+        "segment_id": "seg_005",
+        "speaker": "Participant",
+        "segment_type": "synthesis_recommendation",
+        "raw_interview_anchor": "I recommended conditional renewal — correct the pallet obstruction, get the alarm verification resolved, and monitor the door closer as an open advisory item.",
+        "eligible_reasoning_segment": true,
+        "ground_truth_bias_present": false,
+        "ground_truth_instance_ids": [],
+        "ground_truth_rationale": "This carries forward the earlier classifications into the final recommendation but does not introduce a second hidden instance."
+      },
+      {
+        "segment_id": "seg_006",
+        "speaker": "Participant",
+        "segment_type": "counterfactual_reasoning",
+        "raw_interview_anchor": "Knowing it was a repeat finding from last year would have changed things for sure — that's a pattern, not a one-off. If I'd pulled that file before finalizing the note instead of after, I think I'd have citied it formally.",
+        "eligible_reasoning_segment": true,
+        "ground_truth_bias_present": false,
+        "ground_truth_instance_ids": [],
+        "ground_truth_rationale": "The response identifies hindsight information that would have changed the classification; it is not an additional occurrence and is not credited as a new bias instance."
+      },
+      {
+        "segment_id": "seg_007",
+        "speaker": "Participant",
+        "segment_type": "reflective_guidance",
+        "raw_interview_anchor": "The relationship can tell you how a conversation's going to go, but it shouldn't really be what decides the classification — the classification should hold up the same whether the person in front of you is anxious about it or not.",
+        "eligible_reasoning_segment": true,
+        "ground_truth_bias_present": false,
+        "ground_truth_instance_ids": [],
+        "ground_truth_rationale": "This is a corrective reflection about how classification should be made, not a separate hidden occurrence."
+      }
+    ]
+  },
+  "segment_level_adjudications": [
+    {
+      "segment_id": "seg_001",
+      "ground_truth_status": "negative",
+      "ground_truth_instance_ids": [],
+      "rag_identified_occurrence_ids": [],
+      "rag_candidate_ids_counted_at_fourth_threshold": [],
+      "rag_detected_bias_in_segment_by_threshold": {"high_only": false, "high_and_moderate": false, "all_identified_confidence_levels": false, "all_confidence_and_candidates": false},
+      "sdt_outcome_by_threshold": {"high_only": "correct_rejection", "high_and_moderate": "correct_rejection", "all_identified_confidence_levels": "correct_rejection", "all_confidence_and_candidates": "correct_rejection"},
+      "localization_basis": "No RAG finding localizes to this segment.",
+      "adjudication_note": "The objective pallet measurement and formal citation are correctly outside the hidden occurrence."
+    },
+    {
+      "segment_id": "seg_002",
+      "ground_truth_status": "positive",
+      "ground_truth_instance_ids": ["cb_01"],
+      "rag_identified_occurrence_ids": ["obs_001"],
+      "rag_candidate_ids_counted_at_fourth_threshold": [],
+      "rag_detected_bias_in_segment_by_threshold": {"high_only": true, "high_and_moderate": true, "all_identified_confidence_levels": true, "all_confidence_and_candidates": true},
+      "sdt_outcome_by_threshold": {"high_only": "hit", "high_and_moderate": "hit", "all_identified_confidence_levels": "hit", "all_confidence_and_candidates": "hit"},
+      "localization_basis": "The RAG occurrence includes an exact quote from this span and describes the same door-closer classification episode.",
+      "adjudication_note": "Segment detection is correct at every threshold. The halo effect label is a near neighbor of the hidden Courtesy Bias label, while the described interpersonal-softening mechanism is substantively supported."
+    },
+    {
+      "segment_id": "seg_003",
+      "ground_truth_status": "negative",
+      "ground_truth_instance_ids": [],
+      "rag_identified_occurrence_ids": [],
+      "rag_candidate_ids_counted_at_fourth_threshold": [],
+      "rag_detected_bias_in_segment_by_threshold": {"high_only": false, "high_and_moderate": false, "all_identified_confidence_levels": false, "all_confidence_and_candidates": false},
+      "sdt_outcome_by_threshold": {"high_only": "correct_rejection", "high_and_moderate": "correct_rejection", "all_identified_confidence_levels": "correct_rejection", "all_confidence_and_candidates": "correct_rejection"},
+      "localization_basis": "No RAG finding is separately localized to the retrospective evidence-review span.",
+      "adjudication_note": "The RAG uses the hindsight information as supporting context for the same door-closer occurrence; it does not create a separate prediction here."
+    },
+    {
+      "segment_id": "seg_004",
+      "ground_truth_status": "negative",
+      "ground_truth_instance_ids": [],
+      "rag_identified_occurrence_ids": [],
+      "rag_candidate_ids_counted_at_fourth_threshold": [],
+      "rag_detected_bias_in_segment_by_threshold": {"high_only": false, "high_and_moderate": false, "all_identified_confidence_levels": false, "all_confidence_and_candidates": false},
+      "sdt_outcome_by_threshold": {"high_only": "correct_rejection", "high_and_moderate": "correct_rejection", "all_identified_confidence_levels": "correct_rejection", "all_confidence_and_candidates": "correct_rejection"},
+      "localization_basis": "No RAG finding localizes to this segment.",
+      "adjudication_note": "The participant's independent verification of the alarm-log gap is a non-bias comparison point."
+    },
+    {
+      "segment_id": "seg_005",
+      "ground_truth_status": "negative",
+      "ground_truth_instance_ids": [],
+      "rag_identified_occurrence_ids": [],
+      "rag_candidate_ids_counted_at_fourth_threshold": [],
+      "rag_detected_bias_in_segment_by_threshold": {"high_only": false, "high_and_moderate": false, "all_identified_confidence_levels": false, "all_confidence_and_candidates": false},
+      "sdt_outcome_by_threshold": {"high_only": "correct_rejection", "high_and_moderate": "correct_rejection", "all_identified_confidence_levels": "correct_rejection", "all_confidence_and_candidates": "correct_rejection"},
+      "localization_basis": "No RAG finding is separately localized to the synthesis recommendation.",
+      "adjudication_note": "The carried-forward advisory classification is part of the same phase-2 episode, not a second hidden occurrence."
+    },
+    {
+      "segment_id": "seg_006",
+      "ground_truth_status": "negative",
+      "ground_truth_instance_ids": [],
+      "rag_identified_occurrence_ids": [],
+      "rag_candidate_ids_counted_at_fourth_threshold": [],
+      "rag_detected_bias_in_segment_by_threshold": {"high_only": false, "high_and_moderate": false, "all_identified_confidence_levels": false, "all_confidence_and_candidates": false},
+      "sdt_outcome_by_threshold": {"high_only": "correct_rejection", "high_and_moderate": "correct_rejection", "all_identified_confidence_levels": "correct_rejection", "all_confidence_and_candidates": "correct_rejection"},
+      "localization_basis": "No RAG finding is separately localized to this counterfactual reflection.",
+      "adjudication_note": "Hindsight information is not credited as a new bias occurrence."
+    },
+    {
+      "segment_id": "seg_007",
+      "ground_truth_status": "negative",
+      "ground_truth_instance_ids": [],
+      "rag_identified_occurrence_ids": [],
+      "rag_candidate_ids_counted_at_fourth_threshold": [],
+      "rag_detected_bias_in_segment_by_threshold": {"high_only": false, "high_and_moderate": false, "all_identified_confidence_levels": false, "all_confidence_and_candidates": false},
+      "sdt_outcome_by_threshold": {"high_only": "correct_rejection", "high_and_moderate": "correct_rejection", "all_identified_confidence_levels": "correct_rejection", "all_confidence_and_candidates": "correct_rejection"},
+      "localization_basis": "No RAG finding is separately localized to this corrective reflection.",
+      "adjudication_note": "The guidance is a corrective reflection and not a second occurrence."
+    }
+  ],
+  "instance_level_adjudications": [
+    {
+      "hidden_instance_id": "cb_01",
+      "hidden_target_bias_label": "Courtesy Bias",
+      "hidden_decision_or_episode": "Decision point 2: classification of the disconnected self-closing fire-door device",
+      "hidden_mechanism": "Downgrading a life-safety-significant deficiency from a formal citation to an advisory note in response to the manager's apologetic, relationship-invoking demeanor and the desire to avoid interpersonal friction, without independently verifying the maintenance timeline or prior recurrence.",
+      "matched_finding_by_threshold": {
+        "high_only": {"matched_id": "obs_001", "matched_type": "identified"},
+        "high_and_moderate": {"matched_id": "obs_001", "matched_type": "identified"},
+        "all_identified_confidence_levels": {"matched_id": "obs_001", "matched_type": "identified"},
+        "all_confidence_and_candidates": {"matched_id": "obs_001", "matched_type": "identified"}
+      },
+      "rag_predicted_bias_label": "halo effect",
+      "rag_confidence": "high",
+      "label_equivalence_result": "near_neighbor_label",
+      "localization_match_type": "exact_quote_match",
+      "mechanism_overlap": "full_mechanism_match",
+      "strict_scorecard_outcome_by_threshold": {"high_only": "false_negative", "high_and_moderate": "false_negative", "all_identified_confidence_levels": "false_negative", "all_confidence_and_candidates": "false_negative"},
+      "mechanism_first_scorecard_outcome_by_threshold": {"high_only": "true_positive", "high_and_moderate": "true_positive", "all_identified_confidence_levels": "true_positive", "all_confidence_and_candidates": "true_positive"},
+      "secondary_diagnostic_outcome": "correct_location_wrong_bias_label",
+      "label_equivalence_explanation": "Halo effect is not an approved alias for the hidden Courtesy Bias target. It is a near-neighbor construct because both involve interpersonal impressions affecting a specific judgment, but the hidden target is specifically courtesy-driven softening toward a stakeholder.",
+      "mechanism_overlap_explanation": "The RAG explicitly connects the softer classification to the manager's positive relational impression, apologetic demeanor, offer to fix the issue, and the wish to avoid formal friction. It also identifies the missing verification and the counterfactual effect of a different interpersonal response, covering the hidden causal mechanism.",
+      "evidence_fidelity_assessment": "The quoted interview evidence is valid and supports the same phase-2 episode. The source's use of hindsight about recurrence is treated as corroborating context, not as evidence available before the decision."
+    }
+  ],
+  "unmatched_rag_predictions": [
+    {
+      "rag_occurrence_id": "obs_001",
+      "rag_finding_type": "identified",
+      "rag_predicted_bias_label": "halo effect",
+      "rag_confidence": "high",
+      "localized_segment_id": "seg_002",
+      "best_related_hidden_instance_id": "cb_01",
+      "label_equivalence_result": "near_neighbor_label",
+      "mechanism_overlap": "full_mechanism_match",
+      "strict_classification": "correct_location_wrong_bias_label",
+      "mechanism_first_classification": "not_applicable",
+      "counted_at_thresholds": ["high_only", "high_and_moderate", "all_identified_confidence_levels", "all_confidence_and_candidates"],
+      "why_not_an_exact_strict_match": "The finding is localized correctly and captures the hidden interpersonal-softening mechanism, but halo effect is not equivalent to the benchmark's Courtesy Bias label under the strict label-plus-mechanism scorecard."
+    }
+  ],
+  "candidate_analysis": {
+    "candidate_count": 0,
+    "candidates": []
+  },
+  "signal_detection_summary": {
+    "evaluation_unit": "eligible_reasoning_segment",
+    "high_only": {
+      "positive_segments": 1,
+      "negative_segments": 6,
+      "hits": 1,
+      "misses": 0,
+      "false_alarms": 0,
+      "correct_rejections": 6,
+      "hit_rate": 1.0,
+      "false_alarm_rate": 0.0,
+      "accuracy": 1.0,
+      "precision": 1.0,
+      "recall": 1.0,
+      "f1": 1.0,
+      "detection_interpretation": "The single high-confidence finding localizes to the sole positive segment, with no findings on negative segments."
+    },
+    "high_and_moderate": {
+      "positive_segments": 1,
+      "negative_segments": 6,
+      "hits": 1,
+      "misses": 0,
+      "false_alarms": 0,
+      "correct_rejections": 6,
+      "hit_rate": 1.0,
+      "false_alarm_rate": 0.0,
+      "accuracy": 1.0,
+      "precision": 1.0,
+      "recall": 1.0,
+      "f1": 1.0,
+      "detection_interpretation": "The high-confidence finding remains the only detection; adding moderate findings changes nothing."
+    },
+    "all_identified_confidence_levels": {
+      "positive_segments": 1,
+      "negative_segments": 6,
+      "hits": 1,
+      "misses": 0,
+      "false_alarms": 0,
+      "correct_rejections": 6,
+      "hit_rate": 1.0,
+      "false_alarm_rate": 0.0,
+      "accuracy": 1.0,
+      "precision": 1.0,
+      "recall": 1.0,
+      "f1": 1.0,
+      "detection_interpretation": "There are no low-confidence identified findings, so this threshold is identical to the higher-confidence thresholds."
+    },
+    "all_confidence_and_candidates": {
+      "positive_segments": 1,
+      "negative_segments": 6,
+      "hits": 1,
+      "misses": 0,
+      "false_alarms": 0,
+      "correct_rejections": 6,
+      "hit_rate": 1.0,
+      "false_alarm_rate": 0.0,
+      "accuracy": 1.0,
+      "precision": 1.0,
+      "recall": 1.0,
+      "f1": 1.0,
+      "detection_interpretation": "No candidates are present; the candidate-inclusive threshold is identical to the identified-findings thresholds."
+    }
+  },
+  "strict_instance_level_metrics": {
+    "high_only": {"true_positives": 0, "false_negatives": 1, "false_positives": 1, "precision": 0.0, "recall": 0.0, "f1": 0.0, "exact_occurrence_match_rate": 0.0, "occurrence_count_match_rate": 0.0},
+    "high_and_moderate": {"true_positives": 0, "false_negatives": 1, "false_positives": 1, "precision": 0.0, "recall": 0.0, "f1": 0.0, "exact_occurrence_match_rate": 0.0, "occurrence_count_match_rate": 0.0},
+    "all_identified_confidence_levels": {"true_positives": 0, "false_negatives": 1, "false_positives": 1, "precision": 0.0, "recall": 0.0, "f1": 0.0, "exact_occurrence_match_rate": 0.0, "occurrence_count_match_rate": 0.0},
+    "all_confidence_and_candidates": {"true_positives": 0, "false_negatives": 1, "false_positives": 1, "precision": 0.0, "recall": 0.0, "f1": 0.0, "exact_occurrence_match_rate": 0.0, "occurrence_count_match_rate": 0.0}
+  },
+  "mechanism_first_instance_level_metrics": {
+    "high_only": {"true_positives": 1, "false_negatives": 0, "false_positives": 0, "precision": 1.0, "recall": 1.0, "f1": 1.0, "exact_occurrence_match_rate": 1.0, "occurrence_count_match_rate": 1.0},
+    "high_and_moderate": {"true_positives": 1, "false_negatives": 0, "false_positives": 0, "precision": 1.0, "recall": 1.0, "f1": 1.0, "exact_occurrence_match_rate": 1.0, "occurrence_count_match_rate": 1.0},
+    "all_identified_confidence_levels": {"true_positives": 1, "false_negatives": 0, "false_positives": 0, "precision": 1.0, "recall": 1.0, "f1": 1.0, "exact_occurrence_match_rate": 1.0, "occurrence_count_match_rate": 1.0},
+    "all_confidence_and_candidates": {"true_positives": 1, "false_negatives": 0, "false_positives": 0, "precision": 1.0, "recall": 1.0, "f1": 1.0, "exact_occurrence_match_rate": 1.0, "occurrence_count_match_rate": 1.0}
+  },
+  "target_bias_performance": [
+    {
+      "hidden_target_bias_label": "Courtesy Bias",
+      "hidden_requested_occurrences": 1,
+      "strict_true_positives_by_threshold": {"high_only": 0, "high_and_moderate": 0, "all_identified_confidence_levels": 0, "all_confidence_and_candidates": 0},
+      "mechanism_first_true_positives_by_threshold": {"high_only": 1, "high_and_moderate": 1, "all_identified_confidence_levels": 1, "all_confidence_and_candidates": 1},
+      "count_match_status_at_all_confidence_and_candidates": "underdetected"
+    }
+  ],
+  "rag_label_false_positive_inventory": [
+    {
+      "rag_predicted_bias_label": "halo effect",
+      "finding_type": "identified",
+      "alternative_labels": [],
+      "occurrence_count": 1,
+      "best_related_hidden_target_bias_label": "Courtesy Bias",
+      "label_relation": "near_neighbor",
+      "mechanism_overlap_summary": "Full overlap with the hidden interpersonal-softening mechanism, but the label emphasizes spillover from a global positive impression rather than the benchmark's courtesy-driven leniency construct.",
+      "primary_error_types": ["correct_location_wrong_bias_label"]
+    }
+  ],
+  "diagnostic_error_summary": {
+    "correct_location_wrong_bias_label_count": 1,
+    "correct_label_wrong_location_count": 0,
+    "correct_label_location_wrong_mechanism_count": 0,
+    "mechanism_detected_label_unresolved_count": 0,
+    "partial_mechanism_match_count": 0,
+    "duplicate_prediction_count": 0,
+    "unsupported_prediction_count": 0,
+    "fabricated_or_invalid_quote_count": 0,
+    "approved_alias_or_equivalence_count": 0,
+    "near_neighbor_label_count": 1,
+    "different_construct_label_count": 0,
+    "candidate_count": 0,
+    "candidate_useful_abstention_count": 0,
+    "candidate_near_miss_count": 0,
+    "candidates_promoted_to_true_positive_at_fourth_threshold_count": 0
+  },
+  "corpus_support_audit": {
+    "primary_corpus_fidelity_score_available": false,
+    "rag_occurrences_claiming_retrieved_support": 1,
+    "rag_occurrences_with_no_claimed_retrieved_support": 0,
+    "rag_occurrences_with_unverifiable_or_internally_inconsistent_citation_metadata": 0,
+    "assessment_note": "The occurrence claims retrieved support and provides citation-like metadata, but the actual retrieved passage and retrieval logs are absent. Therefore corpus fidelity is unavailable; this does not alter detection or instance scores."
+  },
+  "comparison_ready_summary": {
+    "primary_recommended_comparison_threshold": "high_and_moderate",
+    "segment_detection": {
+      "high_only": {"hits": 1, "misses": 0, "false_alarms": 0, "correct_rejections": 6, "hit_rate": 1.0, "false_alarm_rate": 0.0, "f1": 1.0},
+      "high_and_moderate": {"hits": 1, "misses": 0, "false_alarms": 0, "correct_rejections": 6, "hit_rate": 1.0, "false_alarm_rate": 0.0, "f1": 1.0},
+      "all_identified_confidence_levels": {"hits": 1, "misses": 0, "false_alarms": 0, "correct_rejections": 6, "hit_rate": 1.0, "false_alarm_rate": 0.0, "f1": 1.0},
+      "all_confidence_and_candidates": {"hits": 1, "misses": 0, "false_alarms": 0, "correct_rejections": 6, "hit_rate": 1.0, "false_alarm_rate": 0.0, "f1": 1.0}
+    },
+    "strict_instance_identification": {
+      "high_only": {"true_positives": 0, "false_negatives": 1, "false_positives": 1, "precision": 0.0, "recall": 0.0, "f1": 0.0},
+      "high_and_moderate": {"true_positives": 0, "false_negatives": 1, "false_positives": 1, "precision": 0.0, "recall": 0.0, "f1": 0.0},
+      "all_identified_confidence_levels": {"true_positives": 0, "false_negatives": 1, "false_positives": 1, "precision": 0.0, "recall": 0.0, "f1": 0.0},
+      "all_confidence_and_candidates": {"true_positives": 0, "false_negatives": 1, "false_positives": 1, "precision": 0.0, "recall": 0.0, "f1": 0.0}
+    },
+    "mechanism_first_identification": {
+      "high_only": {"true_positives": 1, "false_negatives": 0, "false_positives": 0, "precision": 1.0, "recall": 1.0, "f1": 1.0},
+      "high_and_moderate": {"true_positives": 1, "false_negatives": 0, "false_positives": 0, "precision": 1.0, "recall": 1.0, "f1": 1.0},
+      "all_identified_confidence_levels": {"true_positives": 1, "false_negatives": 0, "false_positives": 0, "precision": 1.0, "recall": 1.0, "f1": 1.0},
+      "all_confidence_and_candidates": {"true_positives": 1, "false_negatives": 0, "false_positives": 0, "precision": 1.0, "recall": 1.0, "f1": 1.0}
+    },
+    "taxonomy_gap": {
+      "high_only": {"mechanism_first_f1_minus_strict_f1": 1.0},
+      "high_and_moderate": {"mechanism_first_f1_minus_strict_f1": 1.0},
+      "all_identified_confidence_levels": {"mechanism_first_f1_minus_strict_f1": 1.0},
+      "all_confidence_and_candidates": {"mechanism_first_f1_minus_strict_f1": 1.0}
+    },
+    "confidence_tradeoff": {
+      "increment_from_high_to_high_and_moderate": "No change: there are no moderate or low-confidence identified findings.",
+      "increment_from_high_and_moderate_to_all_confidence": "No change: there are no low-confidence identified findings.",
+      "increment_from_all_confidence_to_all_confidence_and_candidates": "No change: there are no candidate findings."
+    }
+  },
+  "overall_evaluation_summary": {
+    "hidden_total_planned_occurrences": 1,
+    "rag_total_identified_occurrences": 1,
+    "rag_total_candidate_biases": 0,
+    "segment_level_primary_result": "Perfect segment localization and detection: 1 hit, 0 misses, 0 false alarms, and 6 correct rejections at every threshold.",
+    "strict_label_plus_mechanism_result": "The single finding is a strict label miss and corresponding false positive because halo effect is not equivalent to Courtesy Bias, despite correct localization and mechanism.",
+    "mechanism_first_result": "The finding is a mechanism-first true positive at every threshold because it captures the hidden interpersonal-softening mechanism in the correct episode.",
+    "candidate_tier_value_assessment": "No candidates were supplied, so the candidate tier adds no information and changes no score.",
+    "main_failure_modes": ["Correct location and mechanism paired with a non-equivalent near-neighbor label under the strict scorecard."],
+    "main_strengths": ["High-confidence detection of the sole hidden episode.", "Exact supporting interview quotations and valid localization.", "Accurate description of the interpersonal mechanism and counterfactual dependence.", "No unsupported predictions on negative segments."],
+    "benchmark_interpretation": "This run shows strong evidence retrieval, episode localization, and mechanism recognition, but a taxonomy mismatch at the strict label-plus-mechanism level. The result is perfect under the mechanism-first scorecard and zero under the strict instance scorecard."
+  }
+}

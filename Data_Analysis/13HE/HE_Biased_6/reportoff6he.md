@@ -1,10 +1,231 @@
-# RAG Benchmark — 2026-09-13
+# RAG Benchmark — 2026-09-15
 
 ## Gemini Prompt 8192
 
-**Q1:** Interviewer: Thanks for making time for this. As we discussed, this is a debrief to understand your reasoning during the Stope 14-East incident, not an audit of the outcome. Everything you share helps us understand how decisions get made in the field. You're comfortable proceeding? Participant: Yeah, that's fine. I've done these debriefs before after other events. Happy to walk through it. Interviewer: Great. Can you first tell me a bit about your role and what your objective was that shift? Participant: I'm the Health and Safety Officer for the site, dayshift. My main job that day was routine — checks, permits, and keeping an eye on the ground conditions in the active stopes, including 14-East, which was mid-cycle in a longhole stope. We were also under a bit of pressure to hit weekly tonnage, so there was always that background tension between keeping things moving and not cutting corners. Interviewer: Walk me through what happened when you first got word of the noise. Participant: Around 06:40 one of the miners came up on radio saying he'd heard some cracking, almost like popping, in the back of 14-East. Intermittent, not constant. No alarm had gone off on the microseismic array at that point. Normally that would make me lean toward 'let's just check it,' but honestly, my mind went straight to what happened at our sister operation two months earlier — that rockburst that made the trade press and had everyone in the region talking. It wasn't identical conditions, but it was the same ore body region, and that event was still very much front of mind for the whole crew. So even without an alarm, I treated that report as something that could be heading toward a similar event, more than I think the instrument data alone would have justified. Interviewer: What alternatives did you weigh at that point? Participant: There were really three options — full evacuation and stop work pending a geotech look, allow work to continue with tighter monitoring and a reviewed escape route, or just get the instrument tech to check readings first without restricting anyone. I went with the middle option: enhanced monitoring, limited access, no full evacuation. Partly because the instruments weren't flagging anything, but I'll admit the sister-mine incident weighed heavily on how urgent it felt to me in the moment. Interviewer: Let's move to later that morning — the extensometer readings. Participant: Right, so the 05:00 baseline was 0.2mm, which is our normal quiet reading. At 09:40 the tech radioed that it had moved to 0.6mm. That's three times the baseline in about three hours. I looked at it and thought, well, compared to this morning it's still a small number, still sub-millimeter, nothing dramatic. I didn't go back and check it against the rate-of-change table in the GCMP, which is actually the correct way to assess it — that plan cares about how fast it's moving, not just where it sits relative to where it started. In hindsight I was comparing it to the wrong reference. Interviewer: What made the baseline feel like the right comparison at the time? Participant: It's just naturally what you have in front of you — you saw it at 0.2 that morning, now it's 0.6, and 0.6 still sounds low in absolute terms. Ventilation had nothing unusual either, no gas, no temperature anomaly, so there was nothing else pulling my attention toward the rate-of-change side of things. Interviewer: Did anything else factor into that call? Participant: The mine manager was also asking for a production ETA, so there was some pull to land on 'we're fine' rather than dig deeper into the trend math right then. Interviewer: Let's talk about the conversation with your shift supervisor. Participant: That was maybe an hour later. He's got twenty-two years underground, most of it at this site. He mentioned he'd heard similar popping back in 2009, and it hadn't come to anything. He was pretty confident it was 'nothing.' Around that same time the microseismic count for the shift had actually climbed to six events an hour, which is right at — actually just over — the flag threshold in our plan. I didn't push hard on whether the 2009 case actually matched today's rock type, blast pattern, or depth. His track record is strong, so his read carried a lot of weight for me in that moment, maybe more than it should have on its own. Interviewer: You also looked at a crack in the same panel. Can you describe that? Participant: Yes — there was a hairline crack, about a millimeter wide, that had been photographed and logged the week before as insignificant. When I looked at today's crack, I compared it side-by-side with that old photo, and it looked about the same width to me, so I read it as 'consistent with what we already know is fine.' What I didn't do at that point was connect it back to the microseismic number that had just ticked over the threshold — I was judging the crack against the old photo rather than against the newer seismic data. Interviewer: What alternatives did you consider before allowing continued access? Participant: Follow the seismic threshold strictly and pull back until the engineer signed off, split the difference and reduce crew size, or trust the supervisor's read and keep going with limited crew. I went with limited access, mostly on the supervisor's confidence and my own read of that crack photo. Interviewer: What happened next? Participant: The engineer eventually called back wanting the full event log, and around then someone noticed a second, wider crack near the first one. Then at 13:15 we had a minor spall — no injuries, some equipment damage. Shift change had happened about ninety minutes before that. Interviewer: When you wrote up the incident report, how did you decide what caused it? Participant: Looking at everything together — the overnight temperature drop, the shift change happening not long before, and the blasting in the panel next door the prior week — it came together into a pretty clean story: cooling stresses plus the handover timing plus the residual vibration from that blast. It read as a coherent explanation, so that's what I put forward as the primary account, even though the engineer's later note said several factors were plausible and none could really be confirmed as the dominant cause. Interviewer: And on responsibility — how did you frame that? Participant: I focused mainly on the miner who first heard the sounds and didn't escalate again after the initial 06:40 report — I felt if he'd flagged it again once the popping continued, we might have caught it sooner. I did note the missing engineer sign-off after the six-events flag, but that came across more as a process footnote than as a central cause in the report. Interviewer: If the sister-mine rockburst had never happened, do you think your first call would have gone differently? Participant: Possibly. I think without that fresh in everyone's mind, I might have waited for the instrument tech's check before doing anything, rather than jumping to enhanced monitoring right away. Interviewer: If the rate-of-change threshold had displayed automatically next to the raw reading, would the second decision have changed? Participant: Probably, yeah. If it had flagged red rather than just showing a number, I don't think I'd have leaned on the morning comparison the way I did. Interviewer: What would you tell a newer HSO to watch for in a similar shift? Participant: To always check the plan's actual thresholds rather than trusting a gut comparison to whatever reading you saw earlier, and to weigh a senior person's read alongside the data, not instead of it. Interviewer: Last one — how confident are you now that the causes you listed in the report are the real ones? Participant: Honestly, less than I was when I wrote it. It felt tidy at the time, but there were a few threads I didn't fully chase down.
+**Q1:** Interviewer: Thanks for making time for this. Just to confirm, this conversation is for a plan-review case study, it's voluntary, and you can skip anything you'd rather not discuss. Can you start by telling me your role and how the Meridian Tower conversion landed on your desk? Participant: Sure. I'm a plan review official in the building and fire division, mostly permitting and life-safety sign-off. Meridian Tower came to me because it was an adaptive reuse—22-story former office tower going to mixed-use residential and retail. The atrium was the whole complication. It's a big central void running most of the building height, and the geometry didn't fit the prescriptive smoke control provisions in our code. So the design team came in with a performance-based alternative instead. Interviewer: What was your objective going in? Participant: Get the project through review correctly and on time. We had a 30-day statutory clock, the department was short-staffed that quarter, and the city council was leaning on us to keep housing projects moving. So there was real pressure, but the job is still to make sure people are safe if there's a fire. Interviewer: Walk me through what happened, from the beginning. Participant: The engineering firm on record was Halkirk & Vance—they're a big regional name, they've done dozens of performance-based atrium designs, and a neighboring jurisdiction had approved a very similar design from them the year before. They submitted a CFD-based smoke control model instead of the prescriptive system. We didn't have budget that cycle for an outside peer review of the CFD assumptions, so it was really me evaluating it against the documentation package. After I signed off, we moved to writing commissioning conditions, which is where we had to pick between two verification protocols. Construction got underway, and partway through, our inspector flagged fire-door deficiencies on three floors. Then near occupancy, the developer pushed for an early certificate before full integration testing was done. Later in construction, there was a small trash-chute fire—sprinklers knocked it down fast, nobody was hurt—but it got people looking hard at the atrium smoke system again. Interviewer: Let's reconstruct the order more precisely. What did you know before the first big decision, and what came in afterward? Participant: Before approving the design, I had the CFD report, the firm's track record, and the neighboring jurisdiction's prior approval. After I approved it, we moved into commissioning planning—that's when the protocol question came up. After that decision, construction started, and the door issue surfaced maybe six weeks in. The occupancy request came right at the tail end, with the fire happening after that decision, not before. Interviewer: Let's go through the first decision—approving the performance-based design. What evidence carried the most weight for you? Participant: Honestly, the firm's name carried a lot of it. Halkirk & Vance has been doing this specific type of atrium work for years, and I knew their stamp had held up under scrutiny elsewhere—that neighboring jurisdiction's sign-off mattered to me. I read through the CFD report, but with the review clock running and no budget for an outside check, I leaned on the fact that this firm doesn't submit sloppy work. If it had been a firm I didn't recognize, I probably would have pushed harder on the input assumptions myself. Interviewer: Was requiring an outside peer review on the table? Participant: It was, but it would have added about three weeks, and given who submitted it, that felt like an unnecessary delay for a firm with that reputation. Interviewer: Second decision—the commissioning protocol. What were you weighing there? Participant: Two options. Option A was a newer risk-informed test, better matched to this atrium's actual geometry according to the guidance documents, but its pass/fail thresholds were described in fairly qualitative terms. Option B was the old prescriptive smoke test—clear binary pass or fail, easy to defend if anyone questioned it later, but known to be less sensitive to some of the failure modes this particular atrium could have. Interviewer: Which did you pick, and why? Participant: Option B. I'll be straight about it—part of the appeal was that I knew exactly what passing looked like and exactly what failing looked like. Option A might have been the better technical fit, the guidance basically said so, but I didn't want to be defending a judgment call on 'partially qualitative' thresholds if something went sideways. B gave me a clean line. Interviewer: Third decision—the door deficiencies. What did you see, and how did you respond? Participant: Our inspector found bad fire-door installations on floors 8, 11, and 14. Out of the whole building, those three stood out to me, and my read was that we had a problem crew or a bad batch of hardware concentrated there. I redirected our follow-up inspection effort to those three floors specifically. Interviewer: Were the crews assigned by floor, or rotated? Participant: Rotated randomly across the building, actually. And it was three deficiencies out of about 150 doors we'd checked at that point, which is close to what you'd expect on a project this size just from ordinary variation. But when you see three flagged floors, it's hard not to read that as meaning something. Interviewer: Fourth decision—the temporary occupancy request. What was your basis for granting it? Participant: The developer had a financing deadline, and full integration testing on the alarm and smoke systems was still three weeks out. This contractor has a good record on other city jobs I've handled, so I felt reasonably confident things would come together. A colleague also mentioned a similar building nearby that had gotten early partial occupancy and it worked out fine. I did know our own five-year numbers show something like 15 percent of these atrium smoke-control integration tests need rework citywide, but that felt like a background statistic rather than something specific to this job. Interviewer: What would have made you deny it instead? Participant: If the contractor's record had been shakier, or if there'd been an active known defect in the smoke system at that point, I'd have held the line. Nothing like that was flagged to me at the time. Interviewer: How much uncertainty did you feel at each of these points? Participant: Honestly, less than maybe I should have on the first and last ones. The door issue felt more certain than it probably was, in hindsight. The protocol choice, I knew I was trading some technical fit for administrative clarity going in. Interviewer: Looking back now, after the trash-chute fire, how do you view the original design approval? Participant: It's hard not to think the smoke migration issue should have jumped out at someone reading that CFD report closely. There was a sensitivity assumption buried in there about stack effect under partial door-open conditions, and looking at it now, it feels like it was sitting right there in the numbers the whole time. At the time, though, it just didn't register as something that mattered—it was one line among a lot of technical detail, and nothing about it stood out as a flag worth chasing back then. Interviewer: If you had the same information again, would you change the occupancy call? Participant: Probably not without new information. It felt like a reasonable bet given the contractor's history at the time. Interviewer: Last one—what would you tell a newer reviewer handling a similar submittal? Participant: Don't let a strong firm's name substitute for reading the assumptions line by line, and don't let a small, tidy pattern in inspection data talk you out of checking the actual numbers behind it.
 
-_ranker=rrf · t=0.04 · k=0 → 0 in context · 8192 ctx · emb 0.00s · gen 173.47s · total 178.7s_
+_ranker=rrf · t=0.04 · k=0 → 0 in context · 8192 ctx · emb 0.00s · gen 182.99s · total 188.6s_
+
+_No chunks passed the similarity threshold._
+
+{
+  "analysis_metadata": {
+    "task": "cognitive_bias_analysis",
+    "interview_speakers_detected": ["Interviewer", "Participant"],
+    "retrieved_corpus_support_used": false,
+    "analysis_scope_note": "Blind diagnostic review of decision and reasoning episodes in the plan-review interview; no RAG retrieval context was provided, so classifications rely on established cognitive-science taxonomy rather than retrieved corpus passages."
+  },
+  "identified_bias_summary": [
+    {
+      "bias_label": "Ambiguity aversion",
+      "identified_occurrence_count": 1
+    },
+    {
+      "bias_label": "Base rate neglect",
+      "identified_occurrence_count": 1
+    },
+    {
+      "bias_label": "Clustering illusion",
+      "identified_occurrence_count": 1
+    },
+    {
+      "bias_label": "Halo effect",
+      "identified_occurrence_count": 1
+    },
+    {
+      "bias_label": "Hindsight bias",
+      "identified_occurrence_count": 1
+    }
+  ],
+  "identified_occurrences": [
+    {
+      "occurrence_id": "obs_001",
+      "classification_status": "identified",
+      "confidence": "moderate",
+      "bias_label": "Halo effect",
+      "alternative_labels": ["Authority bias", "Prestige bias", "Source credibility bias"],
+      "taxonomy_status": "established_label",
+      "bias_definition": "Tendency for a positive global impression or reputation in one area to spill over into favorable judgments about specific, unrelated aspects of a person or organization.",
+      "attributed_to_speaker": "Participant",
+      "evidence_speaker": "Participant",
+      "decision_episode_label": "Meridian Tower performance-based design approval",
+      "decision_point_description": "Whether to approve the CFD-based performance-based smoke control design and whether to require outside peer review of the CFD assumptions.",
+      "affected_reasoning_operation": "Evidence weighting and independent technical scrutiny",
+      "bias_specific_mechanism": "The engineering firm's established reputation and prior approval by a neighboring jurisdiction generated a positive halo, causing the participant to treat the current CFD submittal as trustworthy and to reduce independent scrutiny of its assumptions.",
+      "manifestation_in_interview": "The participant states that the firm's name and reputation carried significant weight and that an unknown firm would have prompted harder scrutiny of input assumptions.",
+      "effect_on_reasoning_or_decision": "Contributed to approving the performance-based design without outside peer review and with less independent checking of CFD assumptions than would otherwise have occurred.",
+      "interview_evidence": [
+        {
+          "speaker": "Participant",
+          "verbatim_quote": "Honestly, the firm's name carried a lot of it. Halkirk & Vance has been doing this specific type of atrium work for years, and I knew their stamp had held up under scrutiny elsewhere—that neighboring jurisdiction's sign-off mattered to me.",
+          "evidence_explanation": "Explicitly attributes significant weight to firm reputation and prior jurisdictional approval, not solely to the technical content of the current submittal."
+        },
+        {
+          "speaker": "Participant",
+          "verbatim_quote": "I read through the CFD report, but with the review clock running and no budget for an outside check, I leaned on the fact that this firm doesn't submit sloppy work. If it had been a firm I didn't recognize, I probably would have pushed harder on the input assumptions myself.",
+          "evidence_explanation": "Directly contrasts reduced scrutiny under reputation with the greater scrutiny he would apply to an unknown firm, evidencing halo-driven evidence weighting."
+        },
+        {
+          "speaker": "Participant",
+          "verbatim_quote": "It was, but it would have added about three weeks, and given who submitted it, that felt like an unnecessary delay for a firm with that reputation.",
+          "evidence_explanation": "Shows that the decision not to seek outside peer review was influenced by the submitting firm's reputation rather than solely by technical or procedural necessity."
+        }
+      ],
+      "correction_or_counterevidence": "There were real external constraints—30-day clock, staffing shortage, no peer-review budget—and prior performance may be a legitimate screening cue; however, the participant's own account states that reputation caused less assumption-level scrutiny, and his later advice warns against substituting a strong firm's name for reading assumptions.",
+      "retrieved_corpus_support_available": false,
+      "corpus_support_note": "No retrieval context was supplied; classification relies on established cognitive-science knowledge.",
+      "corpus_evidence": []
+    },
+    {
+      "occurrence_id": "obs_002",
+      "classification_status": "identified",
+      "confidence": "low",
+      "bias_label": "Ambiguity aversion",
+      "alternative_labels": ["Ambiguity effect", "Uncertainty avoidance"],
+      "taxonomy_status": "established_label",
+      "bias_definition": "Preference for options with known or clearly defined outcomes or criteria over options with ambiguous or qualitative criteria, even when the ambiguous option may better fit the evidence or goals.",
+      "attributed_to_speaker": "Participant",
+      "evidence_speaker": "Participant",
+      "decision_episode_label": "Commissioning verification protocol selection",
+      "decision_point_description": "Selecting between Option A, a newer risk-informed test with qualitative thresholds, and Option B, the prescriptive smoke test with clear binary pass/fail criteria.",
+      "affected_reasoning_operation": "Risk/benefit evaluation and option selection under uncertainty",
+      "bias_specific_mechanism": "The participant favored Option B because its pass/fail thresholds were clear and easily defensible, while Option A was acknowledged as the better technical fit but involved qualitative thresholds that would require judgment.",
+      "manifestation_in_interview": "The participant states that Option A may have been the better technical fit and that the guidance supported it, but chose Option B because it gave a clean, binary pass/fail line.",
+      "effect_on_reasoning_or_decision": "Selected the less sensitive protocol, potentially overlooking the more technically appropriate method, due to avoidance of ambiguous decision criteria.",
+      "interview_evidence": [
+        {
+          "speaker": "Participant",
+          "verbatim_quote": "Option A was a newer risk-informed test, better matched to this atrium's actual geometry according to the guidance documents, but its pass/fail thresholds were described in fairly qualitative terms. Option B was the old prescriptive smoke test—clear binary pass or fail, easy to defend if anyone questioned it later, but known to be less sensitive to some of the failure modes this particular atrium could have.",
+          "evidence_explanation": "Documents that the participant understood Option A was technically better matched, while Option B offered clearer, more defensible thresholds."
+        },
+        {
+          "speaker": "Participant",
+          "verbatim_quote": "Option B. I'll be straight about it—part of the appeal was that I knew exactly what passing looked like and exactly what failing looked like. Option A might have been the better technical fit, the guidance basically said so, but I didn't want to be defending a judgment call on 'partially qualitative' thresholds if something went sideways. B gave me a clean line.",
+          "evidence_explanation": "Demonstrates that avoidance of qualitative or ambiguous criteria was a central reason for choosing Option B over the technically better-supported Option A."
+        }
+      ],
+      "correction_or_counterevidence": "Choosing a clear, enforceable test can be a legitimate professional preference, and accountability concerns may rationally favor defensible criteria; however, the participant explicitly acknowledged that the guidance indicated Option A was the better technical fit, suggesting ambiguity aversion contributed to the choice.",
+      "retrieved_corpus_support_available": false,
+      "corpus_support_note": "No retrieval context was supplied; classification relies on established cognitive-science knowledge.",
+      "corpus_evidence": []
+    },
+    {
+      "occurrence_id": "obs_003",
+      "classification_status": "identified",
+      "confidence": "high",
+      "bias_label": "Clustering illusion",
+      "alternative_labels": ["Illusory correlation", "Apophenia"],
+      "taxonomy_status": "established_label",
+      "bias_definition": "Tendency to perceive a meaningful pattern or cluster in random or small-sample data despite insufficient statistical evidence.",
+      "attributed_to_speaker": "Participant",
+      "evidence_speaker": "Participant",
+      "decision_episode_label": "Fire-door inspection follow-up",
+      "decision_point_description": "How to allocate follow-up inspection effort after fire-door deficiencies were found on floors 8, 11, and 14.",
+      "affected_reasoning_operation": "Pattern detection and causal inference",
+      "bias_specific_mechanism": "Three deficiencies out of approximately 150 inspected doors were interpreted as a meaningful cluster attributable to a problem crew or bad hardware batch, leading to concentrated follow-up on those three floors.",
+      "manifestation_in_interview": "The participant redirected follow-up inspection effort specifically to floors 8, 11, and 14 after seeing a small, apparently meaningful pattern in inspection data.",
+      "effect_on_reasoning_or_decision": "Influenced allocation of inspection resources toward a perceived cluster rather than treating the deficiencies as consistent with ordinary random variation.",
+      "interview_evidence": [
+        {
+          "speaker": "Participant",
+          "verbatim_quote": "Our inspector found bad fire-door installations on floors 8, 11, and 14. Out of the whole building, those three stood out to me, and my read was that we had a problem crew or a bad batch of hardware concentrated there. I redirected our follow-up inspection effort to those three floors specifically.",
+          "evidence_explanation": "Shows the participant perceived a meaningful cluster and acted on it by redirecting inspection effort."
+        },
+        {
+          "speaker": "Participant",
+          "verbatim_quote": "Rotated randomly across the building, actually. And it was three deficiencies out of about 150 doors we'd checked at that point, which is close to what you'd expect on a project this size just from ordinary variation. But when you see three flagged floors, it's hard not to read that as meaning something.",
+          "evidence_explanation": "Acknowledges the statistical base rate and random crew rotation, while also revealing the tendency to read random variation as meaningful pattern."
+        }
+      ],
+      "correction_or_counterevidence": "The participant later recognizes random crew rotation and the small-sample base rate, but this recognition appears after the initial follow-up allocation was made.",
+      "retrieved_corpus_support_available": false,
+      "corpus_support_note": "No retrieval context was supplied; classification relies on established cognitive-science knowledge.",
+      "corpus_evidence": []
+    },
+    {
+      "occurrence_id": "obs_004",
+      "classification_status": "identified",
+      "confidence": "moderate",
+      "bias_label": "Base rate neglect",
+      "alternative_labels": ["Base-rate fallacy", "Base rate fallacy"],
+      "taxonomy_status": "established_label",
+      "bias_definition": "Tendency to underweight or ignore base-rate or statistical information in favor of individuating or salient case-specific information.",
+      "attributed_to_speaker": "Participant",
+      "evidence_speaker": "Participant",
+      "decision_episode_label": "Temporary occupancy request",
+      "decision_point_description": "Whether to grant the developer early/temporary occupancy before full integration testing of the alarm and smoke systems was complete.",
+      "affected_reasoning_operation": "Probabilistic risk assessment and evidence weighting",
+      "bias_specific_mechanism": "The participant relied on the contractor's favorable history and a colleague's successful similar example while discounting the citywide base rate that approximately 15 percent of such atrium smoke-control integration tests need rework.",
+      "manifestation_in_interview": "The participant described the 15 percent rework statistic as a background statistic rather than something specific to the job, while expressing confidence based on contractor record and local anecdote.",
+      "effect_on_reasoning_or_decision": "Strengthened the judgment that early occupancy was a reasonable risk and contributed to granting the request despite the known base-rate risk.",
+      "interview_evidence": [
+        {
+          "speaker": "Participant",
+          "verbatim_quote": "The developer had a financing deadline, and full integration testing on the alarm and smoke systems was still three weeks out. This contractor has a good record on other city jobs I've handled, so I felt reasonably confident things would come together. A colleague also mentioned a similar building nearby that had gotten early partial occupancy and it worked out fine. I did know our own five-year numbers show something like 15 percent of these atrium smoke-control integration tests need rework citywide, but that felt like a background statistic rather than something specific to this job.",
+          "evidence_explanation": "Demonstrates weighing specific contractor and anecdotal evidence over a directly relevant statistical base rate."
+        }
+      ],
+      "correction_or_counterevidence": "No active known defect in the smoke system had been flagged, and a contractor's specific record may carry some diagnostic value; however, the citywide rework rate was directly relevant to the risk being assessed and was explicitly discounted by the participant.",
+      "retrieved_corpus_support_available": false,
+      "corpus_support_note": "No retrieval context was supplied; classification relies on established cognitive-science knowledge.",
+      "corpus_evidence": []
+    },
+    {
+      "occurrence_id": "obs_005",
+      "classification_status": "identified",
+      "confidence": "low",
+      "bias_label": "Hindsight bias",
+      "alternative_labels": ["Knew-it-all-along effect", "Creeping determinism"],
+      "taxonomy_status": "established_label",
+      "bias_definition": "Tendency after an outcome is known to overestimate the degree to which the outcome could have been predicted or was foreseeable based on previously available information.",
+      "attributed_to_speaker": "Participant",
+      "evidence_speaker": "Participant",
+      "decision_episode_label": "Post-fire retrospective evaluation of original design approval",
+      "decision_point_description": null,
+      "affected_reasoning_operation": "Retrospective foreseeability and predictability judgment",
+      "bias_specific_mechanism": "After the trash-chute fire and subsequent scrutiny, the participant perceived a buried CFD sensitivity assumption as having been obviously identifiable in the original numbers, despite recalling that it did not register at the time.",
+      "manifestation_in_interview": "The participant states it is hard not to think the smoke migration issue should have jumped out and that it felt as though it was sitting right there in the numbers the whole time.",
+      "effect_on_reasoning_or_decision": "Distorts the retrospective assessment of the original design review by overstating how foreseeable or detectable the issue was before the outcome.",
+      "interview_evidence": [
+        {
+          "speaker": "Participant",
+          "verbatim_quote": "It's hard not to think the smoke migration issue should have jumped out at someone reading that CFD report closely. There was a sensitivity assumption buried in there about stack effect under partial door-open conditions, and looking at it now, it feels like it was sitting right there in the numbers the whole time. At the time, though, it just didn't register as something that mattered—it was one line among a lot of technical detail, and nothing about it stood out as a flag worth chasing back then.",
+          "evidence_explanation": "Expresses post-outcome overestimation of foreseeability while also recalling that the issue did not register at the time."
+        }
+      ],
+      "correction_or_counterevidence": "The participant also explicitly recalls that the assumption did not register at the time, which tempers but does not eliminate the expressed hindsight overestimation.",
+      "retrieved_corpus_support_available": false,
+      "corpus_support_note": "No retrieval context was supplied; classification relies on established cognitive-science knowledge.",
+      "corpus_evidence": []
+    }
+  ],
+  "candidate_biases": [
+    {
+      "candidate_id": "cand_001",
+      "classification_status": "candidate",
+      "proposed_bias_label": "Overconfidence bias",
+      "alternative_labels": ["Overconfidence effect", "Metacognitive overconfidence"],
+      "taxonomy_status": "established_label",
+      "speaker_or_attributed_person": "Participant",
+      "possible_decision_episode_label": "Calibration of uncertainty across the design approval and temporary occupancy decisions",
+      "supporting_interview_quote": "Honestly, less than maybe I should have on the first and last ones. The door issue felt more certain than it probably was, in hindsight.",
+      "plausible_mechanism": "Subjective confidence in the first and last decisions exceeded warranted confidence, potentially reducing information search and risk sensitivity.",
+      "why_not_identified": "The transcript reports the overconfidence retrospectively rather than demonstrating an independent, discrete distortion at the time, and its downstream consequences overlap with the identified halo-effect and base-rate-neglect mechanisms."
+    }
+  ],
+  "no_supported_biases_found": false,
+  "limitations": [
+    "No retrieved corpus passages were supplied; the labels and mechanisms are based on established cognitive-science knowledge, not on retrieval metadata.",
+    "The analysis is based on a single self-report interview; reasoning processes are inferred from verbal testimony.",
+    "Regulatory, time, budget, and staffing constraints are present in the interview; the findings are limited to mechanisms affirmatively evidenced by the participant's own descriptions."
+  ]
+}
+
+## Sonar Prompt 8192
+
+**Q1:** Interviewer: Thanks for making time for this. Just to confirm, this conversation is for a plan-review case study, it's voluntary, and you can skip anything you'd rather not discuss. Can you start by telling me your role and how the Meridian Tower conversion landed on your desk? Participant: Sure. I'm a plan review official in the building and fire division, mostly permitting and life-safety sign-off. Meridian Tower came to me because it was an adaptive reuse—22-story former office tower going to mixed-use residential and retail. The atrium was the whole complication. It's a big central void running most of the building height, and the geometry didn't fit the prescriptive smoke control provisions in our code. So the design team came in with a performance-based alternative instead. Interviewer: What was your objective going in? Participant: Get the project through review correctly and on time. We had a 30-day statutory clock, the department was short-staffed that quarter, and the city council was leaning on us to keep housing projects moving. So there was real pressure, but the job is still to make sure people are safe if there's a fire. Interviewer: Walk me through what happened, from the beginning. Participant: The engineering firm on record was Halkirk & Vance—they're a big regional name, they've done dozens of performance-based atrium designs, and a neighboring jurisdiction had approved a very similar design from them the year before. They submitted a CFD-based smoke control model instead of the prescriptive system. We didn't have budget that cycle for an outside peer review of the CFD assumptions, so it was really me evaluating it against the documentation package. After I signed off, we moved to writing commissioning conditions, which is where we had to pick between two verification protocols. Construction got underway, and partway through, our inspector flagged fire-door deficiencies on three floors. Then near occupancy, the developer pushed for an early certificate before full integration testing was done. Later in construction, there was a small trash-chute fire—sprinklers knocked it down fast, nobody was hurt—but it got people looking hard at the atrium smoke system again. Interviewer: Let's reconstruct the order more precisely. What did you know before the first big decision, and what came in afterward? Participant: Before approving the design, I had the CFD report, the firm's track record, and the neighboring jurisdiction's prior approval. After I approved it, we moved into commissioning planning—that's when the protocol question came up. After that decision, construction started, and the door issue surfaced maybe six weeks in. The occupancy request came right at the tail end, with the fire happening after that decision, not before. Interviewer: Let's go through the first decision—approving the performance-based design. What evidence carried the most weight for you? Participant: Honestly, the firm's name carried a lot of it. Halkirk & Vance has been doing this specific type of atrium work for years, and I knew their stamp had held up under scrutiny elsewhere—that neighboring jurisdiction's sign-off mattered to me. I read through the CFD report, but with the review clock running and no budget for an outside check, I leaned on the fact that this firm doesn't submit sloppy work. If it had been a firm I didn't recognize, I probably would have pushed harder on the input assumptions myself. Interviewer: Was requiring an outside peer review on the table? Participant: It was, but it would have added about three weeks, and given who submitted it, that felt like an unnecessary delay for a firm with that reputation. Interviewer: Second decision—the commissioning protocol. What were you weighing there? Participant: Two options. Option A was a newer risk-informed test, better matched to this atrium's actual geometry according to the guidance documents, but its pass/fail thresholds were described in fairly qualitative terms. Option B was the old prescriptive smoke test—clear binary pass or fail, easy to defend if anyone questioned it later, but known to be less sensitive to some of the failure modes this particular atrium could have. Interviewer: Which did you pick, and why? Participant: Option B. I'll be straight about it—part of the appeal was that I knew exactly what passing looked like and exactly what failing looked like. Option A might have been the better technical fit, the guidance basically said so, but I didn't want to be defending a judgment call on 'partially qualitative' thresholds if something went sideways. B gave me a clean line. Interviewer: Third decision—the door deficiencies. What did you see, and how did you respond? Participant: Our inspector found bad fire-door installations on floors 8, 11, and 14. Out of the whole building, those three stood out to me, and my read was that we had a problem crew or a bad batch of hardware concentrated there. I redirected our follow-up inspection effort to those three floors specifically. Interviewer: Were the crews assigned by floor, or rotated? Participant: Rotated randomly across the building, actually. And it was three deficiencies out of about 150 doors we'd checked at that point, which is close to what you'd expect on a project this size just from ordinary variation. But when you see three flagged floors, it's hard not to read that as meaning something. Interviewer: Fourth decision—the temporary occupancy request. What was your basis for granting it? Participant: The developer had a financing deadline, and full integration testing on the alarm and smoke systems was still three weeks out. This contractor has a good record on other city jobs I've handled, so I felt reasonably confident things would come together. A colleague also mentioned a similar building nearby that had gotten early partial occupancy and it worked out fine. I did know our own five-year numbers show something like 15 percent of these atrium smoke-control integration tests need rework citywide, but that felt like a background statistic rather than something specific to this job. Interviewer: What would have made you deny it instead? Participant: If the contractor's record had been shakier, or if there'd been an active known defect in the smoke system at that point, I'd have held the line. Nothing like that was flagged to me at the time. Interviewer: How much uncertainty did you feel at each of these points? Participant: Honestly, less than maybe I should have on the first and last ones. The door issue felt more certain than it probably was, in hindsight. The protocol choice, I knew I was trading some technical fit for administrative clarity going in. Interviewer: Looking back now, after the trash-chute fire, how do you view the original design approval? Participant: It's hard not to think the smoke migration issue should have jumped out at someone reading that CFD report closely. There was a sensitivity assumption buried in there about stack effect under partial door-open conditions, and looking at it now, it feels like it was sitting right there in the numbers the whole time. At the time, though, it just didn't register as something that mattered—it was one line among a lot of technical detail, and nothing about it stood out as a flag worth chasing back then. Interviewer: If you had the same information again, would you change the occupancy call? Participant: Probably not without new information. It felt like a reasonable bet given the contractor's history at the time. Interviewer: Last one—what would you tell a newer reviewer handling a similar submittal? Participant: Don't let a strong firm's name substitute for reading the assumptions line by line, and don't let a small, tidy pattern in inspection data talk you out of checking the actual numbers behind it.
+
+_ranker=rrf · t=0.04 · k=0 → 0 in context · 8192 ctx · emb 0.00s · gen 118.61s · total 125.1s_
 
 _No chunks passed the similarity threshold._
 
@@ -16,27 +237,27 @@ _No chunks passed the similarity threshold._
       "Participant"
     ],
     "retrieved_corpus_support_used": false,
-    "analysis_scope_note": "Evaluated the full transcript for affirmative, mechanism-grounded cognitive bias occurrences. No retrieved corpus passages were supplied in the analysis context; classifications rely on established general cognitive-science knowledge rather than retrieved evidence."
+    "analysis_scope_note": "The interview was analyzed for cognitive-bias occurrences across the participant's four main decisions and a retrospective post-fire evaluation. No retrieved scientific-paper passages were supplied in the RAG context, so bias labels and mechanisms are drawn from general cognitive-bias knowledge, with retrieved corpus support marked unavailable."
   },
   "identified_bias_summary": [
     {
-      "bias_label": "Anchoring effect",
+      "bias_label": "ambiguity aversion",
       "identified_occurrence_count": 1
     },
     {
-      "bias_label": "Authority bias",
+      "bias_label": "base-rate neglect",
       "identified_occurrence_count": 1
     },
     {
-      "bias_label": "Availability heuristic",
+      "bias_label": "clustering illusion",
       "identified_occurrence_count": 1
     },
     {
-      "bias_label": "Confirmation bias",
+      "bias_label": "halo effect",
       "identified_occurrence_count": 1
     },
     {
-      "bias_label": "Narrative fallacy",
+      "bias_label": "hindsight bias",
       "identified_occurrence_count": 1
     }
   ],
@@ -45,445 +266,192 @@ _No chunks passed the similarity threshold._
       "occurrence_id": "obs_001",
       "classification_status": "identified",
       "confidence": "high",
-      "bias_label": "Availability heuristic",
-      "alternative_labels": [
-        "Availability bias"
-      ],
+      "bias_label": "halo effect",
+      "alternative_labels": [],
       "taxonomy_status": "established_label",
-      "bias_definition": "A judgmental bias in which perceived probability or urgency is inflated by the ease with which vivid, recent, or salient examples come to mind.",
+      "bias_definition": "The tendency for a positive overall impression of a person or organization to influence judgments about their specific attributes or products.",
       "attributed_to_speaker": "Participant",
       "evidence_speaker": "Participant",
-      "decision_episode_label": "Initial response to 06:40 cracking report in Stope 14-East",
-      "decision_point_description": "Choosing among full evacuation, enhanced monitoring/limited access, or instrument-only check after a radio report of popping/cracking.",
-      "affected_reasoning_operation": "Risk assessment and urgency weighting of an ambiguous ground-signal report",
-      "bias_specific_mechanism": "The recent, emotionally salient sister-mine rockburst was highly available in memory and served as a readily retrievable example, inflating the judged probability that the current cracking signal would lead to a similar event despite absent instrumental evidence.",
-      "manifestation_in_interview": "The participant immediately linked the 06:40 report to the sister-mine rockburst two months earlier and said that event remained front of mind, raising urgency beyond what the instrument data alone would have justified.",
-      "effect_on_reasoning_or_decision": "Led to immediate enhanced monitoring and limited access rather than waiting for an instrument technician check or relying on the undisturbed microseismic presentation.",
+      "decision_episode_label": "Approval of performance-based CFD smoke-control design",
+      "decision_point_description": "Decision whether to approve the Halkirk & Vance performance-based atrium smoke-control design without requiring an outside peer review.",
+      "affected_reasoning_operation": "Evaluation of technical submittal quality and need for independent verification",
+      "bias_specific_mechanism": "The firm's strong overall reputation and prior approval from another jurisdiction generalized to the specific CFD report, reducing scrutiny and making an outside peer review feel unnecessary.",
+      "manifestation_in_interview": "The participant said the firm's name carried a lot of weight, trusted that the firm does not submit sloppy work, and treated peer review as unnecessary partly because of who submitted it.",
+      "effect_on_reasoning_or_decision": "Reduced independent scrutiny of CFD input assumptions and contributed to the decision to forgo a peer review that the participant estimated would have added about three weeks.",
       "interview_evidence": [
         {
           "speaker": "Participant",
-          "verbatim_quote": "Around 06:40 one of the miners came up on radio saying he'd heard some cracking, almost like popping, in the back of 14-East. Intermittent, not constant. No alarm had gone off on the microseismic array at that point. Normally that would make me lean toward 'let's just check it,' but honestly, my mind went straight to what happened at our sister operation two months earlier — that rockburst that made the trade press and had everyone in the region talking. It wasn't identical conditions, but it was the same ore body region, and that event was still very much front of mind for the whole crew. So even without an alarm, I treated that report as something that could be heading toward a similar event, more than I think the instrument data alone would have justified.",
-          "evidence_explanation": "This quote explicitly states that the salience and recent availability of the sister-mine rockburst, rather than alarm data or sensor evidence, drove the elevated risk appraisal and urgency."
+          "verbatim_quote": "Honestly, the firm's name carried a lot of it. Halkirk & Vance has been doing this specific type of atrium work for years, and I knew their stamp had held up under scrutiny elsewhere—that neighboring jurisdiction's sign-off mattered to me. I read through the CFD report, but with the review clock running and no budget for an outside check, I leaned on the fact that this firm doesn't submit sloppy work. If it had been a firm I didn't recognize, I probably would have pushed harder on the input assumptions myself.",
+          "evidence_explanation": "This explicitly links the firm's reputation and prior approval to reduced scrutiny: the participant says an unrecognized firm would have triggered harder investigation of the same assumptions."
+        },
+        {
+          "speaker": "Participant",
+          "verbatim_quote": "It was, but it would have added about three weeks, and given who submitted it, that felt like an unnecessary delay for a firm with that reputation.",
+          "evidence_explanation": "This shows the halo effect influencing the peer-review decision: the cost of additional review was judged unnecessary based on the submitter's reputation rather than on the content of the submittal."
         }
       ],
-      "correction_or_counterevidence": "The participant still selected a middle option, enhanced monitoring with limited access, rather than full evacuation, so the availability effect did not completely dominate. The participant also acknowledged in a counterfactual question that without the sister-mine event he might have waited for the instrument technician check.",
+      "correction_or_counterevidence": "There were real contextual constraints—30-day clock, short staffing, no peer-review budget—and prior approval in a neighboring jurisdiction can be a legitimate precedent. The participant also read the CFD report. However, the explicit statement that an unrecognized firm would have prompted harder scrutiny indicates reputation itself affected the reasoning.",
       "retrieved_corpus_support_available": false,
-      "corpus_support_note": "No retrieved corpus passages were supplied in the analysis context; classification relies on established general cognitive-science knowledge of the availability heuristic.",
+      "corpus_support_note": "No retrieved scientific-paper passages were provided. The label and mechanism are drawn from general cognitive-bias knowledge; retrieved corpus support was unavailable.",
       "corpus_evidence": []
     },
     {
       "occurrence_id": "obs_002",
       "classification_status": "identified",
       "confidence": "high",
-      "bias_label": "Anchoring effect",
+      "bias_label": "ambiguity aversion",
       "alternative_labels": [
-        "Anchoring heuristic",
-        "Insufficient adjustment from anchor"
+        "uncertainty aversion",
+        "certainty effect"
       ],
       "taxonomy_status": "established_label",
-      "bias_definition": "The tendency to rely too heavily on an initial piece of information when making subsequent judgments and to adjust insufficiently from that anchor.",
+      "bias_definition": "Preference for known options or outcomes over unknown or ambiguous ones, even when the ambiguous option may be better suited.",
       "attributed_to_speaker": "Participant",
       "evidence_speaker": "Participant",
-      "decision_episode_label": "Interpretation of 09:40 extensometer reading",
-      "decision_point_description": "Deciding whether the 0.6mm extensometer movement warranted a stricter response under the GCMP.",
-      "affected_reasoning_operation": "Interpretation and evaluation of monitoring data and rate-of-change estimation",
-      "bias_specific_mechanism": "The earlier 05:00 baseline reading of 0.2mm acted as an anchor, such that 0.6mm was assessed as an absolute sub-millimeter value rather than as a tripling over three hours against the GCMP rate-of-change threshold.",
-      "manifestation_in_interview": "The participant compared the current 0.6mm reading to the morning baseline, judged it small, and did not consult the rate-of-change table.",
-      "effect_on_reasoning_or_decision": "Strengthened the 'we're fine' interpretation and reduced the likelihood of stricter action in response to a threefold change in the reading.",
+      "decision_episode_label": "Selection of commissioning/verification protocol",
+      "decision_point_description": "Choice between a newer risk-informed smoke-control test with qualitative pass/fail thresholds and an older prescriptive test with clear binary thresholds.",
+      "affected_reasoning_operation": "Choice under technical uncertainty and accountability concerns",
+      "bias_specific_mechanism": "The participant favored the option with clear, known pass/fail criteria over the technically better-matched but qualitatively thresholded option to avoid ambiguity and the need to defend judgment calls.",
+      "manifestation_in_interview": "The participant acknowledged that Option A may have been the better technical fit but selected Option B because it offered a clean, knowable line between passing and failing.",
+      "effect_on_reasoning_or_decision": "Led to selection of an older, less sensitive verification protocol despite guidance indicating the newer protocol was better matched to the atrium geometry.",
       "interview_evidence": [
         {
           "speaker": "Participant",
-          "verbatim_quote": "Right, so the 05:00 baseline was 0.2mm, which is our normal quiet reading. At 09:40 the tech radioed that it had moved to 0.6mm. That's three times the baseline in about three hours. I looked at it and thought, well, compared to this morning it's still a small number, still sub-millimeter, nothing dramatic. I didn't go back and check it against the rate-of-change table in the GCMP, which is actually the correct way to assess it — that plan cares about how fast it's moving, not just where it sits relative to where it started. In hindsight I was comparing it to the wrong reference.",
-          "evidence_explanation": "The participant explicitly describes an anchor-to-baseline comparison and a failure to use the prescribed rate-of-change reference, directly evidencing the anchoring mechanism."
+          "verbatim_quote": "Option A might have been the better technical fit, the guidance basically said so, but I didn't want to be defending a judgment call on 'partially qualitative' thresholds if something went sideways. B gave me a clean line.",
+          "evidence_explanation": "The participant explicitly chooses clarity and ease of defense over better technical fit, which is the core preference pattern of ambiguity aversion."
         },
         {
           "speaker": "Participant",
-          "verbatim_quote": "It's just naturally what you have in front of you — you saw it at 0.2 that morning, now it's 0.6, and 0.6 still sounds low in absolute terms. Ventilation had nothing unusual either, no gas, no temperature anomaly, so there was nothing else pulling my attention toward the rate-of-change side of things.",
-          "evidence_explanation": "This quote further shows the spontaneous salience of the prior reading as the comparison point, making the anchor the dominant reference."
+          "verbatim_quote": "I'll be straight about it—part of the appeal was that I knew exactly what passing looked like and exactly what failing looked like.",
+          "evidence_explanation": "This directly demonstrates the preference for known pass/fail criteria over the ambiguity of qualitative thresholds."
         }
       ],
-      "correction_or_counterevidence": "The absence of ventilation, gas, or temperature anomalies provided a legitimate secondary reason not to interpret the reading as immediately dangerous. The participant later recognized the correct comparison was the rate-of-change table.",
+      "correction_or_counterevidence": "Option B was easier to defend, and there may be legitimate institutional reasons to prefer clear pass/fail tests. The participant openly recognized the trade-off. The bias evidence is the preference for the known/clear option even though technical fit pointed elsewhere.",
       "retrieved_corpus_support_available": false,
-      "corpus_support_note": "No retrieved corpus passages were supplied in the analysis context; classification relies on established general cognitive-science knowledge of anchoring and insufficient adjustment.",
-      "corpus_evidence": []
-    },
-    {
-      "occurrence_id": "obs_003",
-      "classification_status": "identified",
-      "confidence": "moderate",
-      "bias_label": "Authority bias",
-      "alternative_labels": [
-        "Expert over-reliance",
-        "Seniority bias"
-      ],
-      "taxonomy_status": "established_label",
-      "bias_definition": "The tendency to overweight the opinion or judgment of a perceived authority or high-status expert, reducing independent scrutiny of the underlying evidence or situational fit.",
-      "attributed_to_speaker": "Participant",
-      "evidence_speaker": "Participant",
-      "decision_episode_label": "Supervisor consultation after microseismic threshold was approached/exceeded",
-      "decision_point_description": "Deciding whether to follow the threshold flag strictly and pull back, reduce crew size, or continue with limited access based partly on the supervisor's read.",
-      "affected_reasoning_operation": "Weighting of expert opinion against instrument data and formal threshold rules",
-      "bias_specific_mechanism": "The shift supervisor's 22 years of experience and strong track record served as an authority signal that suppressed deeper scrutiny of whether his 2009 experience matched current conditions; the participant accepted the 'nothing' reading with less evidential testing than the formal seismic threshold warranted.",
-      "manifestation_in_interview": "The participant acknowledged not pushing hard on whether the 2009 case matched rock type, blast pattern, or depth, and said the supervisor's read carried 'more than it should have.'",
-      "effect_on_reasoning_or_decision": "Contributed to continuing limited access instead of strict withdrawal despite a microseismic count just over the flag threshold.",
-      "interview_evidence": [
-        {
-          "speaker": "Participant",
-          "verbatim_quote": "He mentioned he'd heard similar popping back in 2009, and it hadn't come to anything. He was pretty confident it was 'nothing.' Around that same time the microseismic count for the shift had actually climbed to six events an hour, which is right at — actually just over — the flag threshold in our plan. I didn't push hard on whether the 2009 case actually matched today's rock type, blast pattern, or depth. His track record is strong, so his read carried a lot of weight for me in that moment, maybe more than it should have on its own.",
-          "evidence_explanation": "The participant explicitly describes overweighting the supervisor's experience-based judgment and failing to scrutinize its applicability even as formal threshold data flagged."
-        }
-      ],
-      "correction_or_counterevidence": "The supervisor's experience is a legitimate operational source of information, and consulting him was not inherently irrational. The participant also paired this input with his own crack-photo read, so the final decision was not solely authority-driven.",
-      "retrieved_corpus_support_available": false,
-      "corpus_support_note": "No retrieved corpus passages were supplied in the analysis context; classification relies on established general cognitive-science knowledge of authority bias.",
-      "corpus_evidence": []
-    },
-    {
-      "occurrence_id": "obs_004",
-      "classification_status": "identified",
-      "confidence": "low",
-      "bias_label": "Confirmation bias",
-      "alternative_labels": [
-        "Selective evidence evaluation",
-        "Confirmatory information search"
-      ],
-      "taxonomy_status": "established_label",
-      "bias_definition": "The tendency to seek, interpret, or favor information that confirms an existing belief or hypothesis, while giving less weight to disconfirming information.",
-      "attributed_to_speaker": "Participant",
-      "evidence_speaker": "Participant",
-      "decision_episode_label": "Inspection of hairline crack in the active panel",
-      "decision_point_description": "Assessing whether the previously logged hairline crack had materially changed and whether it contradicted continued limited access.",
-      "affected_reasoning_operation": "Visual inspection and integration of crack evidence with current seismic data",
-      "bias_specific_mechanism": "The existing belief that the crack was insignificant shaped the comparison; the participant compared the current crack with the old photograph, interpreted similarity as confirmation of safety, and did not integrate newly over-threshold microseismic data that would have disconfirmed that conclusion.",
-      "manifestation_in_interview": "The participant interpreted the current crack as 'consistent with what we already know is fine' based on an old photo and explicitly noted he was not connecting it to the newer seismic data.",
-      "effect_on_reasoning_or_decision": "Reinforced the limited-access decision and reduced updating from new seismic information.",
-      "interview_evidence": [
-        {
-          "speaker": "Participant",
-          "verbatim_quote": "Yes — there was a hairline crack, about a millimeter wide, that had been photographed and logged the week before as insignificant. When I looked at today's crack, I compared it side-by-side with that old photo, and it looked about the same width to me, so I read it as 'consistent with what we already know is fine.' What I didn't do at that point was connect it back to the microseismic number that had just ticked over the threshold — I was judging the crack against the old photo rather than against the newer seismic data.",
-          "evidence_explanation": "The quote shows a confirmatory interpretation of ambiguous visual evidence and selective exclusion of disconfirming current seismic data, consistent with confirmation bias."
-        }
-      ],
-      "correction_or_counterevidence": "Side-by-side comparison with prior imagery may be a standard practice for crack monitoring. The failure to integrate seismic data could also reflect task-narrowing or training rather than purely motivated confirmation, hence the low confidence.",
-      "retrieved_corpus_support_available": false,
-      "corpus_support_note": "No retrieved corpus passages were supplied in the analysis context; classification relies on established general cognitive-science knowledge of confirmation bias.",
-      "corpus_evidence": []
-    },
-    {
-      "occurrence_id": "obs_005",
-      "classification_status": "identified",
-      "confidence": "moderate",
-      "bias_label": "Narrative fallacy",
-      "alternative_labels": [
-        "Narrative bias",
-        "Coherence bias",
-        "Story bias"
-      ],
-      "taxonomy_status": "established_label",
-      "bias_definition": "The tendency to construct a coherent explanatory story from multiple plausible factors and then treat the story's coherence as evidence of its correctness, underweighting uncertainty and unconfirmed alternative causes.",
-      "attributed_to_speaker": "Participant",
-      "evidence_speaker": "Participant",
-      "decision_episode_label": "Post-incident causal attribution in written report",
-      "decision_point_description": "Selecting and framing the primary causes of the incident in the incident report.",
-      "affected_reasoning_operation": "Post-event causal inference and confidence calibration",
-      "bias_specific_mechanism": "The participant assembled available factors — overnight temperature drop, shift change timing, and prior-week neighboring blast — into a temporally and causally clean story; the apparent coherence increased his confidence in that causal account even though the engineer later indicated several factors were plausible and none could be confirmed as dominant.",
-      "manifestation_in_interview": "The participant described the explanation as coming together into a pretty clean story and adopted it as the primary account despite explicit uncertainty.",
-      "effect_on_reasoning_or_decision": "Produced an incident-report account that overrepresented a single coherent causal narrative as primary cause while underrepresenting causal uncertainty.",
-      "interview_evidence": [
-        {
-          "speaker": "Participant",
-          "verbatim_quote": "Looking at everything together — the overnight temperature drop, the shift change happening not long before, and the blasting in the panel next door the prior week — it came together into a pretty clean story: cooling stresses plus the handover timing plus the residual vibration from that blast. It read as a coherent explanation, so that's what I put forward as the primary account, even though the engineer's later note said several factors were plausible and none could really be confirmed as the dominant cause.",
-          "evidence_explanation": "The participant explicitly uses coherence as the basis for selecting a primary causal account while acknowledging the engineer's uncertainty; this is the core mechanism of narrative fallacy."
-        },
-        {
-          "speaker": "Participant",
-          "verbatim_quote": "Honestly, less than I was when I wrote it. It felt tidy at the time, but there were a few threads I didn't fully chase down.",
-          "evidence_explanation": "This retrospective confidence calibration indicates that the tidiness of the narrative inflated his confidence at the time of writing."
-        }
-      ],
-      "correction_or_counterevidence": "The engineer's note and the participant's later reduced confidence are explicit counterevidence that emerged after the report; they do not negate the bias at the time of writing. The causal story included multiple plausible factors, not one obviously false factor.",
-      "retrieved_corpus_support_available": false,
-      "corpus_support_note": "No retrieved corpus passages were supplied in the analysis context; classification relies on established general cognitive-science knowledge of narrative fallacy.",
-      "corpus_evidence": []
-    }
-  ],
-  "candidate_biases": [
-    {
-      "candidate_id": "cand_001",
-      "classification_status": "candidate",
-      "proposed_bias_label": "Self-serving bias",
-      "alternative_labels": [
-        "Fundamental attribution error",
-        "Responsibility attribution bias"
-      ],
-      "taxonomy_status": "established_label",
-      "speaker_or_attributed_person": "Participant",
-      "possible_decision_episode_label": "Responsibility attribution in incident report",
-      "supporting_interview_quote": "I focused mainly on the miner who first heard the sounds and didn't escalate again after the initial 06:40 report — I felt if he'd flagged it again once the popping continued, we might have caught it sooner. I did note the missing engineer sign-off after the six-events flag, but that came across more as a process footnote than as a central cause in the report.",
-      "plausible_mechanism": "Negative-outcome attribution may have been shifted toward the miner's inaction and away from the participant's own or system-level failure, minimizing self-protective responsibility and downplaying the missing engineer sign-off.",
-      "why_not_identified": "Though the framing suggests possible self-protective or dispositional attribution, the transcript does not provide enough affirmative evidence that a distinct bias mechanism caused the focus; the miner's failure to escalate again may have been a genuinely salient procedural event, and no explicit minimization of personal responsibility was stated."
-    }
-  ],
-  "no_supported_biases_found": false,
-  "limitations": [
-    "No retrieved corpus passages were supplied in the RAG context; bias labels and mechanisms are based on general cognitive-science knowledge rather than retrieval-grounded evidence.",
-    "The analysis relies on self-reported retrospective verbalization, which may be affected by memory, self-presentation, and post-incident reflection.",
-    "The transcript does not include independent instrument logs, shift records, or the full engineer note, limiting verification of the role of each bias in operational decisions."
-  ]
-}
-
-## Sonar Prompt 8192
-
-**Q1:** Interviewer: Thanks for making time for this. As we discussed, this is a debrief to understand your reasoning during the Stope 14-East incident, not an audit of the outcome. Everything you share helps us understand how decisions get made in the field. You're comfortable proceeding? Participant: Yeah, that's fine. I've done these debriefs before after other events. Happy to walk through it. Interviewer: Great. Can you first tell me a bit about your role and what your objective was that shift? Participant: I'm the Health and Safety Officer for the site, dayshift. My main job that day was routine — checks, permits, and keeping an eye on the ground conditions in the active stopes, including 14-East, which was mid-cycle in a longhole stope. We were also under a bit of pressure to hit weekly tonnage, so there was always that background tension between keeping things moving and not cutting corners. Interviewer: Walk me through what happened when you first got word of the noise. Participant: Around 06:40 one of the miners came up on radio saying he'd heard some cracking, almost like popping, in the back of 14-East. Intermittent, not constant. No alarm had gone off on the microseismic array at that point. Normally that would make me lean toward 'let's just check it,' but honestly, my mind went straight to what happened at our sister operation two months earlier — that rockburst that made the trade press and had everyone in the region talking. It wasn't identical conditions, but it was the same ore body region, and that event was still very much front of mind for the whole crew. So even without an alarm, I treated that report as something that could be heading toward a similar event, more than I think the instrument data alone would have justified. Interviewer: What alternatives did you weigh at that point? Participant: There were really three options — full evacuation and stop work pending a geotech look, allow work to continue with tighter monitoring and a reviewed escape route, or just get the instrument tech to check readings first without restricting anyone. I went with the middle option: enhanced monitoring, limited access, no full evacuation. Partly because the instruments weren't flagging anything, but I'll admit the sister-mine incident weighed heavily on how urgent it felt to me in the moment. Interviewer: Let's move to later that morning — the extensometer readings. Participant: Right, so the 05:00 baseline was 0.2mm, which is our normal quiet reading. At 09:40 the tech radioed that it had moved to 0.6mm. That's three times the baseline in about three hours. I looked at it and thought, well, compared to this morning it's still a small number, still sub-millimeter, nothing dramatic. I didn't go back and check it against the rate-of-change table in the GCMP, which is actually the correct way to assess it — that plan cares about how fast it's moving, not just where it sits relative to where it started. In hindsight I was comparing it to the wrong reference. Interviewer: What made the baseline feel like the right comparison at the time? Participant: It's just naturally what you have in front of you — you saw it at 0.2 that morning, now it's 0.6, and 0.6 still sounds low in absolute terms. Ventilation had nothing unusual either, no gas, no temperature anomaly, so there was nothing else pulling my attention toward the rate-of-change side of things. Interviewer: Did anything else factor into that call? Participant: The mine manager was also asking for a production ETA, so there was some pull to land on 'we're fine' rather than dig deeper into the trend math right then. Interviewer: Let's talk about the conversation with your shift supervisor. Participant: That was maybe an hour later. He's got twenty-two years underground, most of it at this site. He mentioned he'd heard similar popping back in 2009, and it hadn't come to anything. He was pretty confident it was 'nothing.' Around that same time the microseismic count for the shift had actually climbed to six events an hour, which is right at — actually just over — the flag threshold in our plan. I didn't push hard on whether the 2009 case actually matched today's rock type, blast pattern, or depth. His track record is strong, so his read carried a lot of weight for me in that moment, maybe more than it should have on its own. Interviewer: You also looked at a crack in the same panel. Can you describe that? Participant: Yes — there was a hairline crack, about a millimeter wide, that had been photographed and logged the week before as insignificant. When I looked at today's crack, I compared it side-by-side with that old photo, and it looked about the same width to me, so I read it as 'consistent with what we already know is fine.' What I didn't do at that point was connect it back to the microseismic number that had just ticked over the threshold — I was judging the crack against the old photo rather than against the newer seismic data. Interviewer: What alternatives did you consider before allowing continued access? Participant: Follow the seismic threshold strictly and pull back until the engineer signed off, split the difference and reduce crew size, or trust the supervisor's read and keep going with limited crew. I went with limited access, mostly on the supervisor's confidence and my own read of that crack photo. Interviewer: What happened next? Participant: The engineer eventually called back wanting the full event log, and around then someone noticed a second, wider crack near the first one. Then at 13:15 we had a minor spall — no injuries, some equipment damage. Shift change had happened about ninety minutes before that. Interviewer: When you wrote up the incident report, how did you decide what caused it? Participant: Looking at everything together — the overnight temperature drop, the shift change happening not long before, and the blasting in the panel next door the prior week — it came together into a pretty clean story: cooling stresses plus the handover timing plus the residual vibration from that blast. It read as a coherent explanation, so that's what I put forward as the primary account, even though the engineer's later note said several factors were plausible and none could really be confirmed as the dominant cause. Interviewer: And on responsibility — how did you frame that? Participant: I focused mainly on the miner who first heard the sounds and didn't escalate again after the initial 06:40 report — I felt if he'd flagged it again once the popping continued, we might have caught it sooner. I did note the missing engineer sign-off after the six-events flag, but that came across more as a process footnote than as a central cause in the report. Interviewer: If the sister-mine rockburst had never happened, do you think your first call would have gone differently? Participant: Possibly. I think without that fresh in everyone's mind, I might have waited for the instrument tech's check before doing anything, rather than jumping to enhanced monitoring right away. Interviewer: If the rate-of-change threshold had displayed automatically next to the raw reading, would the second decision have changed? Participant: Probably, yeah. If it had flagged red rather than just showing a number, I don't think I'd have leaned on the morning comparison the way I did. Interviewer: What would you tell a newer HSO to watch for in a similar shift? Participant: To always check the plan's actual thresholds rather than trusting a gut comparison to whatever reading you saw earlier, and to weigh a senior person's read alongside the data, not instead of it. Interviewer: Last one — how confident are you now that the causes you listed in the report are the real ones? Participant: Honestly, less than I was when I wrote it. It felt tidy at the time, but there were a few threads I didn't fully chase down.
-
-_ranker=rrf · t=0.04 · k=0 → 0 in context · 8192 ctx · emb 0.00s · gen 230.91s · total 235.5s_
-
-_No chunks passed the similarity threshold._
-
-{
-  "analysis_metadata": {
-    "task": "cognitive_bias_analysis",
-    "interview_speakers_detected": ["Interviewer", "Participant"],
-    "retrieved_corpus_support_used": false,
-    "analysis_scope_note": "Analysis of the participant's reported reasoning during the Stope 14-East incident. No retrieved scientific-paper corpus was supplied, so bias labels and mechanisms are drawn from general cognitive-science knowledge."
-  },
-  "identified_bias_summary": [
-    {
-      "bias_label": "anchoring bias",
-      "identified_occurrence_count": 1
-    },
-    {
-      "bias_label": "authority bias",
-      "identified_occurrence_count": 1
-    },
-    {
-      "bias_label": "availability heuristic",
-      "identified_occurrence_count": 1
-    },
-    {
-      "bias_label": "confirmation bias",
-      "identified_occurrence_count": 1
-    },
-    {
-      "bias_label": "narrative fallacy",
-      "identified_occurrence_count": 1
-    }
-  ],
-  "identified_occurrences": [
-    {
-      "occurrence_id": "obs_001",
-      "classification_status": "identified",
-      "confidence": "high",
-      "bias_label": "availability heuristic",
-      "alternative_labels": ["availability bias"],
-      "taxonomy_status": "established_label",
-      "bias_definition": "A mental shortcut in which the ease with which an example comes to mind influences judgments of frequency, probability, or urgency.",
-      "attributed_to_speaker": "Participant",
-      "evidence_speaker": "Participant",
-      "decision_episode_label": "Initial threat assessment after 06:40 cracking report",
-      "decision_point_description": "Choice among full evacuation/stop-work, enhanced monitoring with limited access, or instrument check first.",
-      "affected_reasoning_operation": "Risk evaluation and safety-response selection under uncertainty.",
-      "bias_specific_mechanism": "A recent, emotionally salient sister-mine rockburst was highly available in memory, leading the participant to treat an ambiguous noise report as more likely to be a precursor to a similar event than the microseismic data alone warranted.",
-      "manifestation_in_interview": "The participant spontaneously referenced the sister operation after the 06:40 report and stated he treated the sound as potentially similar even without an alarm; he later acknowledged he might have waited for instrument checks if not for the fresh memory.",
-      "effect_on_reasoning_or_decision": "Inflated perceived urgency and led to enhanced monitoring and limited access rather than waiting for instrument confirmation or choosing full evacuation.",
-      "interview_evidence": [
-        {
-          "speaker": "Participant",
-          "verbatim_quote": "my mind went straight to what happened at our sister operation two months earlier — that rockburst that made the trade press and had everyone in the region talking.",
-          "evidence_explanation": "This directly identifies the retrieval of a salient recent analogous event during the initial risk assessment."
-        },
-        {
-          "speaker": "Participant",
-          "verbatim_quote": "So even without an alarm, I treated that report as something that could be heading toward a similar event, more than I think the instrument data alone would have justified.",
-          "evidence_explanation": "The participant explicitly states that the sister-mine event influenced the threat interpretation beyond what objective instrument data justified."
-        },
-        {
-          "speaker": "Participant",
-          "verbatim_quote": "I think without that fresh in everyone's mind, I might have waited for the instrument tech's check before doing anything, rather than jumping to enhanced monitoring right away.",
-          "evidence_explanation": "This counterfactual supports availability as a causal driver rather than a purely instrument-based safety decision."
-        }
-      ],
-      "correction_or_counterevidence": "Taking precautions after a known regional event could be prudent risk management, and the participant did not choose full evacuation; however, the transcript explicitly identifies the memory as weighting the urgency judgment beyond instrument data.",
-      "retrieved_corpus_support_available": false,
-      "corpus_support_note": "No retrieved scientific-paper corpus was supplied; the availability heuristic label is from general cognitive-science knowledge.",
-      "corpus_evidence": []
-    },
-    {
-      "occurrence_id": "obs_002",
-      "classification_status": "identified",
-      "confidence": "high",
-      "bias_label": "anchoring bias",
-      "alternative_labels": ["anchoring and adjustment", "anchoring effect"],
-      "taxonomy_status": "established_label",
-      "bias_definition": "The tendency for an initial value or reference point to disproportionately influence subsequent interpretation, leading to insufficient adjustment away from that anchor.",
-      "attributed_to_speaker": "Participant",
-      "evidence_speaker": "Participant",
-      "decision_episode_label": "Interpretation of 09:40 extensometer reading",
-      "decision_point_description": "Assessment of whether 0.6 mm movement required escalation under the ground-control management plan.",
-      "affected_reasoning_operation": "Monitoring-data interpretation and threshold evaluation.",
-      "bias_specific_mechanism": "The 05:00 baseline reading of 0.2 mm served as a mental anchor; the participant judged 0.6 mm relative to that starting point rather than applying the plan's rate-of-change criterion.",
-      "manifestation_in_interview": "The participant described 0.6 mm as still sub-millimeter and not dramatic compared to the morning baseline, and acknowledged not checking the rate-of-change table.",
-      "effect_on_reasoning_or_decision": "He treated a threefold movement over roughly three hours as non-serious, missing the prescribed rate-of-change assessment.",
-      "interview_evidence": [
-        {
-          "speaker": "Participant",
-          "verbatim_quote": "I looked at it and thought, well, compared to this morning it's still a small number, still sub-millimeter, nothing dramatic.",
-          "evidence_explanation": "This shows the relative comparison to the morning baseline as the core judgment rather than the plan's rate-of-change criterion."
-        },
-        {
-          "speaker": "Participant",
-          "verbatim_quote": "I didn't go back and check it against the rate-of-change table in the GCMP, which is actually the correct way to assess it — that plan cares about how fast it's moving, not just where it sits relative to where it started. In hindsight I was comparing it to the wrong reference.",
-          "evidence_explanation": "The participant explicitly identifies the wrong reference point and the neglected decision rule."
-        },
-        {
-          "speaker": "Participant",
-          "verbatim_quote": "It's just naturally what you have in front of you — you saw it at 0.2 that morning, now it's 0.6, and 0.6 still sounds low in absolute terms.",
-          "evidence_explanation": "This indicates that the initial 0.2 mm reading was cognitively available and served as the anchor for interpreting the later value."
-        }
-      ],
-      "correction_or_counterevidence": "0.6 mm was genuinely small in absolute terms, and other indicators such as ventilation and gas were quiet; however, the participant later recognized he had compared against the wrong reference.",
-      "retrieved_corpus_support_available": false,
-      "corpus_support_note": "No retrieved scientific-paper corpus was supplied; the anchoring bias label is from general cognitive-science knowledge.",
+      "corpus_support_note": "No retrieved scientific-paper passages were provided. The label and mechanism are drawn from general cognitive-bias knowledge; retrieved corpus support was unavailable.",
       "corpus_evidence": []
     },
     {
       "occurrence_id": "obs_003",
       "classification_status": "identified",
       "confidence": "high",
-      "bias_label": "authority bias",
-      "alternative_labels": ["expert authority bias", "halo effect"],
+      "bias_label": "clustering illusion",
+      "alternative_labels": [
+        "pattern illusion",
+        "illusory correlation"
+      ],
       "taxonomy_status": "established_label",
-      "bias_definition": "The tendency to privilege an authority or highly experienced individual's view because of their status or track record, reducing critical evaluation of the content.",
+      "bias_definition": "The tendency to perceive meaningful clusters or patterns in random data when none necessarily exists.",
       "attributed_to_speaker": "Participant",
       "evidence_speaker": "Participant",
-      "decision_episode_label": "Evaluation of shift supervisor's reassurance about 2009 popping",
-      "decision_point_description": "Whether to accept the supervisor's 'nothing' read and keep limited access despite the microseismic threshold being crossed.",
-      "affected_reasoning_operation": "Integration of expert opinion with objective monitoring data.",
-      "bias_specific_mechanism": "The supervisor's 22-year track record and confidence served as a peripheral credibility cue; the participant weighted the supervisor's judgment more heavily than his own scrutiny of whether the 2009 analogy applied to current conditions.",
-      "manifestation_in_interview": "The participant did not push on whether the 2009 case matched current rock type, blast pattern, or depth, and explicitly said the supervisor's read carried more weight than it should have on its own.",
-      "effect_on_reasoning_or_decision": "Reduced scrutiny of a key reassuring comparison and contributed to the choice to keep limited crew rather than fully following the seismic threshold.",
+      "decision_episode_label": "Response to fire-door deficiency inspection findings",
+      "decision_point_description": "Decision to redirect follow-up inspection effort to floors 8, 11, and 14 based on three flagged doors.",
+      "affected_reasoning_operation": "Inference about the cause and distribution of defects from inspection data",
+      "bias_specific_mechanism": "The participant interpreted a small number of deficiencies across randomly assigned floors as a concentrated problem crew or bad hardware batch, even though the number was roughly consistent with ordinary variation.",
+      "manifestation_in_interview": "Three flagged floors stood out to the participant and were seen as meaning something, leading to targeted follow-up on those floors only.",
+      "effect_on_reasoning_or_decision": "Directed inspection resources toward three floors based on a potentially spurious pattern, while broader random variation may have been overlooked.",
       "interview_evidence": [
         {
           "speaker": "Participant",
-          "verbatim_quote": "He's got twenty-two years underground, most of it at this site. He mentioned he'd heard similar popping back in 2009, and it hadn't come to anything. He was pretty confident it was 'nothing.'",
-          "evidence_explanation": "This establishes that the supervisor's experience and confidence were salient inputs to the reasoning."
+          "verbatim_quote": "Our inspector found bad fire-door installations on floors 8, 11, and 14. Out of the whole building, those three stood out to me, and my read was that we had a problem crew or a bad batch of hardware concentrated there. I redirected our follow-up inspection effort to those three floors specifically.",
+          "evidence_explanation": "This shows the participant inferring a concentrated cause from a small cluster of flagged floors, which is the pattern-detection mechanism behind the clustering illusion."
         },
         {
           "speaker": "Participant",
-          "verbatim_quote": "I didn't push hard on whether the 2009 case actually matched today's rock type, blast pattern, or depth. His track record is strong, so his read carried a lot of weight for me in that moment, maybe more than it should have on its own.",
-          "evidence_explanation": "The participant explicitly links the supervisor's track record to reduced critical evaluation and disproportionate influence."
-        },
-        {
-          "speaker": "Participant",
-          "verbatim_quote": "I went with limited access, mostly on the supervisor's confidence and my own read of that crack photo.",
-          "evidence_explanation": "This connects the authority-based judgment to a concrete operational decision."
+          "verbatim_quote": "Rotated randomly across the building, actually. And it was three deficiencies out of about 150 doors we'd checked at that point, which is close to what you'd expect on a project this size just from ordinary variation. But when you see three flagged floors, it's hard not to read that as meaning something.",
+          "evidence_explanation": "The participant recognizes the randomness and ordinary base rate, yet still reports a strong impulse to interpret the cluster as meaningful, supporting a clustering illusion."
         }
       ],
-      "correction_or_counterevidence": "The supervisor had long relevant experience, and weighing expert judgment can be appropriate; however, the participant's own critical after-the-fact statement supports that the influence exceeded what the data alone warranted.",
+      "correction_or_counterevidence": "The participant later recognized that the deficiency count was close to ordinary variation and that crews were randomly rotated. This is strong counterevidence, but the initial redirect action occurred before that reflection.",
       "retrieved_corpus_support_available": false,
-      "corpus_support_note": "No retrieved scientific-paper corpus was supplied; the authority bias label is from general cognitive-science knowledge.",
+      "corpus_support_note": "No retrieved scientific-paper passages were provided. The label and mechanism are drawn from general cognitive-bias knowledge; retrieved corpus support was unavailable.",
       "corpus_evidence": []
     },
     {
       "occurrence_id": "obs_004",
       "classification_status": "identified",
       "confidence": "high",
-      "bias_label": "confirmation bias",
-      "alternative_labels": ["selective information processing", "congeniality bias"],
+      "bias_label": "base-rate neglect",
+      "alternative_labels": [
+        "base-rate fallacy"
+      ],
       "taxonomy_status": "established_label",
-      "bias_definition": "The tendency to search for, interpret, or remember information in ways that confirm existing beliefs and to underweight contradictory evidence.",
+      "bias_definition": "The tendency to underweight statistical base rates in favor of individuating or anecdotal case-specific information.",
       "attributed_to_speaker": "Participant",
       "evidence_speaker": "Participant",
-      "decision_episode_label": "Assessment of hairline crack against prior photo",
-      "decision_point_description": "Whether the crack supported continuing limited access after microseismic events crossed threshold.",
-      "affected_reasoning_operation": "Interpretation of physical crack evidence relative to newer seismic data.",
-      "bias_specific_mechanism": "The participant sought consistency with the prior 'insignificant' crack classification by comparing against the old photo, which supported the existing belief that the crack was fine, while failing to integrate the contradictory newer microseismic threshold exceedance.",
-      "manifestation_in_interview": "He read the crack as consistent with what they already knew was fine and explicitly noted he judged it against the old photo rather than the newer seismic data.",
-      "effect_on_reasoning_or_decision": "Preserved an existing conclusion of safety and supported continued limited access despite the microseismic threshold being crossed.",
+      "decision_episode_label": "Temporary occupancy approval before full integration testing",
+      "decision_point_description": "Decision to grant early/temporary occupancy before full alarm and smoke-system integration testing was complete, with full testing still three weeks out.",
+      "affected_reasoning_operation": "Risk judgment about likelihood of integration-test rework",
+      "bias_specific_mechanism": "The participant had a relevant citywide base rate—about 15% of atrium smoke-control integration tests need rework—but dismissed it as a background statistic and weighted contractor-specific history and a similar-building anecdote more heavily.",
+      "manifestation_in_interview": "The participant felt confident based on the contractor's record and a colleague's example of another building; the 15% rework statistic did not feel specific to this job.",
+      "effect_on_reasoning_or_decision": "Likely lowered perceived risk of granting early occupancy despite a non-trivial base rate of integration-test rework.",
       "interview_evidence": [
         {
           "speaker": "Participant",
-          "verbatim_quote": "When I looked at today's crack, I compared it side-by-side with that old photo, and it looked about the same width to me, so I read it as 'consistent with what we already know is fine.'",
-          "evidence_explanation": "This shows the interpretation was selected to fit the prior 'insignificant' classification."
+          "verbatim_quote": "This contractor has a good record on other city jobs I've handled, so I felt reasonably confident things would come together. A colleague also mentioned a similar building nearby that had gotten early partial occupancy and it worked out fine.",
+          "evidence_explanation": "This shows reliance on case-specific information—contractor history and a similar-building anecdote—rather than the broader statistical base rate."
         },
         {
           "speaker": "Participant",
-          "verbatim_quote": "What I didn't do at that point was connect it back to the microseismic number that had just ticked over the threshold — I was judging the crack against the old photo rather than against the newer seismic data.",
-          "evidence_explanation": "The participant explicitly names the selective comparison and omission of contradictory information, which is central to confirmation bias."
+          "verbatim_quote": "I did know our own five-year numbers show something like 15 percent of these atrium smoke-control integration tests need rework citywide, but that felt like a background statistic rather than something specific to this job.",
+          "evidence_explanation": "This explicitly reveals base-rate neglect: the participant knew the statistical rework rate but dismissed it as not specific to the decision."
         }
       ],
-      "correction_or_counterevidence": "Photographic comparison is a plausible method for detecting crack-width change, and seismic data are not direct crack evidence; however, the interview explicitly identifies the selective comparison and failure to integrate the threshold signal.",
+      "correction_or_counterevidence": "The contractor's good record and the similar-building case are relevant case-specific information, and the participant had no active known defect at the time. The bias is the explicit dismissal of the broader 15% rework rate as background rather than integrating it as a base rate.",
       "retrieved_corpus_support_available": false,
-      "corpus_support_note": "No retrieved scientific-paper corpus was supplied; the confirmation bias label is from general cognitive-science knowledge.",
+      "corpus_support_note": "No retrieved scientific-paper passages were provided. The label and mechanism are drawn from general cognitive-bias knowledge; retrieved corpus support was unavailable.",
       "corpus_evidence": []
     },
     {
       "occurrence_id": "obs_005",
       "classification_status": "identified",
-      "confidence": "moderate",
-      "bias_label": "narrative fallacy",
-      "alternative_labels": ["hindsight bias", "coherence bias"],
+      "confidence": "high",
+      "bias_label": "hindsight bias",
+      "alternative_labels": [
+        "knew-it-all-along effect"
+      ],
       "taxonomy_status": "established_label",
-      "bias_definition": "The tendency to construct overly coherent causal stories after an event and to treat the tidy narrative as more explanatory or confirmed than the evidence warrants.",
+      "bias_definition": "The tendency, after learning an outcome, to perceive that outcome as having been more predictable or obvious than it actually was at the time.",
       "attributed_to_speaker": "Participant",
       "evidence_speaker": "Participant",
-      "decision_episode_label": "Causal explanation in incident report",
-      "decision_point_description": "Selection of a primary cause account for the written incident report.",
-      "affected_reasoning_operation": "Causal attribution and explanatory synthesis after the spall event.",
-      "bias_specific_mechanism": "After the spall, the participant assembled several plausible factors into a clean causal story; the story's coherence increased his confidence in that primary account even though the engineer later noted no factor could be confirmed as dominant.",
-      "manifestation_in_interview": "The participant explicitly said the explanation came together into a clean story and that he put it forward as the primary account despite causal ambiguity.",
-      "effect_on_reasoning_or_decision": "The report presented a single primary causal account as tidier than the evidence supported, and the participant later reported lower confidence than at the time of writing.",
+      "decision_episode_label": "Retrospective evaluation of the original design approval after the trash-chute fire",
+      "decision_point_description": null,
+      "affected_reasoning_operation": "Retrospective judgment of the foreseeability of the smoke-migration risk",
+      "bias_specific_mechanism": "After the fire, the participant judged that the smoke-migration issue should have jumped out and was sitting in the numbers, while also noting that at the time it did not register as a flag. Outcome knowledge inflated perceived foreseeability.",
+      "manifestation_in_interview": "The participant said the sensitivity assumption now seemed obvious and should have been noticed, despite previously being one line among technical detail that did not stand out.",
+      "effect_on_reasoning_or_decision": "May distort the participant's evaluation of the original review quality by attributing greater foreseeability to a cue that was not salient at the time.",
       "interview_evidence": [
         {
           "speaker": "Participant",
-          "verbatim_quote": "Looking at everything together — the overnight temperature drop, the shift change happening not long before, and the blasting in the panel next door the prior week — it came together into a pretty clean story: cooling stresses plus the handover timing plus the residual vibration from that blast.",
-          "evidence_explanation": "This demonstrates the construction of a coherent, multi-factor causal story after the outcome."
+          "verbatim_quote": "It's hard not to think the smoke migration issue should have jumped out at someone reading that CFD report closely. There was a sensitivity assumption buried in there about stack effect under partial door-open conditions, and looking at it now, it feels like it was sitting right there in the numbers the whole time.",
+          "evidence_explanation": "This is the classic hindsight-bias pattern: after the adverse outcome, the participant feels the issue was obvious in the original data."
         },
         {
           "speaker": "Participant",
-          "verbatim_quote": "It read as a coherent explanation, so that's what I put forward as the primary account, even though the engineer's later note said several factors were plausible and none could really be confirmed as the dominant cause.",
-          "evidence_explanation": "The participant explicitly identifies coherence as the basis for endorsing a primary account despite acknowledged causal uncertainty."
-        },
-        {
-          "speaker": "Participant",
-          "verbatim_quote": "Honestly, less than I was when I wrote it. It felt tidy at the time, but there were a few threads I didn't fully chase down.",
-          "evidence_explanation": "The later reduction in confidence shows that the prior tidy story had produced inflated subjective confidence in the causal explanation."
+          "verbatim_quote": "At the time, though, it just didn't register as something that mattered—it was one line among a lot of technical detail, and nothing about it stood out as a flag worth chasing back then.",
+          "evidence_explanation": "This contrast shows that the cue was not treated as salient at the time, yet is now described as having been sitting in the numbers, supporting hindsight bias."
         }
       ],
-      "correction_or_counterevidence": "Incident investigation necessarily seeks causal explanations after the event, and the synthesis may reflect legitimate professional judgment; however, the transcript indicates that narrative coherence rather than confirmed evidence drove the primary account.",
+      "correction_or_counterevidence": "The participant explicitly contrasts the present sense of obviousness with the lack of salience at the time, which is consistent with hindsight bias rather than a simple recognition of a clear error. This statement is retrospective and is analyzed as a reasoning process, not as a discrete decision.",
       "retrieved_corpus_support_available": false,
-      "corpus_support_note": "No retrieved scientific-paper corpus was supplied; the narrative fallacy label is from general cognitive-science and decision-science knowledge.",
+      "corpus_support_note": "No retrieved scientific-paper passages were provided. The label and mechanism are drawn from general cognitive-bias knowledge; retrieved corpus support was unavailable.",
       "corpus_evidence": []
     }
   ],
-  "candidate_biases": [
-    {
-      "candidate_id": "cand_001",
-      "classification_status": "candidate",
-      "proposed_bias_label": "fundamental attribution error",
-      "alternative_labels": ["correspondence bias", "self-serving bias"],
-      "taxonomy_status": "established_label",
-      "speaker_or_attributed_person": "Participant",
-      "possible_decision_episode_label": "Responsibility framing in incident report",
-      "supporting_interview_quote": "I focused mainly on the miner who first heard the sounds and didn't escalate again after the initial 06:40 report — I felt if he'd flagged it again once the popping continued, we might have caught it sooner. I did note the missing engineer sign-off after the six-events flag, but that came across more as a process footnote than as a central cause in the report.",
-      "plausible_mechanism": "The participant may have over-attributed the incident to the miner's individual escalation failure while underweighting systemic and process contributors, such as the missed engineer sign-off and the absence of automatic threshold alerts.",
-      "why_not_identified": "The transcript does not clearly demonstrate a bias-specific attribution mechanism rather than a legitimate judgment that the miner's failure was a key actionable cause, so it remains below the affirmative-evidence threshold."
-    }
-  ],
+  "candidate_biases": [],
   "no_supported_biases_found": false,
   "limitations": [
-    "No retrieved scientific-paper corpus was supplied, so bias labels and definitions rely on general cognitive-science knowledge rather than retrieved passages.",
-    "The analysis is based on retrospective self-report, which may be affected by memory limitations or later outcome knowledge.",
-    "The transcript includes operational pressures such as production expectations and shift change, which may have shaped reasoning in ways not fully attributable to a single cognitive bias.",
-    "Some reasoning episodes share overlapping evidence and contextual influences; the identified mechanisms should be understood as distinct but not mutually exclusive."
+    "No retrieved scientific-paper passages were available in the RAG context; all bias labels and mechanisms are based on general cognitive-science knowledge and should be treated as provisional.",
+    "The transcript is retrospective and self-reported; some decision pressures, such as time limits, staffing shortages, budget constraints, and political pressure, are non-cognitive constraints and were not classified as biases.",
+    "Multiple biases may overlap in the same decisions, but only the clearest distinct mechanism per occurrence was reported."
   ]
 }
 
 ## Sonnet Prompt 8192
 
-**Q1:** Interviewer: Thanks for making time for this. As we discussed, this is a debrief to understand your reasoning during the Stope 14-East incident, not an audit of the outcome. Everything you share helps us understand how decisions get made in the field. You're comfortable proceeding? Participant: Yeah, that's fine. I've done these debriefs before after other events. Happy to walk through it. Interviewer: Great. Can you first tell me a bit about your role and what your objective was that shift? Participant: I'm the Health and Safety Officer for the site, dayshift. My main job that day was routine — checks, permits, and keeping an eye on the ground conditions in the active stopes, including 14-East, which was mid-cycle in a longhole stope. We were also under a bit of pressure to hit weekly tonnage, so there was always that background tension between keeping things moving and not cutting corners. Interviewer: Walk me through what happened when you first got word of the noise. Participant: Around 06:40 one of the miners came up on radio saying he'd heard some cracking, almost like popping, in the back of 14-East. Intermittent, not constant. No alarm had gone off on the microseismic array at that point. Normally that would make me lean toward 'let's just check it,' but honestly, my mind went straight to what happened at our sister operation two months earlier — that rockburst that made the trade press and had everyone in the region talking. It wasn't identical conditions, but it was the same ore body region, and that event was still very much front of mind for the whole crew. So even without an alarm, I treated that report as something that could be heading toward a similar event, more than I think the instrument data alone would have justified. Interviewer: What alternatives did you weigh at that point? Participant: There were really three options — full evacuation and stop work pending a geotech look, allow work to continue with tighter monitoring and a reviewed escape route, or just get the instrument tech to check readings first without restricting anyone. I went with the middle option: enhanced monitoring, limited access, no full evacuation. Partly because the instruments weren't flagging anything, but I'll admit the sister-mine incident weighed heavily on how urgent it felt to me in the moment. Interviewer: Let's move to later that morning — the extensometer readings. Participant: Right, so the 05:00 baseline was 0.2mm, which is our normal quiet reading. At 09:40 the tech radioed that it had moved to 0.6mm. That's three times the baseline in about three hours. I looked at it and thought, well, compared to this morning it's still a small number, still sub-millimeter, nothing dramatic. I didn't go back and check it against the rate-of-change table in the GCMP, which is actually the correct way to assess it — that plan cares about how fast it's moving, not just where it sits relative to where it started. In hindsight I was comparing it to the wrong reference. Interviewer: What made the baseline feel like the right comparison at the time? Participant: It's just naturally what you have in front of you — you saw it at 0.2 that morning, now it's 0.6, and 0.6 still sounds low in absolute terms. Ventilation had nothing unusual either, no gas, no temperature anomaly, so there was nothing else pulling my attention toward the rate-of-change side of things. Interviewer: Did anything else factor into that call? Participant: The mine manager was also asking for a production ETA, so there was some pull to land on 'we're fine' rather than dig deeper into the trend math right then. Interviewer: Let's talk about the conversation with your shift supervisor. Participant: That was maybe an hour later. He's got twenty-two years underground, most of it at this site. He mentioned he'd heard similar popping back in 2009, and it hadn't come to anything. He was pretty confident it was 'nothing.' Around that same time the microseismic count for the shift had actually climbed to six events an hour, which is right at — actually just over — the flag threshold in our plan. I didn't push hard on whether the 2009 case actually matched today's rock type, blast pattern, or depth. His track record is strong, so his read carried a lot of weight for me in that moment, maybe more than it should have on its own. Interviewer: You also looked at a crack in the same panel. Can you describe that? Participant: Yes — there was a hairline crack, about a millimeter wide, that had been photographed and logged the week before as insignificant. When I looked at today's crack, I compared it side-by-side with that old photo, and it looked about the same width to me, so I read it as 'consistent with what we already know is fine.' What I didn't do at that point was connect it back to the microseismic number that had just ticked over the threshold — I was judging the crack against the old photo rather than against the newer seismic data. Interviewer: What alternatives did you consider before allowing continued access? Participant: Follow the seismic threshold strictly and pull back until the engineer signed off, split the difference and reduce crew size, or trust the supervisor's read and keep going with limited crew. I went with limited access, mostly on the supervisor's confidence and my own read of that crack photo. Interviewer: What happened next? Participant: The engineer eventually called back wanting the full event log, and around then someone noticed a second, wider crack near the first one. Then at 13:15 we had a minor spall — no injuries, some equipment damage. Shift change had happened about ninety minutes before that. Interviewer: When you wrote up the incident report, how did you decide what caused it? Participant: Looking at everything together — the overnight temperature drop, the shift change happening not long before, and the blasting in the panel next door the prior week — it came together into a pretty clean story: cooling stresses plus the handover timing plus the residual vibration from that blast. It read as a coherent explanation, so that's what I put forward as the primary account, even though the engineer's later note said several factors were plausible and none could really be confirmed as the dominant cause. Interviewer: And on responsibility — how did you frame that? Participant: I focused mainly on the miner who first heard the sounds and didn't escalate again after the initial 06:40 report — I felt if he'd flagged it again once the popping continued, we might have caught it sooner. I did note the missing engineer sign-off after the six-events flag, but that came across more as a process footnote than as a central cause in the report. Interviewer: If the sister-mine rockburst had never happened, do you think your first call would have gone differently? Participant: Possibly. I think without that fresh in everyone's mind, I might have waited for the instrument tech's check before doing anything, rather than jumping to enhanced monitoring right away. Interviewer: If the rate-of-change threshold had displayed automatically next to the raw reading, would the second decision have changed? Participant: Probably, yeah. If it had flagged red rather than just showing a number, I don't think I'd have leaned on the morning comparison the way I did. Interviewer: What would you tell a newer HSO to watch for in a similar shift? Participant: To always check the plan's actual thresholds rather than trusting a gut comparison to whatever reading you saw earlier, and to weigh a senior person's read alongside the data, not instead of it. Interviewer: Last one — how confident are you now that the causes you listed in the report are the real ones? Participant: Honestly, less than I was when I wrote it. It felt tidy at the time, but there were a few threads I didn't fully chase down.
+**Q1:** Interviewer: Thanks for making time for this. Just to confirm, this conversation is for a plan-review case study, it's voluntary, and you can skip anything you'd rather not discuss. Can you start by telling me your role and how the Meridian Tower conversion landed on your desk? Participant: Sure. I'm a plan review official in the building and fire division, mostly permitting and life-safety sign-off. Meridian Tower came to me because it was an adaptive reuse—22-story former office tower going to mixed-use residential and retail. The atrium was the whole complication. It's a big central void running most of the building height, and the geometry didn't fit the prescriptive smoke control provisions in our code. So the design team came in with a performance-based alternative instead. Interviewer: What was your objective going in? Participant: Get the project through review correctly and on time. We had a 30-day statutory clock, the department was short-staffed that quarter, and the city council was leaning on us to keep housing projects moving. So there was real pressure, but the job is still to make sure people are safe if there's a fire. Interviewer: Walk me through what happened, from the beginning. Participant: The engineering firm on record was Halkirk & Vance—they're a big regional name, they've done dozens of performance-based atrium designs, and a neighboring jurisdiction had approved a very similar design from them the year before. They submitted a CFD-based smoke control model instead of the prescriptive system. We didn't have budget that cycle for an outside peer review of the CFD assumptions, so it was really me evaluating it against the documentation package. After I signed off, we moved to writing commissioning conditions, which is where we had to pick between two verification protocols. Construction got underway, and partway through, our inspector flagged fire-door deficiencies on three floors. Then near occupancy, the developer pushed for an early certificate before full integration testing was done. Later in construction, there was a small trash-chute fire—sprinklers knocked it down fast, nobody was hurt—but it got people looking hard at the atrium smoke system again. Interviewer: Let's reconstruct the order more precisely. What did you know before the first big decision, and what came in afterward? Participant: Before approving the design, I had the CFD report, the firm's track record, and the neighboring jurisdiction's prior approval. After I approved it, we moved into commissioning planning—that's when the protocol question came up. After that decision, construction started, and the door issue surfaced maybe six weeks in. The occupancy request came right at the tail end, with the fire happening after that decision, not before. Interviewer: Let's go through the first decision—approving the performance-based design. What evidence carried the most weight for you? Participant: Honestly, the firm's name carried a lot of it. Halkirk & Vance has been doing this specific type of atrium work for years, and I knew their stamp had held up under scrutiny elsewhere—that neighboring jurisdiction's sign-off mattered to me. I read through the CFD report, but with the review clock running and no budget for an outside check, I leaned on the fact that this firm doesn't submit sloppy work. If it had been a firm I didn't recognize, I probably would have pushed harder on the input assumptions myself. Interviewer: Was requiring an outside peer review on the table? Participant: It was, but it would have added about three weeks, and given who submitted it, that felt like an unnecessary delay for a firm with that reputation. Interviewer: Second decision—the commissioning protocol. What were you weighing there? Participant: Two options. Option A was a newer risk-informed test, better matched to this atrium's actual geometry according to the guidance documents, but its pass/fail thresholds were described in fairly qualitative terms. Option B was the old prescriptive smoke test—clear binary pass or fail, easy to defend if anyone questioned it later, but known to be less sensitive to some of the failure modes this particular atrium could have. Interviewer: Which did you pick, and why? Participant: Option B. I'll be straight about it—part of the appeal was that I knew exactly what passing looked like and exactly what failing looked like. Option A might have been the better technical fit, the guidance basically said so, but I didn't want to be defending a judgment call on 'partially qualitative' thresholds if something went sideways. B gave me a clean line. Interviewer: Third decision—the door deficiencies. What did you see, and how did you respond? Participant: Our inspector found bad fire-door installations on floors 8, 11, and 14. Out of the whole building, those three stood out to me, and my read was that we had a problem crew or a bad batch of hardware concentrated there. I redirected our follow-up inspection effort to those three floors specifically. Interviewer: Were the crews assigned by floor, or rotated? Participant: Rotated randomly across the building, actually. And it was three deficiencies out of about 150 doors we'd checked at that point, which is close to what you'd expect on a project this size just from ordinary variation. But when you see three flagged floors, it's hard not to read that as meaning something. Interviewer: Fourth decision—the temporary occupancy request. What was your basis for granting it? Participant: The developer had a financing deadline, and full integration testing on the alarm and smoke systems was still three weeks out. This contractor has a good record on other city jobs I've handled, so I felt reasonably confident things would come together. A colleague also mentioned a similar building nearby that had gotten early partial occupancy and it worked out fine. I did know our own five-year numbers show something like 15 percent of these atrium smoke-control integration tests need rework citywide, but that felt like a background statistic rather than something specific to this job. Interviewer: What would have made you deny it instead? Participant: If the contractor's record had been shakier, or if there'd been an active known defect in the smoke system at that point, I'd have held the line. Nothing like that was flagged to me at the time. Interviewer: How much uncertainty did you feel at each of these points? Participant: Honestly, less than maybe I should have on the first and last ones. The door issue felt more certain than it probably was, in hindsight. The protocol choice, I knew I was trading some technical fit for administrative clarity going in. Interviewer: Looking back now, after the trash-chute fire, how do you view the original design approval? Participant: It's hard not to think the smoke migration issue should have jumped out at someone reading that CFD report closely. There was a sensitivity assumption buried in there about stack effect under partial door-open conditions, and looking at it now, it feels like it was sitting right there in the numbers the whole time. At the time, though, it just didn't register as something that mattered—it was one line among a lot of technical detail, and nothing about it stood out as a flag worth chasing back then. Interviewer: If you had the same information again, would you change the occupancy call? Participant: Probably not without new information. It felt like a reasonable bet given the contractor's history at the time. Interviewer: Last one—what would you tell a newer reviewer handling a similar submittal? Participant: Don't let a strong firm's name substitute for reading the assumptions line by line, and don't let a small, tidy pattern in inspection data talk you out of checking the actual numbers behind it.
 
-_ranker=rrf · t=0.04 · k=0 → 0 in context · 8192 ctx · emb 0.00s · gen 186.14s · total 190.7s_
+_ranker=rrf · t=0.04 · k=0 → 0 in context · 8192 ctx · emb 0.00s · gen 139.76s · total 145.2s_
 
 _No chunks passed the similarity threshold._
 
@@ -492,280 +460,217 @@ _No chunks passed the similarity threshold._
     "task": "cognitive_bias_analysis",
     "interview_speakers_detected": ["Interviewer", "Participant"],
     "retrieved_corpus_support_used": false,
-    "analysis_scope_note": "Strict mechanism-first analysis of the participant's self-reported reasoning during the Stope 14-East incident. The presence of a bias label was required to be affirmatively evidenced in the transcript rather than inferred from outcome, production pressure, or later information alone. No benchmark condition or intended bias count was assumed."
+    "analysis_scope_note": "Conservative mechanism-first review using the transcript as evidence. No retrieved corpus passages were supplied, so labels and mechanisms are grounded in general cognitive-science knowledge rather than retrieval."
   },
   "identified_bias_summary": [
-    {
-      "bias_label": "anchoring effect",
-      "identified_occurrence_count": 1
-    },
-    {
-      "bias_label": "authority bias",
-      "identified_occurrence_count": 1
-    },
-    {
-      "bias_label": "availability heuristic",
-      "identified_occurrence_count": 1
-    },
-    {
-      "bias_label": "confirmation bias",
-      "identified_occurrence_count": 1
-    },
-    {
-      "bias_label": "fundamental attribution error",
-      "identified_occurrence_count": 1
-    },
-    {
-      "bias_label": "motivated reasoning",
-      "identified_occurrence_count": 1
-    },
-    {
-      "bias_label": "narrative fallacy",
-      "identified_occurrence_count": 1
-    }
+    {"bias_label": "ambiguity aversion", "identified_occurrence_count": 1},
+    {"bias_label": "availability heuristic", "identified_occurrence_count": 1},
+    {"bias_label": "base-rate neglect", "identified_occurrence_count": 1},
+    {"bias_label": "clustering illusion", "identified_occurrence_count": 1},
+    {"bias_label": "halo effect", "identified_occurrence_count": 1},
+    {"bias_label": "hindsight bias", "identified_occurrence_count": 1}
   ],
   "identified_occurrences": [
     {
       "occurrence_id": "obs_001",
       "classification_status": "identified",
       "confidence": "high",
-      "bias_label": "availability heuristic",
-      "alternative_labels": ["availability bias"],
+      "bias_label": "halo effect",
+      "alternative_labels": ["expert credibility heuristic", "authority bias", "reputation bias"],
       "taxonomy_status": "established_label",
-      "bias_definition": "Tendency to judge the likelihood, urgency, or severity of an event by the ease with which salient, vivid, or emotionally charged examples come to mind, rather than by current objective evidence or base rates.",
+      "bias_definition": "A cognitive bias where a general positive impression of a person, brand, or organization influences judgments about specific attributes such as technical quality.",
       "attributed_to_speaker": "Participant",
       "evidence_speaker": "Participant",
-      "decision_episode_label": "Initial response to the 06:40 cracking report in Stope 14-East",
-      "decision_point_description": "Choosing among full evacuation, enhanced monitoring with limited access, or an instrument-only check after a miner reported cracking sounds while no microseismic alarm had triggered.",
-      "affected_reasoning_operation": "Risk and urgency judgment",
-      "bias_specific_mechanism": "The recent, widely discussed sister-mine rockburst was highly salient and easily recalled, inflating the subjective likelihood and severity of a similar event and causing the participant to overweight that mental example relative to the current objective indicator.",
-      "manifestation_in_interview": "The participant reported that his mind went straight to the sister-mine rockburst and that he treated the cracking report as potentially heading toward a similar event more than the instrument data alone justified.",
-      "effect_on_reasoning_or_decision": "He selected enhanced monitoring with limited access rather than waiting for an instrument tech check, and his later counterfactual indicates the decision would likely have been less urgent without the sister-mine event.",
+      "decision_episode_label": "Approval of performance-based CFD smoke control design",
+      "decision_point_description": "Whether to approve the Halkirk & Vance design as submitted and whether to require outside peer review of the CFD assumptions.",
+      "affected_reasoning_operation": "Evaluation of technical submittal quality and determination of whether independent peer review was necessary",
+      "bias_specific_mechanism": "A positive global impression of Halkirk & Vance's reputation and prior approval record inflated confidence in the specific CFD work and suppressed scrutiny of its assumptions.",
+      "manifestation_in_interview": "The participant explicitly says the firm's name carried a lot and that an unrecognized firm would have led to harder scrutiny of the same CFD input assumptions. Peer review was declined partly because the submitting firm had a strong reputation.",
+      "effect_on_reasoning_or_decision": "Lowered independent scrutiny of the CFD assumptions and contributed to not requiring an outside peer review before design approval.",
       "interview_evidence": [
         {
           "speaker": "Participant",
-          "verbatim_quote": "No alarm had gone off on the microseismic array at that point. Normally that would make me lean toward 'let's just check it,' but honestly, my mind went straight to what happened at our sister operation two months earlier — that rockburst that made the trade press and had everyone in the region talking. It wasn't identical conditions, but it was the same ore body region, and that event was still very much front of mind for the whole crew. So even without an alarm, I treated that report as something that could be heading toward a similar event, more than I think the instrument data alone would have justified.",
-          "evidence_explanation": "This explicitly describes a vivid recent event coming to mind and producing more urgent risk appraisal than the current data would support."
+          "verbatim_quote": "Honestly, the firm's name carried a lot of it. Halkirk & Vance has been doing this specific type of atrium work for years, and I knew their stamp had held up under scrutiny elsewhere—that neighboring jurisdiction's sign-off mattered to me.",
+          "evidence_explanation": "This shows that firm reputation and prior external approval were treated as strong evidence of the current submittal's quality, independent of the specific CFD content."
         },
         {
           "speaker": "Participant",
-          "verbatim_quote": "I'll admit the sister-mine incident weighed heavily on how urgent it felt to me in the moment.",
-          "evidence_explanation": "This confirms the mental availability of the sister-mine event directly influenced perceived urgency."
+          "verbatim_quote": "If it had been a firm I didn't recognize, I probably would have pushed harder on the input assumptions myself.",
+          "evidence_explanation": "This direct counterfactual demonstrates that the same technical work would have received different scrutiny based on source reputation, a hallmark of the halo effect."
         },
         {
           "speaker": "Participant",
-          "verbatim_quote": "If the sister-mine rockburst had never happened, do you think your first call would have gone differently? Possibly. I think without that fresh in everyone's mind, I might have waited for the instrument tech's check before doing anything, rather than jumping to enhanced monitoring right away.",
-          "evidence_explanation": "The self-reported counterfactual links the bias mechanism to the selected action."
+          "verbatim_quote": "It was, but it would have added about three weeks, and given who submitted it, that felt like an unnecessary delay for a firm with that reputation.",
+          "evidence_explanation": "This shows that the decision not to pursue outside peer review was influenced by the favorable view of the submitting firm."
         }
       ],
-      "correction_or_counterevidence": "The participant noted that the sister-mine conditions were not identical, and the objective microseismic alarm had not triggered; these are potential competing considerations, but the participant still reported the availability-driven urgency as decisive.",
+      "correction_or_counterevidence": "Time, short staffing, and budget constraints were also present and may explain some of the lack of independent review, but the explicit statement that peer review felt unnecessary 'given who submitted it' evidences a distinct reputation-based mechanism.",
       "retrieved_corpus_support_available": false,
-      "corpus_support_note": "No retrieved corpus passages were supplied in this analysis. The label rests on general cognitive-science knowledge and the participant's explicit transcript account.",
+      "corpus_support_note": "No retrieved corpus passages were supplied; the label and mechanism rest on general cognitive-science knowledge.",
       "corpus_evidence": []
     },
     {
       "occurrence_id": "obs_002",
       "classification_status": "identified",
-      "confidence": "high",
-      "bias_label": "anchoring effect",
-      "alternative_labels": ["anchoring and adjustment", "focalism"],
+      "confidence": "moderate",
+      "bias_label": "ambiguity aversion",
+      "alternative_labels": ["uncertainty aversion", "certainty effect"],
       "taxonomy_status": "established_label",
-      "bias_definition": "Systematic influence of an initial reference value on subsequent numerical judgment, with insufficient adjustment away from that anchor even when a different reference is more decision-relevant.",
+      "bias_definition": "The tendency to favor a known or clear option over an uncertain or ambiguous one, even when the ambiguous option is better suited to the situation.",
       "attributed_to_speaker": "Participant",
       "evidence_speaker": "Participant",
-      "decision_episode_label": "Interpretation of the 09:40 extensometer reading",
-      "decision_point_description": "Assessing whether an extensometer movement from 0.2 mm to 0.6 mm required further restriction or escalation under the ground control management plan.",
-      "affected_reasoning_operation": "Numerical risk appraisal and trend interpretation",
-      "bias_specific_mechanism": "The participant used the morning baseline reading of 0.2 mm as his reference point and evaluated the 0.6 mm reading as still small in absolute terms, whereas the plan required a rate-of-change assessment rather than comparison to the initial value.",
-      "manifestation_in_interview": "He compared the new reading to the morning baseline, judged the value as sub-millimeter and not dramatic, and did not consult the rate-of-change table in the GCMP.",
-      "effect_on_reasoning_or_decision": "The reading was interpreted as non-alarming, contributing to a failure to escalate or restrict work when rate-of-change criteria might have indicated otherwise.",
+      "decision_episode_label": "Commissioning verification protocol selection",
+      "decision_point_description": "Choosing between a newer risk-informed test with qualitative pass/fail thresholds and an older prescriptive test with clear binary thresholds.",
+      "affected_reasoning_operation": "Selection of the smoke-control commissioning verification protocol",
+      "bias_specific_mechanism": "Preference for a clear, defensible pass/fail criterion over a technically better-matched but more ambiguous qualitative-threshold protocol.",
+      "manifestation_in_interview": "The participant acknowledged Option A may have been the better technical fit, but chose Option B because it offered a 'clean line' and avoided defending qualitative thresholds.",
+      "effect_on_reasoning_or_decision": "Selected a verification protocol known to be less sensitive to some failure modes for this atrium, trading technical fit for administrative clarity and defensibility.",
       "interview_evidence": [
         {
           "speaker": "Participant",
-          "verbatim_quote": "At 09:40 the tech radioed that it had moved to 0.6mm. That's three times the baseline in about three hours. I looked at it and thought, well, compared to this morning it's still a small number, still sub-millimeter, nothing dramatic. I didn't go back and check it against the rate-of-change table in the GCMP, which is actually the correct way to assess it — that plan cares about how fast it's moving, not just where it sits relative to where it started. In hindsight I was comparing it to the wrong reference.",
-          "evidence_explanation": "The quote explicitly identifies anchoring to the morning baseline and using the wrong reference instead of the rate-of-change table."
+          "verbatim_quote": "Option A was a newer risk-informed test, better matched to this atrium's actual geometry according to the guidance documents, but its pass/fail thresholds were described in fairly qualitative terms. Option B was the old prescriptive smoke test—clear binary pass or fail, easy to defend if anyone questioned it later, but known to be less sensitive to some of the failure modes this particular atrium could have.",
+          "evidence_explanation": "This establishes that the less sensitive option was selected despite known tradeoffs, and that the key advantage was clarity rather than technical fit."
         },
         {
           "speaker": "Participant",
-          "verbatim_quote": "It's just naturally what you have in front of you — you saw it at 0.2 that morning, now it's 0.6, and 0.6 still sounds low in absolute terms.",
-          "evidence_explanation": "This demonstrates that the initial value served as a natural anchor that displaced the operationally relevant rate-of-change reference."
+          "verbatim_quote": "Option A might have been the better technical fit, the guidance basically said so, but I didn't want to be defending a judgment call on 'partially qualitative' thresholds if something went sideways. B gave me a clean line.",
+          "evidence_explanation": "This directly states that the choice was driven by aversion to ambiguous thresholds, not by a conclusion that Option B was technically superior."
         }
       ],
-      "correction_or_counterevidence": "The participant explicitly states in hindsight that he was comparing to the wrong reference, and later notes that an automatic red-flag display of the rate-of-change threshold would likely have changed the decision.",
+      "correction_or_counterevidence": "The participant was self-aware about the tradeoff and framed it as a defensibility choice. This could reflect a deliberate administrative preference, but the explicit preference for the less technically sensitive known option is consistent with ambiguity aversion.",
       "retrieved_corpus_support_available": false,
-      "corpus_support_note": "No retrieved corpus passages were supplied in this analysis. The label rests on general cognitive-science knowledge and the participant's explicit transcript account.",
+      "corpus_support_note": "No retrieved corpus passages were supplied; the label and mechanism rest on general cognitive-science knowledge.",
       "corpus_evidence": []
     },
     {
       "occurrence_id": "obs_003",
       "classification_status": "identified",
-      "confidence": "moderate",
-      "bias_label": "motivated reasoning",
-      "alternative_labels": ["directional motivation", "motivated cognition"],
+      "confidence": "high",
+      "bias_label": "clustering illusion",
+      "alternative_labels": ["apophenia", "pattern illusion"],
       "taxonomy_status": "established_label",
-      "bias_definition": "Cognitive evaluation driven by a directional goal or preferred conclusion, leading to biased evidence processing that favors the desired outcome.",
+      "bias_definition": "The tendency to perceive meaningful groups or patterns in random distributions even when the observed variation is statistically ordinary.",
       "attributed_to_speaker": "Participant",
       "evidence_speaker": "Participant",
-      "decision_episode_label": "Assessment of the 09:40 extensometer trend after production ETA request",
-      "decision_point_description": "Deciding whether to dig deeper into trend math or accept the reading as non-alarming while the mine manager was requesting a production ETA.",
-      "affected_reasoning_operation": "Evidence evaluation and information search",
-      "bias_specific_mechanism": "A directional preference to arrive at a non-disruptive production conclusion reduced the participant's likelihood of scrutinizing the trend math and consulting the rate-of-change table.",
-      "manifestation_in_interview": "The participant stated that the production ETA request created some pull to land on 'we're fine' rather than dig deeper into the trend math.",
-      "effect_on_reasoning_or_decision": "It contributed to accepting the absolute reading and not pursuing the rate-of-change analysis that could have triggered escalation.",
+      "decision_episode_label": "Fire-door deficiency inspection follow-up",
+      "decision_point_description": "Deciding where to redirect follow-up inspection effort after initial fire-door deficiencies were observed.",
+      "affected_reasoning_operation": "Interpretation of inspection deficiency data and allocation of follow-up inspections",
+      "bias_specific_mechanism": "Three flagged floors were perceived as a meaningful cluster indicating a problem crew or bad hardware batch, even though the deficiency count was close to ordinary random variation.",
+      "manifestation_in_interview": "The participant interpreted deficiencies on floors 8, 11, and 14 as concentrated and meaningful, and redirected follow-up inspection to those floors specifically. The participant later acknowledged the crew rotation was random and the rate was close to what would be expected by chance.",
+      "effect_on_reasoning_or_decision": "Focused follow-up inspections on three floors based on a likely spurious pattern, potentially reducing attention to other locations or doors.",
       "interview_evidence": [
         {
           "speaker": "Participant",
-          "verbatim_quote": "The mine manager was also asking for a production ETA, so there was some pull to land on 'we're fine' rather than dig deeper into the trend math right then.",
-          "evidence_explanation": "This directly links a preferred production-continuity conclusion to reduced scrutiny of the trend data."
+          "verbatim_quote": "Out of the whole building, those three stood out to me, and my read was that we had a problem crew or a bad batch of hardware concentrated there. I redirected our follow-up inspection effort to those three floors specifically.",
+          "evidence_explanation": "This shows a causal pattern was inferred from a small cluster of observations and used to allocate follow-up inspection resources."
+        },
+        {
+          "speaker": "Participant",
+          "verbatim_quote": "Rotated randomly across the building, actually. And it was three deficiencies out of about 150 doors we'd checked at that point, which is close to what you'd expect on a project this size just from ordinary variation. But when you see three flagged floors, it's hard not to read that as meaning something.",
+          "evidence_explanation": "This reveals the tendency to see meaning in a pattern even when the participant recognized the underlying rate was statistically ordinary."
         }
       ],
-      "correction_or_counterevidence": "Production pressure alone would be an organizational incentive rather than a cognitive bias; however, the participant's statement specifies that the incentive created a reasoning pull away from deeper trend analysis. The coexisting anchoring effect may also explain part of the same decision.",
+      "correction_or_counterevidence": "The participant later recognized the deficiency rate was close to ordinary variation, but this recognition came after the follow-up inspection decision had already been made.",
       "retrieved_corpus_support_available": false,
-      "corpus_support_note": "No retrieved corpus passages were supplied in this analysis. The label rests on general cognitive-science knowledge and the participant's self-reported reasoning.",
+      "corpus_support_note": "No retrieved corpus passages were supplied; the label and mechanism rest on general cognitive-science knowledge.",
       "corpus_evidence": []
     },
     {
       "occurrence_id": "obs_004",
       "classification_status": "identified",
-      "confidence": "high",
-      "bias_label": "authority bias",
-      "alternative_labels": ["authority heuristic", "expert overconfidence effect"],
+      "confidence": "moderate",
+      "bias_label": "availability heuristic",
+      "alternative_labels": ["availability bias"],
       "taxonomy_status": "established_label",
-      "bias_definition": "Tendency to assign greater accuracy or weight to the judgment of an authority or highly experienced person and to insufficiently scrutinize whether that person's knowledge applies to the current case.",
+      "bias_definition": "The tendency to judge the likelihood or risk of an event by how easily relevant examples come to mind.",
       "attributed_to_speaker": "Participant",
       "evidence_speaker": "Participant",
-      "decision_episode_label": "Continued limited access after shift supervisor's 2009 comparison and microseismic flag",
-      "decision_point_description": "Microseismic count had climbed to six events per hour, just over the flag threshold in the plan; the participant weighed the supervisor's confidence that the sounds were 'nothing' and opted for limited crew rather than a stricter engineer-sign-off condition.",
-      "affected_reasoning_operation": "Weighting of expert opinion against plan criteria",
-      "bias_specific_mechanism": "The supervisor's long experience and strong track record led the participant to overweight his judgment and avoid rigorously testing whether the 2009 case matched current conditions, even while current data exceeded the plan threshold.",
-      "manifestation_in_interview": "The participant did not push hard on whether the 2009 case matched today's rock type, blast pattern, or depth, and stated that the supervisor's read carried more weight than it should have on its own.",
-      "effect_on_reasoning_or_decision": "He decided on limited access based mostly on the supervisor's confidence and his own crack-photo interpretation rather than treating the threshold exceedance as requiring strict compliance.",
+      "decision_episode_label": "Early temporary occupancy request",
+      "decision_point_description": "Whether to grant early occupancy before full integration testing of alarm and smoke systems.",
+      "affected_reasoning_operation": "Risk judgment about smoke-control integration readiness",
+      "bias_specific_mechanism": "Easily recalled, salient examples—the contractor's good record on other city jobs and a colleague's mention of a similar nearby building that worked out—dominated the participant's confidence about the current project.",
+      "manifestation_in_interview": "The participant justified confidence in early occupancy by citing concrete prior successes and the contractor's positive local record, while treating aggregate rework data as less specific.",
+      "effect_on_reasoning_or_decision": "Supported granting the occupancy request based on salient successful examples rather than a systematic estimate of this project's integration-test failure risk.",
       "interview_evidence": [
         {
           "speaker": "Participant",
-          "verbatim_quote": "He's got twenty-two years underground, most of it at this site. He mentioned he'd heard similar popping back in 2009, and it hadn't come to anything. He was pretty confident it was 'nothing.' Around that same time the microseismic count for the shift had actually climbed to six events an hour, which is right at — actually just over — the flag threshold in our plan. I didn't push hard on whether the 2009 case actually matched today's rock type, blast pattern, or depth. His track record is strong, so his read carried a lot of weight for me in that moment, maybe more than it should have on its own.",
-          "evidence_explanation": "The participant explicitly attributes excessive weight to the supervisor's track record and acknowledges failing to scrutinize the analogy despite an objective flag."
-        },
-        {
-          "speaker": "Participant",
-          "verbatim_quote": "I went with limited access, mostly on the supervisor's confidence and my own read of that crack photo.",
-          "evidence_explanation": "This confirms that the supervisor's judgment, rather than plan criteria alone, was a primary basis for the access decision."
+          "verbatim_quote": "This contractor has a good record on other city jobs I've handled, so I felt reasonably confident things would come together. A colleague also mentioned a similar building nearby that had gotten early partial occupancy and it worked out fine.",
+          "evidence_explanation": "The participant's confidence is anchored to easily recalled success stories and personal experience rather than project-specific or statistical risk information."
         }
       ],
-      "correction_or_counterevidence": "The participant later stated that a newer HSO should 'weigh a senior person's read alongside the data, not instead of it,' indicating post-event recognition of the bias.",
+      "correction_or_counterevidence": "The participant also mentioned a known citywide rework rate, suggesting some statistical information was available; however, it was explicitly treated as background under a separate base-rate neglect mechanism.",
       "retrieved_corpus_support_available": false,
-      "corpus_support_note": "No retrieved corpus passages were supplied in this analysis. The label rests on general cognitive-science knowledge and the participant's explicit transcript account.",
+      "corpus_support_note": "No retrieved corpus passages were supplied; the label and mechanism rest on general cognitive-science knowledge.",
       "corpus_evidence": []
     },
     {
       "occurrence_id": "obs_005",
       "classification_status": "identified",
       "confidence": "high",
-      "bias_label": "confirmation bias",
-      "alternative_labels": ["congeniality bias", "selective interpretation"],
+      "bias_label": "base-rate neglect",
+      "alternative_labels": ["base-rate fallacy", "statistical neglect"],
       "taxonomy_status": "established_label",
-      "bias_definition": "Tendency to seek, interpret, or weight information in ways that confirm an existing belief or hypothesis while neglecting or discounting disconfirming information.",
+      "bias_definition": "The tendency to underweight statistical base-rate information in favor of individuating or anecdotal information when making a judgment.",
       "attributed_to_speaker": "Participant",
       "evidence_speaker": "Participant",
-      "decision_episode_label": "Assessment of the known hairline crack after microseismic threshold exceeded",
-      "decision_point_description": "Comparing the current crack with a prior week's photo logged as insignificant while deciding whether the crack supported or challenged continued limited access.",
-      "affected_reasoning_operation": "Interpretation of ambiguous physical evidence",
-      "bias_specific_mechanism": "The participant interpreted the crack as consistent with a pre-existing benign conclusion by comparing it to the prior photo, while failing to integrate newer disconfirming microseismic data that had crossed the plan threshold.",
-      "manifestation_in_interview": "He read the crack as 'consistent with what we already know is fine' and judged it against the old photo rather than against the newer seismic data.",
-      "effect_on_reasoning_or_decision": "The interpretation reinforced the decision to continue with limited crew and did not trigger stricter withdrawal or engineer review.",
+      "decision_episode_label": "Early temporary occupancy request",
+      "decision_point_description": "Weighting citywide rework statistics when deciding whether to grant early occupancy.",
+      "affected_reasoning_operation": "Use of statistical base-rate information in risk judgment",
+      "bias_specific_mechanism": "The relevant citywide base rate—15 percent of atrium smoke-control integration tests needing rework—was explicitly discounted as a background statistic rather than applied to the current project.",
+      "manifestation_in_interview": "The participant knew the five-year citywide rework rate but dismissed it as non-specific, favoring the contractor's record and a nearby anecdotal success.",
+      "effect_on_reasoning_or_decision": "Underweighted a relevant prior probability, increasing confidence in early occupancy despite a known 15 percent rework base rate.",
       "interview_evidence": [
         {
           "speaker": "Participant",
-          "verbatim_quote": "When I looked at today's crack, I compared it side-by-side with that old photo, and it looked about the same width to me, so I read it as 'consistent with what we already know is fine.' What I didn't do at that point was connect it back to the microseismic number that had just ticked over the threshold — I was judging the crack against the old photo rather than against the newer seismic data.",
-          "evidence_explanation": "This shows selective interpretation of ambiguous visual evidence in favor of an existing 'fine' view while neglecting disconfirming seismic information."
+          "verbatim_quote": "I did know our own five-year numbers show something like 15 percent of these atrium smoke-control integration tests need rework citywide, but that felt like a background statistic rather than something specific to this job.",
+          "evidence_explanation": "This explicitly demonstrates base-rate neglect: a relevant aggregate statistic was set aside because it felt insufficiently specific."
         }
       ],
-      "correction_or_counterevidence": "The participant explicitly recognizes that he should have connected the crack observation to the microseismic threshold rather than only to the old photo.",
+      "correction_or_counterevidence": "The participant may have believed the statistic was not specific enough to override the contractor's record and the absence of an active known defect, but the transcript still shows the base rate was discounted rather than integrated into the judgment.",
       "retrieved_corpus_support_available": false,
-      "corpus_support_note": "No retrieved corpus passages were supplied in this analysis. The label rests on general cognitive-science knowledge and the participant's explicit transcript account.",
+      "corpus_support_note": "No retrieved corpus passages were supplied; the label and mechanism rest on general cognitive-science knowledge.",
       "corpus_evidence": []
     },
     {
       "occurrence_id": "obs_006",
       "classification_status": "identified",
       "confidence": "high",
-      "bias_label": "narrative fallacy",
-      "alternative_labels": ["coherence bias", "story-based reasoning"],
+      "bias_label": "hindsight bias",
+      "alternative_labels": ["knew-it-all-along effect", "retrospective predictability"],
       "taxonomy_status": "established_label",
-      "bias_definition": "Tendency to synthesize available facts into a coherent causal story and then treat that story as more explanatory or certain than the evidence warrants.",
+      "bias_definition": "The tendency, after learning an outcome, to see the outcome as having been more predictable or obvious than it actually was before it occurred.",
       "attributed_to_speaker": "Participant",
       "evidence_speaker": "Participant",
-      "decision_episode_label": "Causal attribution in the incident report after the 13:15 spall",
-      "decision_point_description": "Choosing a primary causal account among multiple plausible factors: overnight temperature drop, shift-change timing, and prior-week adjacent blast vibration.",
-      "affected_reasoning_operation": "Causal reasoning and explanatory coherence judgment",
-      "bias_specific_mechanism": "The participant constructed a tidy three-factor causal narrative and reported it as the primary account because it felt coherent, despite the engineer noting that multiple factors were plausible and none could be confirmed as dominant.",
-      "manifestation_in_interview": "The participant said the factors came together into a pretty clean story and that the coherent explanation was put forward as the primary account.",
-      "effect_on_reasoning_or_decision": "The incident report likely presented an overconfident causal explanation that downplayed uncertainty about which factor was dominant.",
+      "decision_episode_label": "Post-fire retrospective evaluation of original design approval",
+      "decision_point_description": "Assessing whether the smoke migration issue should have been noticed before original design approval.",
+      "affected_reasoning_operation": "Retrospective judgment of foreseeability and salience of a CFD sensitivity assumption",
+      "bias_specific_mechanism": "Knowledge of the later trash-chute fire and related smoke concerns made the earlier CFD stack-effect assumption appear more visible and significant in retrospect than it was at the time.",
+      "manifestation_in_interview": "The participant says it feels like the issue was 'sitting right there in the numbers the whole time,' while also noting that at the time it did not register as important.",
+      "effect_on_reasoning_or_decision": "Inflated the retrospective foreseeability of the smoke migration issue after learning the outcome.",
       "interview_evidence": [
         {
           "speaker": "Participant",
-          "verbatim_quote": "Looking at everything together — the overnight temperature drop, the shift change happening not long before, and the blasting in the panel next door the prior week — it came together into a pretty clean story: cooling stresses plus the handover timing plus the residual vibration from that blast. It read as a coherent explanation, so that's what I put forward as the primary account, even though the engineer's later note said several factors were plausible and none could really be confirmed as the dominant cause.",
-          "evidence_explanation": "This explicitly shows coherence of the story drove the causal conclusion even amid acknowledged uncertainty."
+          "verbatim_quote": "It's hard not to think the smoke migration issue should have jumped out at someone reading that CFD report closely. There was a sensitivity assumption buried in there about stack effect under partial door-open conditions, and looking at it now, it feels like it was sitting right there in the numbers the whole time.",
+          "evidence_explanation": "This is classic hindsight language: after the fire, the participant judges the earlier information as having been much more noticeable and significant."
         },
         {
           "speaker": "Participant",
-          "verbatim_quote": "Honestly, less than I was when I wrote it. It felt tidy at the time, but there were a few threads I didn't fully chase down.",
-          "evidence_explanation": "This later acknowledgment reinforces that the tidy narrative overstated certainty at the time of the report."
+          "verbatim_quote": "At the time, though, it just didn't register as something that mattered—it was one line among a lot of technical detail, and nothing about it stood out as a flag worth chasing back then.",
+          "evidence_explanation": "This contrast between original salience and current impression underscores the retrospective distortion."
         }
       ],
-      "correction_or_counterevidence": "The engineer's note indicated several factors were plausible and none could be confirmed as dominant, and the participant later reported reduced confidence in the reported causes.",
+      "correction_or_counterevidence": "The participant explicitly distinguishes between current hindsight and what was salient at the time, which shows some awareness, but the current 'should have jumped out' judgment still exhibits hindsight bias.",
       "retrieved_corpus_support_available": false,
-      "corpus_support_note": "No retrieved corpus passages were supplied in this analysis. The label rests on general cognitive-science knowledge and the participant's explicit transcript account.",
-      "corpus_evidence": []
-    },
-    {
-      "occurrence_id": "obs_007",
-      "classification_status": "identified",
-      "confidence": "moderate",
-      "bias_label": "fundamental attribution error",
-      "alternative_labels": ["correspondence bias"],
-      "taxonomy_status": "established_label",
-      "bias_definition": "Tendency to overattribute another person's harmful or negative event involvement to dispositional or behavioral failure while underweighting situational and systemic causes.",
-      "attributed_to_speaker": "Participant",
-      "evidence_speaker": "Participant",
-      "decision_episode_label": "Assignment of responsibility in the incident report",
-      "decision_point_description": "Framing responsibility between the miner's initial failure to re-escalate, the missing engineer sign-off after the six-events flag, and broader site decisions.",
-      "affected_reasoning_operation": "Causal attribution for an adverse event",
-      "bias_specific_mechanism": "The participant centered the report on the miner's failure to escalate again while treating the missing engineer sign-off as a process footnote, despite that also being an identified control failure.",
-      "manifestation_in_interview": "He said the report focused mainly on the miner and that the missing engineer sign-off came across as more of a process footnote than a central cause.",
-      "effect_on_reasoning_or_decision": "The report likely overemphasized individual inaction and underemphasized a known process/systemic control failure.",
-      "interview_evidence": [
-        {
-          "speaker": "Participant",
-          "verbatim_quote": "I focused mainly on the miner who first heard the sounds and didn't escalate again after the initial 06:40 report — I felt if he'd flagged it again once the popping continued, we might have caught it sooner. I did note the missing engineer sign-off after the six-events flag, but that came across more as a process footnote than as a central cause in the report.",
-          "evidence_explanation": "The quote demonstrates a person-centered attribution for the miner and secondary treatment of a systemic sign-off failure, without evidence that the miner's inaction was more causally central than the process failure."
-        }
-      ],
-      "correction_or_counterevidence": "The report did mention the missing engineer sign-off, but the participant acknowledged it was framed as a footnote rather than a central causal factor.",
-      "retrieved_corpus_support_available": false,
-      "corpus_support_note": "No retrieved corpus passages were supplied in this analysis. The label rests on general cognitive-science knowledge and the participant's description of report framing.",
+      "corpus_support_note": "No retrieved corpus passages were supplied; the label and mechanism rest on general cognitive-science knowledge.",
       "corpus_evidence": []
     }
   ],
-  "candidate_biases": [
-    {
-      "candidate_id": "cand_001",
-      "classification_status": "candidate",
-      "proposed_bias_label": "self-serving bias",
-      "alternative_labels": ["defensive attribution"],
-      "taxonomy_status": "established_label",
-      "speaker_or_attributed_person": "Participant",
-      "possible_decision_episode_label": "Responsibility framing in the incident report",
-      "supporting_interview_quote": "I focused mainly on the miner who first heard the sounds and didn't escalate again after the initial 06:40 report — I felt if he'd flagged it again once the popping continued, we might have caught it sooner. I did note the missing engineer sign-off after the six-events flag, but that came across more as a process footnote than as a central cause in the report.",
-      "plausible_mechanism": "The participant may also have been motivated to protect his own or management's reputation by assigning central blame to a worker while downplaying site-level process failures.",
-      "why_not_identified": "The transcript does not explicitly evidence a self-protective motive for the responsibility framing, and the same facts are already more directly explained by fundamental attribution error in the identified occurrences."
-    }
-  ],
+  "candidate_biases": [],
   "no_supported_biases_found": false,
   "limitations": [
-    "Retrieved corpus passages were not provided, so corpus-grounded support is unavailable and all named labels rely on general cognitive-science knowledge and the transcript evidence.",
-    "The analysis is based on retrospective self-report in a debrief, so some mechanisms are inferred from the participant's own descriptions rather than from direct observation of real-time cognition.",
-    "The transcript contains no external verification of the plan thresholds, seismic data, or incident report content, so the classifications rely on the participant's factual and evaluative accounts."
+    "No retrieved corpus passages were supplied, so bias labels and definitions reflect general cognitive-science knowledge rather than retrieval support.",
+    "The transcript is a self-report retrospective interview, requiring some inferences from the participant's descriptions of past reasoning.",
+    "Several decisions also involve genuine structural constraints such as time, budget, staffing, and institutional defensibility; only bias-specific mechanisms explicitly evidenced in the transcript were classified."
   ]
 }
 

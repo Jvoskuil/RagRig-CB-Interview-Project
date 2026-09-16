@@ -996,8 +996,7 @@ _ranker=rrf · t=0.04 · k=50 → 50 in context · 8192 ctx · emb 2.55s · gen 
       "affected_reasoning_operation": "Technical evaluation and architectural response selection",
       "bias_specific_mechanism": "Perceived threat to decision autonomy from the directive produced motivational resistance, prompting an alternative design before a full technical comparison of the mandated provider.",
       "manifestation_in_interview": "The participant reacted to being told what to do by drafting an alternative that would keep control over that architecture area, despite not yet having a strong technical concern with the mandated identity provider.",
-      "effect_on_reasoning_or_decision": "The participant committed effort to an alternative path before evaluating the mandated approach on technical merits, potentially shaping the subsequent architecture choice."
-    },
+      "effect_on_reasoning_or_decision": "The participant committed effort to an alternative path before evaluating the mandated approach on technical merits, potentially shaping the subsequent architecture choice.",
       "interview_evidence": [
         {
           "speaker": "Participant",
@@ -1058,4 +1057,3 @@ _ranker=rrf · t=0.04 · k=50 → 50 in context · 8192 ctx · emb 2.55s · gen 
     "The analysis relies on participant self-report within a retrospective CTA interview and does not include independent verification of objective decision processes or outcomes."
   ]
 }
-

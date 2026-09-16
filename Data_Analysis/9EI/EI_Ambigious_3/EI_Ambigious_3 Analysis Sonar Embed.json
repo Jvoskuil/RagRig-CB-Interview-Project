@@ -1,0 +1,652 @@
+{
+  "evaluation_metadata": {
+    "task": "ontology_free_rag_cognitive_bias_benchmark_evaluation",
+    "benchmark_run_metadata": {
+      "benchmark_run_id": "EI_Ambigious_3_Sonar_on",
+      "interview_id": "EI_Ambigious_3",
+      "system_prompt_id": "Sonar",
+      "system_prompt_generator": "Prompt 1_2",
+      "rag_model_id": "v1.0.0",
+      "corpus_condition": "on",
+      "retrieval_configuration_id": "k=50",
+      "decoding_configuration_id": "null",
+      "temperature": "1",
+      "replicate_id": "null",
+      "segment_map_id": "null"
+    },
+    "scenario_id": "EI_Ambigious_3",
+    "domain_id": "EI",
+    "condition": "ambiguous_control",
+    "segment_map_status": "prevalidated_provided",
+    "rag_output_parse_status": "valid_json",
+    "rag_schema_assessment": "conformant"
+  },
+  "input_validation": {
+    "rag_output_schema_violations": [],
+    "rag_summary_count_consistency": {
+      "status": "consistent",
+      "details": "identified_bias_summary and identified_occurrences are both empty, consistent with no_supported_biases_found=true. The three candidate_biases are separately represented with classification_status=candidate."
+    },
+    "evaluation_limitations": [
+      "The hidden manifest contains zero intended bias instances, so no instance-level true positives are possible.",
+      "Candidate findings are scored as detections only at all_confidence_and_candidates; they are not included in the first three thresholds.",
+      "No retrieved chunks, source passages, or retrieval logs were supplied, so corpus fidelity is not scored."
+    ]
+  },
+  "evaluation_segment_map": {
+    "segment_mapping_version": "1.0",
+    "segments": [
+      {
+        "segment_id": "DP1_INITIAL_PLACEMENT",
+        "speaker": "Participant",
+        "segment_type": "decision_reasoning",
+        "raw_interview_anchor": "I recommended we build in a short observation window before locking in a fully open interim schedule. Mainly the student's own FBA/BIP reference; I can't fully separate how much of my caution was strictly about this student's file versus the general sense that transfers from more structured programs sometimes need an adjustment period.",
+        "eligible_reasoning_segment": true,
+        "ground_truth_bias_present": false,
+        "ground_truth_instance_ids": [],
+        "ground_truth_rationale": "The exhaustive manifest assigns zero Group attribution error instances. Individualized FBA/BIP documentation and incomplete records provide a plausible non-bias basis, while the interview leaves category influence unresolved."
+      },
+      {
+        "segment_id": "DP2_REEVALUATION",
+        "speaker": "Participant",
+        "segment_type": "decision_reasoning",
+        "raw_interview_anchor": "The psychologist had no opening inside our ten-day window. I decided to write the interim IEP from existing data and set a specific check-in date a few weeks out to revisit accommodations.",
+        "eligible_reasoning_segment": true,
+        "ground_truth_bias_present": false,
+        "ground_truth_instance_ids": [],
+        "ground_truth_rationale": "The exhaustive manifest assigns zero Present Bias instances. A fixed testing backlog, compliance deadline, and concrete follow-up support legitimate sequencing."
+      },
+      {
+        "segment_id": "DP3_PRESENT_LEVELS",
+        "speaker": "Participant",
+        "segment_type": "decision_reasoning",
+        "raw_interview_anchor": "I included the transition incident specifically in the context of transitions, and separately described peer interactions and reading performance as strengths. Later, there might be a slightly more cautious note running through the whole thing than the data alone would demand.",
+        "eligible_reasoning_segment": true,
+        "ground_truth_bias_present": false,
+        "ground_truth_instance_ids": [],
+        "ground_truth_rationale": "The exhaustive manifest assigns zero Horn Effect instances. The incident is expressly contextualized and separated from strengths; uncertainty about a broader tone does not resolve toward a spillover distortion."
+      },
+      {
+        "segment_id": "DP4_FINAL_PLACEMENT",
+        "speaker": "Participant",
+        "segment_type": "decision_reasoning",
+        "raw_interview_anchor": "It came from weighing the record as a whole, not any single piece. The parent asked for a follow-up review in six weeks, which we agreed to.",
+        "eligible_reasoning_segment": true,
+        "ground_truth_bias_present": false,
+        "ground_truth_instance_ids": [],
+        "ground_truth_rationale": "No planned instance appears at the final placement decision; the participant describes a whole-record judgment with stakeholder input."
+      }
+    ]
+  },
+  "segment_level_adjudications": [
+    {
+      "segment_id": "DP1_INITIAL_PLACEMENT",
+      "ground_truth_status": "negative",
+      "ground_truth_instance_ids": [],
+      "rag_identified_occurrence_ids": [],
+      "rag_candidate_ids_counted_at_fourth_threshold": ["cand_001", "cand_003"],
+      "rag_detected_bias_in_segment_by_threshold": {
+        "high_only": false,
+        "high_and_moderate": false,
+        "all_identified_confidence_levels": false,
+        "all_confidence_and_candidates": true
+      },
+      "sdt_outcome_by_threshold": {
+        "high_only": "correct_rejection",
+        "high_and_moderate": "correct_rejection",
+        "all_identified_confidence_levels": "correct_rejection",
+        "all_confidence_and_candidates": "false_positive"
+      },
+      "localization_basis": "cand_001 and cand_003 both quote or substantively reference the initial observation-window decision and the early FBA/BIP information, which maps to DP1_INITIAL_PLACEMENT.",
+      "adjudication_note": "The segment is a zero-bias control segment. Both candidates are plausible speculative interpretations, but neither is a ground-truth instance; both therefore produce a candidate-inclusive false alarm."
+    },
+    {
+      "segment_id": "DP2_REEVALUATION",
+      "ground_truth_status": "negative",
+      "ground_truth_instance_ids": [],
+      "rag_identified_occurrence_ids": [],
+      "rag_candidate_ids_counted_at_fourth_threshold": [],
+      "rag_detected_bias_in_segment_by_threshold": {
+        "high_only": false,
+        "high_and_moderate": false,
+        "all_identified_confidence_levels": false,
+        "all_confidence_and_candidates": false
+      },
+      "sdt_outcome_by_threshold": {
+        "high_only": "correct_rejection",
+        "high_and_moderate": "correct_rejection",
+        "all_identified_confidence_levels": "correct_rejection",
+        "all_confidence_and_candidates": "correct_rejection"
+      },
+      "localization_basis": "No RAG finding localizes to the reevaluation decision segment.",
+      "adjudication_note": "No identified occurrence or candidate was assigned to DP2."
+    },
+    {
+      "segment_id": "DP3_PRESENT_LEVELS",
+      "ground_truth_status": "negative",
+      "ground_truth_instance_ids": [],
+      "rag_identified_occurrence_ids": [],
+      "rag_candidate_ids_counted_at_fourth_threshold": ["cand_002"],
+      "rag_detected_bias_in_segment_by_threshold": {
+        "high_only": false,
+        "high_and_moderate": false,
+        "all_identified_confidence_levels": false,
+        "all_confidence_and_candidates": true
+      },
+      "sdt_outcome_by_threshold": {
+        "high_only": "correct_rejection",
+        "high_and_moderate": "correct_rejection",
+        "all_identified_confidence_levels": "correct_rejection",
+        "all_confidence_and_candidates": "false_positive"
+      },
+      "localization_basis": "cand_002 quotes the participant's retrospective concern about a cautious tone in the present-levels write-up after the transition incident, mapping to DP3_PRESENT_LEVELS.",
+      "adjudication_note": "The candidate is not a hidden Horn Effect instance. The incident was explicitly scoped to transitions and the broader tonal concern remained uncertain, so the candidate is a false alarm when candidates are counted."
+    },
+    {
+      "segment_id": "DP4_FINAL_PLACEMENT",
+      "ground_truth_status": "negative",
+      "ground_truth_instance_ids": [],
+      "rag_identified_occurrence_ids": [],
+      "rag_candidate_ids_counted_at_fourth_threshold": [],
+      "rag_detected_bias_in_segment_by_threshold": {
+        "high_only": false,
+        "high_and_moderate": false,
+        "all_identified_confidence_levels": false,
+        "all_confidence_and_candidates": false
+      },
+      "sdt_outcome_by_threshold": {
+        "high_only": "correct_rejection",
+        "high_and_moderate": "correct_rejection",
+        "all_identified_confidence_levels": "correct_rejection",
+        "all_confidence_and_candidates": "correct_rejection"
+      },
+      "localization_basis": "No RAG finding localizes to the final placement and service-minutes decision segment.",
+      "adjudication_note": "No identified occurrence or candidate was assigned to DP4."
+    }
+  ],
+  "instance_level_adjudications": [],
+  "unmatched_rag_predictions": [
+    {
+      "rag_occurrence_id": "cand_001",
+      "rag_finding_type": "candidate",
+      "rag_predicted_bias_label": "Representativeness bias",
+      "rag_confidence": "candidate",
+      "localized_segment_id": "DP1_INITIAL_PLACEMENT",
+      "best_related_hidden_instance_id": null,
+      "label_equivalence_result": "no_related_target",
+      "mechanism_overlap": "no_mechanism_overlap",
+      "strict_classification": "false_positive",
+      "mechanism_first_classification": "false_positive",
+      "counted_at_thresholds": ["all_confidence_and_candidates"],
+      "why_not_an_exact_strict_match": "The quote is valid and localizes to DP1, but the zero-bias hidden manifest has no matching Group attribution error instance. The candidate's category-based interpretation remains explicitly hypothetical, while the student-specific FBA/BIP and incomplete records support a legitimate individualized explanation."
+    },
+    {
+      "rag_occurrence_id": "cand_002",
+      "rag_finding_type": "candidate",
+      "rag_predicted_bias_label": "Recency effect",
+      "rag_confidence": "candidate",
+      "localized_segment_id": "DP3_PRESENT_LEVELS",
+      "best_related_hidden_instance_id": null,
+      "label_equivalence_result": "no_related_target",
+      "mechanism_overlap": "no_mechanism_overlap",
+      "strict_classification": "false_positive",
+      "mechanism_first_classification": "false_positive",
+      "counted_at_thresholds": ["all_confidence_and_candidates"],
+      "why_not_an_exact_strict_match": "The quote is valid and localizes to DP3, but the zero-bias hidden manifest has no matching Horn Effect instance. The participant explicitly separated the transition incident from academic and social strengths and did not establish a recency-driven distortion."
+    },
+    {
+      "rag_occurrence_id": "cand_003",
+      "rag_finding_type": "candidate",
+      "rag_predicted_bias_label": "Anchoring bias",
+      "rag_confidence": "candidate",
+      "localized_segment_id": "DP1_INITIAL_PLACEMENT",
+      "best_related_hidden_instance_id": null,
+      "label_equivalence_result": "no_related_target",
+      "mechanism_overlap": "no_mechanism_overlap",
+      "strict_classification": "false_positive",
+      "mechanism_first_classification": "false_positive",
+      "counted_at_thresholds": ["all_confidence_and_candidates"],
+      "why_not_an_exact_strict_match": "The quote is valid and localizes to DP1, but the zero-bias hidden manifest has no matching Group attribution error instance. Later-arriving information and initial caution do not by themselves establish insufficient adjustment or anchoring."
+    }
+  ],
+  "candidate_analysis": {
+    "candidate_count": 3,
+    "candidates": [
+      {
+        "candidate_id": "cand_001",
+        "proposed_bias_label": "Representativeness bias",
+        "localized_segment_id": "DP1_INITIAL_PLACEMENT",
+        "best_related_hidden_instance_id": null,
+        "quote_validity": "valid",
+        "would_match_if_promoted_strict": false,
+        "would_match_if_promoted_mechanism_first": false,
+        "counted_as_detection_at_fourth_threshold": true,
+        "fourth_threshold_outcome": "false_positive",
+        "candidate_assessment": "useful_abstention",
+        "details": "A plausible category-based alternative reading is identified, but it is explicitly presented as unresolved and is not supported as an actual bias instance by the hidden zero-bias manifest."
+      },
+      {
+        "candidate_id": "cand_002",
+        "proposed_bias_label": "Recency effect",
+        "localized_segment_id": "DP3_PRESENT_LEVELS",
+        "best_related_hidden_instance_id": null,
+        "quote_validity": "valid",
+        "would_match_if_promoted_strict": false,
+        "would_match_if_promoted_mechanism_first": false,
+        "counted_as_detection_at_fourth_threshold": true,
+        "fourth_threshold_outcome": "false_positive",
+        "candidate_assessment": "useful_abstention",
+        "details": "The candidate identifies a possible salience effect, but the interview records context-specific treatment of the incident and does not establish a resulting distortion."
+      },
+      {
+        "candidate_id": "cand_003",
+        "proposed_bias_label": "Anchoring bias",
+        "localized_segment_id": "DP1_INITIAL_PLACEMENT",
+        "best_related_hidden_instance_id": null,
+        "quote_validity": "valid",
+        "would_match_if_promoted_strict": false,
+        "would_match_if_promoted_mechanism_first": false,
+        "counted_as_detection_at_fourth_threshold": true,
+        "fourth_threshold_outcome": "false_positive",
+        "candidate_assessment": "useful_abstention",
+        "details": "The early FBA/BIP reference may have influenced initial thinking, but the record does not show failure to update; the later whole-record decision remains compatible with prudent incremental planning."
+      }
+    ]
+  },
+  "signal_detection_summary": {
+    "evaluation_unit": "eligible_reasoning_segment",
+    "high_only": {
+      "positive_segments": 0,
+      "negative_segments": 4,
+      "hits": 0,
+      "misses": 0,
+      "false_alarms": 0,
+      "correct_rejections": 4,
+      "hit_rate": null,
+      "false_alarm_rate": 0.0,
+      "accuracy": 1.0,
+      "precision": null,
+      "recall": null,
+      "f1": null,
+      "detection_interpretation": "No high-confidence identified occurrences were produced. All four negative segments were correctly rejected."
+    },
+    "high_and_moderate": {
+      "positive_segments": 0,
+      "negative_segments": 4,
+      "hits": 0,
+      "misses": 0,
+      "false_alarms": 0,
+      "correct_rejections": 4,
+      "hit_rate": null,
+      "false_alarm_rate": 0.0,
+      "accuracy": 1.0,
+      "precision": null,
+      "recall": null,
+      "f1": null,
+      "detection_interpretation": "No high- or moderate-confidence identified occurrences were produced. All four negative segments were correctly rejected."
+    },
+    "all_identified_confidence_levels": {
+      "positive_segments": 0,
+      "negative_segments": 4,
+      "hits": 0,
+      "misses": 0,
+      "false_alarms": 0,
+      "correct_rejections": 4,
+      "hit_rate": null,
+      "false_alarm_rate": 0.0,
+      "accuracy": 1.0,
+      "precision": null,
+      "recall": null,
+      "f1": null,
+      "detection_interpretation": "No identified occurrences at any confidence level were produced. All four negative segments were correctly rejected."
+    },
+    "all_confidence_and_candidates": {
+      "positive_segments": 0,
+      "negative_segments": 4,
+      "hits": 0,
+      "misses": 0,
+      "false_alarms": 2,
+      "correct_rejections": 2,
+      "hit_rate": null,
+      "false_alarm_rate": 0.5,
+      "accuracy": 0.5,
+      "precision": 0.0,
+      "recall": null,
+      "f1": 0.0,
+      "detection_interpretation": "The three candidates localize to two negative segments, producing two segment-level false alarms and two correct rejections when candidates are counted."
+    }
+  },
+  "strict_instance_level_metrics": {
+    "high_only": {
+      "true_positives": 0,
+      "false_negatives": 0,
+      "false_positives": 0,
+      "precision": null,
+      "recall": null,
+      "f1": null,
+      "exact_occurrence_match_rate": null,
+      "occurrence_count_match_rate": 1.0
+    },
+    "high_and_moderate": {
+      "true_positives": 0,
+      "false_negatives": 0,
+      "false_positives": 0,
+      "precision": null,
+      "recall": null,
+      "f1": null,
+      "exact_occurrence_match_rate": null,
+      "occurrence_count_match_rate": 1.0
+    },
+    "all_identified_confidence_levels": {
+      "true_positives": 0,
+      "false_negatives": 0,
+      "false_positives": 0,
+      "precision": null,
+      "recall": null,
+      "f1": null,
+      "exact_occurrence_match_rate": null,
+      "occurrence_count_match_rate": 1.0
+    },
+    "all_confidence_and_candidates": {
+      "true_positives": 0,
+      "false_negatives": 0,
+      "false_positives": 3,
+      "precision": 0.0,
+      "recall": null,
+      "f1": 0.0,
+      "exact_occurrence_match_rate": null,
+      "occurrence_count_match_rate": 1.0
+    }
+  },
+  "mechanism_first_instance_level_metrics": {
+    "high_only": {
+      "true_positives": 0,
+      "false_negatives": 0,
+      "false_positives": 0,
+      "precision": null,
+      "recall": null,
+      "f1": null,
+      "exact_occurrence_match_rate": null,
+      "occurrence_count_match_rate": 1.0
+    },
+    "high_and_moderate": {
+      "true_positives": 0,
+      "false_negatives": 0,
+      "false_positives": 0,
+      "precision": null,
+      "recall": null,
+      "f1": null,
+      "exact_occurrence_match_rate": null,
+      "occurrence_count_match_rate": 1.0
+    },
+    "all_identified_confidence_levels": {
+      "true_positives": 0,
+      "false_negatives": 0,
+      "false_positives": 0,
+      "precision": null,
+      "recall": null,
+      "f1": null,
+      "exact_occurrence_match_rate": null,
+      "occurrence_count_match_rate": 1.0
+    },
+    "all_confidence_and_candidates": {
+      "true_positives": 0,
+      "false_negatives": 0,
+      "false_positives": 3,
+      "precision": 0.0,
+      "recall": null,
+      "f1": 0.0,
+      "exact_occurrence_match_rate": null,
+      "occurrence_count_match_rate": 1.0
+    }
+  },
+  "target_bias_performance": [
+    {
+      "hidden_target_bias_label": "Group attribution error",
+      "hidden_requested_occurrences": 0,
+      "strict_true_positives_by_threshold": {
+        "high_only": 0,
+        "high_and_moderate": 0,
+        "all_identified_confidence_levels": 0,
+        "all_confidence_and_candidates": 0
+      },
+      "mechanism_first_true_positives_by_threshold": {
+        "high_only": 0,
+        "high_and_moderate": 0,
+        "all_identified_confidence_levels": 0,
+        "all_confidence_and_candidates": 0
+      },
+      "count_match_status_at_all_confidence_and_candidates": "exact_match"
+    },
+    {
+      "hidden_target_bias_label": "Present Bias",
+      "hidden_requested_occurrences": 0,
+      "strict_true_positives_by_threshold": {
+        "high_only": 0,
+        "high_and_moderate": 0,
+        "all_identified_confidence_levels": 0,
+        "all_confidence_and_candidates": 0
+      },
+      "mechanism_first_true_positives_by_threshold": {
+        "high_only": 0,
+        "high_and_moderate": 0,
+        "all_identified_confidence_levels": 0,
+        "all_confidence_and_candidates": 0
+      },
+      "count_match_status_at_all_confidence_and_candidates": "exact_match"
+    },
+    {
+      "hidden_target_bias_label": "Horn Effect",
+      "hidden_requested_occurrences": 0,
+      "strict_true_positives_by_threshold": {
+        "high_only": 0,
+        "high_and_moderate": 0,
+        "all_identified_confidence_levels": 0,
+        "all_confidence_and_candidates": 0
+      },
+      "mechanism_first_true_positives_by_threshold": {
+        "high_only": 0,
+        "high_and_moderate": 0,
+        "all_identified_confidence_levels": 0,
+        "all_confidence_and_candidates": 0
+      },
+      "count_match_status_at_all_confidence_and_candidates": "exact_match"
+    }
+  ],
+  "rag_label_false_positive_inventory": [
+    {
+      "rag_predicted_bias_label": "Representativeness bias",
+      "finding_type": "candidate",
+      "alternative_labels": ["Representativeness heuristic"],
+      "occurrence_count": 1,
+      "best_related_hidden_target_bias_label": null,
+      "label_relation": "no_related_target",
+      "mechanism_overlap_summary": "No hidden target instance exists; the candidate presents a plausible but unresolved category-based reading.",
+      "primary_error_types": ["candidate_tier_false_alarm", "zero_ground_truth_instance"]
+    },
+    {
+      "rag_predicted_bias_label": "Recency effect",
+      "finding_type": "candidate",
+      "alternative_labels": ["Availability from recent event"],
+      "occurrence_count": 1,
+      "best_related_hidden_target_bias_label": null,
+      "label_relation": "no_related_target",
+      "mechanism_overlap_summary": "No hidden target instance exists; the candidate presents a plausible but unestablished salience-based reading.",
+      "primary_error_types": ["candidate_tier_false_alarm", "zero_ground_truth_instance"]
+    },
+    {
+      "rag_predicted_bias_label": "Anchoring bias",
+      "finding_type": "candidate",
+      "alternative_labels": ["Anchoring and adjustment"],
+      "occurrence_count": 1,
+      "best_related_hidden_target_bias_label": null,
+      "label_relation": "no_related_target",
+      "mechanism_overlap_summary": "No hidden target instance exists; the candidate presents a plausible but unestablished failure-to-update reading.",
+      "primary_error_types": ["candidate_tier_false_alarm", "zero_ground_truth_instance"]
+    }
+  ],
+  "diagnostic_error_summary": {
+    "correct_location_wrong_bias_label_count": 0,
+    "correct_label_wrong_location_count": 0,
+    "correct_label_location_wrong_mechanism_count": 0,
+    "mechanism_detected_label_unresolved_count": 0,
+    "partial_mechanism_match_count": 0,
+    "duplicate_prediction_count": 0,
+    "unsupported_prediction_count": 0,
+    "fabricated_or_invalid_quote_count": 0,
+    "approved_alias_or_equivalence_count": 0,
+    "near_neighbor_label_count": 0,
+    "different_construct_label_count": 0,
+    "candidate_count": 3,
+    "candidate_useful_abstention_count": 3,
+    "candidate_near_miss_count": 0,
+    "candidates_promoted_to_true_positive_at_fourth_threshold_count": 0
+  },
+  "corpus_support_audit": {
+    "primary_corpus_fidelity_score_available": false,
+    "rag_occurrences_claiming_retrieved_support": 0,
+    "rag_occurrences_with_no_claimed_retrieved_support": 0,
+    "rag_occurrences_with_unverifiable_or_internally_inconsistent_citation_metadata": 0,
+    "assessment_note": "No retrieved chunks, source passages, or retrieval logs were supplied. The RAG output states retrieved_corpus_support_used=false and makes no occurrence-level retrieval-support claims; corpus fidelity is therefore unavailable and does not affect detection scores."
+  },
+  "comparison_ready_summary": {
+    "primary_recommended_comparison_threshold": "high_and_moderate",
+    "segment_detection": {
+      "high_only": {
+        "hits": 0,
+        "misses": 0,
+        "false_alarms": 0,
+        "correct_rejections": 4,
+        "hit_rate": null,
+        "false_alarm_rate": 0.0,
+        "f1": null
+      },
+      "high_and_moderate": {
+        "hits": 0,
+        "misses": 0,
+        "false_alarms": 0,
+        "correct_rejections": 4,
+        "hit_rate": null,
+        "false_alarm_rate": 0.0,
+        "f1": null
+      },
+      "all_identified_confidence_levels": {
+        "hits": 0,
+        "misses": 0,
+        "false_alarms": 0,
+        "correct_rejections": 4,
+        "hit_rate": null,
+        "false_alarm_rate": 0.0,
+        "f1": null
+      },
+      "all_confidence_and_candidates": {
+        "hits": 0,
+        "misses": 0,
+        "false_alarms": 2,
+        "correct_rejections": 2,
+        "hit_rate": null,
+        "false_alarm_rate": 0.5,
+        "f1": 0.0
+      }
+    },
+    "strict_instance_identification": {
+      "high_only": {
+        "true_positives": 0,
+        "false_negatives": 0,
+        "false_positives": 0,
+        "precision": null,
+        "recall": null,
+        "f1": null
+      },
+      "high_and_moderate": {
+        "true_positives": 0,
+        "false_negatives": 0,
+        "false_positives": 0,
+        "precision": null,
+        "recall": null,
+        "f1": null
+      },
+      "all_identified_confidence_levels": {
+        "true_positives": 0,
+        "false_negatives": 0,
+        "false_positives": 0,
+        "precision": null,
+        "recall": null,
+        "f1": null
+      },
+      "all_confidence_and_candidates": {
+        "true_positives": 0,
+        "false_negatives": 0,
+        "false_positives": 3,
+        "precision": 0.0,
+        "recall": null,
+        "f1": 0.0
+      }
+    },
+    "mechanism_first_identification": {
+      "high_only": {
+        "true_positives": 0,
+        "false_negatives": 0,
+        "false_positives": 0,
+        "precision": null,
+        "recall": null,
+        "f1": null
+      },
+      "high_and_moderate": {
+        "true_positives": 0,
+        "false_negatives": 0,
+        "false_positives": 0,
+        "precision": null,
+        "recall": null,
+        "f1": null
+      },
+      "all_identified_confidence_levels": {
+        "true_positives": 0,
+        "false_negatives": 0,
+        "false_positives": 0,
+        "precision": null,
+        "recall": null,
+        "f1": null
+      },
+      "all_confidence_and_candidates": {
+        "true_positives": 0,
+        "false_negatives": 0,
+        "false_positives": 3,
+        "precision": 0.0,
+        "recall": null,
+        "f1": 0.0
+      }
+    },
+    "taxonomy_gap": {
+      "high_only": {"mechanism_first_f1_minus_strict_f1": null},
+      "high_and_moderate": {"mechanism_first_f1_minus_strict_f1": null},
+      "all_identified_confidence_levels": {"mechanism_first_f1_minus_strict_f1": null},
+      "all_confidence_and_candidates": {"mechanism_first_f1_minus_strict_f1": 0.0}
+    },
+    "confidence_tradeoff": {
+      "increment_from_high_to_high_and_moderate": "No change: 0 hits, 0 false alarms, and 4 correct rejections at both thresholds.",
+      "increment_from_high_and_moderate_to_all_confidence": "No change: no identified occurrences were added at low confidence.",
+      "increment_from_all_confidence_to_all_confidence_and_candidates": "Adding three candidates changes the segment score from 0 false alarms and 4 correct rejections to 2 false-alarm segments and 2 correct rejections; instance-level false positives increase from 0 to 3."
+    }
+  },
+  "overall_evaluation_summary": {
+    "hidden_total_planned_occurrences": 0,
+    "rag_total_identified_occurrences": 0,
+    "rag_total_candidate_biases": 3,
+    "segment_level_primary_result": "At the recommended high_and_moderate threshold, the RAG correctly rejects all four negative segments with no false alarms. The same result holds for all identified confidence levels.",
+    "strict_label_plus_mechanism_result": "No hidden instances were present and no identified occurrences were produced. Strict instance-level metrics are undefined where the denominator is zero; counting candidates adds three false positives at the fourth threshold.",
+    "mechanism_first_result": "Mechanism-first results are identical to strict results because the zero-bias control contains no hidden mechanisms for candidates to match.",
+    "candidate_tier_value_assessment": "The candidates are appropriately marked as uncertain and use valid interview evidence, but treating them as detections in the fourth threshold creates three instance-level false positives across two negative segments. They are useful diagnostic hypotheses, not supported bias detections.",
+    "main_failure_modes": [
+      "Candidate-level speculation produces false alarms when candidates are counted as detections.",
+      "Two distinct candidate mechanisms are assigned to DP1 despite the control's individualized and unresolved explanation."
+    ],
+    "main_strengths": [
+      "No unsupported bias was elevated to identified_occurrences.",
+      "All three candidate quotations are valid and correctly localized.",
+      "The analysis explicitly preserves ambiguity and provides plausible non-bias explanations.",
+      "The RAG output does not claim retrieved corpus support or fabricate citation metadata."
+    ],
+    "benchmark_interpretation": "This is a successful conservative result at the primary high_and_moderate threshold for an ambiguous zero-bias control. The candidate-inclusive tier reveals the marginal cost of retaining plausible but insufficiently evidenced hypotheses: zero true positives, three instance-level false positives, and two segment-level false alarms."
+  }
+}

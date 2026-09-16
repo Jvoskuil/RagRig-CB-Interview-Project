@@ -1,0 +1,703 @@
+{
+  "evaluation_metadata": {
+    "task": "ontology_free_rag_cognitive_bias_benchmark_evaluation",
+    "benchmark_run_metadata": {
+      "benchmark_run_id": "HE_Biased_6_Sonnet_on",
+      "interview_id": "HE_Biased_6",
+      "system_prompt_id": "Sonnet",
+      "system_prompt_generator": "Prompt 1_2",
+      "rag_model_id": "v1.0.0",
+      "corpus_condition": "on",
+      "retrieval_configuration_id": "k=50",
+      "decoding_configuration_id": null,
+      "temperature": 1,
+      "replicate_id": null,
+      "segment_map_id": null
+    },
+    "scenario_id": "HE_Biased_6",
+    "domain_id": "HE",
+    "condition": "biased",
+    "segment_map_status": "prevalidated_provided",
+    "rag_output_parse_status": "valid_json",
+    "rag_schema_assessment": "conformant"
+  },
+  "input_validation": {
+    "rag_output_schema_violations": [],
+    "rag_summary_count_consistency": {
+      "status": "consistent",
+      "details": "The summary lists five identified bias labels with one occurrence each, matching the five identified_occurrences records; candidate_biases is empty."
+    },
+    "evaluation_limitations": [
+      "No retrieved chunks, source passages, or retrieval logs were supplied, so corpus fidelity cannot be independently scored.",
+      "The RAG output uses Halo Effect for the Authority Bias mechanism and does not separately identify the hidden Optimism bias instance."
+    ]
+  },
+  "evaluation_segment_map": {
+    "segment_mapping_version": "1.0",
+    "segments": [
+      {
+        "segment_id": "seg_001",
+        "speaker": "Participant",
+        "segment_type": "decision_reasoning",
+        "raw_interview_anchor": "Phase 1 approval evidence",
+        "eligible_reasoning_segment": true,
+        "ground_truth_bias_present": true,
+        "ground_truth_instance_ids": ["auth_01"],
+        "ground_truth_rationale": "The participant explicitly says the firm's reputation and prior approval carried the decision and substituted for deeper CFD-assumption scrutiny."
+      },
+      {
+        "segment_id": "seg_002",
+        "speaker": "Participant",
+        "segment_type": "decision_reasoning",
+        "raw_interview_anchor": "Phase 2 commissioning protocol choice",
+        "eligible_reasoning_segment": true,
+        "ground_truth_bias_present": true,
+        "ground_truth_instance_ids": ["amb_01"],
+        "ground_truth_rationale": "The participant chooses the clearly defined protocol despite acknowledging that the alternative is the better technical fit."
+      },
+      {
+        "segment_id": "seg_003",
+        "speaker": "Participant",
+        "segment_type": "decision_reasoning",
+        "raw_interview_anchor": "Phase 3 fire-door inspection response",
+        "eligible_reasoning_segment": true,
+        "ground_truth_bias_present": true,
+        "ground_truth_instance_ids": ["clu_01"],
+        "ground_truth_rationale": "The participant infers a meaningful localized problem from three deficiencies despite random crew rotation and a rate consistent with ordinary variation."
+      },
+      {
+        "segment_id": "seg_004",
+        "speaker": "Participant",
+        "segment_type": "decision_reasoning",
+        "raw_interview_anchor": "Phase 4 temporary occupancy basis",
+        "eligible_reasoning_segment": true,
+        "ground_truth_bias_present": true,
+        "ground_truth_instance_ids": ["opt_01", "prob_01"],
+        "ground_truth_rationale": "The participant relies on favorable contractor history and a nearby success while discounting the available citywide rework rate."
+      },
+      {
+        "segment_id": "seg_005",
+        "speaker": "Participant",
+        "segment_type": "decision_reasoning",
+        "raw_interview_anchor": "Phase 4 denial conditions",
+        "eligible_reasoning_segment": true,
+        "ground_truth_bias_present": false,
+        "ground_truth_instance_ids": [],
+        "ground_truth_rationale": "The participant describes conditions that would have changed the occupancy decision; no hidden bias is manifested in this narrow span."
+      },
+      {
+        "segment_id": "seg_006",
+        "speaker": "Participant",
+        "segment_type": "decision_reasoning",
+        "raw_interview_anchor": "Cross-decision uncertainty reflection",
+        "eligible_reasoning_segment": true,
+        "ground_truth_bias_present": false,
+        "ground_truth_instance_ids": [],
+        "ground_truth_rationale": "The participant acknowledges differing uncertainty levels but does not express an additional hidden bias mechanism in this reflection."
+      },
+      {
+        "segment_id": "seg_007",
+        "speaker": "Participant",
+        "segment_type": "decision_reasoning",
+        "raw_interview_anchor": "Post-fire retrospective re-evaluation",
+        "eligible_reasoning_segment": true,
+        "ground_truth_bias_present": true,
+        "ground_truth_instance_ids": ["hind_01"],
+        "ground_truth_rationale": "After the fire, the participant says the smoke-migration issue should have jumped out and felt obvious in the original CFD numbers."
+      },
+      {
+        "segment_id": "seg_008",
+        "speaker": "Participant",
+        "segment_type": "decision_reasoning",
+        "raw_interview_anchor": "Same-information occupancy counterfactual",
+        "eligible_reasoning_segment": true,
+        "ground_truth_bias_present": false,
+        "ground_truth_instance_ids": [],
+        "ground_truth_rationale": "The participant says the occupancy call would probably remain unchanged with the same information; this is not itself a hidden occurrence."
+      }
+    ]
+  },
+  "segment_level_adjudications": [
+    {
+      "segment_id": "seg_001",
+      "ground_truth_status": "positive",
+      "ground_truth_instance_ids": ["auth_01"],
+      "rag_identified_occurrence_ids": ["obs_001"],
+      "rag_candidate_ids_counted_at_fourth_threshold": [],
+      "rag_detected_bias_in_segment_by_threshold": {
+        "high_only": true,
+        "high_and_moderate": true,
+        "all_identified_confidence_levels": true,
+        "all_confidence_and_candidates": true
+      },
+      "sdt_outcome_by_threshold": {
+        "high_only": "hit",
+        "high_and_moderate": "hit",
+        "all_identified_confidence_levels": "hit",
+        "all_confidence_and_candidates": "hit"
+      },
+      "localization_basis": "obs_001 contains valid participant quotations directly overlapping the Phase 1 reasoning span about relying on Halkirk & Vance's reputation and prior approval.",
+      "adjudication_note": "Segment detection is correct. The primary label Halo Effect is a near-neighbor to the hidden Authority Bias label, so this is not a strict instance match, but the mechanism is fully captured."
+    },
+    {
+      "segment_id": "seg_002",
+      "ground_truth_status": "positive",
+      "ground_truth_instance_ids": ["amb_01"],
+      "rag_identified_occurrence_ids": ["obs_002"],
+      "rag_candidate_ids_counted_at_fourth_threshold": [],
+      "rag_detected_bias_in_segment_by_threshold": {
+        "high_only": false,
+        "high_and_moderate": true,
+        "all_identified_confidence_levels": true,
+        "all_confidence_and_candidates": true
+      },
+      "sdt_outcome_by_threshold": {
+        "high_only": "miss",
+        "high_and_moderate": "hit",
+        "all_identified_confidence_levels": "hit",
+        "all_confidence_and_candidates": "hit"
+      },
+      "localization_basis": "obs_002 quotes the participant's Phase 2 choice of the binary protocol because it was easier to defend, directly overlapping the mapped protocol-choice span.",
+      "adjudication_note": "Ambiguity Aversion is treated as an established equivalent for the hidden Ambiguity effect construct because the stated mechanism fully matches. Its moderate confidence excludes it from high_only."
+    },
+    {
+      "segment_id": "seg_003",
+      "ground_truth_status": "positive",
+      "ground_truth_instance_ids": ["clu_01"],
+      "rag_identified_occurrence_ids": ["obs_003"],
+      "rag_candidate_ids_counted_at_fourth_threshold": [],
+      "rag_detected_bias_in_segment_by_threshold": {
+        "high_only": true,
+        "high_and_moderate": true,
+        "all_identified_confidence_levels": true,
+        "all_confidence_and_candidates": true
+      },
+      "sdt_outcome_by_threshold": {
+        "high_only": "hit",
+        "high_and_moderate": "hit",
+        "all_identified_confidence_levels": "hit",
+        "all_confidence_and_candidates": "hit"
+      },
+      "localization_basis": "obs_003 quotes the three flagged floors, random crew rotation, ordinary defect rate, and the resulting targeted inspection decision.",
+      "adjudication_note": "The label and mechanism match the hidden Clustering illusion instance."
+    },
+    {
+      "segment_id": "seg_004",
+      "ground_truth_status": "positive",
+      "ground_truth_instance_ids": ["opt_01", "prob_01"],
+      "rag_identified_occurrence_ids": ["obs_004"],
+      "rag_candidate_ids_counted_at_fourth_threshold": [],
+      "rag_detected_bias_in_segment_by_threshold": {
+        "high_only": true,
+        "high_and_moderate": true,
+        "all_identified_confidence_levels": true,
+        "all_confidence_and_candidates": true
+      },
+      "sdt_outcome_by_threshold": {
+        "high_only": "hit",
+        "high_and_moderate": "hit",
+        "all_identified_confidence_levels": "hit",
+        "all_confidence_and_candidates": "hit"
+      },
+      "localization_basis": "obs_004 quotes the Phase 4 occupancy reasoning, including the favorable contractor history, nearby anecdote, and discounting of the 15 percent citywide rework statistic.",
+      "adjudication_note": "The finding fully matches prob_01. The same finding does not separately instantiate opt_01 because its mechanism is base-rate versus anecdote weighting, not general-track-record optimism."
+    },
+    {
+      "segment_id": "seg_005",
+      "ground_truth_status": "negative",
+      "ground_truth_instance_ids": [],
+      "rag_identified_occurrence_ids": [],
+      "rag_candidate_ids_counted_at_fourth_threshold": [],
+      "rag_detected_bias_in_segment_by_threshold": {
+        "high_only": false,
+        "high_and_moderate": false,
+        "all_identified_confidence_levels": false,
+        "all_confidence_and_candidates": false
+      },
+      "sdt_outcome_by_threshold": {
+        "high_only": "correct_rejection",
+        "high_and_moderate": "correct_rejection",
+        "all_identified_confidence_levels": "correct_rejection",
+        "all_confidence_and_candidates": "correct_rejection"
+      },
+      "localization_basis": "No RAG finding localizes to this negative segment.",
+      "adjudication_note": "The participant describes hypothetical denial conditions without a hidden bias manifestation, and the RAG correctly abstains."
+    },
+    {
+      "segment_id": "seg_006",
+      "ground_truth_status": "negative",
+      "ground_truth_instance_ids": [],
+      "rag_identified_occurrence_ids": [],
+      "rag_candidate_ids_counted_at_fourth_threshold": [],
+      "rag_detected_bias_in_segment_by_threshold": {
+        "high_only": false,
+        "high_and_moderate": false,
+        "all_identified_confidence_levels": false,
+        "all_confidence_and_candidates": false
+      },
+      "sdt_outcome_by_threshold": {
+        "high_only": "correct_rejection",
+        "high_and_moderate": "correct_rejection",
+        "all_identified_confidence_levels": "correct_rejection",
+        "all_confidence_and_candidates": "correct_rejection"
+      },
+      "localization_basis": "No RAG finding localizes to this negative segment.",
+      "adjudication_note": "The uncertainty reflection contains no additional hidden instance, and the RAG correctly abstains."
+    },
+    {
+      "segment_id": "seg_007",
+      "ground_truth_status": "positive",
+      "ground_truth_instance_ids": ["hind_01"],
+      "rag_identified_occurrence_ids": ["obs_005"],
+      "rag_candidate_ids_counted_at_fourth_threshold": [],
+      "rag_detected_bias_in_segment_by_threshold": {
+        "high_only": false,
+        "high_and_moderate": true,
+        "all_identified_confidence_levels": true,
+        "all_confidence_and_candidates": true
+      },
+      "sdt_outcome_by_threshold": {
+        "high_only": "miss",
+        "high_and_moderate": "hit",
+        "all_identified_confidence_levels": "hit",
+        "all_confidence_and_candidates": "hit"
+      },
+      "localization_basis": "obs_005 quotes the post-fire retrospective claim that the smoke-migration issue should have jumped out, along with the contemporaneous counterevidence.",
+      "adjudication_note": "The finding matches the hidden Hindsight bias instance, but its moderate confidence excludes it from high_only."
+    },
+    {
+      "segment_id": "seg_008",
+      "ground_truth_status": "negative",
+      "ground_truth_instance_ids": [],
+      "rag_identified_occurrence_ids": [],
+      "rag_candidate_ids_counted_at_fourth_threshold": [],
+      "rag_detected_bias_in_segment_by_threshold": {
+        "high_only": false,
+        "high_and_moderate": false,
+        "all_identified_confidence_levels": false,
+        "all_confidence_and_candidates": false
+      },
+      "sdt_outcome_by_threshold": {
+        "high_only": "correct_rejection",
+        "high_and_moderate": "correct_rejection",
+        "all_identified_confidence_levels": "correct_rejection",
+        "all_confidence_and_candidates": "correct_rejection"
+      },
+      "localization_basis": "No RAG finding localizes to this negative segment.",
+      "adjudication_note": "The same-information occupancy counterfactual is not itself a hidden occurrence, and the RAG correctly abstains."
+    }
+  ],
+  "instance_level_adjudications": [
+    {
+      "hidden_instance_id": "auth_01",
+      "hidden_target_bias_label": "Authority Bias",
+      "hidden_decision_or_episode": "Phase 1 approval of the performance-based atrium smoke-control design",
+      "hidden_mechanism": "Approval decision driven by the firm's reputation/credentials rather than independent verification of CFD assumptions.",
+      "matched_finding_by_threshold": {
+        "high_only": {"matched_id": "obs_001", "matched_type": "identified"},
+        "high_and_moderate": {"matched_id": "obs_001", "matched_type": "identified"},
+        "all_identified_confidence_levels": {"matched_id": "obs_001", "matched_type": "identified"},
+        "all_confidence_and_candidates": {"matched_id": "obs_001", "matched_type": "identified"}
+      },
+      "rag_predicted_bias_label": "Halo Effect",
+      "rag_confidence": "high",
+      "label_equivalence_result": "near_neighbor_label",
+      "localization_match_type": "exact_quote_match",
+      "mechanism_overlap": "full_mechanism_match",
+      "strict_scorecard_outcome_by_threshold": {
+        "high_only": "false_negative",
+        "high_and_moderate": "false_negative",
+        "all_identified_confidence_levels": "false_negative",
+        "all_confidence_and_candidates": "false_negative"
+      },
+      "mechanism_first_scorecard_outcome_by_threshold": {
+        "high_only": "true_positive",
+        "high_and_moderate": "true_positive",
+        "all_identified_confidence_levels": "true_positive",
+        "all_confidence_and_candidates": "true_positive"
+      },
+      "secondary_diagnostic_outcome": "correct_location_wrong_bias_label",
+      "label_equivalence_explanation": "Halo Effect is a related reputation-based evaluation construct, but it is not treated as an established alias for the hidden Authority Bias target. The primary RAG label therefore does not satisfy the strict label requirement.",
+      "mechanism_overlap_explanation": "The finding fully captures the hidden mechanism: the firm's reputation and prior approval generalized to the specific CFD report and reduced independent scrutiny.",
+      "evidence_fidelity_assessment": "High-fidelity evidence. The cited participant quotations are verbatim, correctly attributed, and directly support the Phase 1 mechanism."
+    },
+    {
+      "hidden_instance_id": "hind_01",
+      "hidden_target_bias_label": "Hindsight bias",
+      "hidden_decision_or_episode": "Post-fire retrospective reassessment of the Phase 1 design approval",
+      "hidden_mechanism": "Post-incident reattribution of the Phase 1 decision as having been obviously flawed, using knowledge unavailable at the time.",
+      "matched_finding_by_threshold": {
+        "high_only": {"matched_id": null, "matched_type": "none"},
+        "high_and_moderate": {"matched_id": "obs_005", "matched_type": "identified"},
+        "all_identified_confidence_levels": {"matched_id": "obs_005", "matched_type": "identified"},
+        "all_confidence_and_candidates": {"matched_id": "obs_005", "matched_type": "identified"}
+      },
+      "rag_predicted_bias_label": "Hindsight Bias",
+      "rag_confidence": "moderate",
+      "label_equivalence_result": "exact_target_label",
+      "localization_match_type": "exact_quote_match",
+      "mechanism_overlap": "full_mechanism_match",
+      "strict_scorecard_outcome_by_threshold": {
+        "high_only": "false_negative",
+        "high_and_moderate": "true_positive",
+        "all_identified_confidence_levels": "true_positive",
+        "all_confidence_and_candidates": "true_positive"
+      },
+      "mechanism_first_scorecard_outcome_by_threshold": {
+        "high_only": "false_negative",
+        "high_and_moderate": "true_positive",
+        "all_identified_confidence_levels": "true_positive",
+        "all_confidence_and_candidates": "true_positive"
+      },
+      "secondary_diagnostic_outcome": "exact_instance_match",
+      "label_equivalence_explanation": "The label is an exact case-insensitive match to the hidden target.",
+      "mechanism_overlap_explanation": "The finding correctly distinguishes the post-fire claim that the issue should have been obvious from the participant's statement that it did not register at the time.",
+      "evidence_fidelity_assessment": "High-fidelity evidence. Both cited quotations are verbatim, correctly attributed, and preserve the hindsight-versus-contemporaneous contrast."
+    },
+    {
+      "hidden_instance_id": "amb_01",
+      "hidden_target_bias_label": "Ambiguity effect",
+      "hidden_decision_or_episode": "Phase 2 selection of the commissioning verification protocol",
+      "hidden_mechanism": "Preference for the protocol with clearer criteria over the better-matched but less-defined protocol.",
+      "matched_finding_by_threshold": {
+        "high_only": {"matched_id": null, "matched_type": "none"},
+        "high_and_moderate": {"matched_id": "obs_002", "matched_type": "identified"},
+        "all_identified_confidence_levels": {"matched_id": "obs_002", "matched_type": "identified"},
+        "all_confidence_and_candidates": {"matched_id": "obs_002", "matched_type": "identified"}
+      },
+      "rag_predicted_bias_label": "Ambiguity Aversion",
+      "rag_confidence": "moderate",
+      "label_equivalence_result": "established_alias_or_equivalent",
+      "localization_match_type": "exact_quote_match",
+      "mechanism_overlap": "full_mechanism_match",
+      "strict_scorecard_outcome_by_threshold": {
+        "high_only": "false_negative",
+        "high_and_moderate": "true_positive",
+        "all_identified_confidence_levels": "true_positive",
+        "all_confidence_and_candidates": "true_positive"
+      },
+      "mechanism_first_scorecard_outcome_by_threshold": {
+        "high_only": "false_negative",
+        "high_and_moderate": "true_positive",
+        "all_identified_confidence_levels": "true_positive",
+        "all_confidence_and_candidates": "true_positive"
+      },
+      "secondary_diagnostic_outcome": "approved_alias_match",
+      "label_equivalence_explanation": "Ambiguity Aversion is treated as an established scholarly equivalent of Ambiguity effect for this mechanism: preferring clear, known criteria despite the alternative's better technical fit.",
+      "mechanism_overlap_explanation": "The finding fully captures the preference for binary, defensible thresholds over the better-matched protocol with partially qualitative thresholds.",
+      "evidence_fidelity_assessment": "High-fidelity evidence. The cited quotations are verbatim, correctly attributed, and directly support the Phase 2 choice rationale."
+    },
+    {
+      "hidden_instance_id": "clu_01",
+      "hidden_target_bias_label": "Clustering illusion",
+      "hidden_decision_or_episode": "Phase 3 interpretation of fire-door deficiencies on floors 8, 11, and 14",
+      "hidden_mechanism": "Inference of a systemic crew-level pattern from a small, randomly distributed sample of deficiencies.",
+      "matched_finding_by_threshold": {
+        "high_only": {"matched_id": "obs_003", "matched_type": "identified"},
+        "high_and_moderate": {"matched_id": "obs_003", "matched_type": "identified"},
+        "all_identified_confidence_levels": {"matched_id": "obs_003", "matched_type": "identified"},
+        "all_confidence_and_candidates": {"matched_id": "obs_003", "matched_type": "identified"}
+      },
+      "rag_predicted_bias_label": "Clustering Illusion",
+      "rag_confidence": "high",
+      "label_equivalence_result": "exact_target_label",
+      "localization_match_type": "exact_quote_match",
+      "mechanism_overlap": "full_mechanism_match",
+      "strict_scorecard_outcome_by_threshold": {
+        "high_only": "true_positive",
+        "high_and_moderate": "true_positive",
+        "all_identified_confidence_levels": "true_positive",
+        "all_confidence_and_candidates": "true_positive"
+      },
+      "mechanism_first_scorecard_outcome_by_threshold": {
+        "high_only": "true_positive",
+        "high_and_moderate": "true_positive",
+        "all_identified_confidence_levels": "true_positive",
+        "all_confidence_and_candidates": "true_positive"
+      },
+      "secondary_diagnostic_outcome": "exact_instance_match",
+      "label_equivalence_explanation": "The label is an exact case-insensitive match to the hidden target.",
+      "mechanism_overlap_explanation": "The finding captures the salient three-floor pattern, the random assignment and ordinary rate evidence, and the resulting localized inspection response.",
+      "evidence_fidelity_assessment": "High-fidelity evidence. The cited quotations are verbatim, correctly attributed, and support both the inference and the action taken."
+    },
+    {
+      "hidden_instance_id": "opt_01",
+      "hidden_target_bias_label": "Optimism bias",
+      "hidden_decision_or_episode": "Phase 4 temporary occupancy risk forecast",
+      "hidden_mechanism": "Unwarranted confidence that atrium-specific testing will pass, based on general rather than case-specific contractor track record.",
+      "matched_finding_by_threshold": {
+        "high_only": {"matched_id": null, "matched_type": "none"},
+        "high_and_moderate": {"matched_id": null, "matched_type": "none"},
+        "all_identified_confidence_levels": {"matched_id": null, "matched_type": "none"},
+        "all_confidence_and_candidates": {"matched_id": null, "matched_type": "none"}
+      },
+      "rag_predicted_bias_label": null,
+      "rag_confidence": null,
+      "label_equivalence_result": "no_prediction",
+      "localization_match_type": "no_prediction",
+      "mechanism_overlap": "no_prediction",
+      "strict_scorecard_outcome_by_threshold": {
+        "high_only": "false_negative",
+        "high_and_moderate": "false_negative",
+        "all_identified_confidence_levels": "false_negative",
+        "all_confidence_and_candidates": "false_negative"
+      },
+      "mechanism_first_scorecard_outcome_by_threshold": {
+        "high_only": "false_negative",
+        "high_and_moderate": "false_negative",
+        "all_identified_confidence_levels": "false_negative",
+        "all_confidence_and_candidates": "false_negative"
+      },
+      "secondary_diagnostic_outcome": "no_matching_prediction",
+      "label_equivalence_explanation": "No RAG occurrence was separately assigned to the hidden Optimism bias instance.",
+      "mechanism_overlap_explanation": "No RAG occurrence was separately assigned to the general-track-record confidence mechanism.",
+      "evidence_fidelity_assessment": "No prediction; therefore there is no RAG evidence to assess for this instance."
+    },
+    {
+      "hidden_instance_id": "prob_01",
+      "hidden_target_bias_label": "Probability neglect or Base-Rate Neglect",
+      "hidden_decision_or_episode": "Phase 4 temporary occupancy evidence weighting",
+      "hidden_mechanism": "Discounting the department's citywide statistical base rate in favor of a single salient anecdote about a nearby building.",
+      "matched_finding_by_threshold": {
+        "high_only": {"matched_id": "obs_004", "matched_type": "identified"},
+        "high_and_moderate": {"matched_id": "obs_004", "matched_type": "identified"},
+        "all_identified_confidence_levels": {"matched_id": "obs_004", "matched_type": "identified"},
+        "all_confidence_and_candidates": {"matched_id": "obs_004", "matched_type": "identified"}
+      },
+      "rag_predicted_bias_label": "Base-Rate Neglect",
+      "rag_confidence": "high",
+      "label_equivalence_result": "established_alias_or_equivalent",
+      "localization_match_type": "exact_quote_match",
+      "mechanism_overlap": "full_mechanism_match",
+      "strict_scorecard_outcome_by_threshold": {
+        "high_only": "true_positive",
+        "high_and_moderate": "true_positive",
+        "all_identified_confidence_levels": "true_positive",
+        "all_confidence_and_candidates": "true_positive"
+      },
+      "mechanism_first_scorecard_outcome_by_threshold": {
+        "high_only": "true_positive",
+        "high_and_moderate": "true_positive",
+        "all_identified_confidence_levels": "true_positive",
+        "all_confidence_and_candidates": "true_positive"
+      },
+      "secondary_diagnostic_outcome": "approved_alias_match",
+      "label_equivalence_explanation": "Base-Rate Neglect is one of the explicitly permitted alternatives in the hidden target label Probability neglect or Base-Rate Neglect.",
+      "mechanism_overlap_explanation": "The finding fully captures the contrast between the available 15 percent rework base rate and the vivid nearby-building success anecdote.",
+      "evidence_fidelity_assessment": "High-fidelity evidence. The cited quotations are verbatim, correctly attributed, and directly support the Phase 4 evidence-weighting mechanism."
+    }
+  ],
+  "unmatched_rag_predictions": [],
+  "candidate_analysis": {
+    "candidate_count": 0,
+    "candidates": []
+  },
+  "signal_detection_summary": {
+    "evaluation_unit": "eligible_reasoning_segment",
+    "high_only": {
+      "positive_segments": 5,
+      "negative_segments": 3,
+      "hits": 3,
+      "misses": 2,
+      "false_alarms": 0,
+      "correct_rejections": 3,
+      "hit_rate": 0.6,
+      "false_alarm_rate": 0,
+      "accuracy": 0.75,
+      "precision": 1,
+      "recall": 0.6,
+      "f1": 0.75,
+      "detection_interpretation": "Three of five positive segments are detected; the moderate-confidence ambiguity and hindsight segments are missed, with no false alarms."
+    },
+    "high_and_moderate": {
+      "positive_segments": 5,
+      "negative_segments": 3,
+      "hits": 5,
+      "misses": 0,
+      "false_alarms": 0,
+      "correct_rejections": 3,
+      "hit_rate": 1,
+      "false_alarm_rate": 0,
+      "accuracy": 1,
+      "precision": 1,
+      "recall": 1,
+      "f1": 1,
+      "detection_interpretation": "All five positive segments are detected with no false alarms."
+    },
+    "all_identified_confidence_levels": {
+      "positive_segments": 5,
+      "negative_segments": 3,
+      "hits": 5,
+      "misses": 0,
+      "false_alarms": 0,
+      "correct_rejections": 3,
+      "hit_rate": 1,
+      "false_alarm_rate": 0,
+      "accuracy": 1,
+      "precision": 1,
+      "recall": 1,
+      "f1": 1,
+      "detection_interpretation": "All five positive segments are detected with no false alarms; no low-confidence findings were present."
+    },
+    "all_confidence_and_candidates": {
+      "positive_segments": 5,
+      "negative_segments": 3,
+      "hits": 5,
+      "misses": 0,
+      "false_alarms": 0,
+      "correct_rejections": 3,
+      "hit_rate": 1,
+      "false_alarm_rate": 0,
+      "accuracy": 1,
+      "precision": 1,
+      "recall": 1,
+      "f1": 1,
+      "detection_interpretation": "Identical to all identified confidence levels because no candidate biases were supplied."
+    }
+  },
+  "strict_instance_level_metrics": {
+    "high_only": {"true_positives": 2, "false_negatives": 4, "false_positives": 1, "precision": 0.6667, "recall": 0.3333, "f1": 0.4444, "exact_occurrence_match_rate": 0.3333, "occurrence_count_match_rate": 0.3333},
+    "high_and_moderate": {"true_positives": 4, "false_negatives": 2, "false_positives": 1, "precision": 0.8, "recall": 0.6667, "f1": 0.7273, "exact_occurrence_match_rate": 0.6667, "occurrence_count_match_rate": 0.6667},
+    "all_identified_confidence_levels": {"true_positives": 4, "false_negatives": 2, "false_positives": 1, "precision": 0.8, "recall": 0.6667, "f1": 0.7273, "exact_occurrence_match_rate": 0.6667, "occurrence_count_match_rate": 0.6667},
+    "all_confidence_and_candidates": {"true_positives": 4, "false_negatives": 2, "false_positives": 1, "precision": 0.8, "recall": 0.6667, "f1": 0.7273, "exact_occurrence_match_rate": 0.6667, "occurrence_count_match_rate": 0.6667}
+  },
+  "mechanism_first_instance_level_metrics": {
+    "high_only": {"true_positives": 3, "false_negatives": 3, "false_positives": 0, "precision": 1, "recall": 0.5, "f1": 0.6667, "exact_occurrence_match_rate": 0.5, "occurrence_count_match_rate": 0.5},
+    "high_and_moderate": {"true_positives": 5, "false_negatives": 1, "false_positives": 0, "precision": 1, "recall": 0.8333, "f1": 0.9091, "exact_occurrence_match_rate": 0.8333, "occurrence_count_match_rate": 0.8333},
+    "all_identified_confidence_levels": {"true_positives": 5, "false_negatives": 1, "false_positives": 0, "precision": 1, "recall": 0.8333, "f1": 0.9091, "exact_occurrence_match_rate": 0.8333, "occurrence_count_match_rate": 0.8333},
+    "all_confidence_and_candidates": {"true_positives": 5, "false_negatives": 1, "false_positives": 0, "precision": 1, "recall": 0.8333, "f1": 0.9091, "exact_occurrence_match_rate": 0.8333, "occurrence_count_match_rate": 0.8333}
+  },
+  "target_bias_performance": [
+    {
+      "hidden_target_bias_label": "Authority Bias",
+      "hidden_requested_occurrences": 1,
+      "strict_true_positives_by_threshold": {"high_only": 0, "high_and_moderate": 0, "all_identified_confidence_levels": 0, "all_confidence_and_candidates": 0},
+      "mechanism_first_true_positives_by_threshold": {"high_only": 1, "high_and_moderate": 1, "all_identified_confidence_levels": 1, "all_confidence_and_candidates": 1},
+      "count_match_status_at_all_confidence_and_candidates": "underdetected"
+    },
+    {
+      "hidden_target_bias_label": "Hindsight bias",
+      "hidden_requested_occurrences": 1,
+      "strict_true_positives_by_threshold": {"high_only": 0, "high_and_moderate": 1, "all_identified_confidence_levels": 1, "all_confidence_and_candidates": 1},
+      "mechanism_first_true_positives_by_threshold": {"high_only": 0, "high_and_moderate": 1, "all_identified_confidence_levels": 1, "all_confidence_and_candidates": 1},
+      "count_match_status_at_all_confidence_and_candidates": "exact_match"
+    },
+    {
+      "hidden_target_bias_label": "Ambiguity effect",
+      "hidden_requested_occurrences": 1,
+      "strict_true_positives_by_threshold": {"high_only": 0, "high_and_moderate": 1, "all_identified_confidence_levels": 1, "all_confidence_and_candidates": 1},
+      "mechanism_first_true_positives_by_threshold": {"high_only": 0, "high_and_moderate": 1, "all_identified_confidence_levels": 1, "all_confidence_and_candidates": 1},
+      "count_match_status_at_all_confidence_and_candidates": "exact_match"
+    },
+    {
+      "hidden_target_bias_label": "Clustering illusion",
+      "hidden_requested_occurrences": 1,
+      "strict_true_positives_by_threshold": {"high_only": 1, "high_and_moderate": 1, "all_identified_confidence_levels": 1, "all_confidence_and_candidates": 1},
+      "mechanism_first_true_positives_by_threshold": {"high_only": 1, "high_and_moderate": 1, "all_identified_confidence_levels": 1, "all_confidence_and_candidates": 1},
+      "count_match_status_at_all_confidence_and_candidates": "exact_match"
+    },
+    {
+      "hidden_target_bias_label": "Optimism bias",
+      "hidden_requested_occurrences": 1,
+      "strict_true_positives_by_threshold": {"high_only": 0, "high_and_moderate": 0, "all_identified_confidence_levels": 0, "all_confidence_and_candidates": 0},
+      "mechanism_first_true_positives_by_threshold": {"high_only": 0, "high_and_moderate": 0, "all_identified_confidence_levels": 0, "all_confidence_and_candidates": 0},
+      "count_match_status_at_all_confidence_and_candidates": "underdetected"
+    },
+    {
+      "hidden_target_bias_label": "Probability neglect or Base-Rate Neglect",
+      "hidden_requested_occurrences": 1,
+      "strict_true_positives_by_threshold": {"high_only": 1, "high_and_moderate": 1, "all_identified_confidence_levels": 1, "all_confidence_and_candidates": 1},
+      "mechanism_first_true_positives_by_threshold": {"high_only": 1, "high_and_moderate": 1, "all_identified_confidence_levels": 1, "all_confidence_and_candidates": 1},
+      "count_match_status_at_all_confidence_and_candidates": "exact_match"
+    }
+  ],
+  "rag_label_false_positive_inventory": [
+    {
+      "rag_predicted_bias_label": "Halo Effect",
+      "finding_type": "identified",
+      "alternative_labels": ["Authority Bias", "Reputation Bias"],
+      "occurrence_count": 1,
+      "best_related_hidden_target_bias_label": "Authority Bias",
+      "label_relation": "near_neighbor",
+      "mechanism_overlap_summary": "Full overlap in the reputation-driven substitution of a firm's credentials for independent CFD-assumption scrutiny; the taxonomy label differs because Halo Effect is not treated as an alias of Authority Bias.",
+      "primary_error_types": ["correct_location_wrong_bias_label"]
+    }
+  ],
+  "diagnostic_error_summary": {
+    "correct_location_wrong_bias_label_count": 1,
+    "correct_label_wrong_location_count": 0,
+    "correct_label_location_wrong_mechanism_count": 0,
+    "mechanism_detected_label_unresolved_count": 0,
+    "partial_mechanism_match_count": 0,
+    "duplicate_prediction_count": 0,
+    "unsupported_prediction_count": 0,
+    "fabricated_or_invalid_quote_count": 0,
+    "approved_alias_or_equivalence_count": 2,
+    "near_neighbor_label_count": 1,
+    "different_construct_label_count": 0,
+    "candidate_count": 0,
+    "candidate_useful_abstention_count": 0,
+    "candidate_near_miss_count": 0,
+    "candidates_promoted_to_true_positive_at_fourth_threshold_count": 0
+  },
+  "corpus_support_audit": {
+    "primary_corpus_fidelity_score_available": false,
+    "rag_occurrences_claiming_retrieved_support": 0,
+    "rag_occurrences_with_no_claimed_retrieved_support": 5,
+    "rag_occurrences_with_unverifiable_or_internally_inconsistent_citation_metadata": 0,
+    "assessment_note": "The RAG output explicitly reports that retrieved corpus support was not used and provides empty corpus_evidence arrays. No retrieval material or logs were supplied, so fidelity is unavailable rather than scored."
+  },
+  "comparison_ready_summary": {
+    "primary_recommended_comparison_threshold": "high_and_moderate",
+    "segment_detection": {
+      "high_only": {"hits": 3, "misses": 2, "false_alarms": 0, "correct_rejections": 3, "hit_rate": 0.6, "false_alarm_rate": 0, "f1": 0.75},
+      "high_and_moderate": {"hits": 5, "misses": 0, "false_alarms": 0, "correct_rejections": 3, "hit_rate": 1, "false_alarm_rate": 0, "f1": 1},
+      "all_identified_confidence_levels": {"hits": 5, "misses": 0, "false_alarms": 0, "correct_rejections": 3, "hit_rate": 1, "false_alarm_rate": 0, "f1": 1},
+      "all_confidence_and_candidates": {"hits": 5, "misses": 0, "false_alarms": 0, "correct_rejections": 3, "hit_rate": 1, "false_alarm_rate": 0, "f1": 1}
+    },
+    "strict_instance_identification": {
+      "high_only": {"true_positives": 2, "false_negatives": 4, "false_positives": 1, "precision": 0.6667, "recall": 0.3333, "f1": 0.4444},
+      "high_and_moderate": {"true_positives": 4, "false_negatives": 2, "false_positives": 1, "precision": 0.8, "recall": 0.6667, "f1": 0.7273},
+      "all_identified_confidence_levels": {"true_positives": 4, "false_negatives": 2, "false_positives": 1, "precision": 0.8, "recall": 0.6667, "f1": 0.7273},
+      "all_confidence_and_candidates": {"true_positives": 4, "false_negatives": 2, "false_positives": 1, "precision": 0.8, "recall": 0.6667, "f1": 0.7273}
+    },
+    "mechanism_first_identification": {
+      "high_only": {"true_positives": 3, "false_negatives": 3, "false_positives": 0, "precision": 1, "recall": 0.5, "f1": 0.6667},
+      "high_and_moderate": {"true_positives": 5, "false_negatives": 1, "false_positives": 0, "precision": 1, "recall": 0.8333, "f1": 0.9091},
+      "all_identified_confidence_levels": {"true_positives": 5, "false_negatives": 1, "false_positives": 0, "precision": 1, "recall": 0.8333, "f1": 0.9091},
+      "all_confidence_and_candidates": {"true_positives": 5, "false_negatives": 1, "false_positives": 0, "precision": 1, "recall": 0.8333, "f1": 0.9091}
+    },
+    "taxonomy_gap": {
+      "high_only": {"mechanism_first_f1_minus_strict_f1": 0.2223},
+      "high_and_moderate": {"mechanism_first_f1_minus_strict_f1": 0.1818},
+      "all_identified_confidence_levels": {"mechanism_first_f1_minus_strict_f1": 0.1818},
+      "all_confidence_and_candidates": {"mechanism_first_f1_minus_strict_f1": 0.1818}
+    },
+    "confidence_tradeoff": {
+      "increment_from_high_to_high_and_moderate": "Adding moderate-confidence findings raises segment hits from 3 to 5, strict instance true positives from 2 to 4, and mechanism-first true positives from 3 to 5; false alarms remain zero.",
+      "increment_from_high_and_moderate_to_all_confidence": "No change: no low-confidence identified findings were supplied.",
+      "increment_from_all_confidence_to_all_confidence_and_candidates": "No change: no candidate biases were supplied."
+    }
+  },
+  "overall_evaluation_summary": {
+    "hidden_total_planned_occurrences": 6,
+    "rag_total_identified_occurrences": 5,
+    "rag_total_candidate_biases": 0,
+    "segment_level_primary_result": "At the recommended high_and_moderate threshold, the RAG detects all 5 positive reasoning segments with 0 false alarms.",
+    "strict_label_plus_mechanism_result": "At high_and_moderate, 4 of 6 hidden instances are strict true positives; the Authority Bias mechanism is labeled Halo Effect and Optimism bias is not separately identified.",
+    "mechanism_first_result": "At high_and_moderate, 5 of 6 hidden mechanisms are true positives; the Halo Effect label still captures the Authority Bias mechanism, while Optimism bias remains missed.",
+    "candidate_tier_value_assessment": "No candidates were supplied, so candidate-tier scoring adds no detections and the fourth threshold is identical to the all-identified threshold.",
+    "main_failure_modes": [
+      "Optimism bias was not separately identified from the Phase 4 occupancy reasoning.",
+      "Authority Bias was expressed with the near-neighbor label Halo Effect, reducing strict label-plus-mechanism performance.",
+      "Moderate-confidence ambiguity and hindsight findings are missed at the high_only threshold."
+    ],
+    "main_strengths": [
+      "All identified findings are correctly localized with valid, faithful interview quotations.",
+      "The RAG correctly identifies Clustering illusion, Base-Rate Neglect, and Hindsight bias mechanisms.",
+      "The RAG abstains on negative segments and supplies no unsupported candidates or duplicate findings.",
+      "The output explicitly discloses unavailable retrieved support rather than fabricating corpus evidence."
+    ],
+    "benchmark_interpretation": "This run has perfect segment-level detection at the recommended threshold and strong mechanism-level instance performance, but it underdetects one hidden instance and shows one taxonomy mismatch. The difference between mechanism-first and strict scores quantifies the cost of the Halo Effect versus Authority Bias label choice."
+  }
+}

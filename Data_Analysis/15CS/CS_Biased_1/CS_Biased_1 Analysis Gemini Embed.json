@@ -1,0 +1,630 @@
+{
+  "evaluation_metadata": {
+    "task": "ontology_free_rag_cognitive_bias_benchmark_evaluation",
+    "benchmark_run_metadata": {
+      "benchmark_run_id": "CS_Biased_1_Gemini_on",
+      "interview_id": "CS_Biased_1",
+      "system_prompt_id": "Gemini",
+      "system_prompt_generator": "Prompt 1_2",
+      "rag_model_id": "v1.0.0",
+      "corpus_condition": "on",
+      "retrieval_configuration_id": "k=50",
+      "decoding_configuration_id": null,
+      "temperature": 1,
+      "replicate_id": null,
+      "segment_map_id": null
+    },
+    "scenario_id": "CS_Biased_1",
+    "domain_id": "CS",
+    "condition": "biased",
+    "segment_map_status": "generated_not_prevalidated",
+    "rag_output_parse_status": "valid_json",
+    "rag_schema_assessment": "conformant"
+  },
+  "input_validation": {
+    "rag_output_schema_violations": [],
+    "rag_summary_count_consistency": {
+      "status": "consistent",
+      "details": "The identified_bias_summary reports one IKEA effect occurrence, matching the single identified occurrence. The candidate list contains one additional candidate and does not contradict the identified count."
+    },
+    "evaluation_limitations": [
+      "No prevalidated evaluation segment map was supplied; the evaluator generated four decision-point reasoning segments.",
+      "No retrieved passages or retrieval logs were supplied, so corpus fidelity cannot be scored.",
+      "The RAG label IKEA effect is treated as a near-neighbor to the hidden Endowment target, not as an approved equivalent."
+    ]
+  },
+  "evaluation_segment_map": {
+    "segment_mapping_version": "1.0",
+    "segments": [
+      {
+        "segment_id": "seg_001",
+        "speaker": "Participant",
+        "segment_type": "decision_point_reasoning",
+        "raw_interview_anchor": "Triage of the three pentest findings; prioritizing the critical segmentation gap while running the other findings at lower priority.",
+        "eligible_reasoning_segment": true,
+        "ground_truth_bias_present": false,
+        "ground_truth_instance_ids": [],
+        "ground_truth_rationale": "A severity-, exploitability-, deadline-, and staffing-based prioritization rationale is present, but the generation specification assigns no hidden bias instance to this decision."
+      },
+      {
+        "segment_id": "seg_002",
+        "speaker": "Participant",
+        "segment_type": "decision_point_reasoning",
+        "raw_interview_anchor": "Comparison of patching the self-built segmentation framework with migrating to the vendor ZTNA platform, including the asymmetric validation standard and the authorship counterfactual.",
+        "eligible_reasoning_segment": true,
+        "ground_truth_bias_present": true,
+        "ground_truth_instance_ids": [
+          "cb_01"
+        ],
+        "ground_truth_rationale": "The participant explicitly trusts the self-built system, demands topology-specific proof from the vendor, does not apply the same proof standard to the in-house system, and later acknowledges that authorship influenced the comparison."
+      },
+      {
+        "segment_id": "seg_003",
+        "speaker": "Participant",
+        "segment_type": "decision_point_reasoning",
+        "raw_interview_anchor": "Rollout choice among a narrow pilot, simultaneous rollout, and staged rollout by risk tier; subsequent adjustment after a legacy service bypass is discovered.",
+        "eligible_reasoning_segment": true,
+        "ground_truth_bias_present": false,
+        "ground_truth_instance_ids": [],
+        "ground_truth_rationale": "The participant balances blast radius, validation, and compressed timing. The generation specification assigns no hidden bias instance to rollout."
+      },
+      {
+        "segment_id": "seg_004",
+        "speaker": "Participant",
+        "segment_type": "decision_point_reasoning",
+        "raw_interview_anchor": "Audit-committee reporting choice to describe the issue as substantially remediated with a compensating control and follow-up date.",
+        "eligible_reasoning_segment": true,
+        "ground_truth_bias_present": false,
+        "ground_truth_instance_ids": [],
+        "ground_truth_rationale": "The participant distinguishes accurate disclosure from overstatement and weighs the remaining edge case against the closed core path; no hidden bias is planned for this decision."
+      }
+    ]
+  },
+  "segment_level_adjudications": [
+    {
+      "segment_id": "seg_001",
+      "ground_truth_status": "negative",
+      "ground_truth_instance_ids": [],
+      "rag_identified_occurrence_ids": [],
+      "rag_candidate_ids_counted_at_fourth_threshold": [],
+      "rag_detected_bias_in_segment_by_threshold": {
+        "high_only": false,
+        "high_and_moderate": false,
+        "all_identified_confidence_levels": false,
+        "all_confidence_and_candidates": false
+      },
+      "sdt_outcome_by_threshold": {
+        "high_only": "correct_rejection",
+        "high_and_moderate": "correct_rejection",
+        "all_identified_confidence_levels": "correct_rejection",
+        "all_confidence_and_candidates": "correct_rejection"
+      },
+      "localization_basis": "No RAG finding localizes to the triage decision.",
+      "adjudication_note": "The participant's prioritization is supported by severity, exploitability, deadline, and staffing facts and is not a hidden bias instance."
+    },
+    {
+      "segment_id": "seg_002",
+      "ground_truth_status": "positive",
+      "ground_truth_instance_ids": [
+        "cb_01"
+      ],
+      "rag_identified_occurrence_ids": [
+        "obs_001"
+      ],
+      "rag_candidate_ids_counted_at_fourth_threshold": [
+        "cand_001"
+      ],
+      "rag_detected_bias_in_segment_by_threshold": {
+        "high_only": false,
+        "high_and_moderate": true,
+        "all_identified_confidence_levels": true,
+        "all_confidence_and_candidates": true
+      },
+      "sdt_outcome_by_threshold": {
+        "high_only": "miss",
+        "high_and_moderate": "hit",
+        "all_identified_confidence_levels": "hit",
+        "all_confidence_and_candidates": "hit"
+      },
+      "localization_basis": "The identified occurrence quotes the participant's direct comparison of the self-built framework and vendor platform. The candidate uses a quote from the same remediation-option episode.",
+      "adjudication_note": "The segment-level detector correctly identifies the biased episode once the moderate-confidence finding is included, although the strict instance-level label is wrong."
+    },
+    {
+      "segment_id": "seg_003",
+      "ground_truth_status": "negative",
+      "ground_truth_instance_ids": [],
+      "rag_identified_occurrence_ids": [],
+      "rag_candidate_ids_counted_at_fourth_threshold": [],
+      "rag_detected_bias_in_segment_by_threshold": {
+        "high_only": false,
+        "high_and_moderate": false,
+        "all_identified_confidence_levels": false,
+        "all_confidence_and_candidates": false
+      },
+      "sdt_outcome_by_threshold": {
+        "high_only": "correct_rejection",
+        "high_and_moderate": "correct_rejection",
+        "all_identified_confidence_levels": "correct_rejection",
+        "all_confidence_and_candidates": "correct_rejection"
+      },
+      "localization_basis": "No RAG finding is assigned to the rollout decision segment.",
+      "adjudication_note": "The staged rollout rationale is a plausible risk-and-timing tradeoff, and the later legacy-service issue does not create a planned hidden bias instance."
+    },
+    {
+      "segment_id": "seg_004",
+      "ground_truth_status": "negative",
+      "ground_truth_instance_ids": [],
+      "rag_identified_occurrence_ids": [],
+      "rag_candidate_ids_counted_at_fourth_threshold": [],
+      "rag_detected_bias_in_segment_by_threshold": {
+        "high_only": false,
+        "high_and_moderate": false,
+        "all_identified_confidence_levels": false,
+        "all_confidence_and_candidates": false
+      },
+      "sdt_outcome_by_threshold": {
+        "high_only": "correct_rejection",
+        "high_and_moderate": "correct_rejection",
+        "all_identified_confidence_levels": "correct_rejection",
+        "all_confidence_and_candidates": "correct_rejection"
+      },
+      "localization_basis": "No RAG finding is assigned to the audit-reporting decision segment.",
+      "adjudication_note": "The reporting rationale is an explicit accuracy and proportionality judgment without a hidden bias instance."
+    }
+  ],
+  "instance_level_adjudications": [
+    {
+      "hidden_instance_id": "cb_01",
+      "hidden_target_bias_label": "Endowment",
+      "hidden_decision_or_episode": "Decision point 2: remediation-option selection between the self-built in-house framework and the vendor-managed ZTNA platform",
+      "hidden_mechanism": "Overvaluation of the self-authored segmentation framework due to ownership/authorship, resulting in a stricter evidentiary bar for the vendor alternative than for the incumbent system.",
+      "matched_finding_by_threshold": {
+        "high_only": {
+          "matched_id": null,
+          "matched_type": "none"
+        },
+        "high_and_moderate": {
+          "matched_id": "obs_001",
+          "matched_type": "identified"
+        },
+        "all_identified_confidence_levels": {
+          "matched_id": "obs_001",
+          "matched_type": "identified"
+        },
+        "all_confidence_and_candidates": {
+          "matched_id": "obs_001",
+          "matched_type": "identified"
+        }
+      },
+      "rag_predicted_bias_label": "IKEA effect",
+      "rag_confidence": "moderate",
+      "label_equivalence_result": "near_neighbor_label",
+      "localization_match_type": "exact_quote_match",
+      "mechanism_overlap": "full_mechanism_match",
+      "strict_scorecard_outcome_by_threshold": {
+        "high_only": "false_negative",
+        "high_and_moderate": "false_negative",
+        "all_identified_confidence_levels": "false_negative",
+        "all_confidence_and_candidates": "false_negative"
+      },
+      "mechanism_first_scorecard_outcome_by_threshold": {
+        "high_only": "false_negative",
+        "high_and_moderate": "true_positive",
+        "all_identified_confidence_levels": "true_positive",
+        "all_confidence_and_candidates": "true_positive"
+      },
+      "secondary_diagnostic_outcome": "correct_location_wrong_bias_label",
+      "label_equivalence_explanation": "IKEA effect is a related creation/ownership-based overvaluation construct, but it is not an approved established alternate name for the hidden Endowment target under this benchmark's equivalence rule.",
+      "mechanism_overlap_explanation": "The occurrence captures the defining distortion: the self-built framework is treated as the trusted baseline, while the vendor must satisfy a stricter topology-specific proof requirement despite favorable timing and coverage evidence. It also targets the correct comparative-evaluation operation.",
+      "evidence_fidelity_assessment": "The quoted participant statements are present, correctly attributed, and materially support the asymmetric validation mechanism."
+    }
+  ],
+  "unmatched_rag_predictions": [
+    {
+      "rag_occurrence_id": "cand_001",
+      "rag_finding_type": "candidate",
+      "rag_predicted_bias_label": "Overconfidence effect",
+      "rag_confidence": "candidate",
+      "localized_segment_id": "seg_002",
+      "best_related_hidden_instance_id": "cb_01",
+      "label_equivalence_result": "different_construct",
+      "mechanism_overlap": "partial_mechanism_overlap",
+      "strict_classification": "false_positive",
+      "mechanism_first_classification": "false_positive",
+      "counted_at_thresholds": [
+        "all_confidence_and_candidates"
+      ],
+      "why_not_an_exact_strict_match": "The candidate infers excessive confidence from familiarity with the self-built system and the later legacy-service issue, but it does not state the hidden ownership-driven asymmetric valuation mechanism as its primary claim. The identified IKEA-effect occurrence already claims the hidden instance, so the candidate cannot receive a second match."
+    }
+  ],
+  "candidate_analysis": {
+    "candidate_count": 1,
+    "candidates": [
+      {
+        "candidate_id": "cand_001",
+        "proposed_bias_label": "Overconfidence effect",
+        "localized_segment_id": "seg_002",
+        "best_related_hidden_instance_id": "cb_01",
+        "quote_validity": "valid",
+        "would_match_if_promoted_strict": false,
+        "would_match_if_promoted_mechanism_first": false,
+        "counted_as_detection_at_fourth_threshold": true,
+        "fourth_threshold_outcome": "false_positive",
+        "candidate_assessment": "candidate_near_miss",
+        "details": "The candidate is a plausible alternative interpretation of confidence in the self-built system, but the transcript and hidden specification support the more specific ownership/authorship asymmetry. It is therefore scored as an unmatched candidate at the fourth threshold."
+      }
+    ]
+  },
+  "signal_detection_summary": {
+    "evaluation_unit": "eligible_reasoning_segment",
+    "high_only": {
+      "positive_segments": 1,
+      "negative_segments": 3,
+      "hits": 0,
+      "misses": 1,
+      "false_alarms": 0,
+      "correct_rejections": 3,
+      "hit_rate": 0.0,
+      "false_alarm_rate": 0.0,
+      "accuracy": 0.75,
+      "precision": null,
+      "recall": 0.0,
+      "f1": 0.0,
+      "detection_interpretation": "The moderate-confidence identified occurrence is excluded, so the positive episode is missed and all three negative episodes are correctly rejected."
+    },
+    "high_and_moderate": {
+      "positive_segments": 1,
+      "negative_segments": 3,
+      "hits": 1,
+      "misses": 0,
+      "false_alarms": 0,
+      "correct_rejections": 3,
+      "hit_rate": 1.0,
+      "false_alarm_rate": 0.0,
+      "accuracy": 1.0,
+      "precision": 1.0,
+      "recall": 1.0,
+      "f1": 1.0,
+      "detection_interpretation": "The moderate-confidence occurrence localizes to the one positive episode, producing a segment-level hit despite its strict label mismatch."
+    },
+    "all_identified_confidence_levels": {
+      "positive_segments": 1,
+      "negative_segments": 3,
+      "hits": 1,
+      "misses": 0,
+      "false_alarms": 0,
+      "correct_rejections": 3,
+      "hit_rate": 1.0,
+      "false_alarm_rate": 0.0,
+      "accuracy": 1.0,
+      "precision": 1.0,
+      "recall": 1.0,
+      "f1": 1.0,
+      "detection_interpretation": "Including all identified confidence levels does not change the result because the only identified occurrence is moderate confidence and is already included."
+    },
+    "all_confidence_and_candidates": {
+      "positive_segments": 1,
+      "negative_segments": 3,
+      "hits": 1,
+      "misses": 0,
+      "false_alarms": 0,
+      "correct_rejections": 3,
+      "hit_rate": 1.0,
+      "false_alarm_rate": 0.0,
+      "accuracy": 1.0,
+      "precision": 1.0,
+      "recall": 1.0,
+      "f1": 1.0,
+      "detection_interpretation": "Adding the overconfidence candidate does not change segment-level SDT because it is localized to the already-positive episode; it adds an instance-level false positive."
+    }
+  },
+  "strict_instance_level_metrics": {
+    "high_only": {
+      "true_positives": 0,
+      "false_negatives": 1,
+      "false_positives": 0,
+      "precision": null,
+      "recall": 0.0,
+      "f1": 0.0,
+      "exact_occurrence_match_rate": 0.0,
+      "occurrence_count_match_rate": 0.0
+    },
+    "high_and_moderate": {
+      "true_positives": 0,
+      "false_negatives": 1,
+      "false_positives": 1,
+      "precision": 0.0,
+      "recall": 0.0,
+      "f1": 0.0,
+      "exact_occurrence_match_rate": 0.0,
+      "occurrence_count_match_rate": 0.0
+    },
+    "all_identified_confidence_levels": {
+      "true_positives": 0,
+      "false_negatives": 1,
+      "false_positives": 1,
+      "precision": 0.0,
+      "recall": 0.0,
+      "f1": 0.0,
+      "exact_occurrence_match_rate": 0.0,
+      "occurrence_count_match_rate": 0.0
+    },
+    "all_confidence_and_candidates": {
+      "true_positives": 0,
+      "false_negatives": 1,
+      "false_positives": 2,
+      "precision": 0.0,
+      "recall": 0.0,
+      "f1": 0.0,
+      "exact_occurrence_match_rate": 0.0,
+      "occurrence_count_match_rate": 0.0
+    }
+  },
+  "mechanism_first_instance_level_metrics": {
+    "high_only": {
+      "true_positives": 0,
+      "false_negatives": 1,
+      "false_positives": 0,
+      "precision": null,
+      "recall": 0.0,
+      "f1": 0.0,
+      "exact_occurrence_match_rate": 0.0,
+      "occurrence_count_match_rate": 0.0
+    },
+    "high_and_moderate": {
+      "true_positives": 1,
+      "false_negatives": 0,
+      "false_positives": 0,
+      "precision": 1.0,
+      "recall": 1.0,
+      "f1": 1.0,
+      "exact_occurrence_match_rate": 1.0,
+      "occurrence_count_match_rate": 1.0
+    },
+    "all_identified_confidence_levels": {
+      "true_positives": 1,
+      "false_negatives": 0,
+      "false_positives": 0,
+      "precision": 1.0,
+      "recall": 1.0,
+      "f1": 1.0,
+      "exact_occurrence_match_rate": 1.0,
+      "occurrence_count_match_rate": 1.0
+    },
+    "all_confidence_and_candidates": {
+      "true_positives": 1,
+      "false_negatives": 0,
+      "false_positives": 1,
+      "precision": 0.5,
+      "recall": 1.0,
+      "f1": 0.6667,
+      "exact_occurrence_match_rate": 1.0,
+      "occurrence_count_match_rate": 1.0
+    }
+  },
+  "target_bias_performance": [
+    {
+      "hidden_target_bias_label": "Endowment",
+      "hidden_requested_occurrences": 1,
+      "strict_true_positives_by_threshold": {
+        "high_only": 0,
+        "high_and_moderate": 0,
+        "all_identified_confidence_levels": 0,
+        "all_confidence_and_candidates": 0
+      },
+      "mechanism_first_true_positives_by_threshold": {
+        "high_only": 0,
+        "high_and_moderate": 1,
+        "all_identified_confidence_levels": 1,
+        "all_confidence_and_candidates": 1
+      },
+      "count_match_status_at_all_confidence_and_candidates": "underdetected"
+    }
+  ],
+  "rag_label_false_positive_inventory": [
+    {
+      "rag_predicted_bias_label": "IKEA effect",
+      "finding_type": "identified",
+      "alternative_labels": [
+        "Not invented here bias",
+        "Effort justification"
+      ],
+      "occurrence_count": 1,
+      "best_related_hidden_target_bias_label": "Endowment",
+      "label_relation": "near_neighbor",
+      "mechanism_overlap_summary": "Full overlap with the hidden ownership/authorship-driven asymmetric evidentiary mechanism and correct decision episode, but the predicted taxonomy label is not the hidden target label or an approved equivalent.",
+      "primary_error_types": [
+        "correct_location_wrong_bias_label"
+      ]
+    },
+    {
+      "rag_predicted_bias_label": "Overconfidence effect",
+      "finding_type": "candidate",
+      "alternative_labels": [
+        "Overestimation",
+        "Planning fallacy"
+      ],
+      "occurrence_count": 1,
+      "best_related_hidden_target_bias_label": "Endowment",
+      "label_relation": "different_construct",
+      "mechanism_overlap_summary": "The candidate shares the context of confidence in the self-built system, but its proposed excessive-confidence mechanism is only partial and does not establish the hidden ownership-based comparative distortion.",
+      "primary_error_types": [
+        "candidate_near_miss",
+        "unsupported_prediction"
+      ]
+    }
+  ],
+  "diagnostic_error_summary": {
+    "correct_location_wrong_bias_label_count": 1,
+    "correct_label_wrong_location_count": 0,
+    "correct_label_location_wrong_mechanism_count": 0,
+    "mechanism_detected_label_unresolved_count": 0,
+    "partial_mechanism_match_count": 1,
+    "duplicate_prediction_count": 0,
+    "unsupported_prediction_count": 1,
+    "fabricated_or_invalid_quote_count": 0,
+    "approved_alias_or_equivalence_count": 0,
+    "near_neighbor_label_count": 1,
+    "different_construct_label_count": 1,
+    "candidate_count": 1,
+    "candidate_useful_abstention_count": 0,
+    "candidate_near_miss_count": 1,
+    "candidates_promoted_to_true_positive_at_fourth_threshold_count": 0
+  },
+  "corpus_support_audit": {
+    "primary_corpus_fidelity_score_available": false,
+    "rag_occurrences_claiming_retrieved_support": 0,
+    "rag_occurrences_with_no_claimed_retrieved_support": 1,
+    "rag_occurrences_with_unverifiable_or_internally_inconsistent_citation_metadata": 0,
+    "assessment_note": "The RAG explicitly states that retrieved corpus support was not used and supplies no citation metadata. Primary corpus fidelity is therefore unavailable, and this does not affect detection or classification scores."
+  },
+  "comparison_ready_summary": {
+    "primary_recommended_comparison_threshold": "high_and_moderate",
+    "segment_detection": {
+      "high_only": {
+        "hits": 0,
+        "misses": 1,
+        "false_alarms": 0,
+        "correct_rejections": 3,
+        "hit_rate": 0.0,
+        "false_alarm_rate": 0.0,
+        "f1": 0.0
+      },
+      "high_and_moderate": {
+        "hits": 1,
+        "misses": 0,
+        "false_alarms": 0,
+        "correct_rejections": 3,
+        "hit_rate": 1.0,
+        "false_alarm_rate": 0.0,
+        "f1": 1.0
+      },
+      "all_identified_confidence_levels": {
+        "hits": 1,
+        "misses": 0,
+        "false_alarms": 0,
+        "correct_rejections": 3,
+        "hit_rate": 1.0,
+        "false_alarm_rate": 0.0,
+        "f1": 1.0
+      },
+      "all_confidence_and_candidates": {
+        "hits": 1,
+        "misses": 0,
+        "false_alarms": 0,
+        "correct_rejections": 3,
+        "hit_rate": 1.0,
+        "false_alarm_rate": 0.0,
+        "f1": 1.0
+      }
+    },
+    "strict_instance_identification": {
+      "high_only": {
+        "true_positives": 0,
+        "false_negatives": 1,
+        "false_positives": 0,
+        "precision": null,
+        "recall": 0.0,
+        "f1": 0.0
+      },
+      "high_and_moderate": {
+        "true_positives": 0,
+        "false_negatives": 1,
+        "false_positives": 1,
+        "precision": 0.0,
+        "recall": 0.0,
+        "f1": 0.0
+      },
+      "all_identified_confidence_levels": {
+        "true_positives": 0,
+        "false_negatives": 1,
+        "false_positives": 1,
+        "precision": 0.0,
+        "recall": 0.0,
+        "f1": 0.0
+      },
+      "all_confidence_and_candidates": {
+        "true_positives": 0,
+        "false_negatives": 1,
+        "false_positives": 2,
+        "precision": 0.0,
+        "recall": 0.0,
+        "f1": 0.0
+      }
+    },
+    "mechanism_first_identification": {
+      "high_only": {
+        "true_positives": 0,
+        "false_negatives": 1,
+        "false_positives": 0,
+        "precision": null,
+        "recall": 0.0,
+        "f1": 0.0
+      },
+      "high_and_moderate": {
+        "true_positives": 1,
+        "false_negatives": 0,
+        "false_positives": 0,
+        "precision": 1.0,
+        "recall": 1.0,
+        "f1": 1.0
+      },
+      "all_identified_confidence_levels": {
+        "true_positives": 1,
+        "false_negatives": 0,
+        "false_positives": 0,
+        "precision": 1.0,
+        "recall": 1.0,
+        "f1": 1.0
+      },
+      "all_confidence_and_candidates": {
+        "true_positives": 1,
+        "false_negatives": 0,
+        "false_positives": 1,
+        "precision": 0.5,
+        "recall": 1.0,
+        "f1": 0.6667
+      }
+    },
+    "taxonomy_gap": {
+      "high_only": {
+        "mechanism_first_f1_minus_strict_f1": 0.0
+      },
+      "high_and_moderate": {
+        "mechanism_first_f1_minus_strict_f1": 1.0
+      },
+      "all_identified_confidence_levels": {
+        "mechanism_first_f1_minus_strict_f1": 1.0
+      },
+      "all_confidence_and_candidates": {
+        "mechanism_first_f1_minus_strict_f1": 0.6667
+      }
+    },
+    "confidence_tradeoff": {
+      "increment_from_high_to_high_and_moderate": "Including moderate-confidence findings changes segment detection from 0 hits to 1 hit and mechanism-first instance F1 from 0.0000 to 1.0000; strict F1 remains 0.0000 because the label is not exact.",
+      "increment_from_high_and_moderate_to_all_confidence": "No change; the only identified occurrence is moderate confidence.",
+      "increment_from_all_confidence_to_all_confidence_and_candidates": "Segment metrics remain unchanged, while strict instance false positives increase from 1 to 2 and mechanism-first false positives from 0 to 1 because the overconfidence candidate is counted."
+    }
+  },
+  "overall_evaluation_summary": {
+    "hidden_total_planned_occurrences": 1,
+    "rag_total_identified_occurrences": 1,
+    "rag_total_candidate_biases": 1,
+    "segment_level_primary_result": "At the recommended high_and_moderate threshold, the RAG localizes a finding to the sole positive decision episode and has 1 hit, 0 misses, 0 false alarms, and 3 correct rejections.",
+    "strict_label_plus_mechanism_result": "The run has no strict instance-level true positive because it predicts IKEA effect rather than the hidden Endowment label; the correct-location occurrence is a strict false positive paired with a false negative.",
+    "mechanism_first_result": "The run achieves a mechanism-first instance-level true positive at high_and_moderate and all_identified_confidence_levels, with precision, recall, and F1 all equal to 1.0000 before candidates are counted.",
+    "candidate_tier_value_assessment": "The overconfidence candidate is a valid, plausible near-miss but does not match the hidden mechanism and adds one false positive when candidates are scored.",
+    "main_failure_modes": [
+      "Near-neighbor taxonomy error: IKEA effect was used instead of the hidden Endowment target.",
+      "The candidate tier adds an unsupported or insufficiently specific overconfidence prediction for the same episode.",
+      "The identified occurrence is only moderate confidence, so a high-only policy misses the instance."
+    ],
+    "main_strengths": [
+      "Correct localization to the remediation-option comparison episode.",
+      "Full capture of the ownership/authorship-driven asymmetric evidentiary mechanism.",
+      "Valid, directly supporting interview quotations and no fabricated evidence.",
+      "No false alarms on the three negative decision-point segments."
+    ],
+    "benchmark_interpretation": "This run demonstrates strong evidence localization and mechanism recognition but a meaningful taxonomy failure under strict scoring. The recommended aggregate comparison should retain both scorecards: strict scoring records a miss, while mechanism-first scoring shows that the underlying cognitive-bias signal was recovered at moderate confidence."
+  }
+}

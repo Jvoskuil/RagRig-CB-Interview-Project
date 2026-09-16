@@ -1,0 +1,984 @@
+{
+  "evaluation_metadata": {
+    "task": "ontology_free_rag_cognitive_bias_benchmark_evaluation",
+    "benchmark_run_metadata": {
+      "benchmark_run_id": "EI_Biased_5_Gemini_on",
+      "interview_id": "EI_Biased_5",
+      "system_prompt_id": "Gemini",
+      "system_prompt_generator": "Prompt 1_2",
+      "rag_model_id": "v1.0.0",
+      "corpus_condition": "on",
+      "retrieval_configuration_id": "k=50",
+      "decoding_configuration_id": null,
+      "temperature": 1,
+      "replicate_id": null,
+      "segment_map_id": null
+    },
+    "scenario_id": "EI_Biased_5",
+    "domain_id": "EI",
+    "condition": "biased",
+    "segment_map_status": "generated_not_prevalidated",
+    "rag_output_parse_status": "valid_json",
+    "rag_schema_assessment": "conformant"
+  },
+  "input_validation": {
+    "rag_output_schema_violations": [],
+    "rag_summary_count_consistency": {
+      "status": "consistent",
+      "details": "Five summary labels with one occurrence each match five identified occurrences; candidate list is empty."
+    },
+    "evaluation_limitations": [
+      "No frozen segment map supplied; map generated from raw interview and specification.",
+      "No retrieved chunks or retrieval logs supplied for corpus fidelity."
+    ]
+  },
+  "evaluation_segment_map": {
+    "segment_mapping_version": "1.0",
+    "segments": [
+      {
+        "segment_id": "seg_001",
+        "speaker": "Participant",
+        "segment_type": "evidence_weighting",
+        "raw_interview_anchor": "Given the deadline pressure, I don't have time to deep-dive every file equally, so I lean on signals like that to triage.",
+        "eligible_reasoning_segment": true,
+        "ground_truth_bias_present": false,
+        "ground_truth_instance_ids": [],
+        "ground_truth_rationale": "General triage rationale without the later school-reputation spillover mechanism."
+      },
+      {
+        "segment_id": "seg_002",
+        "speaker": "Participant",
+        "segment_type": "evidence_weighting",
+        "raw_interview_anchor": "I fast-tracked it to interview. Honestly, the school's reputation carried a lot of weight for me there — a slightly low test score didn't worry me much.",
+        "eligible_reasoning_segment": true,
+        "ground_truth_bias_present": true,
+        "ground_truth_instance_ids": [
+          "cb_01"
+        ],
+        "ground_truth_rationale": "School reputation discounted a below-threshold score and substituted a favorable category assumption for case-specific checking."
+      },
+      {
+        "segment_id": "seg_003",
+        "speaker": "Participant",
+        "segment_type": "causal_attribution",
+        "raw_interview_anchor": "I noted the late arrival and the rocky start on the rubric as a composure concern ... I was aware the strike was happening citywide.",
+        "eligible_reasoning_segment": true,
+        "ground_truth_bias_present": true,
+        "ground_truth_instance_ids": [
+          "cb_02"
+        ],
+        "ground_truth_rationale": "Dispositional inference was made while the situational transit disruption was known."
+      },
+      {
+        "segment_id": "seg_004",
+        "speaker": "Participant",
+        "segment_type": "retrospective_reasoning",
+        "raw_interview_anchor": "If I'd had that transit confirmation in hand during the interview instead of afterward, I probably would have framed the early hesitation as circumstantial.",
+        "eligible_reasoning_segment": true,
+        "ground_truth_bias_present": false,
+        "ground_truth_instance_ids": [],
+        "ground_truth_rationale": "Retrospective correction acknowledgement; hidden decision is localized to earlier scoring."
+      },
+      {
+        "segment_id": "seg_005",
+        "speaker": "Participant",
+        "segment_type": "belief_updating",
+        "raw_interview_anchor": "I framed it as the kind of thing that shows a student worked through something ... extra confirmation rather than something to weigh independently.",
+        "eligible_reasoning_segment": true,
+        "ground_truth_bias_present": true,
+        "ground_truth_instance_ids": [
+          "cb_04"
+        ],
+        "ground_truth_rationale": "The disciplinary note was assimilated into and strengthened the prior favorable narrative."
+      },
+      {
+        "segment_id": "seg_006",
+        "speaker": "Participant",
+        "segment_type": "information_source_selection",
+        "raw_interview_anchor": "I used our standard conversion table, even knowing it wasn't built for the reformed scale and would probably lowball the actual grades.",
+        "eligible_reasoning_segment": true,
+        "ground_truth_bias_present": true,
+        "ground_truth_instance_ids": [
+          "cb_03"
+        ],
+        "ground_truth_rationale": "A familiar conservative default was chosen despite acknowledged uncertainty and available alternatives."
+      },
+      {
+        "segment_id": "seg_007",
+        "speaker": "Participant",
+        "segment_type": "comparative_evaluation",
+        "raw_interview_anchor": "I found myself giving the network-affiliated finalist a bit more benefit of the doubt ... I probably held the other finalist to a slightly tighter standard.",
+        "eligible_reasoning_segment": true,
+        "ground_truth_bias_present": true,
+        "ground_truth_instance_ids": [
+          "cb_05"
+        ],
+        "ground_truth_rationale": "Shared network membership produced unequal discretionary standards."
+      },
+      {
+        "segment_id": "seg_008",
+        "speaker": "Participant",
+        "segment_type": "retrospective_reflection",
+        "raw_interview_anchor": "I can't rule out that the tie mattered more than it should have.",
+        "eligible_reasoning_segment": true,
+        "ground_truth_bias_present": false,
+        "ground_truth_instance_ids": [],
+        "ground_truth_rationale": "Qualified retrospective reflection adjacent to, but not itself, the mapped comparative weighting."
+      }
+    ]
+  },
+  "segment_level_adjudications": [
+    {
+      "segment_id": "seg_001",
+      "ground_truth_status": "negative",
+      "ground_truth_instance_ids": [],
+      "rag_identified_occurrence_ids": [],
+      "rag_candidate_ids_counted_at_fourth_threshold": [],
+      "rag_detected_bias_in_segment_by_threshold": {
+        "high_only": false,
+        "high_and_moderate": false,
+        "all_identified_confidence_levels": false,
+        "all_confidence_and_candidates": false
+      },
+      "sdt_outcome_by_threshold": {
+        "high_only": "correct_rejection",
+        "high_and_moderate": "correct_rejection",
+        "all_identified_confidence_levels": "correct_rejection",
+        "all_confidence_and_candidates": "correct_rejection"
+      },
+      "localization_basis": "Verbatim RAG evidence maps to the corresponding participant reasoning span.",
+      "adjudication_note": "General triage rationale without the later school-reputation spillover mechanism."
+    },
+    {
+      "segment_id": "seg_002",
+      "ground_truth_status": "positive",
+      "ground_truth_instance_ids": [
+        "cb_01"
+      ],
+      "rag_identified_occurrence_ids": [],
+      "rag_candidate_ids_counted_at_fourth_threshold": [],
+      "rag_detected_bias_in_segment_by_threshold": {
+        "high_only": false,
+        "high_and_moderate": false,
+        "all_identified_confidence_levels": false,
+        "all_confidence_and_candidates": false
+      },
+      "sdt_outcome_by_threshold": {
+        "high_only": "miss",
+        "high_and_moderate": "miss",
+        "all_identified_confidence_levels": "miss",
+        "all_confidence_and_candidates": "miss"
+      },
+      "localization_basis": "Verbatim RAG evidence maps to the corresponding participant reasoning span.",
+      "adjudication_note": "School reputation discounted a below-threshold score and substituted a favorable category assumption for case-specific checking."
+    },
+    {
+      "segment_id": "seg_003",
+      "ground_truth_status": "positive",
+      "ground_truth_instance_ids": [
+        "cb_02"
+      ],
+      "rag_identified_occurrence_ids": [],
+      "rag_candidate_ids_counted_at_fourth_threshold": [],
+      "rag_detected_bias_in_segment_by_threshold": {
+        "high_only": false,
+        "high_and_moderate": false,
+        "all_identified_confidence_levels": false,
+        "all_confidence_and_candidates": false
+      },
+      "sdt_outcome_by_threshold": {
+        "high_only": "miss",
+        "high_and_moderate": "miss",
+        "all_identified_confidence_levels": "miss",
+        "all_confidence_and_candidates": "miss"
+      },
+      "localization_basis": "Verbatim RAG evidence maps to the corresponding participant reasoning span.",
+      "adjudication_note": "Dispositional inference was made while the situational transit disruption was known."
+    },
+    {
+      "segment_id": "seg_004",
+      "ground_truth_status": "negative",
+      "ground_truth_instance_ids": [],
+      "rag_identified_occurrence_ids": [],
+      "rag_candidate_ids_counted_at_fourth_threshold": [],
+      "rag_detected_bias_in_segment_by_threshold": {
+        "high_only": false,
+        "high_and_moderate": false,
+        "all_identified_confidence_levels": false,
+        "all_confidence_and_candidates": false
+      },
+      "sdt_outcome_by_threshold": {
+        "high_only": "correct_rejection",
+        "high_and_moderate": "correct_rejection",
+        "all_identified_confidence_levels": "correct_rejection",
+        "all_confidence_and_candidates": "correct_rejection"
+      },
+      "localization_basis": "Verbatim RAG evidence maps to the corresponding participant reasoning span.",
+      "adjudication_note": "Retrospective correction acknowledgement; hidden decision is localized to earlier scoring."
+    },
+    {
+      "segment_id": "seg_005",
+      "ground_truth_status": "positive",
+      "ground_truth_instance_ids": [
+        "cb_04"
+      ],
+      "rag_identified_occurrence_ids": [],
+      "rag_candidate_ids_counted_at_fourth_threshold": [],
+      "rag_detected_bias_in_segment_by_threshold": {
+        "high_only": false,
+        "high_and_moderate": false,
+        "all_identified_confidence_levels": false,
+        "all_confidence_and_candidates": false
+      },
+      "sdt_outcome_by_threshold": {
+        "high_only": "miss",
+        "high_and_moderate": "miss",
+        "all_identified_confidence_levels": "miss",
+        "all_confidence_and_candidates": "miss"
+      },
+      "localization_basis": "Verbatim RAG evidence maps to the corresponding participant reasoning span.",
+      "adjudication_note": "The disciplinary note was assimilated into and strengthened the prior favorable narrative."
+    },
+    {
+      "segment_id": "seg_006",
+      "ground_truth_status": "positive",
+      "ground_truth_instance_ids": [
+        "cb_03"
+      ],
+      "rag_identified_occurrence_ids": [],
+      "rag_candidate_ids_counted_at_fourth_threshold": [],
+      "rag_detected_bias_in_segment_by_threshold": {
+        "high_only": false,
+        "high_and_moderate": false,
+        "all_identified_confidence_levels": false,
+        "all_confidence_and_candidates": false
+      },
+      "sdt_outcome_by_threshold": {
+        "high_only": "miss",
+        "high_and_moderate": "miss",
+        "all_identified_confidence_levels": "miss",
+        "all_confidence_and_candidates": "miss"
+      },
+      "localization_basis": "Verbatim RAG evidence maps to the corresponding participant reasoning span.",
+      "adjudication_note": "A familiar conservative default was chosen despite acknowledged uncertainty and available alternatives."
+    },
+    {
+      "segment_id": "seg_007",
+      "ground_truth_status": "positive",
+      "ground_truth_instance_ids": [
+        "cb_05"
+      ],
+      "rag_identified_occurrence_ids": [],
+      "rag_candidate_ids_counted_at_fourth_threshold": [],
+      "rag_detected_bias_in_segment_by_threshold": {
+        "high_only": false,
+        "high_and_moderate": false,
+        "all_identified_confidence_levels": false,
+        "all_confidence_and_candidates": false
+      },
+      "sdt_outcome_by_threshold": {
+        "high_only": "miss",
+        "high_and_moderate": "miss",
+        "all_identified_confidence_levels": "miss",
+        "all_confidence_and_candidates": "miss"
+      },
+      "localization_basis": "Verbatim RAG evidence maps to the corresponding participant reasoning span.",
+      "adjudication_note": "Shared network membership produced unequal discretionary standards."
+    },
+    {
+      "segment_id": "seg_008",
+      "ground_truth_status": "negative",
+      "ground_truth_instance_ids": [],
+      "rag_identified_occurrence_ids": [],
+      "rag_candidate_ids_counted_at_fourth_threshold": [],
+      "rag_detected_bias_in_segment_by_threshold": {
+        "high_only": false,
+        "high_and_moderate": false,
+        "all_identified_confidence_levels": false,
+        "all_confidence_and_candidates": false
+      },
+      "sdt_outcome_by_threshold": {
+        "high_only": "correct_rejection",
+        "high_and_moderate": "correct_rejection",
+        "all_identified_confidence_levels": "correct_rejection",
+        "all_confidence_and_candidates": "correct_rejection"
+      },
+      "localization_basis": "Verbatim RAG evidence maps to the corresponding participant reasoning span.",
+      "adjudication_note": "Qualified retrospective reflection adjacent to, but not itself, the mapped comparative weighting."
+    }
+  ],
+  "instance_level_adjudications": [
+    {
+      "hidden_instance_id": "cb_01",
+      "hidden_target_bias_label": "Halo effect",
+      "hidden_decision_or_episode": "decision point 1",
+      "hidden_mechanism": "Positive global impression from the applicant's prestigious feeder school and its alumni track record spills over to inflate confidence in unrelated dimensions (test score adequacy, letter quality).",
+      "matched_finding_by_threshold": {
+        "high_only": {
+          "matched_id": null,
+          "matched_type": "none"
+        },
+        "high_and_moderate": {
+          "matched_id": "obs_001",
+          "matched_type": "identified"
+        },
+        "all_identified_confidence_levels": {
+          "matched_id": "obs_001",
+          "matched_type": "identified"
+        },
+        "all_confidence_and_candidates": {
+          "matched_id": "obs_001",
+          "matched_type": "identified"
+        }
+      },
+      "rag_predicted_bias_label": "Representativeness heuristic",
+      "rag_confidence": "moderate",
+      "label_equivalence_result": "near_neighbor_label",
+      "localization_match_type": "substantive_span_match",
+      "mechanism_overlap": "full_mechanism_match",
+      "strict_scorecard_outcome_by_threshold": {
+        "high_only": "false_negative",
+        "high_and_moderate": "false_negative",
+        "all_identified_confidence_levels": "false_negative",
+        "all_confidence_and_candidates": "false_negative"
+      },
+      "mechanism_first_scorecard_outcome_by_threshold": {
+        "high_only": "false_negative",
+        "high_and_moderate": "true_positive",
+        "all_identified_confidence_levels": "true_positive",
+        "all_confidence_and_candidates": "true_positive"
+      },
+      "secondary_diagnostic_outcome": "correct_location_wrong_bias_label",
+      "label_equivalence_explanation": "The evidence and location match; labels are exact/approved equivalent or documented near neighbors as specified.",
+      "mechanism_overlap_explanation": "The finding captures the defining distortion, contextual feature, and affected reasoning operation.",
+      "evidence_fidelity_assessment": "Quotes are verbatim participant statements present in the raw interview and correctly attributed."
+    },
+    {
+      "hidden_instance_id": "cb_02",
+      "hidden_target_bias_label": "Fundamental Attribution Bias",
+      "hidden_decision_or_episode": "decision point 2",
+      "hidden_mechanism": "Officer attributes the applicant's lateness and early hesitation to internal disposition (poor time-management, weak composure) while underweighting the known situational cause (transit strike).",
+      "matched_finding_by_threshold": {
+        "high_only": {
+          "matched_id": null,
+          "matched_type": "none"
+        },
+        "high_and_moderate": {
+          "matched_id": "obs_002",
+          "matched_type": "identified"
+        },
+        "all_identified_confidence_levels": {
+          "matched_id": "obs_002",
+          "matched_type": "identified"
+        },
+        "all_confidence_and_candidates": {
+          "matched_id": "obs_002",
+          "matched_type": "identified"
+        }
+      },
+      "rag_predicted_bias_label": "Fundamental attribution error",
+      "rag_confidence": "moderate",
+      "label_equivalence_result": "established_alias_or_equivalent",
+      "localization_match_type": "exact_quote_match",
+      "mechanism_overlap": "full_mechanism_match",
+      "strict_scorecard_outcome_by_threshold": {
+        "high_only": "false_negative",
+        "high_and_moderate": "true_positive",
+        "all_identified_confidence_levels": "true_positive",
+        "all_confidence_and_candidates": "true_positive"
+      },
+      "mechanism_first_scorecard_outcome_by_threshold": {
+        "high_only": "false_negative",
+        "high_and_moderate": "true_positive",
+        "all_identified_confidence_levels": "true_positive",
+        "all_confidence_and_candidates": "true_positive"
+      },
+      "secondary_diagnostic_outcome": "approved_alias_match",
+      "label_equivalence_explanation": "The evidence and location match; labels are exact/approved equivalent or documented near neighbors as specified.",
+      "mechanism_overlap_explanation": "The finding captures the defining distortion, contextual feature, and affected reasoning operation.",
+      "evidence_fidelity_assessment": "Quotes are verbatim participant statements present in the raw interview and correctly attributed."
+    },
+    {
+      "hidden_instance_id": "cb_03",
+      "hidden_target_bias_label": "Ambiguity Aversion",
+      "hidden_decision_or_episode": "decision point 3",
+      "hidden_mechanism": "Faced with an acknowledged-incomplete conversion guidance for the reformed grading scale, officer avoids the uncertain, effort-intensive resolution path (expedited evaluation) and defaults to a familiar but admittedly conservative standard, even though the file will be undervalued.",
+      "matched_finding_by_threshold": {
+        "high_only": {
+          "matched_id": null,
+          "matched_type": "none"
+        },
+        "high_and_moderate": {
+          "matched_id": null,
+          "matched_type": "none"
+        },
+        "all_identified_confidence_levels": {
+          "matched_id": "obs_004",
+          "matched_type": "identified"
+        },
+        "all_confidence_and_candidates": {
+          "matched_id": "obs_004",
+          "matched_type": "identified"
+        }
+      },
+      "rag_predicted_bias_label": "Status quo bias",
+      "rag_confidence": "low",
+      "label_equivalence_result": "near_neighbor_label",
+      "localization_match_type": "exact_quote_match",
+      "mechanism_overlap": "full_mechanism_match",
+      "strict_scorecard_outcome_by_threshold": {
+        "high_only": "false_negative",
+        "high_and_moderate": "false_negative",
+        "all_identified_confidence_levels": "false_negative",
+        "all_confidence_and_candidates": "false_negative"
+      },
+      "mechanism_first_scorecard_outcome_by_threshold": {
+        "high_only": "false_negative",
+        "high_and_moderate": "false_negative",
+        "all_identified_confidence_levels": "true_positive",
+        "all_confidence_and_candidates": "true_positive"
+      },
+      "secondary_diagnostic_outcome": "correct_location_wrong_bias_label",
+      "label_equivalence_explanation": "The evidence and location match; labels are exact/approved equivalent or documented near neighbors as specified.",
+      "mechanism_overlap_explanation": "The finding captures the defining distortion, contextual feature, and affected reasoning operation.",
+      "evidence_fidelity_assessment": "Quotes are verbatim participant statements present in the raw interview and correctly attributed."
+    },
+    {
+      "hidden_instance_id": "cb_04",
+      "hidden_target_bias_label": "Belief Perserverence and Attitude Polarisation",
+      "hidden_decision_or_episode": "decision point 3",
+      "hidden_mechanism": "New disconfirming evidence (the disciplinary note) is reinterpreted to fit and even reinforce the officer's original favorable impression from phase 1, rather than prompting genuine reassessment.",
+      "matched_finding_by_threshold": {
+        "high_only": {
+          "matched_id": "obs_003",
+          "matched_type": "identified"
+        },
+        "high_and_moderate": {
+          "matched_id": "obs_003",
+          "matched_type": "identified"
+        },
+        "all_identified_confidence_levels": {
+          "matched_id": "obs_003",
+          "matched_type": "identified"
+        },
+        "all_confidence_and_candidates": {
+          "matched_id": "obs_003",
+          "matched_type": "identified"
+        }
+      },
+      "rag_predicted_bias_label": "Confirmation bias",
+      "rag_confidence": "high",
+      "label_equivalence_result": "near_neighbor_label",
+      "localization_match_type": "exact_quote_match",
+      "mechanism_overlap": "full_mechanism_match",
+      "strict_scorecard_outcome_by_threshold": {
+        "high_only": "false_negative",
+        "high_and_moderate": "false_negative",
+        "all_identified_confidence_levels": "false_negative",
+        "all_confidence_and_candidates": "false_negative"
+      },
+      "mechanism_first_scorecard_outcome_by_threshold": {
+        "high_only": "true_positive",
+        "high_and_moderate": "true_positive",
+        "all_identified_confidence_levels": "true_positive",
+        "all_confidence_and_candidates": "true_positive"
+      },
+      "secondary_diagnostic_outcome": "correct_location_wrong_bias_label",
+      "label_equivalence_explanation": "The evidence and location match; labels are exact/approved equivalent or documented near neighbors as specified.",
+      "mechanism_overlap_explanation": "The finding captures the defining distortion, contextual feature, and affected reasoning operation.",
+      "evidence_fidelity_assessment": "Quotes are verbatim participant statements present in the raw interview and correctly attributed."
+    },
+    {
+      "hidden_instance_id": "cb_05",
+      "hidden_target_bias_label": "Ingroup Favoritism or In-group bias",
+      "hidden_decision_or_episode": "decision point 4",
+      "hidden_mechanism": "Shared alumni/regional network membership between the officer and one finalist leads to extending discretionary benefit-of-the-doubt weighting not applied equally to the non-affiliated finalist with comparable metrics.",
+      "matched_finding_by_threshold": {
+        "high_only": {
+          "matched_id": "obs_005",
+          "matched_type": "identified"
+        },
+        "high_and_moderate": {
+          "matched_id": "obs_005",
+          "matched_type": "identified"
+        },
+        "all_identified_confidence_levels": {
+          "matched_id": "obs_005",
+          "matched_type": "identified"
+        },
+        "all_confidence_and_candidates": {
+          "matched_id": "obs_005",
+          "matched_type": "identified"
+        }
+      },
+      "rag_predicted_bias_label": "In-group bias",
+      "rag_confidence": "high",
+      "label_equivalence_result": "exact_target_label",
+      "localization_match_type": "exact_quote_match",
+      "mechanism_overlap": "full_mechanism_match",
+      "strict_scorecard_outcome_by_threshold": {
+        "high_only": "true_positive",
+        "high_and_moderate": "true_positive",
+        "all_identified_confidence_levels": "true_positive",
+        "all_confidence_and_candidates": "true_positive"
+      },
+      "mechanism_first_scorecard_outcome_by_threshold": {
+        "high_only": "true_positive",
+        "high_and_moderate": "true_positive",
+        "all_identified_confidence_levels": "true_positive",
+        "all_confidence_and_candidates": "true_positive"
+      },
+      "secondary_diagnostic_outcome": "exact_instance_match",
+      "label_equivalence_explanation": "The evidence and location match; labels are exact/approved equivalent or documented near neighbors as specified.",
+      "mechanism_overlap_explanation": "The finding captures the defining distortion, contextual feature, and affected reasoning operation.",
+      "evidence_fidelity_assessment": "Quotes are verbatim participant statements present in the raw interview and correctly attributed."
+    }
+  ],
+  "unmatched_rag_predictions": [],
+  "candidate_analysis": {
+    "candidate_count": 0,
+    "candidates": []
+  },
+  "signal_detection_summary": {
+    "evaluation_unit": "eligible_reasoning_segment",
+    "high_only": {
+      "positive_segments": 5,
+      "negative_segments": 3,
+      "hits": 2,
+      "misses": 3,
+      "false_alarms": 0,
+      "correct_rejections": 3,
+      "hit_rate": 0.4,
+      "false_alarm_rate": 0.0,
+      "accuracy": 0.625,
+      "precision": 1.0,
+      "recall": 0.4,
+      "f1": 0.5714,
+      "detection_interpretation": "2 of 5 positive segments detected; 0 false alarms across 3 negative segments."
+    },
+    "high_and_moderate": {
+      "positive_segments": 5,
+      "negative_segments": 3,
+      "hits": 4,
+      "misses": 1,
+      "false_alarms": 0,
+      "correct_rejections": 3,
+      "hit_rate": 0.8,
+      "false_alarm_rate": 0.0,
+      "accuracy": 0.875,
+      "precision": 1.0,
+      "recall": 0.8,
+      "f1": 0.8889,
+      "detection_interpretation": "4 of 5 positive segments detected; 0 false alarms across 3 negative segments."
+    },
+    "all_identified_confidence_levels": {
+      "positive_segments": 5,
+      "negative_segments": 3,
+      "hits": 5,
+      "misses": 0,
+      "false_alarms": 0,
+      "correct_rejections": 3,
+      "hit_rate": 1.0,
+      "false_alarm_rate": 0.0,
+      "accuracy": 1.0,
+      "precision": 1.0,
+      "recall": 1.0,
+      "f1": 1.0,
+      "detection_interpretation": "5 of 5 positive segments detected; 0 false alarms across 3 negative segments."
+    },
+    "all_confidence_and_candidates": {
+      "positive_segments": 5,
+      "negative_segments": 3,
+      "hits": 5,
+      "misses": 0,
+      "false_alarms": 0,
+      "correct_rejections": 3,
+      "hit_rate": 1.0,
+      "false_alarm_rate": 0.0,
+      "accuracy": 1.0,
+      "precision": 1.0,
+      "recall": 1.0,
+      "f1": 1.0,
+      "detection_interpretation": "5 of 5 positive segments detected; 0 false alarms across 3 negative segments."
+    }
+  },
+  "strict_instance_level_metrics": {
+    "high_only": {
+      "true_positives": 1,
+      "false_negatives": 4,
+      "false_positives": 1,
+      "precision": 0.5,
+      "recall": 0.2,
+      "f1": 0.2857,
+      "exact_occurrence_match_rate": 0.2,
+      "occurrence_count_match_rate": 0.2
+    },
+    "high_and_moderate": {
+      "true_positives": 2,
+      "false_negatives": 3,
+      "false_positives": 2,
+      "precision": 0.5,
+      "recall": 0.4,
+      "f1": 0.4444,
+      "exact_occurrence_match_rate": 0.4,
+      "occurrence_count_match_rate": 0.4
+    },
+    "all_identified_confidence_levels": {
+      "true_positives": 2,
+      "false_negatives": 3,
+      "false_positives": 3,
+      "precision": 0.4,
+      "recall": 0.4,
+      "f1": 0.4,
+      "exact_occurrence_match_rate": 0.4,
+      "occurrence_count_match_rate": 0.4
+    },
+    "all_confidence_and_candidates": {
+      "true_positives": 2,
+      "false_negatives": 3,
+      "false_positives": 3,
+      "precision": 0.4,
+      "recall": 0.4,
+      "f1": 0.4,
+      "exact_occurrence_match_rate": 0.4,
+      "occurrence_count_match_rate": 0.4
+    }
+  },
+  "mechanism_first_instance_level_metrics": {
+    "high_only": {
+      "true_positives": 2,
+      "false_negatives": 3,
+      "false_positives": 0,
+      "precision": 1.0,
+      "recall": 0.4,
+      "f1": 0.5714,
+      "exact_occurrence_match_rate": 0.4,
+      "occurrence_count_match_rate": 0.4
+    },
+    "high_and_moderate": {
+      "true_positives": 4,
+      "false_negatives": 1,
+      "false_positives": 0,
+      "precision": 1.0,
+      "recall": 0.8,
+      "f1": 0.8889,
+      "exact_occurrence_match_rate": 0.8,
+      "occurrence_count_match_rate": 0.8
+    },
+    "all_identified_confidence_levels": {
+      "true_positives": 5,
+      "false_negatives": 0,
+      "false_positives": 0,
+      "precision": 1.0,
+      "recall": 1.0,
+      "f1": 1.0,
+      "exact_occurrence_match_rate": 1,
+      "occurrence_count_match_rate": 1
+    },
+    "all_confidence_and_candidates": {
+      "true_positives": 5,
+      "false_negatives": 0,
+      "false_positives": 0,
+      "precision": 1.0,
+      "recall": 1.0,
+      "f1": 1.0,
+      "exact_occurrence_match_rate": 1,
+      "occurrence_count_match_rate": 1
+    }
+  },
+  "target_bias_performance": [
+    {
+      "hidden_target_bias_label": "Halo effect",
+      "hidden_requested_occurrences": 1,
+      "strict_true_positives_by_threshold": {
+        "high_only": 0,
+        "high_and_moderate": 0,
+        "all_identified_confidence_levels": 0,
+        "all_confidence_and_candidates": 0
+      },
+      "mechanism_first_true_positives_by_threshold": {
+        "high_only": 0,
+        "high_and_moderate": 1,
+        "all_identified_confidence_levels": 1,
+        "all_confidence_and_candidates": 1
+      },
+      "count_match_status_at_all_confidence_and_candidates": "exact_match"
+    },
+    {
+      "hidden_target_bias_label": "Fundamental Attribution Bias",
+      "hidden_requested_occurrences": 1,
+      "strict_true_positives_by_threshold": {
+        "high_only": 0,
+        "high_and_moderate": 1,
+        "all_identified_confidence_levels": 1,
+        "all_confidence_and_candidates": 1
+      },
+      "mechanism_first_true_positives_by_threshold": {
+        "high_only": 0,
+        "high_and_moderate": 1,
+        "all_identified_confidence_levels": 1,
+        "all_confidence_and_candidates": 1
+      },
+      "count_match_status_at_all_confidence_and_candidates": "exact_match"
+    },
+    {
+      "hidden_target_bias_label": "Ambiguity Aversion",
+      "hidden_requested_occurrences": 1,
+      "strict_true_positives_by_threshold": {
+        "high_only": 0,
+        "high_and_moderate": 0,
+        "all_identified_confidence_levels": 0,
+        "all_confidence_and_candidates": 0
+      },
+      "mechanism_first_true_positives_by_threshold": {
+        "high_only": 0,
+        "high_and_moderate": 0,
+        "all_identified_confidence_levels": 1,
+        "all_confidence_and_candidates": 1
+      },
+      "count_match_status_at_all_confidence_and_candidates": "exact_match"
+    },
+    {
+      "hidden_target_bias_label": "Belief Perserverence and Attitude Polarisation",
+      "hidden_requested_occurrences": 1,
+      "strict_true_positives_by_threshold": {
+        "high_only": 0,
+        "high_and_moderate": 0,
+        "all_identified_confidence_levels": 0,
+        "all_confidence_and_candidates": 0
+      },
+      "mechanism_first_true_positives_by_threshold": {
+        "high_only": 1,
+        "high_and_moderate": 1,
+        "all_identified_confidence_levels": 1,
+        "all_confidence_and_candidates": 1
+      },
+      "count_match_status_at_all_confidence_and_candidates": "exact_match"
+    },
+    {
+      "hidden_target_bias_label": "Ingroup Favoritism or In-group bias",
+      "hidden_requested_occurrences": 1,
+      "strict_true_positives_by_threshold": {
+        "high_only": 1,
+        "high_and_moderate": 1,
+        "all_identified_confidence_levels": 1,
+        "all_confidence_and_candidates": 1
+      },
+      "mechanism_first_true_positives_by_threshold": {
+        "high_only": 1,
+        "high_and_moderate": 1,
+        "all_identified_confidence_levels": 1,
+        "all_confidence_and_candidates": 1
+      },
+      "count_match_status_at_all_confidence_and_candidates": "exact_match"
+    }
+  ],
+  "rag_label_false_positive_inventory": [
+    {
+      "rag_predicted_bias_label": "Representativeness heuristic",
+      "finding_type": "identified",
+      "alternative_labels": [],
+      "occurrence_count": 1,
+      "best_related_hidden_target_bias_label": "Halo effect",
+      "label_relation": "near_neighbor",
+      "mechanism_overlap_summary": "Full mechanism and location match, but the label is a near neighbor.",
+      "primary_error_types": [
+        "correct_location_wrong_bias_label"
+      ]
+    },
+    {
+      "rag_predicted_bias_label": "Status quo bias",
+      "finding_type": "identified",
+      "alternative_labels": [],
+      "occurrence_count": 1,
+      "best_related_hidden_target_bias_label": "Ambiguity Aversion",
+      "label_relation": "near_neighbor",
+      "mechanism_overlap_summary": "Full mechanism and location match, but the label is a near neighbor.",
+      "primary_error_types": [
+        "correct_location_wrong_bias_label"
+      ]
+    },
+    {
+      "rag_predicted_bias_label": "Confirmation bias",
+      "finding_type": "identified",
+      "alternative_labels": [],
+      "occurrence_count": 1,
+      "best_related_hidden_target_bias_label": "Belief Perserverence and Attitude Polarisation",
+      "label_relation": "near_neighbor",
+      "mechanism_overlap_summary": "Full mechanism and location match, but the label is a near neighbor.",
+      "primary_error_types": [
+        "correct_location_wrong_bias_label"
+      ]
+    }
+  ],
+  "diagnostic_error_summary": {
+    "correct_location_wrong_bias_label_count": 3,
+    "correct_label_wrong_location_count": 0,
+    "correct_label_location_wrong_mechanism_count": 0,
+    "mechanism_detected_label_unresolved_count": 0,
+    "partial_mechanism_match_count": 0,
+    "duplicate_prediction_count": 0,
+    "unsupported_prediction_count": 0,
+    "fabricated_or_invalid_quote_count": 0,
+    "approved_alias_or_equivalence_count": 1,
+    "near_neighbor_label_count": 3,
+    "different_construct_label_count": 0,
+    "candidate_count": 0,
+    "candidate_useful_abstention_count": 0,
+    "candidate_near_miss_count": 0,
+    "candidates_promoted_to_true_positive_at_fourth_threshold_count": 0
+  },
+  "corpus_support_audit": {
+    "primary_corpus_fidelity_score_available": false,
+    "rag_occurrences_claiming_retrieved_support": 0,
+    "rag_occurrences_with_no_claimed_retrieved_support": 5,
+    "rag_occurrences_with_unverifiable_or_internally_inconsistent_citation_metadata": 0,
+    "assessment_note": "All five occurrences state retrieved support was unavailable; no retrieval logs supplied."
+  },
+  "comparison_ready_summary": {
+    "primary_recommended_comparison_threshold": "high_and_moderate",
+    "segment_detection": {
+      "high_only": {
+        "hits": 2,
+        "misses": 3,
+        "false_alarms": 0,
+        "correct_rejections": 3,
+        "hit_rate": 0.4,
+        "false_alarm_rate": 0.0,
+        "f1": 0.5714
+      },
+      "high_and_moderate": {
+        "hits": 4,
+        "misses": 1,
+        "false_alarms": 0,
+        "correct_rejections": 3,
+        "hit_rate": 0.8,
+        "false_alarm_rate": 0.0,
+        "f1": 0.8889
+      },
+      "all_identified_confidence_levels": {
+        "hits": 5,
+        "misses": 0,
+        "false_alarms": 0,
+        "correct_rejections": 3,
+        "hit_rate": 1.0,
+        "false_alarm_rate": 0.0,
+        "f1": 1.0
+      },
+      "all_confidence_and_candidates": {
+        "hits": 5,
+        "misses": 0,
+        "false_alarms": 0,
+        "correct_rejections": 3,
+        "hit_rate": 1.0,
+        "false_alarm_rate": 0.0,
+        "f1": 1.0
+      }
+    },
+    "strict_instance_identification": {
+      "high_only": {
+        "true_positives": 1,
+        "false_negatives": 4,
+        "false_positives": 1,
+        "precision": 0.5,
+        "recall": 0.2,
+        "f1": 0.2857
+      },
+      "high_and_moderate": {
+        "true_positives": 2,
+        "false_negatives": 3,
+        "false_positives": 2,
+        "precision": 0.5,
+        "recall": 0.4,
+        "f1": 0.4444
+      },
+      "all_identified_confidence_levels": {
+        "true_positives": 2,
+        "false_negatives": 3,
+        "false_positives": 3,
+        "precision": 0.4,
+        "recall": 0.4,
+        "f1": 0.4
+      },
+      "all_confidence_and_candidates": {
+        "true_positives": 2,
+        "false_negatives": 3,
+        "false_positives": 3,
+        "precision": 0.4,
+        "recall": 0.4,
+        "f1": 0.4
+      }
+    },
+    "mechanism_first_identification": {
+      "high_only": {
+        "true_positives": 2,
+        "false_negatives": 3,
+        "false_positives": 0,
+        "precision": 1.0,
+        "recall": 0.4,
+        "f1": 0.5714
+      },
+      "high_and_moderate": {
+        "true_positives": 4,
+        "false_negatives": 1,
+        "false_positives": 0,
+        "precision": 1.0,
+        "recall": 0.8,
+        "f1": 0.8889
+      },
+      "all_identified_confidence_levels": {
+        "true_positives": 5,
+        "false_negatives": 0,
+        "false_positives": 0,
+        "precision": 1.0,
+        "recall": 1.0,
+        "f1": 1.0
+      },
+      "all_confidence_and_candidates": {
+        "true_positives": 5,
+        "false_negatives": 0,
+        "false_positives": 0,
+        "precision": 1.0,
+        "recall": 1.0,
+        "f1": 1.0
+      }
+    },
+    "taxonomy_gap": {
+      "high_only": {
+        "mechanism_first_f1_minus_strict_f1": 0.2857
+      },
+      "high_and_moderate": {
+        "mechanism_first_f1_minus_strict_f1": 0.4445
+      },
+      "all_identified_confidence_levels": {
+        "mechanism_first_f1_minus_strict_f1": 0.6
+      },
+      "all_confidence_and_candidates": {
+        "mechanism_first_f1_minus_strict_f1": 0.6
+      }
+    },
+    "confidence_tradeoff": {
+      "increment_from_high_to_high_and_moderate": "Segment hits +2; strict TP +1; mechanism-first TP +2.",
+      "increment_from_high_and_moderate_to_all_confidence": "Segment hits +1; mechanism-first TP +1; strict TP unchanged.",
+      "increment_from_all_confidence_to_all_confidence_and_candidates": "No change; no candidates supplied."
+    }
+  },
+  "overall_evaluation_summary": {
+    "hidden_total_planned_occurrences": 5,
+    "rag_total_identified_occurrences": 5,
+    "rag_total_candidate_biases": 0,
+    "segment_level_primary_result": "All five positive segments detected at all-identified threshold; four at high-and-moderate and two at high-only, with no false alarms.",
+    "strict_label_plus_mechanism_result": "Two strict matches; three near-neighbor labels are strict misses and false positives.",
+    "mechanism_first_result": "All five hidden mechanisms recovered once low-confidence findings are included; four at high-and-moderate.",
+    "candidate_tier_value_assessment": "No candidates supplied; fourth threshold unchanged.",
+    "main_failure_modes": [
+      "Three correct-location findings use near-neighbor labels.",
+      "Low-confidence grading-scale finding is excluded at high-and-moderate."
+    ],
+    "main_strengths": [
+      "All findings have valid verbatim evidence and correct localization.",
+      "Mechanisms and reasoning operations are fully captured."
+    ],
+    "benchmark_interpretation": "Strong segment detection and mechanism coverage with a taxonomy gap between strict and mechanism-first scoring."
+  }
+}

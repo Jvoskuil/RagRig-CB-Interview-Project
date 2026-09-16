@@ -1,0 +1,351 @@
+{
+  "evaluation_metadata": {
+    "task": "ontology_free_rag_cognitive_bias_benchmark_evaluation",
+    "benchmark_run_metadata": {
+      "benchmark_run_id": "IS_Biased_6_Sonnet_on",
+      "interview_id": "IS_Biased_6",
+      "system_prompt_id": "Sonnet",
+      "system_prompt_generator": "Prompt 1_2",
+      "rag_model_id": "v1.0.0",
+      "corpus_condition": "on",
+      "retrieval_configuration_id": "k=50",
+      "decoding_configuration_id": null,
+      "temperature": 1,
+      "replicate_id": null,
+      "segment_map_id": null
+    },
+    "scenario_id": "IS_Biased_6",
+    "domain_id": "IS",
+    "condition": "biased",
+    "segment_map_status": "prevalidated_provided",
+    "rag_output_parse_status": "valid_json",
+    "rag_schema_assessment": "conformant"
+  },
+  "input_validation": {
+    "rag_output_schema_violations": [],
+    "rag_summary_count_consistency": {
+      "status": "consistent",
+      "details": "The identified_bias_summary totals 6 occurrences, matching the 6 identified_occurrences records; candidate_biases is empty."
+    },
+    "evaluation_limitations": [
+      "The supplied RAG output includes self-reported corpus citations, but no retrieved chunks, source passages, or retrieval logs were supplied; corpus fidelity is therefore not scored.",
+      "The supplied evaluation segment map is treated as authoritative and immutable."
+    ]
+  },
+  "evaluation_segment_map": {
+    "segment_mapping_version": "1.0",
+    "segments": [
+      {
+        "segment_id": "seg_01",
+        "speaker": "Participant",
+        "segment_type": "decision_point",
+        "raw_interview_anchor": "Vendor rough estimate submitted as the working budget baseline; later internal estimate was framed as a 40% overrun.",
+        "eligible_reasoning_segment": true,
+        "ground_truth_bias_present": true,
+        "ground_truth_instance_ids": ["anch_01"],
+        "ground_truth_rationale": "The participant adopted an early externally supplied numeric estimate before detailed scoping and continued to frame later budget information relative to it."
+      },
+      {
+        "segment_id": "seg_02",
+        "speaker": "Participant",
+        "segment_type": "decision_point",
+        "raw_interview_anchor": "Mixed usability results: six of ten users were confused, but the participant searched for positive comments and reframed confusion as an onboarding gap.",
+        "eligible_reasoning_segment": true,
+        "ground_truth_bias_present": true,
+        "ground_truth_instance_ids": ["conf_01"],
+        "ground_truth_rationale": "The participant selectively retrieved favorable usability evidence supporting a navigation model they had designed and applied asymmetric scrutiny to negative evidence."
+      },
+      {
+        "segment_id": "seg_03",
+        "speaker": "Participant",
+        "segment_type": "decision_point",
+        "raw_interview_anchor": "Microservices recommendation cited three peer firms; a single visible demo crash received more narrative weight than the 92% pilot success rate.",
+        "eligible_reasoning_segment": true,
+        "ground_truth_bias_present": true,
+        "ground_truth_instance_ids": ["herd_01", "neg_01"],
+        "ground_truth_rationale": "Peer adoption independently supported the architecture recommendation, while one salient negative incident outweighed aggregate positive outcome data in the risk narrative."
+      },
+      {
+        "segment_id": "seg_04",
+        "speaker": "Participant",
+        "segment_type": "decision_point",
+        "raw_interview_anchor": "Despite delays and outages, migration continued because reverting would waste completed work; an authentication alternative was drafted mainly because the mandate was imposed.",
+        "eligible_reasoning_segment": true,
+        "ground_truth_bias_present": true,
+        "ground_truth_instance_ids": ["esc_01", "react_01"],
+        "ground_truth_rationale": "Continuation was justified by already-invested migration work rather than a rigorous forward-looking comparison, and pushback on authentication was driven primarily by the directive's imposed nature."
+      }
+    ]
+  },
+  "segment_level_adjudications": [
+    {
+      "segment_id": "seg_01",
+      "ground_truth_status": "positive",
+      "ground_truth_instance_ids": ["anch_01"],
+      "rag_identified_occurrence_ids": ["obs_001"],
+      "rag_candidate_ids_counted_at_fourth_threshold": [],
+      "rag_detected_bias_in_segment_by_threshold": {"high_only": true, "high_and_moderate": true, "all_identified_confidence_levels": true, "all_confidence_and_candidates": true},
+      "sdt_outcome_by_threshold": {"high_only": "hit", "high_and_moderate": "hit", "all_identified_confidence_levels": "hit", "all_confidence_and_candidates": "hit"},
+      "localization_basis": "obs_001 contains valid participant quotes and substantively describes the initial budget-baseline episode.",
+      "adjudication_note": "The finding is a high-confidence identified occurrence and directly localizes to seg_01."
+    },
+    {
+      "segment_id": "seg_02",
+      "ground_truth_status": "positive",
+      "ground_truth_instance_ids": ["conf_01"],
+      "rag_identified_occurrence_ids": ["obs_002"],
+      "rag_candidate_ids_counted_at_fourth_threshold": [],
+      "rag_detected_bias_in_segment_by_threshold": {"high_only": true, "high_and_moderate": true, "all_identified_confidence_levels": true, "all_confidence_and_candidates": true},
+      "sdt_outcome_by_threshold": {"high_only": "hit", "high_and_moderate": "hit", "all_identified_confidence_levels": "hit", "all_confidence_and_candidates": "hit"},
+      "localization_basis": "obs_002 uses valid participant quotes from the usability-test interpretation and stakeholder-readout episode.",
+      "adjudication_note": "The finding is a high-confidence identified occurrence and directly localizes to seg_02."
+    },
+    {
+      "segment_id": "seg_03",
+      "ground_truth_status": "positive",
+      "ground_truth_instance_ids": ["herd_01", "neg_01"],
+      "rag_identified_occurrence_ids": ["obs_003", "obs_004"],
+      "rag_candidate_ids_counted_at_fourth_threshold": [],
+      "rag_detected_bias_in_segment_by_threshold": {"high_only": true, "high_and_moderate": true, "all_identified_confidence_levels": true, "all_confidence_and_candidates": true},
+      "sdt_outcome_by_threshold": {"high_only": "hit", "high_and_moderate": "hit", "all_identified_confidence_levels": "hit", "all_confidence_and_candidates": "hit"},
+      "localization_basis": "obs_003 localizes to peer-company architecture adoption and obs_004 localizes to the demo-crash risk framing; both are substantive spans within seg_03.",
+      "adjudication_note": "Segment detection is a hit at every threshold. The bandwagon label is an approved equivalent for Herding; the availability label is a location-correct near neighbor for the hidden Negativity Bias instance and remains an instance-level error."
+    },
+    {
+      "segment_id": "seg_04",
+      "ground_truth_status": "positive",
+      "ground_truth_instance_ids": ["esc_01", "react_01"],
+      "rag_identified_occurrence_ids": ["obs_005", "obs_006"],
+      "rag_candidate_ids_counted_at_fourth_threshold": [],
+      "rag_detected_bias_in_segment_by_threshold": {"high_only": true, "high_and_moderate": true, "all_identified_confidence_levels": true, "all_confidence_and_candidates": true},
+      "sdt_outcome_by_threshold": {"high_only": "hit", "high_and_moderate": "hit", "all_identified_confidence_levels": "hit", "all_confidence_and_candidates": "hit"},
+      "localization_basis": "obs_005 localizes to the authentication mandate response and obs_006 to the migration-continuation decision; both use valid participant evidence in seg_04.",
+      "adjudication_note": "Both findings are high-confidence identified occurrences and jointly cover the two hidden instances in seg_04."
+    }
+  ],
+  "instance_level_adjudications": [
+    {
+      "hidden_instance_id": "anch_01",
+      "hidden_target_bias_label": "Anchoring Bias",
+      "hidden_decision_or_episode": "Initial budget baseline submission",
+      "hidden_mechanism": "Adoption of an early externally supplied vendor quote as a persistent budget baseline despite later, more accurate estimates.",
+      "matched_finding_by_threshold": {"high_only": {"matched_id": "obs_001", "matched_type": "identified"}, "high_and_moderate": {"matched_id": "obs_001", "matched_type": "identified"}, "all_identified_confidence_levels": {"matched_id": "obs_001", "matched_type": "identified"}, "all_confidence_and_candidates": {"matched_id": "obs_001", "matched_type": "identified"}},
+      "rag_predicted_bias_label": "Anchoring bias",
+      "rag_confidence": "high",
+      "label_equivalence_result": "exact_target_label",
+      "localization_match_type": "exact_quote_match",
+      "mechanism_overlap": "full_mechanism_match",
+      "strict_scorecard_outcome_by_threshold": {"high_only": "true_positive", "high_and_moderate": "true_positive", "all_identified_confidence_levels": "true_positive", "all_confidence_and_candidates": "true_positive"},
+      "mechanism_first_scorecard_outcome_by_threshold": {"high_only": "true_positive", "high_and_moderate": "true_positive", "all_identified_confidence_levels": "true_positive", "all_confidence_and_candidates": "true_positive"},
+      "secondary_diagnostic_outcome": "exact_instance_match",
+      "label_equivalence_explanation": "Anchoring bias is the target construct, differing only in capitalization.",
+      "mechanism_overlap_explanation": "The finding captures the early vendor number, persistent baseline effect, later insufficient adjustment, and budget-estimation operation.",
+      "evidence_fidelity_assessment": "Valid participant quotations directly support the occurrence and its mechanism."
+    },
+    {
+      "hidden_instance_id": "conf_01",
+      "hidden_target_bias_label": "Confirmation Bias",
+      "hidden_decision_or_episode": "Usability test interpretation and stakeholder readout",
+      "hidden_mechanism": "Selective retrieval of favorable usability-test comments and reframing of majority negative feedback as an onboarding issue, without equivalent scrutiny applied to positive feedback.",
+      "matched_finding_by_threshold": {"high_only": {"matched_id": "obs_002", "matched_type": "identified"}, "high_and_moderate": {"matched_id": "obs_002", "matched_type": "identified"}, "all_identified_confidence_levels": {"matched_id": "obs_002", "matched_type": "identified"}, "all_confidence_and_candidates": {"matched_id": "obs_002", "matched_type": "identified"}},
+      "rag_predicted_bias_label": "Confirmation bias",
+      "rag_confidence": "high",
+      "label_equivalence_result": "exact_target_label",
+      "localization_match_type": "exact_quote_match",
+      "mechanism_overlap": "full_mechanism_match",
+      "strict_scorecard_outcome_by_threshold": {"high_only": "true_positive", "high_and_moderate": "true_positive", "all_identified_confidence_levels": "true_positive", "all_confidence_and_candidates": "true_positive"},
+      "mechanism_first_scorecard_outcome_by_threshold": {"high_only": "true_positive", "high_and_moderate": "true_positive", "all_identified_confidence_levels": "true_positive", "all_confidence_and_candidates": "true_positive"},
+      "secondary_diagnostic_outcome": "exact_instance_match",
+      "label_equivalence_explanation": "Confirmation bias is the target construct, differing only in capitalization.",
+      "mechanism_overlap_explanation": "The finding captures favorable quote retrieval, asymmetric scrutiny, and belief-consistent reinterpretation of the majority negative usability evidence.",
+      "evidence_fidelity_assessment": "Valid participant quotations directly support selective evidence retrieval and asymmetric interpretation."
+    },
+    {
+      "hidden_instance_id": "herd_01",
+      "hidden_target_bias_label": "Herding",
+      "hidden_decision_or_episode": "Architecture selection recommendation",
+      "hidden_mechanism": "Justifying an architecture recommendation partly by peer-company adoption trends independent of internal technical risk assessment.",
+      "matched_finding_by_threshold": {"high_only": {"matched_id": null, "matched_type": "none"}, "high_and_moderate": {"matched_id": "obs_003", "matched_type": "identified"}, "all_identified_confidence_levels": {"matched_id": "obs_003", "matched_type": "identified"}, "all_confidence_and_candidates": {"matched_id": "obs_003", "matched_type": "identified"}},
+      "rag_predicted_bias_label": "Bandwagon effect",
+      "rag_confidence": "moderate",
+      "label_equivalence_result": "established_alias_or_equivalent",
+      "localization_match_type": "exact_quote_match",
+      "mechanism_overlap": "full_mechanism_match",
+      "strict_scorecard_outcome_by_threshold": {"high_only": "false_negative", "high_and_moderate": "true_positive", "all_identified_confidence_levels": "true_positive", "all_confidence_and_candidates": "true_positive"},
+      "mechanism_first_scorecard_outcome_by_threshold": {"high_only": "false_negative", "high_and_moderate": "true_positive", "all_identified_confidence_levels": "true_positive", "all_confidence_and_candidates": "true_positive"},
+      "secondary_diagnostic_outcome": "approved_alias_match",
+      "label_equivalence_explanation": "Bandwagon effect is an established equivalent social-influence label for herding when adoption by peers is used to justify the choice.",
+      "mechanism_overlap_explanation": "The finding captures peer-company adoption as an independent justification for microservices, distinct from the internal risk memo.",
+      "evidence_fidelity_assessment": "Valid participant quotations directly support the peer-adoption rationale; the moderate confidence tier is appropriate for high-and-moderate scoring."
+    },
+    {
+      "hidden_instance_id": "neg_01",
+      "hidden_target_bias_label": "Negativity Bias",
+      "hidden_decision_or_episode": "Post-demo risk framing for leadership",
+      "hidden_mechanism": "A single salient negative demo event overriding a 92% aggregate success metric in the executive-facing risk narrative.",
+      "matched_finding_by_threshold": {"high_only": {"matched_id": null, "matched_type": "none"}, "high_and_moderate": {"matched_id": null, "matched_type": "none"}, "all_identified_confidence_levels": {"matched_id": null, "matched_type": "none"}, "all_confidence_and_candidates": {"matched_id": null, "matched_type": "none"}},
+      "rag_predicted_bias_label": "Availability bias",
+      "rag_confidence": "high",
+      "label_equivalence_result": "near_neighbor_label",
+      "localization_match_type": "exact_quote_match",
+      "mechanism_overlap": "full_mechanism_match",
+      "strict_scorecard_outcome_by_threshold": {"high_only": "false_negative", "high_and_moderate": "false_negative", "all_identified_confidence_levels": "false_negative", "all_confidence_and_candidates": "false_negative"},
+      "mechanism_first_scorecard_outcome_by_threshold": {"high_only": "true_positive", "high_and_moderate": "true_positive", "all_identified_confidence_levels": "true_positive", "all_confidence_and_candidates": "true_positive"},
+      "secondary_diagnostic_outcome": "correct_location_wrong_bias_label",
+      "label_equivalence_explanation": "Availability bias and Negativity Bias are distinct constructs. The former emphasizes ease of recall or vividness; the hidden target emphasizes disproportionate weighting because the event was negative.",
+      "mechanism_overlap_explanation": "Although the label names Availability bias, the finding captures the full hidden mechanism: a single salient crash receives disproportionate weight over the 92% aggregate success metric in the leadership risk narrative. The taxonomy explanation differs, but the behavioral mechanism and reasoning operation are complete.",
+      "evidence_fidelity_assessment": "The participant quotation is valid and precisely localized, but the predicted taxonomy and causal mechanism do not satisfy the hidden instance requirement."
+    },
+    {
+      "hidden_instance_id": "esc_01",
+      "hidden_target_bias_label": "Irrational Escalation",
+      "hidden_decision_or_episode": "Decision to continue migration despite delays and outages",
+      "hidden_mechanism": "Continued commitment of resources to the migration justified by sunk/already-completed cutover work rather than forward-looking reassessment amid delays and outages.",
+      "matched_finding_by_threshold": {"high_only": {"matched_id": "obs_006", "matched_type": "identified"}, "high_and_moderate": {"matched_id": "obs_006", "matched_type": "identified"}, "all_identified_confidence_levels": {"matched_id": "obs_006", "matched_type": "identified"}, "all_confidence_and_candidates": {"matched_id": "obs_006", "matched_type": "identified"}},
+      "rag_predicted_bias_label": "Sunk cost fallacy",
+      "rag_confidence": "high",
+      "label_equivalence_result": "established_alias_or_equivalent",
+      "localization_match_type": "exact_quote_match",
+      "mechanism_overlap": "full_mechanism_match",
+      "strict_scorecard_outcome_by_threshold": {"high_only": "true_positive", "high_and_moderate": "true_positive", "all_identified_confidence_levels": "true_positive", "all_confidence_and_candidates": "true_positive"},
+      "mechanism_first_scorecard_outcome_by_threshold": {"high_only": "true_positive", "high_and_moderate": "true_positive", "all_identified_confidence_levels": "true_positive", "all_confidence_and_candidates": "true_positive"},
+      "secondary_diagnostic_outcome": "approved_alias_match",
+      "label_equivalence_explanation": "Sunk cost fallacy is an established equivalent label for the hidden irrational-escalation construct when continuation is justified by already-invested resources.",
+      "mechanism_overlap_explanation": "The finding captures continued migration, already-invested cutover work, adverse delay/outage signals, and insufficient forward-looking cost-benefit analysis.",
+      "evidence_fidelity_assessment": "Valid participant quotations directly support the sunk-work rationale and insufficiently rigorous reassessment."
+    },
+    {
+      "hidden_instance_id": "react_01",
+      "hidden_target_bias_label": "Reactance",
+      "hidden_decision_or_episode": "Response to security authentication mandate",
+      "hidden_mechanism": "Resistance to the security team's mandated authentication architecture driven primarily by its imposed nature rather than a distinct technical objection.",
+      "matched_finding_by_threshold": {"high_only": {"matched_id": "obs_005", "matched_type": "identified"}, "high_and_moderate": {"matched_id": "obs_005", "matched_type": "identified"}, "all_identified_confidence_levels": {"matched_id": "obs_005", "matched_type": "identified"}, "all_confidence_and_candidates": {"matched_id": "obs_005", "matched_type": "identified"}},
+      "rag_predicted_bias_label": "Psychological reactance",
+      "rag_confidence": "high",
+      "label_equivalence_result": "established_alias_or_equivalent",
+      "localization_match_type": "exact_quote_match",
+      "mechanism_overlap": "full_mechanism_match",
+      "strict_scorecard_outcome_by_threshold": {"high_only": "true_positive", "high_and_moderate": "true_positive", "all_identified_confidence_levels": "true_positive", "all_confidence_and_candidates": "true_positive"},
+      "mechanism_first_scorecard_outcome_by_threshold": {"high_only": "true_positive", "high_and_moderate": "true_positive", "all_identified_confidence_levels": "true_positive", "all_confidence_and_candidates": "true_positive"},
+      "secondary_diagnostic_outcome": "approved_alias_match",
+      "label_equivalence_explanation": "Psychological reactance is the established full label for the target Reactance construct.",
+      "mechanism_overlap_explanation": "The finding captures directive delivery as the autonomy trigger, absence of a strong technical objection, and the alternative design intended to preserve control.",
+      "evidence_fidelity_assessment": "Valid participant quotations directly support the imposed-directive mechanism and the timing of the alternative proposal."
+    }
+  ],
+  "unmatched_rag_predictions": [
+    {
+      "rag_occurrence_id": "obs_004",
+      "rag_finding_type": "identified",
+      "rag_predicted_bias_label": "Availability bias",
+      "rag_confidence": "high",
+      "localized_segment_id": "seg_03",
+      "best_related_hidden_instance_id": "neg_01",
+      "label_equivalence_result": "near_neighbor_label",
+      "mechanism_overlap": "full_mechanism_match",
+      "strict_classification": "correct_location_wrong_bias_label",
+      "mechanism_first_classification": "not_applicable",
+      "counted_at_thresholds": ["high_only", "high_and_moderate", "all_identified_confidence_levels", "all_confidence_and_candidates"],
+      "why_not_an_exact_strict_match": "The finding is correctly localized and the quotation is valid, but Availability bias is not an approved equivalent of Negativity Bias. It uses a different taxonomy label, so it remains a strict false positive and the hidden target remains a strict false negative. The described evidence weighting and affected risk-framing operation nevertheless fully match for the mechanism-first scorecard."
+    }
+  ],
+  "candidate_analysis": {"candidate_count": 0, "candidates": []},
+  "signal_detection_summary": {
+    "evaluation_unit": "eligible_reasoning_segment",
+    "high_only": {"positive_segments": 4, "negative_segments": 0, "hits": 4, "misses": 0, "false_alarms": 0, "correct_rejections": 0, "hit_rate": 1.0000, "false_alarm_rate": null, "accuracy": 1.0000, "precision": 1.0000, "recall": 1.0000, "f1": 1.0000, "detection_interpretation": "All four eligible positive segments contain at least one high-confidence identified finding; no negative segments exist, so false-alarm rate is undefined."},
+    "high_and_moderate": {"positive_segments": 4, "negative_segments": 0, "hits": 4, "misses": 0, "false_alarms": 0, "correct_rejections": 0, "hit_rate": 1.0000, "false_alarm_rate": null, "accuracy": 1.0000, "precision": 1.0000, "recall": 1.0000, "f1": 1.0000, "detection_interpretation": "All four eligible positive segments contain at least one high- or moderate-confidence identified finding; no negative segments exist."},
+    "all_identified_confidence_levels": {"positive_segments": 4, "negative_segments": 0, "hits": 4, "misses": 0, "false_alarms": 0, "correct_rejections": 0, "hit_rate": 1.0000, "false_alarm_rate": null, "accuracy": 1.0000, "precision": 1.0000, "recall": 1.0000, "f1": 1.0000, "detection_interpretation": "All four eligible positive segments contain at least one identified finding; no negative segments exist."},
+    "all_confidence_and_candidates": {"positive_segments": 4, "negative_segments": 0, "hits": 4, "misses": 0, "false_alarms": 0, "correct_rejections": 0, "hit_rate": 1.0000, "false_alarm_rate": null, "accuracy": 1.0000, "precision": 1.0000, "recall": 1.0000, "f1": 1.0000, "detection_interpretation": "All four eligible positive segments contain at least one identified finding; no candidates were supplied and no negative segments exist."}
+  },
+  "strict_instance_level_metrics": {
+    "high_only": {"true_positives": 4, "false_negatives": 2, "false_positives": 1, "precision": 0.8000, "recall": 0.6667, "f1": 0.7273, "exact_occurrence_match_rate": 0.6667, "occurrence_count_match_rate": 0.6667},
+    "high_and_moderate": {"true_positives": 5, "false_negatives": 1, "false_positives": 1, "precision": 0.8333, "recall": 0.8333, "f1": 0.9091, "exact_occurrence_match_rate": 0.8333, "occurrence_count_match_rate": 0.8333},
+    "all_identified_confidence_levels": {"true_positives": 5, "false_negatives": 1, "false_positives": 1, "precision": 0.8333, "recall": 0.8333, "f1": 0.9091, "exact_occurrence_match_rate": 0.8333, "occurrence_count_match_rate": 0.8333},
+    "all_confidence_and_candidates": {"true_positives": 5, "false_negatives": 1, "false_positives": 1, "precision": 0.8333, "recall": 0.8333, "f1": 0.9091, "exact_occurrence_match_rate": 0.8333, "occurrence_count_match_rate": 0.8333}
+  },
+  "mechanism_first_instance_level_metrics": {
+    "high_only": {"true_positives": 5, "false_negatives": 1, "false_positives": 0, "precision": 1.0000, "recall": 0.8333, "f1": 0.9091, "exact_occurrence_match_rate": 0.8333, "occurrence_count_match_rate": 0.8333},
+    "high_and_moderate": {"true_positives": 6, "false_negatives": 0, "false_positives": 0, "precision": 1.0000, "recall": 1.0000, "f1": 1.0000, "exact_occurrence_match_rate": 1.0000, "occurrence_count_match_rate": 1.0000},
+    "all_identified_confidence_levels": {"true_positives": 6, "false_negatives": 0, "false_positives": 0, "precision": 1.0000, "recall": 1.0000, "f1": 1.0000, "exact_occurrence_match_rate": 1.0000, "occurrence_count_match_rate": 1.0000},
+    "all_confidence_and_candidates": {"true_positives": 6, "false_negatives": 0, "false_positives": 0, "precision": 1.0000, "recall": 1.0000, "f1": 1.0000, "exact_occurrence_match_rate": 1.0000, "occurrence_count_match_rate": 1.0000}
+  },
+  "target_bias_performance": [
+    {"hidden_target_bias_label": "Anchoring Bias", "hidden_requested_occurrences": 1, "strict_true_positives_by_threshold": {"high_only": 1, "high_and_moderate": 1, "all_identified_confidence_levels": 1, "all_confidence_and_candidates": 1}, "mechanism_first_true_positives_by_threshold": {"high_only": 1, "high_and_moderate": 1, "all_identified_confidence_levels": 1, "all_confidence_and_candidates": 1}, "count_match_status_at_all_confidence_and_candidates": "exact_match"},
+    {"hidden_target_bias_label": "Confirmation Bias", "hidden_requested_occurrences": 1, "strict_true_positives_by_threshold": {"high_only": 1, "high_and_moderate": 1, "all_identified_confidence_levels": 1, "all_confidence_and_candidates": 1}, "mechanism_first_true_positives_by_threshold": {"high_only": 1, "high_and_moderate": 1, "all_identified_confidence_levels": 1, "all_confidence_and_candidates": 1}, "count_match_status_at_all_confidence_and_candidates": "exact_match"},
+    {"hidden_target_bias_label": "Herding", "hidden_requested_occurrences": 1, "strict_true_positives_by_threshold": {"high_only": 0, "high_and_moderate": 1, "all_identified_confidence_levels": 1, "all_confidence_and_candidates": 1}, "mechanism_first_true_positives_by_threshold": {"high_only": 0, "high_and_moderate": 1, "all_identified_confidence_levels": 1, "all_confidence_and_candidates": 1}, "count_match_status_at_all_confidence_and_candidates": "exact_match"},
+    {"hidden_target_bias_label": "Irrational Escalation", "hidden_requested_occurrences": 1, "strict_true_positives_by_threshold": {"high_only": 1, "high_and_moderate": 1, "all_identified_confidence_levels": 1, "all_confidence_and_candidates": 1}, "mechanism_first_true_positives_by_threshold": {"high_only": 1, "high_and_moderate": 1, "all_identified_confidence_levels": 1, "all_confidence_and_candidates": 1}, "count_match_status_at_all_confidence_and_candidates": "exact_match"},
+    {"hidden_target_bias_label": "Negativity Bias", "hidden_requested_occurrences": 1, "strict_true_positives_by_threshold": {"high_only": 0, "high_and_moderate": 0, "all_identified_confidence_levels": 0, "all_confidence_and_candidates": 0}, "mechanism_first_true_positives_by_threshold": {"high_only": 1, "high_and_moderate": 1, "all_identified_confidence_levels": 1, "all_confidence_and_candidates": 1}, "count_match_status_at_all_confidence_and_candidates": "underdetected"},
+    {"hidden_target_bias_label": "Reactance", "hidden_requested_occurrences": 1, "strict_true_positives_by_threshold": {"high_only": 1, "high_and_moderate": 1, "all_identified_confidence_levels": 1, "all_confidence_and_candidates": 1}, "mechanism_first_true_positives_by_threshold": {"high_only": 1, "high_and_moderate": 1, "all_identified_confidence_levels": 1, "all_confidence_and_candidates": 1}, "count_match_status_at_all_confidence_and_candidates": "exact_match"}
+  ],
+  "rag_label_false_positive_inventory": [
+    {"rag_predicted_bias_label": "Availability bias", "finding_type": "identified", "alternative_labels": ["Availability heuristic", "Vividness bias"], "occurrence_count": 1, "best_related_hidden_target_bias_label": "Negativity Bias", "label_relation": "near_neighbor", "mechanism_overlap_summary": "Correctly identifies disproportionate emphasis on the single vivid crash over the 92% success metric, but uses availability/ease-of-recall as the causal explanation rather than negative-valence weighting.", "primary_error_types": ["correct_location_wrong_bias_label", "near_neighbor_label", "partial_mechanism_match"]}
+  ],
+  "diagnostic_error_summary": {
+    "correct_location_wrong_bias_label_count": 1,
+    "correct_label_wrong_location_count": 0,
+    "correct_label_location_wrong_mechanism_count": 0,
+    "mechanism_detected_label_unresolved_count": 0,
+    "partial_mechanism_match_count": 0,
+    "duplicate_prediction_count": 0,
+    "unsupported_prediction_count": 0,
+    "fabricated_or_invalid_quote_count": 0,
+    "approved_alias_or_equivalence_count": 3,
+    "near_neighbor_label_count": 1,
+    "different_construct_label_count": 0,
+    "candidate_count": 0,
+    "candidate_useful_abstention_count": 0,
+    "candidate_near_miss_count": 0,
+    "candidates_promoted_to_true_positive_at_fourth_threshold_count": 0
+  },
+  "corpus_support_audit": {
+    "primary_corpus_fidelity_score_available": false,
+    "rag_occurrences_claiming_retrieved_support": 2,
+    "rag_occurrences_with_no_claimed_retrieved_support": 4,
+    "rag_occurrences_with_unverifiable_or_internally_inconsistent_citation_metadata": 2,
+    "assessment_note": "Two occurrences claim retrieved support and include citation metadata, while four explicitly disclose unavailable support. Because no actual retrieved chunks, source passages, or retrieval logs were supplied, the two citation records are unverifiable and no corpus-fidelity score is calculated."
+  },
+  "comparison_ready_summary": {
+    "primary_recommended_comparison_threshold": "high_and_moderate",
+    "segment_detection": {
+      "high_only": {"hits": 4, "misses": 0, "false_alarms": 0, "correct_rejections": 0, "hit_rate": 1.0000, "false_alarm_rate": null, "f1": 1.0000},
+      "high_and_moderate": {"hits": 4, "misses": 0, "false_alarms": 0, "correct_rejections": 0, "hit_rate": 1.0000, "false_alarm_rate": null, "f1": 1.0000},
+      "all_identified_confidence_levels": {"hits": 4, "misses": 0, "false_alarms": 0, "correct_rejections": 0, "hit_rate": 1.0000, "false_alarm_rate": null, "f1": 1.0000},
+      "all_confidence_and_candidates": {"hits": 4, "misses": 0, "false_alarms": 0, "correct_rejections": 0, "hit_rate": 1.0000, "false_alarm_rate": null, "f1": 1.0000}
+    },
+    "strict_instance_identification": {
+      "high_only": {"true_positives": 4, "false_negatives": 2, "false_positives": 1, "precision": 0.8000, "recall": 0.6667, "f1": 0.7273},
+      "high_and_moderate": {"true_positives": 5, "false_negatives": 1, "false_positives": 1, "precision": 0.8333, "recall": 0.8333, "f1": 0.9091},
+      "all_identified_confidence_levels": {"true_positives": 5, "false_negatives": 1, "false_positives": 1, "precision": 0.8333, "recall": 0.8333, "f1": 0.9091},
+      "all_confidence_and_candidates": {"true_positives": 5, "false_negatives": 1, "false_positives": 1, "precision": 0.8333, "recall": 0.8333, "f1": 0.9091}
+    },
+    "mechanism_first_identification": {
+      "high_only": {"true_positives": 5, "false_negatives": 1, "false_positives": 0, "precision": 1.0000, "recall": 0.8333, "f1": 0.9091},
+      "high_and_moderate": {"true_positives": 6, "false_negatives": 0, "false_positives": 0, "precision": 1.0000, "recall": 1.0000, "f1": 1.0000},
+      "all_identified_confidence_levels": {"true_positives": 6, "false_negatives": 0, "false_positives": 0, "precision": 1.0000, "recall": 1.0000, "f1": 1.0000},
+      "all_confidence_and_candidates": {"true_positives": 6, "false_negatives": 0, "false_positives": 0, "precision": 1.0000, "recall": 1.0000, "f1": 1.0000}
+    },
+    "taxonomy_gap": {
+      "high_only": {"mechanism_first_f1_minus_strict_f1": 0.1818},
+      "high_and_moderate": {"mechanism_first_f1_minus_strict_f1": 0.0909},
+      "all_identified_confidence_levels": {"mechanism_first_f1_minus_strict_f1": 0.0909},
+      "all_confidence_and_candidates": {"mechanism_first_f1_minus_strict_f1": 0.0909}
+    },
+    "confidence_tradeoff": {
+      "increment_from_high_to_high_and_moderate": "Segment F1: +0.0000; strict instance F1: +0.1818; mechanism-first instance F1: +0.1818.",
+      "increment_from_high_and_moderate_to_all_confidence": "No change: segment, strict instance, and mechanism-first F1 each change by +0.0000.",
+      "increment_from_all_confidence_to_all_confidence_and_candidates": "No change: segment, strict instance, and mechanism-first F1 each change by +0.0000 because no candidates were supplied."
+    }
+  },
+  "overall_evaluation_summary": {
+    "hidden_total_planned_occurrences": 6,
+    "rag_total_identified_occurrences": 6,
+    "rag_total_candidate_biases": 0,
+    "segment_level_primary_result": "All four eligible positive reasoning segments were detected at every threshold, yielding segment F1 1.0000; no negative segments were available to estimate false alarms.",
+    "strict_label_plus_mechanism_result": "At the recommended high_and_moderate threshold, 5 of 6 hidden instances matched with precision 0.8333, recall 0.8333, and F1 0.9091. The remaining error was a location-correct Availability-bias label for the hidden Negativity Bias instance.",
+    "mechanism_first_result": "At the recommended high_and_moderate threshold, all 6 hidden instances have full mechanism matches with precision 1.0000, recall 1.0000, and F1 1.0000. The Availability-bias label remains a strict taxonomy error but is accepted by the mechanism-first scorecard.",
+    "candidate_tier_value_assessment": "No candidates were supplied, so the fourth threshold is identical to all_identified_confidence_levels and has no marginal candidate-tier value.",
+    "main_failure_modes": ["A vivid single crash was labeled Availability bias instead of the hidden Negativity Bias construct, with an incomplete causal-mechanism match.", "The Herding-equivalent Bandwagon finding was only moderate confidence and is missed at the high-only threshold.", "Corpus support was claimed for only two findings, and those citation records cannot be verified without retrieved material or logs."],
+    "main_strengths": ["All six identified findings are localized to the correct decision episodes with valid participant evidence.", "All six findings have full mechanism matches; five also satisfy the strict label requirement, including three approved taxonomy equivalents.", "The identified-occurrence summary is internally consistent and no unsupported candidates or fabricated quotations were supplied."],
+    "benchmark_interpretation": "The run has complete segment coverage and strong instance-level performance under an ontology-flexible adjudication, but one taxonomy/mechanism near miss remains. The recommended high-and-moderate threshold recovers the moderate-confidence Herding equivalent without adding false segment alarms."
+  }
+}

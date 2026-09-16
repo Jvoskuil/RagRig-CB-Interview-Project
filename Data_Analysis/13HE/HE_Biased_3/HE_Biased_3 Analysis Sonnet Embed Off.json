@@ -1,0 +1,520 @@
+{
+  "evaluation_metadata": {
+    "task": "ontology_free_rag_cognitive_bias_benchmark_evaluation",
+    "benchmark_run_metadata": {
+      "benchmark_run_id": "HE_Biased_3_Sonnet_off",
+      "interview_id": "HE_Biased_3",
+      "system_prompt_id": "Sonnet",
+      "system_prompt_generator": "Prompt 1_2",
+      "rag_model_id": "v1.0.0",
+      "corpus_condition": "off",
+      "retrieval_configuration_id": "k=0",
+      "decoding_configuration_id": null,
+      "temperature": 1,
+      "replicate_id": null,
+      "segment_map_id": null
+    },
+    "scenario_id": "HE_Biased_3",
+    "domain_id": "HE",
+    "condition": "biased",
+    "segment_map_status": "prevalidated_provided",
+    "rag_output_parse_status": "valid_json",
+    "rag_schema_assessment": "conformant"
+  },
+  "input_validation": {
+    "rag_output_schema_violations": [],
+    "rag_summary_count_consistency": {
+      "status": "consistent",
+      "details": "The summary reports two identified occurrences, matching the two identified_occurrences records; one candidate_biases record is also present. No retrieved-corpus support is claimed."
+    },
+    "evaluation_limitations": [
+      "No retrieved passages or retrieval logs were supplied, so corpus retrieval fidelity cannot be scored.",
+      "The evaluation relies on self-reported interview reasoning and the supplied frozen segment map."
+    ]
+  },
+  "evaluation_segment_map": {
+    "segment_mapping_version": "1.0",
+    "segments": [
+      {
+        "segment_id": "dp_01_classification",
+        "speaker": "Participant",
+        "segment_type": "decision_reasoning",
+        "raw_interview_anchor": "I had the tenant's general business type... I didn't have their SKU list yet. ... The two prior jobs I'd done for similar operators both landed at Class III, so I went with that pattern rather than waiting on the tenant's list.",
+        "eligible_reasoning_segment": true,
+        "ground_truth_bias_present": true,
+        "ground_truth_instance_ids": ["st_01"],
+        "ground_truth_rationale": "The participant classified the tenant using category similarity to two prior 3PL clients instead of obtaining tenant-specific packaging data."
+      },
+      {
+        "segment_id": "dp_02_density_selection",
+        "speaker": "Participant",
+        "segment_type": "decision_reasoning",
+        "raw_interview_anchor": "I took the first density/area point that cleared the minimum... and ran with it rather than working through the other combinations.",
+        "eligible_reasoning_segment": true,
+        "ground_truth_bias_present": true,
+        "ground_truth_instance_ids": ["sf_01"],
+        "ground_truth_rationale": "The participant stopped at the first code-minimum-satisfying design point without comparing the available configuration-specific alternatives."
+      },
+      {
+        "segment_id": "dp_03_value_engineering",
+        "speaker": "Participant",
+        "segment_type": "decision_reasoning",
+        "raw_interview_anchor": "We've got two more retrofit jobs pending with this same owner... I recommended pulling the in-rack allowance to hit his number. ... I mentioned [the uncertainty] in passing but framed the removal as a reasonable trade-off.",
+        "eligible_reasoning_segment": true,
+        "ground_truth_bias_present": true,
+        "ground_truth_instance_ids": ["ib_01"],
+        "ground_truth_rationale": "The recommendation was influenced by preserving an ongoing owner relationship, while the classification-uncertainty risk was not fully surfaced."
+      },
+      {
+        "segment_id": "dp_04_commissioning",
+        "speaker": "Participant",
+        "segment_type": "decision_reasoning",
+        "raw_interview_anchor": "I decided to do the full witnessed test anyway.",
+        "eligible_reasoning_segment": true,
+        "ground_truth_bias_present": false,
+        "ground_truth_instance_ids": [],
+        "ground_truth_rationale": "The generation specification deliberately leaves commissioning free of intentional bias; the participant followed the required full witnessed flow-test process."
+      }
+    ]
+  },
+  "segment_level_adjudications": [
+    {
+      "segment_id": "dp_01_classification",
+      "ground_truth_status": "positive",
+      "ground_truth_instance_ids": ["st_01"],
+      "rag_identified_occurrence_ids": ["obs_001"],
+      "rag_candidate_ids_counted_at_fourth_threshold": [],
+      "rag_detected_bias_in_segment_by_threshold": {
+        "high_only": true,
+        "high_and_moderate": true,
+        "all_identified_confidence_levels": true,
+        "all_confidence_and_candidates": true
+      },
+      "sdt_outcome_by_threshold": {
+        "high_only": "hit",
+        "high_and_moderate": "hit",
+        "all_identified_confidence_levels": "hit",
+        "all_confidence_and_candidates": "hit"
+      },
+      "localization_basis": "obs_001 contains valid verbatim quotes from the commodity-classification reasoning and directly identifies the use of similarity to prior 3PL tenants instead of tenant-specific SKU data.",
+      "adjudication_note": "Segment detection is a hit at every threshold. The predicted representativeness heuristic is a near-neighbor label rather than the hidden Stereotyping label, so this does not produce a strict instance-level true positive."
+    },
+    {
+      "segment_id": "dp_02_density_selection",
+      "ground_truth_status": "positive",
+      "ground_truth_instance_ids": ["sf_01"],
+      "rag_identified_occurrence_ids": [],
+      "rag_candidate_ids_counted_at_fourth_threshold": ["cand_001"],
+      "rag_detected_bias_in_segment_by_threshold": {
+        "high_only": false,
+        "high_and_moderate": false,
+        "all_identified_confidence_levels": false,
+        "all_confidence_and_candidates": true
+      },
+      "sdt_outcome_by_threshold": {
+        "high_only": "miss",
+        "high_and_moderate": "miss",
+        "all_identified_confidence_levels": "miss",
+        "all_confidence_and_candidates": "hit"
+      },
+      "localization_basis": "cand_001 quotes the density/area-selection decision directly and localizes to the supplied density-selection segment.",
+      "adjudication_note": "The candidate names anchoring bias but lists satisficing as an alternative. Its mechanism and quote are sufficient for a mechanism-first candidate match at the fourth threshold; it remains a strict label miss."
+    },
+    {
+      "segment_id": "dp_03_value_engineering",
+      "ground_truth_status": "positive",
+      "ground_truth_instance_ids": ["ib_01"],
+      "rag_identified_occurrence_ids": ["obs_002"],
+      "rag_candidate_ids_counted_at_fourth_threshold": [],
+      "rag_detected_bias_in_segment_by_threshold": {
+        "high_only": false,
+        "high_and_moderate": true,
+        "all_identified_confidence_levels": true,
+        "all_confidence_and_candidates": true
+      },
+      "sdt_outcome_by_threshold": {
+        "high_only": "miss",
+        "high_and_moderate": "hit",
+        "all_identified_confidence_levels": "hit",
+        "all_confidence_and_candidates": "hit"
+      },
+      "localization_basis": "obs_002 contains valid verbatim quotes from the value-engineering recommendation and its communication of classification uncertainty.",
+      "adjudication_note": "The motivated-reasoning label is a near neighbor to Incentive bias, but the finding captures the full relationship-preservation mechanism and is a mechanism-first match at thresholds that include moderate confidence."
+    },
+    {
+      "segment_id": "dp_04_commissioning",
+      "ground_truth_status": "negative",
+      "ground_truth_instance_ids": [],
+      "rag_identified_occurrence_ids": [],
+      "rag_candidate_ids_counted_at_fourth_threshold": [],
+      "rag_detected_bias_in_segment_by_threshold": {
+        "high_only": false,
+        "high_and_moderate": false,
+        "all_identified_confidence_levels": false,
+        "all_confidence_and_candidates": false
+      },
+      "sdt_outcome_by_threshold": {
+        "high_only": "correct_rejection",
+        "high_and_moderate": "correct_rejection",
+        "all_identified_confidence_levels": "correct_rejection",
+        "all_confidence_and_candidates": "correct_rejection"
+      },
+      "localization_basis": "No RAG finding localizes to the commissioning segment.",
+      "adjudication_note": "The participant followed the required full witnessed flow test; no unsupported bias was predicted there."
+    }
+  ],
+  "instance_level_adjudications": [
+    {
+      "hidden_instance_id": "st_01",
+      "hidden_target_bias_label": "Stereotyping",
+      "hidden_decision_or_episode": "Decision Point 1 — commodity classification",
+      "hidden_mechanism": "Category-based inference about tenant storage hazard substituted for case-specific inventory verification.",
+      "matched_finding_by_threshold": {
+        "high_only": {"matched_id": "obs_001", "matched_type": "identified"},
+        "high_and_moderate": {"matched_id": "obs_001", "matched_type": "identified"},
+        "all_identified_confidence_levels": {"matched_id": "obs_001", "matched_type": "identified"},
+        "all_confidence_and_candidates": {"matched_id": "obs_001", "matched_type": "identified"}
+      },
+      "rag_predicted_bias_label": "representativeness heuristic",
+      "rag_confidence": "high",
+      "label_equivalence_result": "near_neighbor_label",
+      "localization_match_type": "exact_quote_match",
+      "mechanism_overlap": "full_mechanism_match",
+      "strict_scorecard_outcome_by_threshold": {
+        "high_only": "false_negative",
+        "high_and_moderate": "false_negative",
+        "all_identified_confidence_levels": "false_negative",
+        "all_confidence_and_candidates": "false_negative"
+      },
+      "mechanism_first_scorecard_outcome_by_threshold": {
+        "high_only": "true_positive",
+        "high_and_moderate": "true_positive",
+        "all_identified_confidence_levels": "true_positive",
+        "all_confidence_and_candidates": "true_positive"
+      },
+      "secondary_diagnostic_outcome": "correct_location_wrong_bias_label",
+      "label_equivalence_explanation": "Representativeness heuristic is a related similarity-based judgment construct, but it is not an established alias for the hidden Stereotyping label under this benchmark's strict taxonomy.",
+      "mechanism_overlap_explanation": "The finding fully captures category similarity to prior 3PL tenants replacing tenant-specific inventory verification during classification.",
+      "evidence_fidelity_assessment": "Evidence is valid, directly quoted, correctly attributed, and faithful to the classification reasoning."
+    },
+    {
+      "hidden_instance_id": "sf_01",
+      "hidden_target_bias_label": "Satisficing",
+      "hidden_decision_or_episode": "Decision Point 2 — density/area selection",
+      "hidden_mechanism": "Premature stopping at the first code-minimum-satisfying design option instead of comparing configuration-specific alternatives.",
+      "matched_finding_by_threshold": {
+        "high_only": {"matched_id": null, "matched_type": "none"},
+        "high_and_moderate": {"matched_id": null, "matched_type": "none"},
+        "all_identified_confidence_levels": {"matched_id": null, "matched_type": "none"},
+        "all_confidence_and_candidates": {"matched_id": "cand_001", "matched_type": "candidate"}
+      },
+      "rag_predicted_bias_label": "anchoring bias",
+      "rag_confidence": "candidate",
+      "label_equivalence_result": "near_neighbor_label",
+      "localization_match_type": "exact_quote_match",
+      "mechanism_overlap": "full_mechanism_match",
+      "strict_scorecard_outcome_by_threshold": {
+        "high_only": "false_negative",
+        "high_and_moderate": "false_negative",
+        "all_identified_confidence_levels": "false_negative",
+        "all_confidence_and_candidates": "false_negative"
+      },
+      "mechanism_first_scorecard_outcome_by_threshold": {
+        "high_only": "false_negative",
+        "high_and_moderate": "false_negative",
+        "all_identified_confidence_levels": "false_negative",
+        "all_confidence_and_candidates": "true_positive"
+      },
+      "secondary_diagnostic_outcome": "candidate_only_near_miss",
+      "label_equivalence_explanation": "Anchoring bias is a related shortcut construct, not an established alias for Satisficing; the candidate's alternative label explicitly names Satisficing, but the primary proposed label remains anchoring bias.",
+      "mechanism_overlap_explanation": "The exact quote and plausible mechanism describe stopping at the first code-minimum option instead of searching configuration-specific alternatives, which is the hidden satisficing mechanism.",
+      "evidence_fidelity_assessment": "The candidate's quote is valid and directly localized. Its abstention rationale acknowledges deadline pressure and a legitimate code-compliance interpretation, but candidate scoring permits the mechanism-first match at the fourth threshold."
+    },
+    {
+      "hidden_instance_id": "ib_01",
+      "hidden_target_bias_label": "Incentive bias",
+      "hidden_decision_or_episode": "Decision Point 3 — value-engineering recommendation",
+      "hidden_mechanism": "Recommendation shaped by desire to preserve an ongoing multi-project client relationship rather than neutral risk weighing.",
+      "matched_finding_by_threshold": {
+        "high_only": {"matched_id": null, "matched_type": "none"},
+        "high_and_moderate": {"matched_id": "obs_002", "matched_type": "identified"},
+        "all_identified_confidence_levels": {"matched_id": "obs_002", "matched_type": "identified"},
+        "all_confidence_and_candidates": {"matched_id": "obs_002", "matched_type": "identified"}
+      },
+      "rag_predicted_bias_label": "motivated reasoning",
+      "rag_confidence": "moderate",
+      "label_equivalence_result": "near_neighbor_label",
+      "localization_match_type": "exact_quote_match",
+      "mechanism_overlap": "full_mechanism_match",
+      "strict_scorecard_outcome_by_threshold": {
+        "high_only": "false_negative",
+        "high_and_moderate": "false_negative",
+        "all_identified_confidence_levels": "false_negative",
+        "all_confidence_and_candidates": "false_negative"
+      },
+      "mechanism_first_scorecard_outcome_by_threshold": {
+        "high_only": "false_negative",
+        "high_and_moderate": "true_positive",
+        "all_identified_confidence_levels": "true_positive",
+        "all_confidence_and_candidates": "true_positive"
+      },
+      "secondary_diagnostic_outcome": "correct_location_wrong_bias_label",
+      "label_equivalence_explanation": "Motivated reasoning is a related directional-reasoning construct but is not an established alias for the hidden Incentive bias label under the strict scorecard.",
+      "mechanism_overlap_explanation": "The finding fully captures the future-business relationship as a directional influence on the recommendation and the downplaying of classification uncertainty.",
+      "evidence_fidelity_assessment": "Evidence is valid, directly quoted, correctly attributed, and faithful to the value-engineering reasoning and communication choice."
+    }
+  ],
+  "unmatched_rag_predictions": [
+    {
+      "rag_occurrence_id": "obs_001",
+      "rag_finding_type": "identified",
+      "rag_predicted_bias_label": "representativeness heuristic",
+      "rag_confidence": "high",
+      "localized_segment_id": "dp_01_classification",
+      "best_related_hidden_instance_id": "st_01",
+      "label_equivalence_result": "near_neighbor_label",
+      "mechanism_overlap": "full_mechanism_match",
+      "strict_classification": "correct_location_wrong_bias_label",
+      "mechanism_first_classification": "not_applicable",
+      "counted_at_thresholds": ["high_only", "high_and_moderate", "all_identified_confidence_levels", "all_confidence_and_candidates"],
+      "why_not_an_exact_strict_match": "It is correctly localized and mechanistically complete, but representativeness heuristic is not an approved equivalent of Stereotyping in this benchmark."
+    },
+    {
+      "rag_occurrence_id": "obs_002",
+      "rag_finding_type": "identified",
+      "rag_predicted_bias_label": "motivated reasoning",
+      "rag_confidence": "moderate",
+      "localized_segment_id": "dp_03_value_engineering",
+      "best_related_hidden_instance_id": "ib_01",
+      "label_equivalence_result": "near_neighbor_label",
+      "mechanism_overlap": "full_mechanism_match",
+      "strict_classification": "correct_location_wrong_bias_label",
+      "mechanism_first_classification": "not_applicable",
+      "counted_at_thresholds": ["high_and_moderate", "all_identified_confidence_levels", "all_confidence_and_candidates"],
+      "why_not_an_exact_strict_match": "It is correctly localized and mechanistically complete, but motivated reasoning is not an approved equivalent of Incentive bias in this benchmark."
+    }
+  ],
+  "candidate_analysis": {
+    "candidate_count": 1,
+    "candidates": [
+      {
+        "candidate_id": "cand_001",
+        "proposed_bias_label": "anchoring bias",
+        "localized_segment_id": "dp_02_density_selection",
+        "best_related_hidden_instance_id": "sf_01",
+        "quote_validity": "valid",
+        "would_match_if_promoted_strict": false,
+        "would_match_if_promoted_mechanism_first": true,
+        "counted_as_detection_at_fourth_threshold": true,
+        "fourth_threshold_outcome": "true_positive_mechanism_first_only",
+        "candidate_assessment": "candidate_near_miss",
+        "details": "The candidate directly quotes the first code-minimum density/area choice and offers Satisficing as an alternative label. The primary anchoring label is not strict-equivalent, but the localized mechanism is full enough for a mechanism-first match when candidates are scored."
+      }
+    ]
+  },
+  "signal_detection_summary": {
+    "evaluation_unit": "eligible_reasoning_segment",
+    "high_only": {
+      "positive_segments": 3,
+      "negative_segments": 1,
+      "hits": 1,
+      "misses": 2,
+      "false_alarms": 0,
+      "correct_rejections": 1,
+      "hit_rate": 0.3333,
+      "false_alarm_rate": 0,
+      "accuracy": 0.5,
+      "precision": 1,
+      "recall": 0.3333,
+      "f1": 0.5,
+      "detection_interpretation": "Only the classification segment is detected at high confidence; the moderate-confidence value-engineering finding and candidate-only density finding are excluded."
+    },
+    "high_and_moderate": {
+      "positive_segments": 3,
+      "negative_segments": 1,
+      "hits": 2,
+      "misses": 1,
+      "false_alarms": 0,
+      "correct_rejections": 1,
+      "hit_rate": 0.6667,
+      "false_alarm_rate": 0,
+      "accuracy": 0.75,
+      "precision": 1,
+      "recall": 0.6667,
+      "f1": 0.8,
+      "detection_interpretation": "The high-confidence classification and moderate-confidence value-engineering segments are detected, with the density-selection segment missed because its finding remains a candidate."
+    },
+    "all_identified_confidence_levels": {
+      "positive_segments": 3,
+      "negative_segments": 1,
+      "hits": 2,
+      "misses": 1,
+      "false_alarms": 0,
+      "correct_rejections": 1,
+      "hit_rate": 0.6667,
+      "false_alarm_rate": 0,
+      "accuracy": 0.75,
+      "precision": 1,
+      "recall": 0.6667,
+      "f1": 0.8,
+      "detection_interpretation": "No low-confidence identified findings are present, so this threshold is identical to high_and_moderate."
+    },
+    "all_confidence_and_candidates": {
+      "positive_segments": 3,
+      "negative_segments": 1,
+      "hits": 3,
+      "misses": 0,
+      "false_alarms": 0,
+      "correct_rejections": 1,
+      "hit_rate": 1,
+      "false_alarm_rate": 0,
+      "accuracy": 1,
+      "precision": 1,
+      "recall": 1,
+      "f1": 1,
+      "detection_interpretation": "Including the density-selection candidate yields detection of all three positive segments without a false alarm."
+    }
+  },
+  "strict_instance_level_metrics": {
+    "high_only": {"true_positives": 0, "false_negatives": 3, "false_positives": 1, "precision": 0, "recall": 0, "f1": 0, "exact_occurrence_match_rate": 0, "occurrence_count_match_rate": 0},
+    "high_and_moderate": {"true_positives": 0, "false_negatives": 3, "false_positives": 2, "precision": 0, "recall": 0, "f1": 0, "exact_occurrence_match_rate": 0, "occurrence_count_match_rate": 0},
+    "all_identified_confidence_levels": {"true_positives": 0, "false_negatives": 3, "false_positives": 2, "precision": 0, "recall": 0, "f1": 0, "exact_occurrence_match_rate": 0, "occurrence_count_match_rate": 0},
+    "all_confidence_and_candidates": {"true_positives": 0, "false_negatives": 3, "false_positives": 3, "precision": 0, "recall": 0, "f1": 0, "exact_occurrence_match_rate": 0, "occurrence_count_match_rate": 0}
+  },
+  "mechanism_first_instance_level_metrics": {
+    "high_only": {"true_positives": 1, "false_negatives": 2, "false_positives": 0, "precision": 1, "recall": 0.3333, "f1": 0.5, "exact_occurrence_match_rate": 0.3333, "occurrence_count_match_rate": 0.3333},
+    "high_and_moderate": {"true_positives": 2, "false_negatives": 1, "false_positives": 0, "precision": 1, "recall": 0.6667, "f1": 0.8, "exact_occurrence_match_rate": 0.6667, "occurrence_count_match_rate": 0.6667},
+    "all_identified_confidence_levels": {"true_positives": 2, "false_negatives": 1, "false_positives": 0, "precision": 1, "recall": 0.6667, "f1": 0.8, "exact_occurrence_match_rate": 0.6667, "occurrence_count_match_rate": 0.6667},
+    "all_confidence_and_candidates": {"true_positives": 3, "false_negatives": 0, "false_positives": 0, "precision": 1, "recall": 1, "f1": 1, "exact_occurrence_match_rate": 1, "occurrence_count_match_rate": 1}
+  },
+  "target_bias_performance": [
+    {
+      "hidden_target_bias_label": "Incentive bias",
+      "hidden_requested_occurrences": 1,
+      "strict_true_positives_by_threshold": {"high_only": 0, "high_and_moderate": 0, "all_identified_confidence_levels": 0, "all_confidence_and_candidates": 0},
+      "mechanism_first_true_positives_by_threshold": {"high_only": 0, "high_and_moderate": 1, "all_identified_confidence_levels": 1, "all_confidence_and_candidates": 1},
+      "count_match_status_at_all_confidence_and_candidates": "underdetected"
+    },
+    {
+      "hidden_target_bias_label": "Satisficing",
+      "hidden_requested_occurrences": 1,
+      "strict_true_positives_by_threshold": {"high_only": 0, "high_and_moderate": 0, "all_identified_confidence_levels": 0, "all_confidence_and_candidates": 0},
+      "mechanism_first_true_positives_by_threshold": {"high_only": 0, "high_and_moderate": 0, "all_identified_confidence_levels": 0, "all_confidence_and_candidates": 1},
+      "count_match_status_at_all_confidence_and_candidates": "underdetected"
+    },
+    {
+      "hidden_target_bias_label": "Stereotyping",
+      "hidden_requested_occurrences": 1,
+      "strict_true_positives_by_threshold": {"high_only": 0, "high_and_moderate": 0, "all_identified_confidence_levels": 0, "all_confidence_and_candidates": 0},
+      "mechanism_first_true_positives_by_threshold": {"high_only": 1, "high_and_moderate": 1, "all_identified_confidence_levels": 1, "all_confidence_and_candidates": 1},
+      "count_match_status_at_all_confidence_and_candidates": "underdetected"
+    }
+  ],
+  "rag_label_false_positive_inventory": [
+    {
+      "rag_predicted_bias_label": "representativeness heuristic",
+      "finding_type": "identified",
+      "alternative_labels": ["representativeness bias"],
+      "occurrence_count": 1,
+      "best_related_hidden_target_bias_label": "Stereotyping",
+      "label_relation": "near_neighbor",
+      "mechanism_overlap_summary": "Full overlap with the hidden category-similarity mechanism and classification operation.",
+      "primary_error_types": ["correct_location_wrong_bias_label", "near_neighbor_label"]
+    },
+    {
+      "rag_predicted_bias_label": "motivated reasoning",
+      "finding_type": "identified",
+      "alternative_labels": ["directional motivated reasoning", "social influence bias"],
+      "occurrence_count": 1,
+      "best_related_hidden_target_bias_label": "Incentive bias",
+      "label_relation": "near_neighbor",
+      "mechanism_overlap_summary": "Full overlap with the relationship-driven recommendation and selective uncertainty-presentation mechanism.",
+      "primary_error_types": ["correct_location_wrong_bias_label", "near_neighbor_label"]
+    },
+    {
+      "rag_predicted_bias_label": "anchoring bias",
+      "finding_type": "candidate",
+      "alternative_labels": ["satisficing"],
+      "occurrence_count": 1,
+      "best_related_hidden_target_bias_label": "Satisficing",
+      "label_relation": "near_neighbor",
+      "mechanism_overlap_summary": "The primary label is a near neighbor, while the alternative label names the target; the quoted mechanism fully supports the first-option stopping behavior.",
+      "primary_error_types": ["candidate_near_miss", "correct_location_wrong_bias_label"]
+    }
+  ],
+  "diagnostic_error_summary": {
+    "correct_location_wrong_bias_label_count": 3,
+    "correct_label_wrong_location_count": 0,
+    "correct_label_location_wrong_mechanism_count": 0,
+    "mechanism_detected_label_unresolved_count": 0,
+    "partial_mechanism_match_count": 0,
+    "duplicate_prediction_count": 0,
+    "unsupported_prediction_count": 0,
+    "fabricated_or_invalid_quote_count": 0,
+    "approved_alias_or_equivalence_count": 0,
+    "near_neighbor_label_count": 3,
+    "different_construct_label_count": 0,
+    "candidate_count": 1,
+    "candidate_useful_abstention_count": 0,
+    "candidate_near_miss_count": 1,
+    "candidates_promoted_to_true_positive_at_fourth_threshold_count": 1
+  },
+  "corpus_support_audit": {
+    "primary_corpus_fidelity_score_available": false,
+    "rag_occurrences_claiming_retrieved_support": 0,
+    "rag_occurrences_with_no_claimed_retrieved_support": 3,
+    "rag_occurrences_with_unverifiable_or_internally_inconsistent_citation_metadata": 0,
+    "assessment_note": "The RAG explicitly states that no retrieved passages were used. No corpus fidelity score is available, and no citation metadata was supplied."
+  },
+  "comparison_ready_summary": {
+    "primary_recommended_comparison_threshold": "high_and_moderate",
+    "segment_detection": {
+      "high_only": {"hits": 1, "misses": 2, "false_alarms": 0, "correct_rejections": 1, "hit_rate": 0.3333, "false_alarm_rate": 0, "f1": 0.5},
+      "high_and_moderate": {"hits": 2, "misses": 1, "false_alarms": 0, "correct_rejections": 1, "hit_rate": 0.6667, "false_alarm_rate": 0, "f1": 0.8},
+      "all_identified_confidence_levels": {"hits": 2, "misses": 1, "false_alarms": 0, "correct_rejections": 1, "hit_rate": 0.6667, "false_alarm_rate": 0, "f1": 0.8},
+      "all_confidence_and_candidates": {"hits": 3, "misses": 0, "false_alarms": 0, "correct_rejections": 1, "hit_rate": 1, "false_alarm_rate": 0, "f1": 1}
+    },
+    "strict_instance_identification": {
+      "high_only": {"true_positives": 0, "false_negatives": 3, "false_positives": 1, "precision": 0, "recall": 0, "f1": 0},
+      "high_and_moderate": {"true_positives": 0, "false_negatives": 3, "false_positives": 2, "precision": 0, "recall": 0, "f1": 0},
+      "all_identified_confidence_levels": {"true_positives": 0, "false_negatives": 3, "false_positives": 2, "precision": 0, "recall": 0, "f1": 0},
+      "all_confidence_and_candidates": {"true_positives": 0, "false_negatives": 3, "false_positives": 3, "precision": 0, "recall": 0, "f1": 0}
+    },
+    "mechanism_first_identification": {
+      "high_only": {"true_positives": 1, "false_negatives": 2, "false_positives": 0, "precision": 1, "recall": 0.3333, "f1": 0.5},
+      "high_and_moderate": {"true_positives": 2, "false_negatives": 1, "false_positives": 0, "precision": 1, "recall": 0.6667, "f1": 0.8},
+      "all_identified_confidence_levels": {"true_positives": 2, "false_negatives": 1, "false_positives": 0, "precision": 1, "recall": 0.6667, "f1": 0.8},
+      "all_confidence_and_candidates": {"true_positives": 3, "false_negatives": 0, "false_positives": 0, "precision": 1, "recall": 1, "f1": 1}
+    },
+    "taxonomy_gap": {
+      "high_only": {"mechanism_first_f1_minus_strict_f1": 0.5},
+      "high_and_moderate": {"mechanism_first_f1_minus_strict_f1": 0.8},
+      "all_identified_confidence_levels": {"mechanism_first_f1_minus_strict_f1": 0.8},
+      "all_confidence_and_candidates": {"mechanism_first_f1_minus_strict_f1": 1}
+    },
+    "confidence_tradeoff": {
+      "increment_from_high_to_high_and_moderate": "Segment hits increase from 1 to 2 and mechanism-first instance true positives increase from 1 to 2 when moderate confidence is included; strict scores remain unchanged.",
+      "increment_from_high_and_moderate_to_all_confidence": "No change: the RAG supplied no low-confidence identified occurrences.",
+      "increment_from_all_confidence_to_all_confidence_and_candidates": "The candidate adds one segment hit and one mechanism-first instance true positive for Satisficing; strict identification gains no true positive."
+    }
+  },
+  "overall_evaluation_summary": {
+    "hidden_total_planned_occurrences": 3,
+    "rag_total_identified_occurrences": 2,
+    "rag_total_candidate_biases": 1,
+    "segment_level_primary_result": "At the recommended high_and_moderate threshold, the RAG detects 2 of 3 positive reasoning segments with no false alarms (hit rate 0.6667; F1 0.8).",
+    "strict_label_plus_mechanism_result": "Strict instance-level identification has 0 true positives at every threshold because all three predictions use non-equivalent labels, despite correct localization and strong mechanisms.",
+    "mechanism_first_result": "Mechanism-first identification reaches 2 of 3 hidden instances at high_and_moderate and all 3 when the candidate tier is included, with no instance-level false positives.",
+    "candidate_tier_value_assessment": "The density-selection candidate is a useful marginal detection: it supplies the missing mechanism-first match at the fourth threshold, while its anchoring label prevents a strict match.",
+    "main_failure_modes": [
+      "Systematic near-neighbor taxonomy substitution for the hidden labels.",
+      "The Satisficing instance is withheld from identified findings and appears only as a candidate."
+    ],
+    "main_strengths": [
+      "All findings and the candidate are correctly localized to the relevant decision episodes.",
+      "The identified mechanisms are fully supported by valid interview quotations.",
+      "The analysis explicitly discloses that retrieved corpus support was unavailable and preserves a non-bias interpretation for the candidate."
+    ],
+    "benchmark_interpretation": "This run shows strong evidence localization and mechanism recovery but a complete strict-taxonomy failure. The gap between strict and mechanism-first scores is entirely attributable to label taxonomy mismatch; candidate inclusion recovers the remaining mechanism at the fourth threshold without increasing false alarms."
+  }
+}

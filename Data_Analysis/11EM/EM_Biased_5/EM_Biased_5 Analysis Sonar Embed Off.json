@@ -1,0 +1,430 @@
+{
+  "evaluation_metadata": {
+    "task": "ontology_free_rag_cognitive_bias_benchmark_evaluation",
+    "benchmark_run_metadata": {
+      "benchmark_run_id": "EM_Biased_5_Sonar_off",
+      "interview_id": "EM_Biased_5",
+      "system_prompt_id": "Sonar",
+      "system_prompt_generator": "Prompt 1_2",
+      "rag_model_id": "v1.0.0",
+      "corpus_condition": "off",
+      "retrieval_configuration_id": "k=0",
+      "decoding_configuration_id": null,
+      "temperature": 1,
+      "replicate_id": null,
+      "segment_map_id": null
+    },
+    "scenario_id": "EM_Biased_5",
+    "domain_id": "EM",
+    "condition": "biased",
+    "segment_map_status": "prevalidated_provided",
+    "rag_output_parse_status": "valid_json",
+    "rag_schema_assessment": "conformant"
+  },
+  "input_validation": {
+    "rag_output_schema_violations": [],
+    "rag_summary_count_consistency": {
+      "status": "consistent",
+      "details": "The identified_bias_summary contains five labels with one occurrence each, matching the five identified_occurrences. The single candidate is reported separately and does not inflate the identified count."
+    },
+    "evaluation_limitations": [
+      "No retrieved chunks, source passages, or retrieval logs were supplied, so corpus fidelity cannot be scored.",
+      "The interview is a single participant self-report and includes plausible operational explanations for several decisions; adjudication follows the hidden mechanism constraints rather than outcome plausibility alone.",
+      "The supplied segment map is treated as authoritative under the prevalidated-map rule."
+    ]
+  },
+  "evaluation_segment_map": {
+    "segment_mapping_version": "1.0",
+    "segments": [
+      {
+        "segment_id": "seg_dp1",
+        "speaker": "Participant",
+        "segment_type": "Decision point 1: initial size-up and retrospective reflection",
+        "raw_interview_anchor": "Dispatch said small trash fire ... The smoke was heavier than I'd expect ... I didn't want to lose time doing a full walk-around. Later: That smoke column at the very start was heavier than a trash fire should produce ... the signs were there from minute one.",
+        "eligible_reasoning_segment": true,
+        "ground_truth_bias_present": true,
+        "ground_truth_instance_ids": ["anchor_01", "hindsight_01"],
+        "ground_truth_rationale": "The IC cites the dispatched call type as the primary reason for committing the quick-knockdown line, acknowledges heavier-than-expected smoke, but declines a full 360 before committing. In the closing reflection, the IC says the early smoke made the escalation obvious and that the signs were there from minute one, after learning about the drums and hazmat complications."
+      },
+      {
+        "segment_id": "seg_dp2",
+        "speaker": "Participant",
+        "segment_type": "Decision point 2: chemical identification and PPE/agent selection",
+        "raw_interview_anchor": "The tech's read was that it lined up with a common solvent ... the manager ... said ... it's something different ... We didn't weight it heavily ... the placard read supported what we already expected to find.",
+        "eligible_reasoning_segment": true,
+        "ground_truth_bias_present": true,
+        "ground_truth_instance_ids": ["confirm_01"],
+        "ground_truth_rationale": "The IC treats the partially legible placard as supporting the assumed common solvent, discounts the manager's contrary statement because he was rattled, and proceeds with solvent-specific PPE and foam without independent verification."
+      },
+      {
+        "segment_id": "seg_dp3",
+        "speaker": "Participant",
+        "segment_type": "Decision point 3: isolation-perimeter distance under shifting wind",
+        "raw_interview_anchor": "Wind had started shifting toward the residential block ... recalculating and moving all of that would've been a real disruption, and nobody else seemed to be flagging it as a problem. So I left it.",
+        "eligible_reasoning_segment": true,
+        "ground_truth_bias_present": true,
+        "ground_truth_instance_ids": ["bandwagon_01"],
+        "ground_truth_rationale": "The IC remembers wanting to push the 150-meter line out as wind shifted, but leaves it because mutual-aid units and the battalion chief were already set up and nobody else flagged a problem."
+      },
+      {
+        "segment_id": "seg_dp4",
+        "speaker": "Participant",
+        "segment_type": "Decision point 4: go/no-go decision on completing the interior search",
+        "raw_interview_anchor": "We can't call this search done and leave one room unaccounted for ... Framed that way, leaving it unresolved felt like accepting a gap we couldn't defend. So I authorized the crew to go finish it.",
+        "eligible_reasoning_segment": true,
+        "ground_truth_bias_present": true,
+        "ground_truth_instance_ids": ["framing_01"],
+        "ground_truth_rationale": "The IC says the battalion chief framed leaving one room as an indefensible gap after clearing 90%, which led to authorizing re-entry despite fatigue and unresolved chemical risk near the drums."
+      }
+    ]
+  },
+  "segment_level_adjudications": [
+    {
+      "segment_id": "seg_dp1",
+      "ground_truth_status": "positive",
+      "ground_truth_instance_ids": ["anchor_01", "hindsight_01"],
+      "rag_identified_occurrence_ids": ["obs_001", "obs_005"],
+      "rag_candidate_ids_counted_at_fourth_threshold": [],
+      "rag_detected_bias_in_segment_by_threshold": {"high_only": true, "high_and_moderate": true, "all_identified_confidence_levels": true, "all_confidence_and_candidates": true},
+      "sdt_outcome_by_threshold": {"high_only": "hit", "high_and_moderate": "hit", "all_identified_confidence_levels": "hit", "all_confidence_and_candidates": "hit"},
+      "localization_basis": "obs_001 quotes the initial commitment rationale in seg_dp1, and obs_005 quotes the retrospective smoke-column reflection in the same mapped segment.",
+      "adjudication_note": "At every threshold, at least one qualifying finding localizes to this positive segment."
+    },
+    {
+      "segment_id": "seg_dp2",
+      "ground_truth_status": "positive",
+      "ground_truth_instance_ids": ["confirm_01"],
+      "rag_identified_occurrence_ids": ["obs_002"],
+      "rag_candidate_ids_counted_at_fourth_threshold": [],
+      "rag_detected_bias_in_segment_by_threshold": {"high_only": true, "high_and_moderate": true, "all_identified_confidence_levels": true, "all_confidence_and_candidates": true},
+      "sdt_outcome_by_threshold": {"high_only": "hit", "high_and_moderate": "hit", "all_identified_confidence_levels": "hit", "all_confidence_and_candidates": "hit"},
+      "localization_basis": "obs_002 quotes the partial placard, contrary manager statement, and decision to proceed with solvent-specific PPE in seg_dp2.",
+      "adjudication_note": "The high-confidence identified occurrence detects the positive segment at all thresholds."
+    },
+    {
+      "segment_id": "seg_dp3",
+      "ground_truth_status": "positive",
+      "ground_truth_instance_ids": ["bandwagon_01"],
+      "rag_identified_occurrence_ids": ["obs_003"],
+      "rag_candidate_ids_counted_at_fourth_threshold": ["cand_001"],
+      "rag_detected_bias_in_segment_by_threshold": {"high_only": false, "high_and_moderate": true, "all_identified_confidence_levels": true, "all_confidence_and_candidates": true},
+      "sdt_outcome_by_threshold": {"high_only": "miss", "high_and_moderate": "hit", "all_identified_confidence_levels": "hit", "all_confidence_and_candidates": "hit"},
+      "localization_basis": "obs_003 and cand_001 both quote the perimeter decision and wind concern mapped to seg_dp3.",
+      "adjudication_note": "obs_003 is moderate confidence and therefore excluded from high_only; the candidate is added only at the fourth threshold and does not change the segment-level result because the segment is already detected."
+    },
+    {
+      "segment_id": "seg_dp4",
+      "ground_truth_status": "positive",
+      "ground_truth_instance_ids": ["framing_01"],
+      "rag_identified_occurrence_ids": ["obs_004"],
+      "rag_candidate_ids_counted_at_fourth_threshold": [],
+      "rag_detected_bias_in_segment_by_threshold": {"high_only": false, "high_and_moderate": true, "all_identified_confidence_levels": true, "all_confidence_and_candidates": true},
+      "sdt_outcome_by_threshold": {"high_only": "miss", "high_and_moderate": "hit", "all_identified_confidence_levels": "hit", "all_confidence_and_candidates": "hit"},
+      "localization_basis": "obs_004 quotes the 90%-cleared state, the battalion chief's framing, and the authorization to finish the room in seg_dp4.",
+      "adjudication_note": "obs_004 is moderate confidence and therefore excluded from high_only. Its stated mechanism fully captures the externally supplied effort/incomplete-search frame for mechanism-first scoring."
+    }
+  ],
+  "instance_level_adjudications": [
+    {
+      "hidden_instance_id": "anchor_01",
+      "hidden_target_bias_label": "Anchoring Bias",
+      "hidden_decision_or_episode": "Initial size-up and attack-line commitment",
+      "hidden_mechanism": "Strategy commitment insufficiently adjusted away from the initial dispatch-provided call description despite contrary visual cues.",
+      "matched_finding_by_threshold": {
+        "high_only": {"matched_id": "obs_001", "matched_type": "identified"},
+        "high_and_moderate": {"matched_id": "obs_001", "matched_type": "identified"},
+        "all_identified_confidence_levels": {"matched_id": "obs_001", "matched_type": "identified"},
+        "all_confidence_and_candidates": {"matched_id": "obs_001", "matched_type": "identified"}
+      },
+      "rag_predicted_bias_label": "anchoring bias",
+      "rag_confidence": "high",
+      "label_equivalence_result": "exact_target_label",
+      "localization_match_type": "exact_quote_match",
+      "mechanism_overlap": "full_mechanism_match",
+      "strict_scorecard_outcome_by_threshold": {"high_only": "true_positive", "high_and_moderate": "true_positive", "all_identified_confidence_levels": "true_positive", "all_confidence_and_candidates": "true_positive"},
+      "mechanism_first_scorecard_outcome_by_threshold": {"high_only": "true_positive", "high_and_moderate": "true_positive", "all_identified_confidence_levels": "true_positive", "all_confidence_and_candidates": "true_positive"},
+      "secondary_diagnostic_outcome": "exact_instance_match",
+      "label_equivalence_explanation": "The lower-case label 'anchoring bias' is the target label with capitalization normalized.",
+      "mechanism_overlap_explanation": "The finding identifies reliance on the dispatch description, insufficient adjustment for heavier smoke, and the resulting initial strategy choice.",
+      "evidence_fidelity_assessment": "Quotes are valid, participant-attributed, and directly support the hidden mechanism."
+    },
+    {
+      "hidden_instance_id": "hindsight_01",
+      "hidden_target_bias_label": "Hindsight bias",
+      "hidden_decision_or_episode": "After-action reflection on initial cues",
+      "hidden_mechanism": "Retrospective overstatement of the foreseeability of escalation, given outcome knowledge unavailable at the time of the original decision.",
+      "matched_finding_by_threshold": {
+        "high_only": {"matched_id": null, "matched_type": "none"},
+        "high_and_moderate": {"matched_id": null, "matched_type": "none"},
+        "all_identified_confidence_levels": {"matched_id": "obs_005", "matched_type": "identified"},
+        "all_confidence_and_candidates": {"matched_id": "obs_005", "matched_type": "identified"}
+      },
+      "rag_predicted_bias_label": "hindsight bias",
+      "rag_confidence": "low",
+      "label_equivalence_result": "exact_target_label",
+      "localization_match_type": "exact_quote_match",
+      "mechanism_overlap": "full_mechanism_match",
+      "strict_scorecard_outcome_by_threshold": {"high_only": "false_negative", "high_and_moderate": "false_negative", "all_identified_confidence_levels": "true_positive", "all_confidence_and_candidates": "true_positive"},
+      "mechanism_first_scorecard_outcome_by_threshold": {"high_only": "false_negative", "high_and_moderate": "false_negative", "all_identified_confidence_levels": "true_positive", "all_confidence_and_candidates": "true_positive"},
+      "secondary_diagnostic_outcome": "exact_instance_match",
+      "label_equivalence_explanation": "The RAG uses the exact hidden target label.",
+      "mechanism_overlap_explanation": "The finding identifies retrospective overstatement that the early smoke made the later escalation obvious, while noting the competing non-bias interpretation and therefore assigning low confidence.",
+      "evidence_fidelity_assessment": "The quoted closing reflection is valid and directly overlaps the hidden retrospective manifestation."
+    },
+    {
+      "hidden_instance_id": "confirm_01",
+      "hidden_target_bias_label": "Confirmation Bias",
+      "hidden_decision_or_episode": "Hazard identification and PPE/agent selection",
+      "hidden_mechanism": "Selective interpretation of ambiguous placard/manifest evidence as consistent with the prior solvent assumption, paired with active discounting of a contradicting occupant statement.",
+      "matched_finding_by_threshold": {
+        "high_only": {"matched_id": "obs_002", "matched_type": "identified"},
+        "high_and_moderate": {"matched_id": "obs_002", "matched_type": "identified"},
+        "all_identified_confidence_levels": {"matched_id": "obs_002", "matched_type": "identified"},
+        "all_confidence_and_candidates": {"matched_id": "obs_002", "matched_type": "identified"}
+      },
+      "rag_predicted_bias_label": "confirmation bias",
+      "rag_confidence": "high",
+      "label_equivalence_result": "exact_target_label",
+      "localization_match_type": "exact_quote_match",
+      "mechanism_overlap": "full_mechanism_match",
+      "strict_scorecard_outcome_by_threshold": {"high_only": "true_positive", "high_and_moderate": "true_positive", "all_identified_confidence_levels": "true_positive", "all_confidence_and_candidates": "true_positive"},
+      "mechanism_first_scorecard_outcome_by_threshold": {"high_only": "true_positive", "high_and_moderate": "true_positive", "all_identified_confidence_levels": "true_positive", "all_confidence_and_candidates": "true_positive"},
+      "secondary_diagnostic_outcome": "exact_instance_match",
+      "label_equivalence_explanation": "The lower-case label 'confirmation bias' is the target label with capitalization normalized.",
+      "mechanism_overlap_explanation": "The finding captures the initial solvent hypothesis, discounting of the contrary manager statement, and failure to seek nearby disconfirming evidence before selecting PPE and foam.",
+      "evidence_fidelity_assessment": "All quoted evidence is valid and participant-attributed; the later placard and manifest are correctly treated as hindsight-only correction evidence."
+    },
+    {
+      "hidden_instance_id": "bandwagon_01",
+      "hidden_target_bias_label": "Bandwagon effect",
+      "hidden_decision_or_episode": "Isolation perimeter management under shifting wind",
+      "hidden_mechanism": "Adoption of an already-established perimeter distance because multiple other units and a superior officer are already operating on it, despite unresolved personal doubt.",
+      "matched_finding_by_threshold": {
+        "high_only": {"matched_id": null, "matched_type": "none"},
+        "high_and_moderate": {"matched_id": "obs_003", "matched_type": "identified"},
+        "all_identified_confidence_levels": {"matched_id": "obs_003", "matched_type": "identified"},
+        "all_confidence_and_candidates": {"matched_id": "obs_003", "matched_type": "identified"}
+      },
+      "rag_predicted_bias_label": "social proof",
+      "rag_confidence": "moderate",
+      "label_equivalence_result": "near_neighbor_label",
+      "localization_match_type": "exact_quote_match",
+      "mechanism_overlap": "full_mechanism_match",
+      "strict_scorecard_outcome_by_threshold": {"high_only": "false_negative", "high_and_moderate": "false_negative", "all_identified_confidence_levels": "false_negative", "all_confidence_and_candidates": "false_negative"},
+      "mechanism_first_scorecard_outcome_by_threshold": {"high_only": "false_negative", "high_and_moderate": "true_positive", "all_identified_confidence_levels": "true_positive", "all_confidence_and_candidates": "true_positive"},
+      "secondary_diagnostic_outcome": "correct_location_wrong_bias_label",
+      "label_equivalence_explanation": "Social proof is a related construct and a plausible description of relying on others' inaction, but it is not treated as an approved equivalent of the hidden Bandwagon effect label under the benchmark's conservative label rule.",
+      "mechanism_overlap_explanation": "The finding fully captures the converging-unit/battalion-chief context, the IC's private doubt, and the decision to leave the perimeter in place because nobody else flagged a problem.",
+      "evidence_fidelity_assessment": "The two participant quotes are valid and directly support the hidden social-convergence mechanism."
+    },
+    {
+      "hidden_instance_id": "framing_01",
+      "hidden_target_bias_label": "Framing Effect",
+      "hidden_decision_or_episode": "Search completion decision for final unsearched room",
+      "hidden_mechanism": "Decision outcome shifts based on the battalion chief's effort/loss-oriented verbal framing of the choice, rather than independent evaluation of the underlying chemical risk.",
+      "matched_finding_by_threshold": {
+        "high_only": {"matched_id": null, "matched_type": "none"},
+        "high_and_moderate": {"matched_id": "obs_004", "matched_type": "identified"},
+        "all_identified_confidence_levels": {"matched_id": "obs_004", "matched_type": "identified"},
+        "all_confidence_and_candidates": {"matched_id": "obs_004", "matched_type": "identified"}
+      },
+      "rag_predicted_bias_label": "escalation of commitment",
+      "rag_confidence": "moderate",
+      "label_equivalence_result": "different_construct",
+      "localization_match_type": "exact_quote_match",
+      "mechanism_overlap": "full_mechanism_match",
+      "strict_scorecard_outcome_by_threshold": {"high_only": "false_negative", "high_and_moderate": "false_negative", "all_identified_confidence_levels": "false_negative", "all_confidence_and_candidates": "false_negative"},
+      "mechanism_first_scorecard_outcome_by_threshold": {"high_only": "false_negative", "high_and_moderate": "true_positive", "all_identified_confidence_levels": "true_positive", "all_confidence_and_candidates": "true_positive"},
+      "secondary_diagnostic_outcome": "correct_location_wrong_bias_label",
+      "label_equivalence_explanation": "Escalation of commitment is not an approved alias for Framing Effect; it is a distinct construct that can be induced or accompanied by framing.",
+      "mechanism_overlap_explanation": "Despite the different label, the finding explicitly identifies the battalion chief's effort/incomplete-search framing as making withdrawal feel unacceptable, which fully matches the hidden framing mechanism and reasoning operation.",
+      "evidence_fidelity_assessment": "The quoted search facts and chief's statement are valid; the later empty-room and leaking-drum outcome is used as correction evidence rather than as the basis for the bias."
+    }
+  ],
+  "unmatched_rag_predictions": [
+    {
+      "rag_occurrence_id": "obs_003",
+      "rag_finding_type": "identified",
+      "rag_predicted_bias_label": "social proof",
+      "rag_confidence": "moderate",
+      "localized_segment_id": "seg_dp3",
+      "best_related_hidden_instance_id": "bandwagon_01",
+      "label_equivalence_result": "near_neighbor_label",
+      "mechanism_overlap": "full_mechanism_match",
+      "strict_classification": "correct_location_wrong_bias_label",
+      "mechanism_first_classification": "not_applicable",
+      "counted_at_thresholds": ["high_and_moderate", "all_identified_confidence_levels", "all_confidence_and_candidates"],
+      "why_not_an_exact_strict_match": "The evidence and mechanism localize exactly to bandwagon_01, but social proof is treated as a near-neighbor rather than an approved equivalent of Bandwagon effect. It is therefore a mechanism-first match and a strict false positive/hidden-instance false negative."
+    },
+    {
+      "rag_occurrence_id": "obs_004",
+      "rag_finding_type": "identified",
+      "rag_predicted_bias_label": "escalation of commitment",
+      "rag_confidence": "moderate",
+      "localized_segment_id": "seg_dp4",
+      "best_related_hidden_instance_id": "framing_01",
+      "label_equivalence_result": "different_construct",
+      "mechanism_overlap": "full_mechanism_match",
+      "strict_classification": "correct_location_wrong_bias_label",
+      "mechanism_first_classification": "not_applicable",
+      "counted_at_thresholds": ["high_and_moderate", "all_identified_confidence_levels", "all_confidence_and_candidates"],
+      "why_not_an_exact_strict_match": "The finding uses escalation of commitment, a distinct construct, instead of Framing Effect. Its explanation nevertheless explicitly attributes the choice to the battalion chief's effort/incomplete-search frame, so it qualifies for mechanism-first matching."
+    },
+    {
+      "rag_occurrence_id": "cand_001",
+      "rag_finding_type": "candidate",
+      "rag_predicted_bias_label": "status quo bias",
+      "rag_confidence": "candidate",
+      "localized_segment_id": "seg_dp3",
+      "best_related_hidden_instance_id": "bandwagon_01",
+      "label_equivalence_result": "near_neighbor_label",
+      "mechanism_overlap": "partial_mechanism_overlap",
+      "strict_classification": "duplicate_prediction",
+      "mechanism_first_classification": "duplicate_prediction",
+      "counted_at_thresholds": ["all_confidence_and_candidates"],
+      "why_not_an_exact_strict_match": "The candidate is a plausible alternative reading of the same perimeter episode, but its disruption/inertia mechanism does not fully capture the hidden converging-officer agreement mechanism and it duplicates the already-prioritized identified finding obs_003."
+    }
+  ],
+  "candidate_analysis": {
+    "candidate_count": 1,
+    "candidates": [
+      {
+        "candidate_id": "cand_001",
+        "proposed_bias_label": "status quo bias",
+        "localized_segment_id": "seg_dp3",
+        "best_related_hidden_instance_id": "bandwagon_01",
+        "quote_validity": "valid",
+        "would_match_if_promoted_strict": false,
+        "would_match_if_promoted_mechanism_first": false,
+        "counted_as_detection_at_fourth_threshold": true,
+        "fourth_threshold_outcome": "duplicate_prediction",
+        "candidate_assessment": "candidate_near_miss",
+        "details": "The candidate is grounded in a valid quote and identifies a real inertia/disruption consideration, but it is weaker than the identified social-proof finding, does not fully match the hidden bandwagon mechanism, and is not promoted because identified findings receive matching priority."
+      }
+    ]
+  },
+  "signal_detection_summary": {
+    "evaluation_unit": "eligible_reasoning_segment",
+    "high_only": {
+      "positive_segments": 4, "negative_segments": 0, "hits": 2, "misses": 2, "false_alarms": 0, "correct_rejections": 0,
+      "hit_rate": 0.5, "false_alarm_rate": null, "accuracy": 0.5, "precision": 1.0, "recall": 0.5, "f1": 0.6667,
+      "detection_interpretation": "Both high-confidence findings detect seg_dp1 and seg_dp2; the moderate-confidence perimeter and search findings are excluded, leaving two positive-segment misses."
+    },
+    "high_and_moderate": {
+      "positive_segments": 4, "negative_segments": 0, "hits": 4, "misses": 0, "false_alarms": 0, "correct_rejections": 0,
+      "hit_rate": 1.0, "false_alarm_rate": null, "accuracy": 1.0, "precision": 1.0, "recall": 1.0, "f1": 1.0,
+      "detection_interpretation": "The two moderate-confidence identified findings localize to the remaining two positive segments, producing complete segment coverage."
+    },
+    "all_identified_confidence_levels": {
+      "positive_segments": 4, "negative_segments": 0, "hits": 4, "misses": 0, "false_alarms": 0, "correct_rejections": 0,
+      "hit_rate": 1.0, "false_alarm_rate": null, "accuracy": 1.0, "precision": 1.0, "recall": 1.0, "f1": 1.0,
+      "detection_interpretation": "Adding the low-confidence hindsight finding does not change segment coverage because seg_dp1 was already detected."
+    },
+    "all_confidence_and_candidates": {
+      "positive_segments": 4, "negative_segments": 0, "hits": 4, "misses": 0, "false_alarms": 0, "correct_rejections": 0,
+      "hit_rate": 1.0, "false_alarm_rate": null, "accuracy": 1.0, "precision": 1.0, "recall": 1.0, "f1": 1.0,
+      "detection_interpretation": "The candidate also localizes to an already-positive segment, so candidate inclusion does not alter segment-level detection counts."
+    }
+  },
+  "strict_instance_level_metrics": {
+    "high_only": {"true_positives": 2, "false_negatives": 3, "false_positives": 0, "precision": 1.0, "recall": 0.4, "f1": 0.5714, "exact_occurrence_match_rate": 0.4, "occurrence_count_match_rate": 0.4},
+    "high_and_moderate": {"true_positives": 2, "false_negatives": 3, "false_positives": 2, "precision": 0.5, "recall": 0.4, "f1": 0.4444, "exact_occurrence_match_rate": 0.4, "occurrence_count_match_rate": 0.4},
+    "all_identified_confidence_levels": {"true_positives": 3, "false_negatives": 2, "false_positives": 2, "precision": 0.6, "recall": 0.6, "f1": 0.6, "exact_occurrence_match_rate": 0.6, "occurrence_count_match_rate": 0.6},
+    "all_confidence_and_candidates": {"true_positives": 3, "false_negatives": 2, "false_positives": 3, "precision": 0.5, "recall": 0.6, "f1": 0.5455, "exact_occurrence_match_rate": 0.6, "occurrence_count_match_rate": 0.6}
+  },
+  "mechanism_first_instance_level_metrics": {
+    "high_only": {"true_positives": 2, "false_negatives": 3, "false_positives": 0, "precision": 1.0, "recall": 0.4, "f1": 0.5714, "exact_occurrence_match_rate": 0.4, "occurrence_count_match_rate": 0.4},
+    "high_and_moderate": {"true_positives": 4, "false_negatives": 1, "false_positives": 0, "precision": 1.0, "recall": 0.8, "f1": 0.8889, "exact_occurrence_match_rate": 0.8, "occurrence_count_match_rate": 0.8},
+    "all_identified_confidence_levels": {"true_positives": 5, "false_negatives": 0, "false_positives": 0, "precision": 1.0, "recall": 1.0, "f1": 1.0, "exact_occurrence_match_rate": 1.0, "occurrence_count_match_rate": 1.0},
+    "all_confidence_and_candidates": {"true_positives": 5, "false_negatives": 0, "false_positives": 1, "precision": 0.8333, "recall": 1.0, "f1": 0.9091, "exact_occurrence_match_rate": 1.0, "occurrence_count_match_rate": 1.0}
+  },
+  "target_bias_performance": [
+    {"hidden_target_bias_label": "Framing Effect", "hidden_requested_occurrences": 1, "strict_true_positives_by_threshold": {"high_only": 0, "high_and_moderate": 0, "all_identified_confidence_levels": 0, "all_confidence_and_candidates": 0}, "mechanism_first_true_positives_by_threshold": {"high_only": 0, "high_and_moderate": 1, "all_identified_confidence_levels": 1, "all_confidence_and_candidates": 1}, "count_match_status_at_all_confidence_and_candidates": "underdetected"},
+    {"hidden_target_bias_label": "Hindsight bias", "hidden_requested_occurrences": 1, "strict_true_positives_by_threshold": {"high_only": 0, "high_and_moderate": 0, "all_identified_confidence_levels": 1, "all_confidence_and_candidates": 1}, "mechanism_first_true_positives_by_threshold": {"high_only": 0, "high_and_moderate": 0, "all_identified_confidence_levels": 1, "all_confidence_and_candidates": 1}, "count_match_status_at_all_confidence_and_candidates": "exact_match"},
+    {"hidden_target_bias_label": "Bandwagon effect", "hidden_requested_occurrences": 1, "strict_true_positives_by_threshold": {"high_only": 0, "high_and_moderate": 0, "all_identified_confidence_levels": 0, "all_confidence_and_candidates": 0}, "mechanism_first_true_positives_by_threshold": {"high_only": 0, "high_and_moderate": 1, "all_identified_confidence_levels": 1, "all_confidence_and_candidates": 1}, "count_match_status_at_all_confidence_and_candidates": "underdetected"},
+    {"hidden_target_bias_label": "Anchoring Bias", "hidden_requested_occurrences": 1, "strict_true_positives_by_threshold": {"high_only": 1, "high_and_moderate": 1, "all_identified_confidence_levels": 1, "all_confidence_and_candidates": 1}, "mechanism_first_true_positives_by_threshold": {"high_only": 1, "high_and_moderate": 1, "all_identified_confidence_levels": 1, "all_confidence_and_candidates": 1}, "count_match_status_at_all_confidence_and_candidates": "exact_match"},
+    {"hidden_target_bias_label": "Confirmation Bias", "hidden_requested_occurrences": 1, "strict_true_positives_by_threshold": {"high_only": 1, "high_and_moderate": 1, "all_identified_confidence_levels": 1, "all_confidence_and_candidates": 1}, "mechanism_first_true_positives_by_threshold": {"high_only": 1, "high_and_moderate": 1, "all_identified_confidence_levels": 1, "all_confidence_and_candidates": 1}, "count_match_status_at_all_confidence_and_candidates": "exact_match"}
+  ],
+  "rag_label_false_positive_inventory": [
+    {"rag_predicted_bias_label": "social proof", "finding_type": "identified", "alternative_labels": ["conformity bias", "bandwagon effect", "pluralistic ignorance"], "occurrence_count": 1, "best_related_hidden_target_bias_label": "Bandwagon effect", "label_relation": "near_neighbor", "mechanism_overlap_summary": "Full mechanism match to the hidden bandwagon occurrence, including private doubt and deference to converging officer agreement.", "primary_error_types": ["correct_location_wrong_bias_label"]},
+    {"rag_predicted_bias_label": "escalation of commitment", "finding_type": "identified", "alternative_labels": ["sunk cost fallacy", "completion bias", "commitment escalation"], "occurrence_count": 1, "best_related_hidden_target_bias_label": "Framing Effect", "label_relation": "different_construct", "mechanism_overlap_summary": "The label is distinct, but the explanation fully captures the chief's effort/incomplete-search framing that shifted the decision.", "primary_error_types": ["correct_location_wrong_bias_label"]},
+    {"rag_predicted_bias_label": "status quo bias", "finding_type": "candidate", "alternative_labels": ["default bias", "inertia bias"], "occurrence_count": 1, "best_related_hidden_target_bias_label": "Bandwagon effect", "label_relation": "near_neighbor", "mechanism_overlap_summary": "Partial overlap with reluctance to move the perimeter, but no full match to the hidden social-convergence mechanism; also duplicates the already-matched perimeter claim.", "primary_error_types": ["candidate_near_miss", "duplicate_prediction"]}
+  ],
+  "diagnostic_error_summary": {
+    "correct_location_wrong_bias_label_count": 2,
+    "correct_label_wrong_location_count": 0,
+    "correct_label_location_wrong_mechanism_count": 0,
+    "mechanism_detected_label_unresolved_count": 0,
+    "partial_mechanism_match_count": 0,
+    "duplicate_prediction_count": 1,
+    "unsupported_prediction_count": 0,
+    "fabricated_or_invalid_quote_count": 0,
+    "approved_alias_or_equivalence_count": 0,
+    "near_neighbor_label_count": 1,
+    "different_construct_label_count": 1,
+    "candidate_count": 1,
+    "candidate_useful_abstention_count": 0,
+    "candidate_near_miss_count": 1,
+    "candidates_promoted_to_true_positive_at_fourth_threshold_count": 0
+  },
+  "corpus_support_audit": {
+    "primary_corpus_fidelity_score_available": false,
+    "rag_occurrences_claiming_retrieved_support": 0,
+    "rag_occurrences_with_no_claimed_retrieved_support": 5,
+    "rag_occurrences_with_unverifiable_or_internally_inconsistent_citation_metadata": 0,
+    "assessment_note": "The RAG explicitly states that no scientific-paper corpus passages were supplied and marks all five identified occurrences as unsupported by retrieved corpus material. No citation metadata was provided, so there is no citation inconsistency to score."
+  },
+  "comparison_ready_summary": {
+    "primary_recommended_comparison_threshold": "high_and_moderate",
+    "segment_detection": {
+      "high_only": {"hits": 2, "misses": 2, "false_alarms": 0, "correct_rejections": 0, "hit_rate": 0.5, "false_alarm_rate": null, "f1": 0.6667},
+      "high_and_moderate": {"hits": 4, "misses": 0, "false_alarms": 0, "correct_rejections": 0, "hit_rate": 1.0, "false_alarm_rate": null, "f1": 1.0},
+      "all_identified_confidence_levels": {"hits": 4, "misses": 0, "false_alarms": 0, "correct_rejections": 0, "hit_rate": 1.0, "false_alarm_rate": null, "f1": 1.0},
+      "all_confidence_and_candidates": {"hits": 4, "misses": 0, "false_alarms": 0, "correct_rejections": 0, "hit_rate": 1.0, "false_alarm_rate": null, "f1": 1.0}
+    },
+    "strict_instance_identification": {
+      "high_only": {"true_positives": 2, "false_negatives": 3, "false_positives": 0, "precision": 1.0, "recall": 0.4, "f1": 0.5714},
+      "high_and_moderate": {"true_positives": 2, "false_negatives": 3, "false_positives": 2, "precision": 0.5, "recall": 0.4, "f1": 0.4444},
+      "all_identified_confidence_levels": {"true_positives": 3, "false_negatives": 2, "false_positives": 2, "precision": 0.6, "recall": 0.6, "f1": 0.6},
+      "all_confidence_and_candidates": {"true_positives": 3, "false_negatives": 2, "false_positives": 3, "precision": 0.5, "recall": 0.6, "f1": 0.5455}
+    },
+    "mechanism_first_identification": {
+      "high_only": {"true_positives": 2, "false_negatives": 3, "false_positives": 0, "precision": 1.0, "recall": 0.4, "f1": 0.5714},
+      "high_and_moderate": {"true_positives": 4, "false_negatives": 1, "false_positives": 0, "precision": 1.0, "recall": 0.8, "f1": 0.8889},
+      "all_identified_confidence_levels": {"true_positives": 5, "false_negatives": 0, "false_positives": 0, "precision": 1.0, "recall": 1.0, "f1": 1.0},
+      "all_confidence_and_candidates": {"true_positives": 5, "false_negatives": 0, "false_positives": 1, "precision": 0.8333, "recall": 1.0, "f1": 0.9091}
+    },
+    "taxonomy_gap": {
+      "high_only": {"mechanism_first_f1_minus_strict_f1": 0.0},
+      "high_and_moderate": {"mechanism_first_f1_minus_strict_f1": 0.4445},
+      "all_identified_confidence_levels": {"mechanism_first_f1_minus_strict_f1": 0.4},
+      "all_confidence_and_candidates": {"mechanism_first_f1_minus_strict_f1": 0.3636}
+    },
+    "confidence_tradeoff": {
+      "increment_from_high_to_high_and_moderate": "Strict instance F1 decreases from 0.5714 to 0.4444 because two moderate wrong-label findings add false positives; mechanism-first F1 increases from 0.5714 to 0.8889 because both mechanisms match.",
+      "increment_from_high_and_moderate_to_all_confidence": "Adding the low-confidence hindsight finding raises strict instance F1 from 0.4444 to 0.6000 and mechanism-first F1 from 0.8889 to 1.0000.",
+      "increment_from_all_confidence_to_all_confidence_and_candidates": "Adding the status-quo candidate leaves segment detection and true positives unchanged but adds one duplicate false positive, reducing strict F1 to 0.5455 and mechanism-first F1 to 0.9091."
+    }
+  },
+  "overall_evaluation_summary": {
+    "hidden_total_planned_occurrences": 5,
+    "rag_total_identified_occurrences": 5,
+    "rag_total_candidate_biases": 1,
+    "segment_level_primary_result": "4/4 positive segments detected at the recommended high_and_moderate threshold; high_only detects 2/4.",
+    "strict_label_plus_mechanism_result": "At high_and_moderate, 2 true positives, 3 false negatives, and 2 false positives; strict F1 is 0.4444.",
+    "mechanism_first_result": "At high_and_moderate, 4 true positives, 1 false negative, and 0 false positives; mechanism-first F1 is 0.8889. With all identified confidence levels, all five hidden mechanisms are detected.",
+    "candidate_tier_value_assessment": "The single candidate is grounded and useful as a near-miss diagnostic, but it is not a true positive and adds a duplicate false positive at the candidate-inclusive threshold.",
+    "main_failure_modes": [
+      "Two moderate findings use related but non-approved labels for the hidden Bandwagon effect and Framing Effect, producing strict false positives and hidden strict false negatives.",
+      "The hindsight finding is correctly identified but assigned low confidence, so it is missed at the first two thresholds.",
+      "Candidate status-quo speculation duplicates an already matched perimeter episode without fully matching its mechanism."
+    ],
+    "main_strengths": [
+      "All identified findings are localized with valid participant evidence.",
+      "The anchoring and confirmation instances are exact strict matches at high confidence.",
+      "The social-proof and escalation-of-commitment explanations capture the hidden mechanisms well enough for mechanism-first scoring.",
+      "The RAG accurately discloses that no retrieved corpus support was available."
+    ],
+    "benchmark_interpretation": "This run has complete mechanism coverage once moderate and low-confidence identified findings are admitted, but only 3/5 strict label-plus-mechanism matches at the all-identified threshold. The result demonstrates a substantial ontology/taxonomy gap rather than a failure to locate or explain the underlying reasoning patterns."
+  }
+}

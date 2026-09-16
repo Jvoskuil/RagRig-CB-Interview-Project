@@ -1,0 +1,932 @@
+{
+  "evaluation_metadata": {
+    "task": "ontology_free_rag_cognitive_bias_benchmark_evaluation",
+    "benchmark_run_metadata": {
+      "benchmark_run_id": "LE_Biased_5_Sonnet_off",
+      "interview_id": "LE_Biased_5",
+      "system_prompt_id": "Sonnet",
+      "system_prompt_generator": "Prompt 1_2",
+      "rag_model_id": "v1.0.0",
+      "corpus_condition": "off",
+      "retrieval_configuration_id": "k=0",
+      "decoding_configuration_id": "null",
+      "temperature": 1,
+      "replicate_id": null,
+      "segment_map_id": null
+    },
+    "scenario_id": "LE_Biased_5",
+    "domain_id": "LE",
+    "condition": "biased",
+    "segment_map_status": "prevalidated_provided",
+    "rag_output_parse_status": "valid_json",
+    "rag_schema_assessment": "conformant"
+  },
+  "input_validation": {
+    "rag_output_schema_violations": [],
+    "rag_summary_count_consistency": {
+      "status": "consistent",
+      "details": "The summary lists four identified bias labels with one occurrence each, matching the four identified occurrence objects. The separate candidate object is not included in the identified summary."
+    },
+    "evaluation_limitations": [
+      "No retrieved chunks, source passages, or retrieval logs were supplied; corpus fidelity cannot be scored.",
+      "All eligible reasoning segments are positive, so false-alarm rates are undefined.",
+      "The candidate anchoring-bias finding overlaps the hidden intake mechanism but does not use the hidden target label."
+    ]
+  },
+  "evaluation_segment_map": {
+    "segment_mapping_version": "1.0",
+    "segments": [
+      {
+        "segment_id": "seg_dp1_intake_asymmetric_scrutiny",
+        "speaker": "Participant",
+        "segment_type": "decision_point",
+        "raw_interview_anchor": "I requested his full arrest history and looked for anything that might explain inconsistency in his statement... For Marquez, I ... treated his report as the operational starting point",
+        "eligible_reasoning_segment": true,
+        "ground_truth_bias_present": true,
+        "ground_truth_instance_ids": [
+          "cbas_01"
+        ],
+        "ground_truth_rationale": "The investigator sought adverse background detail on Alvarez while accepting Marquez's report as the baseline without equivalent independent verification, matching the hidden differential-scrutiny mechanism."
+      },
+      {
+        "segment_id": "seg_dp2_bwc_final_sequence",
+        "speaker": "Participant",
+        "segment_type": "decision_point",
+        "raw_interview_anchor": "The takedown is what matters for a force review... My working read was built mainly around those last ninety seconds.",
+        "eligible_reasoning_segment": true,
+        "ground_truth_bias_present": true,
+        "ground_truth_instance_ids": [
+          "re_01"
+        ],
+        "ground_truth_rationale": "The investigator gave the final 90-second takedown disproportionate weight relative to the earlier sequential footage, matching the first recency instance."
+      },
+      {
+        "segment_id": "seg_dp3_case_conference_consensus",
+        "speaker": "Participant",
+        "segment_type": "decision_point",
+        "raw_interview_anchor": "The conversation moved pretty quickly toward the take that the force was likely justified... We didn't formally table the gap as an open item.",
+        "eligible_reasoning_segment": true,
+        "ground_truth_bias_present": true,
+        "ground_truth_instance_ids": [
+          "gt_01"
+        ],
+        "ground_truth_rationale": "The investigator adopted the sergeant-led consensus, left the BWC gap and peer reservation undocumented, and allowed group momentum to determine the preliminary direction."
+      },
+      {
+        "segment_id": "seg_dp4_late_witness_reconciliation",
+        "speaker": "Participant",
+        "segment_type": "decision_point",
+        "raw_interview_anchor": "It was the freshest account I had at that point, closer in my mind than the footage... so it carried a lot of weight",
+        "eligible_reasoning_segment": true,
+        "ground_truth_bias_present": true,
+        "ground_truth_instance_ids": [
+          "re_02",
+          "cd_01"
+        ],
+        "ground_truth_rationale": "The late eyewitness was weighted because of its freshness, while the investigator separately minimized the conflict to preserve the exonerated-leaning briefing already sent to command."
+      }
+    ]
+  },
+  "segment_level_adjudications": [
+    {
+      "segment_id": "seg_dp1_intake_asymmetric_scrutiny",
+      "ground_truth_status": "positive",
+      "ground_truth_instance_ids": [
+        "cbas_01"
+      ],
+      "rag_identified_occurrence_ids": [],
+      "rag_candidate_ids_counted_at_fourth_threshold": [
+        "cand_001"
+      ],
+      "rag_detected_bias_in_segment_by_threshold": {
+        "high_only": false,
+        "high_and_moderate": false,
+        "all_identified_confidence_levels": false,
+        "all_confidence_and_candidates": true
+      },
+      "sdt_outcome_by_threshold": {
+        "high_only": "miss",
+        "high_and_moderate": "miss",
+        "all_identified_confidence_levels": "miss",
+        "all_confidence_and_candidates": "hit"
+      },
+      "localization_basis": "Candidate cand_001 quotes and localizes the intake decision concerning unequal verification of Alvarez's and Marquez's accounts.",
+      "adjudication_note": "The candidate is scored only at the candidate-inclusive threshold. Its proposed label is anchoring bias, but its mechanism and location substantially match the hidden differential-scrutiny instance."
+    },
+    {
+      "segment_id": "seg_dp2_bwc_final_sequence",
+      "ground_truth_status": "positive",
+      "ground_truth_instance_ids": [
+        "re_01"
+      ],
+      "rag_identified_occurrence_ids": [
+        "obs_001"
+      ],
+      "rag_candidate_ids_counted_at_fourth_threshold": [],
+      "rag_detected_bias_in_segment_by_threshold": {
+        "high_only": true,
+        "high_and_moderate": true,
+        "all_identified_confidence_levels": true,
+        "all_confidence_and_candidates": true
+      },
+      "sdt_outcome_by_threshold": {
+        "high_only": "hit",
+        "high_and_moderate": "hit",
+        "all_identified_confidence_levels": "hit",
+        "all_confidence_and_candidates": "hit"
+      },
+      "localization_basis": "obs_001 directly quotes the final-segment weighting and the failure to revisit earlier footage.",
+      "adjudication_note": "The segment is correctly detected. The RAG label availability heuristic differs from the hidden Recency Effects label, but the mechanism-first interpretation is a full match."
+    },
+    {
+      "segment_id": "seg_dp3_case_conference_consensus",
+      "ground_truth_status": "positive",
+      "ground_truth_instance_ids": [
+        "gt_01"
+      ],
+      "rag_identified_occurrence_ids": [
+        "obs_002"
+      ],
+      "rag_candidate_ids_counted_at_fourth_threshold": [],
+      "rag_detected_bias_in_segment_by_threshold": {
+        "high_only": false,
+        "high_and_moderate": true,
+        "all_identified_confidence_levels": true,
+        "all_confidence_and_candidates": true
+      },
+      "sdt_outcome_by_threshold": {
+        "high_only": "miss",
+        "high_and_moderate": "hit",
+        "all_identified_confidence_levels": "hit",
+        "all_confidence_and_candidates": "hit"
+      },
+      "localization_basis": "obs_002 quotes the sergeant's framing, the raised BWC-gap concern, the rapid consensus, and the undocumented dissent.",
+      "adjudication_note": "Exact label, location, and mechanism match at moderate confidence and above."
+    },
+    {
+      "segment_id": "seg_dp4_late_witness_reconciliation",
+      "ground_truth_status": "positive",
+      "ground_truth_instance_ids": [
+        "re_02",
+        "cd_01"
+      ],
+      "rag_identified_occurrence_ids": [
+        "obs_003",
+        "obs_004"
+      ],
+      "rag_candidate_ids_counted_at_fourth_threshold": [],
+      "rag_detected_bias_in_segment_by_threshold": {
+        "high_only": false,
+        "high_and_moderate": true,
+        "all_identified_confidence_levels": true,
+        "all_confidence_and_candidates": true
+      },
+      "sdt_outcome_by_threshold": {
+        "high_only": "miss",
+        "high_and_moderate": "hit",
+        "all_identified_confidence_levels": "hit",
+        "all_confidence_and_candidates": "hit"
+      },
+      "localization_basis": "obs_003 localizes the freshness-based eyewitness weighting; obs_004 localizes preservation of the prior command briefing.",
+      "adjudication_note": "Both hidden DP4 mechanisms are detected. Recency bias is an approved alias for Recency Effects; escalation of commitment is a related but non-identical label for the cognitive-dissonance mechanism."
+    }
+  ],
+  "instance_level_adjudications": [
+    {
+      "hidden_instance_id": "cbas_01",
+      "hidden_target_bias_label": "Confirmation Bias and Asymmetrical skepticism",
+      "hidden_decision_or_episode": "Initial background review and decision not to request parallel independent verification of Officer Marquez's account",
+      "hidden_mechanism": "Differential verification effort applied to complainant versus officer accounts at intake.",
+      "matched_finding_by_threshold": {
+        "high_only": {
+          "matched_id": null,
+          "matched_type": "none"
+        },
+        "high_and_moderate": {
+          "matched_id": null,
+          "matched_type": "none"
+        },
+        "all_identified_confidence_levels": {
+          "matched_id": null,
+          "matched_type": "none"
+        },
+        "all_confidence_and_candidates": {
+          "matched_id": "cand_001",
+          "matched_type": "candidate"
+        }
+      },
+      "rag_predicted_bias_label": "anchoring bias",
+      "rag_confidence": "candidate",
+      "label_equivalence_result": "near_neighbor_label",
+      "localization_match_type": "exact_quote_match",
+      "mechanism_overlap": "full_mechanism_match",
+      "strict_scorecard_outcome_by_threshold": {
+        "high_only": "false_negative",
+        "high_and_moderate": "false_negative",
+        "all_identified_confidence_levels": "false_negative",
+        "all_confidence_and_candidates": "false_negative"
+      },
+      "mechanism_first_scorecard_outcome_by_threshold": {
+        "high_only": "false_negative",
+        "high_and_moderate": "false_negative",
+        "all_identified_confidence_levels": "false_negative",
+        "all_confidence_and_candidates": "true_positive"
+      },
+      "secondary_diagnostic_outcome": "candidate_only_near_miss",
+      "label_equivalence_explanation": "Anchoring bias is not the hidden target label, but the candidate describes a closely related baseline effect and explicitly identifies asymmetric scrutiny.",
+      "mechanism_overlap_explanation": "The candidate states that Marquez's report became the baseline while Alvarez's account was subjected to additional scrutiny, matching the hidden differential-verification mechanism.",
+      "evidence_fidelity_assessment": "The quoted interview evidence is valid and accurately localized."
+    },
+    {
+      "hidden_instance_id": "re_01",
+      "hidden_target_bias_label": "Recency Effects",
+      "hidden_decision_or_episode": "BWC review and weighting of early versus final footage",
+      "hidden_mechanism": "Anchoring proportionality judgment on the final segment of a sequential footage review.",
+      "matched_finding_by_threshold": {
+        "high_only": {
+          "matched_id": "obs_001",
+          "matched_type": "identified"
+        },
+        "high_and_moderate": {
+          "matched_id": "obs_001",
+          "matched_type": "identified"
+        },
+        "all_identified_confidence_levels": {
+          "matched_id": "obs_001",
+          "matched_type": "identified"
+        },
+        "all_confidence_and_candidates": {
+          "matched_id": "obs_001",
+          "matched_type": "identified"
+        }
+      },
+      "rag_predicted_bias_label": "availability heuristic",
+      "rag_confidence": "high",
+      "label_equivalence_result": "near_neighbor_label",
+      "localization_match_type": "substantive_span_match",
+      "mechanism_overlap": "full_mechanism_match",
+      "strict_scorecard_outcome_by_threshold": {
+        "high_only": "false_negative",
+        "high_and_moderate": "false_negative",
+        "all_identified_confidence_levels": "false_negative",
+        "all_confidence_and_candidates": "false_negative"
+      },
+      "mechanism_first_scorecard_outcome_by_threshold": {
+        "high_only": "true_positive",
+        "high_and_moderate": "true_positive",
+        "all_identified_confidence_levels": "true_positive",
+        "all_confidence_and_candidates": "true_positive"
+      },
+      "secondary_diagnostic_outcome": "correct_location_wrong_bias_label",
+      "label_equivalence_explanation": "Availability heuristic is a related but distinct construct from the hidden Recency Effects label.",
+      "mechanism_overlap_explanation": "The finding correctly identifies disproportionate weighting of the vivid, repeatedly reviewed final segment over earlier footage.",
+      "evidence_fidelity_assessment": "The finding uses valid quotes and accurately represents the participant's weighting of the BWC sequence."
+    },
+    {
+      "hidden_instance_id": "gt_01",
+      "hidden_target_bias_label": "Groupthink",
+      "hidden_decision_or_episode": "Day-six case conference on BWC gap and preliminary finding direction",
+      "hidden_mechanism": "Rapid consensus formation under supervisory framing, with dissent raised and then not pursued.",
+      "matched_finding_by_threshold": {
+        "high_only": {
+          "matched_id": null,
+          "matched_type": "none"
+        },
+        "high_and_moderate": {
+          "matched_id": "obs_002",
+          "matched_type": "identified"
+        },
+        "all_identified_confidence_levels": {
+          "matched_id": "obs_002",
+          "matched_type": "identified"
+        },
+        "all_confidence_and_candidates": {
+          "matched_id": "obs_002",
+          "matched_type": "identified"
+        }
+      },
+      "rag_predicted_bias_label": "groupthink",
+      "rag_confidence": "moderate",
+      "label_equivalence_result": "exact_target_label",
+      "localization_match_type": "exact_quote_match",
+      "mechanism_overlap": "full_mechanism_match",
+      "strict_scorecard_outcome_by_threshold": {
+        "high_only": "false_negative",
+        "high_and_moderate": "true_positive",
+        "all_identified_confidence_levels": "true_positive",
+        "all_confidence_and_candidates": "true_positive"
+      },
+      "mechanism_first_scorecard_outcome_by_threshold": {
+        "high_only": "false_negative",
+        "high_and_moderate": "true_positive",
+        "all_identified_confidence_levels": "true_positive",
+        "all_confidence_and_candidates": "true_positive"
+      },
+      "secondary_diagnostic_outcome": "exact_instance_match",
+      "label_equivalence_explanation": "The RAG label exactly matches the hidden target.",
+      "mechanism_overlap_explanation": "The finding captures supervisory framing, rapid consensus, an unpursued dissenting concern, and failure to document the unresolved gap.",
+      "evidence_fidelity_assessment": "The finding is supported by valid, substantive quotations from the case conference discussion."
+    },
+    {
+      "hidden_instance_id": "re_02",
+      "hidden_target_bias_label": "Recency Effects",
+      "hidden_decision_or_episode": "Weighing the day-ten eyewitness statement after prior evidence review",
+      "hidden_mechanism": "Disproportionate weighting of the most recently obtained eyewitness statement relative to the earlier, fuller BWC record.",
+      "matched_finding_by_threshold": {
+        "high_only": {
+          "matched_id": null,
+          "matched_type": "none"
+        },
+        "high_and_moderate": {
+          "matched_id": "obs_003",
+          "matched_type": "identified"
+        },
+        "all_identified_confidence_levels": {
+          "matched_id": "obs_003",
+          "matched_type": "identified"
+        },
+        "all_confidence_and_candidates": {
+          "matched_id": "obs_003",
+          "matched_type": "identified"
+        }
+      },
+      "rag_predicted_bias_label": "recency bias",
+      "rag_confidence": "moderate",
+      "label_equivalence_result": "established_alias_or_equivalent",
+      "localization_match_type": "exact_quote_match",
+      "mechanism_overlap": "full_mechanism_match",
+      "strict_scorecard_outcome_by_threshold": {
+        "high_only": "false_negative",
+        "high_and_moderate": "true_positive",
+        "all_identified_confidence_levels": "true_positive",
+        "all_confidence_and_candidates": "true_positive"
+      },
+      "mechanism_first_scorecard_outcome_by_threshold": {
+        "high_only": "false_negative",
+        "high_and_moderate": "true_positive",
+        "all_identified_confidence_levels": "true_positive",
+        "all_confidence_and_candidates": "true_positive"
+      },
+      "secondary_diagnostic_outcome": "approved_alias_match",
+      "label_equivalence_explanation": "Recency bias is an established equivalent label for Recency Effects.",
+      "mechanism_overlap_explanation": "The finding explicitly attributes the witness's weight to its freshness relative to the earlier BWC review.",
+      "evidence_fidelity_assessment": "The finding accurately quotes and interprets the participant's statement."
+    },
+    {
+      "hidden_instance_id": "cd_01",
+      "hidden_target_bias_label": "Cognitive dissonance",
+      "hidden_decision_or_episode": "Responding to the eyewitness and supplemental review after the Deputy Chief briefing",
+      "hidden_mechanism": "Minimizing new conflicting evidence to preserve consistency with an already-communicated preliminary position to command.",
+      "matched_finding_by_threshold": {
+        "high_only": {
+          "matched_id": null,
+          "matched_type": "none"
+        },
+        "high_and_moderate": {
+          "matched_id": "obs_004",
+          "matched_type": "identified"
+        },
+        "all_identified_confidence_levels": {
+          "matched_id": "obs_004",
+          "matched_type": "identified"
+        },
+        "all_confidence_and_candidates": {
+          "matched_id": "obs_004",
+          "matched_type": "identified"
+        }
+      },
+      "rag_predicted_bias_label": "escalation of commitment",
+      "rag_confidence": "moderate",
+      "label_equivalence_result": "near_neighbor_label",
+      "localization_match_type": "exact_quote_match",
+      "mechanism_overlap": "full_mechanism_match",
+      "strict_scorecard_outcome_by_threshold": {
+        "high_only": "false_negative",
+        "high_and_moderate": "false_negative",
+        "all_identified_confidence_levels": "false_negative",
+        "all_confidence_and_candidates": "false_negative"
+      },
+      "mechanism_first_scorecard_outcome_by_threshold": {
+        "high_only": "false_negative",
+        "high_and_moderate": "true_positive",
+        "all_identified_confidence_levels": "true_positive",
+        "all_confidence_and_candidates": "true_positive"
+      },
+      "secondary_diagnostic_outcome": "correct_location_wrong_bias_label",
+      "label_equivalence_explanation": "Escalation of commitment is a closely related construct but is not the hidden Cognitive dissonance label.",
+      "mechanism_overlap_explanation": "The finding captures minimizing contrary evidence to avoid walking back a prior confident briefing.",
+      "evidence_fidelity_assessment": "The finding is directly supported by valid quotations and preserves the participant's stated qualification that distance and lighting also mattered."
+    }
+  ],
+  "unmatched_rag_predictions": [
+    {
+      "rag_occurrence_id": "obs_001",
+      "rag_finding_type": "identified",
+      "rag_predicted_bias_label": "availability heuristic",
+      "rag_confidence": "high",
+      "localized_segment_id": "seg_dp2_bwc_final_sequence",
+      "best_related_hidden_instance_id": "re_01",
+      "label_equivalence_result": "near_neighbor_label",
+      "mechanism_overlap": "full_mechanism_overlap",
+      "strict_classification": "correct_location_wrong_bias_label",
+      "mechanism_first_classification": "not_applicable",
+      "counted_at_thresholds": [
+        "high_only",
+        "high_and_moderate",
+        "all_identified_confidence_levels",
+        "all_confidence_and_candidates"
+      ],
+      "why_not_an_exact_strict_match": "The evidence and location match the Recency Effects instance, but availability heuristic is a different taxonomy label."
+    },
+    {
+      "rag_occurrence_id": "obs_004",
+      "rag_finding_type": "identified",
+      "rag_predicted_bias_label": "escalation of commitment",
+      "rag_confidence": "moderate",
+      "localized_segment_id": "seg_dp4_late_witness_reconciliation",
+      "best_related_hidden_instance_id": "cd_01",
+      "label_equivalence_result": "near_neighbor_label",
+      "mechanism_overlap": "full_mechanism_overlap",
+      "strict_classification": "correct_location_wrong_bias_label",
+      "mechanism_first_classification": "not_applicable",
+      "counted_at_thresholds": [
+        "high_and_moderate",
+        "all_identified_confidence_levels",
+        "all_confidence_and_candidates"
+      ],
+      "why_not_an_exact_strict_match": "The evidence and location match the post-commitment reconciliation mechanism, but escalation of commitment is not the hidden Cognitive dissonance label."
+    },
+    {
+      "rag_occurrence_id": "cand_001",
+      "rag_finding_type": "candidate",
+      "rag_predicted_bias_label": "anchoring bias",
+      "rag_confidence": "candidate",
+      "localized_segment_id": "seg_dp1_intake_asymmetric_scrutiny",
+      "best_related_hidden_instance_id": "cbas_01",
+      "label_equivalence_result": "near_neighbor_label",
+      "mechanism_overlap": "full_mechanism_overlap",
+      "strict_classification": "correct_location_wrong_bias_label",
+      "mechanism_first_classification": "not_applicable",
+      "counted_at_thresholds": [
+        "all_confidence_and_candidates"
+      ],
+      "why_not_an_exact_strict_match": "The candidate correctly describes unequal verification effort, but it proposes anchoring bias rather than the hidden composite confirmation-bias/asymmetrical-skepticism label and remains unconfirmed."
+    }
+  ],
+  "candidate_analysis": {
+    "candidate_count": 1,
+    "candidates": [
+      {
+        "candidate_id": "cand_001",
+        "proposed_bias_label": "anchoring bias",
+        "localized_segment_id": "seg_dp1_intake_asymmetric_scrutiny",
+        "best_related_hidden_instance_id": "cbas_01",
+        "quote_validity": "valid",
+        "would_match_if_promoted_strict": false,
+        "would_match_if_promoted_mechanism_first": true,
+        "counted_as_detection_at_fourth_threshold": true,
+        "fourth_threshold_outcome": "true_positive_mechanism_first_only",
+        "candidate_assessment": "useful_abstention",
+        "details": "The candidate identifies a real asymmetry in verification effort, gives a valid quote, and explicitly explains why the evidence is insufficient for confident identification. Its label is not the hidden target, but its mechanism is a full match under the mechanism-first scorecard."
+      }
+    ]
+  },
+  "signal_detection_summary": {
+    "evaluation_unit": "eligible_reasoning_segment",
+    "high_only": {
+      "positive_segments": 4,
+      "negative_segments": 0,
+      "hits": 1,
+      "misses": 3,
+      "false_alarms": 0,
+      "correct_rejections": 0,
+      "hit_rate": 0.25,
+      "false_alarm_rate": null,
+      "accuracy": 0.25,
+      "precision": 1.0,
+      "recall": 0.25,
+      "f1": 0.4,
+      "detection_interpretation": "Only the high-confidence BWC finding was detected; the other three positive segments were missed at the high-only threshold."
+    },
+    "high_and_moderate": {
+      "positive_segments": 4,
+      "negative_segments": 0,
+      "hits": 3,
+      "misses": 1,
+      "false_alarms": 0,
+      "correct_rejections": 0,
+      "hit_rate": 0.75,
+      "false_alarm_rate": null,
+      "accuracy": 0.75,
+      "precision": 1.0,
+      "recall": 0.75,
+      "f1": 0.8571,
+      "detection_interpretation": "Moderate-confidence groupthink, recency, and commitment findings recover three of four positive segments; the intake segment remains candidate-only."
+    },
+    "all_identified_confidence_levels": {
+      "positive_segments": 4,
+      "negative_segments": 0,
+      "hits": 3,
+      "misses": 1,
+      "false_alarms": 0,
+      "correct_rejections": 0,
+      "hit_rate": 0.75,
+      "false_alarm_rate": null,
+      "accuracy": 0.75,
+      "precision": 1.0,
+      "recall": 0.75,
+      "f1": 0.8571,
+      "detection_interpretation": "All identified findings produce the same segment-level result as the high-and-moderate threshold because no low-confidence identified findings are present."
+    },
+    "all_confidence_and_candidates": {
+      "positive_segments": 4,
+      "negative_segments": 0,
+      "hits": 4,
+      "misses": 0,
+      "false_alarms": 0,
+      "correct_rejections": 0,
+      "hit_rate": 1.0,
+      "false_alarm_rate": null,
+      "accuracy": 1.0,
+      "precision": 1.0,
+      "recall": 1.0,
+      "f1": 1.0,
+      "detection_interpretation": "The candidate finding adds detection of the intake segment, yielding complete segment-level coverage."
+    }
+  },
+  "strict_instance_level_metrics": {
+    "high_only": {
+      "true_positives": 0,
+      "false_negatives": 5,
+      "false_positives": 1,
+      "precision": 0.0,
+      "recall": 0.0,
+      "f1": 0.0,
+      "exact_occurrence_match_rate": 0.0,
+      "occurrence_count_match_rate": 0.0
+    },
+    "high_and_moderate": {
+      "true_positives": 2,
+      "false_negatives": 3,
+      "false_positives": 2,
+      "precision": 0.5,
+      "recall": 0.4,
+      "f1": 0.4444,
+      "exact_occurrence_match_rate": 0.4,
+      "occurrence_count_match_rate": 0.25
+    },
+    "all_identified_confidence_levels": {
+      "true_positives": 2,
+      "false_negatives": 3,
+      "false_positives": 2,
+      "precision": 0.5,
+      "recall": 0.4,
+      "f1": 0.4444,
+      "exact_occurrence_match_rate": 0.4,
+      "occurrence_count_match_rate": 0.25
+    },
+    "all_confidence_and_candidates": {
+      "true_positives": 2,
+      "false_negatives": 3,
+      "false_positives": 3,
+      "precision": 0.4,
+      "recall": 0.4,
+      "f1": 0.4,
+      "exact_occurrence_match_rate": 0.4,
+      "occurrence_count_match_rate": 0.25
+    }
+  },
+  "mechanism_first_instance_level_metrics": {
+    "high_only": {
+      "true_positives": 1,
+      "false_negatives": 4,
+      "false_positives": 0,
+      "precision": 1.0,
+      "recall": 0.2,
+      "f1": 0.3333,
+      "exact_occurrence_match_rate": 0.2,
+      "occurrence_count_match_rate": 0.0
+    },
+    "high_and_moderate": {
+      "true_positives": 4,
+      "false_negatives": 1,
+      "false_positives": 0,
+      "precision": 1.0,
+      "recall": 0.8,
+      "f1": 0.8889,
+      "exact_occurrence_match_rate": 0.8,
+      "occurrence_count_match_rate": 0.5
+    },
+    "all_identified_confidence_levels": {
+      "true_positives": 4,
+      "false_negatives": 1,
+      "false_positives": 0,
+      "precision": 1.0,
+      "recall": 0.8,
+      "f1": 0.8889,
+      "exact_occurrence_match_rate": 0.8,
+      "occurrence_count_match_rate": 0.5
+    },
+    "all_confidence_and_candidates": {
+      "true_positives": 5,
+      "false_negatives": 0,
+      "false_positives": 0,
+      "precision": 1.0,
+      "recall": 1.0,
+      "f1": 1.0,
+      "exact_occurrence_match_rate": 1.0,
+      "occurrence_count_match_rate": 1.0
+    }
+  },
+  "target_bias_performance": [
+    {
+      "hidden_target_bias_label": "Cognitive dissonance",
+      "hidden_requested_occurrences": 1,
+      "strict_true_positives_by_threshold": {
+        "high_only": 0,
+        "high_and_moderate": 0,
+        "all_identified_confidence_levels": 0,
+        "all_confidence_and_candidates": 0
+      },
+      "mechanism_first_true_positives_by_threshold": {
+        "high_only": 0,
+        "high_and_moderate": 1,
+        "all_identified_confidence_levels": 1,
+        "all_confidence_and_candidates": 1
+      },
+      "count_match_status_at_all_confidence_and_candidates": "underdetected"
+    },
+    {
+      "hidden_target_bias_label": "Recency Effects",
+      "hidden_requested_occurrences": 2,
+      "strict_true_positives_by_threshold": {
+        "high_only": 0,
+        "high_and_moderate": 1,
+        "all_identified_confidence_levels": 1,
+        "all_confidence_and_candidates": 1
+      },
+      "mechanism_first_true_positives_by_threshold": {
+        "high_only": 1,
+        "high_and_moderate": 2,
+        "all_identified_confidence_levels": 2,
+        "all_confidence_and_candidates": 2
+      },
+      "count_match_status_at_all_confidence_and_candidates": "underdetected"
+    },
+    {
+      "hidden_target_bias_label": "Groupthink",
+      "hidden_requested_occurrences": 1,
+      "strict_true_positives_by_threshold": {
+        "high_only": 0,
+        "high_and_moderate": 1,
+        "all_identified_confidence_levels": 1,
+        "all_confidence_and_candidates": 1
+      },
+      "mechanism_first_true_positives_by_threshold": {
+        "high_only": 0,
+        "high_and_moderate": 1,
+        "all_identified_confidence_levels": 1,
+        "all_confidence_and_candidates": 1
+      },
+      "count_match_status_at_all_confidence_and_candidates": "exact_match"
+    },
+    {
+      "hidden_target_bias_label": "Confirmation Bias and Asymmetrical skepticism",
+      "hidden_requested_occurrences": 1,
+      "strict_true_positives_by_threshold": {
+        "high_only": 0,
+        "high_and_moderate": 0,
+        "all_identified_confidence_levels": 0,
+        "all_confidence_and_candidates": 0
+      },
+      "mechanism_first_true_positives_by_threshold": {
+        "high_only": 0,
+        "high_and_moderate": 0,
+        "all_identified_confidence_levels": 0,
+        "all_confidence_and_candidates": 1
+      },
+      "count_match_status_at_all_confidence_and_candidates": "underdetected"
+    }
+  ],
+  "rag_label_false_positive_inventory": [
+    {
+      "rag_predicted_bias_label": "availability heuristic",
+      "finding_type": "identified",
+      "alternative_labels": [
+        "salience bias",
+        "attentional bias"
+      ],
+      "occurrence_count": 1,
+      "best_related_hidden_target_bias_label": "Recency Effects",
+      "label_relation": "near_neighbor",
+      "mechanism_overlap_summary": "Correct BWC location and full overlap with the final-segment-versus-earlier-footage weighting mechanism.",
+      "primary_error_types": [
+        "correct_location_wrong_bias_label"
+      ]
+    },
+    {
+      "rag_predicted_bias_label": "escalation of commitment",
+      "finding_type": "identified",
+      "alternative_labels": [
+        "commitment bias",
+        "consistency bias",
+        "self-justification bias"
+      ],
+      "occurrence_count": 1,
+      "best_related_hidden_target_bias_label": "Cognitive dissonance",
+      "label_relation": "near_neighbor",
+      "mechanism_overlap_summary": "Correct DP4 location and full overlap with preserving a prior command briefing when new evidence conflicts.",
+      "primary_error_types": [
+        "correct_location_wrong_bias_label"
+      ]
+    },
+    {
+      "rag_predicted_bias_label": "anchoring bias",
+      "finding_type": "candidate",
+      "alternative_labels": [
+        "confirmation bias",
+        "status quo bias"
+      ],
+      "occurrence_count": 1,
+      "best_related_hidden_target_bias_label": "Confirmation Bias and Asymmetrical skepticism",
+      "label_relation": "near_neighbor",
+      "mechanism_overlap_summary": "Candidate correctly describes the officer report becoming the baseline while the complainant's account receives extra scrutiny.",
+      "primary_error_types": [
+        "candidate_only_near_miss"
+      ]
+    }
+  ],
+  "diagnostic_error_summary": {
+    "correct_location_wrong_bias_label_count": 2,
+    "correct_label_wrong_location_count": 0,
+    "correct_label_location_wrong_mechanism_count": 0,
+    "mechanism_detected_label_unresolved_count": 0,
+    "partial_mechanism_match_count": 0,
+    "duplicate_prediction_count": 0,
+    "unsupported_prediction_count": 0,
+    "fabricated_or_invalid_quote_count": 0,
+    "approved_alias_or_equivalence_count": 1,
+    "near_neighbor_label_count": 2,
+    "different_construct_label_count": 0,
+    "candidate_count": 1,
+    "candidate_useful_abstention_count": 1,
+    "candidate_near_miss_count": 0,
+    "candidates_promoted_to_true_positive_at_fourth_threshold_count": 1
+  },
+  "corpus_support_audit": {
+    "primary_corpus_fidelity_score_available": false,
+    "rag_occurrences_claiming_retrieved_support": 0,
+    "rag_occurrences_with_no_claimed_retrieved_support": 5,
+    "rag_occurrences_with_unverifiable_or_internally_inconsistent_citation_metadata": 0,
+    "assessment_note": "The RAG explicitly reports that no retrieved corpus support was used and supplies no citation metadata. This does not alter detection or classification scores."
+  },
+  "comparison_ready_summary": {
+    "primary_recommended_comparison_threshold": "high_and_moderate",
+    "segment_detection": {
+      "high_only": {
+        "hits": 1,
+        "misses": 3,
+        "false_alarms": 0,
+        "correct_rejections": 0,
+        "hit_rate": 0.25,
+        "false_alarm_rate": null,
+        "f1": 0.4
+      },
+      "high_and_moderate": {
+        "hits": 3,
+        "misses": 1,
+        "false_alarms": 0,
+        "correct_rejections": 0,
+        "hit_rate": 0.75,
+        "false_alarm_rate": null,
+        "f1": 0.8571
+      },
+      "all_identified_confidence_levels": {
+        "hits": 3,
+        "misses": 1,
+        "false_alarms": 0,
+        "correct_rejections": 0,
+        "hit_rate": 0.75,
+        "false_alarm_rate": null,
+        "f1": 0.8571
+      },
+      "all_confidence_and_candidates": {
+        "hits": 4,
+        "misses": 0,
+        "false_alarms": 0,
+        "correct_rejections": 0,
+        "hit_rate": 1.0,
+        "false_alarm_rate": null,
+        "f1": 1.0
+      }
+    },
+    "strict_instance_identification": {
+      "high_only": {
+        "true_positives": 0,
+        "false_negatives": 5,
+        "false_positives": 1,
+        "precision": 0.0,
+        "recall": 0.0,
+        "f1": 0.0
+      },
+      "high_and_moderate": {
+        "true_positives": 2,
+        "false_negatives": 3,
+        "false_positives": 2,
+        "precision": 0.5,
+        "recall": 0.4,
+        "f1": 0.4444
+      },
+      "all_identified_confidence_levels": {
+        "true_positives": 2,
+        "false_negatives": 3,
+        "false_positives": 2,
+        "precision": 0.5,
+        "recall": 0.4,
+        "f1": 0.4444
+      },
+      "all_confidence_and_candidates": {
+        "true_positives": 2,
+        "false_negatives": 3,
+        "false_positives": 3,
+        "precision": 0.4,
+        "recall": 0.4,
+        "f1": 0.4
+      }
+    },
+    "mechanism_first_identification": {
+      "high_only": {
+        "true_positives": 1,
+        "false_negatives": 4,
+        "false_positives": 0,
+        "precision": 1.0,
+        "recall": 0.2,
+        "f1": 0.3333
+      },
+      "high_and_moderate": {
+        "true_positives": 4,
+        "false_negatives": 1,
+        "false_positives": 0,
+        "precision": 1.0,
+        "recall": 0.8,
+        "f1": 0.8889
+      },
+      "all_identified_confidence_levels": {
+        "true_positives": 4,
+        "false_negatives": 1,
+        "false_positives": 0,
+        "precision": 1.0,
+        "recall": 0.8,
+        "f1": 0.8889
+      },
+      "all_confidence_and_candidates": {
+        "true_positives": 5,
+        "false_negatives": 0,
+        "false_positives": 0,
+        "precision": 1.0,
+        "recall": 1.0,
+        "f1": 1.0
+      }
+    },
+    "taxonomy_gap": {
+      "high_only": {
+        "mechanism_first_f1_minus_strict_f1": 0.3333
+      },
+      "high_and_moderate": {
+        "mechanism_first_f1_minus_strict_f1": 0.4445
+      },
+      "all_identified_confidence_levels": {
+        "mechanism_first_f1_minus_strict_f1": 0.4445
+      },
+      "all_confidence_and_candidates": {
+        "mechanism_first_f1_minus_strict_f1": 0.6
+      }
+    },
+    "confidence_tradeoff": {
+      "increment_from_high_to_high_and_moderate": "Segment hits increase from 1 to 3; strict instance F1 increases from 0.0000 to 0.4444; mechanism-first F1 increases from 0.3333 to 0.8889.",
+      "increment_from_high_and_moderate_to_all_confidence": "No change: there are no additional low-confidence identified findings.",
+      "increment_from_all_confidence_to_all_confidence_and_candidates": "The candidate adds one segment hit and one mechanism-first instance true positive, raising mechanism-first F1 from 0.8889 to 1.0000 while strict F1 decreases from 0.4444 to 0.4000 because the candidate label remains non-equivalent."
+    }
+  },
+  "overall_evaluation_summary": {
+    "hidden_total_planned_occurrences": 5,
+    "rag_total_identified_occurrences": 4,
+    "rag_total_candidate_biases": 1,
+    "segment_level_primary_result": "At the recommended high-and-moderate threshold, the RAG detects 3 of 4 positive reasoning segments with no observed false alarms. Candidate-inclusive scoring detects all 4 positive segments.",
+    "strict_label_plus_mechanism_result": "At the recommended threshold, strict instance scoring yields 2 true positives, 3 false negatives, and 2 false positives, with precision 0.5000, recall 0.4000, and F1 0.4444.",
+    "mechanism_first_result": "At the recommended threshold, mechanism-first scoring yields 4 true positives, 1 false negative, and no false positives, with precision 1.0000, recall 0.8000, and F1 0.8889.",
+    "candidate_tier_value_assessment": "The candidate is a useful abstention: it recovers the hidden intake mechanism under mechanism-first scoring when candidates are included, but its anchoring-bias label is not a strict match.",
+    "main_failure_modes": [
+      "Two identified findings use related but non-equivalent labels: availability heuristic for the BWC recency instance and escalation of commitment for the cognitive-dissonance instance.",
+      "The intake instance is left as a candidate rather than an identified occurrence.",
+      "High-only confidence filtering misses four of five hidden instances under strict scoring."
+    ],
+    "main_strengths": [
+      "All identified findings are grounded in valid interview evidence.",
+      "The groupthink finding is an exact label and mechanism match.",
+      "The recency-bias finding is an approved equivalent label for one hidden Recency Effects instance.",
+      "The candidate output appropriately expresses uncertainty rather than asserting the intake finding as established."
+    ],
+    "benchmark_interpretation": "This run shows strong evidence localization and mechanism recovery but a substantial ontology-label gap. The mechanism-first score materially exceeds strict label scoring, especially because the RAG identifies the intended reasoning mechanisms using neighboring taxonomy labels."
+  }
+}

@@ -1,0 +1,551 @@
+{
+  "evaluation_metadata": {
+    "task": "ontology_free_rag_cognitive_bias_benchmark_evaluation",
+    "benchmark_run_metadata": {
+      "benchmark_run_id": "IP_Biased_3_Sonnet_off",
+      "interview_id": "IP_Biased_3",
+      "system_prompt_id": "Sonnet",
+      "system_prompt_generator": "Prompt 1_2",
+      "rag_model_id": "v1.0.0",
+      "corpus_condition": "off",
+      "retrieval_configuration_id": "k=0",
+      "decoding_configuration_id": null,
+      "temperature": 1,
+      "replicate_id": null,
+      "segment_map_id": null
+    },
+    "scenario_id": "IP_Biased_3",
+    "domain_id": "IP",
+    "condition": "biased",
+    "segment_map_status": "prevalidated_provided",
+    "rag_output_parse_status": "valid_json",
+    "rag_schema_assessment": "conformant"
+  },
+  "input_validation": {
+    "rag_output_schema_violations": [],
+    "rag_summary_count_consistency": {
+      "status": "consistent",
+      "details": "Three identified occurrences are listed and summarized once each; one candidate is separately listed, with no contradictory occurrence count."
+    },
+    "evaluation_limitations": [
+      "No retrieved chunks, source passages, or retrieval logs were supplied, so corpus fidelity cannot be scored.",
+      "The benchmark metadata contains no segment_map_id even though a prevalidated segment map is provided in the input."
+    ]
+  },
+  "evaluation_segment_map": {
+    "segment_mapping_version": "1.0",
+    "segments": [
+      {
+        "segment_id": "seg_001",
+        "speaker": "Participant",
+        "segment_type": "role_and_objective",
+        "raw_interview_anchor": "I own air permit compliance for the whole site... figure out what actually happened, decide what needed to be reported to the state, and keep production moving if I could justify it.",
+        "eligible_reasoning_segment": true,
+        "ground_truth_bias_present": false,
+        "ground_truth_instance_ids": [],
+        "ground_truth_rationale": "The participant states role responsibilities and operational objectives without a manifested hidden bias."
+      },
+      {
+        "segment_id": "seg_002",
+        "speaker": "Participant",
+        "segment_type": "initial_hypothesis_and_evidence_interpretation",
+        "raw_interview_anchor": "My first read was that it was probably drift again... once I had that in my head... I read them as consistent with drift rather than as a red flag on their own.",
+        "eligible_reasoning_segment": true,
+        "ground_truth_bias_present": true,
+        "ground_truth_instance_ids": ["cb_01"],
+        "ground_truth_rationale": "The early drift hypothesis is explicitly described as shaping interpretation of later ambiguous handheld readings, matching the Primacy Effect instance."
+      },
+      {
+        "segment_id": "seg_003",
+        "speaker": "Participant",
+        "segment_type": "operational_constraint_and_shutdown_tradeoff",
+        "raw_interview_anchor": "The readings he brought back were elevated, but not dramatically... We were also mid-batch on a large customer order due in two days, so a shutdown wasn't something anyone wanted to trigger without good reason.",
+        "eligible_reasoning_segment": true,
+        "ground_truth_bias_present": false,
+        "ground_truth_instance_ids": [],
+        "ground_truth_rationale": "This expresses ambiguous evidence and legitimate production constraints, but does not by itself establish a hidden bias mechanism."
+      },
+      {
+        "segment_id": "seg_004",
+        "speaker": "Participant",
+        "segment_type": "information_seeking_and_deferral",
+        "raw_interview_anchor": "I decided to hold off on pulling the full continuous emissions monitoring data... If it had come back showing an exceedance, we'd have been on a 24-hour reporting clock... So I told myself the grey-zone readings weren't conclusive enough.",
+        "eligible_reasoning_segment": true,
+        "ground_truth_bias_present": true,
+        "ground_truth_instance_ids": ["cb_02"],
+        "ground_truth_rationale": "The participant acknowledges the more diagnostic step and links deferral partly to the unwelcome reporting consequence, matching the Ostrich effect instance."
+      },
+      {
+        "segment_id": "seg_005",
+        "speaker": "Participant",
+        "segment_type": "causal_narrative_and_inspection_prioritization",
+        "raw_interview_anchor": "Gasket seep... is genuinely our most common issue... But the Ohio valve failure was just very present for me... the valve scenario is what I wrote down and what I asked maintenance to check first.",
+        "eligible_reasoning_segment": true,
+        "ground_truth_bias_present": true,
+        "ground_truth_instance_ids": ["cb_03"],
+        "ground_truth_rationale": "A vivid recent valve-failure narrative displaced the statistically common gasket explanation in the initial causal framing, matching Imaginability Bias."
+      },
+      {
+        "segment_id": "seg_006",
+        "speaker": "Participant",
+        "segment_type": "reporting_methodology_decision",
+        "raw_interview_anchor": "Once the gasket was confirmed, I had two methodologies I could reasonably apply... picked the one I felt was most defensible given how our last few audits went.",
+        "eligible_reasoning_segment": true,
+        "ground_truth_bias_present": false,
+        "ground_truth_instance_ids": [],
+        "ground_truth_rationale": "The generation specification deliberately leaves decision point 4 as an undetermined judgment call without intended bias instrumentation."
+      },
+      {
+        "segment_id": "seg_007",
+        "speaker": "Participant",
+        "segment_type": "retrospective_uncertainty_and_decision_calibration",
+        "raw_interview_anchor": "Early on, fairly confident it was drift—maybe too confident... If the field readings that first morning had been sharper... that would have changed how much weight I put on the drift explanation.",
+        "eligible_reasoning_segment": true,
+        "ground_truth_bias_present": false,
+        "ground_truth_instance_ids": [],
+        "ground_truth_rationale": "This is retrospective confidence calibration and a counterfactual about evidence sharpness; it does not introduce a separate hidden instance."
+      }
+    ]
+  },
+  "segment_level_adjudications": [
+    {
+      "segment_id": "seg_001",
+      "ground_truth_status": "negative",
+      "ground_truth_instance_ids": [],
+      "rag_identified_occurrence_ids": [],
+      "rag_candidate_ids_counted_at_fourth_threshold": [],
+      "rag_detected_bias_in_segment_by_threshold": {"high_only": false, "high_and_moderate": false, "all_identified_confidence_levels": false, "all_confidence_and_candidates": false},
+      "sdt_outcome_by_threshold": {"high_only": "correct_rejection", "high_and_moderate": "correct_rejection", "all_identified_confidence_levels": "correct_rejection", "all_confidence_and_candidates": "correct_rejection"},
+      "localization_basis": "No RAG finding localizes to this segment.",
+      "adjudication_note": "Neutral role and objective statement; no qualifying prediction."
+    },
+    {
+      "segment_id": "seg_002",
+      "ground_truth_status": "positive",
+      "ground_truth_instance_ids": ["cb_01"],
+      "rag_identified_occurrence_ids": ["obs_001"],
+      "rag_candidate_ids_counted_at_fourth_threshold": [],
+      "rag_detected_bias_in_segment_by_threshold": {"high_only": false, "high_and_moderate": true, "all_identified_confidence_levels": true, "all_confidence_and_candidates": true},
+      "sdt_outcome_by_threshold": {"high_only": "miss", "high_and_moderate": "hit", "all_identified_confidence_levels": "hit", "all_confidence_and_candidates": "hit"},
+      "localization_basis": "obs_001 quotes and paraphrases the participant's drift hypothesis and subsequent interpretation of ambiguous readings, directly overlapping seg_002.",
+      "adjudication_note": "Segment hit at moderate confidence and above; the label is a near neighbor, but the mechanism is the hidden Primacy Effect mechanism."
+    },
+    {
+      "segment_id": "seg_003",
+      "ground_truth_status": "negative",
+      "ground_truth_instance_ids": [],
+      "rag_identified_occurrence_ids": [],
+      "rag_candidate_ids_counted_at_fourth_threshold": [],
+      "rag_detected_bias_in_segment_by_threshold": {"high_only": false, "high_and_moderate": false, "all_identified_confidence_levels": false, "all_confidence_and_candidates": false},
+      "sdt_outcome_by_threshold": {"high_only": "correct_rejection", "high_and_moderate": "correct_rejection", "all_identified_confidence_levels": "correct_rejection", "all_confidence_and_candidates": "correct_rejection"},
+      "localization_basis": "No RAG finding localizes to this segment.",
+      "adjudication_note": "Ambiguous readings and production constraints are not independently scored as a bias."
+    },
+    {
+      "segment_id": "seg_004",
+      "ground_truth_status": "positive",
+      "ground_truth_instance_ids": ["cb_02"],
+      "rag_identified_occurrence_ids": ["obs_002"],
+      "rag_candidate_ids_counted_at_fourth_threshold": [],
+      "rag_detected_bias_in_segment_by_threshold": {"high_only": false, "high_and_moderate": true, "all_identified_confidence_levels": true, "all_confidence_and_candidates": true},
+      "sdt_outcome_by_threshold": {"high_only": "miss", "high_and_moderate": "hit", "all_identified_confidence_levels": "hit", "all_confidence_and_candidates": "hit"},
+      "localization_basis": "obs_002 quotes the participant's acknowledged deferral of the full CEM pull and the reporting-clock consequence, directly overlapping seg_004.",
+      "adjudication_note": "Segment hit at moderate confidence and above; Motivated reasoning is not the hidden target label, but the stated avoidance mechanism fully matches the Ostrich effect instance."
+    },
+    {
+      "segment_id": "seg_005",
+      "ground_truth_status": "positive",
+      "ground_truth_instance_ids": ["cb_03"],
+      "rag_identified_occurrence_ids": ["obs_003"],
+      "rag_candidate_ids_counted_at_fourth_threshold": [],
+      "rag_detected_bias_in_segment_by_threshold": {"high_only": false, "high_and_moderate": true, "all_identified_confidence_levels": true, "all_confidence_and_candidates": true},
+      "sdt_outcome_by_threshold": {"high_only": "miss", "high_and_moderate": "hit", "all_identified_confidence_levels": "hit", "all_confidence_and_candidates": "hit"},
+      "localization_basis": "obs_003 quotes the vivid Ohio incident, the gasket base rate, and the resulting inspection priority, directly overlapping seg_005.",
+      "adjudication_note": "Segment hit at moderate confidence and above; Availability heuristic is a near-neighbor label, while the mechanism fully matches Imaginability Bias."
+    },
+    {
+      "segment_id": "seg_006",
+      "ground_truth_status": "negative",
+      "ground_truth_instance_ids": [],
+      "rag_identified_occurrence_ids": [],
+      "rag_candidate_ids_counted_at_fourth_threshold": [],
+      "rag_detected_bias_in_segment_by_threshold": {"high_only": false, "high_and_moderate": false, "all_identified_confidence_levels": false, "all_confidence_and_candidates": false},
+      "sdt_outcome_by_threshold": {"high_only": "correct_rejection", "high_and_moderate": "correct_rejection", "all_identified_confidence_levels": "correct_rejection", "all_confidence_and_candidates": "correct_rejection"},
+      "localization_basis": "No RAG finding localizes to this segment.",
+      "adjudication_note": "The fourth decision is an undetermined methodology choice and receives no bias credit or penalty absent a RAG finding."
+    },
+    {
+      "segment_id": "seg_007",
+      "ground_truth_status": "negative",
+      "ground_truth_instance_ids": [],
+      "rag_identified_occurrence_ids": [],
+      "rag_candidate_ids_counted_at_fourth_threshold": ["cand_001"],
+      "rag_detected_bias_in_segment_by_threshold": {"high_only": false, "high_and_moderate": false, "all_identified_confidence_levels": false, "all_confidence_and_candidates": true},
+      "sdt_outcome_by_threshold": {"high_only": "correct_rejection", "high_and_moderate": "correct_rejection", "all_identified_confidence_levels": "correct_rejection", "all_confidence_and_candidates": "false_positive"},
+      "localization_basis": "cand_001 uses a valid quote from the retrospective confidence-calibration segment seg_007.",
+      "adjudication_note": "The overconfidence candidate is counted only at the fourth threshold and creates a false alarm because seg_007 is negative and the retrospective evidence is insufficient to establish a hidden instance."
+    }
+  ],
+  "instance_level_adjudications": [
+    {
+      "hidden_instance_id": "cb_01",
+      "hidden_target_bias_label": "Primacy Effect",
+      "hidden_decision_or_episode": "Decision point 1: initial alarm triage and interpretation of later ambiguous handheld readings",
+      "hidden_mechanism": "An early alarm-log-based drift hypothesis anchors interpretation of subsequent ambiguous field readings.",
+      "matched_finding_by_threshold": {
+        "high_only": {"matched_id": null, "matched_type": "none"},
+        "high_and_moderate": {"matched_id": "obs_001", "matched_type": "identified"},
+        "all_identified_confidence_levels": {"matched_id": "obs_001", "matched_type": "identified"},
+        "all_confidence_and_candidates": {"matched_id": "obs_001", "matched_type": "identified"}
+      },
+      "rag_predicted_bias_label": "Confirmation bias",
+      "rag_confidence": "moderate",
+      "label_equivalence_result": "near_neighbor_label",
+      "localization_match_type": "exact_quote_match",
+      "mechanism_overlap": "full_mechanism_match",
+      "strict_scorecard_outcome_by_threshold": {"high_only": "false_negative", "high_and_moderate": "false_negative", "all_identified_confidence_levels": "false_negative", "all_confidence_and_candidates": "false_negative"},
+      "mechanism_first_scorecard_outcome_by_threshold": {"high_only": "false_negative", "high_and_moderate": "true_positive", "all_identified_confidence_levels": "true_positive", "all_confidence_and_candidates": "true_positive"},
+      "secondary_diagnostic_outcome": "correct_location_wrong_bias_label",
+      "label_equivalence_explanation": "Confirmation bias is a related construct, but it is not an approved equivalent of Primacy Effect. The finding's label therefore fails the strict label requirement.",
+      "mechanism_overlap_explanation": "The finding fully captures the initial drift hypothesis being used to interpret later ambiguous readings and the failure to treat them as disconfirming evidence.",
+      "evidence_fidelity_assessment": "The quoted and paraphrased evidence is valid, correctly attributed to the participant, and directly supports the mechanism."
+    },
+    {
+      "hidden_instance_id": "cb_02",
+      "hidden_target_bias_label": "Ostrich effect",
+      "hidden_decision_or_episode": "Decision point 2: deferral of the full CEM data pull and lab confirmation",
+      "hidden_mechanism": "The officer deliberately defers diagnostic information gathering to avoid confirming a costly reportable exceedance.",
+      "matched_finding_by_threshold": {
+        "high_only": {"matched_id": null, "matched_type": "none"},
+        "high_and_moderate": {"matched_id": "obs_002", "matched_type": "identified"},
+        "all_identified_confidence_levels": {"matched_id": "obs_002", "matched_type": "identified"},
+        "all_confidence_and_candidates": {"matched_id": "obs_002", "matched_type": "identified"}
+      },
+      "rag_predicted_bias_label": "Motivated reasoning",
+      "rag_confidence": "moderate",
+      "label_equivalence_result": "near_neighbor_label",
+      "localization_match_type": "exact_quote_match",
+      "mechanism_overlap": "full_mechanism_match",
+      "strict_scorecard_outcome_by_threshold": {"high_only": "false_negative", "high_and_moderate": "false_negative", "all_identified_confidence_levels": "false_negative", "all_confidence_and_candidates": "false_negative"},
+      "mechanism_first_scorecard_outcome_by_threshold": {"high_only": "false_negative", "high_and_moderate": "true_positive", "all_identified_confidence_levels": "true_positive", "all_confidence_and_candidates": "true_positive"},
+      "secondary_diagnostic_outcome": "correct_location_wrong_bias_label",
+      "label_equivalence_explanation": "Motivated reasoning is broader than and not an approved equivalent of the hidden Ostrich effect label. The mechanism is nevertheless specific to avoiding an unwelcome confirmatory information result.",
+      "mechanism_overlap_explanation": "The finding fully captures conscious deferral of the more diagnostic CEM and lab steps because a confirmed exceedance would trigger reporting and operational consequences.",
+      "evidence_fidelity_assessment": "The evidence is a valid participant quote and accurately preserves both the acknowledged diagnostic value and the stated reporting-related rationale for deferral."
+    },
+    {
+      "hidden_instance_id": "cb_03",
+      "hidden_target_bias_label": "Imaginability Bias",
+      "hidden_decision_or_episode": "Decision point 3: causal narrative construction and first inspection priority",
+      "hidden_mechanism": "A vivid, recently recalled sister-plant valve-failure incident disproportionately shapes causal attribution over the statistically dominant gasket-seep base rate.",
+      "matched_finding_by_threshold": {
+        "high_only": {"matched_id": null, "matched_type": "none"},
+        "high_and_moderate": {"matched_id": "obs_003", "matched_type": "identified"},
+        "all_identified_confidence_levels": {"matched_id": "obs_003", "matched_type": "identified"},
+        "all_confidence_and_candidates": {"matched_id": "obs_003", "matched_type": "identified"}
+      },
+      "rag_predicted_bias_label": "Availability heuristic",
+      "rag_confidence": "moderate",
+      "label_equivalence_result": "near_neighbor_label",
+      "localization_match_type": "exact_quote_match",
+      "mechanism_overlap": "full_mechanism_match",
+      "strict_scorecard_outcome_by_threshold": {"high_only": "false_negative", "high_and_moderate": "false_negative", "all_identified_confidence_levels": "false_negative", "all_confidence_and_candidates": "false_negative"},
+      "mechanism_first_scorecard_outcome_by_threshold": {"high_only": "false_negative", "high_and_moderate": "true_positive", "all_identified_confidence_levels": "true_positive", "all_confidence_and_candidates": "true_positive"},
+      "secondary_diagnostic_outcome": "correct_location_wrong_bias_label",
+      "label_equivalence_explanation": "Availability heuristic is a related vividness/salience construct, but it is not an approved equivalent of Imaginability Bias for this benchmark instance.",
+      "mechanism_overlap_explanation": "The finding fully captures the vivid recent Ohio incident displacing the statistically common gasket explanation in causal framing and inspection prioritization.",
+      "evidence_fidelity_assessment": "The quoted evidence is valid, correctly attributed, and supports the contrast between the memorable Ohio case and the local maintenance-log base rate."
+    }
+  ],
+  "unmatched_rag_predictions": [
+    {
+      "rag_occurrence_id": "obs_001",
+      "rag_finding_type": "identified",
+      "rag_predicted_bias_label": "Confirmation bias",
+      "rag_confidence": "moderate",
+      "localized_segment_id": "seg_002",
+      "best_related_hidden_instance_id": "cb_01",
+      "label_equivalence_result": "near_neighbor_label",
+      "mechanism_overlap": "full_mechanism_match",
+      "strict_classification": "correct_location_wrong_bias_label",
+      "mechanism_first_classification": "not_applicable",
+      "counted_at_thresholds": ["high_and_moderate", "all_identified_confidence_levels", "all_confidence_and_candidates"],
+      "why_not_an_exact_strict_match": "The finding is correctly localized and has the full Primacy Effect mechanism, but Confirmation bias is a near-neighbor label rather than the exact or approved-equivalent target label."
+    },
+    {
+      "rag_occurrence_id": "obs_002",
+      "rag_finding_type": "identified",
+      "rag_predicted_bias_label": "Motivated reasoning",
+      "rag_confidence": "moderate",
+      "localized_segment_id": "seg_004",
+      "best_related_hidden_instance_id": "cb_02",
+      "label_equivalence_result": "near_neighbor_label",
+      "mechanism_overlap": "full_mechanism_match",
+      "strict_classification": "correct_location_wrong_bias_label",
+      "mechanism_first_classification": "not_applicable",
+      "counted_at_thresholds": ["high_and_moderate", "all_identified_confidence_levels", "all_confidence_and_candidates"],
+      "why_not_an_exact_strict_match": "The finding is correctly localized and captures the full avoidance mechanism, but Motivated reasoning is broader than and not an approved equivalent of the hidden Ostrich effect label."
+    },
+    {
+      "rag_occurrence_id": "obs_003",
+      "rag_finding_type": "identified",
+      "rag_predicted_bias_label": "Availability heuristic",
+      "rag_confidence": "moderate",
+      "localized_segment_id": "seg_005",
+      "best_related_hidden_instance_id": "cb_03",
+      "label_equivalence_result": "near_neighbor_label",
+      "mechanism_overlap": "full_mechanism_match",
+      "strict_classification": "correct_location_wrong_bias_label",
+      "mechanism_first_classification": "not_applicable",
+      "counted_at_thresholds": ["high_and_moderate", "all_identified_confidence_levels", "all_confidence_and_candidates"],
+      "why_not_an_exact_strict_match": "The finding is correctly localized and captures the full vividness-over-base-rate mechanism, but Availability heuristic is not an approved equivalent of Imaginability Bias."
+    },
+    {
+      "rag_occurrence_id": "cand_001",
+      "rag_finding_type": "candidate",
+      "rag_predicted_bias_label": "Overconfidence bias",
+      "rag_confidence": "candidate",
+      "localized_segment_id": "seg_007",
+      "best_related_hidden_instance_id": null,
+      "label_equivalence_result": "different_construct",
+      "mechanism_overlap": "no_mechanism_overlap",
+      "strict_classification": "unsupported_prediction",
+      "mechanism_first_classification": "unsupported_prediction",
+      "counted_at_thresholds": ["all_confidence_and_candidates"],
+      "why_not_an_exact_strict_match": "The candidate relies on retrospective self-calibration and does not establish an objectively excessive contemporaneous confidence judgment or any hidden target mechanism; it localizes to a negative segment."
+    }
+  ],
+  "candidate_analysis": {
+    "candidate_count": 1,
+    "candidates": [
+      {
+        "candidate_id": "cand_001",
+        "proposed_bias_label": "Overconfidence bias",
+        "localized_segment_id": "seg_007",
+        "best_related_hidden_instance_id": null,
+        "quote_validity": "valid",
+        "would_match_if_promoted_strict": false,
+        "would_match_if_promoted_mechanism_first": false,
+        "counted_as_detection_at_fourth_threshold": true,
+        "fourth_threshold_outcome": "false_positive",
+        "candidate_assessment": "unsupported_speculation",
+        "details": "The quote is accurate, but it is retrospective and compatible with legitimate reliance on a documented sensor-drift history. It does not establish the hidden Primacy Effect mechanism and falls on negative segment seg_007."
+      }
+    ]
+  },
+  "signal_detection_summary": {
+    "evaluation_unit": "eligible_reasoning_segment",
+    "high_only": {
+      "positive_segments": 3,
+      "negative_segments": 4,
+      "hits": 0,
+      "misses": 3,
+      "false_alarms": 0,
+      "correct_rejections": 4,
+      "hit_rate": 0.0,
+      "false_alarm_rate": 0.0,
+      "accuracy": 0.5714,
+      "precision": null,
+      "recall": 0.0,
+      "f1": null,
+      "detection_interpretation": "No identified occurrence is high confidence, so all three positive segments are missed and all four negative segments are correctly rejected."
+    },
+    "high_and_moderate": {
+      "positive_segments": 3,
+      "negative_segments": 4,
+      "hits": 3,
+      "misses": 0,
+      "false_alarms": 0,
+      "correct_rejections": 4,
+      "hit_rate": 1.0,
+      "false_alarm_rate": 0.0,
+      "accuracy": 1.0,
+      "precision": 1.0,
+      "recall": 1.0,
+      "f1": 1.0,
+      "detection_interpretation": "All three positive segments are detected by moderate-confidence findings, with no negative-segment detections."
+    },
+    "all_identified_confidence_levels": {
+      "positive_segments": 3,
+      "negative_segments": 4,
+      "hits": 3,
+      "misses": 0,
+      "false_alarms": 0,
+      "correct_rejections": 4,
+      "hit_rate": 1.0,
+      "false_alarm_rate": 0.0,
+      "accuracy": 1.0,
+      "precision": 1.0,
+      "recall": 1.0,
+      "f1": 1.0,
+      "detection_interpretation": "The identified-only result is unchanged because all identified occurrences are moderate confidence."
+    },
+    "all_confidence_and_candidates": {
+      "positive_segments": 3,
+      "negative_segments": 4,
+      "hits": 3,
+      "misses": 0,
+      "false_alarms": 1,
+      "correct_rejections": 3,
+      "hit_rate": 1.0,
+      "false_alarm_rate": 0.25,
+      "accuracy": 0.8571,
+      "precision": 0.75,
+      "recall": 1.0,
+      "f1": 0.8571,
+      "detection_interpretation": "Adding the overconfidence candidate preserves all positive-segment hits but adds one false alarm on negative seg_007."
+    }
+  },
+  "strict_instance_level_metrics": {
+    "high_only": {"true_positives": 0, "false_negatives": 3, "false_positives": 0, "precision": null, "recall": 0.0, "f1": null, "exact_occurrence_match_rate": 0.0, "occurrence_count_match_rate": 0.0},
+    "high_and_moderate": {"true_positives": 0, "false_negatives": 3, "false_positives": 3, "precision": 0.0, "recall": 0.0, "f1": 0.0, "exact_occurrence_match_rate": 0.0, "occurrence_count_match_rate": 0.0},
+    "all_identified_confidence_levels": {"true_positives": 0, "false_negatives": 3, "false_positives": 3, "precision": 0.0, "recall": 0.0, "f1": 0.0, "exact_occurrence_match_rate": 0.0, "occurrence_count_match_rate": 0.0},
+    "all_confidence_and_candidates": {"true_positives": 0, "false_negatives": 3, "false_positives": 4, "precision": 0.0, "recall": 0.0, "f1": 0.0, "exact_occurrence_match_rate": 0.0, "occurrence_count_match_rate": 0.0}
+  },
+  "mechanism_first_instance_level_metrics": {
+    "high_only": {"true_positives": 0, "false_negatives": 3, "false_positives": 0, "precision": null, "recall": 0.0, "f1": null, "exact_occurrence_match_rate": 0.0, "occurrence_count_match_rate": 0.0},
+    "high_and_moderate": {"true_positives": 3, "false_negatives": 0, "false_positives": 0, "precision": 1.0, "recall": 1.0, "f1": 1.0, "exact_occurrence_match_rate": 1.0, "occurrence_count_match_rate": 1.0},
+    "all_identified_confidence_levels": {"true_positives": 3, "false_negatives": 0, "false_positives": 0, "precision": 1.0, "recall": 1.0, "f1": 1.0, "exact_occurrence_match_rate": 1.0, "occurrence_count_match_rate": 1.0},
+    "all_confidence_and_candidates": {"true_positives": 3, "false_negatives": 0, "false_positives": 1, "precision": 0.75, "recall": 1.0, "f1": 0.8571, "exact_occurrence_match_rate": 1.0, "occurrence_count_match_rate": 1.0}
+  },
+  "target_bias_performance": [
+    {
+      "hidden_target_bias_label": "Primacy Effect",
+      "hidden_requested_occurrences": 1,
+      "strict_true_positives_by_threshold": {"high_only": 0, "high_and_moderate": 0, "all_identified_confidence_levels": 0, "all_confidence_and_candidates": 0},
+      "mechanism_first_true_positives_by_threshold": {"high_only": 0, "high_and_moderate": 1, "all_identified_confidence_levels": 1, "all_confidence_and_candidates": 1},
+      "count_match_status_at_all_confidence_and_candidates": "underdetected"
+    },
+    {
+      "hidden_target_bias_label": "Ostrich effect",
+      "hidden_requested_occurrences": 1,
+      "strict_true_positives_by_threshold": {"high_only": 0, "high_and_moderate": 0, "all_identified_confidence_levels": 0, "all_confidence_and_candidates": 0},
+      "mechanism_first_true_positives_by_threshold": {"high_only": 0, "high_and_moderate": 1, "all_identified_confidence_levels": 1, "all_confidence_and_candidates": 1},
+      "count_match_status_at_all_confidence_and_candidates": "underdetected"
+    },
+    {
+      "hidden_target_bias_label": "Imaginability Bias",
+      "hidden_requested_occurrences": 1,
+      "strict_true_positives_by_threshold": {"high_only": 0, "high_and_moderate": 0, "all_identified_confidence_levels": 0, "all_confidence_and_candidates": 0},
+      "mechanism_first_true_positives_by_threshold": {"high_only": 0, "high_and_moderate": 1, "all_identified_confidence_levels": 1, "all_confidence_and_candidates": 1},
+      "count_match_status_at_all_confidence_and_candidates": "underdetected"
+    }
+  ],
+  "rag_label_false_positive_inventory": [
+    {
+      "rag_predicted_bias_label": "Confirmation bias",
+      "finding_type": "identified",
+      "alternative_labels": ["Confirmatory bias", "Hypothesis confirmation bias", "Myside bias"],
+      "occurrence_count": 1,
+      "best_related_hidden_target_bias_label": "Primacy Effect",
+      "label_relation": "near_neighbor",
+      "mechanism_overlap_summary": "Full overlap with the hidden early-hypothesis and later-ambiguous-evidence mechanism.",
+      "primary_error_types": ["correct_location_wrong_bias_label", "near_neighbor_label"]
+    },
+    {
+      "rag_predicted_bias_label": "Motivated reasoning",
+      "finding_type": "identified",
+      "alternative_labels": ["Directional motivated reasoning", "Motivated information avoidance"],
+      "occurrence_count": 1,
+      "best_related_hidden_target_bias_label": "Ostrich effect",
+      "label_relation": "near_neighbor",
+      "mechanism_overlap_summary": "Full overlap with the hidden deliberate deferral of diagnostic information to avoid an unwelcome result.",
+      "primary_error_types": ["correct_location_wrong_bias_label", "near_neighbor_label"]
+    },
+    {
+      "rag_predicted_bias_label": "Availability heuristic",
+      "finding_type": "identified",
+      "alternative_labels": ["Availability bias", "Vividness effect", "Salience heuristic"],
+      "occurrence_count": 1,
+      "best_related_hidden_target_bias_label": "Imaginability Bias",
+      "label_relation": "near_neighbor",
+      "mechanism_overlap_summary": "Full overlap with the hidden vivid-recent-incident-over-base-rate mechanism.",
+      "primary_error_types": ["correct_location_wrong_bias_label", "near_neighbor_label"]
+    },
+    {
+      "rag_predicted_bias_label": "Overconfidence bias",
+      "finding_type": "candidate",
+      "alternative_labels": ["Overprecision", "Miscalibration"],
+      "occurrence_count": 1,
+      "best_related_hidden_target_bias_label": null,
+      "label_relation": "no_related_target",
+      "mechanism_overlap_summary": "The candidate concerns retrospective confidence calibration, not any hidden target mechanism.",
+      "primary_error_types": ["unsupported_prediction"]
+    }
+  ],
+  "diagnostic_error_summary": {
+    "correct_location_wrong_bias_label_count": 3,
+    "correct_label_wrong_location_count": 0,
+    "correct_label_location_wrong_mechanism_count": 0,
+    "mechanism_detected_label_unresolved_count": 0,
+    "partial_mechanism_match_count": 0,
+    "duplicate_prediction_count": 0,
+    "unsupported_prediction_count": 1,
+    "fabricated_or_invalid_quote_count": 0,
+    "approved_alias_or_equivalence_count": 0,
+    "near_neighbor_label_count": 3,
+    "different_construct_label_count": 1,
+    "candidate_count": 1,
+    "candidate_useful_abstention_count": 0,
+    "candidate_near_miss_count": 0,
+    "candidates_promoted_to_true_positive_at_fourth_threshold_count": 0
+  },
+  "corpus_support_audit": {
+    "primary_corpus_fidelity_score_available": false,
+    "rag_occurrences_claiming_retrieved_support": 0,
+    "rag_occurrences_with_no_claimed_retrieved_support": 4,
+    "rag_occurrences_with_unverifiable_or_internally_inconsistent_citation_metadata": 0,
+    "assessment_note": "The RAG output explicitly states that retrieved corpus support was not used and supplies no citation metadata. Corpus fidelity is therefore unavailable, not a scored failure."
+  },
+  "comparison_ready_summary": {
+    "primary_recommended_comparison_threshold": "high_and_moderate",
+    "segment_detection": {
+      "high_only": {"hits": 0, "misses": 3, "false_alarms": 0, "correct_rejections": 4, "hit_rate": 0.0, "false_alarm_rate": 0.0, "f1": null},
+      "high_and_moderate": {"hits": 3, "misses": 0, "false_alarms": 0, "correct_rejections": 4, "hit_rate": 1.0, "false_alarm_rate": 0.0, "f1": 1.0},
+      "all_identified_confidence_levels": {"hits": 3, "misses": 0, "false_alarms": 0, "correct_rejections": 4, "hit_rate": 1.0, "false_alarm_rate": 0.0, "f1": 1.0},
+      "all_confidence_and_candidates": {"hits": 3, "misses": 0, "false_alarms": 1, "correct_rejections": 3, "hit_rate": 1.0, "false_alarm_rate": 0.25, "f1": 0.8571}
+    },
+    "strict_instance_identification": {
+      "high_only": {"true_positives": 0, "false_negatives": 3, "false_positives": 0, "precision": null, "recall": 0.0, "f1": null},
+      "high_and_moderate": {"true_positives": 0, "false_negatives": 3, "false_positives": 3, "precision": 0.0, "recall": 0.0, "f1": 0.0},
+      "all_identified_confidence_levels": {"true_positives": 0, "false_negatives": 3, "false_positives": 3, "precision": 0.0, "recall": 0.0, "f1": 0.0},
+      "all_confidence_and_candidates": {"true_positives": 0, "false_negatives": 3, "false_positives": 4, "precision": 0.0, "recall": 0.0, "f1": 0.0}
+    },
+    "mechanism_first_identification": {
+      "high_only": {"true_positives": 0, "false_negatives": 3, "false_positives": 0, "precision": null, "recall": 0.0, "f1": null},
+      "high_and_moderate": {"true_positives": 3, "false_negatives": 0, "false_positives": 0, "precision": 1.0, "recall": 1.0, "f1": 1.0},
+      "all_identified_confidence_levels": {"true_positives": 3, "false_negatives": 0, "false_positives": 0, "precision": 1.0, "recall": 1.0, "f1": 1.0},
+      "all_confidence_and_candidates": {"true_positives": 3, "false_negatives": 0, "false_positives": 1, "precision": 0.75, "recall": 1.0, "f1": 0.8571}
+    },
+    "taxonomy_gap": {
+      "high_only": {"mechanism_first_f1_minus_strict_f1": null},
+      "high_and_moderate": {"mechanism_first_f1_minus_strict_f1": 1.0},
+      "all_identified_confidence_levels": {"mechanism_first_f1_minus_strict_f1": 1.0},
+      "all_confidence_and_candidates": {"mechanism_first_f1_minus_strict_f1": 0.8571}
+    },
+    "confidence_tradeoff": {
+      "increment_from_high_to_high_and_moderate": "Segment F1 rises from null to 1.0000; mechanism-first instance F1 rises from null to 1.0000, while strict instance F1 remains 0.0000.",
+      "increment_from_high_and_moderate_to_all_confidence": "No change: all three identified findings are moderate confidence and there are no low-confidence findings.",
+      "increment_from_all_confidence_to_all_confidence_and_candidates": "The candidate tier adds one segment false alarm and one mechanism-first instance false positive; segment F1 falls from 1.0000 to 0.8571 and mechanism-first instance F1 falls from 1.0000 to 0.8571."
+    }
+  },
+  "overall_evaluation_summary": {
+    "hidden_total_planned_occurrences": 3,
+    "rag_total_identified_occurrences": 3,
+    "rag_total_candidate_biases": 1,
+    "segment_level_primary_result": "At the recommended high-and-moderate threshold, all three positive segments are detected with no segment-level false alarms.",
+    "strict_label_plus_mechanism_result": "No strict true positives: all three identified findings are correctly localized and mechanistically complete, but each uses a non-equivalent near-neighbor label.",
+    "mechanism_first_result": "All three hidden instances are detected at moderate confidence with full mechanisms and valid evidence; the candidate tier adds one false positive.",
+    "candidate_tier_value_assessment": "The overconfidence candidate is a cautious but unsupported speculation on a negative segment; it does not recover a hidden instance and lowers precision when candidates are counted.",
+    "main_failure_modes": [
+      "Systematic taxonomy mismatch: Confirmation bias, Motivated reasoning, and Availability heuristic replace the benchmark target labels.",
+      "A retrospective Overconfidence bias candidate is counted as a false alarm at the candidate threshold."
+    ],
+    "main_strengths": [
+      "All three identified findings localize to the correct positive segments.",
+      "Each identified finding states the hidden mechanism with full overlap and uses valid transcript evidence.",
+      "The output explicitly discloses that retrieved corpus support was unavailable."
+    ],
+    "benchmark_interpretation": "This run has perfect mechanism-first detection at the recommended threshold but zero strict label-plus-mechanism recall. The result demonstrates a substantial taxonomy gap rather than an evidence-localization failure; candidate inclusion adds noise without improving hidden-instance coverage."
+  }
+}

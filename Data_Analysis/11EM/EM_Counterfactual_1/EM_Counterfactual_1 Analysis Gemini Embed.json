@@ -1,0 +1,610 @@
+{
+  "evaluation_metadata": {
+    "task": "ontology_free_rag_cognitive_bias_benchmark_evaluation",
+    "benchmark_run_metadata": {
+      "benchmark_run_id": "EM_Counterfactual_1_Gemini_on",
+      "interview_id": "EM_Counterfactual_1",
+      "system_prompt_id": "Gemini",
+      "system_prompt_generator": "Prompt 1_2",
+      "rag_model_id": "v1.0.0",
+      "corpus_condition": "on",
+      "retrieval_configuration_id": "k=50",
+      "decoding_configuration_id": null,
+      "temperature": 1,
+      "replicate_id": null,
+      "segment_map_id": null
+    },
+    "scenario_id": "EM_Counterfactual_1",
+    "domain_id": "EM",
+    "condition": "counterfactual",
+    "segment_map_status": "generated_not_prevalidated",
+    "rag_output_parse_status": "valid_json",
+    "rag_schema_assessment": "conformant"
+  },
+  "input_validation": {
+    "rag_output_schema_violations": [],
+    "rag_summary_count_consistency": {
+      "status": "consistent",
+      "details": "identified_bias_summary reports one Curse of knowledge occurrence and identified_occurrences contains exactly one identified occurrence; its moderate confidence is valid. One candidate_biases record is present with a distinct candidate status."
+    },
+    "evaluation_limitations": [
+      "No frozen evaluation segment map was supplied; the four-segment map was generated from the raw interview and hidden generation specification.",
+      "No retrieved chunks or retrieval logs were supplied, so corpus fidelity cannot be independently verified."
+    ]
+  },
+  "evaluation_segment_map": {
+    "segment_mapping_version": "1.0",
+    "segments": [
+      {
+        "segment_id": "seg_001",
+        "speaker": "Participant",
+        "segment_type": "decision_point_1_reasoning",
+        "raw_interview_anchor": "Pausing the exercise and checking actual weather data after a scripted communications-disruption inject coincided with a real weather alert and ambiguous field reports.",
+        "eligible_reasoning_segment": true,
+        "ground_truth_bias_present": false,
+        "ground_truth_instance_ids": [],
+        "ground_truth_rationale": "No hidden bias is assigned to decision point 1. The participant recognizes that reports do not fit the script and verifies real-time conditions before acting."
+      },
+      {
+        "segment_id": "seg_002",
+        "speaker": "Participant",
+        "segment_type": "decision_point_2_reasoning",
+        "raw_interview_anchor": "Giving newly rotated liaison officers the abbreviated instructions “usual Zone C protocol” and “standard muster point,” while assuming those local terms were self-explanatory despite having ample time.",
+        "eligible_reasoning_segment": true,
+        "ground_truth_bias_present": true,
+        "ground_truth_instance_ids": [
+          "ck_01"
+        ],
+        "ground_truth_rationale": "Curse of Knowledge: the experienced briefer relies on facility-specific shorthand and assumes newly rotated liaisons share tacit operational knowledge; subsequent wrong-muster-point direction and terminology confusion support the mechanism."
+      },
+      {
+        "segment_id": "seg_003",
+        "speaker": "Participant",
+        "segment_type": "decision_point_3_reasoning",
+        "raw_interview_anchor": "Prioritizing the site facing the fastest-closing road access with two buses instead of splitting transport evenly across three sites.",
+        "eligible_reasoning_segment": true,
+        "ground_truth_bias_present": false,
+        "ground_truth_instance_ids": [],
+        "ground_truth_rationale": "No hidden bias is assigned to decision point 3. The participant explicitly weighs closure risk and transport constraints to avoid stranding evacuees."
+      },
+      {
+        "segment_id": "seg_004",
+        "speaker": "Participant",
+        "segment_type": "decision_point_4_reasoning",
+        "raw_interview_anchor": "Suspending the exercise and transferring command to the Incident Commander with a written status briefing during degraded communications.",
+        "eligible_reasoning_segment": true,
+        "ground_truth_bias_present": false,
+        "ground_truth_instance_ids": [],
+        "ground_truth_rationale": "No hidden bias is assigned to decision point 4. The written handoff is a deliberate reliability choice under degraded communications."
+      }
+    ]
+  },
+  "segment_level_adjudications": [
+    {
+      "segment_id": "seg_001",
+      "ground_truth_status": "negative",
+      "ground_truth_instance_ids": [],
+      "rag_identified_occurrence_ids": [],
+      "rag_candidate_ids_counted_at_fourth_threshold": [],
+      "rag_detected_bias_in_segment_by_threshold": {
+        "high_only": false,
+        "high_and_moderate": false,
+        "all_identified_confidence_levels": false,
+        "all_confidence_and_candidates": false
+      },
+      "sdt_outcome_by_threshold": {
+        "high_only": "correct_rejection",
+        "high_and_moderate": "correct_rejection",
+        "all_identified_confidence_levels": "correct_rejection",
+        "all_confidence_and_candidates": "correct_rejection"
+      },
+      "localization_basis": "No RAG finding localizes to this segment.",
+      "adjudication_note": "No hidden bias instance is assigned here and no RAG finding localizes here."
+    },
+    {
+      "segment_id": "seg_002",
+      "ground_truth_status": "positive",
+      "ground_truth_instance_ids": [
+        "ck_01"
+      ],
+      "rag_identified_occurrence_ids": [
+        "obs_001"
+      ],
+      "rag_candidate_ids_counted_at_fourth_threshold": [
+        "cand_001"
+      ],
+      "rag_detected_bias_in_segment_by_threshold": {
+        "high_only": false,
+        "high_and_moderate": true,
+        "all_identified_confidence_levels": true,
+        "all_confidence_and_candidates": true
+      },
+      "sdt_outcome_by_threshold": {
+        "high_only": "miss",
+        "high_and_moderate": "hit",
+        "all_identified_confidence_levels": "hit",
+        "all_confidence_and_candidates": "hit"
+      },
+      "localization_basis": "obs_001 and cand_001 quote verbatim Participant reasoning from the liaison handoff; obs_001 directly quotes the mapped mechanism span and cand_001 quotes the same episode.",
+      "adjudication_note": "The hidden positive instance is localized here. obs_001 supplies the qualifying identified finding at moderate and higher cumulative thresholds; cand_001 is an additional fourth-threshold candidate in the same segment."
+    },
+    {
+      "segment_id": "seg_003",
+      "ground_truth_status": "negative",
+      "ground_truth_instance_ids": [],
+      "rag_identified_occurrence_ids": [],
+      "rag_candidate_ids_counted_at_fourth_threshold": [],
+      "rag_detected_bias_in_segment_by_threshold": {
+        "high_only": false,
+        "high_and_moderate": false,
+        "all_identified_confidence_levels": false,
+        "all_confidence_and_candidates": false
+      },
+      "sdt_outcome_by_threshold": {
+        "high_only": "correct_rejection",
+        "high_and_moderate": "correct_rejection",
+        "all_identified_confidence_levels": "correct_rejection",
+        "all_confidence_and_candidates": "correct_rejection"
+      },
+      "localization_basis": "No RAG finding localizes to this segment.",
+      "adjudication_note": "No hidden bias instance is assigned here and no RAG finding localizes here."
+    },
+    {
+      "segment_id": "seg_004",
+      "ground_truth_status": "negative",
+      "ground_truth_instance_ids": [],
+      "rag_identified_occurrence_ids": [],
+      "rag_candidate_ids_counted_at_fourth_threshold": [],
+      "rag_detected_bias_in_segment_by_threshold": {
+        "high_only": false,
+        "high_and_moderate": false,
+        "all_identified_confidence_levels": false,
+        "all_confidence_and_candidates": false
+      },
+      "sdt_outcome_by_threshold": {
+        "high_only": "correct_rejection",
+        "high_and_moderate": "correct_rejection",
+        "all_identified_confidence_levels": "correct_rejection",
+        "all_confidence_and_candidates": "correct_rejection"
+      },
+      "localization_basis": "No RAG finding localizes to this segment.",
+      "adjudication_note": "No hidden bias instance is assigned here and no RAG finding localizes here."
+    }
+  ],
+  "instance_level_adjudications": [
+    {
+      "hidden_instance_id": "ck_01",
+      "hidden_target_bias_label": "Curse of Knowledge",
+      "hidden_decision_or_episode": "Decision point 2: liaison shift handoff",
+      "hidden_mechanism": "Expert briefer assumes newly rotated, less-informed liaison officers share the same tacit facility-specific knowledge and terminology, resulting in an under-explained shift-handoff briefing even when time pressure is not binding.",
+      "matched_finding_by_threshold": {
+        "high_only": {
+          "matched_id": null,
+          "matched_type": "none"
+        },
+        "high_and_moderate": {
+          "matched_id": "obs_001",
+          "matched_type": "identified"
+        },
+        "all_identified_confidence_levels": {
+          "matched_id": "obs_001",
+          "matched_type": "identified"
+        },
+        "all_confidence_and_candidates": {
+          "matched_id": "obs_001",
+          "matched_type": "identified"
+        }
+      },
+      "rag_predicted_bias_label": "Curse of knowledge",
+      "rag_confidence": "moderate",
+      "label_equivalence_result": "exact_target_label",
+      "localization_match_type": "exact_quote_match",
+      "mechanism_overlap": "full_mechanism_match",
+      "strict_scorecard_outcome_by_threshold": {
+        "high_only": "false_negative",
+        "high_and_moderate": "true_positive",
+        "all_identified_confidence_levels": "true_positive",
+        "all_confidence_and_candidates": "true_positive"
+      },
+      "mechanism_first_scorecard_outcome_by_threshold": {
+        "high_only": "false_negative",
+        "high_and_moderate": "true_positive",
+        "all_identified_confidence_levels": "true_positive",
+        "all_confidence_and_candidates": "true_positive"
+      },
+      "secondary_diagnostic_outcome": "exact_instance_match",
+      "label_equivalence_explanation": "The identified label “Curse of knowledge” is an exact case-insensitive match to the hidden target “Curse of Knowledge.”",
+      "mechanism_overlap_explanation": "Full match: the experienced participant treats site-specific shorthand as self-evident, fails to check the new liaisons’ prior knowledge, selects an abbreviated briefing despite available time, and this communication-calibration failure produces the mapped confusion and misdirection.",
+      "evidence_fidelity_assessment": "The three quoted Participant passages are verbatim, correctly attributed, present in the raw interview, and directly support the hidden mechanism and reasoning operation."
+    }
+  ],
+  "unmatched_rag_predictions": [
+    {
+      "rag_occurrence_id": "cand_001",
+      "rag_finding_type": "candidate",
+      "rag_predicted_bias_label": "Anchoring and adjustment",
+      "rag_confidence": "candidate",
+      "localized_segment_id": "seg_002",
+      "best_related_hidden_instance_id": "ck_01",
+      "label_equivalence_result": "near_neighbor_label",
+      "mechanism_overlap": "substantial_mechanism_overlap",
+      "strict_classification": "correct_location_wrong_bias_label",
+      "mechanism_first_classification": "partial_mechanism_match",
+      "counted_at_thresholds": [
+        "all_confidence_and_candidates"
+      ],
+      "why_not_an_exact_strict_match": "The candidate quote is valid and localizes exactly to the handoff episode, but Anchoring and adjustment is only a near-neighbor label. Its routine-based insufficient-adjustment explanation overlaps the outcome while missing the hidden defining perspective-taking failure: assuming shared facility-specific knowledge. The identified obs_001 already claims the hidden instance, so the candidate cannot independently match it."
+    }
+  ],
+  "candidate_analysis": {
+    "candidate_count": 1,
+    "candidates": [
+      {
+        "candidate_id": "cand_001",
+        "proposed_bias_label": "Anchoring and adjustment",
+        "localized_segment_id": "seg_002",
+        "best_related_hidden_instance_id": "ck_01",
+        "quote_validity": "valid",
+        "would_match_if_promoted_strict": false,
+        "would_match_if_promoted_mechanism_first": false,
+        "counted_as_detection_at_fourth_threshold": true,
+        "fourth_threshold_outcome": "false_positive",
+        "candidate_assessment": "candidate_near_miss",
+        "details": "The quote validly describes reuse of the routine briefing, but the candidate offers only a partial routine/adjustment account and explicitly concedes that the evidence is better explained by the Curse of Knowledge mechanism. It is a useful near miss, not an additional hidden occurrence."
+      }
+    ]
+  },
+  "signal_detection_summary": {
+    "evaluation_unit": "eligible_reasoning_segment",
+    "high_only": {
+      "positive_segments": 1,
+      "negative_segments": 3,
+      "hits": 0,
+      "misses": 1,
+      "false_alarms": 0,
+      "correct_rejections": 3,
+      "hit_rate": 0,
+      "false_alarm_rate": 0,
+      "accuracy": 0.75,
+      "precision": null,
+      "recall": 0,
+      "f1": 0,
+      "detection_interpretation": "The moderate identified finding is excluded, so the sole positive segment is missed and all three negative segments are correctly rejected."
+    },
+    "high_and_moderate": {
+      "positive_segments": 1,
+      "negative_segments": 3,
+      "hits": 1,
+      "misses": 0,
+      "false_alarms": 0,
+      "correct_rejections": 3,
+      "hit_rate": 1,
+      "false_alarm_rate": 0,
+      "accuracy": 1,
+      "precision": 1,
+      "recall": 1,
+      "f1": 1,
+      "detection_interpretation": "obs_001 enters at the moderate threshold and detects the sole positive segment; all negative segments are correctly rejected."
+    },
+    "all_identified_confidence_levels": {
+      "positive_segments": 1,
+      "negative_segments": 3,
+      "hits": 1,
+      "misses": 0,
+      "false_alarms": 0,
+      "correct_rejections": 3,
+      "hit_rate": 1,
+      "false_alarm_rate": 0,
+      "accuracy": 1,
+      "precision": 1,
+      "recall": 1,
+      "f1": 1,
+      "detection_interpretation": "The only identified occurrence is moderate, so this threshold has the same result as high_and_moderate."
+    },
+    "all_confidence_and_candidates": {
+      "positive_segments": 1,
+      "negative_segments": 3,
+      "hits": 1,
+      "misses": 0,
+      "false_alarms": 0,
+      "correct_rejections": 3,
+      "hit_rate": 1,
+      "false_alarm_rate": 0,
+      "accuracy": 1,
+      "precision": 1,
+      "recall": 1,
+      "f1": 1,
+      "detection_interpretation": "obs_001 detects the positive segment; cand_001 also localizes there but does not create an additional segment-level error because the segment is already positive."
+    }
+  },
+  "strict_instance_level_metrics": {
+    "high_only": {
+      "true_positives": 0,
+      "false_negatives": 1,
+      "false_positives": 0,
+      "precision": null,
+      "recall": 0,
+      "f1": 0,
+      "exact_occurrence_match_rate": 0,
+      "occurrence_count_match_rate": 0
+    },
+    "high_and_moderate": {
+      "true_positives": 1,
+      "false_negatives": 0,
+      "false_positives": 0,
+      "precision": 1,
+      "recall": 1,
+      "f1": 1,
+      "exact_occurrence_match_rate": 1,
+      "occurrence_count_match_rate": 1
+    },
+    "all_identified_confidence_levels": {
+      "true_positives": 1,
+      "false_negatives": 0,
+      "false_positives": 0,
+      "precision": 1,
+      "recall": 1,
+      "f1": 1,
+      "exact_occurrence_match_rate": 1,
+      "occurrence_count_match_rate": 1
+    },
+    "all_confidence_and_candidates": {
+      "true_positives": 1,
+      "false_negatives": 0,
+      "false_positives": 1,
+      "precision": 0.5,
+      "recall": 1,
+      "f1": 0.6667,
+      "exact_occurrence_match_rate": 1,
+      "occurrence_count_match_rate": 1
+    }
+  },
+  "mechanism_first_instance_level_metrics": {
+    "high_only": {
+      "true_positives": 0,
+      "false_negatives": 1,
+      "false_positives": 0,
+      "precision": null,
+      "recall": 0,
+      "f1": 0,
+      "exact_occurrence_match_rate": 0,
+      "occurrence_count_match_rate": 0
+    },
+    "high_and_moderate": {
+      "true_positives": 1,
+      "false_negatives": 0,
+      "false_positives": 0,
+      "precision": 1,
+      "recall": 1,
+      "f1": 1,
+      "exact_occurrence_match_rate": 1,
+      "occurrence_count_match_rate": 1
+    },
+    "all_identified_confidence_levels": {
+      "true_positives": 1,
+      "false_negatives": 0,
+      "false_positives": 0,
+      "precision": 1,
+      "recall": 1,
+      "f1": 1,
+      "exact_occurrence_match_rate": 1,
+      "occurrence_count_match_rate": 1
+    },
+    "all_confidence_and_candidates": {
+      "true_positives": 1,
+      "false_negatives": 0,
+      "false_positives": 1,
+      "precision": 0.5,
+      "recall": 1,
+      "f1": 0.6667,
+      "exact_occurrence_match_rate": 1,
+      "occurrence_count_match_rate": 1
+    }
+  },
+  "target_bias_performance": [
+    {
+      "hidden_target_bias_label": "Curse of Knowledge",
+      "hidden_requested_occurrences": 1,
+      "strict_true_positives_by_threshold": {
+        "high_only": 0,
+        "high_and_moderate": 1,
+        "all_identified_confidence_levels": 1,
+        "all_confidence_and_candidates": 1
+      },
+      "mechanism_first_true_positives_by_threshold": {
+        "high_only": 0,
+        "high_and_moderate": 1,
+        "all_identified_confidence_levels": 1,
+        "all_confidence_and_candidates": 1
+      },
+      "count_match_status_at_all_confidence_and_candidates": "exact_match"
+    }
+  ],
+  "rag_label_false_positive_inventory": [
+    {
+      "rag_predicted_bias_label": "Anchoring and adjustment",
+      "finding_type": "candidate",
+      "alternative_labels": [],
+      "occurrence_count": 1,
+      "best_related_hidden_target_bias_label": "Curse of Knowledge",
+      "label_relation": "near_neighbor",
+      "mechanism_overlap_summary": "The candidate overlaps the same handoff episode and notes failure to adjust a routine briefing for unfamiliar recipients, but it does not capture the defining shared-knowledge assumption and perspective-taking operation.",
+      "primary_error_types": [
+        "correct_location_wrong_bias_label",
+        "partial_mechanism_match",
+        "candidate_near_miss"
+      ]
+    }
+  ],
+  "diagnostic_error_summary": {
+    "correct_location_wrong_bias_label_count": 1,
+    "correct_label_wrong_location_count": 0,
+    "correct_label_location_wrong_mechanism_count": 0,
+    "mechanism_detected_label_unresolved_count": 0,
+    "partial_mechanism_match_count": 1,
+    "duplicate_prediction_count": 0,
+    "unsupported_prediction_count": 0,
+    "fabricated_or_invalid_quote_count": 0,
+    "approved_alias_or_equivalence_count": 0,
+    "near_neighbor_label_count": 1,
+    "different_construct_label_count": 0,
+    "candidate_count": 1,
+    "candidate_useful_abstention_count": 0,
+    "candidate_near_miss_count": 1,
+    "candidates_promoted_to_true_positive_at_fourth_threshold_count": 0
+  },
+  "corpus_support_audit": {
+    "primary_corpus_fidelity_score_available": false,
+    "rag_occurrences_claiming_retrieved_support": 0,
+    "rag_occurrences_with_no_claimed_retrieved_support": 1,
+    "rag_occurrences_with_unverifiable_or_internally_inconsistent_citation_metadata": 0,
+    "assessment_note": "The identified occurrence explicitly reports no retrieved corpus support, and no retrieved chunks or logs were supplied. The candidate mentions a retrieved-corpus basis for its speculative mechanism, but no citation metadata or source material is available to verify that claim; corpus fidelity is not scored."
+  },
+  "comparison_ready_summary": {
+    "primary_recommended_comparison_threshold": "high_and_moderate",
+    "segment_detection": {
+      "high_only": {
+        "hits": 0,
+        "misses": 1,
+        "false_alarms": 0,
+        "correct_rejections": 3,
+        "hit_rate": 0,
+        "false_alarm_rate": 0,
+        "f1": 0
+      },
+      "high_and_moderate": {
+        "hits": 1,
+        "misses": 0,
+        "false_alarms": 0,
+        "correct_rejections": 3,
+        "hit_rate": 1,
+        "false_alarm_rate": 0,
+        "f1": 1
+      },
+      "all_identified_confidence_levels": {
+        "hits": 1,
+        "misses": 0,
+        "false_alarms": 0,
+        "correct_rejections": 3,
+        "hit_rate": 1,
+        "false_alarm_rate": 0,
+        "f1": 1
+      },
+      "all_confidence_and_candidates": {
+        "hits": 1,
+        "misses": 0,
+        "false_alarms": 0,
+        "correct_rejections": 3,
+        "hit_rate": 1,
+        "false_alarm_rate": 0,
+        "f1": 1
+      }
+    },
+    "strict_instance_identification": {
+      "high_only": {
+        "true_positives": 0,
+        "false_negatives": 1,
+        "false_positives": 0,
+        "precision": null,
+        "recall": 0,
+        "f1": 0
+      },
+      "high_and_moderate": {
+        "true_positives": 1,
+        "false_negatives": 0,
+        "false_positives": 0,
+        "precision": 1,
+        "recall": 1,
+        "f1": 1
+      },
+      "all_identified_confidence_levels": {
+        "true_positives": 1,
+        "false_negatives": 0,
+        "false_positives": 0,
+        "precision": 1,
+        "recall": 1,
+        "f1": 1
+      },
+      "all_confidence_and_candidates": {
+        "true_positives": 1,
+        "false_negatives": 0,
+        "false_positives": 1,
+        "precision": 0.5,
+        "recall": 1,
+        "f1": 0.6667
+      }
+    },
+    "mechanism_first_identification": {
+      "high_only": {
+        "true_positives": 0,
+        "false_negatives": 1,
+        "false_positives": 0,
+        "precision": null,
+        "recall": 0,
+        "f1": 0
+      },
+      "high_and_moderate": {
+        "true_positives": 1,
+        "false_negatives": 0,
+        "false_positives": 0,
+        "precision": 1,
+        "recall": 1,
+        "f1": 1
+      },
+      "all_identified_confidence_levels": {
+        "true_positives": 1,
+        "false_negatives": 0,
+        "false_positives": 0,
+        "precision": 1,
+        "recall": 1,
+        "f1": 1
+      },
+      "all_confidence_and_candidates": {
+        "true_positives": 1,
+        "false_negatives": 0,
+        "false_positives": 1,
+        "precision": 0.5,
+        "recall": 1,
+        "f1": 0.6667
+      }
+    },
+    "taxonomy_gap": {
+      "high_only": {
+        "mechanism_first_f1_minus_strict_f1": 0
+      },
+      "high_and_moderate": {
+        "mechanism_first_f1_minus_strict_f1": 0
+      },
+      "all_identified_confidence_levels": {
+        "mechanism_first_f1_minus_strict_f1": 0
+      },
+      "all_confidence_and_candidates": {
+        "mechanism_first_f1_minus_strict_f1": 0
+      }
+    },
+    "confidence_tradeoff": {
+      "increment_from_high_to_high_and_moderate": "Detection and both instance scorecards improve from a miss with no true positive to one true positive; precision, recall, and F1 rise from undefined/0 to 1.",
+      "increment_from_high_and_moderate_to_all_confidence": "No change because the only identified occurrence is moderate confidence and there are no low-confidence identified findings.",
+      "increment_from_all_confidence_to_all_confidence_and_candidates": "Segment detection is unchanged, while the near-neighbor candidate adds one fourth-threshold false positive; strict and mechanism-first precision fall from 1 to 0.5 and F1 falls to 0.6667."
+    }
+  },
+  "overall_evaluation_summary": {
+    "hidden_total_planned_occurrences": 1,
+    "rag_total_identified_occurrences": 1,
+    "rag_total_candidate_biases": 1,
+    "segment_level_primary_result": "At the recommended high_and_moderate threshold, the sole positive handoff segment is detected and all three negative reasoning segments are correctly rejected. Candidate inclusion does not change segment detection.",
+    "strict_label_plus_mechanism_result": "The moderate obs_001 finding is an exact, fully supported strict match at every threshold that includes moderate confidence; the candidate is a fourth-threshold false positive because its Anchoring-and-adjustment label and mechanism are only near-neighbor.",
+    "mechanism_first_result": "The identified occurrence is a full mechanism-first match from high_and_moderate onward. The candidate does not qualify because its routine-adjustment account is incomplete, so fourth-threshold mechanism-first metrics also incur one false positive.",
+    "candidate_tier_value_assessment": "The candidate is a valid, localized, useful near miss that surfaces an alternative interpretation but does not improve hidden-instance recall and lowers fourth-threshold precision.",
+    "main_failure_modes": [
+      "A candidate near-neighbor label is counted as a fourth-threshold false positive.",
+      "The moderate confidence setting leaves the positive segment undetected under high_only."
+    ],
+    "main_strengths": [
+      "The identified occurrence exactly matches the hidden Curse of Knowledge label and mechanism.",
+      "Quoted evidence is verbatim, speaker-correct, and directly supports the no-time-pressure counterfactual distinction.",
+      "The RAG explicitly distinguishes the candidate from the primary Curse of Knowledge explanation rather than promoting it."
+    ],
+    "benchmark_interpretation": "This run shows strong detection and strict/mechanism-first identification at the recommended high_and_moderate threshold, with a predictable confidence tradeoff: high_only misses the moderate instance, and adding a near-neighbor candidate reduces fourth-threshold precision without changing recall."
+  }
+}

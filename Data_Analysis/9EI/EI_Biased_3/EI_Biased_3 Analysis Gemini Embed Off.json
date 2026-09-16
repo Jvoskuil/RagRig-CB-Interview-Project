@@ -1,0 +1,549 @@
+{
+  "evaluation_metadata": {
+    "task": "ontology_free_rag_cognitive_bias_benchmark_evaluation",
+    "benchmark_run_metadata": {
+      "benchmark_run_id": "EI_Biased_3_Gemini_off",
+      "interview_id": "EI_Biased_3",
+      "system_prompt_id": "Gemini",
+      "system_prompt_generator": "Prompt 1_2",
+      "rag_model_id": "v1.0.0",
+      "corpus_condition": "off",
+      "retrieval_configuration_id": "k=0",
+      "decoding_configuration_id": null,
+      "temperature": 1,
+      "replicate_id": null,
+      "segment_map_id": null
+    },
+    "scenario_id": "EI_Biased_3",
+    "domain_id": "EI",
+    "condition": "biased",
+    "segment_map_status": "prevalidated_provided",
+    "rag_output_parse_status": "valid_json",
+    "rag_schema_assessment": "conformant"
+  },
+  "input_validation": {
+    "rag_output_schema_violations": [],
+    "rag_summary_count_consistency": {
+      "status": "consistent",
+      "details": "The identified_bias_summary reports one occurrence and identified_occurrences contains exactly one identified occurrence. Candidate findings are reported separately as candidate_biases."
+    },
+    "evaluation_limitations": [
+      "No retrieved chunks, source passages, or retrieval logs were supplied; corpus fidelity cannot be scored.",
+      "The interview is a retrospective self-report and may not fully represent contemporaneous reasoning.",
+      "The supplied benchmark metadata leaves segment_map_id null despite supplying a prevalidated evaluation segment map."
+    ]
+  },
+  "evaluation_segment_map": {
+    "segment_mapping_version": "1.0",
+    "segments": [
+      {
+        "segment_id": "DP1_INITIAL_PLACEMENT",
+        "speaker": "Participant",
+        "segment_type": "decision_reasoning",
+        "raw_interview_anchor": "The sending program stood out. In my experience, students transferring from that program often needed a fairly high level of behavioral structure when they first arrived.",
+        "eligible_reasoning_segment": true,
+        "ground_truth_bias_present": true,
+        "ground_truth_instance_ids": ["gae_01"],
+        "ground_truth_rationale": "The coordinator generalized the assumed profile of students from the sending program to this individual before individualized records arrived, matching Group attribution error."
+      },
+      {
+        "segment_id": "DP2_REEVALUATION",
+        "speaker": "Participant",
+        "segment_type": "decision_reasoning",
+        "raw_interview_anchor": "I was trying to get a compliant interim IEP done without creating another moving part. ... I told myself we could revisit testing at the annual review.",
+        "eligible_reasoning_segment": true,
+        "ground_truth_bias_present": true,
+        "ground_truth_instance_ids": ["pb_01"],
+        "ground_truth_rationale": "The coordinator chose the easier immediate path despite stale data and an acknowledged foreseeable near-term cost from delayed information, matching Present Bias."
+      },
+      {
+        "segment_id": "DP3_PRESENT_LEVELS",
+        "speaker": "Participant",
+        "segment_type": "decision_reasoning",
+        "raw_interview_anchor": "that report was vivid because it was the most detailed account of a difficult moment ... I worried that the same difficulty would show up in group work, independent work, and peer situations",
+        "eligible_reasoning_segment": true,
+        "ground_truth_bias_present": true,
+        "ground_truth_instance_ids": ["he_01"],
+        "ground_truth_rationale": "A single vivid negative incident generalized into an unsupported broader characterization of unrelated academic and social functioning, matching Horn Effect."
+      },
+      {
+        "segment_id": "DP4_FINAL_PLACEMENT",
+        "speaker": "Participant",
+        "segment_type": "decision_reasoning",
+        "raw_interview_anchor": "We documented why the service minutes were temporary and set a review point.",
+        "eligible_reasoning_segment": true,
+        "ground_truth_bias_present": false,
+        "ground_truth_instance_ids": [],
+        "ground_truth_rationale": "The final service-minutes and LRE decision is described as a documented whole-record judgment with no additional hidden bias instance."
+      }
+    ]
+  },
+  "segment_level_adjudications": [
+    {
+      "segment_id": "DP1_INITIAL_PLACEMENT",
+      "ground_truth_status": "positive",
+      "ground_truth_instance_ids": ["gae_01"],
+      "rag_identified_occurrence_ids": [],
+      "rag_candidate_ids_counted_at_fourth_threshold": ["cand_001"],
+      "rag_detected_bias_in_segment_by_threshold": {
+        "high_only": false,
+        "high_and_moderate": false,
+        "all_identified_confidence_levels": false,
+        "all_confidence_and_candidates": true
+      },
+      "sdt_outcome_by_threshold": {
+        "high_only": "miss",
+        "high_and_moderate": "miss",
+        "all_identified_confidence_levels": "miss",
+        "all_confidence_and_candidates": "hit"
+      },
+      "localization_basis": "Candidate cand_001 quotes and describes the initial placement episode in this eligible segment.",
+      "adjudication_note": "The candidate creates a segment-level detection at the fourth threshold, but its anchoring mechanism is only a partial match to the hidden group-attribution mechanism."
+    },
+    {
+      "segment_id": "DP2_REEVALUATION",
+      "ground_truth_status": "positive",
+      "ground_truth_instance_ids": ["pb_01"],
+      "rag_identified_occurrence_ids": [],
+      "rag_candidate_ids_counted_at_fourth_threshold": ["cand_002"],
+      "rag_detected_bias_in_segment_by_threshold": {
+        "high_only": false,
+        "high_and_moderate": false,
+        "all_identified_confidence_levels": false,
+        "all_confidence_and_candidates": true
+      },
+      "sdt_outcome_by_threshold": {
+        "high_only": "miss",
+        "high_and_moderate": "miss",
+        "all_identified_confidence_levels": "miss",
+        "all_confidence_and_candidates": "hit"
+      },
+      "localization_basis": "Candidate cand_002 directly quotes the participant's reevaluation-deferral rationale in this eligible segment.",
+      "adjudication_note": "The candidate detects the positive segment and states the hidden present-effort versus future-cost mechanism, but labels it Status quo bias rather than Present Bias."
+    },
+    {
+      "segment_id": "DP3_PRESENT_LEVELS",
+      "ground_truth_status": "positive",
+      "ground_truth_instance_ids": ["he_01"],
+      "rag_identified_occurrence_ids": ["obs_001"],
+      "rag_candidate_ids_counted_at_fourth_threshold": [],
+      "rag_detected_bias_in_segment_by_threshold": {
+        "high_only": false,
+        "high_and_moderate": true,
+        "all_identified_confidence_levels": true,
+        "all_confidence_and_candidates": true
+      },
+      "sdt_outcome_by_threshold": {
+        "high_only": "miss",
+        "high_and_moderate": "hit",
+        "all_identified_confidence_levels": "hit",
+        "all_confidence_and_candidates": "hit"
+      },
+      "localization_basis": "The occurrence includes valid verbatim quotes that directly overlap the mapped vivid-incident and generalization span.",
+      "adjudication_note": "The occurrence is a segment-level hit from the moderate threshold onward. Its Availability heuristic label is not the hidden Horn Effect label, but its mechanism fully captures the vivid negative incident coloring unrelated domains."
+    },
+    {
+      "segment_id": "DP4_FINAL_PLACEMENT",
+      "ground_truth_status": "negative",
+      "ground_truth_instance_ids": [],
+      "rag_identified_occurrence_ids": [],
+      "rag_candidate_ids_counted_at_fourth_threshold": [],
+      "rag_detected_bias_in_segment_by_threshold": {
+        "high_only": false,
+        "high_and_moderate": false,
+        "all_identified_confidence_levels": false,
+        "all_confidence_and_candidates": false
+      },
+      "sdt_outcome_by_threshold": {
+        "high_only": "correct_rejection",
+        "high_and_moderate": "correct_rejection",
+        "all_identified_confidence_levels": "correct_rejection",
+        "all_confidence_and_candidates": "correct_rejection"
+      },
+      "localization_basis": "No RAG finding localizes to the final placement decision segment.",
+      "adjudication_note": "The RAG output does not add a bias claim to the neutral fourth decision point."
+    }
+  ],
+  "instance_level_adjudications": [
+    {
+      "hidden_instance_id": "gae_01",
+      "hidden_target_bias_label": "Group attribution error",
+      "hidden_decision_or_episode": "Initial interim placement lean before full individualized records arrived",
+      "hidden_mechanism": "Generalizing the assumed dispositional profile of students from a specific sending program onto this individual student before individualized records arrive.",
+      "matched_finding_by_threshold": {
+        "high_only": {"matched_id": null, "matched_type": "none"},
+        "high_and_moderate": {"matched_id": null, "matched_type": "none"},
+        "all_identified_confidence_levels": {"matched_id": null, "matched_type": "none"},
+        "all_confidence_and_candidates": {"matched_id": null, "matched_type": "none"}
+      },
+      "rag_predicted_bias_label": "Anchoring bias",
+      "rag_confidence": "candidate",
+      "label_equivalence_result": "different_construct",
+      "localization_match_type": "substantive_span_match",
+      "mechanism_overlap": "partial_mechanism_overlap",
+      "strict_scorecard_outcome_by_threshold": {
+        "high_only": "false_negative",
+        "high_and_moderate": "false_negative",
+        "all_identified_confidence_levels": "false_negative",
+        "all_confidence_and_candidates": "false_negative"
+      },
+      "mechanism_first_scorecard_outcome_by_threshold": {
+        "high_only": "false_negative",
+        "high_and_moderate": "false_negative",
+        "all_identified_confidence_levels": "false_negative",
+        "all_confidence_and_candidates": "false_negative"
+      },
+      "secondary_diagnostic_outcome": "candidate_only_near_miss",
+      "label_equivalence_explanation": "Anchoring bias is a distinct construct from generalizing a sending-program group's assumed disposition to an individual. The candidate is related to the initial-frame episode but is not an approved equivalent.",
+      "mechanism_overlap_explanation": "The candidate captures an initial frame and limited adjustment after later information, but it does not fully capture the defining group-to-individual generalization required by the hidden instance.",
+      "evidence_fidelity_assessment": "The supporting quote is valid and correctly attributed, but the candidate's mechanism remains qualified and does not establish the hidden group-attribution distortion."
+    },
+    {
+      "hidden_instance_id": "pb_01",
+      "hidden_target_bias_label": "Present Bias",
+      "hidden_decision_or_episode": "Deferral of reevaluation while drafting the interim IEP",
+      "hidden_mechanism": "Choosing the lower-effort immediate path over a modest present cost that would avoid a larger, foreseeable near-term cost from mismatched accommodations and delayed information.",
+      "matched_finding_by_threshold": {
+        "high_only": {"matched_id": null, "matched_type": "none"},
+        "high_and_moderate": {"matched_id": null, "matched_type": "none"},
+        "all_identified_confidence_levels": {"matched_id": null, "matched_type": "none"},
+        "all_confidence_and_candidates": {"matched_id": "cand_002", "matched_type": "candidate"}
+      },
+      "rag_predicted_bias_label": "Status quo bias",
+      "rag_confidence": "candidate",
+      "label_equivalence_result": "near_neighbor_label",
+      "localization_match_type": "exact_quote_match",
+      "mechanism_overlap": "full_mechanism_match",
+      "strict_scorecard_outcome_by_threshold": {
+        "high_only": "false_negative",
+        "high_and_moderate": "false_negative",
+        "all_identified_confidence_levels": "false_negative",
+        "all_confidence_and_candidates": "false_negative"
+      },
+      "mechanism_first_scorecard_outcome_by_threshold": {
+        "high_only": "false_negative",
+        "high_and_moderate": "false_negative",
+        "all_identified_confidence_levels": "false_negative",
+        "all_confidence_and_candidates": "true_positive"
+      },
+      "secondary_diagnostic_outcome": "correct_location_wrong_bias_label",
+      "label_equivalence_explanation": "Status quo bias is not an approved equivalent of Present Bias, but it is a neighboring decision-bias label. The candidate's stated temporal effort-versus-future-cost mechanism supports the hidden construct more directly than its label does.",
+      "mechanism_overlap_explanation": "The candidate identifies the easier immediate route, the acknowledged mismatch risk, and the decision to defer reassessment; this is a full match to the hidden mechanism and reasoning operation.",
+      "evidence_fidelity_assessment": "The quote is valid, directly supports the decision rationale, and faithfully preserves the participant's stated constraints and acknowledged future cost."
+    },
+    {
+      "hidden_instance_id": "he_01",
+      "hidden_target_bias_label": "Horn Effect",
+      "hidden_decision_or_episode": "Drafting present levels after the single transition outburst report",
+      "hidden_mechanism": "A single vivid negative behavioral data point generalizes into an unsupported broader negative characterization of unrelated academic and social attributes.",
+      "matched_finding_by_threshold": {
+        "high_only": {"matched_id": null, "matched_type": "none"},
+        "high_and_moderate": {"matched_id": "obs_001", "matched_type": "identified"},
+        "all_identified_confidence_levels": {"matched_id": "obs_001", "matched_type": "identified"},
+        "all_confidence_and_candidates": {"matched_id": "obs_001", "matched_type": "identified"}
+      },
+      "rag_predicted_bias_label": "Availability heuristic",
+      "rag_confidence": "moderate",
+      "label_equivalence_result": "near_neighbor_label",
+      "localization_match_type": "exact_quote_match",
+      "mechanism_overlap": "full_mechanism_match",
+      "strict_scorecard_outcome_by_threshold": {
+        "high_only": "false_negative",
+        "high_and_moderate": "false_negative",
+        "all_identified_confidence_levels": "false_negative",
+        "all_confidence_and_candidates": "false_negative"
+      },
+      "mechanism_first_scorecard_outcome_by_threshold": {
+        "high_only": "false_negative",
+        "high_and_moderate": "true_positive",
+        "all_identified_confidence_levels": "true_positive",
+        "all_confidence_and_candidates": "true_positive"
+      },
+      "secondary_diagnostic_outcome": "correct_location_wrong_bias_label",
+      "label_equivalence_explanation": "Availability heuristic is a neighboring salience-related construct, not an approved alias for Horn Effect. The label therefore fails the strict scorecard even though the described distortion matches the hidden instance.",
+      "mechanism_overlap_explanation": "The occurrence identifies the vivid, detailed outburst, its overweighting relative to positive evidence, and its unsupported projection onto academic and social functioning. This is a full mechanism match.",
+      "evidence_fidelity_assessment": "All cited interview excerpts are valid, participant-attributed, and substantively support the vividness-driven overgeneralization."
+    }
+  ],
+  "unmatched_rag_predictions": [
+    {
+      "rag_occurrence_id": "obs_001",
+      "rag_finding_type": "identified",
+      "rag_predicted_bias_label": "Availability heuristic",
+      "rag_confidence": "moderate",
+      "localized_segment_id": "DP3_PRESENT_LEVELS",
+      "best_related_hidden_instance_id": "he_01",
+      "label_equivalence_result": "near_neighbor_label",
+      "mechanism_overlap": "full_mechanism_match",
+      "strict_classification": "correct_location_wrong_bias_label",
+      "mechanism_first_classification": "not_applicable",
+      "counted_at_thresholds": ["high_and_moderate", "all_identified_confidence_levels", "all_confidence_and_candidates"],
+      "why_not_an_exact_strict_match": "The finding localizes correctly and states the full Horn Effect mechanism, but Availability heuristic is not an approved equivalent of Horn Effect."
+    },
+    {
+      "rag_occurrence_id": "cand_001",
+      "rag_finding_type": "candidate",
+      "rag_predicted_bias_label": "Anchoring bias",
+      "rag_confidence": "candidate",
+      "localized_segment_id": "DP1_INITIAL_PLACEMENT",
+      "best_related_hidden_instance_id": "gae_01",
+      "label_equivalence_result": "different_construct",
+      "mechanism_overlap": "partial_mechanism_overlap",
+      "strict_classification": "partial_mechanism_match",
+      "mechanism_first_classification": "partial_mechanism_match",
+      "counted_at_thresholds": ["all_confidence_and_candidates"],
+      "why_not_an_exact_strict_match": "The candidate is correctly localized but presents a qualified anchoring interpretation rather than the hidden group-to-individual generalization, and Anchoring bias is not an equivalent label."
+    },
+    {
+      "rag_occurrence_id": "cand_002",
+      "rag_finding_type": "candidate",
+      "rag_predicted_bias_label": "Status quo bias",
+      "rag_confidence": "candidate",
+      "localized_segment_id": "DP2_REEVALUATION",
+      "best_related_hidden_instance_id": "pb_01",
+      "label_equivalence_result": "near_neighbor_label",
+      "mechanism_overlap": "full_mechanism_match",
+      "strict_classification": "correct_location_wrong_bias_label",
+      "mechanism_first_classification": "not_applicable",
+      "counted_at_thresholds": ["all_confidence_and_candidates"],
+      "why_not_an_exact_strict_match": "The candidate is correctly localized with a full Present Bias mechanism, but Status quo bias is a neighboring construct rather than an approved equivalent label."
+    }
+  ],
+  "candidate_analysis": {
+    "candidate_count": 2,
+    "candidates": [
+      {
+        "candidate_id": "cand_001",
+        "proposed_bias_label": "Anchoring bias",
+        "localized_segment_id": "DP1_INITIAL_PLACEMENT",
+        "best_related_hidden_instance_id": "gae_01",
+        "quote_validity": "valid",
+        "would_match_if_promoted_strict": false,
+        "would_match_if_promoted_mechanism_first": false,
+        "counted_as_detection_at_fourth_threshold": true,
+        "fourth_threshold_outcome": "false_positive",
+        "candidate_assessment": "candidate_near_miss",
+        "details": "The candidate identifies the correct initial-placement episode and a plausible initial-frame effect, but it does not establish the hidden group-attribution mechanism."
+      },
+      {
+        "candidate_id": "cand_002",
+        "proposed_bias_label": "Status quo bias",
+        "localized_segment_id": "DP2_REEVALUATION",
+        "best_related_hidden_instance_id": "pb_01",
+        "quote_validity": "valid",
+        "would_match_if_promoted_strict": false,
+        "would_match_if_promoted_mechanism_first": true,
+        "counted_as_detection_at_fourth_threshold": true,
+        "fourth_threshold_outcome": "true_positive_mechanism_first_only",
+        "candidate_assessment": "useful_abstention",
+        "details": "The candidate appropriately withholds a high-confidence claim under substantial structural constraints, yet its stated mechanism fully matches Present Bias when candidates are scored."
+      }
+    ]
+  },
+  "signal_detection_summary": {
+    "evaluation_unit": "eligible_reasoning_segment",
+    "high_only": {
+      "positive_segments": 3,
+      "negative_segments": 1,
+      "hits": 0,
+      "misses": 3,
+      "false_alarms": 0,
+      "correct_rejections": 1,
+      "hit_rate": 0,
+      "false_alarm_rate": 0,
+      "accuracy": 0.25,
+      "precision": null,
+      "recall": 0,
+      "f1": 0,
+      "detection_interpretation": "No high-confidence identified occurrence was supplied; all three positive segments were missed and the negative segment was correctly rejected."
+    },
+    "high_and_moderate": {
+      "positive_segments": 3,
+      "negative_segments": 1,
+      "hits": 1,
+      "misses": 2,
+      "false_alarms": 0,
+      "correct_rejections": 1,
+      "hit_rate": 0.3333,
+      "false_alarm_rate": 0,
+      "accuracy": 0.5,
+      "precision": 1,
+      "recall": 0.3333,
+      "f1": 0.5,
+      "detection_interpretation": "The moderate identified occurrence detects the present-levels segment, while the initial-placement and reevaluation segments remain undetected."
+    },
+    "all_identified_confidence_levels": {
+      "positive_segments": 3,
+      "negative_segments": 1,
+      "hits": 1,
+      "misses": 2,
+      "false_alarms": 0,
+      "correct_rejections": 1,
+      "hit_rate": 0.3333,
+      "false_alarm_rate": 0,
+      "accuracy": 0.5,
+      "precision": 1,
+      "recall": 0.3333,
+      "f1": 0.5,
+      "detection_interpretation": "No low-confidence identified findings were present, so this threshold equals high_and_moderate."
+    },
+    "all_confidence_and_candidates": {
+      "positive_segments": 3,
+      "negative_segments": 1,
+      "hits": 3,
+      "misses": 0,
+      "false_alarms": 0,
+      "correct_rejections": 1,
+      "hit_rate": 1,
+      "false_alarm_rate": 0,
+      "accuracy": 1,
+      "precision": 1,
+      "recall": 1,
+      "f1": 1,
+      "detection_interpretation": "Both candidates localize to the two previously missed positive segments, yielding complete segment-level coverage without a negative-segment false alarm."
+    }
+  },
+  "strict_instance_level_metrics": {
+    "high_only": {"true_positives": 0, "false_negatives": 3, "false_positives": 0, "precision": null, "recall": 0, "f1": 0, "exact_occurrence_match_rate": 0, "occurrence_count_match_rate": 0},
+    "high_and_moderate": {"true_positives": 0, "false_negatives": 3, "false_positives": 1, "precision": 0, "recall": 0, "f1": 0, "exact_occurrence_match_rate": 0, "occurrence_count_match_rate": 0},
+    "all_identified_confidence_levels": {"true_positives": 0, "false_negatives": 3, "false_positives": 1, "precision": 0, "recall": 0, "f1": 0, "exact_occurrence_match_rate": 0, "occurrence_count_match_rate": 0},
+    "all_confidence_and_candidates": {"true_positives": 0, "false_negatives": 3, "false_positives": 3, "precision": 0, "recall": 0, "f1": 0, "exact_occurrence_match_rate": 0, "occurrence_count_match_rate": 0}
+  },
+  "mechanism_first_instance_level_metrics": {
+    "high_only": {"true_positives": 0, "false_negatives": 3, "false_positives": 0, "precision": null, "recall": 0, "f1": 0, "exact_occurrence_match_rate": 0, "occurrence_count_match_rate": 0},
+    "high_and_moderate": {"true_positives": 1, "false_negatives": 2, "false_positives": 0, "precision": 1, "recall": 0.3333, "f1": 0.5, "exact_occurrence_match_rate": 0.3333, "occurrence_count_match_rate": 0.3333},
+    "all_identified_confidence_levels": {"true_positives": 1, "false_negatives": 2, "false_positives": 0, "precision": 1, "recall": 0.3333, "f1": 0.5, "exact_occurrence_match_rate": 0.3333, "occurrence_count_match_rate": 0.3333},
+    "all_confidence_and_candidates": {"true_positives": 2, "false_negatives": 1, "false_positives": 1, "precision": 0.6667, "recall": 0.6667, "f1": 0.6667, "exact_occurrence_match_rate": 0.6667, "occurrence_count_match_rate": 0.6667}
+  },
+  "target_bias_performance": [
+    {
+      "hidden_target_bias_label": "Group attribution error",
+      "hidden_requested_occurrences": 1,
+      "strict_true_positives_by_threshold": {"high_only": 0, "high_and_moderate": 0, "all_identified_confidence_levels": 0, "all_confidence_and_candidates": 0},
+      "mechanism_first_true_positives_by_threshold": {"high_only": 0, "high_and_moderate": 0, "all_identified_confidence_levels": 0, "all_confidence_and_candidates": 0},
+      "count_match_status_at_all_confidence_and_candidates": "underdetected"
+    },
+    {
+      "hidden_target_bias_label": "Present Bias",
+      "hidden_requested_occurrences": 1,
+      "strict_true_positives_by_threshold": {"high_only": 0, "high_and_moderate": 0, "all_identified_confidence_levels": 0, "all_confidence_and_candidates": 0},
+      "mechanism_first_true_positives_by_threshold": {"high_only": 0, "high_and_moderate": 0, "all_identified_confidence_levels": 0, "all_confidence_and_candidates": 1},
+      "count_match_status_at_all_confidence_and_candidates": "underdetected"
+    },
+    {
+      "hidden_target_bias_label": "Horn Effect",
+      "hidden_requested_occurrences": 1,
+      "strict_true_positives_by_threshold": {"high_only": 0, "high_and_moderate": 0, "all_identified_confidence_levels": 0, "all_confidence_and_candidates": 0},
+      "mechanism_first_true_positives_by_threshold": {"high_only": 0, "high_and_moderate": 1, "all_identified_confidence_levels": 1, "all_confidence_and_candidates": 1},
+      "count_match_status_at_all_confidence_and_candidates": "underdetected"
+    }
+  ],
+  "rag_label_false_positive_inventory": [
+    {
+      "rag_predicted_bias_label": "Availability heuristic",
+      "finding_type": "identified",
+      "alternative_labels": ["Availability bias", "Salience bias"],
+      "occurrence_count": 1,
+      "best_related_hidden_target_bias_label": "Horn Effect",
+      "label_relation": "near_neighbor",
+      "mechanism_overlap_summary": "Full overlap with the hidden vivid-negative-incident generalization mechanism, but no label equivalence.",
+      "primary_error_types": ["correct_location_wrong_bias_label"]
+    },
+    {
+      "rag_predicted_bias_label": "Anchoring bias",
+      "finding_type": "candidate",
+      "alternative_labels": ["Representativeness heuristic", "Diagnosis momentum"],
+      "occurrence_count": 1,
+      "best_related_hidden_target_bias_label": "Group attribution error",
+      "label_relation": "different_construct",
+      "mechanism_overlap_summary": "Partial overlap around an initial placement frame, without the required group-to-individual generalization.",
+      "primary_error_types": ["partial_mechanism_match", "candidate_only_near_miss"]
+    },
+    {
+      "rag_predicted_bias_label": "Status quo bias",
+      "finding_type": "candidate",
+      "alternative_labels": ["Default bias"],
+      "occurrence_count": 1,
+      "best_related_hidden_target_bias_label": "Present Bias",
+      "label_relation": "near_neighbor",
+      "mechanism_overlap_summary": "Full overlap with the immediate-effort versus foreseeable-future-cost mechanism, but Status quo bias is not an approved equivalent label.",
+      "primary_error_types": ["correct_location_wrong_bias_label", "candidate_promoted_mechanism_first_only"]
+    }
+  ],
+  "diagnostic_error_summary": {
+    "correct_location_wrong_bias_label_count": 2,
+    "correct_label_wrong_location_count": 0,
+    "correct_label_location_wrong_mechanism_count": 0,
+    "mechanism_detected_label_unresolved_count": 0,
+    "partial_mechanism_match_count": 1,
+    "duplicate_prediction_count": 0,
+    "unsupported_prediction_count": 0,
+    "fabricated_or_invalid_quote_count": 0,
+    "approved_alias_or_equivalence_count": 0,
+    "near_neighbor_label_count": 2,
+    "different_construct_label_count": 1,
+    "candidate_count": 2,
+    "candidate_useful_abstention_count": 1,
+    "candidate_near_miss_count": 1,
+    "candidates_promoted_to_true_positive_at_fourth_threshold_count": 1
+  },
+  "corpus_support_audit": {
+    "primary_corpus_fidelity_score_available": false,
+    "rag_occurrences_claiming_retrieved_support": 0,
+    "rag_occurrences_with_no_claimed_retrieved_support": 1,
+    "rag_occurrences_with_unverifiable_or_internally_inconsistent_citation_metadata": 0,
+    "assessment_note": "The RAG explicitly reports that no retrieval context was supplied and provides no citation metadata. Corpus support therefore does not affect the primary scores."
+  },
+  "comparison_ready_summary": {
+    "primary_recommended_comparison_threshold": "high_and_moderate",
+    "segment_detection": {
+      "high_only": {"hits": 0, "misses": 3, "false_alarms": 0, "correct_rejections": 1, "hit_rate": 0, "false_alarm_rate": 0, "f1": 0},
+      "high_and_moderate": {"hits": 1, "misses": 2, "false_alarms": 0, "correct_rejections": 1, "hit_rate": 0.3333, "false_alarm_rate": 0, "f1": 0.5},
+      "all_identified_confidence_levels": {"hits": 1, "misses": 2, "false_alarms": 0, "correct_rejections": 1, "hit_rate": 0.3333, "false_alarm_rate": 0, "f1": 0.5},
+      "all_confidence_and_candidates": {"hits": 3, "misses": 0, "false_alarms": 0, "correct_rejections": 1, "hit_rate": 1, "false_alarm_rate": 0, "f1": 1}
+    },
+    "strict_instance_identification": {
+      "high_only": {"true_positives": 0, "false_negatives": 3, "false_positives": 0, "precision": null, "recall": 0, "f1": 0},
+      "high_and_moderate": {"true_positives": 0, "false_negatives": 3, "false_positives": 1, "precision": 0, "recall": 0, "f1": 0},
+      "all_identified_confidence_levels": {"true_positives": 0, "false_negatives": 3, "false_positives": 1, "precision": 0, "recall": 0, "f1": 0},
+      "all_confidence_and_candidates": {"true_positives": 0, "false_negatives": 3, "false_positives": 3, "precision": 0, "recall": 0, "f1": 0}
+    },
+    "mechanism_first_identification": {
+      "high_only": {"true_positives": 0, "false_negatives": 3, "false_positives": 0, "precision": null, "recall": 0, "f1": 0},
+      "high_and_moderate": {"true_positives": 1, "false_negatives": 2, "false_positives": 0, "precision": 1, "recall": 0.3333, "f1": 0.5},
+      "all_identified_confidence_levels": {"true_positives": 1, "false_negatives": 2, "false_positives": 0, "precision": 1, "recall": 0.3333, "f1": 0.5},
+      "all_confidence_and_candidates": {"true_positives": 2, "false_negatives": 1, "false_positives": 1, "precision": 0.6667, "recall": 0.6667, "f1": 0.6667}
+    },
+    "taxonomy_gap": {
+      "high_only": {"mechanism_first_f1_minus_strict_f1": 0},
+      "high_and_moderate": {"mechanism_first_f1_minus_strict_f1": 0.5},
+      "all_identified_confidence_levels": {"mechanism_first_f1_minus_strict_f1": 0.5},
+      "all_confidence_and_candidates": {"mechanism_first_f1_minus_strict_f1": 0.6667}
+    },
+    "confidence_tradeoff": {
+      "increment_from_high_to_high_and_moderate": "Adding moderate-confidence findings adds one correctly localized mechanism-first instance hit (Horn Effect) and raises segment hit rate from 0.0000 to 0.3333; strict instance F1 remains 0.0000 because the label is wrong.",
+      "increment_from_high_and_moderate_to_all_confidence": "No change; the RAG supplied no low-confidence identified occurrences.",
+      "increment_from_all_confidence_to_all_confidence_and_candidates": "Candidates add two segment detections, one mechanism-first instance hit for Present Bias, one candidate false positive, and no strict true positives."
+    }
+  },
+  "overall_evaluation_summary": {
+    "hidden_total_planned_occurrences": 3,
+    "rag_total_identified_occurrences": 1,
+    "rag_total_candidate_biases": 2,
+    "segment_level_primary_result": "At the recommended high_and_moderate threshold, the RAG detects 1 of 3 positive reasoning segments with no false alarms (hit rate 0.3333, F1 0.5000).",
+    "strict_label_plus_mechanism_result": "The RAG achieves 0 strict instance true positives at every threshold: its one identified occurrence and one candidate use neighboring but non-equivalent labels, while the remaining hidden instance is not fully captured.",
+    "mechanism_first_result": "Mechanism-first scoring credits the identified Availability finding as a Horn Effect hit at moderate and higher thresholds, and also credits the Status quo candidate as a Present Bias hit at the candidate threshold; F1 rises from 0.5000 to 0.6667.",
+    "candidate_tier_value_assessment": "Candidate inclusion improves mechanism-first coverage but introduces one partial-mechanism false positive. It provides useful uncertainty calibration for the reevaluation episode, but does not improve strict taxonomy performance.",
+    "main_failure_modes": [
+      "Wrong taxonomy labels for the two full-mechanism findings.",
+      "Failure to identify the group-to-individual generalization as Group attribution error.",
+      "Candidate-level anchoring speculation only partially overlaps the hidden first-decision mechanism."
+    ],
+    "main_strengths": [
+      "The identified present-levels finding is correctly localized with valid evidence.",
+      "Its mechanism accurately captures vividness-driven generalization across unrelated domains.",
+      "The candidate tier preserves uncertainty and surfaces a full Present Bias mechanism without overstating confidence."
+    ],
+    "benchmark_interpretation": "This run shows a substantial taxonomy gap: the RAG can articulate mechanisms for two hidden instances but does not assign the benchmark target labels. Candidate inclusion recovers one additional mechanism-first hit, while strict label-plus-mechanism detection remains at zero."
+  }
+}

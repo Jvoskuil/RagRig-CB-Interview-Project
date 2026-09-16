@@ -1,0 +1,842 @@
+{
+  "evaluation_metadata": {
+    "task": "ontology_free_rag_cognitive_bias_benchmark_evaluation",
+    "benchmark_run_metadata": {
+      "benchmark_run_id": "IP_Biased_4_Gemini_on",
+      "interview_id": "IP_Biased_4",
+      "system_prompt_id": "Gemini",
+      "system_prompt_generator": "Prompt 1_2",
+      "rag_model_id": "v1.0.0",
+      "corpus_condition": "on",
+      "retrieval_configuration_id": "k=50",
+      "decoding_configuration_id": "null",
+      "temperature": 1,
+      "replicate_id": "null",
+      "segment_map_id": "null"
+    },
+    "scenario_id": "IP_Biased_4",
+    "domain_id": "IP",
+    "condition": "biased",
+    "segment_map_status": "generated_not_prevalidated",
+    "rag_output_parse_status": "valid_json",
+    "rag_schema_assessment": "conformant"
+  },
+  "input_validation": {
+    "rag_output_schema_violations": [],
+    "rag_summary_count_consistency": {
+      "status": "consistent",
+      "details": "The four summary labels each report one occurrence, matching the four identified_occurrences; the candidate list contains one candidate and the aggregate counts are internally consistent."
+    },
+    "evaluation_limitations": [
+      "No prevalidated evaluation segment map or retrieval log was supplied; the segment map was generated from the raw interview and corpus-support fidelity cannot be independently scored.",
+      "The RAG output uses an ontology-free label set, so label equivalence was adjudicated against the hidden instance mechanisms and locations."
+    ]
+  },
+  "evaluation_segment_map": {
+    "segment_mapping_version": "1.0",
+    "segments": [
+      {
+        "segment_id": "DP1_ROOT_CAUSE",
+        "speaker": "Participant",
+        "segment_type": "eligible_reasoning_segment",
+        "raw_interview_anchor": "Root-cause analysis: the participant weighs Marco's different locknut torque sequence against the extended lubrication interval and ambiguous vibration data.",
+        "eligible_reasoning_segment": true,
+        "ground_truth_bias_present": true,
+        "ground_truth_instance_ids": [
+          "IP_Biased_4_FAB_01"
+        ],
+        "ground_truth_rationale": "The participant initially attributes the recurring failure primarily to Marco's personal installation technique while underweighting the shared extended lubrication interval."
+      },
+      {
+        "segment_id": "DP2_MONITORING",
+        "speaker": "Participant",
+        "segment_type": "eligible_reasoning_segment",
+        "raw_interview_anchor": "Monitoring decision: the participant chooses the standard schedule after three failures because the pump felt due for a clean run.",
+        "eligible_reasoning_segment": true,
+        "ground_truth_bias_present": true,
+        "ground_truth_instance_ids": [
+          "IP_Biased_4_GF_01"
+        ],
+        "ground_truth_rationale": "The participant treats a streak of independent failures as making a clean next run more likely."
+      },
+      {
+        "segment_id": "DP3_ALIGNMENT",
+        "speaker": "Participant",
+        "segment_type": "eligible_reasoning_segment",
+        "raw_interview_anchor": "Alignment decision: the participant performs the manual alignment himself rather than waiting for the specialist and laser rig.",
+        "eligible_reasoning_segment": true,
+        "ground_truth_bias_present": true,
+        "ground_truth_instance_ids": [
+          "IP_Biased_4_IOC_01"
+        ],
+        "ground_truth_rationale": "The participant overestimates his personal hands-on skill's ability to control an uncertain alignment outcome despite tightened tolerances."
+      },
+      {
+        "segment_id": "DP4_BEARING_SELECTION",
+        "speaker": "Participant",
+        "segment_type": "eligible_reasoning_segment",
+        "raw_interview_anchor": "Bearing selection: the participant chooses the known legacy bearing over the OEM upgrade because the upgrade lacks specific failure-rate data.",
+        "eligible_reasoning_segment": true,
+        "ground_truth_bias_present": true,
+        "ground_truth_instance_ids": [
+          "IP_Biased_4_AE_01"
+        ],
+        "ground_truth_rationale": "The participant avoids the ambiguous OEM option in favor of a known but demonstrably inadequate legacy option."
+      }
+    ]
+  },
+  "segment_level_adjudications": [
+    {
+      "segment_id": "DP1_ROOT_CAUSE",
+      "ground_truth_status": "positive",
+      "ground_truth_instance_ids": [
+        "IP_Biased_4_FAB_01"
+      ],
+      "rag_identified_occurrence_ids": [
+        "obs_001"
+      ],
+      "rag_candidate_ids_counted_at_fourth_threshold": [
+        "cand_001"
+      ],
+      "rag_detected_bias_in_segment_by_threshold": {
+        "high_only": false,
+        "high_and_moderate": false,
+        "all_identified_confidence_levels": true,
+        "all_confidence_and_candidates": true
+      },
+      "sdt_outcome_by_threshold": {
+        "high_only": "miss",
+        "high_and_moderate": "miss",
+        "all_identified_confidence_levels": "hit",
+        "all_confidence_and_candidates": "hit"
+      },
+      "localization_basis": "obs_001 quotes and describes the root-cause decision; cand_001 uses the same episode and a valid supporting quote.",
+      "adjudication_note": "The low-confidence identified anchoring finding detects the segment at the all-identified threshold; the candidate is additionally counted at the fourth threshold. The identified label/mechanism is not an exact strict match, while the candidate is an alias-equivalent mechanism-complete match."
+    },
+    {
+      "segment_id": "DP2_MONITORING",
+      "ground_truth_status": "positive",
+      "ground_truth_instance_ids": [
+        "IP_Biased_4_GF_01"
+      ],
+      "rag_identified_occurrence_ids": [],
+      "rag_candidate_ids_counted_at_fourth_threshold": {
+        "high_only": true,
+        "high_and_moderate": true,
+        "all_identified_confidence_levels": true,
+        "all_confidence_and_candidates": true
+      },
+      "rag_detected_bias_in_segment_by_threshold": "obs_002 directly quotes the participant's 'due for a clean run' reasoning at the monitoring decision.",
+      "sdt_outcome_by_threshold": {
+        "high_only": "miss",
+        "high_and_moderate": "miss",
+        "all_identified_confidence_levels": "miss",
+        "all_confidence_and_candidates": "miss"
+      },
+      "localization_basis": "The high-confidence gambler's fallacy finding is an exact label, location, and mechanism match at every threshold."
+    },
+    {
+      "segment_id": "DP3_ALIGNMENT",
+      "ground_truth_status": "positive",
+      "ground_truth_instance_ids": [
+        "IP_Biased_4_IOC_01"
+      ],
+      "rag_identified_occurrence_ids": [],
+      "rag_candidate_ids_counted_at_fourth_threshold": {
+        "high_only": false,
+        "high_and_moderate": false,
+        "all_identified_confidence_levels": true,
+        "all_confidence_and_candidates": true
+      },
+      "rag_detected_bias_in_segment_by_threshold": "obs_003 quotes the participant's manual-alignment decision and later reflection about tightened tolerances.",
+      "sdt_outcome_by_threshold": {
+        "high_only": "miss",
+        "high_and_moderate": "miss",
+        "all_identified_confidence_levels": "miss",
+        "all_confidence_and_candidates": "miss"
+      },
+      "localization_basis": "The low-confidence overconfidence label is not the hidden label, but its mechanism and location fully match the hidden illusion-of-control instance; it is therefore a detection for segment-level and mechanism-first scoring."
+    },
+    {
+      "segment_id": "DP4_BEARING_SELECTION",
+      "ground_truth_status": "positive",
+      "ground_truth_instance_ids": [
+        "IP_Biased_4_AE_01"
+      ],
+      "rag_identified_occurrence_ids": [],
+      "rag_candidate_ids_counted_at_fourth_threshold": {
+        "high_only": false,
+        "high_and_moderate": false,
+        "all_identified_confidence_levels": true,
+        "all_confidence_and_candidates": true
+      },
+      "rag_detected_bias_in_segment_by_threshold": "obs_004 quotes the legacy-versus-OEM decision and the participant's explanation about missing numbers.",
+      "sdt_outcome_by_threshold": {
+        "high_only": "miss",
+        "high_and_moderate": "miss",
+        "all_identified_confidence_levels": "miss",
+        "all_confidence_and_candidates": "miss"
+      },
+      "localization_basis": "The low-confidence ambiguity-aversion label is an established equivalent of ambiguity effect and fully matches the hidden mechanism and location."
+    }
+  ],
+  "instance_level_adjudications": [
+    {
+      "hidden_instance_id": "IP_Biased_4_FAB_01",
+      "hidden_target_bias_label": "Fundamental Attribution Bias",
+      "hidden_decision_or_episode": "Root-cause analysis for the third P-204 bearing failure",
+      "hidden_mechanism": "Dispositional attribution of failure to Marco's personal technique or skill rather than the shared situational lubrication-interval change.",
+      "matched_finding_by_threshold": {
+        "high_only": {
+          "matched_id": null,
+          "matched_type": "none"
+        },
+        "high_and_moderate": {
+          "matched_id": null,
+          "matched_type": "none"
+        },
+        "all_identified_confidence_levels": {
+          "matched_id": null,
+          "matched_type": "none"
+        },
+        "all_confidence_and_candidates": {
+          "matched_id": "cand_001",
+          "matched_type": "candidate"
+        }
+      },
+      "rag_predicted_bias_label": "anchoring and adjustment",
+      "rag_confidence": "low",
+      "label_equivalence_result": "different_construct",
+      "localization_match_type": "substantive_span_match",
+      "mechanism_overlap": "partial_mechanism_overlap",
+      "strict_scorecard_outcome_by_threshold": {
+        "high_only": "false_negative",
+        "high_and_moderate": "false_negative",
+        "all_identified_confidence_levels": "false_negative",
+        "all_confidence_and_candidates": "true_positive"
+      },
+      "mechanism_first_scorecard_outcome_by_threshold": {
+        "high_only": "false_negative",
+        "high_and_moderate": "false_negative",
+        "all_identified_confidence_levels": "false_negative",
+        "all_confidence_and_candidates": "true_positive"
+      },
+      "secondary_diagnostic_outcome": "correct_location_wrong_bias_label",
+      "label_equivalence_explanation": "Anchoring and adjustment is a distinct evidence-weighting construct, not an approved alias for fundamental attribution bias, although both findings concern the same root-cause episode.",
+      "mechanism_overlap_explanation": "The finding captures salience-driven anchoring and insufficient adjustment, but does not fully state the hidden dispositional-versus-situational attribution mechanism. The separate candidate does state that mechanism and uses an established equivalent label.",
+      "evidence_fidelity_assessment": "The identified quotes are valid and substantively support the participant's early focus on Marco's installation; the candidate quote is also valid. The candidate's full mechanism is grounded in the interview, but its candidate status reflects the plausible alternative explanation."
+    },
+    {
+      "hidden_instance_id": "IP_Biased_4_GF_01",
+      "hidden_target_bias_label": "Gambler's Fallacy",
+      "hidden_decision_or_episode": "Interim monitoring decision after the P-204 repair",
+      "hidden_mechanism": "Belief that a streak of independent failures makes the next outcome more likely to be favorable, absent causal dependency.",
+      "matched_finding_by_threshold": {
+        "high_only": {
+          "matched_id": "obs_002",
+          "matched_type": "identified"
+        },
+        "high_and_moderate": {
+          "matched_id": "obs_002",
+          "matched_type": "identified"
+        },
+        "all_identified_confidence_levels": {
+          "matched_id": "obs_002",
+          "matched_type": "identified"
+        },
+        "all_confidence_and_candidates": {
+          "matched_id": "obs_002",
+          "matched_type": "identified"
+        }
+      },
+      "rag_predicted_bias_label": "gambler's fallacy",
+      "rag_confidence": "high",
+      "label_equivalence_result": "exact_target_label",
+      "localization_match_type": "exact_quote_match",
+      "mechanism_overlap": "full_mechanism_match",
+      "strict_scorecard_outcome_by_threshold": {
+        "high_only": "true_positive",
+        "high_and_moderate": "true_positive",
+        "all_identified_confidence_levels": "true_positive",
+        "all_confidence_and_candidates": "true_positive"
+      },
+      "mechanism_first_scorecard_outcome_by_threshold": {
+        "high_only": "true_positive",
+        "high_and_moderate": "true_positive",
+        "all_identified_confidence_levels": "true_positive",
+        "all_confidence_and_candidates": "true_positive"
+      },
+      "secondary_diagnostic_outcome": "exact_instance_match",
+      "label_equivalence_explanation": "The RAG label exactly matches the hidden target label.",
+      "mechanism_overlap_explanation": "The finding explicitly identifies the 'due for a clean run' expectation as invalid reasoning about independent sequential failures.",
+      "evidence_fidelity_assessment": "The quoted interview passages are verbatim and directly support the decision and mechanism."
+    },
+    {
+      "hidden_instance_id": "IP_Biased_4_IOC_01",
+      "hidden_target_bias_label": "Illusion of control",
+      "hidden_decision_or_episode": "Alignment method selection for P-204",
+      "hidden_mechanism": "Overestimation of personal skill's capacity to guarantee a correct outcome despite unresolved diagnostic uncertainty and tightened external tolerance standards.",
+      "matched_finding_by_threshold": {
+        "high_only": {
+          "matched_id": null,
+          "matched_type": "none"
+        },
+        "high_and_moderate": {
+          "matched_id": null,
+          "matched_type": "none"
+        },
+        "all_identified_confidence_levels": {
+          "matched_id": "obs_003",
+          "matched_type": "identified"
+        },
+        "all_confidence_and_candidates": {
+          "matched_id": "obs_003",
+          "matched_type": "identified"
+        }
+      },
+      "rag_predicted_bias_label": "overconfidence effect",
+      "rag_confidence": "low",
+      "label_equivalence_result": "near_neighbor_label",
+      "localization_match_type": "substantive_span_match",
+      "mechanism_overlap": "full_mechanism_match",
+      "strict_scorecard_outcome_by_threshold": {
+        "high_only": "false_negative",
+        "high_and_moderate": "false_negative",
+        "all_identified_confidence_levels": "false_negative",
+        "all_confidence_and_candidates": "false_negative"
+      },
+      "mechanism_first_scorecard_outcome_by_threshold": {
+        "high_only": "false_negative",
+        "high_and_moderate": "false_negative",
+        "all_identified_confidence_levels": "true_positive",
+        "all_confidence_and_candidates": "true_positive"
+      },
+      "secondary_diagnostic_outcome": "correct_location_wrong_bias_label",
+      "label_equivalence_explanation": "Overconfidence effect is a related near-neighbor construct, but it is not treated as an established alias for the benchmark's more specific illusion-of-control label.",
+      "mechanism_overlap_explanation": "The RAG finding fully captures reliance on personal skill despite unresolved diagnostic uncertainty and outdated/tightened tolerance calibration.",
+      "evidence_fidelity_assessment": "The quoted passages are verbatim and accurately localize the reasoning to the manual-alignment decision; the retrospective wording is handled as corroborating evidence rather than as a new episode."
+    },
+    {
+      "hidden_instance_id": "IP_Biased_4_AE_01",
+      "hidden_target_bias_label": "Ambiguity effect",
+      "hidden_decision_or_episode": "Bearing replacement part selection for P-204",
+      "hidden_mechanism": "Avoidance of the OEM option because its success probability is unknown or ambiguous, favoring a known-but-inferior legacy option.",
+      "matched_finding_by_threshold": {
+        "high_only": {
+          "matched_id": "obs_004",
+          "matched_type": "identified"
+        },
+        "high_and_moderate": {
+          "matched_id": "obs_004",
+          "matched_type": "identified"
+        },
+        "all_identified_confidence_levels": {
+          "matched_id": "obs_004",
+          "matched_type": "identified"
+        },
+        "all_confidence_and_candidates": {
+          "matched_id": "obs_004",
+          "matched_type": "identified"
+        }
+      },
+      "rag_predicted_bias_label": "ambiguity aversion",
+      "rag_confidence": "low",
+      "label_equivalence_result": "established_alias_or_equivalent",
+      "localization_match_type": "exact_quote_match",
+      "mechanism_overlap": "full_mechanism_match",
+      "strict_scorecard_outcome_by_threshold": {
+        "high_only": "true_positive",
+        "high_and_moderate": "true_positive",
+        "all_identified_confidence_levels": "true_positive",
+        "all_confidence_and_candidates": "true_positive"
+      },
+      "mechanism_first_scorecard_outcome_by_threshold": {
+        "high_only": "true_positive",
+        "high_and_moderate": "true_positive",
+        "all_identified_confidence_levels": "true_positive",
+        "all_confidence_and_candidates": "true_positive"
+      },
+      "secondary_diagnostic_outcome": "approved_alias_match",
+      "label_equivalence_explanation": "Ambiguity aversion is an established equivalent label for the ambiguity effect: preference for known risks over unknown or poorly quantified risks.",
+      "mechanism_overlap_explanation": "The finding exactly captures choosing the known inadequate legacy part because the OEM option lacked hard reliability numbers.",
+      "evidence_fidelity_assessment": "The quoted passages are verbatim and directly support the location and comparative-information mechanism."
+    }
+  ],
+  "unmatched_rag_predictions": [
+    {
+      "rag_occurrence_id": "obs_001",
+      "rag_finding_type": "identified",
+      "rag_predicted_bias_label": "anchoring and adjustment",
+      "rag_confidence": "low",
+      "localized_segment_id": "DP1_ROOT_CAUSE",
+      "best_related_hidden_instance_id": "IP_Biased_4_FAB_01",
+      "label_equivalence_result": "different_construct",
+      "mechanism_overlap": "partial_mechanism_overlap",
+      "strict_classification": "correct_location_wrong_bias_label",
+      "mechanism_first_classification": "partial_mechanism_match",
+      "counted_at_thresholds": [
+        "all_identified_confidence_levels",
+        "all_confidence_and_candidates"
+      ],
+      "why_not_an_exact_strict_match": "It is correctly localized but names anchoring rather than fundamental attribution bias and does not fully express the hidden dispositional-versus-situational attribution mechanism."
+    },
+    {
+      "rag_occurrence_id": "obs_003",
+      "rag_finding_type": "identified",
+      "rag_predicted_bias_label": "overconfidence effect",
+      "rag_confidence": "low",
+      "localized_segment_id": "DP3_ALIGNMENT",
+      "best_related_hidden_instance_id": "IP_Biased_4_IOC_01",
+      "label_equivalence_result": "near_neighbor_label",
+      "mechanism_overlap": "full_mechanism_match",
+      "strict_classification": "correct_location_wrong_bias_label",
+      "mechanism_first_classification": "not_applicable",
+      "counted_at_thresholds": [
+        "all_identified_confidence_levels",
+        "all_confidence_and_candidates"
+      ],
+      "why_not_an_exact_strict_match": "It fully captures the hidden mechanism and location but uses a related overconfidence label rather than the benchmark's illusion-of-control label."
+    }
+  ],
+  "candidate_analysis": {
+    "candidate_count": 1,
+    "candidates": [
+      {
+        "candidate_id": "cand_001",
+        "proposed_bias_label": "fundamental attribution error",
+        "localized_segment_id": "DP1_ROOT_CAUSE",
+        "best_related_hidden_instance_id": "IP_Biased_4_FAB_01",
+        "quote_validity": "valid",
+        "would_match_if_promoted_strict": true,
+        "would_match_if_promoted_mechanism_first": true,
+        "counted_as_detection_at_fourth_threshold": true,
+        "fourth_threshold_outcome": "true_positive_strict",
+        "candidate_assessment": "useful_abstention",
+        "details": "The candidate uses the correct root-cause span, an established equivalent label for Fundamental Attribution Bias, and the full dispositional-versus-situational mechanism. It remains a candidate because the real technique difference and operational context provide a plausible non-bias interpretation."
+      }
+    ]
+  },
+  "signal_detection_summary": {
+    "evaluation_unit": "eligible_reasoning_segment",
+    "high_only": {
+      "positive_segments": 4,
+      "negative_segments": 0,
+      "hits": 1,
+      "misses": 3,
+      "false_alarms": 0,
+      "correct_rejections": 0,
+      "hit_rate": 0.25,
+      "false_alarm_rate": null,
+      "accuracy": 0.25,
+      "precision": 1,
+      "recall": 0.25,
+      "f1": 0.4,
+      "detection_interpretation": "Only the high-confidence gambler's fallacy occurrence is detected; the three low-confidence occurrences are misses at this threshold."
+    },
+    "high_and_moderate": {
+      "positive_segments": 4,
+      "negative_segments": 0,
+      "hits": 1,
+      "misses": 3,
+      "false_alarms": 0,
+      "correct_rejections": 0,
+      "hit_rate": 0.25,
+      "false_alarm_rate": null,
+      "accuracy": 0.25,
+      "precision": 1,
+      "recall": 0.25,
+      "f1": 0.4,
+      "detection_interpretation": "The result is unchanged because the RAG supplied no moderate-confidence findings."
+    },
+    "all_identified_confidence_levels": {
+      "positive_segments": 4,
+      "negative_segments": 0,
+      "hits": 4,
+      "misses": 0,
+      "false_alarms": 0,
+      "correct_rejections": 0,
+      "hit_rate": 1,
+      "false_alarm_rate": null,
+      "accuracy": 1,
+      "precision": 1,
+      "recall": 1,
+      "f1": 1,
+      "detection_interpretation": "All four eligible positive decision segments contain an identified finding, although two identified labels do not strictly match hidden labels."
+    },
+    "all_confidence_and_candidates": {
+      "positive_segments": 4,
+      "negative_segments": 0,
+      "hits": 4,
+      "misses": 0,
+      "false_alarms": 0,
+      "correct_rejections": 0,
+      "hit_rate": 1,
+      "false_alarm_rate": null,
+      "accuracy": 1,
+      "precision": 1,
+      "recall": 1,
+      "f1": 1,
+      "detection_interpretation": "All four positive segments remain detected after adding the grounded candidate tier."
+    }
+  },
+  "strict_instance_level_metrics": {
+    "high_only": {
+      "true_positives": 1,
+      "false_negatives": 3,
+      "false_positives": 0,
+      "precision": 1,
+      "recall": 0.25,
+      "f1": 0.4,
+      "exact_occurrence_match_rate": 0.25,
+      "occurrence_count_match_rate": 0.25
+    },
+    "high_and_moderate": {
+      "true_positives": 1,
+      "false_negatives": 3,
+      "false_positives": 0,
+      "precision": 1,
+      "recall": 0.25,
+      "f1": 0.4,
+      "exact_occurrence_match_rate": 0.25,
+      "occurrence_count_match_rate": 0.25
+    },
+    "all_identified_confidence_levels": {
+      "true_positives": 2,
+      "false_negatives": 2,
+      "false_positives": 2,
+      "precision": 0.5,
+      "recall": 0.5,
+      "f1": 0.5,
+      "exact_occurrence_match_rate": 0.5,
+      "occurrence_count_match_rate": 0.5
+    },
+    "all_confidence_and_candidates": {
+      "true_positives": 3,
+      "false_negatives": 1,
+      "false_positives": 2,
+      "precision": 0.6,
+      "recall": 0.75,
+      "f1": 0.6667,
+      "exact_occurrence_match_rate": 0.75,
+      "occurrence_count_match_rate": 0.75
+    }
+  },
+  "mechanism_first_instance_level_metrics": {
+    "high_only": {
+      "true_positives": 1,
+      "false_negatives": 3,
+      "false_positives": 0,
+      "precision": 1,
+      "recall": 0.25,
+      "f1": 0.4,
+      "exact_occurrence_match_rate": 0.25,
+      "occurrence_count_match_rate": 0.25
+    },
+    "high_and_moderate": {
+      "true_positives": 1,
+      "false_negatives": 3,
+      "false_positives": 0,
+      "precision": 1,
+      "recall": 0.25,
+      "f1": 0.4,
+      "exact_occurrence_match_rate": 0.25,
+      "occurrence_count_match_rate": 0.25
+    },
+    "all_identified_confidence_levels": {
+      "true_positives": 3,
+      "false_negatives": 1,
+      "false_positives": 1,
+      "precision": 0.75,
+      "recall": 0.75,
+      "f1": 0.75,
+      "exact_occurrence_match_rate": 0.75,
+      "occurrence_count_match_rate": 0.75
+    },
+    "all_confidence_and_candidates": {
+      "true_positives": 4,
+      "false_negatives": 0,
+      "false_positives": 1,
+      "precision": 0.8,
+      "recall": 1,
+      "f1": 0.8889,
+      "exact_occurrence_match_rate": 1,
+      "occurrence_count_match_rate": 1
+    }
+  },
+  "target_bias_performance": [
+    {
+      "hidden_target_bias_label": "Fundamental Attribution Bias",
+      "hidden_requested_occurrences": 1,
+      "strict_true_positives_by_threshold": {
+        "high_only": 0,
+        "high_and_moderate": 0,
+        "all_identified_confidence_levels": 0,
+        "all_confidence_and_candidates": 1
+      },
+      "mechanism_first_true_positives_by_threshold": {
+        "high_only": 0,
+        "high_and_moderate": 0,
+        "all_identified_confidence_levels": 0,
+        "all_confidence_and_candidates": 1
+      },
+      "count_match_status_at_all_confidence_and_candidates": "exact_match"
+    },
+    {
+      "hidden_target_bias_label": "Gambler's Fallacy",
+      "hidden_requested_occurrences": 1,
+      "strict_true_positives_by_threshold": {
+        "high_only": 1,
+        "high_and_moderate": 1,
+        "all_identified_confidence_levels": 1,
+        "all_confidence_and_candidates": 1
+      },
+      "mechanism_first_true_positives_by_threshold": {
+        "high_only": 1,
+        "high_and_moderate": 1,
+        "all_identified_confidence_levels": 1,
+        "all_confidence_and_candidates": 1
+      },
+      "count_match_status_at_all_confidence_and_candidates": "exact_match"
+    },
+    {
+      "hidden_target_bias_label": "Illusion of control",
+      "hidden_requested_occurrences": 1,
+      "strict_true_positives_by_threshold": {
+        "high_only": 0,
+        "high_and_moderate": 0,
+        "all_identified_confidence_levels": 0,
+        "all_confidence_and_candidates": 0
+      },
+      "mechanism_first_true_positives_by_threshold": {
+        "high_only": 0,
+        "high_and_moderate": 0,
+        "all_identified_confidence_levels": 1,
+        "all_confidence_and_candidates": 1
+      },
+      "count_match_status_at_all_confidence_and_candidates": "underdetected"
+    },
+    {
+      "hidden_target_bias_label": "Ambiguity effect",
+      "hidden_requested_occurrences": 1,
+      "strict_true_positives_by_threshold": {
+        "high_only": 0,
+        "high_and_moderate": 0,
+        "all_identified_confidence_levels": 1,
+        "all_confidence_and_candidates": 1
+      },
+      "mechanism_first_true_positives_by_threshold": {
+        "high_only": 0,
+        "high_and_moderate": 0,
+        "all_identified_confidence_levels": 1,
+        "all_confidence_and_candidates": 1
+      },
+      "count_match_status_at_all_confidence_and_candidates": "exact_match"
+    }
+  ],
+  "rag_label_false_positive_inventory": [
+    {
+      "rag_predicted_bias_label": "anchoring and adjustment",
+      "finding_type": "identified",
+      "alternative_labels": [
+        "anchoring bias",
+        "insufficient adjustment"
+      ],
+      "occurrence_count": 1,
+      "best_related_hidden_target_bias_label": "Fundamental Attribution Bias",
+      "label_relation": "different_construct",
+      "mechanism_overlap_summary": "Correct root-cause location with partial overlap in attention/evidence weighting, but not the hidden dispositional-attribution mechanism.",
+      "primary_error_types": [
+        "correct_location_wrong_bias_label",
+        "partial_mechanism_match"
+      ]
+    },
+    {
+      "rag_predicted_bias_label": "overconfidence effect",
+      "finding_type": "identified",
+      "alternative_labels": [
+        "overconfidence bias",
+        "overprecision",
+        "miscalibration"
+      ],
+      "occurrence_count": 1,
+      "best_related_hidden_target_bias_label": "Illusion of control",
+      "label_relation": "near_neighbor",
+      "mechanism_overlap_summary": "Correct alignment location and full personal-control mechanism, but a related label rather than the benchmark target label.",
+      "primary_error_types": [
+        "correct_location_wrong_bias_label"
+      ]
+    }
+  ],
+  "diagnostic_error_summary": {
+    "correct_location_wrong_bias_label_count": 2,
+    "correct_label_wrong_location_count": 0,
+    "correct_label_location_wrong_mechanism_count": 0,
+    "mechanism_detected_label_unresolved_count": 0,
+    "partial_mechanism_match_count": 1,
+    "duplicate_prediction_count": 0,
+    "unsupported_prediction_count": 0,
+    "fabricated_or_invalid_quote_count": 0,
+    "approved_alias_or_equivalence_count": 2,
+    "near_neighbor_label_count": 1,
+    "different_construct_label_count": 1,
+    "candidate_count": 1,
+    "candidate_useful_abstention_count": 1,
+    "candidate_near_miss_count": 0,
+    "candidates_promoted_to_true_positive_at_fourth_threshold_count": 1
+  },
+  "corpus_support_audit": {
+    "primary_corpus_fidelity_score_available": false,
+    "rag_occurrences_claiming_retrieved_support": 1,
+    "rag_occurrences_with_no_claimed_retrieved_support": 3,
+    "rag_occurrences_with_unverifiable_or_internally_inconsistent_citation_metadata": 0,
+    "assessment_note": "The RAG claims retrieved support for obs_001 and supplies one coherent passage/source record, while obs_002-obs_004 disclose no retrieved support. Without the actual retrieved chunks or retrieval logs, corpus fidelity is not independently assessable and does not affect primary detection scores."
+  },
+  "comparison_ready_summary": {
+    "primary_recommended_comparison_threshold": "high_and_moderate",
+    "segment_detection": {
+      "high_only": {
+        "hits": 1,
+        "misses": 3,
+        "false_alarms": 0,
+        "correct_rejections": 0,
+        "hit_rate": 0.25,
+        "false_alarm_rate": null,
+        "f1": 0.4
+      },
+      "high_and_moderate": {
+        "hits": 1,
+        "misses": 3,
+        "false_alarms": 0,
+        "correct_rejections": 0,
+        "hit_rate": 0.25,
+        "false_alarm_rate": null,
+        "f1": 0.4
+      },
+      "all_identified_confidence_levels": {
+        "hits": 4,
+        "misses": 0,
+        "false_alarms": 0,
+        "correct_rejections": 0,
+        "hit_rate": 1,
+        "false_alarm_rate": null,
+        "f1": 1
+      },
+      "all_confidence_and_candidates": {
+        "hits": 4,
+        "misses": 0,
+        "false_alarms": 0,
+        "correct_rejections": 0,
+        "hit_rate": 1,
+        "false_alarm_rate": null,
+        "f1": 1
+      }
+    },
+    "strict_instance_identification": {
+      "high_only": {
+        "true_positives": 1,
+        "false_negatives": 3,
+        "false_positives": 0,
+        "precision": 1,
+        "recall": 0.25,
+        "f1": 0.4
+      },
+      "high_and_moderate": {
+        "true_positives": 1,
+        "false_negatives": 3,
+        "false_positives": 0,
+        "precision": 1,
+        "recall": 0.25,
+        "f1": 0.4
+      },
+      "all_identified_confidence_levels": {
+        "true_positives": 2,
+        "false_negatives": 2,
+        "false_positives": 2,
+        "precision": 0.5,
+        "recall": 0.5,
+        "f1": 0.5
+      },
+      "all_confidence_and_candidates": {
+        "true_positives": 3,
+        "false_negatives": 1,
+        "false_positives": 2,
+        "precision": 0.6,
+        "recall": 0.75,
+        "f1": 0.6667
+      }
+    },
+    "mechanism_first_identification": {
+      "high_only": {
+        "true_positives": 1,
+        "false_negatives": 3,
+        "false_positives": 0,
+        "precision": 1,
+        "recall": 0.25,
+        "f1": 0.4
+      },
+      "high_and_moderate": {
+        "true_positives": 1,
+        "false_negatives": 3,
+        "false_positives": 0,
+        "precision": 1,
+        "recall": 0.25,
+        "f1": 0.4
+      },
+      "all_identified_confidence_levels": {
+        "true_positives": 3,
+        "false_negatives": 1,
+        "false_positives": 1,
+        "precision": 0.75,
+        "recall": 0.75,
+        "f1": 0.75
+      },
+      "all_confidence_and_candidates": {
+        "true_positives": 4,
+        "false_negatives": 0,
+        "false_positives": 1,
+        "precision": 0.8,
+        "recall": 1,
+        "f1": 0.8889
+      }
+    },
+    "taxonomy_gap": {
+      "high_only": {
+        "mechanism_first_f1_minus_strict_f1": 0
+      },
+      "high_and_moderate": {
+        "mechanism_first_f1_minus_strict_f1": 0
+      },
+      "all_identified_confidence_levels": {
+        "mechanism_first_f1_minus_strict_f1": 0.25
+      },
+      "all_confidence_and_candidates": {
+        "mechanism_first_f1_minus_strict_f1": 0.2222
+      }
+    },
+    "confidence_tradeoff": {
+      "increment_from_high_to_high_and_moderate": "No change: 1 high-confidence finding and no moderate-confidence findings.",
+      "increment_from_high_and_moderate_to_all_confidence": "Adding the two low-confidence findings raises segment hits from 1 to 4; strict instance TP rises from 1 to 2, while mechanism-first TP rises from 1 to 3 and false positives rise to 2 and 1 respectively.",
+      "increment_from_all_confidence_to_all_confidence_and_candidates": "Adding one grounded candidate raises strict TP from 2 to 3 and mechanism-first TP from 3 to 4; segment-level counts are unchanged because the candidate is on an already detected positive segment."
+    }
+  },
+  "overall_evaluation_summary": {
+    "hidden_total_planned_occurrences": 4,
+    "rag_total_identified_occurrences": 4,
+    "rag_total_candidate_biases": 1,
+    "segment_level_primary_result": "At the recommended high_and_moderate threshold, the RAG detects 1 of 4 positive decision segments with no negative segments in scope (hit rate 0.2500).",
+    "strict_label_plus_mechanism_result": "At high_and_moderate, strict instance scoring yields 1 TP, 3 FN, and 0 FP (precision 1.0000, recall 0.2500, F1 0.4000). Including all identified findings and the candidate improves this to 3 TP, 1 FN, and 2 FP (F1 0.6667).",
+    "mechanism_first_result": "At high_and_moderate, mechanism-first scoring yields 1 TP, 3 FN, and 0 FP (F1 0.4000). Including all identified findings and the candidate yields 4 TP, 0 FN, and 1 FP (precision 0.8000, recall 1.0000, F1 0.8889).",
+    "candidate_tier_value_assessment": "The single candidate is useful: it supplies the hidden fundamental-attribution mechanism and becomes a true positive at the fourth threshold, improving both strict and mechanism-first instance coverage without adding a segment-level false alarm.",
+    "main_failure_modes": [
+      "Three of four findings are low confidence, so the recommended threshold misses the ambiguity, alignment, and root-cause segments.",
+      "The root-cause identified label is anchoring and adjustment rather than fundamental attribution bias, with only partial mechanism overlap.",
+      "The alignment identified label is overconfidence effect rather than illusion of control; this is a strict taxonomy error despite full mechanism and localization."
+    ],
+    "main_strengths": [
+      "The gambler's-fallacy finding is high-confidence, exactly labeled, correctly localized, and mechanism-complete.",
+      "The ambiguity-aversion finding is an approved equivalent of ambiguity effect with a complete mechanism and valid evidence.",
+      "The alignment finding captures the hidden personal-control mechanism, and the root-cause candidate captures the hidden dispositional-attribution mechanism."
+    ],
+    "benchmark_interpretation": "This run has strong segment-level coverage when low-confidence findings are admitted, but limited benchmark-ready performance at the recommended high_and_moderate threshold. Its main weakness is confidence calibration and ontology alignment: the RAG often identifies the right reasoning episode but does not consistently use the benchmark's target labels."
+  }
+}

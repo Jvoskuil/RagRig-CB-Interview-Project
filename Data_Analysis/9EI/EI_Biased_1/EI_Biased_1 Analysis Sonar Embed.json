@@ -1,0 +1,468 @@
+{
+  "evaluation_metadata": {
+    "task": "ontology_free_rag_cognitive_bias_benchmark_evaluation",
+    "benchmark_run_metadata": {
+      "benchmark_run_id": "EI_Biased_1_Sonar_on",
+      "interview_id": "EI_Biased_1",
+      "system_prompt_id": "Sonar",
+      "system_prompt_generator": "Prompt 1_2",
+      "rag_model_id": "v1.0.0",
+      "corpus_condition": "on",
+      "retrieval_configuration_id": "k=50",
+      "decoding_configuration_id": null,
+      "temperature": 1,
+      "replicate_id": null,
+      "segment_map_id": null
+    },
+    "scenario_id": "EI_Biased_1",
+    "domain_id": "EI",
+    "condition": "biased",
+    "segment_map_status": "prevalidated_provided",
+    "rag_output_parse_status": "valid_json",
+    "rag_schema_assessment": "conformant"
+  },
+  "input_validation": {
+    "rag_output_schema_violations": [],
+    "rag_summary_count_consistency": {
+      "status": "consistent",
+      "details": "The identified_bias_summary reports one Confirmation bias occurrence, matching the single identified_occurrences record; candidate records are separately represented in candidate_biases."
+    },
+    "evaluation_limitations": [
+      "The RAG claims retrieved corpus support, but no independent retrieval log or source passages were supplied; corpus fidelity is therefore not scored.",
+      "The candidate label Support-importance conflation is taxonomy-uncertain, so its mechanism-first status is reported separately from strict label performance."
+    ]
+  },
+  "evaluation_segment_map": {
+    "segment_mapping_version": "1.0",
+    "segments": [
+      {
+        "segment_id": "seg_dp1",
+        "speaker": "Participant",
+        "segment_type": "decision_point_1_initial_placement_hold",
+        "raw_interview_anchor": "My first instinct was just to trust the transcript ... so I asked my chair if we could hold off a few days and get a diagnostic test done.",
+        "eligible_reasoning_segment": true,
+        "ground_truth_bias_present": false,
+        "ground_truth_instance_ids": [],
+        "ground_truth_rationale": "The teacher recognizes uncertainty in the transcript and deliberately gathers more evidence; the generation specification marks this as a reasonable, non-biased data-gathering decision."
+      },
+      {
+        "segment_id": "seg_dp2",
+        "speaker": "Participant",
+        "segment_type": "decision_point_2_composite_placement_score",
+        "raw_interview_anchor": "I converted everything to the same 100-point scale and averaged the four together. That gave me a composite right around 79, which cleared our department's cutoff of 75.",
+        "eligible_reasoning_segment": true,
+        "ground_truth_bias_present": true,
+        "ground_truth_instance_ids": ["avg_01"],
+        "ground_truth_rationale": "The teacher applies an unweighted arithmetic mean to heterogeneous inputs with materially different reliability and comparability, directly forming the placement decision."
+      },
+      {
+        "segment_id": "seg_dp3",
+        "speaker": "Participant",
+        "segment_type": "decision_point_3_first_unit_test_monitoring",
+        "raw_interview_anchor": "That was concerning, but not alarming yet ... I chose the second option and set up twice-weekly tutoring.",
+        "eligible_reasoning_segment": true,
+        "ground_truth_bias_present": false,
+        "ground_truth_instance_ids": [],
+        "ground_truth_rationale": "The teacher acknowledges the low score, considers reassignment, and chooses support while monitoring under genuine uncertainty; this is explicitly non-biased in the generation specification."
+      },
+      {
+        "segment_id": "seg_dp4",
+        "speaker": "Participant",
+        "segment_type": "decision_point_4_quarter_end_retention",
+        "raw_interview_anchor": "The recent trend mattered a lot to me ... keeping him in with continued support seemed like the right call.",
+        "eligible_reasoning_segment": true,
+        "ground_truth_bias_present": false,
+        "ground_truth_instance_ids": [],
+        "ground_truth_rationale": "Retention is supported by the improving trend, tutoring response, transcript continuity, and parent input; the specification treats this as a defensible judgment rather than a named bias."
+      }
+    ]
+  },
+  "segment_level_adjudications": [
+    {
+      "segment_id": "seg_dp1",
+      "ground_truth_status": "negative",
+      "ground_truth_instance_ids": [],
+      "rag_identified_occurrence_ids": [],
+      "rag_candidate_ids_counted_at_fourth_threshold": ["cand_001"],
+      "rag_detected_bias_in_segment_by_threshold": {
+        "high_only": false,
+        "high_and_moderate": false,
+        "all_identified_confidence_levels": false,
+        "all_confidence_and_candidates": true
+      },
+      "sdt_outcome_by_threshold": {
+        "high_only": "correct_rejection",
+        "high_and_moderate": "correct_rejection",
+        "all_identified_confidence_levels": "correct_rejection",
+        "all_confidence_and_candidates": "false_positive"
+      },
+      "localization_basis": "Candidate cand_001 quotes the initial transcript-based instinct and therefore localizes to the initial-placement segment, but that segment is ground-truth negative.",
+      "adjudication_note": "The candidate is explicitly hedged and lacks affirmative evidence of disproportionate transcript influence; it is nevertheless a segment-level detection at the candidate-inclusive threshold."
+    },
+    {
+      "segment_id": "seg_dp2",
+      "ground_truth_status": "positive",
+      "ground_truth_instance_ids": ["avg_01"],
+      "rag_identified_occurrence_ids": [],
+      "rag_candidate_ids_counted_at_fourth_threshold": ["cand_002"],
+      "rag_detected_bias_in_segment_by_threshold": {
+        "high_only": false,
+        "high_and_moderate": false,
+        "all_identified_confidence_levels": false,
+        "all_confidence_and_candidates": true
+      },
+      "sdt_outcome_by_threshold": {
+        "high_only": "miss",
+        "high_and_moderate": "miss",
+        "all_identified_confidence_levels": "miss",
+        "all_confidence_and_candidates": "hit"
+      },
+      "localization_basis": "Candidate cand_002 quotes the participant's explicit failure to weigh the inputs and describes the four-input simple average; this is a substantive match to the composite-scoring segment.",
+      "adjudication_note": "The candidate supplies the hidden mechanism and valid localization but uses a non-equivalent, uncertain label, so the segment is a hit while strict instance identification remains a miss."
+    },
+    {
+      "segment_id": "seg_dp3",
+      "ground_truth_status": "negative",
+      "ground_truth_instance_ids": [],
+      "rag_identified_occurrence_ids": ["obs_001"],
+      "rag_candidate_ids_counted_at_fourth_threshold": [],
+      "rag_detected_bias_in_segment_by_threshold": {
+        "high_only": false,
+        "high_and_moderate": false,
+        "all_identified_confidence_levels": true,
+        "all_confidence_and_candidates": true
+      },
+      "sdt_outcome_by_threshold": {
+        "high_only": "correct_rejection",
+        "high_and_moderate": "correct_rejection",
+        "all_identified_confidence_levels": "false_positive",
+        "all_confidence_and_candidates": "false_positive"
+      },
+      "localization_basis": "The two interview quotes attached to obs_001 directly overlap the mapped post-placement monitoring rationale.",
+      "adjudication_note": "The confirmation-bias interpretation is not part of the hidden manifest; the specification explicitly treats this monitoring decision as defensible under uncertainty."
+    },
+    {
+      "segment_id": "seg_dp4",
+      "ground_truth_status": "negative",
+      "ground_truth_instance_ids": [],
+      "rag_identified_occurrence_ids": [],
+      "rag_candidate_ids_counted_at_fourth_threshold": [],
+      "rag_detected_bias_in_segment_by_threshold": {
+        "high_only": false,
+        "high_and_moderate": false,
+        "all_identified_confidence_levels": false,
+        "all_confidence_and_candidates": false
+      },
+      "sdt_outcome_by_threshold": {
+        "high_only": "correct_rejection",
+        "high_and_moderate": "correct_rejection",
+        "all_identified_confidence_levels": "correct_rejection",
+        "all_confidence_and_candidates": "correct_rejection"
+      },
+      "localization_basis": "No RAG finding localizes to the quarter-end retention segment.",
+      "adjudication_note": "No detection is present."
+    }
+  ],
+  "instance_level_adjudications": [
+    {
+      "hidden_instance_id": "avg_01",
+      "hidden_target_bias_label": "Averaging Bias",
+      "hidden_decision_or_episode": "Decision Point 2: forming the composite placement score from four heterogeneous indicators",
+      "hidden_mechanism": "Unweighted arithmetic averaging of a normed diagnostic, an unverified transcript conversion, a single classroom quiz grade, and a subjective self-report despite materially different reliability and comparability, with the composite used directly for placement.",
+      "matched_finding_by_threshold": {
+        "high_only": {"matched_id": null, "matched_type": "none"},
+        "high_and_moderate": {"matched_id": null, "matched_type": "none"},
+        "all_identified_confidence_levels": {"matched_id": null, "matched_type": "none"},
+        "all_confidence_and_candidates": {"matched_id": "cand_002", "matched_type": "candidate"}
+      },
+      "rag_predicted_bias_label": "Support-importance conflation",
+      "rag_confidence": "candidate",
+      "label_equivalence_result": "near_neighbor_label",
+      "localization_match_type": "substantive_span_match",
+      "mechanism_overlap": "full_mechanism_match",
+      "strict_scorecard_outcome_by_threshold": {
+        "high_only": "false_negative",
+        "high_and_moderate": "false_negative",
+        "all_identified_confidence_levels": "false_negative",
+        "all_confidence_and_candidates": "false_negative"
+      },
+      "mechanism_first_scorecard_outcome_by_threshold": {
+        "high_only": "false_negative",
+        "high_and_moderate": "false_negative",
+        "all_identified_confidence_levels": "false_negative",
+        "all_confidence_and_candidates": "true_positive"
+      },
+      "secondary_diagnostic_outcome": "correct_location_wrong_bias_label",
+      "label_equivalence_explanation": "Support-importance conflation and its alternatives are not established aliases for Averaging Bias. The candidate's equal-weighting framing is a near-neighbor description of the target mechanism, but the label remains materially different and taxonomy-uncertain.",
+      "mechanism_overlap_explanation": "The candidate explicitly describes simple averaging across heterogeneous sources and failure to differentiate their validity or diagnostic value, which fully captures the hidden evidence-integration mechanism. It does not use the hidden target label.",
+      "evidence_fidelity_assessment": "The candidate quote is valid and from the Participant. Its mechanism statement is supported by the interview's explicit four-input averaging account, though the candidate presentation is appropriately hedged and less evidentially complete than an identified occurrence."
+    }
+  ],
+  "unmatched_rag_predictions": [
+    {
+      "rag_occurrence_id": "obs_001",
+      "rag_finding_type": "identified",
+      "rag_predicted_bias_label": "Confirmation bias",
+      "rag_confidence": "low",
+      "localized_segment_id": "seg_dp3",
+      "best_related_hidden_instance_id": "avg_01",
+      "label_equivalence_result": "different_construct",
+      "mechanism_overlap": "partial_mechanism_overlap",
+      "strict_classification": "unsupported_prediction",
+      "mechanism_first_classification": "unsupported_prediction",
+      "counted_at_thresholds": ["all_identified_confidence_levels", "all_confidence_and_candidates"],
+      "why_not_an_exact_strict_match": "The finding is localized to a negative monitoring segment rather than the composite-scoring segment, and confirmation-biased selection of placement-consistent evidence is a different mechanism from unweighted aggregation of heterogeneous inputs. The attached quotes are valid, but the hidden Averaging Bias instance is not supported by this finding."
+    },
+    {
+      "rag_occurrence_id": "cand_001",
+      "rag_finding_type": "candidate",
+      "rag_predicted_bias_label": "Anchoring bias",
+      "rag_confidence": "candidate",
+      "localized_segment_id": "seg_dp1",
+      "best_related_hidden_instance_id": "avg_01",
+      "label_equivalence_result": "near_neighbor_label",
+      "mechanism_overlap": "minimal_mechanism_overlap",
+      "strict_classification": "unsupported_prediction",
+      "mechanism_first_classification": "unsupported_prediction",
+      "counted_at_thresholds": ["all_confidence_and_candidates"],
+      "why_not_an_exact_strict_match": "The quote concerns the initial transcript instinct in a negative segment. The teacher delayed placement, gathered additional evidence, and later averaged four inputs; there is no evidence that the transcript disproportionately anchored the final decision."
+    },
+    {
+      "rag_occurrence_id": "cand_002",
+      "rag_finding_type": "candidate",
+      "rag_predicted_bias_label": "Support-importance conflation",
+      "rag_confidence": "candidate",
+      "localized_segment_id": "seg_dp2",
+      "best_related_hidden_instance_id": "avg_01",
+      "label_equivalence_result": "near_neighbor_label",
+      "mechanism_overlap": "full_mechanism_match",
+      "strict_classification": "correct_location_wrong_bias_label",
+      "mechanism_first_classification": "not_applicable",
+      "counted_at_thresholds": ["all_confidence_and_candidates"],
+      "why_not_an_exact_strict_match": "The candidate is correctly localized and captures the full unweighted-aggregation mechanism, but its proposed label is not an established alias for Averaging Bias. It is therefore a mechanism-first hit only, not a strict true positive."
+    }
+  ],
+  "candidate_analysis": {
+    "candidate_count": 2,
+    "candidates": [
+      {
+        "candidate_id": "cand_001",
+        "proposed_bias_label": "Anchoring bias",
+        "localized_segment_id": "seg_dp1",
+        "best_related_hidden_instance_id": "avg_01",
+        "quote_validity": "valid",
+        "would_match_if_promoted_strict": false,
+        "would_match_if_promoted_mechanism_first": false,
+        "counted_as_detection_at_fourth_threshold": true,
+        "fourth_threshold_outcome": "false_positive",
+        "candidate_assessment": "useful_abstention",
+        "details": "The candidate identifies a plausible initial anchor but explicitly acknowledges the lack of affirmative evidence and the teacher's corrective data-gathering. It is a useful abstention, but still creates a false-positive detection when every candidate is counted."
+      },
+      {
+        "candidate_id": "cand_002",
+        "proposed_bias_label": "Support-importance conflation",
+        "localized_segment_id": "seg_dp2",
+        "best_related_hidden_instance_id": "avg_01",
+        "quote_validity": "valid",
+        "would_match_if_promoted_strict": false,
+        "would_match_if_promoted_mechanism_first": true,
+        "counted_as_detection_at_fourth_threshold": true,
+        "fourth_threshold_outcome": "true_positive_mechanism_first_only",
+        "candidate_assessment": "candidate_near_miss",
+        "details": "The candidate is localized to the correct segment and describes the hidden unweighted aggregation mechanism, but the uncertain label is not equivalent to Averaging Bias. Promotion would recover the instance under the mechanism-first scorecard only."
+      }
+    ]
+  },
+  "signal_detection_summary": {
+    "evaluation_unit": "eligible_reasoning_segment",
+    "high_only": {
+      "positive_segments": 1,
+      "negative_segments": 3,
+      "hits": 0,
+      "misses": 1,
+      "false_alarms": 0,
+      "correct_rejections": 3,
+      "hit_rate": 0.0,
+      "false_alarm_rate": 0.0,
+      "accuracy": 0.75,
+      "precision": null,
+      "recall": 0.0,
+      "f1": 0.0,
+      "detection_interpretation": "No high-confidence findings were produced; the positive segment was missed and all three negative segments were correctly rejected."
+    },
+    "high_and_moderate": {
+      "positive_segments": 1,
+      "negative_segments": 3,
+      "hits": 0,
+      "misses": 1,
+      "false_alarms": 0,
+      "correct_rejections": 3,
+      "hit_rate": 0.0,
+      "false_alarm_rate": 0.0,
+      "accuracy": 0.75,
+      "precision": null,
+      "recall": 0.0,
+      "f1": 0.0,
+      "detection_interpretation": "No high- or moderate-confidence findings were produced; the positive segment was missed with no false alarms."
+    },
+    "all_identified_confidence_levels": {
+      "positive_segments": 1,
+      "negative_segments": 3,
+      "hits": 0,
+      "misses": 1,
+      "false_alarms": 1,
+      "correct_rejections": 2,
+      "hit_rate": 0.0,
+      "false_alarm_rate": 0.3333,
+      "accuracy": 0.5,
+      "precision": 0.0,
+      "recall": 0.0,
+      "f1": 0.0,
+      "detection_interpretation": "Including the low-confidence identified finding adds one false alarm on the non-biased monitoring segment while the hidden positive segment remains missed."
+    },
+    "all_confidence_and_candidates": {
+      "positive_segments": 1,
+      "negative_segments": 3,
+      "hits": 1,
+      "misses": 0,
+      "false_alarms": 2,
+      "correct_rejections": 1,
+      "hit_rate": 1.0,
+      "false_alarm_rate": 0.6667,
+      "accuracy": 0.5,
+      "precision": 0.0,
+      "recall": 1.0,
+      "f1": 0.5,
+      "detection_interpretation": "Counting candidates recovers the positive segment through cand_002, but cand_001 and the low-confidence confirmation finding create two false alarms; segment-level precision is 0.0 because the two negative-segment detections outnumber the single positive-segment detection."
+    }
+  },
+  "strict_instance_level_metrics": {
+    "high_only": {"true_positives": 0, "false_negatives": 1, "false_positives": 0, "precision": null, "recall": 0.0, "f1": 0.0, "exact_occurrence_match_rate": 0.0, "occurrence_count_match_rate": 0.0},
+    "high_and_moderate": {"true_positives": 0, "false_negatives": 1, "false_positives": 0, "precision": null, "recall": 0.0, "f1": 0.0, "exact_occurrence_match_rate": 0.0, "occurrence_count_match_rate": 0.0},
+    "all_identified_confidence_levels": {"true_positives": 0, "false_negatives": 1, "false_positives": 1, "precision": 0.0, "recall": 0.0, "f1": 0.0, "exact_occurrence_match_rate": 0.0, "occurrence_count_match_rate": 0.0},
+    "all_confidence_and_candidates": {"true_positives": 0, "false_negatives": 1, "false_positives": 3, "precision": 0.0, "recall": 0.0, "f1": 0.0, "exact_occurrence_match_rate": 0.0, "occurrence_count_match_rate": 0.0}
+  },
+  "mechanism_first_instance_level_metrics": {
+    "high_only": {"true_positives": 0, "false_negatives": 1, "false_positives": 0, "precision": null, "recall": 0.0, "f1": 0.0, "exact_occurrence_match_rate": 0.0, "occurrence_count_match_rate": 0.0},
+    "high_and_moderate": {"true_positives": 0, "false_negatives": 1, "false_positives": 0, "precision": null, "recall": 0.0, "f1": 0.0, "exact_occurrence_match_rate": 0.0, "occurrence_count_match_rate": 0.0},
+    "all_identified_confidence_levels": {"true_positives": 0, "false_negatives": 1, "false_positives": 1, "precision": 0.0, "recall": 0.0, "f1": 0.0, "exact_occurrence_match_rate": 0.0, "occurrence_count_match_rate": 0.0},
+    "all_confidence_and_candidates": {"true_positives": 1, "false_negatives": 0, "false_positives": 2, "precision": 0.3333, "recall": 1.0, "f1": 0.5, "exact_occurrence_match_rate": 1.0, "occurrence_count_match_rate": 1.0}
+  },
+  "target_bias_performance": [
+    {
+      "hidden_target_bias_label": "Averaging Bias",
+      "hidden_requested_occurrences": 1,
+      "strict_true_positives_by_threshold": {"high_only": 0, "high_and_moderate": 0, "all_identified_confidence_levels": 0, "all_confidence_and_candidates": 0},
+      "mechanism_first_true_positives_by_threshold": {"high_only": 0, "high_and_moderate": 0, "all_identified_confidence_levels": 0, "all_confidence_and_candidates": 1},
+      "count_match_status_at_all_confidence_and_candidates": "underdetected"
+    }
+  ],
+  "rag_label_false_positive_inventory": [
+    {
+      "rag_predicted_bias_label": "Confirmation bias",
+      "finding_type": "identified",
+      "alternative_labels": ["Confirmatory bias", "Hypothesis-confirming reasoning", "Myside bias"],
+      "occurrence_count": 1,
+      "best_related_hidden_target_bias_label": "Averaging Bias",
+      "label_relation": "different_construct",
+      "mechanism_overlap_summary": "Both concern interpretation or use of evidence, but the finding alleges selective confirmation after placement, whereas the hidden instance concerns equal aggregation of sources with different reliability.",
+      "primary_error_types": ["unsupported_prediction", "different_construct_label", "wrong_ground_truth_segment"]
+    },
+    {
+      "rag_predicted_bias_label": "Anchoring bias",
+      "finding_type": "candidate",
+      "alternative_labels": ["Anchoring-and-adjustment heuristic"],
+      "occurrence_count": 1,
+      "best_related_hidden_target_bias_label": "Averaging Bias",
+      "label_relation": "near_neighbor",
+      "mechanism_overlap_summary": "The candidate concerns possible disproportionate influence of the initial transcript, while the hidden mechanism concerns unweighted integration of four sources; the overlap is limited to evidence use in the same broad placement workflow.",
+      "primary_error_types": ["unsupported_prediction", "near_neighbor_label", "wrong_ground_truth_segment"]
+    },
+    {
+      "rag_predicted_bias_label": "Support-importance conflation",
+      "finding_type": "candidate",
+      "alternative_labels": ["Equal-weighting heuristic", "Insufficient source differentiation"],
+      "occurrence_count": 1,
+      "best_related_hidden_target_bias_label": "Averaging Bias",
+      "label_relation": "mechanism_unresolved",
+      "mechanism_overlap_summary": "The candidate's mechanism is a full match to the hidden unweighted aggregation instance, but its proposed label is uncertain and not an established equivalent of Averaging Bias.",
+      "primary_error_types": ["correct_location_wrong_bias_label", "mechanism_first_only_candidate"]
+    }
+  ],
+  "diagnostic_error_summary": {
+    "correct_location_wrong_bias_label_count": 1,
+    "correct_label_wrong_location_count": 0,
+    "correct_label_location_wrong_mechanism_count": 0,
+    "mechanism_detected_label_unresolved_count": 0,
+    "partial_mechanism_match_count": 1,
+    "duplicate_prediction_count": 0,
+    "unsupported_prediction_count": 2,
+    "fabricated_or_invalid_quote_count": 0,
+    "approved_alias_or_equivalence_count": 0,
+    "near_neighbor_label_count": 2,
+    "different_construct_label_count": 1,
+    "candidate_count": 2,
+    "candidate_useful_abstention_count": 1,
+    "candidate_near_miss_count": 1,
+    "candidates_promoted_to_true_positive_at_fourth_threshold_count": 1
+  },
+  "corpus_support_audit": {
+    "primary_corpus_fidelity_score_available": false,
+    "rag_occurrences_claiming_retrieved_support": 1,
+    "rag_occurrences_with_no_claimed_retrieved_support": 2,
+    "rag_occurrences_with_unverifiable_or_internally_inconsistent_citation_metadata": 1,
+    "assessment_note": "obs_001 explicitly claims retrieved support and provides two source identifiers, but title, author, and year metadata are null and the supplied material contains no independent retrieval logs or source passages. The two candidates make no retrieved-support claim."
+  },
+  "comparison_ready_summary": {
+    "primary_recommended_comparison_threshold": "high_and_moderate",
+    "segment_detection": {
+      "high_only": {"hits": 0, "misses": 1, "false_alarms": 0, "correct_rejections": 3, "hit_rate": 0.0, "false_alarm_rate": 0.0, "f1": 0.0},
+      "high_and_moderate": {"hits": 0, "misses": 1, "false_alarms": 0, "correct_rejections": 3, "hit_rate": 0.0, "false_alarm_rate": 0.0, "f1": 0.0},
+      "all_identified_confidence_levels": {"hits": 0, "misses": 1, "false_alarms": 1, "correct_rejections": 2, "hit_rate": 0.0, "false_alarm_rate": 0.3333, "f1": 0.0},
+      "all_confidence_and_candidates": {"hits": 1, "misses": 0, "false_alarms": 2, "correct_rejections": 1, "hit_rate": 1.0, "false_alarm_rate": 0.6667, "f1": 0.5}
+    },
+    "strict_instance_identification": {
+      "high_only": {"true_positives": 0, "false_negatives": 1, "false_positives": 0, "precision": null, "recall": 0.0, "f1": 0.0},
+      "high_and_moderate": {"true_positives": 0, "false_negatives": 1, "false_positives": 0, "precision": null, "recall": 0.0, "f1": 0.0},
+      "all_identified_confidence_levels": {"true_positives": 0, "false_negatives": 1, "false_positives": 1, "precision": 0.0, "recall": 0.0, "f1": 0.0},
+      "all_confidence_and_candidates": {"true_positives": 0, "false_negatives": 1, "false_positives": 3, "precision": 0.0, "recall": 0.0, "f1": 0.0}
+    },
+    "mechanism_first_identification": {
+      "high_only": {"true_positives": 0, "false_negatives": 1, "false_positives": 0, "precision": null, "recall": 0.0, "f1": 0.0},
+      "high_and_moderate": {"true_positives": 0, "false_negatives": 1, "false_positives": 0, "precision": null, "recall": 0.0, "f1": 0.0},
+      "all_identified_confidence_levels": {"true_positives": 0, "false_negatives": 1, "false_positives": 1, "precision": 0.0, "recall": 0.0, "f1": 0.0},
+      "all_confidence_and_candidates": {"true_positives": 1, "false_negatives": 0, "false_positives": 2, "precision": 0.3333, "recall": 1.0, "f1": 0.5}
+    },
+    "taxonomy_gap": {
+      "high_only": {"mechanism_first_f1_minus_strict_f1": 0.0},
+      "high_and_moderate": {"mechanism_first_f1_minus_strict_f1": 0.0},
+      "all_identified_confidence_levels": {"mechanism_first_f1_minus_strict_f1": 0.0},
+      "all_confidence_and_candidates": {"mechanism_first_f1_minus_strict_f1": 0.5}
+    },
+    "confidence_tradeoff": {
+      "increment_from_high_to_high_and_moderate": "No change: both thresholds yield 0 hits, 1 miss, and 0 false alarms.",
+      "increment_from_high_and_moderate_to_all_confidence": "Adding low-confidence identified findings leaves the miss unchanged and adds 1 false alarm on seg_dp3.",
+      "increment_from_all_confidence_to_all_confidence_and_candidates": "Adding candidates changes segment detection from 0 hits/1 miss/1 false alarm to 1 hit/0 misses/2 false alarms; mechanism-first instance F1 rises from 0.0 to 0.5, while strict instance F1 remains 0.0."
+    }
+  },
+  "overall_evaluation_summary": {
+    "hidden_total_planned_occurrences": 1,
+    "rag_total_identified_occurrences": 1,
+    "rag_total_candidate_biases": 2,
+    "segment_level_primary_result": "At the recommended high_and_moderate threshold, the RAG missed the only positive segment and produced no false alarms: 0 hits, 1 miss, 0 false alarms, and 3 correct rejections.",
+    "strict_label_plus_mechanism_result": "The RAG achieved 0 true positives, 1 false negative, and 0 false positives at the recommended threshold; it did not identify the hidden Averaging Bias instance.",
+    "mechanism_first_result": "The identified Confirmation bias finding remains a false positive. When candidates are included, cand_002 recovers the hidden mechanism under the mechanism-first scorecard, yielding 1 true positive, 0 false negatives, 2 false positives, precision 0.3333, recall 1.0, and F1 0.5.",
+    "candidate_tier_value_assessment": "Candidate inclusion recovers the positive segment and the hidden mechanism only under the mechanism-first scorecard, but it also adds one unsupported negative-segment candidate and leaves strict label performance at zero. Its value is therefore diagnostic rather than a strict benchmark success.",
+    "main_failure_modes": [
+      "The sole identified occurrence is a low-confidence Confirmation bias finding on a ground-truth negative segment.",
+      "The RAG misses the explicit Averaging Bias mechanism as an identified occurrence at all standard confidence thresholds.",
+      "The closest candidate uses a non-equivalent, uncertain label, preventing strict credit despite full mechanism and localization match."
+    ],
+    "main_strengths": [
+      "The RAG provides valid interview quotations and acknowledges plausible non-bias counterevidence.",
+      "The candidate tier conservatively surfaces the correct unweighted-aggregation mechanism without promoting it to an identified finding.",
+      "Corpus-support claims are separated from primary detection scoring, consistent with the supplied evaluation rules."
+    ],
+    "benchmark_interpretation": "This run shows zero standard-threshold detection of the hidden target and a false positive when low-confidence findings are admitted. Candidate inclusion reveals a taxonomy gap: the correct mechanism is present as a cautious near-miss, but the label is not equivalent to the hidden target."
+  }
+}

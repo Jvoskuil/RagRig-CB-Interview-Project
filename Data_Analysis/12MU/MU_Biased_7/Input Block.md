@@ -1,0 +1,585 @@
+<RAW_INTERVIEW>
+**Interviewer:** Thanks for making time for this. Just to confirm, this is a cognitive task analysis interview — I'm interested in how you actually reasoned through the incident, not in second-guessing the outcome. Everything's confidential and used for training and research purposes only. You're an Assistant Mine Manager at the site, correct?
+
+**Participant:** That's right. I've been in that role about three years, twenty years underground total, mostly hard rock.
+
+**Interviewer:** Good. Let's start broad — can you walk me through what was happening in Stope 14 East during that shift?
+
+**Participant:** Sure. We were running a stope on the 950 level, standard longhole retreat mining. We'd had three microseismic events overnight — moderate magnitude, above what the array normally logs for that block over a rolling thirty-day average. No visible damage reported by the night shift, though. At the same time, we were two days behind on the monthly tonnage target, so there was some pressure from the production side to keep things moving.
+
+**Interviewer:** What was your main objective going into that morning?
+
+**Participant:** Keep the crew safe, obviously, but also not create a stoppage we couldn't justify. We'd had false alarms before — events that looked concerning on paper but turned out to be nothing. You don't want to shut a stope every time the array blips, or the crew starts tuning out the real warnings.
+
+**Interviewer:** Take me through what you actually decided that morning.
+
+**Participant:** The ground support plan for that stope had been signed off about four months earlier, and nothing had changed structurally since then — no fall of ground, nothing visible. So my read was that the plan was still sound, and I didn't see a reason to hold the crew back. We had options — pause entry and get an unscheduled inspection, or drop crew numbers until someone looked at it — but honestly, revising an approved plan on the back of three events felt like more disruption than the situation called for. We let day shift go in and start drilling as scheduled.
+
+**Interviewer:** Did anything happen during that shift that stood out?
+
+**Participant:** A bit of loose rock came off a rib wall mid-shift. Crew scaled it down, logged it as routine. Nothing that changed my thinking at that point.
+
+**Interviewer:** Let's move to later that day — you mentioned a hazard rating came in.
+
+**Participant:** Yes, our geotech support is remote most of the week — the engineer's only on-site two days. The model came back with a 2.3 on their five-point scale, tagged "moderate but manageable." The Stope 9 situation was actually the first thing that came to mind — it had come up on the shift handover just a few days earlier, almost the exact same rating and event cluster, and it had resolved completely fine, no incident. Between the number and that memory, I felt reasonably comfortable.
+
+**Interviewer:** Were there other options at that point?
+
+**Participant:** We could have asked for an updated rating that accounted for the blind spot near the intersection — the array doesn't read well there — or just held the blast until the engineer was back on-site the next day. I didn't go pull the broader run of comparable events across other stopes to see how those had generally played out; Stope 9 was just the one that was fresh in my head, so that's what I went with. The 2.3 read as solid enough, and Stope 9 had gone fine under similar numbers, so I authorized the afternoon blast clearance.
+
+**Interviewer:** How much weight did that number carry versus other considerations?
+
+**Participant:** A fair amount. It came from the model, and it was specific and official-looking, which made it easy to treat as settled rather than something to test against the blind spot we already knew was there.
+
+**Interviewer:** What happened after the blast was cleared?
+
+**Participant:** About two hours later there was a second event, larger than the first three, and outside what the model's confidence range would have predicted.
+
+**Interviewer:** Let's talk about what happened next — the cracking.
+
+**Participant:** Right, after the blast, the shift supervisor flagged some hairline cracking in the shotcrete on one rib. Around the same time a junior inspector — one of the geotech contractor's people — sent an email recommending we re-support before doing any more blasting. But two other crew members separately told me it looked like typical post-blast settling, nothing unusual.
+
+**Interviewer:** How did you weigh those two views?
+
+**Participant:** I leaned toward the crew's read. We'd seen a very similar crack pattern in Stope 9 previously that never led anywhere. So when the reporting went up to the production superintendent, I passed along the crew's "typical settling" assessments. The inspector's note got filed — I didn't raise it on the shift call, mostly because it felt like it would just muddy a picture that already seemed clear enough from the people who were actually standing there.
+
+**Interviewer:** Was there a version of that decision where the inspector's note carried equal weight?
+
+**Participant:** Looking back, sure — we could have treated the cracking as inconclusive and brought in an independent check rather than leaning on precedent and the on-the-ground opinions. At the time it didn't feel necessary because the Stope 9 comparison made the pattern seem like something we already understood.
+
+**Interviewer:** Let's get to the final decision point — the next scheduled blast.
+
+**Participant:** Right before that decision, one of the array nodes had sensor lag, so we didn't have confirmed magnitude data for recent ground movement. Then a small rock fall happened near the access drift — no injuries, minor. The superintendent was pushing to keep the blast on schedule to hit the month-end number.
+
+**Interviewer:** What went into your call there?
+
+**Participant:** Honestly, that rock fall didn't worry me much. I've personally been through plenty of similar events over twenty years underground, and they almost never escalate. If anything, it read to me as consistent with what we'd already been seeing — minor settling, nothing structural. I authorized the blast.
+
+**Interviewer:** Were you uncertain at all in that moment?
+
+**Participant:** There was a gap, sure — we didn't have the sensor confirmation we'd normally want. But I was confident in the call. Twenty years gives you a feel for these things that a delayed sensor reading doesn't necessarily add to.
+
+**Interviewer:** Could you have suspended the blast pending that data, or escalated to the engineer for a fresh look?
+
+**Participant:** Both were on the table. I just didn't think either was warranted given how the shift had gone.
+
+**Interviewer:** What happened afterward?
+
+**Participant:** The blast went fine. Ground stayed stable through the rest of the shift. We did schedule a post-shift review, though the underlying ground support plan wasn't actually revised.
+
+**Interviewer:** Stepping back — if the geotechnical engineer had been on-site the whole time rather than remote, would anything have gone differently?
+
+**Participant:** Possibly. Having someone physically there to look at the cracking directly, rather than relying on an email and crew impressions, might have changed how that got weighted.
+
+**Interviewer:** And if the hazard rating had come back at 3.5 instead of 2.3?
+
+**Participant:** That would have stopped me. A 3.5 doesn't let you lean on a comfortable memory the way a 2.3 does.
+
+**Interviewer:** Looking back, would you make the same call on continuing under the existing support plan that first morning?
+
+**Participant:** I'd probably want more of a structured comparison next time — actually laying the new seismic readings against the plan's original assumptions, rather than just defaulting to "nothing's changed, so we haven't changed anything." At the time, though, it felt like the obvious choice.
+</RAW_INTERVIEW>
+
+<COMPLETE_GENERATION_SPECIFICATION>
+{
+  "spec_version": "3.0",
+  "scenario_id": "MU_Biased_7",
+  "domain_id": "MU",
+  "domain": "Mining and underground industrial operations",
+  "role": "Underground Mine Manager / Assistant Mine Manager",
+  "condition": "biased",
+  "generation_specification": {
+    "scenario_title_internal": "Elevated Microseismicity Near Stope 14 East During a Behind-Schedule Production Push",
+    "scenario_summary_internal": "An Assistant Mine Manager at a deep underground hard-rock mine must decide how to respond to a sequence of elevated microseismic events near an active stope while production is behind schedule. Ground control monitoring, a proprietary seismic hazard-rating model, shift-crew reports, and the manager's own recent experience with a similar 'false alarm' event all feed into four sequential decisions spanning roughly one shift-and-a-half, ending with a decision to proceed with a scheduled blast despite unresolved warning signs.",
+    "occupational_realism": {
+      "objective": "Maintain safe ground conditions in Stope 14 East while meeting a tightening weekly ore-production target, without triggering an unnecessary work stoppage.",
+      "setting": "A deep underground hard-rock (gold/base-metal analog) mine, 950m level, active stoping area with a real-time microseismic monitoring array and a contracted geotechnical engineering team providing periodic hazard ratings.",
+      "constraints": [
+        "Production schedule is two days behind target for the month",
+        "Geotechnical engineer is only on-site two days per week; remote support is used the rest of the time",
+        "Evacuating or re-supporting the stope costs 12-18 hours of lost production",
+        "Seismic monitoring array has known blind spots near intersections and old workings",
+        "Shift crew morale and trust in management is affected by perceived overreaction to false alarms"
+      ],
+      "stakeholders": [
+        "Assistant Mine Manager (interviewee)",
+        "Shift supervisor on Stope 14 East",
+        "Contract geotechnical engineer",
+        "Production superintendent",
+        "Underground crew (drill and blast team)"
+      ],
+      "technical_terms_to_use": [
+        "microseismic event",
+        "seismic hazard rating",
+        "ground support plan",
+        "stope",
+        "shotcrete",
+        "rockburst potential",
+        "re-entry protocol",
+        "blast clearance",
+        "strain energy",
+        "fall of ground (FOG)"
+      ],
+      "technical_terms_to_avoid": [
+        "confirmation bias",
+        "status quo bias",
+        "illusion of validity",
+        "overconfidence bias",
+        "availability bias",
+        "heuristic",
+        "cognitive bias"
+      ]
+    },
+    "timeline": [
+      {
+        "phase": 1,
+        "decision_point": true,
+        "facts_available_before_decision": [
+          "Microseismic array logs three moderate-magnitude events near Stope 14 East overnight, above the 30-day baseline",
+          "The existing ground support plan for the stope was approved four months ago and has not been revised since",
+          "Production is two days behind schedule for the month",
+          "No visible ground damage reported by night shift"
+        ],
+        "new_information_after_decision": [
+          "Day shift crew enters Stope 14 East and begins scheduled drilling without additional ground inspection",
+          "A minor loose rock is scaled off a rib wall mid-shift, logged as routine"
+        ],
+        "alternatives": [
+          "Continue operations under the existing ground support plan as approved",
+          "Pause entry and request an unscheduled ground control inspection before crew entry",
+          "Reduce crew numbers in the stope while inspection is pending"
+        ],
+        "intended_action": "Continue operations under the existing, unrevised ground support plan"
+      },
+      {
+        "phase": 2,
+        "decision_point": true,
+        "facts_available_before_decision": [
+          "The remote geotechnical model returns a numeric seismic hazard rating of 2.3 on a 5-point scale for the affected zone, labeled 'moderate but manageable'",
+          "The manager recalls a similar rating and event cluster six weeks earlier near Stope 9 that resolved without incident",
+          "The monitoring array has a documented blind spot near the intersection adjacent to Stope 14 East",
+          "The geotechnical engineer is off-site until the following day"
+        ],
+        "new_information_after_decision": [
+          "Blast clearance is granted for the afternoon round based on the hazard rating",
+          "A second, larger microseismic event is logged two hours after the rating was issued, outside the model's confidence interval"
+        ],
+        "alternatives": [
+          "Accept the 2.3 rating as sufficient basis to proceed with the planned blast",
+          "Request an updated rating incorporating the array's known blind spot before authorizing the blast",
+          "Delay the blast until the geotechnical engineer returns on-site"
+        ],
+        "intended_action": "Accept the numeric hazard rating and authorize the afternoon blast, citing the earlier Stope 9 experience as reassurance"
+      },
+      {
+        "phase": 3,
+        "decision_point": true,
+        "facts_available_before_decision": [
+          "Following the blast, shotcrete on one rib shows new hairline cracking, reported by the shift supervisor as concerning",
+          "A junior geotechnical inspector emails a cautionary note recommending re-support before further blasting",
+          "Two other crew members separately describe the cracking as 'typical settling after a blast'",
+          "Historical logs show a comparable crack pattern in Stope 9 that did not precede a fall of ground"
+        ],
+        "new_information_after_decision": [
+          "The manager forwards only the crew's 'typical settling' assessments to the production superintendent",
+          "The junior inspector's cautionary note is filed but not escalated or discussed on the shift call"
+        ],
+        "alternatives": [
+          "Treat the cracking as inconclusive and commission an independent structural check before continuing",
+          "Weigh the junior inspector's recommendation equally against crew observations",
+          "Proceed on the basis that crew observations and the Stope 9 precedent are sufficient"
+        ],
+        "intended_action": "Proceed with the production plan, emphasizing crew reassurance and downplaying the inspector's caution"
+      },
+      {
+        "phase": 4,
+        "decision_point": true,
+        "facts_available_before_decision": [
+          "Sensor lag on one array node delays confirmation of ground movement magnitude for the next scheduled blast",
+          "A small unplanned rock fall (no injuries) occurs near the stope access drift shortly before the decision window",
+          "The manager has 20 years of underground experience and has personally overseen similar rock falls without escalation",
+          "Production superintendent is pressing for the blast to proceed to hit the monthly target"
+        ],
+        "new_information_after_decision": [
+          "The blast proceeds as scheduled; ground conditions remain stable through the shift",
+          "A post-shift review is scheduled but the underlying ground support plan is not revised"
+        ],
+        "alternatives": [
+          "Authorize the blast based on personal judgment and past experience with similar rock falls",
+          "Suspend the blast pending confirmed sensor data",
+          "Escalate to the geotechnical engineer for a fresh independent assessment"
+        ],
+        "intended_action": "Authorize the blast, expressing high confidence in personal judgment despite the sensor lag and interpreting the rock fall as further confirmation that conditions are stable"
+      }
+    ],
+    "probe_plan": {
+      "opening": [
+        "Can you walk me through what was happening in Stope 14 East that shift?",
+        "What was your main objective going into that decision window?"
+      ],
+      "timeline_reconstruction": [
+        "What did you know at the moment you decided to continue under the existing ground support plan?",
+        "Walk me through what happened right after the hazard rating came in.",
+        "What did the shift supervisor and the junior inspector each tell you, and in what order?",
+        "What information arrived after the blast that changed or didn't change your view?"
+      ],
+      "decision_point_probes": [
+        "What alternatives did you consider before continuing operations under the existing plan?",
+        "How much weight did the numeric hazard rating carry in your decision, and why?",
+        "How did you decide which reports to pass along to the superintendent?",
+        "What made you confident enough to authorize the final blast despite the sensor lag?"
+      ],
+      "goals": [
+        "What were you trying to balance between safety and production that day?"
+      ],
+      "information_sources": [
+        "Which sources of information did you trust most in that shift, and why?"
+      ],
+      "alternatives": [
+        "Looking back, what other options were realistically available at each of those points?"
+      ],
+      "decision_basis": [
+        "What ultimately tipped your decision at each step?"
+      ],
+      "prior_experience": [
+        "Did anything from your past experience underground shape how you read these signals?"
+      ],
+      "time_pressure": [
+        "How much did the production schedule affect the pace of your decisions?"
+      ],
+      "uncertainty": [
+        "Where did you feel most uncertain, and how did you handle that uncertainty?"
+      ],
+      "closing_hypotheticals": [
+        "If the geotechnical engineer had been on-site the whole time, would anything have changed?",
+        "If the hazard rating had come back at 3.5 instead of 2.3, what would you have done differently?",
+        "Looking back, would you make the same call on continuing under the existing ground support plan?"
+      ]
+    },
+    "occurrence_embedding_plan_internal": [
+      {
+        "instance_id": "sqb_01",
+        "bias": "Status quo bias",
+        "decision_point": 1,
+        "mechanism": "Manager defaults to the existing, unrevised ground support plan despite new seismic evidence, treating the cost/effort of deviation as decisive without directly weighing the new risk information",
+        "affected_reasoning_operation": "Option evaluation under a default anchor",
+        "evidence_available_at_time": [
+          "Three above-baseline microseismic events overnight",
+          "Ground support plan unrevised for four months",
+          "Production two days behind schedule"
+        ],
+        "required_textual_manifestation": "Manager states or implies that changing the approved plan felt unnecessary/disruptive and that continuing as planned was the natural choice, without describing a substantive comparison of the new seismic data against the plan's original assumptions",
+        "plausible_nonbias_interpretation": "The manager reasonably judged the plan still valid based on the absence of visible damage",
+        "strength": "subtle",
+        "do_not_make_explicit": ["status quo bias", "default effect", "anchoring to existing plan"]
+      },
+      {
+        "instance_id": "iv_01",
+        "bias": "Illusion of validity",
+        "decision_point": 2,
+        "mechanism": "Manager treats the precise numeric hazard rating (2.3) as a reliable, well-calibrated predictor of localized risk despite the model's known blind spot and lack of site-specific validation",
+        "affected_reasoning_operation": "Confidence calibration in a quantitative model output",
+        "evidence_available_at_time": [
+          "Numeric hazard rating of 2.3 labeled 'moderate but manageable'",
+          "Known monitoring blind spot near the adjacent intersection",
+          "Geotechnical engineer off-site"
+        ],
+        "required_textual_manifestation": "Manager describes treating the specific numeric rating as strong, decisive evidence of manageable risk, without acknowledging the model's blind-spot limitation as reducing confidence",
+        "plausible_nonbias_interpretation": "The rating came from a credentialed remote model and represented the best available quantitative input at the time",
+        "strength": "moderate",
+        "do_not_make_explicit": ["illusion of validity", "model limitations", "false precision"]
+      },
+      {
+        "instance_id": "iv_02",
+        "bias": "Illusion of validity",
+        "decision_point": 3,
+        "mechanism": "Manager infers strong predictive confidence from the apparent coherence between the new crack pattern and a past Stope 9 case, treating narrative similarity as proof the pattern is benign rather than as one uncertain data point",
+        "affected_reasoning_operation": "Pattern-matching against historical case as validation",
+        "evidence_available_at_time": [
+          "New hairline cracking in shotcrete",
+          "Historical log of comparable Stope 9 crack pattern that resolved without a fall of ground",
+          "Junior inspector's cautionary note"
+        ],
+        "required_textual_manifestation": "Manager expresses that because the crack pattern 'matched' Stope 9's history, this made the current situation predictable/understood, without noting how different one prior case is as a basis for confidence",
+        "plausible_nonbias_interpretation": "Drawing on relevant precedent is a legitimate part of experienced judgment in ground control",
+        "strength": "moderate",
+        "do_not_make_explicit": ["illusion of validity", "pattern coherence", "overgeneralization from one case"]
+      },
+      {
+        "instance_id": "cb_01",
+        "bias": "Confirmation Bias",
+        "decision_point": 3,
+        "mechanism": "Manager selectively forwards crew accounts that support the 'normal settling' hypothesis while filing away, without escalation, the junior inspector's dissenting recommendation",
+        "affected_reasoning_operation": "Selective evidence transmission/weighting",
+        "evidence_available_at_time": [
+          "Two crew accounts describing cracking as typical settling",
+          "Junior inspector's cautionary email recommending re-support"
+        ],
+        "required_textual_manifestation": "Manager describes choosing to pass along the reassuring crew reports to the superintendent while not raising or discussing the inspector's note on the shift call",
+        "plausible_nonbias_interpretation": "Crew observations from people physically present may reasonably be weighted alongside a remote junior inspector's note",
+        "strength": "subtle",
+        "do_not_make_explicit": ["confirmation bias", "selective reporting", "cherry-picking evidence"]
+      },
+      {
+        "instance_id": "cb_02",
+        "bias": "Confirmation Bias",
+        "decision_point": 4,
+        "mechanism": "Manager interprets an ambiguous, minor rock fall as further confirmation that ground conditions are stable, rather than as an update that should increase caution given the pending sensor data gap",
+        "affected_reasoning_operation": "Interpretation of ambiguous new evidence relative to a prior belief",
+        "evidence_available_at_time": [
+          "Small unplanned rock fall near stope access drift",
+          "Sensor lag delaying confirmed ground movement magnitude",
+          "Prior belief that conditions were manageable"
+        ],
+        "required_textual_manifestation": "Manager frames the rock fall as consistent with/expected under the 'stable conditions' view rather than treating it as new evidence warranting reassessment, distinct from cb_01's evidence-selection act",
+        "plausible_nonbias_interpretation": "Minor rock falls are common and can reasonably be treated as routine background risk",
+        "strength": "subtle",
+        "do_not_make_explicit": ["confirmation bias", "belief-consistent interpretation", "biased assimilation"]
+      },
+      {
+        "instance_id": "ob_01",
+        "bias": "Overconfidence Bias",
+        "decision_point": 4,
+        "mechanism": "Manager expresses high personal certainty in the decision to authorize the blast, citing 20 years of experience, while the objective uncertainty (sensor lag, unresolved crack report, superintendent pressure) remains substantial and unaddressed",
+        "affected_reasoning_operation": "Self-assessed confidence in a judgment under incomplete information",
+        "evidence_available_at_time": [
+          "Sensor lag preventing confirmed data",
+          "20 years of personal underground experience",
+          "Production pressure from superintendent"
+        ],
+        "required_textual_manifestation": "Manager states strong personal certainty that the call was correct and downplays the significance of the missing sensor confirmation, without qualifying the confidence level against the actual gaps in evidence",
+        "plausible_nonbias_interpretation": "Extensive experience is a legitimate basis for professional judgment under uncertainty",
+        "strength": "moderate",
+        "do_not_make_explicit": ["overconfidence bias", "miscalibrated certainty", "experience-based overconfidence"]
+      },
+      {
+        "instance_id": "ab_01",
+        "bias": "Availability Bias",
+        "decision_point": 2,
+        "mechanism": "Manager judges current risk as low primarily because a vivid, easily recalled recent event (Stope 9, six weeks earlier) resolved without incident, rather than referencing base-rate statistics on seismic-event escalation",
+        "affected_reasoning_operation": "Risk judgment via recall of a salient prior instance",
+        "evidence_available_at_time": [
+          "Memory of the Stope 9 event cluster six weeks earlier",
+          "Absence of readily recalled base-rate data on escalation frequency"
+        ],
+        "required_textual_manifestation": "Manager explains reassurance about the current rating mainly by referencing how the Stope 9 case turned out, without citing broader statistics or a wider sample of past events",
+        "plausible_nonbias_interpretation": "Recent, directly relevant experience is often a reasonable input to operational judgment",
+        "strength": "subtle",
+        "do_not_make_explicit": ["availability bias", "recency effect", "salience of recalled event"]
+      }
+    ],
+    "control_specification": {
+      "paired_scenario_id": null,
+      "features_to_match": [],
+      "features_to_remove_or_change": [],
+      "ambiguity_boundary": "Not applicable: condition is biased, no paired control is being generated in this specification"
+    },
+    "counterfactual_specification": {
+      "causal_variable": null,
+      "original_state": null,
+      "counterfactual_state": null,
+      "variables_to_hold_constant": [],
+      "expected_causal_difference": null,
+      "causal_test_question": null
+    },
+    "generation_checks": [
+      "Confirm exactly 7 total bias instances are embedded: 1 status quo, 2 illusion of validity, 2 confirmation bias, 1 overconfidence, 1 availability",
+      "Confirm exactly 4 decision points, each with at least two plausible alternatives",
+      "Confirm no bias-name vocabulary or explicit psychological labels appear in the interview text",
+      "Confirm each instance has a distinct evidence trace and decision moment distinguishing it from any other instance of the same bias",
+      "Confirm interview draft falls between 1,215 and 1,485 words, targeting 1,350",
+      "Confirm probes cover cues, information sources, goals, alternatives, decision basis, prior experience, time pressure, uncertainty, and hypotheticals",
+      "Confirm consequences described (stable shift outcome) do not mechanically prove or disprove bias presence",
+      "Confirm no unrequested bias (e.g., anchoring, sunk cost) is intentionally embedded"
+    ]
+  },
+  "hidden_validation_specification": {
+    "hidden_spec_version": "1.0",
+    "condition": "biased",
+    "exact_occurrence_manifest": [
+      {"bias": "Status quo bias", "occurrences": 1, "mechanism_constraint": "Defaulting to unrevised ground support plan despite new seismic evidence"},
+      {"bias": "Illusion of validity", "occurrences": 2, "mechanism_constraint": "Overconfidence in numeric model precision (DP2) and in narrative case-pattern coherence (DP3)"},
+      {"bias": "Confirmation Bias", "occurrences": 2, "mechanism_constraint": "Selective evidence transmission (DP3) and belief-consistent interpretation of ambiguous new evidence (DP4)"},
+      {"bias": "Overconfidence Bias", "occurrences": 1, "mechanism_constraint": "Miscalibrated personal certainty despite unresolved sensor gap and dissenting input"},
+      {"bias": "Availability Bias", "occurrences": 1, "mechanism_constraint": "Risk judgment anchored to a single vivid recalled prior event rather than base rates"}
+    ],
+    "target_bias_names": [
+      "Status quo bias",
+      "Illusion of validity",
+      "Confirmation Bias",
+      "Overconfidence Bias",
+      "Availability Bias"
+    ],
+    "requested_occurrence_count_for_each_bias": [
+      {"bias": "Status quo bias", "requested_occurrences": 1},
+      {"bias": "Illusion of validity", "requested_occurrences": 2},
+      {"bias": "Confirmation Bias", "requested_occurrences": 2},
+      {"bias": "Overconfidence Bias", "requested_occurrences": 1},
+      {"bias": "Availability Bias", "requested_occurrences": 1}
+    ],
+    "planned_instance_ids": [
+      {"instance_id": "sqb_01", "bias": "Status quo bias"},
+      {"instance_id": "iv_01", "bias": "Illusion of validity"},
+      {"instance_id": "iv_02", "bias": "Illusion of validity"},
+      {"instance_id": "cb_01", "bias": "Confirmation Bias"},
+      {"instance_id": "cb_02", "bias": "Confirmation Bias"},
+      {"instance_id": "ob_01", "bias": "Overconfidence Bias"},
+      {"instance_id": "ab_01", "bias": "Availability Bias"}
+    ],
+    "intended_decision_points": [
+      {"instance_id": "sqb_01", "bias": "Status quo bias", "decision_point": 1},
+      {"instance_id": "iv_01", "bias": "Illusion of validity", "decision_point": 2},
+      {"instance_id": "ab_01", "bias": "Availability Bias", "decision_point": 2},
+      {"instance_id": "iv_02", "bias": "Illusion of validity", "decision_point": 3},
+      {"instance_id": "cb_01", "bias": "Confirmation Bias", "decision_point": 3},
+      {"instance_id": "cb_02", "bias": "Confirmation Bias", "decision_point": 4},
+      {"instance_id": "ob_01", "bias": "Overconfidence Bias", "decision_point": 4}
+    ],
+    "intended_mechanisms": [
+      {
+        "instance_id": "sqb_01",
+        "bias": "Status quo bias",
+        "mechanism": "Default retention of existing ground support plan despite new seismic evidence, without substantive re-evaluation",
+        "affected_reasoning_operation": "Option evaluation under a default anchor",
+        "evidence_source": "Overnight microseismic logs vs. four-month-old approved plan",
+        "distinctiveness_requirement": "Sole status quo instance; no other decision point may exhibit this mechanism"
+      },
+      {
+        "instance_id": "iv_01",
+        "bias": "Illusion of validity",
+        "mechanism": "Overweighting precision of a numeric hazard rating despite known model blind spot",
+        "affected_reasoning_operation": "Confidence calibration on quantitative model output",
+        "evidence_source": "Remote geotechnical model's 2.3 rating",
+        "distinctiveness_requirement": "Must be based on numeric/model precision, distinct from iv_02's case-pattern basis"
+      },
+      {
+        "instance_id": "iv_02",
+        "bias": "Illusion of validity",
+        "mechanism": "Overweighting predictive confidence from apparent similarity to a single past case",
+        "affected_reasoning_operation": "Pattern-matching against historical precedent as validation",
+        "evidence_source": "Stope 9 historical crack-pattern log",
+        "distinctiveness_requirement": "Must be based on case-pattern coherence, distinct from iv_01's numeric-model basis; different decision point"
+      },
+      {
+        "instance_id": "cb_01",
+        "bias": "Confirmation Bias",
+        "mechanism": "Selective forwarding of belief-consistent crew reports while sidelining a dissenting inspector note",
+        "affected_reasoning_operation": "Selective evidence transmission/weighting",
+        "evidence_source": "Crew verbal reports vs. junior inspector's email",
+        "distinctiveness_requirement": "Must be an evidence-selection/transmission act, distinct from cb_02's interpretation act; different decision point"
+      },
+      {
+        "instance_id": "cb_02",
+        "bias": "Confirmation Bias",
+        "mechanism": "Interpreting an ambiguous new event (rock fall) as confirming a prior belief rather than as reason to reassess",
+        "affected_reasoning_operation": "Belief-consistent interpretation of ambiguous evidence",
+        "evidence_source": "Minor rock fall near stope access drift",
+        "distinctiveness_requirement": "Must be an interpretation act on new evidence, distinct from cb_01's selective-transmission act; different decision point"
+      },
+      {
+        "instance_id": "ob_01",
+        "bias": "Overconfidence Bias",
+        "mechanism": "Expressed high personal certainty in judgment despite unresolved sensor gap and unaddressed dissent",
+        "affected_reasoning_operation": "Self-assessed confidence calibration under incomplete information",
+        "evidence_source": "Manager's stated certainty vs. sensor lag and prior unresolved cautionary note",
+        "distinctiveness_requirement": "Sole overconfidence instance; must be framed as self-certainty, not evidence interpretation"
+      },
+      {
+        "instance_id": "ab_01",
+        "bias": "Availability Bias",
+        "mechanism": "Risk judgment anchored to one vivid, easily recalled past event rather than base-rate data",
+        "affected_reasoning_operation": "Risk judgment via recall salience",
+        "evidence_source": "Recalled Stope 9 event from six weeks prior",
+        "distinctiveness_requirement": "Sole availability instance; must be recall-driven, distinct from iv_02's case-pattern illusion-of-validity framing"
+      }
+    ],
+    "intended_strength": [
+      {"instance_id": "sqb_01", "bias": "Status quo bias", "strength": "subtle"},
+      {"instance_id": "iv_01", "bias": "Illusion of validity", "strength": "moderate"},
+      {"instance_id": "iv_02", "bias": "Illusion of validity", "strength": "moderate"},
+      {"instance_id": "cb_01", "bias": "Confirmation Bias", "strength": "subtle"},
+      {"instance_id": "cb_02", "bias": "Confirmation Bias", "strength": "subtle"},
+      {"instance_id": "ob_01", "bias": "Overconfidence Bias", "strength": "moderate"},
+      {"instance_id": "ab_01", "bias": "Availability Bias", "strength": "subtle"}
+    ],
+    "paired_scenario_id": null,
+    "counterfactual_variable": {
+      "name": null,
+      "original_state": null,
+      "changed_state": null,
+      "variables_to_hold_constant": []
+    },
+    "scenario_id": "MU_Biased_7",
+    "domain_id": "MU",
+    "total_requested_occurrences": 7,
+    "total_planned_occurrences": 7,
+    "allocation_rule_used": "Occurrences distributed across decision points by mechanism fit and narrative realism: status quo bias placed solely at the initial anomaly-response decision (DP1); illusion of validity split between a numeric-model-trust manifestation (DP2) and a case-pattern-coherence manifestation (DP3) to ensure distinct evidence sources; confirmation bias split between a selective-transmission manifestation (DP3) and a belief-consistent-interpretation manifestation (DP4) to ensure distinct reasoning operations; overconfidence and availability bias each assigned a single instance at the decision points (DP4 and DP2 respectively) where personal certainty and recalled-precedent reasoning are most narratively plausible. No bias exceeds two occurrences at any single decision point, and no two occurrences of the same bias share both decision point and evidence source.",
+    "control_zero_bias_requirement": false,
+    "variables_to_hold_constant": [],
+    "generation_warnings": []
+  }
+}
+</COMPLETE_GENERATION_SPECIFICATION>
+
+<EVALUATION_SEGMENT_MAP>
+  "evaluation_segment_map": {
+    "segment_mapping_version": "1.0",
+    "segments": [
+      {
+        "segment_id": "dp1",
+        "speaker": "Participant",
+        "segment_type": "decision_episode",
+        "raw_interview_anchor": "The ground support plan for that stope had been signed off about four months earlier... We let day shift go in and start drilling as scheduled.",
+        "eligible_reasoning_segment": true,
+        "ground_truth_bias_present": true,
+        "ground_truth_instance_ids": [
+          "sqb_01"
+        ],
+        "ground_truth_rationale": "The participant defaults to the unrevised support plan despite above-baseline microseismic events and available inspection alternatives."
+      },
+      {
+        "segment_id": "dp2",
+        "speaker": "Participant",
+        "segment_type": "decision_episode",
+        "raw_interview_anchor": "The model came back with a 2.3... Stope 9 was just the one that was fresh in my head... I authorized the afternoon blast clearance.",
+        "eligible_reasoning_segment": true,
+        "ground_truth_bias_present": true,
+        "ground_truth_instance_ids": [
+          "iv_01",
+          "ab_01"
+        ],
+        "ground_truth_rationale": "The participant treats a precise model rating as settled despite a known blind spot and relies on one vivid prior event instead of broader comparison."
+      },
+      {
+        "segment_id": "dp3",
+        "speaker": "Participant",
+        "segment_type": "decision_episode",
+        "raw_interview_anchor": "I leaned toward the crew's read... The inspector's note got filed... because the Stope 9 comparison made the pattern seem like something we already understood.",
+        "eligible_reasoning_segment": true,
+        "ground_truth_bias_present": true,
+        "ground_truth_instance_ids": [
+          "iv_02",
+          "cb_01"
+        ],
+        "ground_truth_rationale": "The participant treats similarity to one prior crack pattern as validating and selectively transmits reassuring reports while sidelining dissent."
+      },
+      {
+        "segment_id": "dp4",
+        "speaker": "Participant",
+        "segment_type": "decision_episode",
+        "raw_interview_anchor": "That rock fall didn't worry me much... it read to me as consistent with... minor settling... Twenty years gives you a feel for these things... I authorized the blast.",
+        "eligible_reasoning_segment": true,
+        "ground_truth_bias_present": true,
+        "ground_truth_instance_ids": [
+          "cb_02",
+          "ob_01"
+        ],
+        "ground_truth_rationale": "The participant interprets a minor rock fall as consistent with stability and expresses high confidence despite sensor lag and unresolved warning signs."
+      }
+    ]
+  }
+</EVALUATION_SEGMENT_MAP>
+
+<RAG_ANALYSIS_OUTPUT>
+[JSON produced by the ontology-free RAG system]
+</RAG_ANALYSIS_OUTPUT>

@@ -1,0 +1,522 @@
+{
+  "evaluation_metadata": {
+    "task": "ontology_free_rag_cognitive_bias_benchmark_evaluation",
+    "benchmark_run_metadata": {
+      "benchmark_run_id": "LE_Counterfactual_3_Gemini_off",
+      "interview_id": "LE_Counterfactual_3",
+      "system_prompt_id": "Gemini",
+      "system_prompt_generator": "Prompt 1_2",
+      "rag_model_id": "v1.0.0",
+      "corpus_condition": "off",
+      "retrieval_configuration_id": "k=0",
+      "decoding_configuration_id": null,
+      "temperature": 1,
+      "replicate_id": null,
+      "segment_map_id": null
+    },
+    "scenario_id": "LE_Counterfactual_3",
+    "domain_id": "LE",
+    "condition": "counterfactual",
+    "segment_map_status": "prevalidated_provided",
+    "rag_output_parse_status": "valid_json",
+    "rag_schema_assessment": "conformant"
+  },
+  "input_validation": {
+    "rag_output_schema_violations": [],
+    "rag_summary_count_consistency": {
+      "status": "consistent",
+      "details": "The summary reports confirmation bias twice, groupthink once, and recency bias once, matching the four identified occurrence records. One candidate record is also supplied and no_supported_biases_found is false."
+    },
+    "evaluation_limitations": []
+  },
+  "evaluation_segment_map": {
+    "segment_mapping_version": "1.0",
+    "segments": [
+      {
+        "segment_id": "dp1_initial_primary_theory",
+        "speaker": "Participant",
+        "segment_type": "decision_point_1",
+        "raw_interview_anchor": "\"I named him primary anyway — the domestic history, the breakup timing, the locked door, that's a pattern worth acting on\"",
+        "eligible_reasoning_segment": true,
+        "ground_truth_bias_present": false,
+        "ground_truth_instance_ids": [],
+        "ground_truth_rationale": "The detective designates the ex as a working theory before forensic results, with a documented plausible resource-allocation rationale and no hidden target bias assigned to this segment."
+      },
+      {
+        "segment_id": "dp2_briefing_known_negative_dna",
+        "speaker": "Participant",
+        "segment_type": "decision_point_2",
+        "raw_interview_anchor": "\"We walk in already knowing the swab didn't match him\"; \"once my partner made the case ... the DNA on its own didn't feel like it outweighed that\"; \"nobody was formally assigned to run down the loitering report\"",
+        "eligible_reasoning_segment": true,
+        "ground_truth_bias_present": true,
+        "ground_truth_instance_ids": ["gt_01"],
+        "ground_truth_rationale": "Groupthink target: the team converges on retaining the ex as primary despite the known negative DNA result, and the dissenting rear-entrance lead receives no independent follow-up."
+      },
+      {
+        "segment_id": "dp3_alibi_closed_alternative_sharpened",
+        "speaker": "Participant",
+        "segment_type": "decision_point_3",
+        "raw_interview_anchor": "\"Second witness closes the two-hour gap completely\"; \"I kept coming back to the fact that it wasn't enough to undo what we'd already built around him\"",
+        "eligible_reasoning_segment": true,
+        "ground_truth_bias_present": true,
+        "ground_truth_instance_ids": ["cd_01"],
+        "ground_truth_rationale": "Cognitive dissonance target: the closed alibi and detailed alternative description are framed as insufficient to override the already-committed ex theory, with the known negative DNA treated as non-dispositive."
+      },
+      {
+        "segment_id": "dp4_referral_memo_recent_statement",
+        "speaker": "Participant",
+        "segment_type": "decision_point_4",
+        "raw_interview_anchor": "\"that statement got the most space and read as the strongest piece on the page\"; \"it was also just the last substantial thing that had come in\"",
+        "eligible_reasoning_segment": true,
+        "ground_truth_bias_present": true,
+        "ground_truth_instance_ids": ["re_01"],
+        "ground_truth_rationale": "Recency Effects target: the newest detailed witness statement receives disproportionate prominence in the referral memo partly because it was fresh in memory rather than because of a complete comparative evidence review."
+      }
+    ]
+  },
+  "segment_level_adjudications": [
+    {
+      "segment_id": "dp1_initial_primary_theory",
+      "ground_truth_status": "negative",
+      "ground_truth_instance_ids": [],
+      "rag_identified_occurrence_ids": [],
+      "rag_candidate_ids_counted_at_fourth_threshold": ["cand_001"],
+      "rag_detected_bias_in_segment_by_threshold": {
+        "high_only": false,
+        "high_and_moderate": false,
+        "all_identified_confidence_levels": false,
+        "all_confidence_and_candidates": true
+      },
+      "sdt_outcome_by_threshold": {
+        "high_only": "correct_rejection",
+        "high_and_moderate": "correct_rejection",
+        "all_identified_confidence_levels": "correct_rejection",
+        "all_confidence_and_candidates": "false_positive"
+      },
+      "localization_basis": "The candidate quotes the day-one primary-theory statement and therefore localizes directly to this eligible segment.",
+      "adjudication_note": "The segment is a hidden negative control. The candidate is a plausible but insufficiently evidenced anchoring hypothesis, so it creates a segment false alarm only at the candidate-inclusive threshold."
+    },
+    {
+      "segment_id": "dp2_briefing_known_negative_dna",
+      "ground_truth_status": "positive",
+      "ground_truth_instance_ids": ["gt_01"],
+      "rag_identified_occurrence_ids": ["obs_001", "obs_002"],
+      "rag_candidate_ids_counted_at_fourth_threshold": [],
+      "rag_detected_bias_in_segment_by_threshold": {
+        "high_only": false,
+        "high_and_moderate": true,
+        "all_identified_confidence_levels": true,
+        "all_confidence_and_candidates": true
+      },
+      "sdt_outcome_by_threshold": {
+        "high_only": "miss",
+        "high_and_moderate": "hit",
+        "all_identified_confidence_levels": "hit",
+        "all_confidence_and_candidates": "hit"
+      },
+      "localization_basis": "Both identified findings use valid participant quotes from the briefing episode; obs_002 directly quotes the dissenting lead, lack of traction, and the team's decision to hold the line.",
+      "adjudication_note": "The segment-level detector is credited once any qualifying finding localizes here. obs_002 is the exact groupthink match; obs_001 is an additional confirmation-bias interpretation at the same location and is not an instance-level match."
+    },
+    {
+      "segment_id": "dp3_alibi_closed_alternative_sharpened",
+      "ground_truth_status": "positive",
+      "ground_truth_instance_ids": ["cd_01"],
+      "rag_identified_occurrence_ids": ["obs_003"],
+      "rag_candidate_ids_counted_at_fourth_threshold": [],
+      "rag_detected_bias_in_segment_by_threshold": {
+        "high_only": false,
+        "high_and_moderate": false,
+        "all_identified_confidence_levels": true,
+        "all_confidence_and_candidates": true
+      },
+      "sdt_outcome_by_threshold": {
+        "high_only": "miss",
+        "high_and_moderate": "miss",
+        "all_identified_confidence_levels": "hit",
+        "all_confidence_and_candidates": "hit"
+      },
+      "localization_basis": "obs_003 quotes the participant's day-three account of the closed alibi, detailed alternative description, and refusal to shift the primary theory.",
+      "adjudication_note": "The low-confidence confirmation-bias label is a strict label error, but its stated mechanism fully captures the hidden cognitive-dissonance episode for the mechanism-first scorecard."
+    },
+    {
+      "segment_id": "dp4_referral_memo_recent_statement",
+      "ground_truth_status": "positive",
+      "ground_truth_instance_ids": ["re_01"],
+      "rag_identified_occurrence_ids": ["obs_004"],
+      "rag_candidate_ids_counted_at_fourth_threshold": [],
+      "rag_detected_bias_in_segment_by_threshold": {
+        "high_only": true,
+        "high_and_moderate": true,
+        "all_identified_confidence_levels": true,
+        "all_confidence_and_candidates": true
+      },
+      "sdt_outcome_by_threshold": {
+        "high_only": "hit",
+        "high_and_moderate": "hit",
+        "all_identified_confidence_levels": "hit",
+        "all_confidence_and_candidates": "hit"
+      },
+      "localization_basis": "obs_004 uses valid verbatim quotes from the referral-drafting episode and directly states that freshness in memory influenced the weighting.",
+      "adjudication_note": "obs_004 is an approved scholarly equivalent of Recency Effects with full mechanism and exact localization."
+    }
+  ],
+  "instance_level_adjudications": [
+    {
+      "hidden_instance_id": "gt_01",
+      "hidden_target_bias_label": "Groupthink",
+      "hidden_decision_or_episode": "Decision point 2 unit briefing with the negative DNA result already known",
+      "hidden_mechanism": "Team converges on retaining the ex-boyfriend as primary suspect despite an already-known negative DNA result, without assigning independent verification of the dissenting rear-entrance lead.",
+      "matched_finding_by_threshold": {
+        "high_only": {"matched_id": null, "matched_type": "none"},
+        "high_and_moderate": {"matched_id": "obs_002", "matched_type": "identified"},
+        "all_identified_confidence_levels": {"matched_id": "obs_002", "matched_type": "identified"},
+        "all_confidence_and_candidates": {"matched_id": "obs_002", "matched_type": "identified"}
+      },
+      "rag_predicted_bias_label": "groupthink",
+      "rag_confidence": "moderate",
+      "label_equivalence_result": "exact_target_label",
+      "localization_match_type": "exact_quote_match",
+      "mechanism_overlap": "full_mechanism_match",
+      "strict_scorecard_outcome_by_threshold": {
+        "high_only": "false_negative",
+        "high_and_moderate": "true_positive",
+        "all_identified_confidence_levels": "true_positive",
+        "all_confidence_and_candidates": "true_positive"
+      },
+      "mechanism_first_scorecard_outcome_by_threshold": {
+        "high_only": "false_negative",
+        "high_and_moderate": "true_positive",
+        "all_identified_confidence_levels": "true_positive",
+        "all_confidence_and_candidates": "true_positive"
+      },
+      "secondary_diagnostic_outcome": "exact_instance_match",
+      "label_equivalence_explanation": "The predicted label groupthink exactly matches the hidden target label, disregarding capitalization.",
+      "mechanism_overlap_explanation": "The finding captures the known negative DNA result, convergence around retaining the ex, marginalization of the junior detective's dissent, and the resulting resource-allocation decision.",
+      "evidence_fidelity_assessment": "Both supplied participant quotations are materially exact, correctly attributed, and directly support the mechanism."
+    },
+    {
+      "hidden_instance_id": "cd_01",
+      "hidden_target_bias_label": "Cognitive dissonance",
+      "hidden_decision_or_episode": "Decision point 3 after the alibi gap closes and the alternative description becomes specific",
+      "hidden_mechanism": "The closed alibi gap and detailed alternative-suspect description are treated as insufficient to override the already-committed theory, while the earlier-known negative DNA result is treated as settled rather than prompting revision.",
+      "matched_finding_by_threshold": {
+        "high_only": {"matched_id": null, "matched_type": "none"},
+        "high_and_moderate": {"matched_id": null, "matched_type": "none"},
+        "all_identified_confidence_levels": {"matched_id": "obs_003", "matched_type": "identified"},
+        "all_confidence_and_candidates": {"matched_id": "obs_003", "matched_type": "identified"}
+      },
+      "rag_predicted_bias_label": "confirmation bias",
+      "rag_confidence": "low",
+      "label_equivalence_result": "near_neighbor_label",
+      "localization_match_type": "exact_quote_match",
+      "mechanism_overlap": "full_mechanism_match",
+      "strict_scorecard_outcome_by_threshold": {
+        "high_only": "false_negative",
+        "high_and_moderate": "false_negative",
+        "all_identified_confidence_levels": "false_negative",
+        "all_confidence_and_candidates": "false_negative"
+      },
+      "mechanism_first_scorecard_outcome_by_threshold": {
+        "high_only": "false_negative",
+        "high_and_moderate": "false_negative",
+        "all_identified_confidence_levels": "true_positive",
+        "all_confidence_and_candidates": "true_positive"
+      },
+      "secondary_diagnostic_outcome": "correct_location_wrong_bias_label",
+      "label_equivalence_explanation": "Confirmation bias is a related but distinct construct from the hidden cognitive-dissonance label; it is not an approved equivalent. The finding nevertheless describes the same evidence-reconciliation episode.",
+      "mechanism_overlap_explanation": "The finding fully captures the closed alibi and detailed alternative evidence being judged insufficient to undo the prior theory, including the higher threshold for disconfirming evidence and the affected theory-revision operation.",
+      "evidence_fidelity_assessment": "Both supplied participant quotations are materially exact, correctly attributed, and directly support the day-three mechanism."
+    },
+    {
+      "hidden_instance_id": "re_01",
+      "hidden_target_bias_label": "Recency Effects",
+      "hidden_decision_or_episode": "Decision point 4 referral memo drafting",
+      "hidden_mechanism": "The most recently obtained witness statement receives disproportionate weight over earlier relevant evidence partly because it is fresh in memory, rather than solely because of evidentiary strength.",
+      "matched_finding_by_threshold": {
+        "high_only": {"matched_id": "obs_004", "matched_type": "identified"},
+        "high_and_moderate": {"matched_id": "obs_004", "matched_type": "identified"},
+        "all_identified_confidence_levels": {"matched_id": "obs_004", "matched_type": "identified"},
+        "all_confidence_and_candidates": {"matched_id": "obs_004", "matched_type": "identified"}
+      },
+      "rag_predicted_bias_label": "recency bias",
+      "rag_confidence": "high",
+      "label_equivalence_result": "established_alias_or_equivalent",
+      "localization_match_type": "exact_quote_match",
+      "mechanism_overlap": "full_mechanism_match",
+      "strict_scorecard_outcome_by_threshold": {
+        "high_only": "true_positive",
+        "high_and_moderate": "true_positive",
+        "all_identified_confidence_levels": "true_positive",
+        "all_confidence_and_candidates": "true_positive"
+      },
+      "mechanism_first_scorecard_outcome_by_threshold": {
+        "high_only": "true_positive",
+        "high_and_moderate": "true_positive",
+        "all_identified_confidence_levels": "true_positive",
+        "all_confidence_and_candidates": "true_positive"
+      },
+      "secondary_diagnostic_outcome": "approved_alias_match",
+      "label_equivalence_explanation": "Recency bias is an established scholarly equivalent for the hidden Recency Effects label, and the stated mechanism fully matches.",
+      "mechanism_overlap_explanation": "The finding identifies disproportionate emphasis on the newest statement, explicitly ties it to freshness in memory, and notes the absence of comparison with earlier evidence.",
+      "evidence_fidelity_assessment": "Both supplied participant quotations are materially exact, correctly attributed, and directly support the mechanism."
+    }
+  ],
+  "unmatched_rag_predictions": [
+    {
+      "rag_occurrence_id": "obs_001",
+      "rag_finding_type": "identified",
+      "rag_predicted_bias_label": "confirmation bias",
+      "rag_confidence": "low",
+      "localized_segment_id": "dp2_briefing_known_negative_dna",
+      "best_related_hidden_instance_id": "gt_01",
+      "label_equivalence_result": "near_neighbor_label",
+      "mechanism_overlap": "partial_mechanism_overlap",
+      "strict_classification": "correct_location_wrong_bias_label",
+      "mechanism_first_classification": "partial_mechanism_match",
+      "counted_at_thresholds": ["all_identified_confidence_levels", "all_confidence_and_candidates"],
+      "why_not_an_exact_strict_match": "The finding is correctly located and describes discounting negative DNA in favor of the ex theory, but it does not capture the hidden collective convergence and dissent-evaluation mechanism of groupthink."
+    },
+    {
+      "rag_occurrence_id": "obs_003",
+      "rag_finding_type": "identified",
+      "rag_predicted_bias_label": "confirmation bias",
+      "rag_confidence": "low",
+      "localized_segment_id": "dp3_alibi_closed_alternative_sharpened",
+      "best_related_hidden_instance_id": "cd_01",
+      "label_equivalence_result": "near_neighbor_label",
+      "mechanism_overlap": "full_mechanism_match",
+      "strict_classification": "correct_location_wrong_bias_label",
+      "mechanism_first_classification": "not_applicable",
+      "counted_at_thresholds": ["all_identified_confidence_levels", "all_confidence_and_candidates"],
+      "why_not_an_exact_strict_match": "The quote and mechanism fully match the hidden day-three episode, but confirmation bias is a related distinct label rather than the hidden Cognitive dissonance target. It is therefore a mechanism-first match but a strict-label false positive."
+    },
+    {
+      "rag_occurrence_id": "cand_001",
+      "rag_finding_type": "candidate",
+      "rag_predicted_bias_label": "anchoring bias",
+      "rag_confidence": "candidate",
+      "localized_segment_id": "dp1_initial_primary_theory",
+      "best_related_hidden_instance_id": null,
+      "label_equivalence_result": "different_construct",
+      "mechanism_overlap": "no_mechanism_overlap",
+      "strict_classification": "false_positive",
+      "mechanism_first_classification": "false_positive",
+      "counted_at_thresholds": ["all_confidence_and_candidates"],
+      "why_not_an_exact_strict_match": "The candidate is validly quoted but localizes to the hidden negative-control segment, whose resource-allocation rationale has no planned bias instance. It is a useful abstention diagnostically, but it is a scored false alarm at the candidate-inclusive threshold."
+    }
+  ],
+  "candidate_analysis": {
+    "candidate_count": 1,
+    "candidates": [
+      {
+        "candidate_id": "cand_001",
+        "proposed_bias_label": "anchoring bias",
+        "localized_segment_id": "dp1_initial_primary_theory",
+        "best_related_hidden_instance_id": null,
+        "quote_validity": "valid",
+        "would_match_if_promoted_strict": false,
+        "would_match_if_promoted_mechanism_first": false,
+        "counted_as_detection_at_fourth_threshold": true,
+        "fourth_threshold_outcome": "not_matched_segment_negative",
+        "candidate_assessment": "useful_abstention",
+        "details": "The candidate is explicitly withheld from identified status because day-one prioritization has a legitimate resource-allocation explanation. It has no relation to a hidden positive instance and therefore becomes a false positive only when candidates are counted as detections."
+      }
+    ]
+  },
+  "signal_detection_summary": {
+    "evaluation_unit": "eligible_reasoning_segment",
+    "high_only": {
+      "positive_segments": 3,
+      "negative_segments": 1,
+      "hits": 1,
+      "misses": 2,
+      "false_alarms": 0,
+      "correct_rejections": 1,
+      "hit_rate": 0.3333,
+      "false_alarm_rate": 0,
+      "accuracy": 0.5,
+      "precision": 1,
+      "recall": 0.3333,
+      "f1": 0.5,
+      "detection_interpretation": "Only the high-confidence recency finding fires: one of three positive segments is detected, with no false alarms."
+    },
+    "high_and_moderate": {
+      "positive_segments": 3,
+      "negative_segments": 1,
+      "hits": 2,
+      "misses": 1,
+      "false_alarms": 0,
+      "correct_rejections": 1,
+      "hit_rate": 0.6667,
+      "false_alarm_rate": 0,
+      "accuracy": 0.75,
+      "precision": 1,
+      "recall": 0.6667,
+      "f1": 0.8,
+      "detection_interpretation": "Adding the moderate-confidence groupthink finding detects the briefing segment while the low-confidence day-three finding remains excluded."
+    },
+    "all_identified_confidence_levels": {
+      "positive_segments": 3,
+      "negative_segments": 1,
+      "hits": 3,
+      "misses": 0,
+      "false_alarms": 0,
+      "correct_rejections": 1,
+      "hit_rate": 1,
+      "false_alarm_rate": 0,
+      "accuracy": 1,
+      "precision": 1,
+      "recall": 1,
+      "f1": 1,
+      "detection_interpretation": "Including low-confidence identified findings detects all three positive segments without a segment-level false alarm."
+    },
+    "all_confidence_and_candidates": {
+      "positive_segments": 3,
+      "negative_segments": 1,
+      "hits": 3,
+      "misses": 0,
+      "false_alarms": 1,
+      "correct_rejections": 0,
+      "hit_rate": 1,
+      "false_alarm_rate": 1,
+      "accuracy": 0.75,
+      "precision": 0.75,
+      "recall": 1,
+      "f1": 0.8571,
+      "detection_interpretation": "The candidate on the neutral day-one segment adds one false alarm, preserving complete positive-segment recall while reducing precision."
+    }
+  },
+  "strict_instance_level_metrics": {
+    "high_only": {"true_positives": 1, "false_negatives": 2, "false_positives": 0, "precision": 1, "recall": 0.3333, "f1": 0.5, "exact_occurrence_match_rate": 0.3333, "occurrence_count_match_rate": 0.3333},
+    "high_and_moderate": {"true_positives": 2, "false_negatives": 1, "false_positives": 0, "precision": 1, "recall": 0.6667, "f1": 0.8, "exact_occurrence_match_rate": 0.6667, "occurrence_count_match_rate": 0.6667},
+    "all_identified_confidence_levels": {"true_positives": 2, "false_negatives": 1, "false_positives": 2, "precision": 0.5, "recall": 0.6667, "f1": 0.5714, "exact_occurrence_match_rate": 0.6667, "occurrence_count_match_rate": 0.6667},
+    "all_confidence_and_candidates": {"true_positives": 2, "false_negatives": 1, "false_positives": 3, "precision": 0.4, "recall": 0.6667, "f1": 0.5, "exact_occurrence_match_rate": 0.6667, "occurrence_count_match_rate": 0.6667}
+  },
+  "mechanism_first_instance_level_metrics": {
+    "high_only": {"true_positives": 1, "false_negatives": 2, "false_positives": 0, "precision": 1, "recall": 0.3333, "f1": 0.5, "exact_occurrence_match_rate": 0.3333, "occurrence_count_match_rate": 0.3333},
+    "high_and_moderate": {"true_positives": 2, "false_negatives": 1, "false_positives": 0, "precision": 1, "recall": 0.6667, "f1": 0.8, "exact_occurrence_match_rate": 0.6667, "occurrence_count_match_rate": 0.6667},
+    "all_identified_confidence_levels": {"true_positives": 3, "false_negatives": 0, "false_positives": 1, "precision": 0.75, "recall": 1, "f1": 0.8571, "exact_occurrence_match_rate": 1, "occurrence_count_match_rate": 1},
+    "all_confidence_and_candidates": {"true_positives": 3, "false_negatives": 0, "false_positives": 2, "precision": 0.6, "recall": 1, "f1": 0.75, "exact_occurrence_match_rate": 1, "occurrence_count_match_rate": 1}
+  },
+  "target_bias_performance": [
+    {
+      "hidden_target_bias_label": "Cognitive dissonance",
+      "hidden_requested_occurrences": 1,
+      "strict_true_positives_by_threshold": {"high_only": 0, "high_and_moderate": 0, "all_identified_confidence_levels": 0, "all_confidence_and_candidates": 0},
+      "mechanism_first_true_positives_by_threshold": {"high_only": 0, "high_and_moderate": 0, "all_identified_confidence_levels": 1, "all_confidence_and_candidates": 1},
+      "count_match_status_at_all_confidence_and_candidates": "underdetected"
+    },
+    {
+      "hidden_target_bias_label": "Recency Effects",
+      "hidden_requested_occurrences": 1,
+      "strict_true_positives_by_threshold": {"high_only": 1, "high_and_moderate": 1, "all_identified_confidence_levels": 1, "all_confidence_and_candidates": 1},
+      "mechanism_first_true_positives_by_threshold": {"high_only": 1, "high_and_moderate": 1, "all_identified_confidence_levels": 1, "all_confidence_and_candidates": 1},
+      "count_match_status_at_all_confidence_and_candidates": "exact_match"
+    },
+    {
+      "hidden_target_bias_label": "Groupthink",
+      "hidden_requested_occurrences": 1,
+      "strict_true_positives_by_threshold": {"high_only": 0, "high_and_moderate": 1, "all_identified_confidence_levels": 1, "all_confidence_and_candidates": 1},
+      "mechanism_first_true_positives_by_threshold": {"high_only": 0, "high_and_moderate": 1, "all_identified_confidence_levels": 1, "all_confidence_and_candidates": 1},
+      "count_match_status_at_all_confidence_and_candidates": "exact_match"
+    }
+  ],
+  "rag_label_false_positive_inventory": [
+    {
+      "rag_predicted_bias_label": "confirmation bias",
+      "finding_type": "identified",
+      "alternative_labels": ["belief perseverance", "selective evidence weighting", "tunnel vision"],
+      "occurrence_count": 2,
+      "best_related_hidden_target_bias_label": "Cognitive dissonance",
+      "label_relation": "near_neighbor",
+      "mechanism_overlap_summary": "The two confirmation-bias findings are correctly located. obs_003 fully overlaps the hidden cognitive-dissonance mechanism but uses a distinct label; obs_001 partially overlaps the general persistence of the ex theory but misses the hidden group-convergence mechanism.",
+      "primary_error_types": ["correct_location_wrong_bias_label", "partial_mechanism_match"]
+    },
+    {
+      "rag_predicted_bias_label": "anchoring bias",
+      "finding_type": "candidate",
+      "alternative_labels": ["insufficient adjustment"],
+      "occurrence_count": 1,
+      "best_related_hidden_target_bias_label": null,
+      "label_relation": "no_related_target",
+      "mechanism_overlap_summary": "The candidate is localized to the bias-free day-one segment and has no relation to a hidden target instance.",
+      "primary_error_types": ["candidate_useful_abstention", "candidate_threshold_false_alarm"]
+    }
+  ],
+  "diagnostic_error_summary": {
+    "correct_location_wrong_bias_label_count": 2,
+    "correct_label_wrong_location_count": 0,
+    "correct_label_location_wrong_mechanism_count": 0,
+    "mechanism_detected_label_unresolved_count": 0,
+    "partial_mechanism_match_count": 1,
+    "duplicate_prediction_count": 0,
+    "unsupported_prediction_count": 0,
+    "fabricated_or_invalid_quote_count": 0,
+    "approved_alias_or_equivalence_count": 1,
+    "near_neighbor_label_count": 2,
+    "different_construct_label_count": 0,
+    "candidate_count": 1,
+    "candidate_useful_abstention_count": 1,
+    "candidate_near_miss_count": 0,
+    "candidates_promoted_to_true_positive_at_fourth_threshold_count": 0
+  },
+  "corpus_support_audit": {
+    "primary_corpus_fidelity_score_available": false,
+    "rag_occurrences_claiming_retrieved_support": 0,
+    "rag_occurrences_with_no_claimed_retrieved_support": 4,
+    "rag_occurrences_with_unverifiable_or_internally_inconsistent_citation_metadata": 0,
+    "assessment_note": "No retrieved chunks, source passages, or retrieval logs were supplied. The RAG explicitly disclosed that no corpus support was used, so corpus fidelity is unavailable and does not affect detection scores."
+  },
+  "comparison_ready_summary": {
+    "primary_recommended_comparison_threshold": "high_and_moderate",
+    "segment_detection": {
+      "high_only": {"hits": 1, "misses": 2, "false_alarms": 0, "correct_rejections": 1, "hit_rate": 0.3333, "false_alarm_rate": 0, "f1": 0.5},
+      "high_and_moderate": {"hits": 2, "misses": 1, "false_alarms": 0, "correct_rejections": 1, "hit_rate": 0.6667, "false_alarm_rate": 0, "f1": 0.8},
+      "all_identified_confidence_levels": {"hits": 3, "misses": 0, "false_alarms": 0, "correct_rejections": 1, "hit_rate": 1, "false_alarm_rate": 0, "f1": 1},
+      "all_confidence_and_candidates": {"hits": 3, "misses": 0, "false_alarms": 1, "correct_rejections": 0, "hit_rate": 1, "false_alarm_rate": 1, "f1": 0.8571}
+    },
+    "strict_instance_identification": {
+      "high_only": {"true_positives": 1, "false_negatives": 2, "false_positives": 0, "precision": 1, "recall": 0.3333, "f1": 0.5},
+      "high_and_moderate": {"true_positives": 2, "false_negatives": 1, "false_positives": 0, "precision": 1, "recall": 0.6667, "f1": 0.8},
+      "all_identified_confidence_levels": {"true_positives": 2, "false_negatives": 1, "false_positives": 2, "precision": 0.5, "recall": 0.6667, "f1": 0.5714},
+      "all_confidence_and_candidates": {"true_positives": 2, "false_negatives": 1, "false_positives": 3, "precision": 0.4, "recall": 0.6667, "f1": 0.5}
+    },
+    "mechanism_first_identification": {
+      "high_only": {"true_positives": 1, "false_negatives": 2, "false_positives": 0, "precision": 1, "recall": 0.3333, "f1": 0.5},
+      "high_and_moderate": {"true_positives": 2, "false_negatives": 1, "false_positives": 0, "precision": 1, "recall": 0.6667, "f1": 0.8},
+      "all_identified_confidence_levels": {"true_positives": 3, "false_negatives": 0, "false_positives": 1, "precision": 0.75, "recall": 1, "f1": 0.8571},
+      "all_confidence_and_candidates": {"true_positives": 3, "false_negatives": 0, "false_positives": 2, "precision": 0.6, "recall": 1, "f1": 0.75}
+    },
+    "taxonomy_gap": {
+      "high_only": {"mechanism_first_f1_minus_strict_f1": 0},
+      "high_and_moderate": {"mechanism_first_f1_minus_strict_f1": 0},
+      "all_identified_confidence_levels": {"mechanism_first_f1_minus_strict_f1": 0.2857},
+      "all_confidence_and_candidates": {"mechanism_first_f1_minus_strict_f1": 0.25}
+    },
+    "confidence_tradeoff": {
+      "increment_from_high_to_high_and_moderate": "Segment hits increase from 1 to 2 and instance true positives from 1 to 2; no false alarms are added.",
+      "increment_from_high_and_moderate_to_all_confidence": "The low-confidence findings add one segment hit and one mechanism-first true positive, but add two strict false positives; strict F1 falls from 0.8000 to 0.5714 while mechanism-first F1 rises to 0.8571.",
+      "increment_from_all_confidence_to_all_confidence_and_candidates": "The anchoring candidate adds one false alarm and one false positive to each instance scorecard, with no additional true positive; segment F1 falls from 1.0000 to 0.8571."
+    }
+  },
+  "overall_evaluation_summary": {
+    "hidden_total_planned_occurrences": 3,
+    "rag_total_identified_occurrences": 4,
+    "rag_total_candidate_biases": 1,
+    "segment_level_primary_result": "At the recommended high_and_moderate threshold, the run detects 2 of 3 positive segments with no false alarms (hit_rate 0.6667, F1 0.8000). Including low-confidence identified findings detects all positive segments.",
+    "strict_label_plus_mechanism_result": "At high_and_moderate, strict instance precision is 1.0000, recall 0.6667, and F1 0.8000. The low-confidence confirmation-bias labels do not strictly identify the hidden Cognitive dissonance target.",
+    "mechanism_first_result": "Mechanism-first scoring recovers the day-three Cognitive dissonance mechanism at the low-confidence threshold, reaching precision 0.7500, recall 1.0000, and F1 0.8571 before candidates are added.",
+    "candidate_tier_value_assessment": "The single candidate is a useful abstention diagnostically, but candidate-inclusive scoring treats it as a false alarm on the neutral day-one segment and lowers both precision and F1.",
+    "main_failure_modes": [
+      "Two low-confidence confirmation-bias labels are not strict matches to the hidden target labels.",
+      "The day-three finding uses a near-neighbor label, so strict scoring misses it despite full mechanism overlap.",
+      "Counting candidates adds a false alarm without recovering a hidden instance."
+    ],
+    "main_strengths": [
+      "The moderate groupthink finding exactly localizes and captures the counterfactual timing mechanism at the briefing.",
+      "The high-confidence recency-bias finding is an approved equivalent with full evidence fidelity.",
+      "All supplied interview quotations are valid and the output correctly discloses that retrieval support was unavailable."
+    ],
+    "benchmark_interpretation": "This run shows strong segment-level sensitivity once low-confidence findings are admitted, but stricter label-plus-mechanism scoring exposes taxonomy errors. The mechanism-first gap indicates that the RAG often recognized the relevant evidence-reconciliation pattern while naming a neighboring construct."
+  }
+}

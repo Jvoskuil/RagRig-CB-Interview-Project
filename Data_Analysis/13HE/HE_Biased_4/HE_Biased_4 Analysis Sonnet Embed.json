@@ -1,0 +1,174 @@
+{
+  "evaluation_metadata": {
+    "task": "ontology_free_rag_cognitive_bias_benchmark_evaluation",
+    "benchmark_run_metadata": {
+      "benchmark_run_id": "HE_Biased_4_Sonnet_on",
+      "interview_id": "HE_Biased_4",
+      "system_prompt_id": "Sonnet",
+      "system_prompt_generator": "Prompt 1_2",
+      "rag_model_id": "v1.0.0",
+      "corpus_condition": "on",
+      "retrieval_configuration_id": "k=50",
+      "decoding_configuration_id": null,
+      "temperature": 1,
+      "replicate_id": null,
+      "segment_map_id": null
+    },
+    "scenario_id": "HE_Biased_4",
+    "domain_id": "HE",
+    "condition": "biased",
+    "segment_map_status": "prevalidated_provided",
+    "rag_output_parse_status": "valid_json",
+    "rag_schema_assessment": "conformant"
+  },
+  "input_validation": {
+    "rag_output_schema_violations": [],
+    "rag_summary_count_consistency": {
+      "status": "consistent",
+      "details": "The summary reports four identified occurrences, one each for four labels; the detailed output contains exactly four identified occurrences and no candidates."
+    },
+    "evaluation_limitations": [
+      "The supplied segment_map_id is null even though a valid frozen segment map is present in the input.",
+      "Actual retrieved chunks and retrieval logs were not supplied, so corpus citations cannot be independently verified."
+    ]
+  },
+  "evaluation_segment_map": {
+    "segment_mapping_version": "1.0",
+    "segments": [
+      {"segment_id":"seg_001","speaker":"Participant","segment_type":"schedule_context_reasoning","raw_interview_anchor":"It was a compressed week. We had four things converging... the contract had liquidated damages tied to the occupancy date, so everything landed at once.","eligible_reasoning_segment":true,"ground_truth_bias_present":false,"ground_truth_instance_ids":[],"ground_truth_rationale":"Substantive explanation of schedule convergence and commercial pressure, but no hidden bias mechanism is manifested in this span."},
+      {"segment_id":"seg_002","speaker":"Participant","segment_type":"evidence_weighting_decision","raw_interview_anchor":"Honestly, seeing it stated the same way three times across three different documents gave me a level of confidence... It felt corroborated...","eligible_reasoning_segment":true,"ground_truth_bias_present":true,"ground_truth_instance_ids":["he4_iot_01"],"ground_truth_rationale":"The participant attributes increased credibility to repeated identical claims and does not check whether the documents share one underlying test."},
+      {"segment_id":"seg_003","speaker":"Participant","segment_type":"action_inaction_decision","raw_interview_anchor":"I authorized the commissioning to proceed... holding the whole phase for a re-run felt like it would stall the entire program... I treated the re-run as something that could happen in parallel rather than as a gate.","eligible_reasoning_segment":true,"ground_truth_bias_present":true,"ground_truth_instance_ids":["he4_ab_01"],"ground_truth_rationale":"The active commissioning step is preferred over waiting for a recommended safety re-run primarily to maintain momentum under uncertainty and deadline pressure."},
+      {"segment_id":"seg_004","speaker":"Participant","segment_type":"risk_prioritization_decision","raw_interview_anchor":"There'd been that apartment-tower fire overseas about two weeks earlier... It stuck with me... I put the remaining time into re-inspecting the cladding fire-stopping.","eligible_reasoning_segment":true,"ground_truth_bias_present":true,"ground_truth_instance_ids":["he4_afb_01"],"ground_truth_rationale":"A vivid unrelated recent fire drives the cladding priority despite a different, documented system and an unresolved pressurization deficiency."},
+      {"segment_id":"seg_005","speaker":"Participant","segment_type":"default_parameter_selection","raw_interview_anchor":"We didn't, in the end... The defaults are the standard starting point in that software, so I kept them for the final compliance run.","eligible_reasoning_segment":true,"ground_truth_bias_present":true,"ground_truth_instance_ids":["he4_db_01"],"ground_truth_rationale":"The participant retains generic defaults over available project-specific data, acknowledging the mismatch and citing effort and complication rather than technical superiority."},
+      {"segment_id":"seg_006","speaker":"Participant","segment_type":"counterfactual_prediction","raw_interview_anchor":"If the 90-minute claim had come from one document instead of three, I think I'd have pushed harder for the raw report before accepting it.","eligible_reasoning_segment":true,"ground_truth_bias_present":false,"ground_truth_instance_ids":[],"ground_truth_rationale":"A retrospective counterfactual about the glazing decision supports the earlier occurrence but is not a separate hidden occurrence."},
+      {"segment_id":"seg_007","speaker":"Participant","segment_type":"counterfactual_prediction","raw_interview_anchor":"The CFD re-run probably would've been a hard hold point rather than something running in parallel. Without the schedule squeeze, I don't think I'd have authorized commissioning ahead of it.","eligible_reasoning_segment":true,"ground_truth_bias_present":false,"ground_truth_instance_ids":[],"ground_truth_rationale":"A counterfactual prediction about schedule pressure is evidence about the prior decision, not a separate manifested bias instance."},
+      {"segment_id":"seg_008","speaker":"Participant","segment_type":"counterfactual_prediction","raw_interview_anchor":"If that overseas fire hadn't been in the news right before my punch-list decision, do you think the priority would have looked different? Possibly...","eligible_reasoning_segment":true,"ground_truth_bias_present":false,"ground_truth_instance_ids":[],"ground_truth_rationale":"A qualified counterfactual about the news event is supporting reflection on the punch-list decision, not a new hidden occurrence."},
+      {"segment_id":"seg_009","speaker":"Participant","segment_type":"counterfactual_prediction","raw_interview_anchor":"If recalibrating the egress model had taken less effort, would you have used the survey data? Probably, yes...","eligible_reasoning_segment":true,"ground_truth_bias_present":false,"ground_truth_instance_ids":[],"ground_truth_rationale":"A counterfactual about effort and the egress parameters supports the prior decision but does not add another hidden occurrence."}
+    ]
+  },
+  "segment_level_adjudications": [
+    {"segment_id":"seg_001","ground_truth_status":"negative","ground_truth_instance_ids":[],"rag_identified_occurrence_ids":[],"rag_candidate_ids_counted_at_fourth_threshold":[],"rag_detected_bias_in_segment_by_threshold":{"high_only":false,"high_and_moderate":false,"all_identified_confidence_levels":false,"all_confidence_and_candidates":false},"sdt_outcome_by_threshold":{"high_only":"correct_rejection","high_and_moderate":"correct_rejection","all_identified_confidence_levels":"correct_rejection","all_confidence_and_candidates":"correct_rejection"},"localization_basis":"No RAG finding localizes to this schedule-context span.","adjudication_note":"Negative context segment with no qualifying finding."},
+    {"segment_id":"seg_002","ground_truth_status":"positive","ground_truth_instance_ids":["he4_iot_01"],"rag_identified_occurrence_ids":["obs_001"],"rag_candidate_ids_counted_at_fourth_threshold":[],"rag_detected_bias_in_segment_by_threshold":{"high_only":true,"high_and_moderate":true,"all_identified_confidence_levels":true,"all_confidence_and_candidates":true},"sdt_outcome_by_threshold":{"high_only":"hit","high_and_moderate":"hit","all_identified_confidence_levels":"hit","all_confidence_and_candidates":"hit"},"localization_basis":"obs_001 contains an exact quote from the participant's repeated-document confidence explanation.","adjudication_note":"Correctly localized and supported; the label is an established equivalent of the hidden label."},
+    {"segment_id":"seg_003","ground_truth_status":"positive","ground_truth_instance_ids":["he4_ab_01"],"rag_identified_occurrence_ids":["obs_002"],"rag_candidate_ids_counted_at_fourth_threshold":[],"rag_detected_bias_in_segment_by_threshold":{"high_only":false,"high_and_moderate":true,"all_identified_confidence_levels":true,"all_confidence_and_candidates":true},"sdt_outcome_by_threshold":{"high_only":"miss","high_and_moderate":"hit","all_identified_confidence_levels":"hit","all_confidence_and_candidates":"hit"},"localization_basis":"obs_002 quotes the commissioning-versus-re-run decision and its momentum rationale.","adjudication_note":"Segment detection is correct at thresholds admitting moderate confidence; strict instance scoring does not credit the neighboring plan-continuation label."},
+    {"segment_id":"seg_004","ground_truth_status":"positive","ground_truth_instance_ids":["he4_afb_01"],"rag_identified_occurrence_ids":["obs_003"],"rag_candidate_ids_counted_at_fourth_threshold":[],"rag_detected_bias_in_segment_by_threshold":{"high_only":true,"high_and_moderate":true,"all_identified_confidence_levels":true,"all_confidence_and_candidates":true},"sdt_outcome_by_threshold":{"high_only":"hit","high_and_moderate":"hit","all_identified_confidence_levels":"hit","all_confidence_and_candidates":"hit"},"localization_basis":"obs_003 contains an exact quote linking the vivid overseas fire to cladding reprioritization.","adjudication_note":"Correctly localized with the full hidden affect/availability mechanism, but the reported taxonomy label is a near neighbor."},
+    {"segment_id":"seg_005","ground_truth_status":"positive","ground_truth_instance_ids":["he4_db_01"],"rag_identified_occurrence_ids":["obs_004"],"rag_candidate_ids_counted_at_fourth_threshold":[],"rag_detected_bias_in_segment_by_threshold":{"high_only":true,"high_and_moderate":true,"all_identified_confidence_levels":true,"all_confidence_and_candidates":true},"sdt_outcome_by_threshold":{"high_only":"hit","high_and_moderate":"hit","all_identified_confidence_levels":"hit","all_confidence_and_candidates":"hit"},"localization_basis":"obs_004 quotes retention of the software defaults over project-specific data.","adjudication_note":"Correctly localized; status quo bias/default effect is an established equivalent for the hidden Default bias label."},
+    {"segment_id":"seg_006","ground_truth_status":"negative","ground_truth_instance_ids":[],"rag_identified_occurrence_ids":[],"rag_candidate_ids_counted_at_fourth_threshold":[],"rag_detected_bias_in_segment_by_threshold":{"high_only":false,"high_and_moderate":false,"all_identified_confidence_levels":false,"all_confidence_and_candidates":false},"sdt_outcome_by_threshold":{"high_only":"correct_rejection","high_and_moderate":"correct_rejection","all_identified_confidence_levels":"correct_rejection","all_confidence_and_candidates":"correct_rejection"},"localization_basis":"The counterfactual quote is evidence for obs_001, not a separately reported occurrence.","adjudication_note":"No duplicate RAG occurrence was created for this counterfactual."},
+    {"segment_id":"seg_007","ground_truth_status":"negative","ground_truth_instance_ids":[],"rag_identified_occurrence_ids":[],"rag_candidate_ids_counted_at_fourth_threshold":[],"rag_detected_bias_in_segment_by_threshold":{"high_only":false,"high_and_moderate":false,"all_identified_confidence_levels":false,"all_confidence_and_candidates":false},"sdt_outcome_by_threshold":{"high_only":"correct_rejection","high_and_moderate":"correct_rejection","all_identified_confidence_levels":"correct_rejection","all_confidence_and_candidates":"correct_rejection"},"localization_basis":"The counterfactual quote is evidence for obs_002, not a separately reported occurrence.","adjudication_note":"No duplicate RAG occurrence was created for this counterfactual."},
+    {"segment_id":"seg_008","ground_truth_status":"negative","ground_truth_instance_ids":[],"rag_identified_occurrence_ids":[],"rag_candidate_ids_counted_at_fourth_threshold":[],"rag_detected_bias_in_segment_by_threshold":{"high_only":false,"high_and_moderate":false,"all_identified_confidence_levels":false,"all_confidence_and_candidates":false},"sdt_outcome_by_threshold":{"high_only":"correct_rejection","high_and_moderate":"correct_rejection","all_identified_confidence_levels":"correct_rejection","all_confidence_and_candidates":"correct_rejection"},"localization_basis":"The counterfactual quote is evidence for obs_003, not a separately reported occurrence.","adjudication_note":"No duplicate RAG occurrence was created for this counterfactual."},
+    {"segment_id":"seg_009","ground_truth_status":"negative","ground_truth_instance_ids":[],"rag_identified_occurrence_ids":[],"rag_candidate_ids_counted_at_fourth_threshold":[],"rag_detected_bias_in_segment_by_threshold":{"high_only":false,"high_and_moderate":false,"all_identified_confidence_levels":false,"all_confidence_and_candidates":false},"sdt_outcome_by_threshold":{"high_only":"correct_rejection","high_and_moderate":"correct_rejection","all_identified_confidence_levels":"correct_rejection","all_confidence_and_candidates":"correct_rejection"},"localization_basis":"The counterfactual quote is evidence for obs_004, not a separately reported occurrence.","adjudication_note":"No duplicate RAG occurrence was created for this counterfactual."}
+  ],
+  "instance_level_adjudications": [
+    {
+      "hidden_instance_id":"he4_iot_01","hidden_target_bias_label":"Illusion of Truth effect","hidden_decision_or_episode":"Acceptance of Vendor B glazing substitution","hidden_mechanism":"Repeated exposure to the same claim across three vendor documents traced to one underlying test increases perceived credibility without independent verification.",
+      "matched_finding_by_threshold":{"high_only":{"matched_id":"obs_001","matched_type":"identified"},"high_and_moderate":{"matched_id":"obs_001","matched_type":"identified"},"all_identified_confidence_levels":{"matched_id":"obs_001","matched_type":"identified"},"all_confidence_and_candidates":{"matched_id":"obs_001","matched_type":"identified"}},
+      "rag_predicted_bias_label":"illusory truth effect","rag_confidence":"high","label_equivalence_result":"established_alias_or_equivalent","localization_match_type":"exact_quote_match","mechanism_overlap":"full_mechanism_match",
+      "strict_scorecard_outcome_by_threshold":{"high_only":"true_positive","high_and_moderate":"true_positive","all_identified_confidence_levels":"true_positive","all_confidence_and_candidates":"true_positive"},
+      "mechanism_first_scorecard_outcome_by_threshold":{"high_only":"true_positive","high_and_moderate":"true_positive","all_identified_confidence_levels":"true_positive","all_confidence_and_candidates":"true_positive"},
+      "secondary_diagnostic_outcome":"approved_alias_match","label_equivalence_explanation":"Illusory truth effect is an established equivalent/variant naming of the hidden Illusion of Truth effect.","mechanism_overlap_explanation":"The finding captures repetition of one non-independent vendor claim, increased credibility, and failure to verify the underlying report.","evidence_fidelity_assessment":"All quoted evidence is present in the interview and the decision and later discrepancy are faithfully represented."
+    },
+    {
+      "hidden_instance_id":"he4_ab_01","hidden_target_bias_label":"Action bias","hidden_decision_or_episode":"Authorization of fan commissioning ahead of CFD re-run","hidden_mechanism":"Preference for authorizing an active commissioning step over waiting for a recommended re-run, justified by maintaining momentum rather than analysis of the borderline CFD result.",
+      "matched_finding_by_threshold":{"high_only":{"matched_id":null,"matched_type":"none"},"high_and_moderate":{"matched_id":"obs_002","matched_type":"identified"},"all_identified_confidence_levels":{"matched_id":"obs_002","matched_type":"identified"},"all_confidence_and_candidates":{"matched_id":"obs_002","matched_type":"identified"}},
+      "rag_predicted_bias_label":"plan continuation bias","rag_confidence":"moderate","label_equivalence_result":"near_neighbor_label","localization_match_type":"exact_quote_match","mechanism_overlap":"full_mechanism_match",
+      "strict_scorecard_outcome_by_threshold":{"high_only":"false_negative","high_and_moderate":"false_negative","all_identified_confidence_levels":"false_negative","all_confidence_and_candidates":"false_negative"},
+      "mechanism_first_scorecard_outcome_by_threshold":{"high_only":"false_negative","high_and_moderate":"true_positive","all_identified_confidence_levels":"true_positive","all_confidence_and_candidates":"true_positive"},
+      "secondary_diagnostic_outcome":"correct_location_wrong_bias_label","label_equivalence_explanation":"Plan continuation bias is a neighboring construct, not the hidden action-versus-inaction label, although this occurrence explicitly contrasts proceeding with waiting.","mechanism_overlap_explanation":"The evidence fully captures choosing active commissioning over a recommended pause and justifying it primarily through momentum and schedule pressure.","evidence_fidelity_assessment":"The quoted decision rationale and counterfactual are faithful; the non-destructive parallel-work justification is acknowledged as a plausible non-bias interpretation."
+    },
+    {
+      "hidden_instance_id":"he4_afb_01","hidden_target_bias_label":"Affect Bias","hidden_decision_or_episode":"Punch-list reprioritization after overseas cladding fire","hidden_mechanism":"Emotional salience of a vivid, unrelated recent high-rise fire shifts inspection-time allocation toward cladding over the technically more urgent pressurization deficiency.",
+      "matched_finding_by_threshold":{"high_only":{"matched_id":"obs_003","matched_type":"identified"},"high_and_moderate":{"matched_id":"obs_003","matched_type":"identified"},"all_identified_confidence_levels":{"matched_id":"obs_003","matched_type":"identified"},"all_confidence_and_candidates":{"matched_id":"obs_003","matched_type":"identified"}},
+      "rag_predicted_bias_label":"availability heuristic","rag_confidence":"high","label_equivalence_result":"near_neighbor_label","localization_match_type":"exact_quote_match","mechanism_overlap":"full_mechanism_match",
+      "strict_scorecard_outcome_by_threshold":{"high_only":"false_negative","high_and_moderate":"false_negative","all_identified_confidence_levels":"false_negative","all_confidence_and_candidates":"false_negative"},
+      "mechanism_first_scorecard_outcome_by_threshold":{"high_only":"true_positive","high_and_moderate":"true_positive","all_identified_confidence_levels":"true_positive","all_confidence_and_candidates":"true_positive"},
+      "secondary_diagnostic_outcome":"correct_location_wrong_bias_label","label_equivalence_explanation":"Availability heuristic is a near-neighbor label; it emphasizes ease of recall, while the hidden label emphasizes the affective response, but they are distinct constructs for strict scoring.","mechanism_overlap_explanation":"The finding includes the vivid unrelated event, emotional salience, lack of new local evidence, and the resulting allocation of scarce inspection time.","evidence_fidelity_assessment":"The exact interview quotes support the finding and preserve the participant's uncertainty about news influence versus genuine caution."
+    },
+    {
+      "hidden_instance_id":"he4_db_01","hidden_target_bias_label":"Default bias","hidden_decision_or_episode":"Final egress modeling parameter calibration","hidden_mechanism":"Retention of generic software defaults over available project-specific data, justified by effort/status quo rather than technical superiority.",
+      "matched_finding_by_threshold":{"high_only":{"matched_id":"obs_004","matched_type":"identified"},"high_and_moderate":{"matched_id":"obs_004","matched_type":"identified"},"all_identified_confidence_levels":{"matched_id":"obs_004","matched_type":"identified"},"all_confidence_and_candidates":{"matched_id":"obs_004","matched_type":"identified"}},
+      "rag_predicted_bias_label":"status quo bias","rag_confidence":"high","label_equivalence_result":"established_alias_or_equivalent","localization_match_type":"exact_quote_match","mechanism_overlap":"full_mechanism_match",
+      "strict_scorecard_outcome_by_threshold":{"high_only":"true_positive","high_and_moderate":"true_positive","all_identified_confidence_levels":"true_positive","all_confidence_and_candidates":"true_positive"},
+      "mechanism_first_scorecard_outcome_by_threshold":{"high_only":"true_positive","high_and_moderate":"true_positive","all_identified_confidence_levels":"true_positive","all_confidence_and_candidates":"true_positive"},
+      "secondary_diagnostic_outcome":"approved_alias_match","label_equivalence_explanation":"Status quo bias/default effect is an established equivalent label for the hidden Default bias construct in this context.","mechanism_overlap_explanation":"The finding captures retaining generic office defaults despite a known occupancy mismatch and available survey data because changing them felt like unnecessary complication.","evidence_fidelity_assessment":"The interview evidence and limitation that the default run passed the required threshold are accurately represented."
+    }
+  ],
+  "unmatched_rag_predictions": [
+    {"rag_occurrence_id":"obs_002","rag_finding_type":"identified","rag_predicted_bias_label":"plan continuation bias","rag_confidence":"moderate","localized_segment_id":"seg_003","best_related_hidden_instance_id":"he4_ab_01","label_equivalence_result":"near_neighbor_label","mechanism_overlap":"full_mechanism_match","strict_classification":"correct_location_wrong_bias_label","mechanism_first_classification":"not_applicable","counted_at_thresholds":["high_and_moderate","all_identified_confidence_levels","all_confidence_and_candidates"],"why_not_an_exact_strict_match":"The occurrence is correctly localized and its mechanism fully matches, but plan continuation bias is not the hidden Action bias label under the strict taxonomy."},
+    {"rag_occurrence_id":"obs_003","rag_finding_type":"identified","rag_predicted_bias_label":"availability heuristic","rag_confidence":"high","localized_segment_id":"seg_004","best_related_hidden_instance_id":"he4_afb_01","label_equivalence_result":"near_neighbor_label","mechanism_overlap":"full_mechanism_match","strict_classification":"correct_location_wrong_bias_label","mechanism_first_classification":"not_applicable","counted_at_thresholds":["high_only","high_and_moderate","all_identified_confidence_levels","all_confidence_and_candidates"],"why_not_an_exact_strict_match":"The occurrence is correctly localized and captures the affectively vivid event mechanism, but availability heuristic is a neighboring rather than equivalent strict label for Affect Bias."}
+  ],
+  "candidate_analysis": {"candidate_count":0,"candidates":[]},
+  "signal_detection_summary": {
+    "evaluation_unit":"eligible_reasoning_segment",
+    "high_only":{"positive_segments":4,"negative_segments":5,"hits":3,"misses":1,"false_alarms":0,"correct_rejections":5,"hit_rate":0.75,"false_alarm_rate":0,"accuracy":0.8889,"precision":1,"recall":0.75,"f1":0.8571,"detection_interpretation":"Three of four positive segments contain high-confidence identified findings; the moderate-confidence action-bias segment is missed. No negative segment produces a false alarm."},
+    "high_and_moderate":{"positive_segments":4,"negative_segments":5,"hits":4,"misses":0,"false_alarms":0,"correct_rejections":5,"hit_rate":1,"false_alarm_rate":0,"accuracy":1,"precision":1,"recall":1,"f1":1,"detection_interpretation":"All four positive segments are detected once high and moderate identified findings are admitted, with no false alarms."},
+    "all_identified_confidence_levels":{"positive_segments":4,"negative_segments":5,"hits":4,"misses":0,"false_alarms":0,"correct_rejections":5,"hit_rate":1,"false_alarm_rate":0,"accuracy":1,"precision":1,"recall":1,"f1":1,"detection_interpretation":"All four positive segments are detected; low-confidence findings are absent and do not change the result."},
+    "all_confidence_and_candidates":{"positive_segments":4,"negative_segments":5,"hits":4,"misses":0,"false_alarms":0,"correct_rejections":5,"hit_rate":1,"false_alarm_rate":0,"accuracy":1,"precision":1,"recall":1,"f1":1,"detection_interpretation":"All four positive segments are detected, and the empty candidate tier adds no detections or false alarms."}
+  },
+  "strict_instance_level_metrics": {
+    "high_only":{"true_positives":2,"false_negatives":2,"false_positives":1,"precision":0.6667,"recall":0.5,"f1":0.5714,"exact_occurrence_match_rate":0.5,"occurrence_count_match_rate":0.5},
+    "high_and_moderate":{"true_positives":2,"false_negatives":2,"false_positives":2,"precision":0.5,"recall":0.5,"f1":0.5,"exact_occurrence_match_rate":0.5,"occurrence_count_match_rate":0.5},
+    "all_identified_confidence_levels":{"true_positives":2,"false_negatives":2,"false_positives":2,"precision":0.5,"recall":0.5,"f1":0.5,"exact_occurrence_match_rate":0.5,"occurrence_count_match_rate":0.5},
+    "all_confidence_and_candidates":{"true_positives":2,"false_negatives":2,"false_positives":2,"precision":0.5,"recall":0.5,"f1":0.5,"exact_occurrence_match_rate":0.5,"occurrence_count_match_rate":0.5}
+  },
+  "mechanism_first_instance_level_metrics": {
+    "high_only":{"true_positives":3,"false_negatives":1,"false_positives":0,"precision":1,"recall":0.75,"f1":0.8571,"exact_occurrence_match_rate":0.75,"occurrence_count_match_rate":0.75},
+    "high_and_moderate":{"true_positives":4,"false_negatives":0,"false_positives":0,"precision":1,"recall":1,"f1":1,"exact_occurrence_match_rate":1,"occurrence_count_match_rate":1},
+    "all_identified_confidence_levels":{"true_positives":4,"false_negatives":0,"false_positives":0,"precision":1,"recall":1,"f1":1,"exact_occurrence_match_rate":1,"occurrence_count_match_rate":1},
+    "all_confidence_and_candidates":{"true_positives":4,"false_negatives":0,"false_positives":0,"precision":1,"recall":1,"f1":1,"exact_occurrence_match_rate":1,"occurrence_count_match_rate":1}
+  },
+  "target_bias_performance": [
+    {"hidden_target_bias_label":"Illusion of Truth effect","hidden_requested_occurrences":1,"strict_true_positives_by_threshold":{"high_only":1,"high_and_moderate":1,"all_identified_confidence_levels":1,"all_confidence_and_candidates":1},"mechanism_first_true_positives_by_threshold":{"high_only":1,"high_and_moderate":1,"all_identified_confidence_levels":1,"all_confidence_and_candidates":1},"count_match_status_at_all_confidence_and_candidates":"exact_match"},
+    {"hidden_target_bias_label":"Action bias","hidden_requested_occurrences":1,"strict_true_positives_by_threshold":{"high_only":0,"high_and_moderate":0,"all_identified_confidence_levels":0,"all_confidence_and_candidates":0},"mechanism_first_true_positives_by_threshold":{"high_only":0,"high_and_moderate":1,"all_identified_confidence_levels":1,"all_confidence_and_candidates":1},"count_match_status_at_all_confidence_and_candidates":"underdetected"},
+    {"hidden_target_bias_label":"Affect Bias","hidden_requested_occurrences":1,"strict_true_positives_by_threshold":{"high_only":0,"high_and_moderate":0,"all_identified_confidence_levels":0,"all_confidence_and_candidates":0},"mechanism_first_true_positives_by_threshold":{"high_only":1,"high_and_moderate":1,"all_identified_confidence_levels":1,"all_confidence_and_candidates":1},"count_match_status_at_all_confidence_and_candidates":"underdetected"},
+    {"hidden_target_bias_label":"Default bias","hidden_requested_occurrences":1,"strict_true_positives_by_threshold":{"high_only":1,"high_and_moderate":1,"all_identified_confidence_levels":1,"all_confidence_and_candidates":1},"mechanism_first_true_positives_by_threshold":{"high_only":1,"high_and_moderate":1,"all_identified_confidence_levels":1,"all_confidence_and_candidates":1},"count_match_status_at_all_confidence_and_candidates":"exact_match"}
+  ],
+  "rag_label_false_positive_inventory": [
+    {"rag_predicted_bias_label":"plan continuation bias","finding_type":"identified","alternative_labels":["get-there-itis","continuation bias"],"occurrence_count":1,"best_related_hidden_target_bias_label":"Action bias","label_relation":"near_neighbor","mechanism_overlap_summary":"Full overlap with the active-versus-waiting, momentum-driven mechanism, but a different taxonomy label.","primary_error_types":["correct_location_wrong_bias_label"]},
+    {"rag_predicted_bias_label":"availability heuristic","finding_type":"identified","alternative_labels":["availability bias","availability heuristic with affect-laden recent event"],"occurrence_count":1,"best_related_hidden_target_bias_label":"Affect Bias","label_relation":"near_neighbor","mechanism_overlap_summary":"Full overlap with the vivid emotionally salient event driving risk prioritization, but a different taxonomy label.","primary_error_types":["correct_location_wrong_bias_label"]}
+  ],
+  "diagnostic_error_summary": {"correct_location_wrong_bias_label_count":2,"correct_label_wrong_location_count":0,"correct_label_location_wrong_mechanism_count":0,"mechanism_detected_label_unresolved_count":0,"partial_mechanism_match_count":0,"duplicate_prediction_count":0,"unsupported_prediction_count":0,"fabricated_or_invalid_quote_count":0,"approved_alias_or_equivalence_count":2,"near_neighbor_label_count":2,"different_construct_label_count":0,"candidate_count":0,"candidate_useful_abstention_count":0,"candidate_near_miss_count":0,"candidates_promoted_to_true_positive_at_fourth_threshold_count":0},
+  "corpus_support_audit": {"primary_corpus_fidelity_score_available":false,"rag_occurrences_claiming_retrieved_support":1,"rag_occurrences_with_no_claimed_retrieved_support":3,"rag_occurrences_with_unverifiable_or_internally_inconsistent_citation_metadata":1,"assessment_note":"obs_002 claims one retrieved aviation source and discloses its limited relevance; the supplied input contains no retrieval log or passage provenance, so that citation is not independently verifiable. The other three occurrences explicitly disclose no claimed retrieved support."},
+  "comparison_ready_summary": {
+    "primary_recommended_comparison_threshold":"high_and_moderate",
+    "segment_detection": {
+      "high_only":{"hits":3,"misses":1,"false_alarms":0,"correct_rejections":5,"hit_rate":0.75,"false_alarm_rate":0,"f1":0.8571},
+      "high_and_moderate":{"hits":4,"misses":0,"false_alarms":0,"correct_rejections":5,"hit_rate":1,"false_alarm_rate":0,"f1":1},
+      "all_identified_confidence_levels":{"hits":4,"misses":0,"false_alarms":0,"correct_rejections":5,"hit_rate":1,"false_alarm_rate":0,"f1":1},
+      "all_confidence_and_candidates":{"hits":4,"misses":0,"false_alarms":0,"correct_rejections":5,"hit_rate":1,"false_alarm_rate":0,"f1":1}
+    },
+    "strict_instance_identification": {
+      "high_only":{"true_positives":2,"false_negatives":2,"false_positives":1,"precision":0.6667,"recall":0.5,"f1":0.5714},
+      "high_and_moderate":{"true_positives":2,"false_negatives":2,"false_positives":2,"precision":0.5,"recall":0.5,"f1":0.5},
+      "all_identified_confidence_levels":{"true_positives":2,"false_negatives":2,"false_positives":2,"precision":0.5,"recall":0.5,"f1":0.5},
+      "all_confidence_and_candidates":{"true_positives":2,"false_negatives":2,"false_positives":2,"precision":0.5,"recall":0.5,"f1":0.5}
+    },
+    "mechanism_first_identification": {
+      "high_only":{"true_positives":3,"false_negatives":1,"false_positives":0,"precision":1,"recall":0.75,"f1":0.8571},
+      "high_and_moderate":{"true_positives":4,"false_negatives":0,"false_positives":0,"precision":1,"recall":1,"f1":1},
+      "all_identified_confidence_levels":{"true_positives":4,"false_negatives":0,"false_positives":0,"precision":1,"recall":1,"f1":1},
+      "all_confidence_and_candidates":{"true_positives":4,"false_negatives":0,"false_positives":0,"precision":1,"recall":1,"f1":1}
+    },
+    "taxonomy_gap": {
+      "high_only":{"mechanism_first_f1_minus_strict_f1":0.2857},
+      "high_and_moderate":{"mechanism_first_f1_minus_strict_f1":0.5},
+      "all_identified_confidence_levels":{"mechanism_first_f1_minus_strict_f1":0.5},
+      "all_confidence_and_candidates":{"mechanism_first_f1_minus_strict_f1":0.5}
+    },
+    "confidence_tradeoff": {
+      "increment_from_high_to_high_and_moderate":"Segment hit rate rises from 0.7500 to 1.0000; strict instance F1 falls from 0.5714 to 0.5000 because the moderate wrong-label finding adds a strict false positive while the hidden action-bias instance remains a false negative; mechanism-first F1 rises from 0.8571 to 1.0000.",
+      "increment_from_high_and_moderate_to_all_confidence":"No change: no low-confidence identified findings are present.",
+      "increment_from_all_confidence_to_all_confidence_and_candidates":"No change: the candidate tier is empty."
+    }
+  },
+  "overall_evaluation_summary": {
+    "hidden_total_planned_occurrences":4,
+    "rag_total_identified_occurrences":4,
+    "rag_total_candidate_biases":0,
+    "segment_level_primary_result":"At the recommended high_and_moderate threshold, all four positive reasoning segments are detected with no false alarms (segment F1 1.0000).",
+    "strict_label_plus_mechanism_result":"Two of four hidden instances receive an exact or established-equivalent label and full mechanism match; strict precision, recall, and F1 are each 0.5000 at the recommended threshold.",
+    "mechanism_first_result":"All four hidden mechanisms are correctly localized and matched at the recommended threshold; mechanism-first precision, recall, and F1 are each 1.0000.",
+    "candidate_tier_value_assessment":"No candidates were supplied, so the fourth threshold provides no additional evidence or candidate-tier value.",
+    "main_failure_modes":["Two correctly localized findings use near-neighbor labels (plan continuation bias for Action bias and availability heuristic for Affect Bias), reducing strict taxonomy performance.","The single retrieved-support citation is not independently verifiable from the supplied inputs."],
+    "main_strengths":["All four findings are localized to the correct decision episodes with faithful, valid quotations.","The two neighboring labels preserve the full hidden mechanisms and are recoverable under mechanism-first scoring.","No unsupported, duplicate, fabricated, or negative-segment predictions were produced."],
+    "benchmark_interpretation":"This run has perfect segment detection and mechanism-first identification at high_and_moderate, but only moderate strict label-plus-mechanism performance because two occurrences were named with neighboring constructs. The result illustrates a substantial taxonomy gap rather than an evidence-localization failure. Corpus support is auditable only as a disclosure record, not as a fidelity score."
+  }
+}

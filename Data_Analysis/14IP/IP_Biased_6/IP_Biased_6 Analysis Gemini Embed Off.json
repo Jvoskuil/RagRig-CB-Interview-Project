@@ -1,0 +1,732 @@
+{
+  "evaluation_metadata": {
+    "task": "ontology_free_rag_cognitive_bias_benchmark_evaluation",
+    "benchmark_run_metadata": {
+      "benchmark_run_id": "IP_Biased_6_Gemini_off",
+      "interview_id": "IP_Biased_6",
+      "system_prompt_id": "Gemini",
+      "system_prompt_generator": "Prompt 1_2",
+      "rag_model_id": "v1.0.0",
+      "corpus_condition": "off",
+      "retrieval_configuration_id": "k=0",
+      "decoding_configuration_id": null,
+      "temperature": 1,
+      "replicate_id": null,
+      "segment_map_id": null
+    },
+    "scenario_id": "IP_Biased_6",
+    "domain_id": "IP",
+    "condition": "biased",
+    "segment_map_status": "prevalidated_provided",
+    "rag_output_parse_status": "valid_json",
+    "rag_schema_assessment": "conformant"
+  },
+  "input_validation": {
+    "rag_output_schema_violations": [],
+    "rag_summary_count_consistency": {
+      "status": "consistent",
+      "details": "The identified_bias_summary contains four labels with one occurrence each, matching the four identified_occurrences records. Candidate records are separately represented and do not belong in the identified summary."
+    },
+    "evaluation_limitations": [
+      "The RAG output uses near-neighbor taxonomy labels rather than the hidden benchmark labels, so label equivalence and mechanism overlap require adjudication.",
+      "No retrieved chunks, source passages, or retrieval logs were supplied; corpus fidelity is not scored."
+    ]
+  },
+  "evaluation_segment_map": {
+    "segment_mapping_version": "1.0",
+    "segments": [
+      {
+        "segment_id": "seg_001",
+        "speaker": "Participant",
+        "segment_type": "decision_reasoning",
+        "raw_interview_anchor": "The throughput report just carried more weight for me.",
+        "eligible_reasoning_segment": true,
+        "ground_truth_bias_present": true,
+        "ground_truth_instance_ids": ["cb_01"],
+        "ground_truth_rationale": "Selective weighting of confirming throughput evidence over the disconfirming vibration advisory during the Press 3 allocation."
+      },
+      {
+        "segment_id": "seg_002",
+        "speaker": "Participant",
+        "segment_type": "causal_attribution",
+        "raw_interview_anchor": "The pattern matched what I'd seen twice before with this supplier, so I expected a similar resolution.",
+        "eligible_reasoning_segment": true,
+        "ground_truth_bias_present": true,
+        "ground_truth_instance_ids": ["co_01"],
+        "ground_truth_rationale": "The current supplier delay was causally attributed to a superficial temporal pattern observed in prior delays."
+      },
+      {
+        "segment_id": "seg_003",
+        "speaker": "Participant",
+        "segment_type": "alternative_selection",
+        "raw_interview_anchor": "I called the first person on my list rather than shopping around.",
+        "eligible_reasoning_segment": true,
+        "ground_truth_bias_present": true,
+        "ground_truth_instance_ids": ["br_01"],
+        "ground_truth_rationale": "The first acceptable backup-supplier option was selected without comparative evaluation under time pressure."
+      },
+      {
+        "segment_id": "seg_004",
+        "speaker": "Participant",
+        "segment_type": "information_avoidance",
+        "raw_interview_anchor": "Pulling three weeks of data might have shown a clearer upward line ... and that could have meant reworking Friday's plan.",
+        "eligible_reasoning_segment": true,
+        "ground_truth_bias_present": true,
+        "ground_truth_instance_ids": ["oe_01"],
+        "ground_truth_rationale": "The available vibration trend log was not reviewed partly because it might have forced rescheduling."
+      },
+      {
+        "segment_id": "seg_005",
+        "speaker": "Participant",
+        "segment_type": "severity_assessment",
+        "raw_interview_anchor": "I was thinking of the Press 1 fire from a couple years ago ... This didn't look anything like that, so it didn't register as urgent.",
+        "eligible_reasoning_segment": true,
+        "ground_truth_bias_present": true,
+        "ground_truth_instance_ids": ["im_01"],
+        "ground_truth_rationale": "Risk severity was judged against the vivid recalled fire rather than the gradual vibration trend."
+      },
+      {
+        "segment_id": "seg_006",
+        "speaker": "Participant",
+        "segment_type": "belief_updating",
+        "raw_interview_anchor": "The earlier data ... still felt like the more solid read ... so I didn't weight the new label as heavily.",
+        "eligible_reasoning_segment": true,
+        "ground_truth_bias_present": true,
+        "ground_truth_instance_ids": ["cv_01"],
+        "ground_truth_rationale": "New elevated-concern evidence was underweighted relative to the previously formed throughput-based belief."
+      }
+    ]
+  },
+  "segment_level_adjudications": [
+    {
+      "segment_id": "seg_001",
+      "ground_truth_status": "positive",
+      "ground_truth_instance_ids": ["cb_01"],
+      "rag_identified_occurrence_ids": [],
+      "rag_candidate_ids_counted_at_fourth_threshold": ["cand_001"],
+      "rag_detected_bias_in_segment_by_threshold": {
+        "high_only": false,
+        "high_and_moderate": false,
+        "all_identified_confidence_levels": false,
+        "all_confidence_and_candidates": true
+      },
+      "sdt_outcome_by_threshold": {
+        "high_only": "miss",
+        "high_and_moderate": "miss",
+        "all_identified_confidence_levels": "miss",
+        "all_confidence_and_candidates": "hit"
+      },
+      "localization_basis": "cand_001 quotes the mapped allocation-stage evidence-weighting span directly.",
+      "adjudication_note": "The candidate localizes to the positive segment, so it produces a segment-level hit at the fourth threshold even though it is not an identified occurrence."
+    },
+    {
+      "segment_id": "seg_002",
+      "ground_truth_status": "positive",
+      "ground_truth_instance_ids": ["co_01"],
+      "rag_identified_occurrence_ids": ["obs_001"],
+      "rag_candidate_ids_counted_at_fourth_threshold": [],
+      "rag_detected_bias_in_segment_by_threshold": {
+        "high_only": false,
+        "high_and_moderate": true,
+        "all_identified_confidence_levels": true,
+        "all_confidence_and_candidates": true
+      },
+      "sdt_outcome_by_threshold": {
+        "high_only": "miss",
+        "high_and_moderate": "hit",
+        "all_identified_confidence_levels": "hit",
+        "all_confidence_and_candidates": "hit"
+      },
+      "localization_basis": "obs_001 supplies a valid quote and mechanism description from the supplier-delay causal-attribution span.",
+      "adjudication_note": "The finding is located correctly and captures the causal pattern-matching mechanism, but its primary taxonomy label is a near neighbor rather than the hidden Correlation bias label."
+    },
+    {
+      "segment_id": "seg_003",
+      "ground_truth_status": "positive",
+      "ground_truth_instance_ids": ["br_01"],
+      "rag_identified_occurrence_ids": [],
+      "rag_candidate_ids_counted_at_fourth_threshold": ["cand_002"],
+      "rag_detected_bias_in_segment_by_threshold": {
+        "high_only": false,
+        "high_and_moderate": false,
+        "all_identified_confidence_levels": false,
+        "all_confidence_and_candidates": true
+      },
+      "sdt_outcome_by_threshold": {
+        "high_only": "miss",
+        "high_and_moderate": "miss",
+        "all_identified_confidence_levels": "miss",
+        "all_confidence_and_candidates": "hit"
+      },
+      "localization_basis": "cand_002 quotes the mapped first-contact/no-comparison supplier-selection rationale.",
+      "adjudication_note": "The candidate is localized to the positive alternative-selection segment, independent of whether its mechanism is sufficient for an instance-level match."
+    },
+    {
+      "segment_id": "seg_004",
+      "ground_truth_status": "positive",
+      "ground_truth_instance_ids": ["oe_01"],
+      "rag_identified_occurrence_ids": ["obs_002"],
+      "rag_candidate_ids_counted_at_fourth_threshold": [],
+      "rag_detected_bias_in_segment_by_threshold": {
+        "high_only": false,
+        "high_and_moderate": false,
+        "all_identified_confidence_levels": true,
+        "all_confidence_and_candidates": true
+      },
+      "sdt_outcome_by_threshold": {
+        "high_only": "miss",
+        "high_and_moderate": "miss",
+        "all_identified_confidence_levels": "hit",
+        "all_confidence_and_candidates": "hit"
+      },
+      "localization_basis": "obs_002 quotes the decision not to open the available three-week trend log.",
+      "adjudication_note": "The low-confidence identified finding is correctly localized and expresses the information-avoidance mechanism."
+    },
+    {
+      "segment_id": "seg_005",
+      "ground_truth_status": "positive",
+      "ground_truth_instance_ids": ["im_01"],
+      "rag_identified_occurrence_ids": ["obs_003"],
+      "rag_candidate_ids_counted_at_fourth_threshold": [],
+      "rag_detected_bias_in_segment_by_threshold": {
+        "high_only": false,
+        "high_and_moderate": true,
+        "all_identified_confidence_levels": true,
+        "all_confidence_and_candidates": true
+      },
+      "sdt_outcome_by_threshold": {
+        "high_only": "miss",
+        "high_and_moderate": "hit",
+        "all_identified_confidence_levels": "hit",
+        "all_confidence_and_candidates": "hit"
+      },
+      "localization_basis": "obs_003 quotes the vivid Press 1 fire comparison and its effect on urgency assessment.",
+      "adjudication_note": "The availability heuristic label is a near neighbor to the hidden Imaginability Bias label, while the recalled-vivid-incident mechanism is fully supported."
+    },
+    {
+      "segment_id": "seg_006",
+      "ground_truth_status": "positive",
+      "ground_truth_instance_ids": ["cv_01"],
+      "rag_identified_occurrence_ids": ["obs_004"],
+      "rag_candidate_ids_counted_at_fourth_threshold": [],
+      "rag_detected_bias_in_segment_by_threshold": {
+        "high_only": false,
+        "high_and_moderate": false,
+        "all_identified_confidence_levels": true,
+        "all_confidence_and_candidates": true
+      },
+      "sdt_outcome_by_threshold": {
+        "high_only": "miss",
+        "high_and_moderate": "miss",
+        "all_identified_confidence_levels": "hit",
+        "all_confidence_and_candidates": "hit"
+      },
+      "localization_basis": "obs_004 quotes the underweighting of the new elevated-concern status during finalization.",
+      "adjudication_note": "The anchoring label is a near neighbor to Conservatism Bias, but the insufficient-belief-updating mechanism and evidence are fully matched."
+    }
+  ],
+  "instance_level_adjudications": [
+    {
+      "hidden_instance_id": "cb_01",
+      "hidden_target_bias_label": "Confirmation Bias",
+      "hidden_decision_or_episode": "Decision point 1: allocation of the extra bracket batch to Press 3",
+      "hidden_mechanism": "Selective weighting of confirming throughput data over disconfirming vibration advisory during capacity allocation",
+      "matched_finding_by_threshold": {
+        "high_only": {"matched_id": null, "matched_type": "none"},
+        "high_and_moderate": {"matched_id": null, "matched_type": "none"},
+        "all_identified_confidence_levels": {"matched_id": null, "matched_type": "none"},
+        "all_confidence_and_candidates": {"matched_id": "cand_001", "matched_type": "candidate"}
+      },
+      "rag_predicted_bias_label": "anchoring effect",
+      "rag_confidence": "candidate",
+      "label_equivalence_result": "near_neighbor_label",
+      "localization_match_type": "exact_quote_match",
+      "mechanism_overlap": "full_mechanism_match",
+      "strict_scorecard_outcome_by_threshold": {
+        "high_only": "false_negative",
+        "high_and_moderate": "false_negative",
+        "all_identified_confidence_levels": "false_negative",
+        "all_confidence_and_candidates": "false_negative"
+      },
+      "mechanism_first_scorecard_outcome_by_threshold": {
+        "high_only": "false_negative",
+        "high_and_moderate": "false_negative",
+        "all_identified_confidence_levels": "false_negative",
+        "all_confidence_and_candidates": "true_positive"
+      },
+      "secondary_diagnostic_outcome": "correct_location_wrong_bias_label",
+      "label_equivalence_explanation": "Anchoring effect is related to, but not an approved equivalent of, Confirmation Bias; the candidate describes a possible anchor but does not use the hidden target label.",
+      "mechanism_overlap_explanation": "The candidate identifies underweighting of the vibration advisory relative to the concrete throughput report in the allocation decision, which fully captures the hidden evidence-weighting mechanism.",
+      "evidence_fidelity_assessment": "The supporting quote is valid and directly overlaps the mapped segment."
+    },
+    {
+      "hidden_instance_id": "br_01",
+      "hidden_target_bias_label": "Bounded Rationality",
+      "hidden_decision_or_episode": "Decision point 2: selection of a backup-supplier contact",
+      "hidden_mechanism": "Satisficing selection of the first acceptable backup-supplier option under time pressure without comparative evaluation",
+      "matched_finding_by_threshold": {
+        "high_only": {"matched_id": null, "matched_type": "none"},
+        "high_and_moderate": {"matched_id": null, "matched_type": "none"},
+        "all_identified_confidence_levels": {"matched_id": null, "matched_type": "none"},
+        "all_confidence_and_candidates": {"matched_id": null, "matched_type": "none"}
+      },
+      "rag_predicted_bias_label": "default bias",
+      "rag_confidence": "candidate",
+      "label_equivalence_result": "different_construct",
+      "localization_match_type": "exact_quote_match",
+      "mechanism_overlap": "partial_mechanism_overlap",
+      "strict_scorecard_outcome_by_threshold": {
+        "high_only": "false_negative",
+        "high_and_moderate": "false_negative",
+        "all_identified_confidence_levels": "false_negative",
+        "all_confidence_and_candidates": "false_negative"
+      },
+      "mechanism_first_scorecard_outcome_by_threshold": {
+        "high_only": "false_negative",
+        "high_and_moderate": "false_negative",
+        "all_identified_confidence_levels": "false_negative",
+        "all_confidence_and_candidates": "false_negative"
+      },
+      "secondary_diagnostic_outcome": "candidate_only_near_miss",
+      "label_equivalence_explanation": "Default bias/status quo bias is not an approved equivalent of Bounded Rationality. The candidate's alternative label satisficing is related to the hidden mechanism but is not the proposed primary label.",
+      "mechanism_overlap_explanation": "The candidate captures reliance on a known contact and lack of comparison, but it frames the behavior as default reliance and does not fully establish first-acceptable-option satisficing as the operative mechanism.",
+      "evidence_fidelity_assessment": "The supporting quote is valid and directly overlaps the mapped supplier-selection segment; the limitation is classification specificity, not evidence fabrication."
+    },
+    {
+      "hidden_instance_id": "co_01",
+      "hidden_target_bias_label": "Correlation bias",
+      "hidden_decision_or_episode": "Decision point 2: interpretation of the primary supplier's four-day delay",
+      "hidden_mechanism": "Causal misattribution of current delay to a seasonal pattern observed in unrelated past delays",
+      "matched_finding_by_threshold": {
+        "high_only": {"matched_id": null, "matched_type": "none"},
+        "high_and_moderate": {"matched_id": "obs_001", "matched_type": "identified"},
+        "all_identified_confidence_levels": {"matched_id": "obs_001", "matched_type": "identified"},
+        "all_confidence_and_candidates": {"matched_id": "obs_001", "matched_type": "identified"}
+      },
+      "rag_predicted_bias_label": "representativeness heuristic",
+      "rag_confidence": "moderate",
+      "label_equivalence_result": "near_neighbor_label",
+      "localization_match_type": "exact_quote_match",
+      "mechanism_overlap": "full_mechanism_match",
+      "strict_scorecard_outcome_by_threshold": {
+        "high_only": "false_negative",
+        "high_and_moderate": "false_negative",
+        "all_identified_confidence_levels": "false_negative",
+        "all_confidence_and_candidates": "false_negative"
+      },
+      "mechanism_first_scorecard_outcome_by_threshold": {
+        "high_only": "false_negative",
+        "high_and_moderate": "true_positive",
+        "all_identified_confidence_levels": "true_positive",
+        "all_confidence_and_candidates": "true_positive"
+      },
+      "secondary_diagnostic_outcome": "correct_location_wrong_bias_label",
+      "label_equivalence_explanation": "Representativeness heuristic and sample-size neglect are related to the causal-pattern error, but they are not approved aliases for the hidden Correlation bias label.",
+      "mechanism_overlap_explanation": "The finding fully captures causal attribution of the current delay to superficial timing similarity from two prior delays while discounting the stated cause, with the correct forecasting/causal reasoning operation.",
+      "evidence_fidelity_assessment": "The long supplier-delay quote is valid, correctly attributed, and substantively overlaps the mapped segment."
+    },
+    {
+      "hidden_instance_id": "cv_01",
+      "hidden_target_bias_label": "Conservatism Bias",
+      "hidden_decision_or_episode": "Decision point 4: final schedule adjustment after the elevated-concern update",
+      "hidden_mechanism": "Underweighting of new elevated-concern status relative to previously formed belief that Press 3 is reliable",
+      "matched_finding_by_threshold": {
+        "high_only": {"matched_id": null, "matched_type": "none"},
+        "high_and_moderate": {"matched_id": null, "matched_type": "none"},
+        "all_identified_confidence_levels": {"matched_id": "obs_004", "matched_type": "identified"},
+        "all_confidence_and_candidates": {"matched_id": "obs_004", "matched_type": "identified"}
+      },
+      "rag_predicted_bias_label": "anchoring effect",
+      "rag_confidence": "low",
+      "label_equivalence_result": "near_neighbor_label",
+      "localization_match_type": "exact_quote_match",
+      "mechanism_overlap": "full_mechanism_match",
+      "strict_scorecard_outcome_by_threshold": {
+        "high_only": "false_negative",
+        "high_and_moderate": "false_negative",
+        "all_identified_confidence_levels": "false_negative",
+        "all_confidence_and_candidates": "false_negative"
+      },
+      "mechanism_first_scorecard_outcome_by_threshold": {
+        "high_only": "false_negative",
+        "high_and_moderate": "false_negative",
+        "all_identified_confidence_levels": "true_positive",
+        "all_confidence_and_candidates": "true_positive"
+      },
+      "secondary_diagnostic_outcome": "correct_location_wrong_bias_label",
+      "label_equivalence_explanation": "Anchoring effect overlaps with insufficient adjustment but is not an approved equivalent of Conservatism Bias in this benchmark.",
+      "mechanism_overlap_explanation": "The finding fully captures persistence of the earlier throughput-based belief and insufficient updating in response to the new expert risk signal, including the correct belief-updating operation.",
+      "evidence_fidelity_assessment": "The supporting quote is valid, correctly attributed, and directly overlaps the finalization segment."
+    },
+    {
+      "hidden_instance_id": "im_01",
+      "hidden_target_bias_label": "Imaginability Bias",
+      "hidden_decision_or_episode": "Decision point 3: severity assessment of the Press 3 vibration increase",
+      "hidden_mechanism": "Risk severity judgment anchored on vividness of a recalled past dramatic incident rather than actual gradual trend data",
+      "matched_finding_by_threshold": {
+        "high_only": {"matched_id": null, "matched_type": "none"},
+        "high_and_moderate": {"matched_id": "obs_003", "matched_type": "identified"},
+        "all_identified_confidence_levels": {"matched_id": "obs_003", "matched_type": "identified"},
+        "all_confidence_and_candidates": {"matched_id": "obs_003", "matched_type": "identified"}
+      },
+      "rag_predicted_bias_label": "availability heuristic",
+      "rag_confidence": "moderate",
+      "label_equivalence_result": "near_neighbor_label",
+      "localization_match_type": "exact_quote_match",
+      "mechanism_overlap": "full_mechanism_match",
+      "strict_scorecard_outcome_by_threshold": {
+        "high_only": "false_negative",
+        "high_and_moderate": "false_negative",
+        "all_identified_confidence_levels": "false_negative",
+        "all_confidence_and_candidates": "false_negative"
+      },
+      "mechanism_first_scorecard_outcome_by_threshold": {
+        "high_only": "false_negative",
+        "high_and_moderate": "true_positive",
+        "all_identified_confidence_levels": "true_positive",
+        "all_confidence_and_candidates": "true_positive"
+      },
+      "secondary_diagnostic_outcome": "correct_location_wrong_bias_label",
+      "label_equivalence_explanation": "Availability heuristic is a related salience-based construct but is not treated as an approved equivalent of the hidden Imaginability Bias label.",
+      "mechanism_overlap_explanation": "The finding fully captures using the vivid Press 1 fire as the severity reference and discounting the gradual trend because the current issue did not resemble that exemplar.",
+      "evidence_fidelity_assessment": "The supporting quote is valid, correctly attributed, and directly overlaps the mapped severity-assessment segment."
+    },
+    {
+      "hidden_instance_id": "oe_01",
+      "hidden_target_bias_label": "Ostrich effect",
+      "hidden_decision_or_episode": "Decision point 3: decision not to review the full vibration trend log",
+      "hidden_mechanism": "Avoidance of requesting/reviewing available risk-relevant information to prevent exposure to information that could force rescheduling",
+      "matched_finding_by_threshold": {
+        "high_only": {"matched_id": null, "matched_type": "none"},
+        "high_and_moderate": {"matched_id": null, "matched_type": "none"},
+        "all_identified_confidence_levels": {"matched_id": "obs_002", "matched_type": "identified"},
+        "all_confidence_and_candidates": {"matched_id": "obs_002", "matched_type": "identified"}
+      },
+      "rag_predicted_bias_label": "information avoidance",
+      "rag_confidence": "low",
+      "label_equivalence_result": "near_neighbor_label",
+      "localization_match_type": "exact_quote_match",
+      "mechanism_overlap": "full_mechanism_match",
+      "strict_scorecard_outcome_by_threshold": {
+        "high_only": "false_negative",
+        "high_and_moderate": "false_negative",
+        "all_identified_confidence_levels": "false_negative",
+        "all_confidence_and_candidates": "false_negative"
+      },
+      "mechanism_first_scorecard_outcome_by_threshold": {
+        "high_only": "false_negative",
+        "high_and_moderate": "false_negative",
+        "all_identified_confidence_levels": "true_positive",
+        "all_confidence_and_candidates": "true_positive"
+      },
+      "secondary_diagnostic_outcome": "correct_location_wrong_bias_label",
+      "label_equivalence_explanation": "Information avoidance is closely related to the Ostrich effect, but the broader label is not treated as an approved equivalent in this ontology-free adjudication.",
+      "mechanism_overlap_explanation": "The finding fully captures deliberately not obtaining available trend information partly because it could reveal a worsening pattern and force schedule rework.",
+      "evidence_fidelity_assessment": "The supporting quote is valid, correctly attributed, and directly overlaps the mapped information-avoidance segment."
+    }
+  ],
+  "unmatched_rag_predictions": [
+    {
+      "rag_occurrence_id": "cand_002",
+      "rag_finding_type": "candidate",
+      "rag_predicted_bias_label": "default bias",
+      "rag_confidence": "candidate",
+      "localized_segment_id": "seg_003",
+      "best_related_hidden_instance_id": "br_01",
+      "label_equivalence_result": "different_construct",
+      "mechanism_overlap": "partial_mechanism_overlap",
+      "strict_classification": "partial_mechanism_match",
+      "mechanism_first_classification": "partial_mechanism_match",
+      "counted_at_thresholds": ["all_confidence_and_candidates"],
+      "why_not_an_exact_strict_match": "The quote is valid and correctly localized, but default reliance is not the hidden Bounded Rationality label or full first-acceptable-option satisficing mechanism. It is therefore a fourth-threshold false positive in both instance scorecards."
+    }
+  ],
+  "candidate_analysis": {
+    "candidate_count": 2,
+    "candidates": [
+      {
+        "candidate_id": "cand_001",
+        "proposed_bias_label": "anchoring effect",
+        "localized_segment_id": "seg_001",
+        "best_related_hidden_instance_id": "cb_01",
+        "quote_validity": "valid",
+        "would_match_if_promoted_strict": false,
+        "would_match_if_promoted_mechanism_first": true,
+        "counted_as_detection_at_fourth_threshold": true,
+        "fourth_threshold_outcome": "true_positive_mechanism_first_only",
+        "candidate_assessment": "candidate_near_miss",
+        "details": "The candidate's quote and stated mechanism fully capture the hidden selective weighting of throughput evidence over the vibration advisory, but anchoring effect is a near-neighbor label rather than the exact Confirmation Bias label."
+      },
+      {
+        "candidate_id": "cand_002",
+        "proposed_bias_label": "default bias",
+        "localized_segment_id": "seg_003",
+        "best_related_hidden_instance_id": "br_01",
+        "quote_validity": "valid",
+        "would_match_if_promoted_strict": false,
+        "would_match_if_promoted_mechanism_first": false,
+        "counted_as_detection_at_fourth_threshold": true,
+        "fourth_threshold_outcome": "false_positive",
+        "candidate_assessment": "candidate_near_miss",
+        "details": "The candidate identifies a real no-comparison choice under time pressure, but its proposed default-reliance mechanism does not fully establish the hidden satisficing mechanism for Bounded Rationality."
+      }
+    ]
+  },
+  "signal_detection_summary": {
+    "evaluation_unit": "eligible_reasoning_segment",
+    "high_only": {
+      "positive_segments": 6,
+      "negative_segments": 0,
+      "hits": 0,
+      "misses": 6,
+      "false_alarms": 0,
+      "correct_rejections": 0,
+      "hit_rate": 0,
+      "false_alarm_rate": null,
+      "accuracy": 0,
+      "precision": null,
+      "recall": 0,
+      "f1": 0,
+      "detection_interpretation": "No identified finding has high confidence, so all six positive segments are missed."
+    },
+    "high_and_moderate": {
+      "positive_segments": 6,
+      "negative_segments": 0,
+      "hits": 2,
+      "misses": 4,
+      "false_alarms": 0,
+      "correct_rejections": 0,
+      "hit_rate": 0.3333,
+      "false_alarm_rate": null,
+      "accuracy": 0.3333,
+      "precision": 1,
+      "recall": 0.3333,
+      "f1": 0.5,
+      "detection_interpretation": "The two moderate-confidence findings detect the supplier-delay and vivid-incident segments; four positive segments remain undetected."
+    },
+    "all_identified_confidence_levels": {
+      "positive_segments": 6,
+      "negative_segments": 0,
+      "hits": 4,
+      "misses": 2,
+      "false_alarms": 0,
+      "correct_rejections": 0,
+      "hit_rate": 0.6667,
+      "false_alarm_rate": null,
+      "accuracy": 0.6667,
+      "precision": 1,
+      "recall": 0.6667,
+      "f1": 0.8,
+      "detection_interpretation": "All four identified occurrences localize to positive segments; the two allocation and backup-selection segments are covered only by candidates."
+    },
+    "all_confidence_and_candidates": {
+      "positive_segments": 6,
+      "negative_segments": 0,
+      "hits": 6,
+      "misses": 0,
+      "false_alarms": 0,
+      "correct_rejections": 0,
+      "hit_rate": 1,
+      "false_alarm_rate": null,
+      "accuracy": 1,
+      "precision": 1,
+      "recall": 1,
+      "f1": 1,
+      "detection_interpretation": "Both candidates localize to the two remaining positive segments, giving complete segment coverage; no negative segments were available for false-alarm testing."
+    }
+  },
+  "strict_instance_level_metrics": {
+    "high_only": {"true_positives": 0, "false_negatives": 6, "false_positives": 0, "precision": null, "recall": 0, "f1": 0, "exact_occurrence_match_rate": 0, "occurrence_count_match_rate": 0},
+    "high_and_moderate": {"true_positives": 0, "false_negatives": 6, "false_positives": 2, "precision": 0, "recall": 0, "f1": 0, "exact_occurrence_match_rate": 0, "occurrence_count_match_rate": 0},
+    "all_identified_confidence_levels": {"true_positives": 0, "false_negatives": 6, "false_positives": 4, "precision": 0, "recall": 0, "f1": 0, "exact_occurrence_match_rate": 0, "occurrence_count_match_rate": 0},
+    "all_confidence_and_candidates": {"true_positives": 0, "false_negatives": 6, "false_positives": 6, "precision": 0, "recall": 0, "f1": 0, "exact_occurrence_match_rate": 0, "occurrence_count_match_rate": 0}
+  },
+  "mechanism_first_instance_level_metrics": {
+    "high_only": {"true_positives": 0, "false_negatives": 6, "false_positives": 0, "precision": null, "recall": 0, "f1": 0, "exact_occurrence_match_rate": 0, "occurrence_count_match_rate": 0},
+    "high_and_moderate": {"true_positives": 2, "false_negatives": 4, "false_positives": 0, "precision": 1, "recall": 0.3333, "f1": 0.5, "exact_occurrence_match_rate": 0.3333, "occurrence_count_match_rate": 0.3333},
+    "all_identified_confidence_levels": {"true_positives": 4, "false_negatives": 2, "false_positives": 0, "precision": 1, "recall": 0.6667, "f1": 0.8, "exact_occurrence_match_rate": 0.6667, "occurrence_count_match_rate": 0.6667},
+    "all_confidence_and_candidates": {"true_positives": 5, "false_negatives": 1, "false_positives": 1, "precision": 0.8333, "recall": 0.8333, "f1": 0.8333, "exact_occurrence_match_rate": 0.8333, "occurrence_count_match_rate": 0.8333}
+  },
+  "target_bias_performance": [
+    {
+      "hidden_target_bias_label": "Confirmation Bias",
+      "hidden_requested_occurrences": 1,
+      "strict_true_positives_by_threshold": {"high_only": 0, "high_and_moderate": 0, "all_identified_confidence_levels": 0, "all_confidence_and_candidates": 0},
+      "mechanism_first_true_positives_by_threshold": {"high_only": 0, "high_and_moderate": 0, "all_identified_confidence_levels": 0, "all_confidence_and_candidates": 1},
+      "count_match_status_at_all_confidence_and_candidates": "exact_match"
+    },
+    {
+      "hidden_target_bias_label": "Bounded Rationality",
+      "hidden_requested_occurrences": 1,
+      "strict_true_positives_by_threshold": {"high_only": 0, "high_and_moderate": 0, "all_identified_confidence_levels": 0, "all_confidence_and_candidates": 0},
+      "mechanism_first_true_positives_by_threshold": {"high_only": 0, "high_and_moderate": 0, "all_identified_confidence_levels": 0, "all_confidence_and_candidates": 0},
+      "count_match_status_at_all_confidence_and_candidates": "underdetected"
+    },
+    {
+      "hidden_target_bias_label": "Correlation bias",
+      "hidden_requested_occurrences": 1,
+      "strict_true_positives_by_threshold": {"high_only": 0, "high_and_moderate": 0, "all_identified_confidence_levels": 0, "all_confidence_and_candidates": 0},
+      "mechanism_first_true_positives_by_threshold": {"high_only": 0, "high_and_moderate": 1, "all_identified_confidence_levels": 1, "all_confidence_and_candidates": 1},
+      "count_match_status_at_all_confidence_and_candidates": "exact_match"
+    },
+    {
+      "hidden_target_bias_label": "Conservatism Bias",
+      "hidden_requested_occurrences": 1,
+      "strict_true_positives_by_threshold": {"high_only": 0, "high_and_moderate": 0, "all_identified_confidence_levels": 0, "all_confidence_and_candidates": 0},
+      "mechanism_first_true_positives_by_threshold": {"high_only": 0, "high_and_moderate": 0, "all_identified_confidence_levels": 1, "all_confidence_and_candidates": 1},
+      "count_match_status_at_all_confidence_and_candidates": "exact_match"
+    },
+    {
+      "hidden_target_bias_label": "Imaginability Bias",
+      "hidden_requested_occurrences": 1,
+      "strict_true_positives_by_threshold": {"high_only": 0, "high_and_moderate": 0, "all_identified_confidence_levels": 0, "all_confidence_and_candidates": 0},
+      "mechanism_first_true_positives_by_threshold": {"high_only": 0, "high_and_moderate": 1, "all_identified_confidence_levels": 1, "all_confidence_and_candidates": 1},
+      "count_match_status_at_all_confidence_and_candidates": "exact_match"
+    },
+    {
+      "hidden_target_bias_label": "Ostrich effect",
+      "hidden_requested_occurrences": 1,
+      "strict_true_positives_by_threshold": {"high_only": 0, "high_and_moderate": 0, "all_identified_confidence_levels": 0, "all_confidence_and_candidates": 0},
+      "mechanism_first_true_positives_by_threshold": {"high_only": 0, "high_and_moderate": 0, "all_identified_confidence_levels": 1, "all_confidence_and_candidates": 1},
+      "count_match_status_at_all_confidence_and_candidates": "exact_match"
+    }
+  ],
+  "rag_label_false_positive_inventory": [
+    {
+      "rag_predicted_bias_label": "representativeness heuristic",
+      "finding_type": "identified",
+      "alternative_labels": ["insensitivity to sample size", "law of small numbers", "sample-size neglect"],
+      "occurrence_count": 1,
+      "best_related_hidden_target_bias_label": "Correlation bias",
+      "label_relation": "near_neighbor",
+      "mechanism_overlap_summary": "Full overlap with causal attribution to a superficial temporal pattern; the taxonomy label differs.",
+      "primary_error_types": ["correct_location_wrong_bias_label"]
+    },
+    {
+      "rag_predicted_bias_label": "information avoidance",
+      "finding_type": "identified",
+      "alternative_labels": ["ostrich effect", "selective exposure", "selective information avoidance"],
+      "occurrence_count": 1,
+      "best_related_hidden_target_bias_label": "Ostrich effect",
+      "label_relation": "near_neighbor",
+      "mechanism_overlap_summary": "Full overlap with motivated avoidance of available negative or decision-disruptive information; the primary label is broader.",
+      "primary_error_types": ["correct_location_wrong_bias_label"]
+    },
+    {
+      "rag_predicted_bias_label": "availability heuristic",
+      "finding_type": "identified",
+      "alternative_labels": ["availability bias", "salience-based judgment"],
+      "occurrence_count": 1,
+      "best_related_hidden_target_bias_label": "Imaginability Bias",
+      "label_relation": "near_neighbor",
+      "mechanism_overlap_summary": "Full overlap with vivid-exemplar-driven severity judgment; availability heuristic is not an approved target-label equivalent.",
+      "primary_error_types": ["correct_location_wrong_bias_label"]
+    },
+    {
+      "rag_predicted_bias_label": "anchoring effect",
+      "finding_type": "identified",
+      "alternative_labels": ["insufficient adjustment", "anchor-and-adjustment", "conservatism bias"],
+      "occurrence_count": 1,
+      "best_related_hidden_target_bias_label": "Conservatism Bias",
+      "label_relation": "near_neighbor",
+      "mechanism_overlap_summary": "Full overlap with insufficient updating after a new risk signal; anchoring and Conservatism Bias remain distinct labels here.",
+      "primary_error_types": ["correct_location_wrong_bias_label"]
+    },
+    {
+      "rag_predicted_bias_label": "anchoring effect",
+      "finding_type": "candidate",
+      "alternative_labels": ["salience bias", "insufficient adjustment"],
+      "occurrence_count": 1,
+      "best_related_hidden_target_bias_label": "Confirmation Bias",
+      "label_relation": "near_neighbor",
+      "mechanism_overlap_summary": "The candidate's mechanism fully matches the allocation-stage evidence weighting, but the label is a near neighbor and it remains candidate-status.",
+      "primary_error_types": ["correct_location_wrong_bias_label", "candidate_near_miss"]
+    },
+    {
+      "rag_predicted_bias_label": "default bias",
+      "finding_type": "candidate",
+      "alternative_labels": ["status quo bias", "satisficing"],
+      "occurrence_count": 1,
+      "best_related_hidden_target_bias_label": "Bounded Rationality",
+      "label_relation": "different_construct",
+      "mechanism_overlap_summary": "Partial overlap with no-comparison supplier selection under time pressure, without a full satisficing mechanism.",
+      "primary_error_types": ["partial_mechanism_match", "candidate_near_miss"]
+    }
+  ],
+  "diagnostic_error_summary": {
+    "correct_location_wrong_bias_label_count": 5,
+    "correct_label_wrong_location_count": 0,
+    "correct_label_location_wrong_mechanism_count": 0,
+    "mechanism_detected_label_unresolved_count": 0,
+    "partial_mechanism_match_count": 1,
+    "duplicate_prediction_count": 0,
+    "unsupported_prediction_count": 0,
+    "fabricated_or_invalid_quote_count": 0,
+    "approved_alias_or_equivalence_count": 0,
+    "near_neighbor_label_count": 5,
+    "different_construct_label_count": 1,
+    "candidate_count": 2,
+    "candidate_useful_abstention_count": 0,
+    "candidate_near_miss_count": 2,
+    "candidates_promoted_to_true_positive_at_fourth_threshold_count": 1
+  },
+  "corpus_support_audit": {
+    "primary_corpus_fidelity_score_available": false,
+    "rag_occurrences_claiming_retrieved_support": 0,
+    "rag_occurrences_with_no_claimed_retrieved_support": 4,
+    "rag_occurrences_with_unverifiable_or_internally_inconsistent_citation_metadata": 0,
+    "assessment_note": "The RAG explicitly reports that no retrieved corpus passages were used and leaves corpus_evidence empty. No retrieval fidelity score is calculated."
+  },
+  "comparison_ready_summary": {
+    "primary_recommended_comparison_threshold": "high_and_moderate",
+    "segment_detection": {
+      "high_only": {"hits": 0, "misses": 6, "false_alarms": 0, "correct_rejections": 0, "hit_rate": 0, "false_alarm_rate": null, "f1": 0},
+      "high_and_moderate": {"hits": 2, "misses": 4, "false_alarms": 0, "correct_rejections": 0, "hit_rate": 0.3333, "false_alarm_rate": null, "f1": 0.5},
+      "all_identified_confidence_levels": {"hits": 4, "misses": 2, "false_alarms": 0, "correct_rejections": 0, "hit_rate": 0.6667, "false_alarm_rate": null, "f1": 0.8},
+      "all_confidence_and_candidates": {"hits": 6, "misses": 0, "false_alarms": 0, "correct_rejections": 0, "hit_rate": 1, "false_alarm_rate": null, "f1": 1}
+    },
+    "strict_instance_identification": {
+      "high_only": {"true_positives": 0, "false_negatives": 6, "false_positives": 0, "precision": null, "recall": 0, "f1": 0},
+      "high_and_moderate": {"true_positives": 0, "false_negatives": 6, "false_positives": 2, "precision": 0, "recall": 0, "f1": 0},
+      "all_identified_confidence_levels": {"true_positives": 0, "false_negatives": 6, "false_positives": 4, "precision": 0, "recall": 0, "f1": 0},
+      "all_confidence_and_candidates": {"true_positives": 0, "false_negatives": 6, "false_positives": 6, "precision": 0, "recall": 0, "f1": 0}
+    },
+    "mechanism_first_identification": {
+      "high_only": {"true_positives": 0, "false_negatives": 6, "false_positives": 0, "precision": null, "recall": 0, "f1": 0},
+      "high_and_moderate": {"true_positives": 2, "false_negatives": 4, "false_positives": 0, "precision": 1, "recall": 0.3333, "f1": 0.5},
+      "all_identified_confidence_levels": {"true_positives": 4, "false_negatives": 2, "false_positives": 0, "precision": 1, "recall": 0.6667, "f1": 0.8},
+      "all_confidence_and_candidates": {"true_positives": 5, "false_negatives": 1, "false_positives": 1, "precision": 0.8333, "recall": 0.8333, "f1": 0.8333}
+    },
+    "taxonomy_gap": {
+      "high_only": {"mechanism_first_f1_minus_strict_f1": 0},
+      "high_and_moderate": {"mechanism_first_f1_minus_strict_f1": 0.5},
+      "all_identified_confidence_levels": {"mechanism_first_f1_minus_strict_f1": 0.8},
+      "all_confidence_and_candidates": {"mechanism_first_f1_minus_strict_f1": 0.8333}
+    },
+    "confidence_tradeoff": {
+      "increment_from_high_to_high_and_moderate": "Segment hits increase by 2 and mechanism-first instance true positives increase by 2, while strict instance false positives increase from 0 to 2.",
+      "increment_from_high_and_moderate_to_all_confidence": "Segment hits increase by 2 and mechanism-first instance true positives increase by 2 through low-confidence findings; strict false positives increase from 2 to 4.",
+      "increment_from_all_confidence_to_all_confidence_and_candidates": "Candidate inclusion adds 2 segment hits, one mechanism-first true positive, one mechanism-first false positive, and two strict false positives."
+    }
+  },
+  "overall_evaluation_summary": {
+    "hidden_total_planned_occurrences": 6,
+    "rag_total_identified_occurrences": 4,
+    "rag_total_candidate_biases": 2,
+    "segment_level_primary_result": "All six eligible segments are positive. Segment detection is 0/6 at high-only, 2/6 at high-and-moderate, 4/6 with all identified findings, and 6/6 when candidates are included; false-alarm rates are undefined because there are no negative segments.",
+    "strict_label_plus_mechanism_result": "There are no strict true positives at any threshold: the four identified findings use near-neighbor labels, and neither candidate supplies an exact target label.",
+    "mechanism_first_result": "Mechanism-first scoring credits four identified findings at the all-identified threshold. Candidate cand_001 adds a fifth mechanism-first true positive at the fourth threshold; cand_002 remains a near miss.",
+    "candidate_tier_value_assessment": "Candidate inclusion recovers one additional mechanism-first instance but also adds one mechanism-first false positive, while both candidates increase segment coverage because both localize to positive segments.",
+    "main_failure_modes": [
+      "Systematic taxonomy mismatch: all four identified labels are related but not approved equivalents of the hidden target labels.",
+      "Confidence calibration is conservative: two correctly localized mechanism matches are low confidence and are absent from the recommended high-and-moderate threshold.",
+      "The backup-supplier candidate does not distinguish default reliance from the hidden satisficing mechanism strongly enough for instance-level credit."
+    ],
+    "main_strengths": [
+      "All four identified occurrences use valid, directly supportive interview quotations.",
+      "The four identified mechanisms are correctly localized and substantively capture the corresponding hidden reasoning distortions.",
+      "The RAG discloses that corpus support was unavailable and includes relevant non-bias caveats."
+    ],
+    "benchmark_interpretation": "This run demonstrates a large taxonomy gap: strict label-plus-mechanism scoring is zero despite strong evidence fidelity, whereas mechanism-first scoring reaches F1 0.8000 for identified findings and 0.8333 when the candidate tier is included."
+  }
+}

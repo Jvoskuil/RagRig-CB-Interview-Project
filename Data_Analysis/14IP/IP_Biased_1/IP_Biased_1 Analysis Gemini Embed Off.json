@@ -1,0 +1,454 @@
+{
+  "evaluation_metadata": {
+    "task": "ontology_free_rag_cognitive_bias_benchmark_evaluation",
+    "benchmark_run_metadata": {
+      "benchmark_run_id": "IP_Biased_1_Gemini_off",
+      "interview_id": "IP_Biased_1",
+      "system_prompt_id": "Gemini",
+      "system_prompt_generator": "Prompt 1_2",
+      "rag_model_id": "v1.0.0",
+      "corpus_condition": "off",
+      "retrieval_configuration_id": "k=0",
+      "decoding_configuration_id": "null",
+      "temperature": "1",
+      "replicate_id": "null",
+      "segment_map_id": null
+    },
+    "scenario_id": "IP_Biased_1",
+    "domain_id": "IP",
+    "condition": "biased",
+    "segment_map_status": "prevalidated_provided",
+    "rag_output_parse_status": "valid_json",
+    "rag_schema_assessment": "conformant"
+  },
+  "input_validation": {
+    "rag_output_schema_violations": [],
+    "rag_summary_count_consistency": {
+      "status": "consistent",
+      "details": "The identified_bias_summary reports one occurrence, matching the one identified occurrence record. Candidate records are separately represented and do not require inclusion in the identified summary."
+    },
+    "evaluation_limitations": [
+      "The RAG output provides no retrieved passages or retrieval logs, so corpus fidelity cannot be scored.",
+      "The RAG output's identified label is a near-neighbor of the hidden target rather than an approved equivalent."
+    ]
+  },
+  "evaluation_segment_map": {
+    "segment_mapping_version": "1.0",
+    "segments": [
+      {
+        "segment_id": "dp_01_technician_assignment",
+        "speaker": "Participant",
+        "segment_type": "decision_episode",
+        "raw_interview_anchor": "In the moment I went with unit count — Order A first — partly because that's our default rule when picking between two rush jobs.",
+        "eligible_reasoning_segment": true,
+        "ground_truth_bias_present": false,
+        "ground_truth_instance_ids": [],
+        "ground_truth_rationale": "The planner considered the tighter packaging slot and selected Order A using an explicit production rule; the generation specification treats this as plausible domain reasoning, not an intentional bias instance."
+      },
+      {
+        "segment_id": "dp_02_line3_alarm_overflow",
+        "speaker": "Participant",
+        "segment_type": "decision_episode",
+        "raw_interview_anchor": "I decided to just treat Line 3 as available overflow capacity if Line 1 or Line 2 fell behind, and moved on to the next issue.",
+        "eligible_reasoning_segment": true,
+        "ground_truth_bias_present": true,
+        "ground_truth_instance_ids": ["br_01"],
+        "ground_truth_rationale": "This is the planned Bounded Rationality instance: under concurrent demands, the planner accepted the first workable assessment and did not check the readily available Order C dependency before committing Line 3."
+      },
+      {
+        "segment_id": "dp_03_qa_buffer_plan",
+        "speaker": "Participant",
+        "segment_type": "decision_episode",
+        "raw_interview_anchor": "I decided to provisionally build the buffer units into the Order B plan rather than wait, because waiting with no ETA on a callback risked losing time I couldn't get back.",
+        "eligible_reasoning_segment": true,
+        "ground_truth_bias_present": false,
+        "ground_truth_instance_ids": [],
+        "ground_truth_rationale": "The planner made a reversible provisional plan under uncertain QA timing and explicitly planned to adjust if QA flagged an issue; this is treated as reasonable operational planning."
+      },
+      {
+        "segment_id": "dp_04_rework_shipment",
+        "speaker": "Participant",
+        "segment_type": "decision_episode",
+        "raw_interview_anchor": "Overtime plus talking to the carrier directly gave me a shot at getting the full order out with minimal disruption, even shipping a few minutes past official cutoff.",
+        "eligible_reasoning_segment": true,
+        "ground_truth_bias_present": false,
+        "ground_truth_instance_ids": [],
+        "ground_truth_rationale": "The planner explicitly weighed overtime, partial shipment, and renegotiation, then made a documented cost and customer-service trade-off; the generation specification does not mark this as biased."
+      }
+    ]
+  },
+  "segment_level_adjudications": [
+    {
+      "segment_id": "dp_01_technician_assignment",
+      "ground_truth_status": "negative",
+      "ground_truth_instance_ids": [],
+      "rag_identified_occurrence_ids": [],
+      "rag_candidate_ids_counted_at_fourth_threshold": ["cand_001"],
+      "rag_detected_bias_in_segment_by_threshold": {
+        "high_only": false,
+        "high_and_moderate": false,
+        "all_identified_confidence_levels": false,
+        "all_confidence_and_candidates": true
+      },
+      "sdt_outcome_by_threshold": {
+        "high_only": "correct_rejection",
+        "high_and_moderate": "correct_rejection",
+        "all_identified_confidence_levels": "correct_rejection",
+        "all_confidence_and_candidates": "false_positive"
+      },
+      "localization_basis": "Candidate cand_001 quotes and discusses the technician-assignment episode.",
+      "adjudication_note": "The candidate is excluded from the first three thresholds and creates a false alarm only when candidates are counted."
+    },
+    {
+      "segment_id": "dp_02_line3_alarm_overflow",
+      "ground_truth_status": "positive",
+      "ground_truth_instance_ids": ["br_01"],
+      "rag_identified_occurrence_ids": ["obs_001"],
+      "rag_candidate_ids_counted_at_fourth_threshold": ["cand_002"],
+      "rag_detected_bias_in_segment_by_threshold": {
+        "high_only": false,
+        "high_and_moderate": true,
+        "all_identified_confidence_levels": true,
+        "all_confidence_and_candidates": true
+      },
+      "sdt_outcome_by_threshold": {
+        "high_only": "miss",
+        "high_and_moderate": "hit",
+        "all_identified_confidence_levels": "hit",
+        "all_confidence_and_candidates": "hit"
+      },
+      "localization_basis": "obs_001 directly quotes the mapped Line 3 overflow decision and the adjacent explanation that the participant did not cross-reference the schedule.",
+      "adjudication_note": "The identified finding is correctly localized, so it is a segment-level hit despite its near-neighbor label. Candidate cand_002 adds no additional segment-level credit."
+    },
+    {
+      "segment_id": "dp_03_qa_buffer_plan",
+      "ground_truth_status": "negative",
+      "ground_truth_instance_ids": [],
+      "rag_identified_occurrence_ids": [],
+      "rag_candidate_ids_counted_at_fourth_threshold": [],
+      "rag_detected_bias_in_segment_by_threshold": {
+        "high_only": false,
+        "high_and_moderate": false,
+        "all_identified_confidence_levels": false,
+        "all_confidence_and_candidates": false
+      },
+      "sdt_outcome_by_threshold": {
+        "high_only": "correct_rejection",
+        "high_and_moderate": "correct_rejection",
+        "all_identified_confidence_levels": "correct_rejection",
+        "all_confidence_and_candidates": "correct_rejection"
+      },
+      "localization_basis": "No RAG finding localizes to the QA buffer decision.",
+      "adjudication_note": "No qualifying identified finding or candidate is present in this negative segment."
+    },
+    {
+      "segment_id": "dp_04_rework_shipment",
+      "ground_truth_status": "negative",
+      "ground_truth_instance_ids": [],
+      "rag_identified_occurrence_ids": [],
+      "rag_candidate_ids_counted_at_fourth_threshold": [],
+      "rag_detected_bias_in_segment_by_threshold": {
+        "high_only": false,
+        "high_and_moderate": false,
+        "all_identified_confidence_levels": false,
+        "all_confidence_and_candidates": false
+      },
+      "sdt_outcome_by_threshold": {
+        "high_only": "correct_rejection",
+        "high_and_moderate": "correct_rejection",
+        "all_identified_confidence_levels": "correct_rejection",
+        "all_confidence_and_candidates": "correct_rejection"
+      },
+      "localization_basis": "No RAG finding localizes to the rework and shipment decision.",
+      "adjudication_note": "No qualifying identified finding or candidate is present in this negative segment."
+    }
+  ],
+  "instance_level_adjudications": [
+    {
+      "hidden_instance_id": "br_01",
+      "hidden_target_bias_label": "Bounded Rationality",
+      "hidden_decision_or_episode": "Line 3 alarm and overflow-capacity decision",
+      "hidden_mechanism": "Acceptance of the first satisfactory option (operator's informal reassurance) under multi-threaded time pressure, foregoing a readily available check of Order C's dependency on Line 3 output, because exhaustive verification exceeded practical time and attentional capacity in the moment.",
+      "matched_finding_by_threshold": {
+        "high_only": {"matched_id": null, "matched_type": "none"},
+        "high_and_moderate": {"matched_id": "obs_001", "matched_type": "identified"},
+        "all_identified_confidence_levels": {"matched_id": "obs_001", "matched_type": "identified"},
+        "all_confidence_and_candidates": {"matched_id": "obs_001", "matched_type": "identified"}
+      },
+      "rag_predicted_bias_label": "attentional tunneling",
+      "rag_confidence": "moderate",
+      "label_equivalence_result": "near_neighbor_label",
+      "localization_match_type": "exact_quote_match",
+      "mechanism_overlap": "full_mechanism_match",
+      "strict_scorecard_outcome_by_threshold": {
+        "high_only": "false_negative",
+        "high_and_moderate": "false_negative",
+        "all_identified_confidence_levels": "false_negative",
+        "all_confidence_and_candidates": "false_negative"
+      },
+      "mechanism_first_scorecard_outcome_by_threshold": {
+        "high_only": "false_negative",
+        "high_and_moderate": "true_positive",
+        "all_identified_confidence_levels": "true_positive",
+        "all_confidence_and_candidates": "true_positive"
+      },
+      "secondary_diagnostic_outcome": "correct_location_wrong_bias_label",
+      "label_equivalence_explanation": "Attentional tunneling is a related but distinct construct, not an established alias for Bounded Rationality. The RAG label describes narrowed attention; the hidden label describes capacity-limited search and evaluation.",
+      "mechanism_overlap_explanation": "The finding captures the full manifested mechanism: concurrent time pressure, acceptance of the operator's reassurance, omission of an available schedule check, and commitment of Line 3 without checking Order C. Its affected-operation wording is materially equivalent to evidence search and option evaluation before resource commitment.",
+      "evidence_fidelity_assessment": "The quoted interview evidence is valid, correctly attributed to the Participant, and directly supports the skipped schedule cross-check and rapid resource commitment."
+    }
+  ],
+  "unmatched_rag_predictions": [
+    {
+      "rag_occurrence_id": "cand_001",
+      "rag_finding_type": "candidate",
+      "rag_predicted_bias_label": "default bias",
+      "rag_confidence": "candidate",
+      "localized_segment_id": "dp_01_technician_assignment",
+      "best_related_hidden_instance_id": null,
+      "label_equivalence_result": "different_construct",
+      "mechanism_overlap": "no_mechanism_overlap",
+      "strict_classification": "unsupported_prediction",
+      "mechanism_first_classification": "unsupported_prediction",
+      "counted_at_thresholds": ["all_confidence_and_candidates"],
+      "why_not_an_exact_strict_match": "The candidate is localized to a negative segment and describes reliance on an explicit production rule, which the frozen map treats as plausible domain reasoning rather than the hidden Line 3 mechanism."
+    },
+    {
+      "rag_occurrence_id": "cand_002",
+      "rag_finding_type": "candidate",
+      "rag_predicted_bias_label": "availability heuristic",
+      "rag_confidence": "candidate",
+      "localized_segment_id": "dp_02_line3_alarm_overflow",
+      "best_related_hidden_instance_id": "br_01",
+      "label_equivalence_result": "near_neighbor_label",
+      "mechanism_overlap": "partial_mechanism_overlap",
+      "strict_classification": "false_positive",
+      "mechanism_first_classification": "false_positive",
+      "counted_at_thresholds": ["all_confidence_and_candidates"],
+      "why_not_an_exact_strict_match": "The candidate offers a plausible recalled-non-events explanation for the alarm assessment, but it does not fully express the hidden capacity-limited search mechanism and cannot add credit after the identified occurrence has claimed the instance."
+    }
+  ],
+  "candidate_analysis": {
+    "candidate_count": 2,
+    "candidates": [
+      {
+        "candidate_id": "cand_001",
+        "proposed_bias_label": "default bias",
+        "localized_segment_id": "dp_01_technician_assignment",
+        "best_related_hidden_instance_id": null,
+        "quote_validity": "valid",
+        "would_match_if_promoted_strict": false,
+        "would_match_if_promoted_mechanism_first": false,
+        "counted_as_detection_at_fourth_threshold": true,
+        "fourth_threshold_outcome": "false_positive",
+        "candidate_assessment": "useful_abstention",
+        "details": "The candidate is explicitly hedged and acknowledges the non-bias interpretation. It is a useful abstention, but it is still a segment-level false alarm when candidates are scored."
+      },
+      {
+        "candidate_id": "cand_002",
+        "proposed_bias_label": "availability heuristic",
+        "localized_segment_id": "dp_02_line3_alarm_overflow",
+        "best_related_hidden_instance_id": "br_01",
+        "quote_validity": "valid",
+        "would_match_if_promoted_strict": false,
+        "would_match_if_promoted_mechanism_first": false,
+        "counted_as_detection_at_fourth_threshold": true,
+        "fourth_threshold_outcome": "false_positive",
+        "candidate_assessment": "candidate_near_miss",
+        "details": "The candidate is a plausible alternative explanation within the correct episode, but its recalled-non-events mechanism is only partial overlap with the hidden Bounded Rationality mechanism."
+      }
+    ]
+  },
+  "signal_detection_summary": {
+    "evaluation_unit": "eligible_reasoning_segment",
+    "high_only": {
+      "positive_segments": 1,
+      "negative_segments": 3,
+      "hits": 0,
+      "misses": 1,
+      "false_alarms": 0,
+      "correct_rejections": 3,
+      "hit_rate": 0.0,
+      "false_alarm_rate": 0.0,
+      "accuracy": 0.75,
+      "precision": null,
+      "recall": 0.0,
+      "f1": 0.0,
+      "detection_interpretation": "The moderate-confidence occurrence is excluded, so the positive Line 3 segment is missed and all three negative segments are correctly rejected."
+    },
+    "high_and_moderate": {
+      "positive_segments": 1,
+      "negative_segments": 3,
+      "hits": 1,
+      "misses": 0,
+      "false_alarms": 0,
+      "correct_rejections": 3,
+      "hit_rate": 1.0,
+      "false_alarm_rate": 0.0,
+      "accuracy": 1.0,
+      "precision": 1.0,
+      "recall": 1.0,
+      "f1": 1.0,
+      "detection_interpretation": "The identified finding localizes to the sole positive segment, producing perfect segment-level detection at this threshold."
+    },
+    "all_identified_confidence_levels": {
+      "positive_segments": 1,
+      "negative_segments": 3,
+      "hits": 1,
+      "misses": 0,
+      "false_alarms": 0,
+      "correct_rejections": 3,
+      "hit_rate": 1.0,
+      "false_alarm_rate": 0.0,
+      "accuracy": 1.0,
+      "precision": 1.0,
+      "recall": 1.0,
+      "f1": 1.0,
+      "detection_interpretation": "No low-confidence identified findings are present, so results equal the high-and-moderate threshold."
+    },
+    "all_confidence_and_candidates": {
+      "positive_segments": 1,
+      "negative_segments": 3,
+      "hits": 1,
+      "misses": 0,
+      "false_alarms": 1,
+      "correct_rejections": 2,
+      "hit_rate": 1.0,
+      "false_alarm_rate": 0.3333,
+      "accuracy": 0.75,
+      "precision": 0.5,
+      "recall": 1.0,
+      "f1": 0.6667,
+      "detection_interpretation": "Candidates preserve the hit on the positive segment but add one false alarm on the negative technician-assignment segment."
+    }
+  },
+  "strict_instance_level_metrics": {
+    "high_only": {"true_positives": 0, "false_negatives": 1, "false_positives": 0, "precision": null, "recall": 0.0, "f1": 0.0, "exact_occurrence_match_rate": 0.0, "occurrence_count_match_rate": 0.0},
+    "high_and_moderate": {"true_positives": 0, "false_negatives": 1, "false_positives": 1, "precision": 0.0, "recall": 0.0, "f1": 0.0, "exact_occurrence_match_rate": 0.0, "occurrence_count_match_rate": 0.0},
+    "all_identified_confidence_levels": {"true_positives": 0, "false_negatives": 1, "false_positives": 1, "precision": 0.0, "recall": 0.0, "f1": 0.0, "exact_occurrence_match_rate": 0.0, "occurrence_count_match_rate": 0.0},
+    "all_confidence_and_candidates": {"true_positives": 0, "false_negatives": 1, "false_positives": 3, "precision": 0.0, "recall": 0.0, "f1": 0.0, "exact_occurrence_match_rate": 0.0, "occurrence_count_match_rate": 0.0}
+  },
+  "mechanism_first_instance_level_metrics": {
+    "high_only": {"true_positives": 0, "false_negatives": 1, "false_positives": 0, "precision": null, "recall": 0.0, "f1": 0.0, "exact_occurrence_match_rate": 0.0, "occurrence_count_match_rate": 0.0},
+    "high_and_moderate": {"true_positives": 1, "false_negatives": 0, "false_positives": 0, "precision": 1.0, "recall": 1.0, "f1": 1.0, "exact_occurrence_match_rate": 1.0, "occurrence_count_match_rate": 1.0},
+    "all_identified_confidence_levels": {"true_positives": 1, "false_negatives": 0, "false_positives": 0, "precision": 1.0, "recall": 1.0, "f1": 1.0, "exact_occurrence_match_rate": 1.0, "occurrence_count_match_rate": 1.0},
+    "all_confidence_and_candidates": {"true_positives": 1, "false_negatives": 0, "false_positives": 2, "precision": 0.3333, "recall": 1.0, "f1": 0.5, "exact_occurrence_match_rate": 1.0, "occurrence_count_match_rate": 1.0}
+  },
+  "target_bias_performance": [
+    {
+      "hidden_target_bias_label": "Bounded Rationality",
+      "hidden_requested_occurrences": 1,
+      "strict_true_positives_by_threshold": {"high_only": 0, "high_and_moderate": 0, "all_identified_confidence_levels": 0, "all_confidence_and_candidates": 0},
+      "mechanism_first_true_positives_by_threshold": {"high_only": 0, "high_and_moderate": 1, "all_identified_confidence_levels": 1, "all_confidence_and_candidates": 1},
+      "count_match_status_at_all_confidence_and_candidates": "underdetected"
+    }
+  ],
+  "rag_label_false_positive_inventory": [
+    {
+      "rag_predicted_bias_label": "attentional tunneling",
+      "finding_type": "identified",
+      "alternative_labels": ["cognitive tunneling", "cognitive fixation", "attention narrowing"],
+      "occurrence_count": 1,
+      "best_related_hidden_target_bias_label": "Bounded Rationality",
+      "label_relation": "near_neighbor",
+      "mechanism_overlap_summary": "Full overlap with the hidden manifested mechanism and reasoning operation, but the named construct is distinct.",
+      "primary_error_types": ["correct_location_wrong_bias_label", "near_neighbor_label"]
+    },
+    {
+      "rag_predicted_bias_label": "default bias",
+      "finding_type": "candidate",
+      "alternative_labels": ["status quo heuristic", "rule-following heuristic"],
+      "occurrence_count": 1,
+      "best_related_hidden_target_bias_label": null,
+      "label_relation": "no_related_target",
+      "mechanism_overlap_summary": "No overlap with the hidden Line 3 mechanism; the frozen map treats the explicit unit-count rule as reasonable domain reasoning.",
+      "primary_error_types": ["unsupported_prediction", "candidate_useful_abstention"]
+    },
+    {
+      "rag_predicted_bias_label": "availability heuristic",
+      "finding_type": "candidate",
+      "alternative_labels": ["normalcy bias"],
+      "occurrence_count": 1,
+      "best_related_hidden_target_bias_label": "Bounded Rationality",
+      "label_relation": "near_neighbor",
+      "mechanism_overlap_summary": "The candidate is in the correct episode but only partially overlaps the hidden capacity-limited search mechanism.",
+      "primary_error_types": ["candidate_near_miss", "unsupported_prediction"]
+    }
+  ],
+  "diagnostic_error_summary": {
+    "correct_location_wrong_bias_label_count": 1,
+    "correct_label_wrong_location_count": 0,
+    "correct_label_location_wrong_mechanism_count": 0,
+    "mechanism_detected_label_unresolved_count": 0,
+    "partial_mechanism_match_count": 1,
+    "duplicate_prediction_count": 0,
+    "unsupported_prediction_count": 2,
+    "fabricated_or_invalid_quote_count": 0,
+    "approved_alias_or_equivalence_count": 0,
+    "near_neighbor_label_count": 2,
+    "different_construct_label_count": 1,
+    "candidate_count": 2,
+    "candidate_useful_abstention_count": 1,
+    "candidate_near_miss_count": 1,
+    "candidates_promoted_to_true_positive_at_fourth_threshold_count": 0
+  },
+  "corpus_support_audit": {
+    "primary_corpus_fidelity_score_available": false,
+    "rag_occurrences_claiming_retrieved_support": 0,
+    "rag_occurrences_with_no_claimed_retrieved_support": 3,
+    "rag_occurrences_with_unverifiable_or_internally_inconsistent_citation_metadata": 0,
+    "assessment_note": "The RAG explicitly states that no retrieved corpus passages were supplied and does not claim retrieved support. Corpus support therefore does not affect detection or classification scores."
+  },
+  "comparison_ready_summary": {
+    "primary_recommended_comparison_threshold": "high_and_moderate",
+    "segment_detection": {
+      "high_only": {"hits": 0, "misses": 1, "false_alarms": 0, "correct_rejections": 3, "hit_rate": 0.0, "false_alarm_rate": 0.0, "f1": 0.0},
+      "high_and_moderate": {"hits": 1, "misses": 0, "false_alarms": 0, "correct_rejections": 3, "hit_rate": 1.0, "false_alarm_rate": 0.0, "f1": 1.0},
+      "all_identified_confidence_levels": {"hits": 1, "misses": 0, "false_alarms": 0, "correct_rejections": 3, "hit_rate": 1.0, "false_alarm_rate": 0.0, "f1": 1.0},
+      "all_confidence_and_candidates": {"hits": 1, "misses": 0, "false_alarms": 1, "correct_rejections": 2, "hit_rate": 1.0, "false_alarm_rate": 0.3333, "f1": 0.6667}
+    },
+    "strict_instance_identification": {
+      "high_only": {"true_positives": 0, "false_negatives": 1, "false_positives": 0, "precision": null, "recall": 0.0, "f1": 0.0},
+      "high_and_moderate": {"true_positives": 0, "false_negatives": 1, "false_positives": 1, "precision": 0.0, "recall": 0.0, "f1": 0.0},
+      "all_identified_confidence_levels": {"true_positives": 0, "false_negatives": 1, "false_positives": 1, "precision": 0.0, "recall": 0.0, "f1": 0.0},
+      "all_confidence_and_candidates": {"true_positives": 0, "false_negatives": 1, "false_positives": 3, "precision": 0.0, "recall": 0.0, "f1": 0.0}
+    },
+    "mechanism_first_identification": {
+      "high_only": {"true_positives": 0, "false_negatives": 1, "false_positives": 0, "precision": null, "recall": 0.0, "f1": 0.0},
+      "high_and_moderate": {"true_positives": 1, "false_negatives": 0, "false_positives": 0, "precision": 1.0, "recall": 1.0, "f1": 1.0},
+      "all_identified_confidence_levels": {"true_positives": 1, "false_negatives": 0, "false_positives": 0, "precision": 1.0, "recall": 1.0, "f1": 1.0},
+      "all_confidence_and_candidates": {"true_positives": 1, "false_negatives": 0, "false_positives": 2, "precision": 0.3333, "recall": 1.0, "f1": 0.5}
+    },
+    "taxonomy_gap": {
+      "high_only": {"mechanism_first_f1_minus_strict_f1": 0.0},
+      "high_and_moderate": {"mechanism_first_f1_minus_strict_f1": 1.0},
+      "all_identified_confidence_levels": {"mechanism_first_f1_minus_strict_f1": 1.0},
+      "all_confidence_and_candidates": {"mechanism_first_f1_minus_strict_f1": 0.5}
+    },
+    "confidence_tradeoff": {
+      "increment_from_high_to_high_and_moderate": "Segment F1 rises from 0.0000 to 1.0000; mechanism-first instance F1 rises from 0.0000 to 1.0000; strict instance F1 remains 0.0000.",
+      "increment_from_high_and_moderate_to_all_confidence": "No change: there are no low-confidence identified findings.",
+      "increment_from_all_confidence_to_all_confidence_and_candidates": "Segment F1 falls from 1.0000 to 0.6667 and mechanism-first instance F1 falls from 1.0000 to 0.5000 because candidates add false positives; strict instance F1 remains 0.0000."
+    }
+  },
+  "overall_evaluation_summary": {
+    "hidden_total_planned_occurrences": 1,
+    "rag_total_identified_occurrences": 1,
+    "rag_total_candidate_biases": 2,
+    "segment_level_primary_result": "At the recommended high_and_moderate threshold, segment-level detection is perfect: 1 hit, 0 misses, 0 false alarms, and 3 correct rejections.",
+    "strict_label_plus_mechanism_result": "The identified finding is correctly localized but uses the near-neighbor label attentional tunneling instead of Bounded Rationality, so strict instance-level performance is 0 true positives and 1 false negative.",
+    "mechanism_first_result": "The finding fully captures the hidden mechanism and is a mechanism-first true positive at moderate confidence, yielding precision, recall, and F1 of 1.0000 before candidates are included.",
+    "candidate_tier_value_assessment": "The candidates show useful uncertainty reporting, but neither is promotable to a true positive; counting them adds two instance-level false positives and one segment-level false alarm.",
+    "main_failure_modes": [
+      "Near-neighbor taxonomy mismatch on the only hidden occurrence.",
+      "Candidate speculation adds false positives at the fourth threshold.",
+      "No retrieved corpus evidence is available for fidelity assessment."
+    ],
+    "main_strengths": [
+      "Exact localization to the Line 3 decision episode.",
+      "Valid, directly supporting interview quotations.",
+      "Mechanism description captures the hidden time-pressure and omitted schedule-check process."
+    ],
+    "benchmark_interpretation": "This run demonstrates a taxonomy gap rather than a detection gap: the RAG found the correct biased episode and its mechanism, but named a distinct near-neighbor construct. Candidate-level output is cautious but reduces precision when scored as detection."
+  }
+}

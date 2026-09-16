@@ -1,0 +1,517 @@
+{
+  "evaluation_metadata": {
+    "task": "ontology_free_rag_cognitive_bias_benchmark_evaluation",
+    "benchmark_run_metadata": {
+      "benchmark_run_id": "MU_Counterfactual_6_Sonnet_off",
+      "interview_id": "MU_Counterfactual_6",
+      "system_prompt_id": "Sonnet",
+      "system_prompt_generator": "Prompt 1_2",
+      "rag_model_id": "v1.0.0",
+      "corpus_condition": "off",
+      "retrieval_configuration_id": "k=0",
+      "decoding_configuration_id": "null",
+      "temperature": 1,
+      "replicate_id": "null",
+      "segment_map_id": "null"
+    },
+    "scenario_id": "MU_Counterfactual_6",
+    "domain_id": "MU",
+    "condition": "counterfactual",
+    "segment_map_status": "prevalidated_provided",
+    "rag_output_parse_status": "valid_json",
+    "rag_schema_assessment": "conformant"
+  },
+  "input_validation": {
+    "rag_output_schema_violations": [],
+    "rag_summary_count_consistency": {
+      "status": "consistent",
+      "details": "The six summary entries each report one occurrence, matching the six identified_occurrences with unique occurrence IDs and labels."
+    },
+    "evaluation_limitations": [
+      "No retrieved chunks, source passages, or retrieval logs were supplied; corpus fidelity is therefore not scored.",
+      "The RAG output uses standard labels that do not always match the hidden benchmark labels, so strict and mechanism-first scorecards diverge.",
+      "The RAG output's hindsight explanation for the post-event account is not independently credited beyond the supported tidy-causal-chain mechanism."
+    ]
+  },
+  "evaluation_segment_map": {
+    "segment_mapping_version": "1.0",
+    "segments": [
+      {
+        "segment_id": "seg_001",
+        "speaker": "Participant",
+        "segment_type": "initial risk assessment and access decision",
+        "raw_interview_anchor": "Around 06:40 ... my first thought went straight to the rockburst at our sister operation two months back ... I treated the report as more likely to be heading toward something serious ... I went with enhanced monitoring and limited access.",
+        "eligible_reasoning_segment": true,
+        "ground_truth_bias_present": true,
+        "ground_truth_instance_ids": ["cf_av_01"],
+        "ground_truth_rationale": "The elevated initial risk judgment is explicitly linked to recall of the vivid recent sister-mine rockburst despite no current alarm."
+      },
+      {
+        "segment_id": "seg_002",
+        "speaker": "Participant",
+        "segment_type": "instrument-reading interpretation and threshold judgment",
+        "raw_interview_anchor": "The 05:00 baseline was 0.2mm ... By 09:40 it had moved to 0.6mm ... compared to this morning, it's still a small number ... I didn't go back to the GCMP's rate-of-change table.",
+        "eligible_reasoning_segment": true,
+        "ground_truth_bias_present": true,
+        "ground_truth_instance_ids": ["cf_anc_01"],
+        "ground_truth_rationale": "The participant explains the comparison rule used to judge the updated extensometer reading and acknowledges that the rate criterion was not applied."
+      },
+      {
+        "segment_id": "seg_003",
+        "speaker": "Participant",
+        "segment_type": "supervisor credibility weighting and access decision",
+        "raw_interview_anchor": "He mentioned hearing similar popping back in 2009 ... His track record carried a lot of weight for me in that moment.",
+        "eligible_reasoning_segment": true,
+        "ground_truth_bias_present": true,
+        "ground_truth_instance_ids": ["cf_exp_01"],
+        "ground_truth_rationale": "Supervisor tenure and reassurance are given substantial weight without checking whether the historical comparison fits current conditions."
+      },
+      {
+        "segment_id": "seg_004",
+        "speaker": "Participant",
+        "segment_type": "crack comparison and visual evidence interpretation",
+        "raw_interview_anchor": "Today's crack looked about the same width to me ... I read it as consistent with what we already knew was fine ... I was judging the crack against the old photo instead of against the newer number.",
+        "eligible_reasoning_segment": true,
+        "ground_truth_bias_present": true,
+        "ground_truth_instance_ids": ["cf_anc_02"],
+        "ground_truth_rationale": "The prior crack photograph and classification are used as the reference while the new seismic threshold is not integrated."
+      },
+      {
+        "segment_id": "seg_005",
+        "speaker": "Participant",
+        "segment_type": "post-event causal reconstruction",
+        "raw_interview_anchor": "Putting it together ... it read as a pretty clean explanation: cooling stress plus the handover timing plus residual vibration from that blast.",
+        "eligible_reasoning_segment": true,
+        "ground_truth_bias_present": true,
+        "ground_truth_instance_ids": ["cf_narr_01"],
+        "ground_truth_rationale": "Several plausible factors are presented as one clean causal explanation despite no factor being confirmed as dominant."
+      },
+      {
+        "segment_id": "seg_006",
+        "speaker": "Participant",
+        "segment_type": "responsibility attribution",
+        "raw_interview_anchor": "I focused mainly on the miner who first reported the sounds ... I did mention the missing engineer sign-off ... but it came across more as a process note than a central cause.",
+        "eligible_reasoning_segment": true,
+        "ground_truth_bias_present": true,
+        "ground_truth_instance_ids": ["cf_attr_01"],
+        "ground_truth_rationale": "Responsibility is centered on the individual miner while the missing GCMP engineer sign-off is secondary."
+      },
+      {
+        "segment_id": "seg_007",
+        "speaker": "Participant",
+        "segment_type": "retrospective confidence assessment",
+        "raw_interview_anchor": "Less than when I wrote it. It felt like a complete picture at the time, but there were threads I didn't fully chase down.",
+        "eligible_reasoning_segment": true,
+        "ground_truth_bias_present": false,
+        "ground_truth_instance_ids": [],
+        "ground_truth_rationale": "This is a substantive confidence judgment but does not express another hidden bias mechanism."
+      }
+    ]
+  },
+  "segment_level_adjudications": [
+    {
+      "segment_id": "seg_001",
+      "ground_truth_status": "positive",
+      "ground_truth_instance_ids": ["cf_av_01"],
+      "rag_identified_occurrence_ids": ["obs_001"],
+      "rag_candidate_ids_counted_at_fourth_threshold": [],
+      "rag_detected_bias_in_segment_by_threshold": {"high_only": true, "high_and_moderate": true, "all_identified_confidence_levels": true, "all_confidence_and_candidates": true},
+      "sdt_outcome_by_threshold": {"high_only": "hit", "high_and_moderate": "hit", "all_identified_confidence_levels": "hit", "all_confidence_and_candidates": "hit"},
+      "localization_basis": "obs_001 has a valid exact quote from the seg_001 risk assessment.",
+      "adjudication_note": "Availability heuristic is an approved equivalent of the hidden Availability Bias in this mechanism and location."
+    },
+    {
+      "segment_id": "seg_002",
+      "ground_truth_status": "positive",
+      "ground_truth_instance_ids": ["cf_anc_01"],
+      "rag_identified_occurrence_ids": ["obs_002"],
+      "rag_candidate_ids_counted_at_fourth_threshold": [],
+      "rag_detected_bias_in_segment_by_threshold": {"high_only": false, "high_and_moderate": true, "all_identified_confidence_levels": true, "all_confidence_and_candidates": true},
+      "sdt_outcome_by_threshold": {"high_only": "miss", "high_and_moderate": "hit", "all_identified_confidence_levels": "hit", "all_confidence_and_candidates": "hit"},
+      "localization_basis": "obs_002 quotes and describes the 05:00-to-09:40 extensometer comparison.",
+      "adjudication_note": "The identified occurrence is moderate confidence, so it enters at the second threshold."
+    },
+    {
+      "segment_id": "seg_003",
+      "ground_truth_status": "positive",
+      "ground_truth_instance_ids": ["cf_exp_01"],
+      "rag_identified_occurrence_ids": ["obs_003"],
+      "rag_candidate_ids_counted_at_fourth_threshold": [],
+      "rag_detected_bias_in_segment_by_threshold": {"high_only": true, "high_and_moderate": true, "all_identified_confidence_levels": true, "all_confidence_and_candidates": true},
+      "sdt_outcome_by_threshold": {"high_only": "hit", "high_and_moderate": "hit", "all_identified_confidence_levels": "hit", "all_confidence_and_candidates": "hit"},
+      "localization_basis": "obs_003 uses exact quotes from the supervisor-credibility episode.",
+      "adjudication_note": "The label authority bias is a near neighbor, but the mechanism and reasoning operation fully match the hidden Experience Bias instance."
+    },
+    {
+      "segment_id": "seg_004",
+      "ground_truth_status": "positive",
+      "ground_truth_instance_ids": ["cf_anc_02"],
+      "rag_identified_occurrence_ids": ["obs_004"],
+      "rag_candidate_ids_counted_at_fourth_threshold": [],
+      "rag_detected_bias_in_segment_by_threshold": {"high_only": false, "high_and_moderate": true, "all_identified_confidence_levels": true, "all_confidence_and_candidates": true},
+      "sdt_outcome_by_threshold": {"high_only": "miss", "high_and_moderate": "hit", "all_identified_confidence_levels": "hit", "all_confidence_and_candidates": "hit"},
+      "localization_basis": "obs_004 has a valid quote directly describing comparison of today's crack with last week's photograph.",
+      "adjudication_note": "The segment-level detection is a hit, but the instance-level mechanism is only partial: the output frames confirmation rather than the hidden anchoring-specific fixed-reference mechanism."
+    },
+    {
+      "segment_id": "seg_005",
+      "ground_truth_status": "positive",
+      "ground_truth_instance_ids": ["cf_narr_01"],
+      "rag_identified_occurrence_ids": ["obs_005"],
+      "rag_candidate_ids_counted_at_fourth_threshold": [],
+      "rag_detected_bias_in_segment_by_threshold": {"high_only": false, "high_and_moderate": false, "all_identified_confidence_levels": true, "all_confidence_and_candidates": true},
+      "sdt_outcome_by_threshold": {"high_only": "miss", "high_and_moderate": "miss", "all_identified_confidence_levels": "hit", "all_confidence_and_candidates": "hit"},
+      "localization_basis": "obs_005 quotes the post-event incident-report causal explanation.",
+      "adjudication_note": "The finding is low confidence, but its supported tidy causal-chain mechanism localizes to the positive post-event segment."
+    },
+    {
+      "segment_id": "seg_006",
+      "ground_truth_status": "positive",
+      "ground_truth_instance_ids": ["cf_attr_01"],
+      "rag_identified_occurrence_ids": ["obs_006"],
+      "rag_candidate_ids_counted_at_fourth_threshold": [],
+      "rag_detected_bias_in_segment_by_threshold": {"high_only": false, "high_and_moderate": true, "all_identified_confidence_levels": true, "all_confidence_and_candidates": true},
+      "sdt_outcome_by_threshold": {"high_only": "miss", "high_and_moderate": "hit", "all_identified_confidence_levels": "hit", "all_confidence_and_candidates": "hit"},
+      "localization_basis": "obs_006 contains a valid exact quote contrasting miner blame with the missing engineer sign-off.",
+      "adjudication_note": "Fundamental attribution error is a near-neighbor label, while the individual-versus-systemic mechanism is fully present."
+    },
+    {
+      "segment_id": "seg_007",
+      "ground_truth_status": "negative",
+      "ground_truth_instance_ids": [],
+      "rag_identified_occurrence_ids": [],
+      "rag_candidate_ids_counted_at_fourth_threshold": [],
+      "rag_detected_bias_in_segment_by_threshold": {"high_only": false, "high_and_moderate": false, "all_identified_confidence_levels": false, "all_confidence_and_candidates": false},
+      "sdt_outcome_by_threshold": {"high_only": "correct_rejection", "high_and_moderate": "correct_rejection", "all_identified_confidence_levels": "correct_rejection", "all_confidence_and_candidates": "correct_rejection"},
+      "localization_basis": "No RAG finding localizes to the retrospective confidence assessment.",
+      "adjudication_note": "The segment is negative under the frozen map and remains correctly rejected at all thresholds."
+    }
+  ],
+  "instance_level_adjudications": [
+    {
+      "hidden_instance_id": "cf_av_01",
+      "hidden_target_bias_label": "Availability Bias",
+      "hidden_decision_or_episode": "Initial risk assessment and access decision after the 06:40 cracking report",
+      "hidden_mechanism": "Vivid recall of the recent sister-mine rockburst inflates the perceived likelihood of the current ambiguous noise report, independent of deadline urgency.",
+      "matched_finding_by_threshold": {
+        "high_only": {"matched_id": "obs_001", "matched_type": "identified"},
+        "high_and_moderate": {"matched_id": "obs_001", "matched_type": "identified"},
+        "all_identified_confidence_levels": {"matched_id": "obs_001", "matched_type": "identified"},
+        "all_confidence_and_candidates": {"matched_id": "obs_001", "matched_type": "identified"}
+      },
+      "rag_predicted_bias_label": "availability heuristic",
+      "rag_confidence": "high",
+      "label_equivalence_result": "established_alias_or_equivalent",
+      "localization_match_type": "exact_quote_match",
+      "mechanism_overlap": "full_mechanism_match",
+      "strict_scorecard_outcome_by_threshold": {"high_only": "true_positive", "high_and_moderate": "true_positive", "all_identified_confidence_levels": "true_positive", "all_confidence_and_candidates": "true_positive"},
+      "mechanism_first_scorecard_outcome_by_threshold": {"high_only": "true_positive", "high_and_moderate": "true_positive", "all_identified_confidence_levels": "true_positive", "all_confidence_and_candidates": "true_positive"},
+      "secondary_diagnostic_outcome": "approved_alias_match",
+      "label_equivalence_explanation": "Availability heuristic is an established equivalent label for Availability Bias, and the output explicitly ties the judgment to the vivid sister-mine incident.",
+      "mechanism_overlap_explanation": "The finding captures salient recall, inflated likelihood assessment, the current non-alarm evidence, and the resulting access-control decision.",
+      "evidence_fidelity_assessment": "Valid participant quotations directly support the mechanism, location, and counterfactual independence from schedule pressure."
+    },
+    {
+      "hidden_instance_id": "cf_anc_01",
+      "hidden_target_bias_label": "Anchoring Bias",
+      "hidden_decision_or_episode": "Interpretation of the 09:40 extensometer movement",
+      "hidden_mechanism": "Morning baseline extensometer reading anchors judgment of the later reading as still normal instead of applying the rate-of-change rule.",
+      "matched_finding_by_threshold": {
+        "high_only": {"matched_id": null, "matched_type": "none"},
+        "high_and_moderate": {"matched_id": "obs_002", "matched_type": "identified"},
+        "all_identified_confidence_levels": {"matched_id": "obs_002", "matched_type": "identified"},
+        "all_confidence_and_candidates": {"matched_id": "obs_002", "matched_type": "identified"}
+      },
+      "rag_predicted_bias_label": "anchoring bias",
+      "rag_confidence": "moderate",
+      "label_equivalence_result": "exact_target_label",
+      "localization_match_type": "exact_quote_match",
+      "mechanism_overlap": "full_mechanism_match",
+      "strict_scorecard_outcome_by_threshold": {"high_only": "false_negative", "high_and_moderate": "true_positive", "all_identified_confidence_levels": "true_positive", "all_confidence_and_candidates": "true_positive"},
+      "mechanism_first_scorecard_outcome_by_threshold": {"high_only": "false_negative", "high_and_moderate": "true_positive", "all_identified_confidence_levels": "true_positive", "all_confidence_and_candidates": "true_positive"},
+      "secondary_diagnostic_outcome": "exact_instance_match",
+      "label_equivalence_explanation": "The RAG label is the exact target construct.",
+      "mechanism_overlap_explanation": "The 05:00 baseline is identified as the fixed reference, the 09:40 value is judged against it, and the GCMP rate rule is displaced.",
+      "evidence_fidelity_assessment": "Valid direct quotations accurately preserve the participant's comparison error and decision context."
+    },
+    {
+      "hidden_instance_id": "cf_exp_01",
+      "hidden_target_bias_label": "Experience Bias",
+      "hidden_decision_or_episode": "Supervisor credibility weighting and continued limited access decision",
+      "hidden_mechanism": "Supervisor tenure is treated as sufficient validation of a benign read, without checking situational similarity to today's conditions.",
+      "matched_finding_by_threshold": {
+        "high_only": {"matched_id": "obs_003", "matched_type": "identified"},
+        "high_and_moderate": {"matched_id": "obs_003", "matched_type": "identified"},
+        "all_identified_confidence_levels": {"matched_id": "obs_003", "matched_type": "identified"},
+        "all_confidence_and_candidates": {"matched_id": "obs_003", "matched_type": "identified"}
+      },
+      "rag_predicted_bias_label": "authority bias",
+      "rag_confidence": "high",
+      "label_equivalence_result": "near_neighbor_label",
+      "localization_match_type": "exact_quote_match",
+      "mechanism_overlap": "full_mechanism_match",
+      "strict_scorecard_outcome_by_threshold": {"high_only": "false_negative", "high_and_moderate": "false_negative", "all_identified_confidence_levels": "false_negative", "all_confidence_and_candidates": "false_negative"},
+      "mechanism_first_scorecard_outcome_by_threshold": {"high_only": "true_positive", "high_and_moderate": "true_positive", "all_identified_confidence_levels": "true_positive", "all_confidence_and_candidates": "true_positive"},
+      "secondary_diagnostic_outcome": "correct_location_wrong_bias_label",
+      "label_equivalence_explanation": "Authority bias is related to Experience Bias but is not an established alternate name for it; the labels should not be collapsed under the strict scorecard.",
+      "mechanism_overlap_explanation": "The finding fully captures tenure-based credibility weighting, failure to test the 2009 comparison, and underweighting the threshold data.",
+      "evidence_fidelity_assessment": "Valid quotations support the experience-based trust and the lack of situational-similarity checking."
+    },
+    {
+      "hidden_instance_id": "cf_anc_02",
+      "hidden_target_bias_label": "Anchoring Bias",
+      "hidden_decision_or_episode": "Crack comparison and visual evidence interpretation",
+      "hidden_mechanism": "Prior week's photographed hairline crack anchors judgment of today's crack severity, displacing attention from the newly reached microseismic threshold.",
+      "matched_finding_by_threshold": {
+        "high_only": {"matched_id": null, "matched_type": "none"},
+        "high_and_moderate": {"matched_id": "obs_004", "matched_type": "identified"},
+        "all_identified_confidence_levels": {"matched_id": "obs_004", "matched_type": "identified"},
+        "all_confidence_and_candidates": {"matched_id": "obs_004", "matched_type": "identified"}
+      },
+      "rag_predicted_bias_label": "confirmation bias",
+      "rag_confidence": "moderate",
+      "label_equivalence_result": "near_neighbor_label",
+      "localization_match_type": "exact_quote_match",
+      "mechanism_overlap": "partial_mechanism_overlap",
+      "strict_scorecard_outcome_by_threshold": {"high_only": "false_negative", "high_and_moderate": "false_negative", "all_identified_confidence_levels": "false_negative", "all_confidence_and_candidates": "false_negative"},
+      "mechanism_first_scorecard_outcome_by_threshold": {"high_only": "false_negative", "high_and_moderate": "false_negative", "all_identified_confidence_levels": "false_negative", "all_confidence_and_candidates": "false_negative"},
+      "secondary_diagnostic_outcome": "partial_mechanism_match",
+      "label_equivalence_explanation": "Confirmation bias is a related but distinct construct from the hidden Anchoring Bias instance.",
+      "mechanism_overlap_explanation": "The output correctly identifies the prior crack assessment and failure to integrate the new seismic threshold, but does not state that the prior photograph served as an anchoring reference that displaced the rate/threshold judgment.",
+      "evidence_fidelity_assessment": "The quotations are valid and correctly localized, but the adjudicated mechanism is incomplete for the hidden anchoring target."
+    },
+    {
+      "hidden_instance_id": "cf_narr_01",
+      "hidden_target_bias_label": "Narrative Fallacy",
+      "hidden_decision_or_episode": "Post-event causal reconstruction in the incident report",
+      "hidden_mechanism": "Multiple loosely related factors are woven into a single tidy causal chain, overstating certainty of the causal linkage regardless of deadline pressure.",
+      "matched_finding_by_threshold": {
+        "high_only": {"matched_id": null, "matched_type": "none"},
+        "high_and_moderate": {"matched_id": null, "matched_type": "none"},
+        "all_identified_confidence_levels": {"matched_id": "obs_005", "matched_type": "identified"},
+        "all_confidence_and_candidates": {"matched_id": "obs_005", "matched_type": "identified"}
+      },
+      "rag_predicted_bias_label": "hindsight bias",
+      "rag_confidence": "low",
+      "label_equivalence_result": "near_neighbor_label",
+      "localization_match_type": "exact_quote_match",
+      "mechanism_overlap": "full_mechanism_match",
+      "strict_scorecard_outcome_by_threshold": {"high_only": "false_negative", "high_and_moderate": "false_negative", "all_identified_confidence_levels": "false_negative", "all_confidence_and_candidates": "false_negative"},
+      "mechanism_first_scorecard_outcome_by_threshold": {"high_only": "false_negative", "high_and_moderate": "false_negative", "all_identified_confidence_levels": "true_positive", "all_confidence_and_candidates": "true_positive"},
+      "secondary_diagnostic_outcome": "correct_location_wrong_bias_label",
+      "label_equivalence_explanation": "Hindsight bias is not an established alternate name for Narrative Fallacy, although the constructs can co-occur in post-event accounts.",
+      "mechanism_overlap_explanation": "The finding fully captures the tidy multi-factor causal chain and excess certainty; its additional claim about outcome knowledge is not needed and is not independently credited.",
+      "evidence_fidelity_assessment": "The quoted clean-explanation statement is valid. The later engineer uncertainty supports the hidden narrative mechanism, while the output's stronger hindsight attribution is only partially grounded."
+    },
+    {
+      "hidden_instance_id": "cf_attr_01",
+      "hidden_target_bias_label": "Attribution Bias",
+      "hidden_decision_or_episode": "Responsibility attribution in the incident report",
+      "hidden_mechanism": "Escalation responsibility is assigned mainly to the on-shift miner's reporting delay rather than to the missing systemic GCMP sign-off step.",
+      "matched_finding_by_threshold": {
+        "high_only": {"matched_id": null, "matched_type": "none"},
+        "high_and_moderate": {"matched_id": "obs_006", "matched_type": "identified"},
+        "all_identified_confidence_levels": {"matched_id": "obs_006", "matched_type": "identified"},
+        "all_confidence_and_candidates": {"matched_id": "obs_006", "matched_type": "identified"}
+      },
+      "rag_predicted_bias_label": "fundamental attribution error",
+      "rag_confidence": "moderate",
+      "label_equivalence_result": "near_neighbor_label",
+      "localization_match_type": "exact_quote_match",
+      "mechanism_overlap": "full_mechanism_match",
+      "strict_scorecard_outcome_by_threshold": {"high_only": "false_negative", "high_and_moderate": "false_negative", "all_identified_confidence_levels": "false_negative", "all_confidence_and_candidates": "false_negative"},
+      "mechanism_first_scorecard_outcome_by_threshold": {"high_only": "false_negative", "high_and_moderate": "true_positive", "all_identified_confidence_levels": "true_positive", "all_confidence_and_candidates": "true_positive"},
+      "secondary_diagnostic_outcome": "correct_location_wrong_bias_label",
+      "label_equivalence_explanation": "Fundamental attribution error is a related specific construct, not an established alternate label for the benchmark's generic Attribution Bias target.",
+      "mechanism_overlap_explanation": "The output fully captures individual miner blame being foregrounded while the missing systemic sign-off is minimized.",
+      "evidence_fidelity_assessment": "A valid direct quotation supports both the individual attribution and the secondary treatment of the systemic process factor."
+    }
+  ],
+  "unmatched_rag_predictions": [
+    {
+      "rag_occurrence_id": "obs_003",
+      "rag_finding_type": "identified",
+      "rag_predicted_bias_label": "authority bias",
+      "rag_confidence": "high",
+      "localized_segment_id": "seg_003",
+      "best_related_hidden_instance_id": "cf_exp_01",
+      "label_equivalence_result": "near_neighbor_label",
+      "mechanism_overlap": "full_mechanism_match",
+      "strict_classification": "correct_location_wrong_bias_label",
+      "mechanism_first_classification": "not_applicable",
+      "counted_at_thresholds": ["high_only", "high_and_moderate", "all_identified_confidence_levels", "all_confidence_and_candidates"],
+      "why_not_an_exact_strict_match": "The occurrence is correctly localized and mechanism-complete, but authority bias is not the hidden Experience Bias label or an approved alternate name."
+    },
+    {
+      "rag_occurrence_id": "obs_004",
+      "rag_finding_type": "identified",
+      "rag_predicted_bias_label": "confirmation bias",
+      "rag_confidence": "moderate",
+      "localized_segment_id": "seg_004",
+      "best_related_hidden_instance_id": "cf_anc_02",
+      "label_equivalence_result": "near_neighbor_label",
+      "mechanism_overlap": "partial_mechanism_overlap",
+      "strict_classification": "partial_mechanism_match",
+      "mechanism_first_classification": "partial_mechanism_match",
+      "counted_at_thresholds": ["high_and_moderate", "all_identified_confidence_levels", "all_confidence_and_candidates"],
+      "why_not_an_exact_strict_match": "The evidence is correctly localized, but the output describes confirmation of a prior assessment rather than the hidden anchoring mechanism of a fixed photographic reference displacing threshold integration."
+    },
+    {
+      "rag_occurrence_id": "obs_005",
+      "rag_finding_type": "identified",
+      "rag_predicted_bias_label": "hindsight bias",
+      "rag_confidence": "low",
+      "localized_segment_id": "seg_005",
+      "best_related_hidden_instance_id": "cf_narr_01",
+      "label_equivalence_result": "near_neighbor_label",
+      "mechanism_overlap": "full_mechanism_match",
+      "strict_classification": "correct_location_wrong_bias_label",
+      "mechanism_first_classification": "not_applicable",
+      "counted_at_thresholds": ["all_identified_confidence_levels", "all_confidence_and_candidates"],
+      "why_not_an_exact_strict_match": "The post-event clean causal chain fully matches the hidden mechanism, but hindsight bias is not an approved equivalent of Narrative Fallacy."
+    },
+    {
+      "rag_occurrence_id": "obs_006",
+      "rag_finding_type": "identified",
+      "rag_predicted_bias_label": "fundamental attribution error",
+      "rag_confidence": "moderate",
+      "localized_segment_id": "seg_006",
+      "best_related_hidden_instance_id": "cf_attr_01",
+      "label_equivalence_result": "near_neighbor_label",
+      "mechanism_overlap": "full_mechanism_match",
+      "strict_classification": "correct_location_wrong_bias_label",
+      "mechanism_first_classification": "not_applicable",
+      "counted_at_thresholds": ["high_and_moderate", "all_identified_confidence_levels", "all_confidence_and_candidates"],
+      "why_not_an_exact_strict_match": "The individual-versus-systemic attribution mechanism is complete, but fundamental attribution error is treated as a related specific construct rather than an approved equivalent of the hidden Attribution Bias label."
+    }
+  ],
+  "candidate_analysis": {
+    "candidate_count": 0,
+    "candidates": []
+  },
+  "signal_detection_summary": {
+    "evaluation_unit": "eligible_reasoning_segment",
+    "high_only": {
+      "positive_segments": 6, "negative_segments": 1, "hits": 2, "misses": 4, "false_alarms": 0, "correct_rejections": 1,
+      "hit_rate": 0.3333, "false_alarm_rate": 0.0, "accuracy": 0.4286, "precision": 1.0, "recall": 0.3333, "f1": 0.5,
+      "detection_interpretation": "High-confidence findings detect the availability and supervisor-credibility segments, missing the four positive segments whose findings are moderate or low confidence."
+    },
+    "high_and_moderate": {
+      "positive_segments": 6, "negative_segments": 1, "hits": 5, "misses": 1, "false_alarms": 0, "correct_rejections": 1,
+      "hit_rate": 0.8333, "false_alarm_rate": 0.0, "accuracy": 0.8571, "precision": 1.0, "recall": 0.8333, "f1": 0.9091,
+      "detection_interpretation": "Adding moderate-confidence findings detects the instrument, crack, and responsibility segments; only the low-confidence post-event narrative segment remains missed."
+    },
+    "all_identified_confidence_levels": {
+      "positive_segments": 6, "negative_segments": 1, "hits": 6, "misses": 0, "false_alarms": 0, "correct_rejections": 1,
+      "hit_rate": 1.0, "false_alarm_rate": 0.0, "accuracy": 1.0, "precision": 1.0, "recall": 1.0, "f1": 1.0,
+      "detection_interpretation": "All six positive segments are localized by identified findings, with no finding on the negative confidence-assessment segment."
+    },
+    "all_confidence_and_candidates": {
+      "positive_segments": 6, "negative_segments": 1, "hits": 6, "misses": 0, "false_alarms": 0, "correct_rejections": 1,
+      "hit_rate": 1.0, "false_alarm_rate": 0.0, "accuracy": 1.0, "precision": 1.0, "recall": 1.0, "f1": 1.0,
+      "detection_interpretation": "No candidates were supplied, so candidate inclusion does not change the all-identified result."
+    }
+  },
+  "strict_instance_level_metrics": {
+    "high_only": {"true_positives": 1, "false_negatives": 5, "false_positives": 1, "precision": 0.5, "recall": 0.1667, "f1": 0.25, "exact_occurrence_match_rate": 0.1667, "occurrence_count_match_rate": 0.2},
+    "high_and_moderate": {"true_positives": 2, "false_negatives": 4, "false_positives": 3, "precision": 0.4, "recall": 0.3333, "f1": 0.3636, "exact_occurrence_match_rate": 0.3333, "occurrence_count_match_rate": 0.2},
+    "all_identified_confidence_levels": {"true_positives": 2, "false_negatives": 4, "false_positives": 4, "precision": 0.3333, "recall": 0.3333, "f1": 0.3333, "exact_occurrence_match_rate": 0.3333, "occurrence_count_match_rate": 0.2},
+    "all_confidence_and_candidates": {"true_positives": 2, "false_negatives": 4, "false_positives": 4, "precision": 0.3333, "recall": 0.3333, "f1": 0.3333, "exact_occurrence_match_rate": 0.3333, "occurrence_count_match_rate": 0.2}
+  },
+  "mechanism_first_instance_level_metrics": {
+    "high_only": {"true_positives": 2, "false_negatives": 4, "false_positives": 0, "precision": 1.0, "recall": 0.3333, "f1": 0.5, "exact_occurrence_match_rate": 0.3333, "occurrence_count_match_rate": 0.4},
+    "high_and_moderate": {"true_positives": 4, "false_negatives": 2, "false_positives": 1, "precision": 0.8, "recall": 0.6667, "f1": 0.7273, "exact_occurrence_match_rate": 0.6667, "occurrence_count_match_rate": 0.6},
+    "all_identified_confidence_levels": {"true_positives": 5, "false_negatives": 1, "false_positives": 1, "precision": 0.8333, "recall": 0.8333, "f1": 0.8333, "exact_occurrence_match_rate": 0.8333, "occurrence_count_match_rate": 0.8},
+    "all_confidence_and_candidates": {"true_positives": 5, "false_negatives": 1, "false_positives": 1, "precision": 0.8333, "recall": 0.8333, "f1": 0.8333, "exact_occurrence_match_rate": 0.8333, "occurrence_count_match_rate": 0.8}
+  },
+  "target_bias_performance": [
+    {"hidden_target_bias_label": "Availability Bias", "hidden_requested_occurrences": 1, "strict_true_positives_by_threshold": {"high_only": 1, "high_and_moderate": 1, "all_identified_confidence_levels": 1, "all_confidence_and_candidates": 1}, "mechanism_first_true_positives_by_threshold": {"high_only": 1, "high_and_moderate": 1, "all_identified_confidence_levels": 1, "all_confidence_and_candidates": 1}, "count_match_status_at_all_confidence_and_candidates": "exact_match"},
+    {"hidden_target_bias_label": "Experience Bias", "hidden_requested_occurrences": 1, "strict_true_positives_by_threshold": {"high_only": 0, "high_and_moderate": 0, "all_identified_confidence_levels": 0, "all_confidence_and_candidates": 0}, "mechanism_first_true_positives_by_threshold": {"high_only": 1, "high_and_moderate": 1, "all_identified_confidence_levels": 1, "all_confidence_and_candidates": 1}, "count_match_status_at_all_confidence_and_candidates": "underdetected"},
+    {"hidden_target_bias_label": "Anchoring Bias", "hidden_requested_occurrences": 2, "strict_true_positives_by_threshold": {"high_only": 0, "high_and_moderate": 1, "all_identified_confidence_levels": 1, "all_confidence_and_candidates": 1}, "mechanism_first_true_positives_by_threshold": {"high_only": 1, "high_and_moderate": 1, "all_identified_confidence_levels": 1, "all_confidence_and_candidates": 1}, "count_match_status_at_all_confidence_and_candidates": "underdetected"},
+    {"hidden_target_bias_label": "Narrative Fallacy", "hidden_requested_occurrences": 1, "strict_true_positives_by_threshold": {"high_only": 0, "high_and_moderate": 0, "all_identified_confidence_levels": 0, "all_confidence_and_candidates": 0}, "mechanism_first_true_positives_by_threshold": {"high_only": 0, "high_and_moderate": 0, "all_identified_confidence_levels": 1, "all_confidence_and_candidates": 1}, "count_match_status_at_all_confidence_and_candidates": "underdetected"},
+    {"hidden_target_bias_label": "Attribution Bias", "hidden_requested_occurrences": 1, "strict_true_positives_by_threshold": {"high_only": 0, "high_and_moderate": 0, "all_identified_confidence_levels": 0, "all_confidence_and_candidates": 0}, "mechanism_first_true_positives_by_threshold": {"high_only": 0, "high_and_moderate": 1, "all_identified_confidence_levels": 1, "all_confidence_and_candidates": 1}, "count_match_status_at_all_confidence_and_candidates": "underdetected"}
+  ],
+  "rag_label_false_positive_inventory": [
+    {"rag_predicted_bias_label": "authority bias", "finding_type": "identified", "alternative_labels": ["expertise bias", "appeal to authority"], "occurrence_count": 1, "best_related_hidden_target_bias_label": "Experience Bias", "label_relation": "near_neighbor", "mechanism_overlap_summary": "Full tenure-based credibility mechanism and correct location, but not the hidden label.", "primary_error_types": ["correct_location_wrong_bias_label"]},
+    {"rag_predicted_bias_label": "confirmation bias", "finding_type": "identified", "alternative_labels": ["confirmatory bias", "selective information processing"], "occurrence_count": 1, "best_related_hidden_target_bias_label": "Anchoring Bias", "label_relation": "near_neighbor", "mechanism_overlap_summary": "Correct prior-photo comparison and threshold omission, but only partial anchoring mechanism.", "primary_error_types": ["partial_mechanism_match"]},
+    {"rag_predicted_bias_label": "hindsight bias", "finding_type": "identified", "alternative_labels": ["knew-it-all-along effect", "retrospective determinism"], "occurrence_count": 1, "best_related_hidden_target_bias_label": "Narrative Fallacy", "label_relation": "near_neighbor", "mechanism_overlap_summary": "Full tidy-causal-chain mechanism at the post-event segment, with an unsupported extra hindsight emphasis.", "primary_error_types": ["correct_location_wrong_bias_label"]},
+    {"rag_predicted_bias_label": "fundamental attribution error", "finding_type": "identified", "alternative_labels": ["correspondence bias"], "occurrence_count": 1, "best_related_hidden_target_bias_label": "Attribution Bias", "label_relation": "near_neighbor", "mechanism_overlap_summary": "Full individual-versus-systemic attribution mechanism and correct location, but not the hidden generic label.", "primary_error_types": ["correct_location_wrong_bias_label"]}
+  ],
+  "diagnostic_error_summary": {
+    "correct_location_wrong_bias_label_count": 3,
+    "correct_label_wrong_location_count": 0,
+    "correct_label_location_wrong_mechanism_count": 0,
+    "mechanism_detected_label_unresolved_count": 0,
+    "partial_mechanism_match_count": 1,
+    "duplicate_prediction_count": 0,
+    "unsupported_prediction_count": 0,
+    "fabricated_or_invalid_quote_count": 0,
+    "approved_alias_or_equivalence_count": 1,
+    "near_neighbor_label_count": 4,
+    "different_construct_label_count": 0,
+    "candidate_count": 0,
+    "candidate_useful_abstention_count": 0,
+    "candidate_near_miss_count": 0,
+    "candidates_promoted_to_true_positive_at_fourth_threshold_count": 0
+  },
+  "corpus_support_audit": {
+    "primary_corpus_fidelity_score_available": false,
+    "rag_occurrences_claiming_retrieved_support": 0,
+    "rag_occurrences_with_no_claimed_retrieved_support": 6,
+    "rag_occurrences_with_unverifiable_or_internally_inconsistent_citation_metadata": 0,
+    "assessment_note": "The RAG explicitly reports that no retrieved corpus support was used and supplies no citations or corpus evidence. This is consistent with the supplied off/k=0 run metadata; primary corpus fidelity is not assessable."
+  },
+  "comparison_ready_summary": {
+    "primary_recommended_comparison_threshold": "high_and_moderate",
+    "segment_detection": {
+      "high_only": {"hits": 2, "misses": 4, "false_alarms": 0, "correct_rejections": 1, "hit_rate": 0.3333, "false_alarm_rate": 0.0, "f1": 0.5},
+      "high_and_moderate": {"hits": 5, "misses": 1, "false_alarms": 0, "correct_rejections": 1, "hit_rate": 0.8333, "false_alarm_rate": 0.0, "f1": 0.9091},
+      "all_identified_confidence_levels": {"hits": 6, "misses": 0, "false_alarms": 0, "correct_rejections": 1, "hit_rate": 1.0, "false_alarm_rate": 0.0, "f1": 1.0},
+      "all_confidence_and_candidates": {"hits": 6, "misses": 0, "false_alarms": 0, "correct_rejections": 1, "hit_rate": 1.0, "false_alarm_rate": 0.0, "f1": 1.0}
+    },
+    "strict_instance_identification": {
+      "high_only": {"true_positives": 1, "false_negatives": 5, "false_positives": 1, "precision": 0.5, "recall": 0.1667, "f1": 0.25},
+      "high_and_moderate": {"true_positives": 2, "false_negatives": 4, "false_positives": 3, "precision": 0.4, "recall": 0.3333, "f1": 0.3636},
+      "all_identified_confidence_levels": {"true_positives": 2, "false_negatives": 4, "false_positives": 4, "precision": 0.3333, "recall": 0.3333, "f1": 0.3333},
+      "all_confidence_and_candidates": {"true_positives": 2, "false_negatives": 4, "false_positives": 4, "precision": 0.3333, "recall": 0.3333, "f1": 0.3333}
+    },
+    "mechanism_first_identification": {
+      "high_only": {"true_positives": 2, "false_negatives": 4, "false_positives": 0, "precision": 1.0, "recall": 0.3333, "f1": 0.5},
+      "high_and_moderate": {"true_positives": 4, "false_negatives": 2, "false_positives": 1, "precision": 0.8, "recall": 0.6667, "f1": 0.7273},
+      "all_identified_confidence_levels": {"true_positives": 5, "false_negatives": 1, "false_positives": 1, "precision": 0.8333, "recall": 0.8333, "f1": 0.8333},
+      "all_confidence_and_candidates": {"true_positives": 5, "false_negatives": 1, "false_positives": 1, "precision": 0.8333, "recall": 0.8333, "f1": 0.8333}
+    },
+    "taxonomy_gap": {
+      "high_only": {"mechanism_first_f1_minus_strict_f1": 0.25},
+      "high_and_moderate": {"mechanism_first_f1_minus_strict_f1": 0.3636},
+      "all_identified_confidence_levels": {"mechanism_first_f1_minus_strict_f1": 0.5},
+      "all_confidence_and_candidates": {"mechanism_first_f1_minus_strict_f1": 0.5}
+    },
+    "confidence_tradeoff": {
+      "increment_from_high_to_high_and_moderate": "Segment hits increase from 2 to 5; strict true positives increase from 1 to 2 with two additional strict false positives; mechanism-first true positives increase from 2 to 4 with one additional false positive.",
+      "increment_from_high_and_moderate_to_all_confidence": "Adding the low-confidence narrative finding raises segment hits from 5 to 6 and mechanism-first true positives from 4 to 5, while adding one strict false positive; strict true positives do not increase.",
+      "increment_from_all_confidence_to_all_confidence_and_candidates": "No change: the RAG supplied zero candidate biases."
+    }
+  },
+  "overall_evaluation_summary": {
+    "hidden_total_planned_occurrences": 6,
+    "rag_total_identified_occurrences": 6,
+    "rag_total_candidate_biases": 0,
+    "segment_level_primary_result": "At the recommended high_and_moderate threshold, 5 of 6 positive segments are detected with 0 false alarms (hit rate 0.8333; F1 0.9091).",
+    "strict_label_plus_mechanism_result": "At high_and_moderate, 2 of 6 hidden instances are strict true positives, with 4 false negatives and 3 false positives (precision 0.4; recall 0.3333; F1 0.3636).",
+    "mechanism_first_result": "At high_and_moderate, 4 of 6 hidden instances are mechanism-first true positives, with 2 false negatives and 1 false positive (precision 0.8; recall 0.6667; F1 0.7273).",
+    "candidate_tier_value_assessment": "No candidates were supplied, so candidate inclusion has no marginal effect and provides no additional abstention signal.",
+    "main_failure_modes": [
+      "Three findings use near-neighbor labels—authority bias, hindsight bias, and fundamental attribution error—instead of the hidden Experience Bias, Narrative Fallacy, and Attribution Bias labels.",
+      "The crack finding is correctly localized but frames the evidence as confirmation rather than the hidden anchoring mechanism, leaving the second anchoring occurrence unmatched.",
+      "Strict label-plus-mechanism performance remains low despite complete segment localization because label taxonomy mismatches are scored as false positives and false negatives."
+    ],
+    "main_strengths": [
+      "The JSON is valid, schema-conformant, and internally consistent with its six identified findings.",
+      "All six findings are localized to the correct positive reasoning segments using valid participant quotations.",
+      "The output correctly captures the availability, instrument-baseline anchoring, supervisor-tenure weighting, post-event tidy causal chain, and individual-versus-systemic responsibility mechanisms.",
+      "The RAG accurately discloses that no retrieved corpus support was used."
+    ],
+    "benchmark_interpretation": "This run has perfect segment localization once low-confidence findings are included, but only moderate mechanism-first instance performance and low strict taxonomy performance. The main comparison signal is a substantial taxonomy gap rather than unsupported or fabricated evidence."
+  }
+}
